@@ -1,0 +1,27 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Ali Rostami Website</title>
+        <link>http://alirostami.com/</link>
+        <description>This is my personal website</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>Everything is mine</copyright><lastBuildDate>Thu, 13 Apr 2023 03:58:33 &#43;0330</lastBuildDate>
+            <atom:link href="http://alirostami.com/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+    <title>Benefits of Using Obsidian</title>
+    <link>http://alirostami.com/posts/benefits-of-using-obsidian/</link>
+    <pubDate>Thu, 13 Apr 2023 03:58:33 &#43;0330</pubDate>
+    <author>Ali Rostami</author>
+    <guid>http://alirostami.com/posts/benefits-of-using-obsidian/</guid>
+    <description><![CDATA[Obsidian is a note-taking app that has been gaining popularity among knowledge workers, researchers, and writers. It is based on the idea of a zettelkasten, a note-taking system popularized by the German sociologist Niklas Luhmann. Here are some of the benefits of using Obsidian and a zettelkasten:
+  Better organization: With Obsidian, you can organize your notes using links, tags, and folders. This makes it easy to find information when you need it, and it helps you avoid the chaos of having notes scattered across multiple platforms.]]></description>
+</item>
+<item>
+    <title>A Recap of Last Year</title>
+    <link>http://alirostami.com/posts/a-recap-of-last-year/</link>
+    <pubDate>Thu, 13 Apr 2023 03:36:49 &#43;0330</pubDate>
+    <author>Ali Rostami</author>
+    <guid>http://alirostami.com/posts/a-recap-of-last-year/</guid>
+    <description><![CDATA[Looking back at the past year, it&rsquo;s important to take stock of all the accomplishments and progress that we&rsquo;ve made. Despite the challenges that we faced, it&rsquo;s important to recognize that there were still many moments of growth and success. For me, personally, last year was a good year, and I was able to make significant strides in both my work and personal life.
+One of the highlights of the past year was the progress I made in my work.]]></description>
+</item>
+</channel>
+</rss>

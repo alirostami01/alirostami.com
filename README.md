@@ -1,1 +1,108 @@
 # alirostami.com
+
+استاتیک سایت شخصی (خروجی Hugo + پوسته LoveIt) که مستقیماً از همین مخزن سرو می‌شود.
+
+## صفحه حمایت
+
+صفحه فارسی حمایت از یک منبع واحد ساخته می‌شود و روی چند آدرس سرو می‌شود:
+
+| آدرس | فایل |
+|---|---|
+| `/support/` (canonical) | `support/index.html` |
+| `/support.html` | `support.html` |
+| `/fa/support/` | `fa/support/index.html` |
+| `/fa/support.html` | `fa/support.html` |
+
+### بازتولید صفحه
+
+```bash
+python3 scripts/build-support-page.py
+```
+
+محتوای صفحه (متن‌ها، کیف‌پول‌ها، پروژه‌ها و CSS) داخل همان اسکریپت است.
+
+### کدهای QR کیف‌پول‌ها
+
+هر QR دقیقاً خودِ آدرس کیف‌پول را کدگذاری می‌کند (بدون URI scheme یا مبلغ):
+
+```bash
+pip install segno
+python3 scripts/generate-wallet-qr.py     # -> images/donate/*.png و *.svg
+```
+
+پس از هر تغییر آدرس، برای اینکه مرورگرِ بازدیدکننده QR قدیمی را از کش نشان ندهد،
+باید هش محتوا روی آدرس تصویرها زده شود (idempotent است):
+
+```bash
+python3 scripts/stamp-qr-cache.py         # -> /images/donate/x.png?v=<md5[:8]>
+```
+
+بررسی صحت (دیکود کردن واقعی هر QR روی همهٔ صفحات و مقایسه با آدرس نمایش‌داده‌شده):
+
+```bash
+pip install opencv-python-headless segno
+python3 scripts/verify-wallet-qr.py
+```
+
+ترتیب کامل بعد از عوض شدن یک آدرس ولت:
+
+```bash
+python3 scripts/generate-wallet-qr.py
+python3 scripts/build-support-page.py
+python3 scripts/stamp-qr-cache.py
+python3 scripts/verify-wallet-qr.py
+```
+
+### لینک فارسی روی صفحات انگلیسی
+
+لینک «کمک شما» (با آیکون قلب) کنار منوی Support در صفحهٔ اصلی و روی صفحهٔ
+support انگلیسی، که کاربر را به `/support/` می‌برد:
+
+```bash
+python3 scripts/add-fa-support-link.py    # idempotent
+```
+
+### سرور پیش‌نمایش محلی
+
+```bash
+python3 scripts/devserver.py 8000         # بدون کش، همیشه فایل روی دیسک
+```
+
+## صفحات مستندات پروژه‌ها
+
+محتوا در `content/<slug>.md` نوشته می‌شود و با تم اصلی سایت رندر می‌شود:
+
+| آدرس | منبع |
+|---|---|
+| `/Persian-Subtitles/` (canonical) | `content/persian-subtitles.md` |
+| `/persian-subtitles/` (alias) | همان فایل |
+| `/Persian-Streams/` (canonical) | `content/persian-streams.md` |
+| `/persian-streams/` (alias) | همان فایل |
+
+```bash
+pip install markdown
+cd scripts && python3 build-project-page.py
+```
+
+پوستهٔ مشترک (هدر، فوتر، اسکریپت‌ها) در `scripts/theme.py` است.
+
+### آیکون پروژه‌ها
+
+آیکون‌ها در `images/projects/<slug>.png` قرار می‌گیرند
+(`persian-subtitles`، `persian-streams`). برای آماده‌سازی یک لوگوی جدید:
+
+```bash
+pip install pillow
+python3 scripts/prepare-project-icon.py /path/to/logo.png persian-subtitles
+python3 scripts/build-support-page.py
+```
+
+اسکریپت پس‌زمینه سفید دور لوگوی دایره‌ای را شفاف می‌کند، تصویر را مربع و
+به اندازه ۲۵۶×۲۵۶ ذخیره می‌کند.
+
+## پیش‌نمایش محلی
+
+```bash
+python3 -m http.server 8000
+# http://localhost:8000/support/
+```

@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+    <head>
+        <meta name="generator" content="Hugo 0.92.2" />
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Persian Streams — افزونهٔ پخش فیلم و سریال ایرانی برای استرمیو</title><meta name="Description" content="مستندات Persian Streams: افزونهٔ غیررسمی Stremio برای پخش فیلم و سریال‌های ایرانی با زیرنویس فارسی؛ نصب، پیکربندی، استقرار روی Node.js و Cloudflare Workers و عیب‌یابی."><meta property="og:title" content="Persian Streams — افزونهٔ پخش فیلم و سریال ایرانی برای استرمیو" />
+<meta property="og:description" content="مستندات Persian Streams: افزونهٔ غیررسمی Stremio برای پخش فیلم و سریال‌های ایرانی با زیرنویس فارسی؛ نصب، پیکربندی، استقرار روی Node.js و Cloudflare Workers و عیب‌یابی." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://alirostami.com/Persian-Streams/" /><meta property="og:site_name" content="علی رستمی" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Persian Streams — افزونهٔ پخش فیلم و سریال ایرانی برای استرمیو"/>
+<meta name="twitter:description" content="مستندات Persian Streams: افزونهٔ غیررسمی Stremio برای پخش فیلم و سریال‌های ایرانی با زیرنویس فارسی؛ نصب، پیکربندی، استقرار روی Node.js و Cloudflare Workers و عیب‌یابی."/>
+<meta name="application-name" content="Ali Rostami">
+<meta name="apple-mobile-web-app-title" content="Ali Rostami"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://alirostami.com/Persian-Streams/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><style>
+    /* keep the theme header/footer in their original LTR layout */
+    #header-desktop, #header-mobile, .footer { direction: ltr; }
+
+    .docs-page { direction: rtl; text-align: right; }
+    .docs-page .content { line-height: 2.1; }
+
+    /* ---- page head ---- */
+    .docs-page .docs-hero {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin: 2rem 0 .5rem;
+    }
+    .docs-page .docs-hero img {
+        width: 84px;
+        height: 84px;
+        flex: 0 0 84px;
+        border-radius: 50%;
+        filter: drop-shadow(0 .2rem .5rem rgba(0,0,0,.25));
+    }
+    .docs-page .docs-hero .single-title { margin: 0; text-align: right; }
+    .docs-page .docs-hero .docs-hero-sub { font-size: .9rem; opacity: .7; margin: .25rem 0 0; }
+    .docs-page .docs-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: .6rem;
+        margin: 0 0 1.5rem;
+    }
+    .docs-page .docs-actions a {
+        display: inline-flex;
+        align-items: center;
+        gap: .4rem;
+        font-size: .85rem;
+        line-height: 1.6;
+        padding: .4rem 1rem;
+        border-radius: 2rem;
+        border: 1px solid rgba(128,128,128,.35);
+        transition: background .2s ease, border-color .2s ease;
+    }
+    .docs-page .docs-actions a:hover { background: rgba(45,150,189,.12); border-color: #2d96bd; }
+    .docs-page .docs-actions a.primary {
+        background: linear-gradient(135deg, #e5405e, #ff7a5c);
+        border-color: transparent;
+        color: #fff;
+        font-weight: 700;
+    }
+    .docs-page .docs-actions a.primary:hover { filter: brightness(1.08); color: #fff; }
+
+    /* ---- table of contents ---- */
+    .docs-page .docs-toc {
+        background: rgba(128,128,128,.07);
+        border: 1px solid rgba(128,128,128,.2);
+        border-radius: .8rem;
+        padding: 1rem 1.2rem;
+        margin: 0 0 2rem;
+    }
+    [theme=dark] .docs-page .docs-toc { background: rgba(255,255,255,.04); }
+    .docs-page .docs-toc > .docs-toc-title {
+        font-weight: 700;
+        margin-bottom: .4rem;
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+    }
+    .docs-page .docs-toc ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        columns: 2;
+        column-gap: 1.5rem;
+    }
+    .docs-page .docs-toc ul ul { display: none; }
+    .docs-page .docs-toc li { padding: .15rem 0; break-inside: avoid; }
+    @media only screen and (max-width: 680px) {
+        .docs-page .docs-toc ul { columns: 1; }
+        .docs-page .docs-hero { flex-direction: column; text-align: center; }
+        .docs-page .docs-hero .single-title { text-align: center; }
+    }
+
+    /* ---- headings ---- */
+    .docs-page .content h2 {
+        margin: 2.8rem 0 1rem;
+        padding-bottom: .5rem;
+        border-bottom: 1px solid rgba(128,128,128,.25);
+    }
+    .docs-page .content h3 { margin: 2rem 0 .8rem; }
+    .docs-page .content h2 a.headerlink,
+    .docs-page .content h3 a.headerlink {
+        font-size: .8rem;
+        opacity: 0;
+        margin-right: .4rem;
+        transition: opacity .2s ease;
+    }
+    .docs-page .content h2:hover a.headerlink,
+    .docs-page .content h3:hover a.headerlink { opacity: .5; }
+
+    /* ---- lists ---- */
+    .docs-page .content ul,
+    .docs-page .content ol { padding-right: 1.6rem; padding-left: 0; }
+    .docs-page .content li { margin: .3rem 0; }
+
+    /* ---- code: always LTR ---- */
+    .docs-page .content pre,
+    .docs-page .content pre code,
+    .docs-page .content code {
+        direction: ltr;
+        unicode-bidi: isolate;
+    }
+    .docs-page .content pre {
+        display: block;
+        overflow-x: auto;
+        text-align: left;
+        padding: .8rem 1rem;
+        border-radius: .5rem;
+        font-size: .82rem;
+        line-height: 1.7;
+        border: 1px solid rgba(128,128,128,.2);
+    }
+    .docs-page .content pre code {
+        display: block;
+        white-space: pre;
+        padding: 0;
+        font-size: inherit;
+        line-height: inherit;
+    }
+    .docs-page .content p > code,
+    .docs-page .content li > code,
+    .docs-page .content td code { font-size: .8rem; }
+
+    /* ---- tables ---- */
+    .docs-page .content .table-wrapper > table { text-align: right; }
+    .docs-page .content .table-wrapper > table th,
+    .docs-page .content .table-wrapper > table td { vertical-align: top; line-height: 1.9; }
+    .docs-page .content .table-wrapper > table th { text-align: right; }
+
+    /* ---- blockquote as a note box (RTL border side) ---- */
+    .docs-page .content blockquote {
+        border-left: none;
+        border-right: .35rem solid #6bd6fd;
+        padding: .6rem 1rem;
+        border-radius: .4rem;
+    }
+    [theme=dark] .docs-page .content blockquote { border-right-color: #59c5ec; }
+    .docs-page .content blockquote p { margin: .3rem 0; }
+
+    .docs-page .content hr { margin: 2rem 0; }
+</style></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/fa/" title="علی رستمی">Ali Rostami</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a href="/fa/" class="menu-item" title="خانه">خانه</a><a href="/support/" class="menu-item" title="حمایت">حمایت</a><a href="javascript:void(0);" class="menu-item theme-switch" title="تغییر ظاهر"><i class="fas fa-adjust fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" class="menu-item language" title="انتخاب زبان"><i class="fa fa-globe" aria-hidden="true"></i><select class="language-select" onchange="location = this.value;"><option value="/en/support.html">English</option><option value="/support/" selected>فارسی</option></select></a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/fa/" title="علی رستمی">Ali Rostami</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a href="/fa/" class="menu-item" title="خانه">خانه</a><a href="/support/" class="menu-item" title="حمایت">حمایت</a><a href="javascript:void(0);" class="menu-item theme-switch" title="تغییر ظاهر"><i class="fas fa-adjust fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" class="menu-item language" title="انتخاب زبان"><i class="fa fa-globe" aria-hidden="true"></i><select class="language-select" onchange="location = this.value;"><option value="/en/support.html">English</option><option value="/support/" selected>فارسی</option></select></a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><article class="page single docs-page">
+        <div class="docs-hero">
+            <img src="/images/projects/persian-streams.png" alt="لوگوی Persian Streams" width="84" height="84" decoding="async">
+            <div>
+                <h1 class="single-title animate__animated animate__flipInX">Persian Streams</h1>
+                <p class="docs-hero-sub">مستندات پروژه · افزونهٔ غیررسمی Stremio</p>
+            </div>
+        </div>
+        <div class="docs-actions">
+            <a class="primary" href="/support/"><i class="fas fa-heart fa-fw" aria-hidden="true"></i> حمایت از پروژه</a>
+            <a href="https://github.com/alirostami01/Persian-Streams" target="_blank" rel="noopener noreferrer"><i class="fab fa-github fa-fw" aria-hidden="true"></i> مخزن گیت‌هاب</a>
+        </div>
+        <nav class="docs-toc" aria-label="فهرست مطالب">
+            <div class="docs-toc-title"><i class="fas fa-list-ul fa-fw" aria-hidden="true"></i> فهرست مطالب</div>
+            <div class="toc">
+<ul>
+<li><a href="#معرفی">📖 معرفی</a></li>
+<li><a href="#قابلیتها">✨ قابلیت‌ها</a></li>
+<li><a href="#ساختار-پروژه">🗂️ ساختار پروژه</a></li>
+<li><a href="#نصب-و-راهاندازی-محلی">🚀 نصب و راه‌اندازی محلی</a></li>
+<li><a href="#استقرار-deployment">☁️ استقرار (Deployment)</a></li>
+<li><a href="#نحوه-استفاده">🎯 نحوهٔ استفاده</a></li>
+<li><a href="#مسیرها-و-api">🔌 مسیرها و API</a></li>
+<li><a href="#خلاصه-عملکرد-فنی">⚙️ خلاصهٔ عملکرد فنی</a></li>
+<li><a href="#عیبیابی">🐛 عیب‌یابی</a></li>
+<li><a href="#مشارکت">🤝 مشارکت</a></li>
+<li><a href="#مجوز">📄 مجوز</a></li>
+</ul>
+</div>
+
+        </nav>
+        <div class="content" id="content">
+<p>افزونهٔ غیررسمی استرمیو (Stremio) برای پخش فیلم و سریال‌های ایرانی با زیرنویس فارسی.</p>
+<p>اگر این افزونه برایتان مفید بوده، با حمایتتان کمک کنید پروژه زنده، سریع و به‌روز بماند. ❤️<br />
+<a href="/support/">حمایت از پروژه</a></p>
+<p><code>Stremio Addon</code> · <code>Node.js</code> · <code>Cloudflare Workers</code> · <code>Apache-2.0</code></p>
+<p><a href="https://github.com/alirostami01/Persian-Streams">مشاهده مخزن در گیت‌هاب</a></p>
+<h2 id="معرفی">📖 معرفی<a class="headerlink" href="#معرفی" title="Permanent link">#</a></h2>
+<p><strong>Persian Streams</strong> یک افزونهٔ غیررسمی برای Stremio است که با دریافت شناسهٔ IMDb از استرمیو، صفحهٔ محتوای متناظر را در منبع ایرانیِ تنظیم‌شده پیدا می‌کند و لینک‌های مستقیم پخش و دانلود را به استرمیو برمی‌گرداند.</p>
+<p><strong>جریان کار نسخهٔ فعلی:</strong></p>
+<ol>
+<li>استرمیو شناسهٔ <code>tt...</code> را به افزونه می‌فرستد.</li>
+<li>افزونه آن را به اندپوینت <code>quick-search</code> منبع می‌فرستد و نتیجه‌ای را انتخاب می‌کند که <code>imdb_id</code> آن دقیقاً با درخواست برابر باشد.</li>
+<li>صفحهٔ محتوا با Cheerio خوانده و پارس می‌شود.</li>
+<li>لینک‌های قابل پخش برای فیلم یا قسمت سریال استخراج می‌شوند و به‌همراه برچسب کیفیت، انکودر و وضعیت دوبله برگردانده می‌شوند.</li>
+</ol>
+<blockquote>
+<p>⚠️ این پروژه هیچ فایل ویدیویی، زیرنویس یا محتوای رسانه‌ای را میزبانی نمی‌کند و تنها لینک‌هایی را که منبع پیکربندی‌شده در اختیار می‌گذارد پردازش می‌کند. مسئولیت رعایت قوانین کپی‌رایت و مقررات محلی بر عهدهٔ کاربر است.</p>
+</blockquote>
+<h2 id="قابلیتها">✨ قابلیت‌ها<a class="headerlink" href="#قابلیتها" title="Permanent link">#</a></h2>
+<ul>
+<li>🎬 <strong>پشتیبانی از فیلم و سریال</strong> از طریق منبعی از نوع <code>stream</code></li>
+<li>🔎 <strong>تطبیق مستقیم با IMDb</strong> با استفاده از <code>/quick-search?q={imdbId}&amp;sort=modified_at%3Adesc</code></li>
+<li>📺 <strong>استخراج فصل و قسمت</strong> از شناسه‌های استاندارد استرمیو مانند <code>tt1234567:1:3</code></li>
+<li>🏷️ <strong>نمایش برچسب کیفیت واقعی منبع</strong> (مثلاً <code>WEB-DL 4K 2160p 10bit HDR</code>) به‌جای ساده‌سازی آن به یک <code>1080p</code> عمومی</li>
+<li>🧑‍💻 <strong>تشخیص انکودر</strong> از روی برچسب‌هایی مانند <code>انکودر : PSA</code> و نمایش آن در توضیح استریم</li>
+<li>💬 <strong>تشخیص وضعیت زیرنویس فارسی</strong> (دارد / ندارد) با الگوهای فارسی و انگلیسی</li>
+<li>🔊 <strong>تشخیص نسخهٔ دوبله</strong> با کلیدواژه‌های <code>Dubbed</code>، <code>Dooble</code>، <code>دوبله</code>، <code>Farsi Dub</code> و <code>Persian Dub</code></li>
+<li>🔢 <strong>پشتیبانی از اعداد فارسی و عربی-هندی</strong> در تشخیص فصل و قسمت</li>
+<li>🗂️ <strong>fallback دایرکتوری باز فصل</strong>: اگر صفحه ساختار باکس دانلود نداشته باشد، لینک پوشهٔ فصل (<code>/S02/</code>) دنبال می‌شود و فایل قسمت از روی نام فایل (<code>S02E05</code>، <code>2x05</code>، <code>E05</code>) پیدا می‌شود</li>
+<li>🎞️ <strong>تشخیص heuristic کیفیت</strong> از URL و متن پیرامون: <code>4K</code>، <code>1080p</code>، <code>720p</code>، <code>480p</code>، <code>360p</code> یا <code>Unknown</code></li>
+<li>🧩 <strong>استخراج لینک از ساختارهای رایج صفحهٔ دانلود</strong> شامل <code>handleDownloadClick(...)</code>، لینک مستقیم و <code>iframe</code></li>
+<li>🖼️ <strong>لوگوی مطلق در manifest</strong> که به‌صورت خودکار از میزبان درخواست ساخته می‌شود</li>
+<li>📦 <strong>دو runtime</strong>: اجرای Node.js/Express (<code>server.js</code>) و Cloudflare Workers (<code>worker.js</code>) با هستهٔ مشترک <code>addon.js</code></li>
+<li>⚡ <strong>بیلدر سبک</strong> (<code>stremio-builder.js</code>) به‌جای SDK رسمی، برای جلوگیری از باندل‌شدن Express در Workers</li>
+</ul>
+<h2 id="ساختار-پروژه">🗂️ ساختار پروژه<a class="headerlink" href="#ساختار-پروژه" title="Permanent link">#</a></h2>
+<p>ساختار واقعی و به‌روز پروژه (خروجی <code>ls -R</code>):</p>
+<pre><code class="language-text">.
+├── .gitignore
+├── .github/
+│   └── workflows/
+│       └── deploy-streams.yml   # دیپلوی خودکار Worker به Cloudflare
+├── LICENSE                      # Apache License 2.0
+├── README.md                    # راهنمای کاربر و راه‌اندازی
+├── addon.js                     # هسته: manifest، استخراج stream، getStreams
+├── stremio-builder.js           # بیلدر سبک Stremio (جایگزین SDK رسمی در Workers)
+├── server.js                    # سرور Node.js / Express (main در package.json)
+├── worker.js                    # آداپتور Cloudflare Workers (main در wrangler.jsonc)
+├── wrangler.jsonc               # پیکربندی Worker: alias، assets، vars.BASE_URL
+├── package.json                 # اسکریپت‌ها و وابستگی‌های Node.js
+├── package-lock.json            # نسخه‌های قفل‌شده وابستگی‌ها
+├── assets/
+│   └── icons/
+│       ├── logo.png             # لوگوی استفاده‌شده در manifest
+│       └── player-fa.png        # فایل استاتیک اضافی
+└── docs/
+    └── DOCUMENTATION.md         # مستندات فنی کامل مطابق ساختار فعلی کد
+</code></pre>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>مسیر</th>
+<th>نقش</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>addon.js</code></td>
+<td>هستهٔ استخراج؛ تمام توابع <code>fetch*</code>، <code>extract*</code>، <code>detect*</code> به‌همراه manifest و <code>defineStreamHandler</code>. خروجی: <code>{ ...addonInterface, getStreams }</code></td>
+</tr>
+<tr>
+<td><code>stremio-builder.js</code></td>
+<td>کلاس سبک <code>AddonBuilder</code> با <code>defineStreamHandler</code> و <code>getInterface()</code>؛ در <code>wrangler.jsonc</code> با alias جایگزین <code>stremio-addon-sdk</code> می‌شود</td>
+</tr>
+<tr>
+<td><code>server.js</code></td>
+<td>سرور Node؛ dotenv، Express، <code>getRouter(addonInterface)</code> از SDK رسمی، ساخت لوگوی مطلق با <code>x-forwarded-proto</code> و سرو <code>assets/icons</code></td>
+</tr>
+<tr>
+<td><code>worker.js</code></td>
+<td>Worker؛ پارس مسیرهای <code>/streams/...</code>، تولید JSON با CORS، سرو asset از <code>env.ASSETS</code> و فراخوانی مستقیم <code>getStreams</code></td>
+</tr>
+<tr>
+<td><code>wrangler.jsonc</code></td>
+<td>نام Worker، <code>alias</code>، <code>assets.directory</code>، <code>vars.BASE_URL</code> و <code>compatibility_date</code></td>
+</tr>
+<tr>
+<td><code>.github/workflows/deploy-streams.yml</code></td>
+<td>دیپلوی خودکار Worker هنگام push به <code>main</code></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>پروژه در حال حاضر فایل تست، پیکربندی lint، Dockerfile یا <code>.env.example</code> ندارد.</p>
+</blockquote>
+<h2 id="نصب-و-راهاندازی-محلی">🚀 نصب و راه‌اندازی محلی<a class="headerlink" href="#نصب-و-راهاندازی-محلی" title="Permanent link">#</a></h2>
+<h3 id="پیشنیازها">پیش‌نیازها<a class="headerlink" href="#پیشنیازها" title="Permanent link">#</a></h3>
+<ul>
+<li><strong>Node.js نسخهٔ ۲۰٫۱۸٫۱ یا بالاتر</strong> — دلیل: نسخهٔ قفل‌شدهٔ <code>cheerio</code> در <code>package-lock.json</code> مقدار <code>engines.node &gt;= 20.18.1</code> را الزامی می‌کند.</li>
+<li><strong>npm</strong></li>
+<li>برای حالت Worker: <strong>Wrangler</strong> (<code>npx wrangler</code>)</li>
+<li>برنامهٔ <strong>Stremio</strong> برای تست نصب افزونه</li>
+</ul>
+<h3 id="۱-دریافت-کد">۱. دریافت کد<a class="headerlink" href="#۱-دریافت-کد" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">git clone https://github.com/alirostami01/Persian-Streams.git
+cd Persian-Streams
+</code></pre>
+<h3 id="۲-نصب-وابستگیها">۲. نصب وابستگی‌ها<a class="headerlink" href="#۲-نصب-وابستگیها" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">npm install
+</code></pre>
+<h3 id="۳-ساخت-فایل-env-برای-node">۳. ساخت فایل <code>.env</code> (برای Node)<a class="headerlink" href="#۳-ساخت-فایل-env-برای-node" title="Permanent link">#</a></h3>
+<p>در ریشهٔ پروژه یک فایل <code>.env</code> بسازید:</p>
+<pre><code class="language-ini">PORT=8000
+BASE_URL=https://www.example.com
+</code></pre>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>متغیر</th>
+<th>وضعیت</th>
+<th>پیش‌فرض</th>
+<th>محل مصرف</th>
+<th>توضیح</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BASE_URL</code></td>
+<td><strong>اجباری</strong></td>
+<td>—</td>
+<td><code>addon.js</code></td>
+<td>آدرس پایهٔ منبع ایرانی. اگر تنظیم نشود، برنامه با پیام خطا متوقف می‌شود</td>
+</tr>
+<tr>
+<td><code>PORT</code></td>
+<td>اختیاری</td>
+<td><code>8000</code></td>
+<td><code>server.js</code></td>
+<td>پورت سرور HTTP</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>ℹ️ در نسخهٔ Node فقط همین دو متغیر خوانده می‌شوند. URL مطلق لوگو به‌صورت خودکار از <code>x-forwarded-proto</code> و <code>Host</code> درخواست ساخته می‌شود.</p>
+</blockquote>
+<p>برای Cloudflare Workers مقدار <code>BASE_URL</code> در بخش <code>vars</code> فایل <code>wrangler.jsonc</code> قرار دارد و در داشبورد Cloudflare قابل override است:</p>
+<pre><code class="language-json">&quot;vars&quot;: { &quot;BASE_URL&quot;: &quot;https://f2my.top&quot; }
+</code></pre>
+<p>می‌توانید بدون فایل <code>.env</code> هم اجرا کنید:</p>
+<pre><code class="language-bash">BASE_URL=https://www.example.com PORT=8000 node server.js
+</code></pre>
+<h3 id="۴-اجرای-برنامه">۴. اجرای برنامه<a class="headerlink" href="#۴-اجرای-برنامه" title="Permanent link">#</a></h3>
+<p><strong>حالت Node.js</strong> (پیشنهادی برای توسعهٔ محلی):</p>
+<pre><code class="language-bash">npm start        # اجرای معمولی: node server.js
+npm run dev      # اجرای توسعه با watch mode: node --watch server.js
+</code></pre>
+<p>خروجی موفق:</p>
+<pre><code class="language-text">Persian Streams running on port 8000
+Manifest: http://localhost:8000/manifest.json
+</code></pre>
+<p>اگر پورت اشغال باشد:</p>
+<pre><code class="language-text">Port 8000 is already in use.
+</code></pre>
+<p>راه‌حل:</p>
+<pre><code class="language-bash">PORT=8001 npm start
+</code></pre>
+<p><strong>حالت Cloudflare Workers (Edge):</strong></p>
+<pre><code class="language-bash">npx wrangler dev
+# Manifest: http://localhost:8787/streams/manifest.json
+</code></pre>
+<h3 id="۵-نصب-در-stremio">۵. نصب در Stremio<a class="headerlink" href="#۵-نصب-در-stremio" title="Permanent link">#</a></h3>
+<p>نسخهٔ Node:</p>
+<pre><code class="language-text">stremio://localhost:8000/manifest.json
+</code></pre>
+<p>نسخهٔ Workers (لوکال):</p>
+<pre><code class="language-text">stremio://localhost:8787/streams/manifest.json
+</code></pre>
+<p>یا ابتدا manifest را در مرورگر بررسی کنید:</p>
+<pre><code class="language-text">http://localhost:8000/manifest.json
+http://localhost:8787/streams/manifest.json
+</code></pre>
+<h2 id="استقرار-deployment">☁️ استقرار (Deployment)<a class="headerlink" href="#استقرار-deployment" title="Permanent link">#</a></h2>
+<h3 id="گزینه-a-میزبانی-nodejs-vps-railway-render-flyio-heroku">گزینهٔ A: میزبانی Node.js (VPS، Railway، Render، Fly.io، Heroku)<a class="headerlink" href="#گزینه-a-میزبانی-nodejs-vps-railway-render-flyio-heroku" title="Permanent link">#</a></h3>
+<ol>
+<li>Node.js نسخهٔ ۲۰٫۱۸٫۱ یا بالاتر روی محیط اجرا فعال باشد.</li>
+<li>وابستگی‌ها را با <code>npm install</code> نصب کنید.</li>
+<li>دستور اجرا را روی <code>npm start</code> (یعنی <code>node server.js</code>) بگذارید؛ <code>main</code> در <code>package.json</code> همین است.</li>
+<li><code>BASE_URL</code> را در Environment Variables تنظیم کنید (بدون آن سرویس بالا نمی‌آید).</li>
+<li><code>PORT</code> معمولاً توسط خودِ میزبان تزریق می‌شود و کد آن را می‌خواند.</li>
+</ol>
+<p>آدرس نصب پس از استقرار:</p>
+<pre><code class="language-text">stremio://YOUR_DOMAIN/manifest.json
+</code></pre>
+<p>مسیرهای ضروری: <code>/manifest.json</code>، <code>/stream/...</code>، <code>/assets/icons/logo.png</code></p>
+<h3 id="گزینه-b-cloudflare-workers-پیشنهادی-برای-edge-رایگان">گزینهٔ B: Cloudflare Workers (پیشنهادی برای Edge، رایگان)<a class="headerlink" href="#گزینه-b-cloudflare-workers-پیشنهادی-برای-edge-رایگان" title="Permanent link">#</a></h3>
+<p><code>wrangler.jsonc</code> مقدار <code>vars.BASE_URL</code> را دارد و می‌توان آن را در داشبورد override کرد.</p>
+<pre><code class="language-bash">npm install
+npx wrangler deploy
+</code></pre>
+<p>یا به‌صورت خودکار از طریق GitHub Actions (push به <code>main</code> با تغییر در <code>worker.js</code>، <code>addon.js</code>، <code>stremio-builder.js</code>، <code>wrangler.jsonc</code> یا <code>assets/**</code>).</p>
+<p>آدرس نصب پس از استقرار:</p>
+<pre><code class="language-text">stremio://&lt;worker&gt;.workers.dev/streams/manifest.json
+</code></pre>
+<p>مسیرهای ضروری Worker: <code>/streams/manifest.json</code>، <code>/streams/stream/...</code> و <code>/streams/assets/icons/logo.png</code>. همهٔ پاسخ‌های JSON هدر <code>access-control-allow-origin: *</code> دارند.</p>
+<p><strong>نکات HTTPS و Proxy:</strong></p>
+<ul>
+<li><strong>Node:</strong> سرور هدر <code>x-forwarded-proto</code> را می‌خواند تا پشت TLS proxy آدرس لوگو <code>https</code> شود. اگر پراکسی شما این هدر را ست نمی‌کند، <code>app.set('trust proxy', true)</code> را اضافه کنید یا مطمئن شوید مقدار <code>logo</code> در <code>/manifest.json</code> درست است.</li>
+<li><strong>Workers:</strong> <code>url.origin</code> همیشه scheme درست را دارد و تنظیم اضافه‌ای لازم نیست.</li>
+</ul>
+<h2 id="نحوه-استفاده">🎯 نحوهٔ استفاده<a class="headerlink" href="#نحوه-استفاده" title="Permanent link">#</a></h2>
+<p>پس از نصب افزونه در استرمیو:</p>
+<ol>
+<li>یک فیلم یا سریال دارای شناسهٔ IMDb را باز کنید.</li>
+<li>استرمیو درخواست <code>stream</code> را به افزونه می‌فرستد.</li>
+<li>افزونه با شناسهٔ IMDb در منبع پیکربندی‌شده جست‌وجو می‌کند.</li>
+<li>برای فیلم‌ها، لینک‌های دانلود و پخش صفحهٔ فیلم استخراج می‌شوند.</li>
+<li>برای سریال‌ها، فصل و قسمت انتخاب‌شده پیدا می‌شود و لینک همان قسمت برگردانده می‌شود؛ اگر ساختار باکس دانلود پیدا نشود، دایرکتوری فصل به‌عنوان fallback بررسی می‌شود.</li>
+<li>لینک‌ها با برچسب کیفیت و در صورت تشخیص، با <code>• دوبله</code> و <code>• encoder: ...</code> در فهرست استریم‌ها نمایش داده می‌شوند.</li>
+</ol>
+<p>نمونهٔ خروجی در فهرست استریم‌ها:</p>
+<pre><code class="language-text">WEB-DL 1080p x265          →  S1E3 - WEB-DL 1080p x265 • encoder: PSA
+720p • دوبله               →  720p
+1080p NF WEB-DL x265 10bit →  S2E5 - 1080p NF WEB-DL x265 10bit
+</code></pre>
+<h2 id="مسیرها-و-api">🔌 مسیرها و API<a class="headerlink" href="#مسیرها-و-api" title="Permanent link">#</a></h2>
+<h3 id="nodejs-serverjs">Node.js (<code>server.js</code>)<a class="headerlink" href="#nodejs-serverjs" title="Permanent link">#</a></h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>مسیر</th>
+<th>توضیح</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET /</code></td>
+<td>صفحهٔ سادهٔ معرفی افزونه و لینک نصب محلی</td>
+</tr>
+<tr>
+<td><code>GET /manifest.json</code></td>
+<td>manifest افزونه با URL مطلق لوگو</td>
+</tr>
+<tr>
+<td><code>GET /assets/icons/logo.png</code></td>
+<td>لوگوی افزونه</td>
+</tr>
+<tr>
+<td><code>GET /stream/movie/{imdbId}.json</code></td>
+<td>استریم‌های فیلم؛ مثال: <code>/stream/movie/tt1234567.json</code></td>
+</tr>
+<tr>
+<td><code>GET /stream/series/{imdbId}:{season}:{episode}.json</code></td>
+<td>استریم یک قسمت سریال؛ مثال: <code>/stream/series/tt1234567:1:3.json</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="cloudflare-workers-workerjs">Cloudflare Workers (<code>worker.js</code>)<a class="headerlink" href="#cloudflare-workers-workerjs" title="Permanent link">#</a></h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>مسیر</th>
+<th>توضیح</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET /</code></td>
+<td>پاسخ وضعیت JSON: <code>{ name, status:'ok', manifest:'/streams/manifest.json' }</code></td>
+</tr>
+<tr>
+<td><code>GET /streams</code> یا <code>/streams/</code></td>
+<td>ریدایرکت <code>302</code> به <code>/streams/manifest.json</code></td>
+</tr>
+<tr>
+<td><code>GET /streams/manifest.json</code></td>
+<td>manifest با لوگوی مطلق <code>https://&lt;origin&gt;/streams/assets/icons/logo.png</code></td>
+</tr>
+<tr>
+<td><code>GET /streams/assets/icons/logo.png</code></td>
+<td>لوگوی افزونه (از <code>env.ASSETS</code>)</td>
+</tr>
+<tr>
+<td><code>GET /streams/stream/movie/{imdbId}.json</code></td>
+<td>استریم فیلم در Worker</td>
+</tr>
+<tr>
+<td><code>GET /streams/stream/series/{imdbId}:{season}:{episode}.json</code></td>
+<td>استریم سریال در Worker</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>مسیر جداگانه‌ای به نام <code>/health</code> در کد وجود ندارد و <code>404</code> برمی‌گرداند؛ برای health check از <code>/manifest.json</code> یا <code>/streams/manifest.json</code> استفاده کنید.</p>
+</blockquote>
+<p>بررسی سریع با curl:</p>
+<pre><code class="language-bash"># Node
+curl http://localhost:8000/manifest.json
+curl http://localhost:8000/stream/movie/tt1234567.json
+curl http://localhost:8000/stream/series/tt1234567:1:3.json
+
+# Workers
+curl http://localhost:8787/streams/manifest.json
+curl http://localhost:8787/streams/stream/movie/tt1234567.json
+curl http://localhost:8787/streams/stream/series/tt1234567:1:3.json
+</code></pre>
+<h2 id="خلاصه-عملکرد-فنی">⚙️ خلاصهٔ عملکرد فنی<a class="headerlink" href="#خلاصه-عملکرد-فنی" title="Permanent link">#</a></h2>
+<h3 id="معماری-ماژولار">معماری ماژولار<a class="headerlink" href="#معماری-ماژولار" title="Permanent link">#</a></h3>
+<pre><code class="language-text">                    stremio-builder.js (بیلدر سبک)
+                           │
+         wrangler.jsonc ───┼─── addon.js (هسته: manifest + getStreams + extract*)
+         alias SDK → builder   │         │
+                               │         ├── server.js (Express + getRouter)
+                               │         └── worker.js (Cloudflare adapter)
+                               │
+Stremio → /stream/... یا /streams/stream/... → getStreams()
+</code></pre>
+<h3 id="جریان-هسته-addonjs">جریان هسته (<code>addon.js</code>)<a class="headerlink" href="#جریان-هسته-addonjs" title="Permanent link">#</a></h3>
+<pre><code class="language-text">Stremio request
+   ↓
+builder.defineStreamHandler(args)  ← از stremio-builder.js در Worker، یا SDK رسمی در Node via getRouter
+   ↓
+getStreams(type, imdbId, season, episode)
+   ├─ fetchTitleFromMeta(...)        ← Cinemeta (نتیجه فعلاً استفاده نمی‌شود)
+   ├─ resolveViaQuickSearch(imdbId)  ← GET {BASE_URL}/quick-search?q={imdbId}
+   ├─ fetchPage(contentUrl)          ← HTML + cheerio.load
+   └─ extractMovieStreams($)
+      یا extractSeriesStreams($, S, E)
+             └─ fallback: extractLegacySeriesStreams → extractStreamsFromSeasonDirectory
+   ↓
+{ streams: [...] }
+</code></pre>
+<p><strong>جزئیات مهم:</strong></p>
+<ul>
+<li>تنها راه تطبیق محتوا در نسخهٔ فعلی، <code>quick-search</code> مبتنی بر IMDb است؛ fallback مبتنی بر عنوان یا slug وجود ندارد.</li>
+<li>افزونه catalog، meta یا subtitle ارائه نمی‌کند و فقط منبعی از نوع <code>stream</code> دارد.</li>
+<li>منبع باید خروجی <code>quick-search</code> را به‌صورت آرایهٔ JSON با فیلدهای <code>imdb_id</code> و <code>url</code> برگرداند.</li>
+<li>لینک‌های فیلم از <code>.download-list</code>، <code>.download-box</code> و <code>.dl-box</code> خوانده می‌شوند.</li>
+<li>لینک‌های سریال از <code>.download-season</code> و <code>.series-downloaditems .d-flex</code> خوانده می‌شوند.</li>
+<li>کیفیت ابتدا از برچسب متنی صفحه (<code>کیفیت : ...</code>) و در نبود آن با heuristic از URL و متن تشخیص داده می‌شود.</li>
+<li>در صورت خطا یا پیدا نشدن محتوا، پاسخ افزونه <code>{ "streams": [] }</code> است.</li>
+<li><code>addon.js</code> دیگر سرور ندارد؛ <code>server.js</code> نقطهٔ ورود Node و <code>worker.js</code> نقطهٔ ورود Edge است.</li>
+<li><code>wrangler.jsonc</code> با <code>alias: { "stremio-addon-sdk": "./stremio-builder.js" }</code> از باندل‌شدن Express در Workers جلوگیری می‌کند.</li>
+</ul>
+<p>برای توضیح دقیق تک‌تک توابع، selectorها و مسائل شناخته‌شده، فایل <code>docs/DOCUMENTATION.md</code> را ببینید.</p>
+<h2 id="عیبیابی">🐛 عیب‌یابی<a class="headerlink" href="#عیبیابی" title="Permanent link">#</a></h2>
+<h3 id="پیام-base_url-is-not-set-میبینم">پیام <code>BASE_URL is not set</code> می‌بینم<a class="headerlink" href="#پیام-base_url-is-not-set-میبینم" title="Permanent link">#</a></h3>
+<ul>
+<li><strong>Node:</strong> فایل <code>.env</code> وجود ندارد یا <code>BASE_URL</code> در آن تعریف نشده است. مقدار را اضافه کنید و دوباره اجرا کنید. توجه کنید این بررسی حتی هنگام <code>import</code> کردن <code>addon.js</code> هم اجرا می‌شود.</li>
+<li><strong>Workers:</strong> مقدار <code>vars.BASE_URL</code> در <code>wrangler.jsonc</code> یا داشبورد Cloudflare را بررسی کنید.</li>
+</ul>
+<h3 id="پیام-port-8000-is-already-in-use">پیام <code>Port 8000 is already in use</code><a class="headerlink" href="#پیام-port-8000-is-already-in-use" title="Permanent link">#</a></h3>
+<p>پورت دیگری انتخاب کنید:</p>
+<pre><code class="language-bash">PORT=8001 npm start
+</code></pre>
+<h3 id="هیچ-استریمی-نمایش-داده-نمیشود">هیچ استریمی نمایش داده نمی‌شود<a class="headerlink" href="#هیچ-استریمی-نمایش-داده-نمیشود" title="Permanent link">#</a></h3>
+<ul>
+<li>ممکن است محتوا در منبع پیکربندی‌شده وجود نداشته باشد.</li>
+<li>ممکن است خروجی <code>/quick-search</code> هیچ <code>imdb_id</code> مطابقی نداشته باشد.</li>
+<li>ممکن است ساختار HTML صفحهٔ منبع تغییر کرده باشد.</li>
+<li>لاگ‌های سرور را بررسی کنید؛ مراحل Quick-search، Resolved، Fetch و تعداد استریم‌ها چاپ می‌شوند.</li>
+</ul>
+<h3 id="در-لاگ-خطای-typeerror-is-not-a-function-میبینم">در لاگ خطای <code>TypeError: $ is not a function</code> می‌بینم<a class="headerlink" href="#در-لاگ-خطای-typeerror-is-not-a-function-میبینم" title="Permanent link">#</a></h3>
+<p>یعنی <code>quick-search</code> محتوایی پیدا نکرده و صفحه‌ای برای parse وجود نداشته است. پاسخ HTTP همچنان <code>{"streams":[]}</code> است و کاربر خطایی نمی‌بیند؛ این مورد در بخش «مسائل شناخته‌شده» مستندات فنی توضیح داده شده است.</p>
+<h3 id="برچسب-زیرنویس-فارسی-نمایش-داده-نمیشود">برچسب زیرنویس فارسی نمایش داده نمی‌شود<a class="headerlink" href="#برچسب-زیرنویس-فارسی-نمایش-داده-نمیشود" title="Permanent link">#</a></h3>
+<p>وضعیت زیرنویس تشخیص داده می‌شود، اما تابع <code>formatSubtitleLabel</code> در نسخهٔ فعلی عمداً رشتهٔ خالی برمی‌گرداند و برچسبی به خروجی اضافه نمی‌کند.</p>
+<h3 id="لوگو-در-استرمیو-نمایش-داده-نمیشود">لوگو در استرمیو نمایش داده نمی‌شود<a class="headerlink" href="#لوگو-در-استرمیو-نمایش-داده-نمیشود" title="Permanent link">#</a></h3>
+<ul>
+<li><strong>Node:</strong> مطمئن شوید <code>/assets/icons/logo.png</code> از بیرون قابل دسترسی است. در استقرار پشت HTTPS، مقدار <code>logo</code> در <code>/manifest.json</code> را بررسی کنید؛ اگر <code>http://</code> بود، باید <code>x-forwarded-proto</code> درست تنظیم شود.</li>
+<li><strong>Workers:</strong> آدرس <code>https://&lt;worker&gt;/streams/assets/icons/logo.png</code> را بررسی کنید.</li>
+</ul>
+<h3 id="لینک-نصب-روی-صفحه-اصلی-هنوز-localhost-است">لینک نصب روی صفحهٔ اصلی هنوز localhost است<a class="headerlink" href="#لینک-نصب-روی-صفحه-اصلی-هنوز-localhost-است" title="Permanent link">#</a></h3>
+<p>صفحهٔ <code>/</code> فقط یک صفحهٔ کمکی است و لینک نصب آن در کد به <code>localhost</code> اشاره می‌کند. برای نسخهٔ مستقرشده مستقیماً از آدرس عمومی خودتان استفاده کنید:</p>
+<pre><code class="language-bash"># Node
+stremio://YOUR_DOMAIN/manifest.json
+
+# Workers
+stremio://YOUR_DOMAIN/streams/manifest.json
+</code></pre>
+<h3 id="worker-دیپلوی-نمیشود">Worker دیپلوی نمی‌شود<a class="headerlink" href="#worker-دیپلوی-نمیشود" title="Permanent link">#</a></h3>
+<ul>
+<li>آیا <code>CLOUDFLARE_API_TOKEN</code> و <code>CLOUDFLARE_ACCOUNT_ID</code> در secrets گیت‌هاب تنظیم شده‌اند؟</li>
+<li>نسخهٔ Wrangler در workflow روی <code>4.128.0</code> پین شده است؛ لاگ Action را بررسی کنید.</li>
+</ul>
+<h2 id="مشارکت">🤝 مشارکت<a class="headerlink" href="#مشارکت" title="Permanent link">#</a></h2>
+<p>Pull Requestها و Issueها برای بهبود استخراج لینک، سازگاری با ساختارهای HTML جدید، افزودن تست و بهبود مستندات با آغوش باز پذیرفته می‌شوند.</p>
+<p>پیش از تغییر منطق استخراج، بخش‌های «نقشهٔ ماژول‌ها» و «مسائل شناخته‌شده و بدهی فنی» در <code>docs/DOCUMENTATION.md</code> را مطالعه کنید؛ چند مورد کوچک و آماده برای شروع مشارکت آن‌جا فهرست شده‌اند.</p>
+<h2 id="مجوز">📄 مجوز<a class="headerlink" href="#مجوز" title="Permanent link">#</a></h2>
+<p>فایل <code>LICENSE</code> این مخزن <strong>Apache License 2.0</strong> است.</p>
+<hr />
+<p>ساخته شده با ❤️ برای جامعهٔ فارسی‌زبان Stremio — <a href="/support/">حمایت از ادامهٔ مسیر</a></p>
+        </div>
+    </article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">ایجاد شده توسط <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.2">Hugo</a> | پوسته - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/fa/">علی رستمی</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="برگشت به بالا">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"کپی به کلیپ بورد","maxShownLines":50}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

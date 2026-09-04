@@ -20,7 +20,7 @@ OUT_DIR = Path(__file__).resolve().parent.parent / "images" / "donate"
 
 WALLETS = {
     "bitcoin": "bc1qg7xap7ys84j6s0zj7e607whwgak4gvzttw0yew",
-    "usdt-trc20": "TEL83d98uJqtVcJfttjjK7dCEB7q9g7fg",
+    "usdt-trc20": "TEL83d98uJqtVcJfttojjK7dCEB7q9g7fg",
     "ethereum": "0xD52B0e8a6244e1c155285020191199524349292f",
     "solana": "BEXuadMGmKCPJQ7ZAvB4HooYjn6psMXARzr2doeie4y9",
 }

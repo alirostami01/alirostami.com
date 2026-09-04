@@ -35,7 +35,7 @@ WALLETS = [
         "network": "شبکه: TRON (TRC20)",
         "icon": "fa-brands fa-tether",
         "color": "#26a17b",
-        "address": "TEL83d98uJqtVcJfttjjK7dCEB7q9g7fg",
+        "address": "TEL83d98uJqtVcJfttojjK7dCEB7q9g7fg",
         "note": "فقط از شبکه TRC20 استفاده کنید؛ ارسال از شبکه‌های دیگر باعث از دست رفتن دارایی می‌شود.",
     },
     {

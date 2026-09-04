@@ -38,6 +38,8 @@ python3 scripts/generate-wallet-qr.py     # -> images/donate/*.png و *.svg
 |---|---|
 | `/Persian-Subtitles/` (canonical) | `content/persian-subtitles.md` |
 | `/persian-subtitles/` (alias) | همان فایل |
+| `/Persian-Streams/` (canonical) | `content/persian-streams.md` |
+| `/persian-streams/` (alias) | همان فایل |
 
 ```bash
 pip install markdown

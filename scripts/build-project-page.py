@@ -34,6 +34,18 @@ PAGES = [
         "icon": "/images/projects/persian-subtitles.png",
         "repo": "https://github.com/alirostami01/Persian-Subtitles",
     },
+    {
+        "source": "persian-streams.md",
+        "path": "Persian-Streams",
+        "aliases": ["persian-streams"],
+        "title": "Persian Streams — افزونهٔ پخش فیلم و سریال ایرانی برای استرمیو",
+        "description": (
+            "مستندات Persian Streams: افزونهٔ غیررسمی Stremio برای پخش فیلم و سریال‌های "
+            "ایرانی با زیرنویس فارسی؛ نصب، پیکربندی، استقرار روی Node.js و Cloudflare Workers و عیب‌یابی."
+        ),
+        "icon": "/images/projects/persian-streams.png",
+        "repo": "https://github.com/alirostami01/Persian-Streams",
+    },
 ]
 
 STYLE = """

@@ -79,6 +79,7 @@ PROJECTS = [
         "subtitle": "افزونه غیررسمی Stremio",
         "icon": "/images/projects/persian-streams.png",
         "url": "https://github.com/alirostami01/Persian-Streams",
+        "docs": "/Persian-Streams/",
         "description": (
             "Persian Streams یک افزونه غیررسمی برای Stremio است که با دریافت شناسه IMDb "
             "از استرمیو، صفحه محتوای متناظر را در منبع ایرانیِ تنظیم‌شده پیدا می‌کند و "

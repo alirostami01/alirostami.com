@@ -18,7 +18,9 @@ import cv2
 import segno
 
 ROOT = Path(__file__).resolve().parent.parent
-IMG_RE = re.compile(r'<img[^>]+src="(/images/donate/([a-z0-9-]+)\.png)"[^>]*>', re.I)
+IMG_RE = re.compile(
+    r'<img[^>]+src="(/images/donate/([a-z0-9-]+)\.png)(?:\?v=[0-9a-f]+)?"[^>]*>', re.I
+)
 CODE_RE = re.compile(r"<code[^>]*>([^<]+)</code>")
 DATA_RE = re.compile(r'data-address="([^"]+)"')
 

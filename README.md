@@ -30,11 +30,33 @@ pip install segno
 python3 scripts/generate-wallet-qr.py     # -> images/donate/*.png و *.svg
 ```
 
+پس از هر تغییر آدرس، برای اینکه مرورگرِ بازدیدکننده QR قدیمی را از کش نشان ندهد،
+باید هش محتوا روی آدرس تصویرها زده شود (idempotent است):
+
+```bash
+python3 scripts/stamp-qr-cache.py         # -> /images/donate/x.png?v=<md5[:8]>
+```
+
 بررسی صحت (دیکود کردن واقعی هر QR روی همهٔ صفحات و مقایسه با آدرس نمایش‌داده‌شده):
 
 ```bash
 pip install opencv-python-headless segno
 python3 scripts/verify-wallet-qr.py
+```
+
+ترتیب کامل بعد از عوض شدن یک آدرس ولت:
+
+```bash
+python3 scripts/generate-wallet-qr.py
+python3 scripts/build-support-page.py
+python3 scripts/stamp-qr-cache.py
+python3 scripts/verify-wallet-qr.py
+```
+
+### سرور پیش‌نمایش محلی
+
+```bash
+python3 scripts/devserver.py 8000         # بدون کش، همیشه فایل روی دیسک
 ```
 
 ## صفحات مستندات پروژه‌ها

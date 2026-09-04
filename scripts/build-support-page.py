@@ -63,27 +63,27 @@ WALLETS = [
 PROJECTS = [
     {
         "title": "Persian Subtitles",
-        "subtitle": "زیرنویس فارسی",
+        "subtitle": "افزونه غیررسمی Stremio",
         "icon": "/images/projects/persian-subtitles.png",
         "url": "https://github.com/alirostami01/Persian-Subtitles",
         "description": (
-            "مجموعه‌ای متن‌باز از زیرنویس‌های فارسی برای فیلم‌ها و سریال‌ها؛ با هدف "
-            "جمع‌آوری، اصلاح و هماهنگ‌سازی زیرنویس‌ها در یک مخزن واحد و قابل جست‌وجو، "
-            "تا دسترسی به محتوای فارسی برای همه ساده‌تر شود."
+            "Persian Subtitles یک افزونه غیررسمی برای Stremio است که با دریافت شناسه IMDb "
+            "از استرمیو، فیلم یا سریال متناظر را در SubSource پیدا می‌کند و زیرنویس‌های فارسی "
+            "همان محتوا را به‌صورت فایل SRT آماده در اختیار Stremio می‌گذارد."
         ),
-        "tags": ["زیرنویس", "متن‌باز", "فارسی‌سازی"],
+        "tags": ["Stremio", "زیرنویس فارسی", "SubSource", "SRT"],
     },
     {
         "title": "Persian Streams",
-        "subtitle": "استریم‌های فارسی",
+        "subtitle": "افزونه غیررسمی Stremio",
         "icon": "/images/projects/persian-streams.png",
         "url": "https://github.com/alirostami01/Persian-Streams",
         "description": (
-            "فهرستی متن‌باز و به‌روز از استریم‌ها و کانال‌های پخش زنده فارسی‌زبان "
-            "به‌همراه پلی‌لیست‌های آماده؛ مناسب استفاده در پخش‌کننده‌های IPTV و "
-            "ابزارهای متن‌باز."
+            "Persian Streams یک افزونه غیررسمی برای Stremio است که با دریافت شناسه IMDb "
+            "از استرمیو، صفحه محتوای متناظر را در منبع ایرانیِ تنظیم‌شده پیدا می‌کند و "
+            "لینک‌های مستقیم پخش/دانلود را به Stremio برمی‌گرداند."
         ),
-        "tags": ["IPTV", "پخش زنده", "پلی‌لیست"],
+        "tags": ["Stremio", "پخش آنلاین", "لینک مستقیم", "منبع ایرانی"],
     },
 ]
 
@@ -277,11 +277,11 @@ STYLE = """
         text-align: right;
     }
     .support-page .content .project-card > img {
-        width: 72px;
-        height: 72px;
-        flex: 0 0 72px;
-        border-radius: 1rem;
-        box-shadow: 0 .2rem .6rem rgba(0,0,0,.2);
+        width: 80px;
+        height: 80px;
+        flex: 0 0 80px;
+        border-radius: 50%;
+        filter: drop-shadow(0 .2rem .5rem rgba(0,0,0,.25));
     }
     .support-page .content .project-body { flex: 1 1 auto; min-width: 0; }
     .support-page .content .project-body h3 { margin: 0 0 .1rem; font-size: 1.1rem; }
@@ -413,7 +413,7 @@ def wallet_html(w: dict) -> str:
 def project_html(p: dict) -> str:
     tags = "".join(f"<span>{t}</span>" for t in p["tags"])
     return f"""<div class="support-card project-card">
-            <img src="{p['icon']}" alt="آیکون پروژه {p['title']}" width="72" height="72" loading="lazy" decoding="async">
+            <img src="{p['icon']}" alt="آیکون پروژه {p['title']}" width="80" height="80" loading="lazy" decoding="async">
             <div class="project-body">
                 <h3>{p['title']}</h3>
                 <p class="project-sub">{p['subtitle']}</p>

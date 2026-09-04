@@ -30,6 +30,13 @@ pip install segno
 python3 scripts/generate-wallet-qr.py     # -> images/donate/*.png و *.svg
 ```
 
+بررسی صحت (دیکود کردن واقعی هر QR روی همهٔ صفحات و مقایسه با آدرس نمایش‌داده‌شده):
+
+```bash
+pip install opencv-python-headless segno
+python3 scripts/verify-wallet-qr.py
+```
+
 ## صفحات مستندات پروژه‌ها
 
 محتوا در `content/<slug>.md` نوشته می‌شود و با تم اصلی سایت رندر می‌شود:

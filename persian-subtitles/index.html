@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+    <head>
+        <meta name="generator" content="Hugo 0.92.2" />
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Persian Subtitles — افزونهٔ زیرنویس فارسی استرمیو</title><meta name="Description" content="مستندات Persian Subtitles: افزونهٔ غیررسمی Stremio برای زیرنویس فارسی فیلم و سریال با اتصال به API سرویس SubSource؛ نصب، پیکربندی، استقرار و عیب‌یابی."><meta property="og:title" content="Persian Subtitles — افزونهٔ زیرنویس فارسی استرمیو" />
+<meta property="og:description" content="مستندات Persian Subtitles: افزونهٔ غیررسمی Stremio برای زیرنویس فارسی فیلم و سریال با اتصال به API سرویس SubSource؛ نصب، پیکربندی، استقرار و عیب‌یابی." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://alirostami.com/Persian-Subtitles/" /><meta property="og:site_name" content="علی رستمی" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Persian Subtitles — افزونهٔ زیرنویس فارسی استرمیو"/>
+<meta name="twitter:description" content="مستندات Persian Subtitles: افزونهٔ غیررسمی Stremio برای زیرنویس فارسی فیلم و سریال با اتصال به API سرویس SubSource؛ نصب، پیکربندی، استقرار و عیب‌یابی."/>
+<meta name="application-name" content="Ali Rostami">
+<meta name="apple-mobile-web-app-title" content="Ali Rostami"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://alirostami.com/Persian-Subtitles/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><style>
+    /* keep the theme header/footer in their original LTR layout */
+    #header-desktop, #header-mobile, .footer { direction: ltr; }
+
+    .docs-page { direction: rtl; text-align: right; }
+    .docs-page .content { line-height: 2.1; }
+
+    /* ---- page head ---- */
+    .docs-page .docs-hero {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin: 2rem 0 .5rem;
+    }
+    .docs-page .docs-hero img {
+        width: 84px;
+        height: 84px;
+        flex: 0 0 84px;
+        border-radius: 50%;
+        filter: drop-shadow(0 .2rem .5rem rgba(0,0,0,.25));
+    }
+    .docs-page .docs-hero .single-title { margin: 0; text-align: right; }
+    .docs-page .docs-hero .docs-hero-sub { font-size: .9rem; opacity: .7; margin: .25rem 0 0; }
+    .docs-page .docs-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: .6rem;
+        margin: 0 0 1.5rem;
+    }
+    .docs-page .docs-actions a {
+        display: inline-flex;
+        align-items: center;
+        gap: .4rem;
+        font-size: .85rem;
+        line-height: 1.6;
+        padding: .4rem 1rem;
+        border-radius: 2rem;
+        border: 1px solid rgba(128,128,128,.35);
+        transition: background .2s ease, border-color .2s ease;
+    }
+    .docs-page .docs-actions a:hover { background: rgba(45,150,189,.12); border-color: #2d96bd; }
+    .docs-page .docs-actions a.primary {
+        background: linear-gradient(135deg, #e5405e, #ff7a5c);
+        border-color: transparent;
+        color: #fff;
+        font-weight: 700;
+    }
+    .docs-page .docs-actions a.primary:hover { filter: brightness(1.08); color: #fff; }
+
+    /* ---- table of contents ---- */
+    .docs-page .docs-toc {
+        background: rgba(128,128,128,.07);
+        border: 1px solid rgba(128,128,128,.2);
+        border-radius: .8rem;
+        padding: 1rem 1.2rem;
+        margin: 0 0 2rem;
+    }
+    [theme=dark] .docs-page .docs-toc { background: rgba(255,255,255,.04); }
+    .docs-page .docs-toc > .docs-toc-title {
+        font-weight: 700;
+        margin-bottom: .4rem;
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+    }
+    .docs-page .docs-toc ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        columns: 2;
+        column-gap: 1.5rem;
+    }
+    .docs-page .docs-toc ul ul { display: none; }
+    .docs-page .docs-toc li { padding: .15rem 0; break-inside: avoid; }
+    @media only screen and (max-width: 680px) {
+        .docs-page .docs-toc ul { columns: 1; }
+        .docs-page .docs-hero { flex-direction: column; text-align: center; }
+        .docs-page .docs-hero .single-title { text-align: center; }
+    }
+
+    /* ---- headings ---- */
+    .docs-page .content h2 {
+        margin: 2.8rem 0 1rem;
+        padding-bottom: .5rem;
+        border-bottom: 1px solid rgba(128,128,128,.25);
+    }
+    .docs-page .content h3 { margin: 2rem 0 .8rem; }
+    .docs-page .content h2 a.headerlink,
+    .docs-page .content h3 a.headerlink {
+        font-size: .8rem;
+        opacity: 0;
+        margin-right: .4rem;
+        transition: opacity .2s ease;
+    }
+    .docs-page .content h2:hover a.headerlink,
+    .docs-page .content h3:hover a.headerlink { opacity: .5; }
+
+    /* ---- lists ---- */
+    .docs-page .content ul,
+    .docs-page .content ol { padding-right: 1.6rem; padding-left: 0; }
+    .docs-page .content li { margin: .3rem 0; }
+
+    /* ---- code: always LTR ---- */
+    .docs-page .content pre,
+    .docs-page .content pre code,
+    .docs-page .content code {
+        direction: ltr;
+        unicode-bidi: isolate;
+    }
+    .docs-page .content pre {
+        display: block;
+        overflow-x: auto;
+        text-align: left;
+        padding: .8rem 1rem;
+        border-radius: .5rem;
+        font-size: .82rem;
+        line-height: 1.7;
+        border: 1px solid rgba(128,128,128,.2);
+    }
+    .docs-page .content pre code {
+        display: block;
+        white-space: pre;
+        padding: 0;
+        font-size: inherit;
+        line-height: inherit;
+    }
+    .docs-page .content p > code,
+    .docs-page .content li > code,
+    .docs-page .content td code { font-size: .8rem; }
+
+    /* ---- tables ---- */
+    .docs-page .content .table-wrapper > table { text-align: right; }
+    .docs-page .content .table-wrapper > table th,
+    .docs-page .content .table-wrapper > table td { vertical-align: top; line-height: 1.9; }
+    .docs-page .content .table-wrapper > table th { text-align: right; }
+
+    /* ---- blockquote as a note box (RTL border side) ---- */
+    .docs-page .content blockquote {
+        border-left: none;
+        border-right: .35rem solid #6bd6fd;
+        padding: .6rem 1rem;
+        border-radius: .4rem;
+    }
+    [theme=dark] .docs-page .content blockquote { border-right-color: #59c5ec; }
+    .docs-page .content blockquote p { margin: .3rem 0; }
+
+    .docs-page .content hr { margin: 2rem 0; }
+</style></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/fa/" title="علی رستمی">Ali Rostami</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a href="/fa/" class="menu-item" title="خانه">خانه</a><a href="/support/" class="menu-item" title="حمایت">حمایت</a><a href="javascript:void(0);" class="menu-item theme-switch" title="تغییر ظاهر"><i class="fas fa-adjust fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" class="menu-item language" title="انتخاب زبان"><i class="fa fa-globe" aria-hidden="true"></i><select class="language-select" onchange="location = this.value;"><option value="/en/support.html">English</option><option value="/support/" selected>فارسی</option></select></a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/fa/" title="علی رستمی">Ali Rostami</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a href="/fa/" class="menu-item" title="خانه">خانه</a><a href="/support/" class="menu-item" title="حمایت">حمایت</a><a href="javascript:void(0);" class="menu-item theme-switch" title="تغییر ظاهر"><i class="fas fa-adjust fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" class="menu-item language" title="انتخاب زبان"><i class="fa fa-globe" aria-hidden="true"></i><select class="language-select" onchange="location = this.value;"><option value="/en/support.html">English</option><option value="/support/" selected>فارسی</option></select></a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><article class="page single docs-page">
+        <div class="docs-hero">
+            <img src="/images/projects/persian-subtitles.png" alt="لوگوی Persian Subtitles" width="84" height="84" decoding="async">
+            <div>
+                <h1 class="single-title animate__animated animate__flipInX">Persian Subtitles</h1>
+                <p class="docs-hero-sub">مستندات پروژه · افزونهٔ غیررسمی Stremio</p>
+            </div>
+        </div>
+        <div class="docs-actions">
+            <a class="primary" href="/support/"><i class="fas fa-heart fa-fw" aria-hidden="true"></i> حمایت از پروژه</a>
+            <a href="https://github.com/alirostami01/Persian-Subtitles" target="_blank" rel="noopener noreferrer"><i class="fab fa-github fa-fw" aria-hidden="true"></i> مخزن گیت‌هاب</a>
+        </div>
+        <nav class="docs-toc" aria-label="فهرست مطالب">
+            <div class="docs-toc-title"><i class="fas fa-list-ul fa-fw" aria-hidden="true"></i> فهرست مطالب</div>
+            <div class="toc">
+<ul>
+<li><a href="#معرفی">📖 معرفی</a></li>
+<li><a href="#قابلیتها">✨ قابلیت‌ها</a></li>
+<li><a href="#ساختار-پروژه">🗂️ ساختار پروژه</a></li>
+<li><a href="#نصب-و-راهاندازی-محلی">🚀 نصب و راه‌اندازی محلی</a></li>
+<li><a href="#استقرار-deployment">☁️ استقرار (Deployment)</a></li>
+<li><a href="#نحوه-استفاده">🎯 نحوهٔ استفاده</a></li>
+<li><a href="#مسیرها-و-api">🔌 مسیرها و API</a></li>
+<li><a href="#خلاصه-عملکرد-فنی">⚙️ خلاصهٔ عملکرد فنی</a></li>
+<li><a href="#عیبیابی">🐛 عیب‌یابی</a></li>
+<li><a href="#مشارکت">🤝 مشارکت</a></li>
+<li><a href="#مجوز">📄 مجوز</a></li>
+</ul>
+</div>
+
+        </nav>
+        <div class="content" id="content">
+<p>افزونهٔ غیررسمی استرمیو (Stremio) برای زیرنویس فارسی فیلم و سریال، متصل به API سرویس SubSource.</p>
+<p>اگر این افزونه برایتان مفید بوده، با حمایتتان کمک کنید پروژه زنده، سریع و به‌روز بماند. ❤️<br />
+<a href="/support/">حمایت از پروژه</a></p>
+<p><code>Stremio Addon</code> · <code>Node.js</code> · <code>Cloudflare Workers</code> · <code>Apache-2.0</code></p>
+<p><a href="https://github.com/alirostami01/Persian-Subtitles">مشاهده مخزن در گیت‌هاب</a></p>
+<h2 id="معرفی">📖 معرفی<a class="headerlink" href="#معرفی" title="Permanent link">#</a></h2>
+<p><strong>Persian Subtitles</strong> یک افزونهٔ غیررسمی برای Stremio است که با دریافت شناسهٔ IMDb از استرمیو، فیلم یا سریال متناظر را در SubSource پیدا می‌کند و زیرنویس‌های فارسی همان محتوا را به‌صورت فایل SRT آماده در اختیار Stremio می‌گذارد.</p>
+<p><strong>جریان کار نسخهٔ فعلی:</strong></p>
+<ol>
+<li>استرمیو شناسهٔ <code>tt...</code> (فیلم) یا <code>tt1234567:1:3</code> (سریال) را به منبعی از نوع <code>subtitles</code> می‌فرستد.</li>
+<li>برای سریال‌ها، نام سریال از Cinemeta گرفته می‌شود و با <code>q={name}&amp;season={n}</code> در SubSource جست‌وجو می‌شود؛ اگر نتیجه‌ای نبود، جست‌وجوی مستقیم با IMDb به‌عنوان fallback انجام می‌شود.</li>
+<li>با <code>movieId</code> به‌دست‌آمده، زیرنویس‌های <code>language=farsi_persian</code> با <code>sort=rating&amp;limit=100</code> دریافت می‌شوند.</li>
+<li>برای سریال‌ها، نتایج بر اساس الگوهای فصل و قسمت (<code>S01E05</code>، <code>S1E5</code>، <code>1x05</code> یا Season Pack کامل) فیلتر می‌شوند.</li>
+<li>لینک هر زیرنویس به پراکسی داخلی افزونه (<code>/download/{subtitleId}</code>) اشاره می‌کند؛ آن‌جا فایل ZIP دانلود می‌شود، فایل SRT از آن استخراج می‌شود و با encoding درست به استرمیو تحویل داده می‌شود.</li>
+</ol>
+<blockquote>
+<p>⚠️ این پروژه میزبان هیچ فایل زیرنویس یا رسانه‌ای نیست و تنها از API رسمی SubSource استفاده می‌کند؛ به همین دلیل داشتن کلید API (<code>API_KEY</code>) الزامی است. مسئولیت رعایت قوانین کپی‌رایت و مقررات محلی بر عهدهٔ کاربر است.</p>
+</blockquote>
+<h2 id="قابلیتها">✨ قابلیت‌ها<a class="headerlink" href="#قابلیتها" title="Permanent link">#</a></h2>
+<ul>
+<li>💬 <strong>زیرنویس فارسی از SubSource</strong> با منبع رسمی <code>api.subsource.net/api/v1</code></li>
+<li>🧠 <strong>استراتژی جست‌وجوی ترکیبی (Hybrid)</strong> برای سریال‌ها: ابتدا «نام سریال + شمارهٔ فصل» از طریق Cinemeta و سپس fallback به «جست‌وجو با IMDb»</li>
+<li>🎯 <strong>تطبیق هوشمند فصل و قسمت</strong> با الگوهای <code>S01E05</code>، <code>S1E5</code> و <code>1x05</code> و پشتیبانی از Season Pack (<code>COMPLETE</code> + <code>SEASON01</code> / <code>S01</code>)</li>
+<li>🧪 <strong>نرمال‌سازی پیش از تطبیق</strong>: حذف فاصله، <code>-</code>، <code>.</code> و <code>_</code> و بزرگ‌کردن حروف نام ریلیز تا الگوهای متفاوت یک فایل هم شناسایی شوند</li>
+<li>📦 <strong>Decoder مستقل ZIP در دو runtime</strong>: در Node با <code>adm-zip</code> و در Worker با پارسر دستی ZIP به‌همراه <code>DecompressionStream('deflate-raw')</code> (بدون وابستگی خارجی)</li>
+<li>🔤 <strong>تشخیص خودکار encoding فارسی</strong>: ابتدا UTF-8 و در صورت دیدن کاراکتر جایگزین (<code>\uFFFD</code>) یا خطا در حالت strict، تبدیل از Windows-1256</li>
+<li>🏷️ <strong>برچسب‌گذاری زیرنویس‌ها</strong> با <code>lang: fas</code> و <code>title</code> تا نام ریلیز (مثلاً <code>WEB-DL 1080p</code>) در فهرست استرمیو دیده شود</li>
+<li>🟡 <strong>متن حمایت (Promo) داخل زیرنویس</strong> با رنگ زرد و مدت و موقعیت قابل تنظیم (<code>start</code> / <code>end</code>)</li>
+<li>🔁 <strong>کلاینت HTTP با retry</strong>: حداکثر ۳ تلاش مجدد با backoff تصاعدی و jitter برای خطاهای <code>ECONNRESET</code>، <code>ETIMEDOUT</code>، <code>EAI_AGAIN</code>، <code>429</code> و <code>5xx</code></li>
+<li>⚡ <strong>جلوگیری از socket مرده</strong>: <code>keepAlive: false</code> روی agentهای http/https تا اتصال کهنه باعث <code>read ECONNRESET</code> نشود</li>
+<li>🖥️ <strong>حالت Cluster</strong> برای استفاده از همهٔ هسته‌های CPU، با راه‌اندازی خودکار worker از کار افتاده و خاموشی تدریجی</li>
+<li>🩺 <strong>مسیر <code>/health</code></strong> با وضعیت پروسه (<code>uptime</code>، <code>memory</code>، <code>cpuLoad</code>) برای load balancer و مانیتورینگ</li>
+<li>🚦 <strong>لاگ درخواست‌ها همراه با زمان پاسخ</strong>: <code>GET /manifest.json - 200 (15ms)</code></li>
+<li>🌐 <strong>CORS، <code>trust proxy</code> و حذف <code>X-Powered-By</code></strong> در نسخهٔ Node؛ هدرهای <code>access-control-*</code> روی همهٔ پاسخ‌های Worker</li>
+<li>🧯 <strong>بدون crash برای کاربر</strong>: هر خطا به <code>{ "subtitles": [] }</code> تبدیل می‌شود تا استرمیو فقط فهرست خالی نشان دهد</li>
+<li>📦 <strong>دو runtime</strong>: Node.js/Express (<code>server.js</code> / <code>addon.js</code>) و Cloudflare Workers (<code>worker.js</code>) با <code>manifest.js</code> مشترک</li>
+<li>🚀 <strong>دیپلوی خودکار Worker</strong> با GitHub Actions و اعتبارسنجی bundle پیش از deploy (<code>--dry-run</code>)</li>
+</ul>
+<h2 id="ساختار-پروژه">🗂️ ساختار پروژه<a class="headerlink" href="#ساختار-پروژه" title="Permanent link">#</a></h2>
+<p>ساختار واقعی و به‌روز پروژه (خروجی <code>git ls-files</code>):</p>
+<pre><code class="language-text">.
+├── .env.example                     # الگوی کامل متغیرهای محیطی (کپی کنید به .env)
+├── .github/
+│   └── workflows/
+│       └── deploy-worker.yml        # دیپلوی خودکار Worker به Cloudflare
+├── .gitignore
+├── README.md                        # راهنمای کاربر و راه‌اندازی
+├── addon.js                         # نقطه ورود Node/Express + SDK builder
+├── apiClient.js                     # کلاینت axios با retry و backoff
+├── assets/
+│   └── icons/
+│       ├── logo.png                 # لوگوی ۲۵۶×۲۵۶ استفاده‌شده در manifest نسخه Worker
+│       └── subtitles-fa.png         # تصویر استاتیک اضافی (۲۰۴۸×۲۰۴۸)
+├── config.js                        # تمام تنظیمات از env (dotenv) + مقادیر پیش‌فرض
+├── docs/
+│   └── DOCUMENTATION.md             # مستندات فنی: معماری، منطق، توابع و راهنمای تست
+├── downloadProxy.js                 # دانلود ZIP، استخراج SRT، اصلاح encoding، درج متن Promo
+├── manifest.js                      # manifest افزونه (subtitles / movie+series / tt)
+├── package.json                     # اسکریپت‌ها و وابستگی‌های Node.js
+├── package-lock.json                # نسخه‌های قفل‌شده وابستگی‌ها
+├── server.js                        # راه‌انداز Cluster (main در package.json)
+├── subtitlesHandler.js              # منطق جست‌وجو و فیلتر زیرنویس در Node
+├── worker.js                        # آداپتور Cloudflare Workers (main در wrangler.jsonc)
+└── wrangler.jsonc                   # پیکربندی Worker: assets، bindings، run_worker_first
+</code></pre>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>مسیر</th>
+<th>نقش</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>manifest.js</code></td>
+<td>تعریف <code>id</code>، <code>version</code>، <code>resources: ["subtitles"]</code>، <code>types: ["movie","series"]</code> و <code>idPrefixes: ["tt"]</code> — مشترک بین هر دو runtime</td>
+</tr>
+<tr>
+<td><code>addon.js</code></td>
+<td><code>new addonBuilder(manifest)</code> + <code>defineSubtitlesHandler</code>، ساخت اپ Express، <code>getRouter(builder.getInterface())</code>، مسیر <code>/download/:token</code>، <code>GET /health</code>، لاگ‌گیر و graceful shutdown</td>
+</tr>
+<tr>
+<td><code>config.js</code></td>
+<td>خواندن env با dotenv و مقادیر پیش‌فرض (<code>PORT=7000</code>، <code>LONG_TIMEOUT=60000</code>، <code>MAX_SOCKETS=50</code> و…)</td>
+</tr>
+<tr>
+<td><code>apiClient.js</code></td>
+<td>تابع <code>apiRequest()</code> — retry با backoff تصاعدی و jitter، agent بدون keepAlive، تشخیص خطای قابل تلاش مجدد</td>
+</tr>
+<tr>
+<td><code>subtitlesHandler.js</code></td>
+<td>پارس <code>id</code>، جست‌وجو در Cinemeta و SubSource، فیلتر فصل و قسمت، ساخت خروجی <code>{ subtitles: [...] }</code></td>
+</tr>
+<tr>
+<td><code>downloadProxy.js</code></td>
+<td>دانلود ZIP از SubSource، استخراج اولین <code>.srt</code>، تبدیل encoding، درج بلوک Promo و پاسخ با <code>application/x-subrip</code></td>
+</tr>
+<tr>
+<td><code>server.js</code></td>
+<td>منطق cluster؛ اگر <code>CLUSTER_ENABLED=true</code> باشد نقش master را می‌گیرد و به تعداد هسته‌ها worker می‌سازد، در غیر این صورت همان پروسهٔ <code>addon.js</code> را <code>require</code> می‌کند</td>
+</tr>
+<tr>
+<td><code>docs/DOCUMENTATION.md</code></td>
+<td>مستندات فنی توسعه‌دهنده: معماری، مستندات تابع‌به‌تابع، الگوریتم تطبیق فصل و قسمت و جدول کامل env</td>
+</tr>
+<tr>
+<td><code>worker.js</code></td>
+<td>مسیرهای زیر پیشوند <code>/subtitles</code>، retry با <code>AbortController</code>، پارسر دستی ZIP، <code>TextDecoder</code> برای UTF-8/Windows-1256 و سرو لوگو از <code>env.ASSETS</code></td>
+</tr>
+<tr>
+<td><code>wrangler.jsonc</code></td>
+<td><code>name: subsource-stremio-addon</code>، <code>main: worker.js</code>، <code>compatibility_date: 2026-09-02</code>، <code>assets.directory: ./assets/icons</code> با binding <code>ASSETS</code> و <code>run_worker_first</code></td>
+</tr>
+<tr>
+<td><code>.github/workflows/deploy-worker.yml</code></td>
+<td>push به <code>main</code> → <code>npm ci</code> → <code>wrangler deploy --dry-run</code> → <code>wrangler secret put API_KEY</code> → <code>wrangler deploy</code> (Wrangler روی نسخهٔ <code>4.128.0</code> پین شده است)</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>مستندات فنی کامل (معماری، منطق تابع‌به‌تابع، الگوریتم‌ها و جدول کامل env) در <code>docs/DOCUMENTATION.md</code> نگه‌داری می‌شود. پروژه در حال حاضر فایل تست، پیکربندی lint و Dockerfile ندارد؛ فایل <code>LICENSE</code> در ریشهٔ مخزن موجود است (مقدار <code>license</code> در <code>package.json</code> برابر Apache License 2.0 است) و تنها نمونهٔ تنظیمات، فایل <code>.env.example</code> است.</p>
+</blockquote>
+<h2 id="نصب-و-راهاندازی-محلی">🚀 نصب و راه‌اندازی محلی<a class="headerlink" href="#نصب-و-راهاندازی-محلی" title="Permanent link">#</a></h2>
+<h3 id="پیشنیازها">پیش‌نیازها<a class="headerlink" href="#پیشنیازها" title="Permanent link">#</a></h3>
+<ul>
+<li><strong>Node.js نسخهٔ ۲۰٫۱۸٫۱ یا بالاتر</strong> — <code>package.json</code> مقدار <code>engines.node &gt;= 14.0.0</code> را اعلام می‌کند، اما نسخهٔ قفل‌شدهٔ <code>cheerio</code> در <code>package-lock.json</code> به <code>engines.node &gt;= 20.18.1</code> نیاز دارد؛ برای اطمینان، نسخهٔ ۲۲ توصیه می‌شود (CI هم روی Node 22 اجرا می‌شود).</li>
+<li><strong>npm</strong></li>
+<li><strong>کلید API سرویس SubSource</strong> (از <code>subsource.net</code>) — بدون آن خروجی افزونه خالی است.</li>
+<li>برای حالت Worker: <strong>Wrangler</strong> (<code>npx wrangler</code>)</li>
+<li>برنامهٔ <strong>Stremio</strong> برای تست نصب افزونه</li>
+</ul>
+<h3 id="۱-دریافت-کد">۱. دریافت کد<a class="headerlink" href="#۱-دریافت-کد" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">git clone https://github.com/alirostami01/Persian-Subtitles.git
+cd Persian-Subtitles
+</code></pre>
+<h3 id="۲-نصب-وابستگیها">۲. نصب وابستگی‌ها<a class="headerlink" href="#۲-نصب-وابستگیها" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">npm install          # یا برای نصب دقیق بر اساس lock: npm ci
+</code></pre>
+<h3 id="۳-ساخت-فایل-env-برای-node">۳. ساخت فایل <code>.env</code> (برای Node)<a class="headerlink" href="#۳-ساخت-فایل-env-برای-node" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">cp .env.example .env
+</code></pre>
+<p>سپس <code>API_KEY</code> را در آن تنظیم کنید. حداقل تنظیمات لازم:</p>
+<pre><code class="language-ini">SERVER_IP=127.0.0.1
+PORT=7000
+API_KEY=your-subsource-api-key
+</code></pre>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>متغیر</th>
+<th>وضعیت</th>
+<th>پیش‌فرض</th>
+<th>توضیح</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>API_KEY</code></td>
+<td><strong>اجباری</strong></td>
+<td>—</td>
+<td>کلید SubSource؛ در هدر <code>X-API-Key</code> ارسال می‌شود. در نبود آن، پیام <code>API Key is missing from .env file.</code> در لاگ چاپ و پاسخ <code>{ subtitles: [] }</code> برگردانده می‌شود</td>
+</tr>
+<tr>
+<td><code>PORT</code></td>
+<td>اختیاری</td>
+<td><code>7000</code></td>
+<td>پورت سرور HTTP (<code>app.listen</code> در <code>addon.js</code>) و بخشی از URL لینک زیرنویس</td>
+</tr>
+<tr>
+<td><code>SERVER_IP</code></td>
+<td>اختیاری</td>
+<td><code>127.0.0.1</code></td>
+<td>آدرس یا دامنه‌ای که در <code>url</code> هر زیرنویس نوشته می‌شود؛ در استقرار باید روی دامنهٔ عمومی تنظیم شود</td>
+</tr>
+</tbody>
+</table></div>
+<p>سه متغیر بالا به‌همراه <code>LONG_TIMEOUT</code> و <code>SUBTITLE_PROMO_*</code> مقادیری هستند که در کد Node واقعاً مصرف می‌شوند؛ فهرست کامل (به‌همراه تنظیمات runtime ویژهٔ Worker) در <code>docs/DOCUMENTATION.md</code> آمده است:</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>متغیر</th>
+<th>پیش‌فرض</th>
+<th>توضیح</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LONG_TIMEOUT</code></td>
+<td><code>60000</code></td>
+<td>تایم‌اوت درخواست‌ها به SubSource (میلی‌ثانیه)</td>
+</tr>
+<tr>
+<td><code>SUBTITLE_PROMO_TEXT</code></td>
+<td>متن حمایت پروژه</td>
+<td>متن اضافه‌شده داخل زیرنویس؛ با مقدار خالی، درج متن متوقف می‌شود</td>
+</tr>
+<tr>
+<td><code>SUBTITLE_PROMO_DURATION</code></td>
+<td><code>20</code></td>
+<td>مدت نمایش متن به ثانیه</td>
+</tr>
+<tr>
+<td><code>SUBTITLE_PROMO_POSITION</code></td>
+<td><code>end</code></td>
+<td>موقعیت درج متن: <code>start</code> یا <code>end</code></td>
+</tr>
+<tr>
+<td><code>MAX_SOCKETS</code></td>
+<td><code>50</code></td>
+<td>سقف اتصال‌های هم‌زمان agentها در <code>apiClient.js</code></td>
+</tr>
+<tr>
+<td><code>CLUSTER_ENABLED</code></td>
+<td><code>false</code></td>
+<td>فعال‌سازی حالت cluster (فقط با <code>npm start</code>)</td>
+</tr>
+<tr>
+<td><code>WORKER_COUNT</code></td>
+<td><code>0</code></td>
+<td>تعداد پروسه‌های cluster؛ <code>0</code> یعنی به تعداد هسته‌های CPU</td>
+</tr>
+</tbody>
+</table></div>
+<p>در Cloudflare Workers هیچ فایل <code>.env</code> خوانده نمی‌شود؛ <code>API_KEY</code> باید به‌صورت Worker Secret تنظیم شود و متن Promo از env یا مقدار پیش‌فرض داخلی (<code>DEFAULT_PROMO_TEXT</code> در <code>worker.js</code>) می‌آید:</p>
+<pre><code class="language-bash">npx wrangler secret put API_KEY                      # برای پروداکشن
+printf 'API_KEY=&quot;...&quot;\n' &gt; .dev.vars                 # فقط برای wrangler dev محلی
+</code></pre>
+<p>اگر ترجیح می‌دهید فایل <code>.env</code> نسازید، در Node می‌توانید مقادیر را به‌صورت inline بدهید:</p>
+<pre><code class="language-bash">API_KEY=xxxx SERVER_IP=127.0.0.1 PORT=7000 node server.js
+</code></pre>
+<h3 id="۴-اجرای-برنامه">۴. اجرای برنامه<a class="headerlink" href="#۴-اجرای-برنامه" title="Permanent link">#</a></h3>
+<p><strong>حالت Node.js — توسعه (تک‌پروسه):</strong></p>
+<pre><code class="language-bash">npm run dev          # =&gt; node addon.js
+</code></pre>
+<p>خروجی موفق:</p>
+<pre><code class="language-text">===========================================
+Persian Subtitles Add-on Server Started
+===========================================
+Server listening on port: 7000
+Available CPU cores: 8
+Install URL: http://127.0.0.1:7000/manifest.json
+Health check: http://127.0.0.1:7000/health
+===========================================
+</code></pre>
+<p><strong>حالت Node.js — پروداکشن (Cluster):</strong></p>
+<pre><code class="language-bash">npm start            # =&gt; node server.js
+</code></pre>
+<pre><code class="language-text">===========================================
+Starting Cluster Mode
+===========================================
+Master process 4123 started
+Detected 8 CPU cores
+Spawning 8 worker processes...
+===========================================
+
+Worker 4124 spawned
+✓ Worker 4124 is online (1/8)
+...
+✅ All workers are ready to handle requests!
+</code></pre>
+<blockquote>
+<p>برای این حالت <code>CLUSTER_ENABLED=true</code> در <code>.env</code> لازم است؛ اگر <code>false</code> باشد، <code>server.js</code> همان مسیر تک‌پروسه را می‌رود. برای تعداد ثابت worker، مقدار <code>WORKER_COUNT</code> را تنظیم کنید.</p>
+</blockquote>
+<p>اگر پورت اشغال باشد:</p>
+<pre><code class="language-text">Error: listen EADDRINUSE: address already in use :::7000
+</code></pre>
+<p>راه‌حل:</p>
+<pre><code class="language-bash">PORT=7001 npm run dev
+</code></pre>
+<p><strong>حالت Cloudflare Workers (Edge):</strong></p>
+<pre><code class="language-bash">npx wrangler dev
+</code></pre>
+<pre><code class="language-text">⛅️ wrangler is running at http://localhost:8787
+Manifest: http://localhost:8787/subtitles/manifest.json
+</code></pre>
+<blockquote>
+<p>در حالت Worker همهٔ مسیرها زیر پیشوند <code>/subtitles</code> قرار دارند؛ باز کردن ریشه (<code>http://localhost:8787/</code>) پاسخ <code>404</code> می‌دهد و <code>http://localhost:8787/subtitles</code> یک پاسخ وضعیت JSON برمی‌گرداند.</p>
+</blockquote>
+<h3 id="۵-نصب-در-stremio">۵. نصب در Stremio<a class="headerlink" href="#۵-نصب-در-stremio" title="Permanent link">#</a></h3>
+<p>نسخهٔ Node:</p>
+<pre><code class="language-text">stremio://localhost:7000/manifest.json
+</code></pre>
+<p>نسخهٔ Workers (لوکال):</p>
+<pre><code class="language-text">stremio://localhost:8787/subtitles/manifest.json
+</code></pre>
+<p>یا ابتدا manifest را در مرورگر باز کنید و روی <strong>Install</strong> کلیک کنید:</p>
+<pre><code class="language-text">http://localhost:7000/manifest.json
+http://localhost:8787/subtitles/manifest.json
+</code></pre>
+<h2 id="استقرار-deployment">☁️ استقرار (Deployment)<a class="headerlink" href="#استقرار-deployment" title="Permanent link">#</a></h2>
+<h3 id="گزینه-a-میزبانی-nodejs-vps-railway-render-flyio-heroku">گزینهٔ A: میزبانی Node.js (VPS، Railway، Render، Fly.io، Heroku)<a class="headerlink" href="#گزینه-a-میزبانی-nodejs-vps-railway-render-flyio-heroku" title="Permanent link">#</a></h3>
+<ol>
+<li>Node.js نسخهٔ ۲۰٫۱۸٫۱ یا بالاتر (پیشنهادی: ۲۲) روی محیط اجرا فعال باشد.</li>
+<li>وابستگی‌ها را نصب کنید: <code>npm ci</code></li>
+<li>دستور اجرا را روی <code>npm start</code> بگذارید (یعنی <code>node server.js</code>)؛ <code>main</code> در <code>package.json</code> همین است. برای اجرای تک‌پروسه: <code>node addon.js</code>.</li>
+<li><code>API_KEY</code> را تنظیم و <code>SERVER_IP</code> را روی دامنهٔ عمومی ست کنید (بدون <code>SERVER_IP</code> درست، استرمیو نمی‌تواند فایل زیرنویس را دانلود کند).</li>
+<li>کد، مقدار <code>PORT</code> را از env با پیش‌فرض <code>7000</code> می‌خواند؛ توجه کنید که <code>SERVER_IP</code> و <code>PORT</code> مستقیماً در URL هر زیرنویس نوشته می‌شوند، پس همان‌ها را روی آدرس عمومی تنظیم کنید.</li>
+<li>در پروداکشن <code>CLUSTER_ENABLED=true</code> را فعال کنید.</li>
+</ol>
+<p>آدرس نصب پس از استقرار:</p>
+<pre><code class="language-text">stremio://YOUR_DOMAIN/manifest.json
+</code></pre>
+<p>مسیرهای ضروری: <code>/manifest.json</code>، <code>/subtitles/...</code>، <code>/download/{id}</code>، <code>/health</code></p>
+<blockquote>
+<p>⚠️ <strong>توجه مهم:</strong> در نسخهٔ Node، لینک هر زیرنویس به‌صورت <code>http://${SERVER_IP}:${PORT}/download/...</code> ساخته می‌شود؛ یعنی scheme همیشه <code>http</code> است و <code>PORT</code> نیز حتماً در URL می‌آید. برای سرو روی پورت ۴۴۳ پشت TLS proxy، مسیر <code>/download/...</code> را در پراکسی به پورت واقعی داخل سرور یا کانتینر پاس بدهید و <code>SERVER_IP</code> را فقط روی نام دامنه تنظیم کنید. راه‌حل تمیزتر، ساخت URL از <code>x-forwarded-proto</code> و <code>Host</code> است که در بخش «سرور Node.js و روت‌ها» در <code>docs/DOCUMENTATION.md</code> توضیح داده شده است.</p>
+</blockquote>
+<p><strong>نمونهٔ Docker</strong> (خودتان بسازید — در مخزن Dockerfile وجود ندارد):</p>
+<pre><code class="language-dockerfile">FROM node:22-alpine
+WORKDIR /app
+# نکته: مقدار name در package.json فعلاً «Persian Subtitles» است؛
+# npm این نام را برای publish نمی‌پذیرد (اجرای محلی مشکلی ندارد).
+COPY package*.json ./
+RUN npm ci --omit=dev
+COPY . .
+ENV PORT=7000
+EXPOSE 7000
+CMD [&quot;node&quot;, &quot;server.js&quot;]
+</code></pre>
+<pre><code class="language-bash">docker build -t persian-subtitles-addon .
+docker run -d -p 7000:7000 --env-file .env persian-subtitles-addon
+</code></pre>
+<p><strong>پشت Load Balancer:</strong></p>
+<pre><code class="language-nginx">upstream stremio_subtitles {
+    server 10.0.0.1:7000;
+    server 10.0.0.2:7000;
+}
+
+server {
+    listen 443 ssl;
+    server_name subs.example.com;
+
+    location / {
+        proxy_pass http://stremio_subtitles;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    location /health {
+        proxy_pass http://stremio_subtitles/health;
+    }
+}
+</code></pre>
+<h3 id="گزینه-b-cloudflare-workers-پیشنهادی-برای-edge-رایگان">گزینهٔ B: Cloudflare Workers (پیشنهادی برای Edge، رایگان)<a class="headerlink" href="#گزینه-b-cloudflare-workers-پیشنهادی-برای-edge-رایگان" title="Permanent link">#</a></h3>
+<p><code>wrangler.jsonc</code> نیازی به تغییر ندارد؛ <code>API_KEY</code> نباید در آن نوشته شود (این فایل commit شده است) و باید به‌صورت secret تنظیم شود.</p>
+<pre><code class="language-bash">npm install
+npx wrangler secret put API_KEY
+npx wrangler deploy
+</code></pre>
+<p>یا به‌صورت خودکار از طریق GitHub Actions — trigger در <code>deploy-worker.yml</code> فقط با تغییر این فایل‌ها فعال می‌شود: <code>worker.js</code>، <code>manifest.js</code>، <code>wrangler.jsonc</code>، <code>package.json</code>، <code>package-lock.json</code>، <code>assets/icons/**</code> و خودِ workflow (به‌علاوهٔ <code>workflow_dispatch</code> دستی).</p>
+<p>آدرس نصب پس از استقرار:</p>
+<pre><code class="language-text">stremio://&lt;worker&gt;.workers.dev/subtitles/manifest.json
+</code></pre>
+<p>مسیرهای ضروری Worker: <code>/subtitles/manifest.json</code>، <code>/subtitles/movie/...</code>، <code>/subtitles/series/...</code>، <code>/subtitles/download/{id}</code> و <code>/subtitles/logo.png</code>.</p>
+<p>همهٔ پاسخ‌های JSON هدرهای <code>access-control-allow-origin: *</code> و <code>cache-control: no-store</code> دارند (فقط <code>manifest.json</code> با <code>max-age=300</code> و فایل زیرنویس با <code>private, max-age=300</code> کش می‌شوند).</p>
+<p><strong>Secretهای موردنیاز در GitHub Actions:</strong></p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Secret</th>
+<th>کاربرد</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CLOUDFLARE_API_TOKEN</code></td>
+<td>احراز هویت Wrangler</td>
+</tr>
+<tr>
+<td><code>CLOUDFLARE_ACCOUNT_ID</code></td>
+<td>تعیین account مقصد</td>
+</tr>
+<tr>
+<td><code>SUBSOURCE_API_KEY</code></td>
+<td>در گام «Configure SubSource API secret» با <code>wrangler secret put API_KEY</code> روی Worker تنظیم می‌شود</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>نکات HTTPS و Proxy:</strong></p>
+<ul>
+<li><strong>Node:</strong> <code>app.set('trust proxy', true)</code> از پیش فعال است تا IP واقعی پشت load balancer درست تشخیص داده شود؛ اما URL زیرنویس‌ها همچنان از <code>SERVER_IP</code> و <code>PORT</code> ساخته می‌شود، پس آن‌ها را خودتان درست تنظیم کنید.</li>
+<li><strong>Workers:</strong> <code>url.origin</code> همیشه scheme و host درست را دارد و لینک <code>/subtitles/download/{id}</code> به‌صورت خودکار ساخته می‌شود؛ تنظیم اضافه‌ای لازم نیست.</li>
+</ul>
+<h2 id="نحوه-استفاده">🎯 نحوهٔ استفاده<a class="headerlink" href="#نحوه-استفاده" title="Permanent link">#</a></h2>
+<p>پس از نصب افزونه در استرمیو:</p>
+<ol>
+<li>یک فیلم یا سریال دارای شناسهٔ IMDb را باز کنید.</li>
+<li>استرمیو درخواست <code>subtitles</code> را به افزونه می‌فرستد (<code>/subtitles/{type}/{id}.json</code>).</li>
+<li>افزونه با نام سریال (برای سریال) یا IMDb (برای فیلم و حالت fallback) در SubSource جست‌وجو می‌کند.</li>
+<li>برای فیلم‌ها، همهٔ زیرنویس‌های فارسی همان <code>movieId</code> (مرتب‌شده بر اساس rating، حداکثر ۱۰۰ مورد) برگردانده می‌شوند.</li>
+<li>برای سریال‌ها، فهرست بر اساس شمارهٔ فصل و قسمت فیلتر می‌شود و اگر نسخهٔ تک‌قسمتی موجود نباشد، Season Pack کامل انتخاب می‌شود.</li>
+<li>با انتخاب یک زیرنویس، استرمیو فایل را از <code>/subtitles/download/{subtitleId}</code> می‌گیرد که SRT خالص و UTF-8 شده را تحویل می‌دهد.</li>
+<li>در انتها (یا ابتدای) فیلم، متن حمایت زردرنگ نمایش داده می‌شود که با <code>SUBTITLE_PROMO_*</code> قابل تغییر یا حذف است.</li>
+</ol>
+<p>نمونهٔ پاسخ manifest (نسخهٔ Node):</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: &quot;org.alirostami.subtitles.persian&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;name&quot;: &quot;Persian Subtitles&quot;,
+  &quot;author&quot;: &quot;Ali Rostami&quot;,
+  &quot;contactEmail&quot;: &quot;rostami.ali@gmail.com&quot;,
+  &quot;resources&quot;: [&quot;subtitles&quot;],
+  &quot;types&quot;: [&quot;movie&quot;, &quot;series&quot;],
+  &quot;idPrefixes&quot;: [&quot;tt&quot;],
+  &quot;catalogs&quot;: []
+}
+</code></pre>
+<p>نمونهٔ یک آیتم زیرنویس در پاسخ:</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: &quot;1234567&quot;,
+  &quot;url&quot;: &quot;http://127.0.0.1:7000/download/1234567&quot;,
+  &quot;lang&quot;: &quot;fas&quot;,
+  &quot;title&quot;: &quot;WEB-DL 1080p S01E05&quot;
+}
+</code></pre>
+<h2 id="مسیرها-و-api">🔌 مسیرها و API<a class="headerlink" href="#مسیرها-و-api" title="Permanent link">#</a></h2>
+<h3 id="nodejs-addonjs-serverjs">Node.js (<code>addon.js</code> / <code>server.js</code>)<a class="headerlink" href="#nodejs-addonjs-serverjs" title="Permanent link">#</a></h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>مسیر</th>
+<th>توضیح</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET /manifest.json</code></td>
+<td>manifest افزونه، تولیدشده توسط <code>getRouter</code> از SDK رسمی</td>
+</tr>
+<tr>
+<td><code>GET /subtitles/movie/{imdbId}.json</code></td>
+<td>زیرنویس فیلم؛ مثال: <code>/subtitles/movie/tt1234567.json</code></td>
+</tr>
+<tr>
+<td><code>GET /subtitles/series/{imdbId}:{season}:{episode}.json</code></td>
+<td>زیرنویس یک قسمت؛ مثال: <code>/subtitles/series/tt1234567:1:3.json</code></td>
+</tr>
+<tr>
+<td><code>GET /download/{subtitleId}</code></td>
+<td>دانلود SRT (استخراج از ZIP + تبدیل encoding + متن Promo)</td>
+</tr>
+<tr>
+<td><code>GET /health</code></td>
+<td>وضعیت سرویس: <code>status</code>، <code>timestamp</code>، <code>uptime</code>، <code>memory</code>، <code>cpuLoad</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="cloudflare-workers-workerjs">Cloudflare Workers (<code>worker.js</code>)<a class="headerlink" href="#cloudflare-workers-workerjs" title="Permanent link">#</a></h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>مسیر</th>
+<th>توضیح</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET /subtitles</code> یا <code>/subtitles/</code></td>
+<td>پاسخ JSON: <code>{ status:'ok', service:'subsource-stremio-addon', runtime:'cloudflare-workers' }</code></td>
+</tr>
+<tr>
+<td><code>GET /subtitles/health</code></td>
+<td>همان پاسخ سلامت (بدون <code>uptime</code> و <code>memory</code>)</td>
+</tr>
+<tr>
+<td><code>GET /subtitles/manifest.json</code></td>
+<td>manifest به‌همراه لوگوی مطلق <code>https://&lt;origin&gt;/subtitles/logo.png</code> و <code>behaviorHints.configurable: false</code></td>
+</tr>
+<tr>
+<td><code>GET /subtitles/logo.png</code></td>
+<td>لوگوی افزونه (از <code>env.ASSETS</code> — پوشهٔ <code>assets/icons</code>)</td>
+</tr>
+<tr>
+<td><code>GET /subtitles/movie/{imdbId}.json</code></td>
+<td>زیرنویس فیلم در Worker</td>
+</tr>
+<tr>
+<td><code>GET /subtitles/series/{imdbId}:{season}:{episode}.json</code></td>
+<td>زیرنویس سریال در Worker</td>
+</tr>
+<tr>
+<td><code>GET /subtitles/download/{subtitleId}</code></td>
+<td>دانلود SRT در Worker</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>هر درخواست غیر از <code>GET</code> در Worker پاسخ <code>405 Method Not Allowed</code> و هر <code>OPTIONS</code> پاسخ <code>204</code> با هدرهای CORS می‌گیرد. در Node نیز مسیر ریشه (<code>GET /</code>) تعریف نشده و <code>404</code> برمی‌گرداند؛ برای بررسی سلامت از <code>/health</code> استفاده کنید.</p>
+</blockquote>
+<h3 id="endpointهای-خارجی-مورد-استفاده-افزونه">Endpointهای خارجی مورد استفادهٔ افزونه<a class="headerlink" href="#endpointهای-خارجی-مورد-استفاده-افزونه" title="Permanent link">#</a></h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>سرویس</th>
+<th>endpoint</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SubSource</td>
+<td><code>GET /api/v1/movies/search?searchType=text&amp;q={name}&amp;season={n}</code></td>
+</tr>
+<tr>
+<td>SubSource</td>
+<td><code>GET /api/v1/movies/search?searchType=imdb&amp;imdb={imdbId}</code></td>
+</tr>
+<tr>
+<td>SubSource</td>
+<td><code>GET /api/v1/subtitles?movieId={id}&amp;language=farsi_persian&amp;sort=rating&amp;limit=100</code></td>
+</tr>
+<tr>
+<td>SubSource</td>
+<td><code>GET /api/v1/subtitles/{subtitleId}/download</code> (ZIP)</td>
+</tr>
+<tr>
+<td>Stremio Cinemeta</td>
+<td><code>GET https://v3-cinemeta.strem.io/meta/series/{imdbId}.json</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>بررسی سریع با curl:</p>
+<pre><code class="language-bash"># Node
+curl http://localhost:7000/manifest.json
+curl http://localhost:7000/health
+curl http://localhost:7000/subtitles/movie/tt1234567.json
+curl http://localhost:7000/subtitles/series/tt1234567:1:3.json
+curl http://localhost:7000/download/1234567 | head
+
+# Workers
+curl http://localhost:8787/subtitles/manifest.json
+curl http://localhost:8787/subtitles/health
+curl http://localhost:8787/subtitles/movie/tt1234567.json
+curl http://localhost:8787/subtitles/series/tt1234567:1:3.json
+</code></pre>
+<h2 id="خلاصه-عملکرد-فنی">⚙️ خلاصهٔ عملکرد فنی<a class="headerlink" href="#خلاصه-عملکرد-فنی" title="Permanent link">#</a></h2>
+<h3 id="معماری-ماژولار">معماری ماژولار<a class="headerlink" href="#معماری-ماژولار" title="Permanent link">#</a></h3>
+<pre><code class="language-text">                    manifest.js (منبع حقیقت: id, version, resources)
+                           │
+        ┌──────────────────┴──────────────────┐
+        │                                     │
+   addon.js (Node/Express)               worker.js (Cloudflare Edge)
+   SDK رسمی + getRouter                  پارس مسیر + fetch + ZIP parser
+        │                                     │
+        ├── subtitlesHandler.js               ├── منطق معادل داخل worker.js
+        ├── downloadProxy.js                  ├── downloadProxy داخل worker.js
+        └── apiClient.js ──► config.js        └── env (API_KEY, SUBTITLE_PROMO_*)
+        │
+server.js (cluster supervisor → addon.js)
+</code></pre>
+<h3 id="جریان-هسته-node">جریان هسته (Node)<a class="headerlink" href="#جریان-هسته-node" title="Permanent link">#</a></h3>
+<pre><code class="language-text">Stremio request → /subtitles/{type}/{id}.json
+   ↓
+getRouter(addonBuilder(manifest).getInterface())   ← از stremio-addon-sdk
+   ↓
+subtitlesHandler({ type, id })
+   ├─ !process.env.API_KEY      → { subtitles: [] } + لاگ خطا
+   ├─ parse id                  → series: tt:season:episode / movie: tt
+   ├─ getMovieId (سریال)        ← Cinemeta → SubSource search (text + season)
+   ├─ fallback                  ← GET /movies/search?searchType=imdb&amp;imdb=...
+   ├─ GET /subtitles?movieId=…&amp;language=farsi_persian&amp;sort=rating&amp;limit=100
+   ├─ filterSeriesSubtitles(...) ← الگوهای S01E05 / S1E5 / 1x05 / SEASON PACK
+   └─ map → { id, url: http://SERVER_IP:PORT/download/{id}, lang:'fas', title }
+   ↓
+GET /download/:token  (downloadProxy)
+   ├─ apiRequest → ZIP (arraybuffer)
+   ├─ adm-zip → اولین entry با پسوند .srt
+   ├─ iconv-lite → UTF-8، در صورت \uFFFD → Windows-1256
+   ├─ addPromoTextToSubtitle(...)  ← بلوک زرد ASS-style، start/end
+   └─ 200 + Content-Type: application/x-subrip; charset=utf-8
+</code></pre>
+<p><strong>جزئیات مهم:</strong></p>
+<ul>
+<li>تطبیق محتوا فقط از طریق SubSource انجام می‌شود؛ جست‌وجوی متنی آزاد یا fallback به slug وجود ندارد.</li>
+<li>افزونه catalog، meta یا stream ارائه نمی‌کند و فقط منبعی از نوع <code>subtitles</code> دارد (<code>catalogs: []</code>).</li>
+<li>SubSource باید <code>success: true</code> و آرایهٔ <code>data</code> با فیلدهای <code>movieId</code> / <code>subtitleId</code> / <code>releaseInfo</code> برگرداند.</li>
+<li>نام فایل‌های داخل ZIP اهمیتی ندارد؛ اولین فایل <code>.srt</code> داخل آرشیو انتخاب می‌شود.</li>
+<li>متن Promo با تگ <code>{\c&amp;H00FFFF00&amp;}</code> نوشته می‌شود؛ پلیرهایی که تگ ASS را نمی‌فهمند آن را به‌صورت خام نشان می‌دهند. برای حذف کامل، <code>SUBTITLE_PROMO_TEXT</code> را خالی بگذارید.</li>
+<li>در صورت هر خطا یا پیدا نشدن نتیجه، پاسخ <code>{ "subtitles": [] }</code> است؛ یعنی استرمیو فقط فهرست خالی نشان می‌دهد و پخش فیلم مختل نمی‌شود.</li>
+<li>retry فقط برای خطاهای شبکه‌ای و <code>429</code>/<code>5xx</code> انجام می‌شود؛ سایر خطاهای <code>4xx</code> بلافاصله fail می‌شوند.</li>
+<li><code>stremio-addon-sdk</code> و <code>express</code> فقط در runtime نود مصرف می‌شوند و در Worker باندل نمی‌شوند (ورودی Worker فایل <code>worker.js</code> است که تنها به <code>manifest.js</code> وابسته است).</li>
+<li><code>wrangler.jsonc</code> با <code>assets.directory: ./assets/icons</code> فایل <code>logo.png</code> را در <code>env.ASSETS</code> می‌گذارد تا <code>/subtitles/logo.png</code> سرو شود.</li>
+</ul>
+<h3 id="وابستگیها">وابستگی‌ها<a class="headerlink" href="#وابستگیها" title="Permanent link">#</a></h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>پکیج</th>
+<th>نقش</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>stremio-addon-sdk</code></td>
+<td><code>addonBuilder</code> و <code>getRouter</code> برای manifest و مسیرهای افزونه</td>
+</tr>
+<tr>
+<td><code>express</code>، <code>cors</code>، <code>dotenv</code></td>
+<td>وب‌سرور، CORS و بارگذاری <code>.env</code></td>
+</tr>
+<tr>
+<td><code>axios</code></td>
+<td>HTTP client در <code>apiClient.js</code></td>
+</tr>
+<tr>
+<td><code>adm-zip</code></td>
+<td>استخراج <code>.srt</code> از آرشیو ZIP (فقط Node)</td>
+</tr>
+<tr>
+<td><code>iconv-lite</code></td>
+<td>تبدیل Windows-1256 به UTF-8</td>
+</tr>
+<tr>
+<td><code>cheerio</code></td>
+<td>پارس HTML (در حال حاضر در مسیر اصلی استفاده نمی‌شود)</td>
+</tr>
+<tr>
+<td><code>https-proxy-agent</code>، <code>axios-https-proxy-fix</code></td>
+<td>پشتیبانی proxy برای شبکه‌های محدود</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="عیبیابی">🐛 عیب‌یابی<a class="headerlink" href="#عیبیابی" title="Permanent link">#</a></h2>
+<h3 id="فهرست-زیرنویس-در-استرمیو-خالی-است">فهرست زیرنویس در استرمیو خالی است<a class="headerlink" href="#فهرست-زیرنویس-در-استرمیو-خالی-است" title="Permanent link">#</a></h3>
+<ul>
+<li><code>API_KEY</code> تنظیم نشده است؛ در لاگ Node این خط را می‌بینید: <code>API Key is missing from .env file.</code> و در لاگ Worker: <code>Subtitle handler error: API_KEY is not configured.</code></li>
+<li>SubSource برای آن <code>imdbId</code> نتیجه‌ای ندارد (<code>Both attempts failed to find a movieId.</code>).</li>
+<li>زیرنویس <code>farsi_persian</code> برای آن <code>movieId</code> وجود ندارد (<code>No Persian subtitles found for movieId: ...</code>).</li>
+<li>برای سریال‌ها، فیلتر فصل و قسمت همهٔ نتایج را حذف کرده است؛ با لاگ <code>Applying detailed filter for patterns: [...]</code> می‌توانید الگوها را بررسی کنید.</li>
+</ul>
+<h3 id="فایل-زیرنویس-دانلود-نمیشود-خطای-۴۰۴-یا-۵۰۰-در-پلیر">فایل زیرنویس دانلود نمی‌شود (خطای ۴۰۴ یا ۵۰۰ در پلیر)<a class="headerlink" href="#فایل-زیرنویس-دانلود-نمیشود-خطای-۴۰۴-یا-۵۰۰-در-پلیر" title="Permanent link">#</a></h3>
+<ul>
+<li><code>SERVER_IP</code> هنوز روی <code>127.0.0.1</code> است، پس URL داخل پاسخ به آدرس لوکال اشاره می‌کند. آن را روی دامنهٔ عمومی تنظیم و افزونه را دوباره نصب یا رفرش کنید.</li>
+<li><code>PORT</code> داخل URL همان پورتی است که سرور روی آن listen کرده است؛ اگر از بیرون با پورت دیگری (مثلاً ۴۴۳ یا ۸۰۸۰) به سرویس می‌رسید، باید همان مسیر را در پراکسی map کنید.</li>
+<li>پاسخ <code>Server configuration error</code> یعنی کلید API روی سرور وجود ندارد (در Worker: secret تنظیم نشده است).</li>
+</ul>
+<h3 id="در-لاگ-read-econnreset-یا-timeout-میبینم">در لاگ <code>read ECONNRESET</code> یا timeout می‌بینم<a class="headerlink" href="#در-لاگ-read-econnreset-یا-timeout-میبینم" title="Permanent link">#</a></h3>
+<p><code>apiClient.js</code> خودش سه بار با backoff تلاش مجدد می‌کند (لاگ: <code>Request failed (ECONNRESET) ... Retrying in 780ms (attempt 1/3)</code>). اگر خطا ادامه داشت:</p>
+<ul>
+<li>مقدار <code>LONG_TIMEOUT</code> را افزایش دهید (مثلاً <code>120000</code>).</li>
+<li>مقدار <code>MAX_SOCKETS</code> را کم کنید تا تعداد اتصال‌های هم‌زمان پایین بیاید (پیش‌فرض آن در <code>config.js</code> برابر <code>50</code> است).</li>
+<li>خروجی شبکه و فایروال را بررسی کنید؛ گاهی پراکسی‌های سازمانی اتصال keep-alive را قطع می‌کنند.</li>
+</ul>
+<h3 id="زیرنویس-فارسی-بههمریخته-یا-بهشکل-ø-نمایش-داده-میشود">زیرنویس فارسی به‌هم‌ریخته یا به‌شکل <code>Ø¶</code> نمایش داده می‌شود<a class="headerlink" href="#زیرنویس-فارسی-بههمریخته-یا-بهشکل-ø-نمایش-داده-میشود" title="Permanent link">#</a></h3>
+<p>یعنی فایل با encoding ویندوز-۱۲۵۶ بوده است. کد خودش <code>\uFFFD</code> را تشخیص می‌دهد و دوباره encode می‌کند (لاگ: <code>Re-encoded subtitle from Windows-1256 to UTF-8 for: ...</code>). اگر باز هم خراب بود، احتمالاً فایل نه UTF-8 با BOM بوده و نه cp1256، و باید الگوریتم تشخیص encoding در <code>downloadProxy.js</code> گسترش پیدا کند.</p>
+<h3 id="متن-promo-نمایش-داده-نمیشود">متن Promo نمایش داده نمی‌شود<a class="headerlink" href="#متن-promo-نمایش-داده-نمیشود" title="Permanent link">#</a></h3>
+<ul>
+<li><code>SUBTITLE_PROMO_TEXT</code> خالی گذاشته شده است.</li>
+<li><code>SUBTITLE_PROMO_POSITION=end</code> است و زیرنویس فقط یک بلوک کوتاه دارد؛ برای بررسی سریع، مقدار <code>start</code> را امتحان کنید.</li>
+<li>پلیر تگ <code>{\c...}</code> را پشتیبانی نمی‌کند؛ متن نمایش داده می‌شود ولی بدون رنگ.</li>
+</ul>
+<h3 id="لوگو-در-استرمیو-نمایش-داده-نمیشود">لوگو در استرمیو نمایش داده نمی‌شود<a class="headerlink" href="#لوگو-در-استرمیو-نمایش-داده-نمیشود" title="Permanent link">#</a></h3>
+<ul>
+<li><strong>Node:</strong> <code>manifest.js</code> هیچ فیلد <code>logo</code> ندارد و استرمیو از آیکن پیش‌فرض استفاده می‌کند. برای افزودن لوگو، فیلد <code>logo</code> را با یک URL مطلق به <code>manifest.js</code> اضافه کنید.</li>
+<li><strong>Workers:</strong> لوگو از <code>https://&lt;origin&gt;/subtitles/logo.png</code> سرو می‌شود؛ مطمئن شوید assetها با deploy آپلود شده‌اند (<code>wrangler deploy</code> پوشهٔ <code>assets/icons</code> را می‌فرستد). اگر <code>404</code> گرفتید، binding <code>ASSETS</code> و <code>assets.directory</code> را در <code>wrangler.jsonc</code> بررسی کنید.</li>
+</ul>
+<h3 id="خطای-worker-died-یا-بالا-نیامدن-cluster">خطای <code>Worker died</code> یا بالا نیامدن cluster<a class="headerlink" href="#خطای-worker-died-یا-بالا-نیامدن-cluster" title="Permanent link">#</a></h3>
+<ul>
+<li><code>npm start</code> با <code>CLUSTER_ENABLED=true</code> به تعداد هسته‌ها worker می‌سازد؛ اگر رم کم است، <code>WORKER_COUNT=2</code> را تنظیم کنید.</li>
+<li>master پس از از کار افتادن یک worker، یک ثانیه صبر می‌کند و دوباره fork می‌کند (<code>🔄 New worker ... started</code>)؛ برای دیدن علت اصلی، لاگ همان worker را ببینید.</li>
+<li>برای توسعه از <code>npm run dev</code> (تک‌پروسه) استفاده کنید تا stack trace کامل و بدون نویز داشته باشید.</li>
+</ul>
+<h3 id="wrangler-deploy-در-github-actions-شکست-میخورد"><code>wrangler deploy</code> در GitHub Actions شکست می‌خورد<a class="headerlink" href="#wrangler-deploy-در-github-actions-شکست-میخورد" title="Permanent link">#</a></h3>
+<ul>
+<li>آیا <code>CLOUDFLARE_API_TOKEN</code>، <code>CLOUDFLARE_ACCOUNT_ID</code> و <code>SUBSOURCE_API_KEY</code> در repository secrets تنظیم شده‌اند؟ (گام دوم با <code>test -n "$SUBSOURCE_API_KEY"</code> صراحتاً fail می‌شود.)</li>
+<li>اگر تغییرات شما فایل‌های trigger را لمس نکرده باشد، workflow اجرا نمی‌شود؛ از <strong>Run workflow</strong> (<code>workflow_dispatch</code>) دستی استفاده کنید.</li>
+<li>نسخهٔ Wrangler در workflow روی <code>4.128.0</code> پین شده است؛ لاگ Action را بررسی کنید.</li>
+</ul>
+<h2 id="مشارکت">🤝 مشارکت<a class="headerlink" href="#مشارکت" title="Permanent link">#</a></h2>
+<p>Pull Requestها و Issueها برای بهبود تطبیق فصل و قسمت، سازگاری با تغییرات API سابسورس، افزودن تست و بهبود مستندات با آغوش باز پذیرفته می‌شوند.</p>
+<p>پیش از تغییر منطق استخراج، بخش‌های «نقشهٔ ماژول‌ها» و «لایهٔ جست‌وجوی ترکیبی» در <code>docs/DOCUMENTATION.md</code> را مطالعه کنید.</p>
+<h2 id="مجوز">📄 مجوز<a class="headerlink" href="#مجوز" title="Permanent link">#</a></h2>
+<p>مقدار <code>license</code> در <code>package.json</code> برابر <strong>Apache License 2.0</strong> است.</p>
+<hr />
+<p>ساخته شده با ❤️ برای جامعهٔ فارسی‌زبان Stremio — <a href="/support/">حمایت از ادامهٔ مسیر</a></p>
+        </div>
+    </article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">ایجاد شده توسط <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.2">Hugo</a> | پوسته - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/fa/">علی رستمی</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="برگشت به بالا">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"کپی به کلیپ بورد","maxShownLines":50}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

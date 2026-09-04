@@ -66,6 +66,7 @@ PROJECTS = [
         "subtitle": "افزونه غیررسمی Stremio",
         "icon": "/images/projects/persian-subtitles.png",
         "url": "https://github.com/alirostami01/Persian-Subtitles",
+        "docs": "/Persian-Subtitles/",
         "description": (
             "Persian Subtitles یک افزونه غیررسمی برای Stremio است که با دریافت شناسه IMDb "
             "از استرمیو، فیلم یا سریال متناظر را در SubSource پیدا می‌کند و زیرنویس‌های فارسی "
@@ -297,6 +298,11 @@ STYLE = """
         color: #2d96bd;
     }
     [theme=dark] .support-page .content .project-tags span { color: #55bde2; }
+    .support-page .content .project-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: .3rem 1.1rem;
+    }
     .support-page .content a.project-link {
         display: inline-flex;
         align-items: center;
@@ -412,6 +418,12 @@ def wallet_html(w: dict) -> str:
 
 def project_html(p: dict) -> str:
     tags = "".join(f"<span>{t}</span>" for t in p["tags"])
+    docs = (
+        f'<a class="project-link" href="{p["docs"]}">'
+        '<i class="fas fa-book fa-fw" aria-hidden="true"></i> مستندات فارسی</a>'
+        if p.get("docs")
+        else ""
+    )
     return f"""<div class="support-card project-card">
             <img src="{p['icon']}" alt="آیکون پروژه {p['title']}" width="80" height="80" loading="lazy" decoding="async">
             <div class="project-body">
@@ -419,7 +431,7 @@ def project_html(p: dict) -> str:
                 <p class="project-sub">{p['subtitle']}</p>
                 <p>{p['description']}</p>
                 <div class="project-tags">{tags}</div>
-                <a class="project-link" href="{p['url']}" target="_blank" rel="noopener noreferrer"><i class="fab fa-github fa-fw" aria-hidden="true"></i> مشاهده در گیت‌هاب</a>
+                <div class="project-links"><a class="project-link" href="{p['url']}" target="_blank" rel="noopener noreferrer"><i class="fab fa-github fa-fw" aria-hidden="true"></i> مشاهده در گیت‌هاب</a>{docs}</div>
             </div>
         </div>"""
 

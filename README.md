@@ -30,6 +30,22 @@ pip install segno
 python3 scripts/generate-wallet-qr.py     # -> images/donate/*.png و *.svg
 ```
 
+## صفحات مستندات پروژه‌ها
+
+محتوا در `content/<slug>.md` نوشته می‌شود و با تم اصلی سایت رندر می‌شود:
+
+| آدرس | منبع |
+|---|---|
+| `/Persian-Subtitles/` (canonical) | `content/persian-subtitles.md` |
+| `/persian-subtitles/` (alias) | همان فایل |
+
+```bash
+pip install markdown
+cd scripts && python3 build-project-page.py
+```
+
+پوستهٔ مشترک (هدر، فوتر، اسکریپت‌ها) در `scripts/theme.py` است.
+
 ### آیکون پروژه‌ها
 
 آیکون‌ها در `images/projects/<slug>.png` قرار می‌گیرند

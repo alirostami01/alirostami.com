@@ -53,6 +53,15 @@ python3 scripts/stamp-qr-cache.py
 python3 scripts/verify-wallet-qr.py
 ```
 
+### لینک فارسی روی صفحات انگلیسی
+
+لینک «کمک شما» (با آیکون قلب) کنار منوی Support در صفحهٔ اصلی و روی صفحهٔ
+support انگلیسی، که کاربر را به `/support/` می‌برد:
+
+```bash
+python3 scripts/add-fa-support-link.py    # idempotent
+```
+
 ### سرور پیش‌نمایش محلی
 
 ```bash

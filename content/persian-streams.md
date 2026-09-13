@@ -23,9 +23,7 @@ https://stremio.alirostami.com/streams/manifest.json
 
 **روش پیشنهادی — نصب مستقیم با لینک `stremio://`:**
 
-```text
-stremio://stremio.alirostami.com/streams/manifest.json
-```
+[افزودن به Stremio](stremio://stremio.alirostami.com/streams/manifest.json)
 
 لینک بالا را در دستگاهی که Stremio روی آن نصب است باز کنید تا Stremio برای نصب افزونه باز شود.
 

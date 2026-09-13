@@ -33,6 +33,7 @@ PAGES = [
         ),
         "icon": "/images/projects/persian-subtitles.png",
         "repo": "https://github.com/alirostami01/Persian-Subtitles",
+        "stremio": "stremio://stremio.alirostami.com/subtitles/manifest.json",
     },
     {
         "source": "persian-streams.md",
@@ -45,6 +46,7 @@ PAGES = [
         ),
         "icon": "/images/projects/persian-streams.png",
         "repo": "https://github.com/alirostami01/Persian-Streams",
+        "stremio": "stremio://stremio.alirostami.com/streams/manifest.json",
     },
 ]
 
@@ -240,6 +242,7 @@ def build(spec: dict) -> str:
         </div>
         <div class="docs-actions">
             <a class="primary" href="/support/"><i class="fas fa-heart fa-fw" aria-hidden="true"></i> حمایت از پروژه</a>
+            <a class="primary" href="{spec['stremio']}"><i class="fas fa-download fa-fw" aria-hidden="true"></i> افزودن به Stremio</a>
             <a href="{spec['repo']}" target="_blank" rel="noopener noreferrer"><i class="fab fa-github fa-fw" aria-hidden="true"></i> مخزن گیت‌هاب</a>
         </div>
         <nav class="docs-toc" aria-label="فهرست مطالب">

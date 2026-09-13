@@ -23,9 +23,7 @@ https://stremio.alirostami.com/subtitles/manifest.json
 
 **روش پیشنهادی — با لینک `stremio://`:**
 
-```text
-stremio://stremio.alirostami.com/subtitles/manifest.json
-```
+[افزودن به Stremio](stremio://stremio.alirostami.com/subtitles/manifest.json)
 
 این لینک را در محیطی که Stremio روی آن نصب است باز کنید تا افزونه مستقیماً برای نصب به Stremio منتقل شود.
 

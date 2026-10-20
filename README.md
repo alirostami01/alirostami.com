@@ -78,6 +78,8 @@ python3 scripts/devserver.py 8000         # بدون کش، همیشه فایل 
 | `/persian-subtitles/` (alias) | همان فایل |
 | `/Persian-Streams/` (canonical) | `content/persian-streams.md` |
 | `/persian-streams/` (alias) | همان فایل |
+| `/aima-4e-persian/` (canonical) | `content/aima-4e-persian.md` |
+| `/AIMA-4E-Persian/` (alias) | همان فایل |
 
 ```bash
 pip install markdown
@@ -89,7 +91,7 @@ cd scripts && python3 build-project-page.py
 ### آیکون پروژه‌ها
 
 آیکون‌ها در `images/projects/<slug>.png` قرار می‌گیرند
-(`persian-subtitles`، `persian-streams`). برای آماده‌سازی یک لوگوی جدید:
+(`persian-subtitles`، `persian-streams`، `aima-4e-persian`). برای آماده‌سازی یک لوگوی جدید:
 
 ```bash
 pip install pillow

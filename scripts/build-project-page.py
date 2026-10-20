@@ -48,6 +48,46 @@ PAGES = [
         "repo": "https://github.com/alirostami01/Persian-Streams",
         "stremio": "stremio://stremio.alirostami.com/streams/manifest.json",
     },
+    {
+        "source": "aima-4e-persian.md",
+        "path": "aima-4e-persian",
+        "aliases": ["AIMA-4E-Persian", "aima-4e-persian.html"],
+        "title": "هوش مصنوعی: یک رویکرد مدرن — ترجمهٔ فارسی (AIMA 4e)",
+        "description": (
+            "ترجمه و آماده‌سازی فارسی کتاب هوش مصنوعی: یک رویکرد مدرن (ویرایش چهارم) "
+            "اثر استوارت راسل و پیتر نورویگ؛ شامل پیشگفتار و ۲۸ فصل، نسخهٔ کامل PDF، کتابچه‌های HTML و فایل‌های Markdown."
+        ),
+        "subtitle": "ترجمه و آماده‌سازی فارسی ویرایش چهارم (AIMA 4e) · استوارت راسل و پیتر نورویگ",
+        "icon": "/images/projects/aima-4e-persian.png",
+        "repo": "https://github.com/alirostami01/aima-4e-persian",
+        "actions": [
+            {
+                "label": "حمایت از پروژه",
+                "href": "/support/",
+                "icon": "fas fa-heart",
+                "primary": True,
+            },
+            {
+                "label": "دانلود کامل کتاب (PDF)",
+                "href": "https://github.com/alirostami01/aima-4e-persian/raw/main/pdf/aima-4e-persian.pdf",
+                "icon": "fas fa-file-pdf",
+                "primary": True,
+                "external": True,
+            },
+            {
+                "label": "مخزن گیت‌هاب",
+                "href": "https://github.com/alirostami01/aima-4e-persian",
+                "icon": "fab fa-github",
+                "external": True,
+            },
+            {
+                "label": "نسخهٔ Markdown",
+                "href": "https://github.com/alirostami01/aima-4e-persian/tree/main/markdown",
+                "icon": "fas fa-book-open",
+                "external": True,
+            },
+        ],
+    },
 ]
 
 STYLE = """
@@ -233,17 +273,31 @@ def build(spec: dict) -> str:
     toc_html = converter.toc
 
     canonical = f"{SITE}/{spec['path']}/"
+    subtitle = spec.get("subtitle", "مستندات پروژه · افزونهٔ غیررسمی Stremio")
+    if "actions" in spec:
+        action_links = []
+        for a in spec["actions"]:
+            cls = "primary" if a.get("primary") else ""
+            target = ' target="_blank" rel="noopener noreferrer"' if a.get("external") else ""
+            action_links.append(
+                f'<a class="{cls}" href="{a["href"]}"{target}>'
+                f'<i class="{a["icon"]} fa-fw" aria-hidden="true"></i> {a["label"]}</a>'
+            )
+        actions_html = "\n            ".join(action_links)
+    else:
+        actions_html = f"""<a class="primary" href="/support/"><i class="fas fa-heart fa-fw" aria-hidden="true"></i> حمایت از پروژه</a>
+            <a class="primary" href="{spec['stremio']}"><i class="fas fa-download fa-fw" aria-hidden="true"></i> افزودن به Stremio</a>
+            <a href="{spec['repo']}" target="_blank" rel="noopener noreferrer"><i class="fab fa-github fa-fw" aria-hidden="true"></i> مخزن گیت‌هاب</a>"""
+
     hero = f"""<div class="docs-hero">
             <img src="{spec['icon']}" alt="لوگوی {heading}" width="84" height="84" decoding="async">
             <div>
                 <h1 class="single-title animate__animated animate__flipInX">{heading}</h1>
-                <p class="docs-hero-sub">مستندات پروژه · افزونهٔ غیررسمی Stremio</p>
+                <p class="docs-hero-sub">{subtitle}</p>
             </div>
         </div>
         <div class="docs-actions">
-            <a class="primary" href="/support/"><i class="fas fa-heart fa-fw" aria-hidden="true"></i> حمایت از پروژه</a>
-            <a class="primary" href="{spec['stremio']}"><i class="fas fa-download fa-fw" aria-hidden="true"></i> افزودن به Stremio</a>
-            <a href="{spec['repo']}" target="_blank" rel="noopener noreferrer"><i class="fab fa-github fa-fw" aria-hidden="true"></i> مخزن گیت‌هاب</a>
+            {actions_html}
         </div>
         <nav class="docs-toc" aria-label="فهرست مطالب">
             <div class="docs-toc-title"><i class="fas fa-list-ul fa-fw" aria-hidden="true"></i> فهرست مطالب</div>
@@ -271,10 +325,13 @@ def main() -> None:
     for spec in PAGES:
         html = build(spec)
         for rel in [spec["path"], *spec.get("aliases", [])]:
-            out = ROOT / rel / "index.html"
+            if rel.endswith(".html"):
+                out = ROOT / rel
+            else:
+                out = ROOT / rel / "index.html"
             out.parent.mkdir(parents=True, exist_ok=True)
             out.write_text(html, encoding="utf-8")
-            print(f"wrote {rel}/index.html ({out.stat().st_size} bytes)")
+            print(f"wrote {rel} ({out.stat().st_size} bytes)")
 
 
 if __name__ == "__main__":

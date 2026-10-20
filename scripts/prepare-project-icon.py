@@ -10,7 +10,7 @@ It makes the flat white/solid background around a round logo transparent,
 squares + resizes the image to 256x256 and writes it to
 images/projects/<slug>.png — exactly where the support page expects it.
 
-Valid slugs: persian-subtitles, persian-streams
+Valid slugs: persian-subtitles, persian-streams, aima-4e-persian
 (then run: python3 scripts/build-support-page.py)
 """
 

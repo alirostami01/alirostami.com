@@ -87,6 +87,19 @@ PROJECTS = [
         ),
         "tags": ["Stremio", "پخش آنلاین", "لینک مستقیم", "منبع ایرانی"],
     },
+    {
+        "title": "AIMA 4e Persian",
+        "subtitle": "ترجمه و آماده‌سازی فارسی کتاب هوش مصنوعی",
+        "icon": "/images/projects/aima-4e-persian.png",
+        "url": "https://github.com/alirostami01/aima-4e-persian",
+        "docs": "/aima-4e-persian/",
+        "description": (
+            "پروژهٔ متن‌باز برای ترجمه، تدوین و ارائهٔ فارسی کتاب «هوش مصنوعی: یک رویکرد مدرن» "
+            "(ویرایش چهارم) اثر استوارت راسل و پیتر نورویگ؛ شامل پیشگفتار و ۲۸ فصل در قالب‌های "
+            "Markdown، نسخهٔ وب HTML و کتاب کامل PDF."
+        ),
+        "tags": ["هوش مصنوعی", "AIMA", "کتاب مرجع", "ترجمه فارسی", "PDF"],
+    },
 ]
 
 WHY = [

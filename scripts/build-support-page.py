@@ -394,7 +394,7 @@ def header(active_home: str = "/fa/") -> str:
 
 FOOTER = """<footer class="footer">
         <div class="footer-container"><div class="footer-line">ایجاد شده توسط <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.2">Hugo</a> | پوسته - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/fa/">علی رستمی</a></span></div>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i>2022 - <span itemprop="copyrightYear">2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/fa/">علی رستمی</a></span></div>
         </div>
     </footer></div>"""
 
@@ -495,13 +495,13 @@ def build(canonical: str) -> str:
         <title>حمایت از پروژه‌های من - علی رستمی</title><meta name="Description" content="حمایت مالی و غیرمالی از پروژه‌های متن‌باز علی رستمی؛ درگاه پرداخت ریالی و کیف‌پول‌های ارز دیجیتال به همراه کد QR."><meta property="og:title" content="حمایت از پروژه‌های من" />
 <meta property="og:description" content="حمایت مالی و غیرمالی از پروژه‌های متن‌باز علی رستمی؛ درگاه پرداخت ریالی و کیف‌پول‌های ارز دیجیتال به همراه کد QR." />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="{CANONICAL}" /><meta property="og:image" content="https://alirostami.com/images/Ali.jpg" />
+<meta property="og:url" content="{CANONICAL}" /><meta property="og:image" content="https://www.alirostami.com/images/Ali.jpg" />
         <meta property="og:image:alt" content="Ali Rostami - Senior Software Architect" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="1200" />
 <meta property="og:site_name" content="علی رستمی" />
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://alirostami.com/images/Ali.jpg"/>
+<meta name="twitter:image" content="https://www.alirostami.com/images/Ali.jpg"/>
 <meta name="twitter:title" content="حمایت از پروژه‌های من"/>
 <meta name="twitter:description" content="حمایت مالی و غیرمالی از پروژه‌های متن‌باز علی رستمی."/>
 <meta name="application-name" content="Ali Rostami">
@@ -511,7 +511,7 @@ def build(canonical: str) -> str:
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="{canonical}" /><link rel="alternate" hreflang="fa" href="{CANONICAL}" /><link rel="alternate" hreflang="en" href="https://alirostami.com/en/support.html" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
-    {{
+{{
         "@context": "http://schema.org",
         "@type": "WebPage",
         "url": "{CANONICAL}",
@@ -520,7 +520,7 @@ def build(canonical: str) -> str:
         "description": "حمایت مالی و غیرمالی از پروژه‌های متن‌باز علی رستمی.",
         "license": "Everything is mine"
     }}
-    </script><style>{STYLE}</style></head>
+</script><style>{STYLE}</style></head>
     <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         {header()}<main class="main">

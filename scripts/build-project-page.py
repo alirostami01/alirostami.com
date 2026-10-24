@@ -87,11 +87,11 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
         <meta property="og:type" content="book" />
         <meta property="og:url" content="https://alirostami.com/fundamentals-of-software-architecture-persian/" />
         <meta property="og:site_name" content="علی رستمی" />
-        <meta property="og:image" content="https://alirostami.com/images/projects/fundamentals-of-software-architecture-persian.png" />
+        <meta property="og:image" content="https://www.alirostami.com/images/projects/fundamentals-of-software-architecture-persian.png" />
         <meta name="twitter:card" content="summary_large_image"/>
         <meta name="twitter:title" content="مبانی معماری نرم‌افزار — ترجمهٔ فارسی"/>
         <meta name="twitter:description" content="ترجمه فارسی ویرایش دوم کتاب مبانی معماری نرم‌افزار اثر مارک ریچاردز و نیل فورد با ۲۷ فصل و کتابخوان آنلاین تعاملی."/>
-        <meta name="twitter:image" content="https://alirostami.com/images/projects/fundamentals-of-software-architecture-persian.png"/>
+        <meta name="twitter:image" content="https://www.alirostami.com/images/projects/fundamentals-of-software-architecture-persian.png"/>
         <meta name="application-name" content="Ali Rostami">
         <meta name="apple-mobile-web-app-title" content="Ali Rostami">
         <meta name="theme-color" content="#ffffff">
@@ -110,7 +110,7 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript>
 
         <script type="application/ld+json">
-        {{
+{{
           "@context": "https://schema.org",
           "@graph": [
             {{
@@ -125,12 +125,12 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
               "translator": {{
                 "@type": "Person",
                 "name": "علی رستمی",
-                "url": "https://alirostami.com/"
+                "url": "https://www.alirostami.com/"
               }},
               "inLanguage": "fa",
               "bookFormat": "https://schema.org/EBook",
               "numberOfPages": 650,
-              "datePublished": "2025",
+              "datePublished": "2025-01-01T12:00:00+03:30",
               "url": "https://alirostami.com/fundamentals-of-software-architecture-persian/",
               "image": "https://alirostami.com/images/projects/fundamentals-of-software-architecture-persian.png",
               "description": "ترجمه و آماده‌سازی فارسی ویرایش دوم کتاب مبانی معماری نرم‌افزار اثر مارک ریچاردز و نیل فورد؛ شامل ۲۷ فصل در ۳ بخش جامع، پیوست، واژه‌نامه تخصصی و نسخه PDF ۶۵۰ صفحه‌ای."
@@ -161,7 +161,7 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
             }}
           ]
         }}
-        </script>
+</script>
         <style>
     /* keep the theme header/footer in their original LTR layout */
     #header-desktop, #header-mobile, .footer {{ direction: ltr; }}
@@ -586,7 +586,7 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
 </article></div>
             </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">ایجاد شده توسط <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.2">Hugo</a> | پوسته - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/fa/" target="_blank">علی رستمی</a></span></div>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i>2022 - <span itemprop="copyrightYear">2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/fa/" target="_blank">علی رستمی</a></span></div>
         </div>
     </footer></div>
 

@@ -62,6 +62,34 @@ WALLETS = [
 
 PROJECTS = [
     {
+        "title": "Fundamentals of Software Architecture",
+        "subtitle": "ترجمه و آماده‌سازی فارسی کتاب مبانی معماری نرم‌افزار (ویرایش دوم، ۲۰۲۵)",
+        "icon": "/images/projects/fundamentals-of-software-architecture-persian.png",
+        "url": "https://github.com/alirostami01/Fundamentals-of-Software-Architecture_-A-Modern-Engineering-Approach",
+        "docs": "/fundamentals-of-software-architecture-persian/",
+        "reader": "/software-architecture/",
+        "description": (
+            "پروژهٔ جامع و متن‌باز برای ترجمه، تدوین و ارائهٔ رایگان کتاب «مبانی معماری نرم‌افزار: "
+            "رویکردی مهندسی و مدرن» (ویرایش دوم، ۲۰۲۵) اثر مارک ریچاردز و نیل فورد؛ شامل ۲۷ فصل، "
+            "پیوست پرسش‌های بحث، ۲۴۱ تصویر و دیاگرام، نسخهٔ کامل PDF (۶۵۰ صفحه) و سامانهٔ مطالعهٔ آنلاین با سایدبار هوشمند."
+        ),
+        "tags": ["معماری نرم‌افزار", "میکروسرویس‌ها", "کتاب مرجع", "ترجمه فارسی", "PDF"],
+    },
+    {
+        "title": "AIMA 4e Persian",
+        "subtitle": "ترجمه و آماده‌سازی فارسی کتاب هوش مصنوعی",
+        "icon": "/images/projects/aima-4e-persian.png",
+        "url": "https://github.com/alirostami01/aima-4e-persian",
+        "docs": "/aima-4e-persian/",
+        "reader": "/aima-4e/",
+        "description": (
+            "پروژهٔ متن‌باز برای ترجمه، تدوین و ارائهٔ فارسی کتاب «هوش مصنوعی: یک رویکرد مدرن» "
+            "(ویرایش چهارم) اثر استوارت راسل و پیتر نورویگ؛ شامل پیشگفتار و ۲۸ فصل در قالب‌های "
+            "Markdown، نسخهٔ وب HTML و کتاب کامل PDF."
+        ),
+        "tags": ["هوش مصنوعی", "AIMA", "کتاب مرجع", "ترجمه فارسی", "PDF"],
+    },
+    {
         "title": "Persian Subtitles",
         "subtitle": "افزونه غیررسمی Stremio",
         "icon": "/images/projects/persian-subtitles.png",
@@ -86,19 +114,6 @@ PROJECTS = [
             "لینک‌های مستقیم پخش/دانلود را به Stremio برمی‌گرداند."
         ),
         "tags": ["Stremio", "پخش آنلاین", "لینک مستقیم", "منبع ایرانی"],
-    },
-    {
-        "title": "AIMA 4e Persian",
-        "subtitle": "ترجمه و آماده‌سازی فارسی کتاب هوش مصنوعی",
-        "icon": "/images/projects/aima-4e-persian.png",
-        "url": "https://github.com/alirostami01/aima-4e-persian",
-        "docs": "/aima-4e-persian/",
-        "description": (
-            "پروژهٔ متن‌باز برای ترجمه، تدوین و ارائهٔ فارسی کتاب «هوش مصنوعی: یک رویکرد مدرن» "
-            "(ویرایش چهارم) اثر استوارت راسل و پیتر نورویگ؛ شامل پیشگفتار و ۲۸ فصل در قالب‌های "
-            "Markdown، نسخهٔ وب HTML و کتاب کامل PDF."
-        ),
-        "tags": ["هوش مصنوعی", "AIMA", "کتاب مرجع", "ترجمه فارسی", "PDF"],
     },
 ]
 
@@ -349,7 +364,7 @@ def header(active_home: str = "/fa/") -> str:
             <a href="{active_home}" title="فارسی">Ali Rostami</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a href="/fa/" class="menu-item" title="خانه">خانه</a><a href="/support/" class="menu-item active" title="حمایت">حمایت</a><a href="javascript:void(0);" class="menu-item theme-switch" title="تغییر ظاهر">
+            <div class="menu-inner"><a href="/fa/" class="menu-item" title="خانه">خانه</a><a href="/software-architecture/" class="menu-item" title="مطالعه آنلاین کتاب معماری نرم‌افزار"><i class="fas fa-cubes fa-fw" aria-hidden="true"></i> کتاب معماری نرم‌افزار</a><a href="/aima-4e/" class="menu-item" title="کتاب هوش مصنوعی">کتاب هوش مصنوعی</a><a href="/support/" class="menu-item active" title="حمایت">حمایت</a><a href="javascript:void(0);" class="menu-item theme-switch" title="تغییر ظاهر">
                     <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a><a href="javascript:void(0);" class="menu-item language" title="انتخاب زبان">
                     <i class="fa fa-globe" aria-hidden="true"></i>
@@ -367,7 +382,7 @@ def header(active_home: str = "/fa/") -> str:
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a href="/fa/" class="menu-item" title="خانه">خانه</a><a href="/support/" class="menu-item active" title="حمایت">حمایت</a><a href="javascript:void(0);" class="menu-item theme-switch" title="تغییر ظاهر">
+        <div class="menu" id="menu-mobile"><a href="/fa/" class="menu-item" title="خانه">خانه</a><a href="/software-architecture/" class="menu-item" title="مطالعه آنلاین کتاب معماری نرم‌افزار"><i class="fas fa-cubes fa-fw" aria-hidden="true"></i> کتاب معماری نرم‌افزار</a><a href="/aima-4e/" class="menu-item" title="کتاب هوش مصنوعی">کتاب هوش مصنوعی</a><a href="/support/" class="menu-item active" title="حمایت">حمایت</a><a href="javascript:void(0);" class="menu-item theme-switch" title="تغییر ظاهر">
                 <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a><a href="javascript:void(0);" class="menu-item" title="انتخاب زبان">
                     <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
@@ -438,6 +453,12 @@ def project_html(p: dict) -> str:
         if p.get("docs")
         else ""
     )
+    reader = (
+        f'<a class="project-link" href="{p["reader"]}">'
+        '<i class="fas fa-book-reader fa-fw" aria-hidden="true"></i> مطالعه آنلاین</a>'
+        if p.get("reader")
+        else ""
+    )
     return f"""<div class="support-card project-card">
             <img src="{p['icon']}" alt="آیکون پروژه {p['title']}" width="80" height="80" loading="lazy" decoding="async">
             <div class="project-body">
@@ -445,7 +466,7 @@ def project_html(p: dict) -> str:
                 <p class="project-sub">{p['subtitle']}</p>
                 <p>{p['description']}</p>
                 <div class="project-tags">{tags}</div>
-                <div class="project-links"><a class="project-link" href="{p['url']}" target="_blank" rel="noopener noreferrer"><i class="fab fa-github fa-fw" aria-hidden="true"></i> مشاهده در گیت‌هاب</a>{docs}</div>
+                <div class="project-links"><a class="project-link" href="{p['url']}" target="_blank" rel="noopener noreferrer"><i class="fab fa-github fa-fw" aria-hidden="true"></i> مشاهده در گیت‌هاب</a>{docs}{reader}</div>
             </div>
         </div>"""
 

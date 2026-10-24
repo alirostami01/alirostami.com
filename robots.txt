@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://alirostami.ir/sitemap.xml
+Sitemap: https://alirostami.ir/fa/sitemap.xml

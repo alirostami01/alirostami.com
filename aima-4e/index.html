@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index, follow">
+    <script>
+        // Prevent iframe recursion: index.html should never be inside an iframe!
+        if (window.self !== window.top) {
+            window.top.location = window.location.href;
+        }
+    </script>
+    <title>هوش مصنوعی: رویکردی نوین (AIMA 4e) — مطالعه آنلاین با فهرست و سایدبار</title>
+    <meta name="Description" content="نسخهٔ وب و مطالعهٔ آنلاین ترجمهٔ فارسی کتاب هوش مصنوعی: یک رویکرد مدرن (ویرایش چهارم) اثر استوارت راسل و پیتر نورویگ با سایدبار، فهرست کامل فصول و زیرفصل‌ها.">
+    <meta property="og:title" content="هوش مصنوعی: رویکردی نوین (AIMA 4e) — مطالعه آنلاین کتاب">
+    <meta property="og:description" content="مطالعه آنلاین ترجمه فارسی کتاب هوش مصنوعی ویرایش چهارم تالیف راسل و نورویگ با سایدبار کامل، فصول ۲۸گانه و جستجوی مباحث.">
+    <meta property="og:type" content="book">
+    <meta property="og:url" content="https://alirostami.ir/aima-4e/">
+    <link rel="canonical" href="https://alirostami.ir/aima-4e/">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Book",
+                "@id": "https://alirostami.ir/aima-4e/#book",
+                "name": "هوش مصنوعی: رویکردی نوین (ویرایش چهارم)",
+                "alternateName": "Artificial Intelligence: A Modern Approach (AIMA 4th Edition)",
+                "author": [
+                    {"@type": "Person", "name": "Stuart Russell"},
+                    {"@type": "Person", "name": "Peter Norvig"}
+                ],
+                "translator": {
+                    "@type": "Person",
+                    "name": "علی رستمی",
+                    "url": "https://alirostami.ir/"
+                },
+                "inLanguage": "fa",
+                "bookFormat": "https://schema.org/EBook",
+                "url": "https://alirostami.ir/aima-4e/",
+                "description": "نسخه وب و مطالعه آنلاین ترجمه کامل فارسی کتاب هوش مصنوعی: رویکردی نوین ویرایش چهارم تالیف راسل و نورویگ با سایدبار هوشمند، فهرست فصول و امکان جستجو."
+            },
+            {
+                "@type": "BreadcrumbList",
+                "@id": "https://alirostami.ir/aima-4e/#breadcrumb",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "خانه",
+                        "item": "https://alirostami.ir/fa/"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "پروژه‌ها",
+                        "item": "https://alirostami.ir/fa/#projects"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": "مطالعه آنلاین کتاب هوش مصنوعی",
+                        "item": "https://alirostami.ir/aima-4e/"
+                    }
+                ]
+            }
+        ]
+    }
+    </script>
+    <style>
+        :root {
+            --sidebar-width: 340px;
+            --top-header-height: 56px;
+            --reader-bg: #f8fafc;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --accent: #2563eb;
+            --accent-soft: #eff6ff;
+            --wine: #8b2942;
+        }
+        [theme=dark] {
+            --reader-bg: #0b1120;
+            --card-bg: #1e293b;
+            --border-color: #334155;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-soft: rgba(56, 189, 248, 0.12);
+            --wine: #fb7185;
+        }
+        * { box-sizing: border-box; }
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            font-family: Vazirmatn, "Segoe UI", Tahoma, sans-serif;
+            background-color: var(--reader-bg);
+            color: var(--text-main);
+            direction: rtl;
+        }
+
+        /* Header */
+        .reader-header {
+            height: var(--top-header-height);
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 40;
+        }
+        .header-brand-group {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+        }
+        .btn-home-return {
+            display: inline-flex;
+            align-items: center;
+            gap: .35rem;
+            padding: .35rem .65rem;
+            border-radius: 6px;
+            font-size: .82rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--accent);
+            background: var(--accent-soft);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            transition: all .2s;
+            white-space: nowrap;
+        }
+        .btn-home-return:hover {
+            background: var(--accent);
+            color: #fff;
+        }
+        .brand-divider {
+            color: var(--text-muted);
+            opacity: .4;
+            font-size: .9rem;
+            margin: 0 .15rem;
+        }
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 700;
+            font-size: 1.02rem;
+            white-space: nowrap;
+        }
+        .header-brand .book-icon {
+            color: var(--accent);
+            font-size: 1.25rem;
+        }
+        .header-brand-badge {
+            font-size: .75rem;
+            font-weight: 600;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: .15rem .45rem;
+            border-radius: 4px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            letter-spacing: .5px;
+            margin-right: .3rem;
+        }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+        }
+        .btn-header {
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem;
+            padding: .4rem .75rem;
+            border-radius: 6px;
+            font-size: .85rem;
+            text-decoration: none;
+            color: var(--text-muted);
+            background: transparent;
+            border: 1px solid transparent;
+            transition: all .2s;
+            cursor: pointer;
+        }
+        .btn-header:hover {
+            background: var(--accent-soft);
+            color: var(--accent);
+            border-color: var(--border-color);
+        }
+        .btn-header.primary {
+            background: var(--accent);
+            color: #fff;
+        }
+        .btn-header.primary:hover {
+            filter: brightness(1.1);
+        }
+        .mobile-toggle {
+            display: none;
+        }
+
+        /* App Workspace */
+        .reader-workspace {
+            display: flex;
+            height: calc(100vh - var(--top-header-height));
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Sidebar */
+        .reader-sidebar {
+            width: var(--sidebar-width);
+            min-width: var(--sidebar-width);
+            background: var(--card-bg);
+            border-left: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            z-index: 30;
+            transition: transform .3s ease;
+        }
+        .sidebar-search-box {
+            padding: .75rem;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--card-bg);
+        }
+        .search-wrapper-inner {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .search-wrapper-inner i {
+            position: absolute;
+            right: .75rem;
+            color: var(--text-muted);
+            font-size: .85rem;
+        }
+        .search-input {
+            width: 100%;
+            padding: .5rem 2.2rem .5rem .75rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: var(--reader-bg);
+            color: var(--text-main);
+            font-family: inherit;
+            font-size: .85rem;
+            outline: none;
+            transition: border-color .2s;
+        }
+        .search-input:focus {
+            border-color: var(--accent);
+        }
+        .sidebar-controls {
+            padding: .4rem .75rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: .78rem;
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(128,128,128,.03);
+        }
+        .sidebar-controls a {
+            color: var(--text-muted);
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .sidebar-controls a:hover {
+            color: var(--accent);
+        }
+        .sidebar-scroll {
+            flex: 1;
+            overflow-y: auto;
+            padding: .5rem;
+            scrollbar-width: thin;
+        }
+
+        /* Chapter items */
+        .ch-card {
+            margin-bottom: .35rem;
+            border-radius: 8px;
+            border: 1px solid transparent;
+            transition: background .15s, border-color .15s;
+        }
+        .ch-card:hover {
+            background: var(--accent-soft);
+        }
+        .ch-card.active {
+            background: var(--accent-soft);
+            border-color: var(--accent);
+        }
+        .ch-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: .45rem .6rem;
+            cursor: pointer;
+            user-select: none;
+        }
+        .ch-title-link {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            text-decoration: none;
+            color: var(--text-main);
+            flex: 1;
+            font-size: .88rem;
+            font-weight: 500;
+        }
+        .ch-card.active .ch-title-link {
+            color: var(--accent);
+            font-weight: 700;
+        }
+        .ch-badge {
+            font-size: .72rem;
+            padding: .15rem .45rem;
+            border-radius: 999px;
+            background: rgba(128,128,128,.15);
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+        .ch-card.active .ch-badge {
+            background: var(--accent);
+            color: #fff;
+        }
+        .ch-chevron {
+            font-size: .75rem;
+            color: var(--text-muted);
+            transition: transform .25s ease;
+            padding: .2rem .4rem;
+        }
+        .ch-card.expanded .ch-chevron {
+            transform: rotate(-90deg);
+        }
+        .ch-sections {
+            list-style: none;
+            margin: 0;
+            padding: .2rem .75rem .4rem 1.5rem;
+            display: none;
+            border-right: 2px solid var(--border-color);
+            margin-right: 1.2rem;
+        }
+        .ch-card.expanded .ch-sections {
+            display: block;
+        }
+        .sec-item {
+            margin: .25rem 0;
+        }
+        .sec-link {
+            display: flex;
+            align-items: baseline;
+            gap: .4rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: .82rem;
+            line-height: 1.5;
+            padding: .2rem .35rem;
+            border-radius: 4px;
+            transition: all .15s;
+        }
+        .sec-link:hover {
+            color: var(--accent);
+            background: rgba(128,128,128,.08);
+        }
+        .sec-link.active {
+            color: var(--accent);
+            font-weight: 600;
+            background: rgba(128,128,128,.12);
+        }
+        .sec-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--text-muted);
+            flex-shrink: 0;
+            transform: translateY(-2px);
+        }
+        .sec-link.active .sec-dot {
+            background: var(--accent);
+        }
+
+        /* Main Reader Frame */
+        .reader-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+            background: var(--reader-bg);
+        }
+        .reader-toolbar {
+            height: 44px;
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 .75rem;
+            font-size: .85rem;
+        }
+        .toolbar-title {
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        .toolbar-nav {
+            display: flex;
+            align-items: center;
+            gap: .3rem;
+        }
+        .btn-tool {
+            display: inline-flex;
+            align-items: center;
+            gap: .3rem;
+            padding: .25rem .55rem;
+            border-radius: 6px;
+            font-size: .8rem;
+            text-decoration: none;
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+            background: var(--card-bg);
+            cursor: pointer;
+            transition: all .15s;
+        }
+        .btn-tool:hover:not(:disabled) {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+        .btn-tool:disabled {
+            opacity: .4;
+            cursor: not-allowed;
+        }
+
+        .frame-container {
+            flex: 1;
+            width: 100%;
+            height: calc(100% - 44px);
+            position: relative;
+            background: var(--reader-bg);
+        }
+        #book-frame {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+            background: transparent;
+        }
+
+        /* Mobile drawer overlay */
+        .sidebar-backdrop {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.5);
+            z-index: 25;
+            opacity: 0;
+            transition: opacity .3s ease;
+        }
+
+        @media (max-width: 900px) {
+            .mobile-toggle {
+                display: inline-flex !important;
+            }
+            .header-brand-badge {
+                display: none;
+            }
+            .reader-sidebar {
+                position: fixed;
+                top: var(--top-header-height);
+                bottom: 0;
+                right: 0;
+                transform: translateX(100%);
+                box-shadow: -4px 0 20px rgba(0,0,0,.15);
+            }
+            .reader-sidebar.open {
+                transform: translateX(0);
+            }
+            .sidebar-backdrop.open {
+                display: block;
+                opacity: 1;
+            }
+        }
+        @media (max-width: 600px) {
+            .header-brand .brand-title-text {
+                display: none;
+            }
+            .brand-divider {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body data-theme="light">
+<script>
+    (function() {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.body.setAttribute('theme', 'dark');
+            document.body.setAttribute('data-theme', 'dark');
+        }
+    })();
+</script>
+
+<header class="reader-header">
+    <div style="display:flex;align-items:center;gap:.6rem;">
+        <button class="btn-header mobile-toggle" id="btn-toggle-sidebar" title="فهرست و سایدبار">
+            <i class="fas fa-bars fa-fw"></i>
+            <span>فهرست فصول</span>
+        </button>
+        <div class="header-brand-group">
+            <a href="/fa/" class="btn-home-return" title="بازگشت به سایت اصلی علی رستمی">
+                <i class="fas fa-home fa-fw"></i>
+                <span>سایت اصلی</span>
+            </a>
+            <span class="brand-divider">/</span>
+            <a href="index.html" class="header-brand" title="مطالعه آنلاین کتاب هوش مصنوعی: رویکردی نوین (AIMA 4e)">
+                <i class="fas fa-brain book-icon"></i>
+                <span class="brand-title-text">هوش مصنوعی: رویکردی نوین</span>
+                <span class="header-brand-badge">AIMA 4e</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="header-actions">
+        <a href="/aima-4e-persian/" class="btn-header" title="معرفی و مشخصات پروژه">
+            <i class="fas fa-info-circle fa-fw"></i>
+            <span class="d-none-sm">دربارهٔ پروژه</span>
+        </a>
+        <a href="https://github.com/alirostami01/aima-4e-persian/raw/main/pdf/aima-4e-persian.pdf" target="_blank" rel="noopener noreferrer" class="btn-header primary" title="دانلود کل کتاب PDF">
+            <i class="fas fa-file-pdf fa-fw"></i>
+            <span class="d-none-sm">دانلود PDF</span>
+        </a>
+        <a href="https://github.com/alirostami01/aima-4e-persian" target="_blank" rel="noopener noreferrer" class="btn-header" title="مخزن گیت‌هاب">
+            <i class="fab fa-github fa-fw"></i>
+        </a>
+        <a href="/support/" class="btn-header" title="حمایت از پروژه">
+            <i class="fas fa-heart fa-fw" style="color:#e0245e;"></i>
+        </a>
+        <button class="btn-header" id="btn-theme-toggle" title="تغییر ظاهر تاریک/روشن">
+            <i class="fas fa-adjust fa-fw"></i>
+        </button>
+    </div>
+</header>
+
+<div class="reader-workspace">
+    <!-- Sidebar -->
+    <aside class="reader-sidebar" id="reader-sidebar">
+        <div class="sidebar-search-box">
+            <div class="search-wrapper-inner">
+                <i class="fas fa-search" aria-hidden="true"></i>
+                <input type="search" id="sidebar-search" class="search-input" placeholder="جستجو در فصول و بخش‌ها..." autocomplete="off">
+            </div>
+        </div>
+        <div class="sidebar-controls">
+            <span>فهرست فصول (۲۸ فصل + پیشگفتار)</span>
+            <div style="display:flex;gap:.5rem;">
+                <a id="btn-expand-all">باز کردن همه</a>
+                <span>·</span>
+                <a id="btn-collapse-all">بستن همه</a>
+            </div>
+        </div>
+        <div class="sidebar-scroll" id="sidebar-scroll">
+            
+        <div class="ch-card" id="ch-item-0" data-idx="0" data-file="00-پیشگفتار.html">
+            <div class="ch-header" data-idx="0">
+                <a href="00-پیشگفتار.html" class="ch-title-link" data-idx="0" data-file="00-پیشگفتار.html">
+                    <span class="ch-badge">پیشگفتار</span>
+                    <span class="ch-title">پیشگفتار</span>
+                </a>
+                <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+            </div>
+            <ul class="ch-sections" id="sections-0"><li class="sec-item"><a href="00-پیشگفتار.html#sec-1" data-ch-idx="0" data-file="00-پیشگفتار.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">تازه‌های این ویرایش</span></a></li><li class="sec-item"><a href="00-پیشگفتار.html#sec-2" data-ch-idx="0" data-file="00-پیشگفتار.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">مرور کلی کتاب</span></a></li><li class="sec-item"><a href="00-پیشگفتار.html#sec-3" data-ch-idx="0" data-file="00-پیشگفتار.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">منابع آنلاین</span></a></li><li class="sec-item"><a href="00-پیشگفتار.html#sec-4" data-ch-idx="0" data-file="00-پیشگفتار.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">جلد کتاب</span></a></li><li class="sec-item"><a href="00-پیشگفتار.html#sec-5" data-ch-idx="0" data-file="00-پیشگفتار.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">سپاسگزاری‌ها</span></a></li><li class="sec-item"><a href="00-پیشگفتار.html#sec-6" data-ch-idx="0" data-file="00-پیشگفتار.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">دربارهٔ نویسندگان</span></a></li></ul>
+        </div>
+        
+
+        <div class="ch-card" id="ch-item-1" data-idx="1" data-file="01-فصل۱-مقدمه.html">
+            <div class="ch-header" data-idx="1">
+                <a href="01-فصل۱-مقدمه.html" class="ch-title-link" data-idx="1" data-file="01-فصل۱-مقدمه.html">
+                    <span class="ch-badge">فصل ۱</span>
+                    <span class="ch-title">مقدمه</span>
+                </a>
+                <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+            </div>
+            <ul class="ch-sections" id="sections-1"><li class="sec-item"><a href="01-فصل۱-مقدمه.html#sec-1" data-ch-idx="1" data-file="01-فصل۱-مقدمه.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱.۱ هوش مصنوعی چیست؟</span></a></li><li class="sec-item"><a href="01-فصل۱-مقدمه.html#sec-2" data-ch-idx="1" data-file="01-فصل۱-مقدمه.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱.۲ بنیان‌های هوش مصنوعی</span></a></li><li class="sec-item"><a href="01-فصل۱-مقدمه.html#sec-3" data-ch-idx="1" data-file="01-فصل۱-مقدمه.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱.۳ تاریخچهٔ هوش مصنوعی</span></a></li><li class="sec-item"><a href="01-فصل۱-مقدمه.html#sec-4" data-ch-idx="1" data-file="01-فصل۱-مقدمه.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱.۴ وضعیت هنر</span></a></li><li class="sec-item"><a href="01-فصل۱-مقدمه.html#sec-5" data-ch-idx="1" data-file="01-فصل۱-مقدمه.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱.۵ ریسک‌ها و منافع هوش مصنوعی</span></a></li><li class="sec-item"><a href="01-فصل۱-مقدمه.html#summary" data-ch-idx="1" data-file="01-فصل۱-مقدمه.html" data-hash="#summary" class="sec-link"><span class="sec-dot"></span><span class="sec-text">خلاصهٔ فصل</span></a></li><li class="sec-item"><a href="01-فصل۱-مقدمه.html#sec-6" data-ch-idx="1" data-file="01-فصل۱-مقدمه.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">یادداشت‌های کتاب‌شناختی و تاریخی</span></a></li><li class="sec-item"><a href="01-فصل۱-مقدمه.html#sec-7" data-ch-idx="1" data-file="01-فصل۱-مقدمه.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">پانوشت‌ها:</span></a></li></ul>
+        </div>
+        
+
+        <div class="ch-card" id="ch-item-2" data-idx="2" data-file="02-فصل۲-عاملهای-هوشمند.html">
+            <div class="ch-header" data-idx="2">
+                <a href="02-فصل۲-عاملهای-هوشمند.html" class="ch-title-link" data-idx="2" data-file="02-فصل۲-عاملهای-هوشمند.html">
+                    <span class="ch-badge">فصل 2</span>
+                    <span class="ch-title">عامل‌های هوشمند</span>
+                </a>
+                <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+            </div>
+            <ul class="ch-sections" id="sections-2"><li class="sec-item"><a href="02-فصل۲-عاملهای-هوشمند.html#sec-1" data-ch-idx="2" data-file="02-فصل۲-عاملهای-هوشمند.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲.۱ عامل‌ها و محیط‌ها</span></a></li><li class="sec-item"><a href="02-فصل۲-عاملهای-هوشمند.html#sec-2" data-ch-idx="2" data-file="02-فصل۲-عاملهای-هوشمند.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲.۲ رفتار خوب: مفهوم عقلانیت</span></a></li><li class="sec-item"><a href="02-فصل۲-عاملهای-هوشمند.html#sec-3" data-ch-idx="2" data-file="02-فصل۲-عاملهای-هوشمند.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲.۳ سرشت محیط‌ها</span></a></li><li class="sec-item"><a href="02-فصل۲-عاملهای-هوشمند.html#sec-4" data-ch-idx="2" data-file="02-فصل۲-عاملهای-هوشمند.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲.۴ ساختار عامل‌ها</span></a></li><li class="sec-item"><a href="02-فصل۲-عاملهای-هوشمند.html#summary" data-ch-idx="2" data-file="02-فصل۲-عاملهای-هوشمند.html" data-hash="#summary" class="sec-link"><span class="sec-dot"></span><span class="sec-text">خلاصهٔ فصل</span></a></li><li class="sec-item"><a href="02-فصل۲-عاملهای-هوشمند.html#sec-5" data-ch-idx="2" data-file="02-فصل۲-عاملهای-هوشمند.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">یادداشت‌های کتاب‌شناختی و تاریخی</span></a></li><li class="sec-item"><a href="02-فصل۲-عاملهای-هوشمند.html#sec-6" data-ch-idx="2" data-file="02-فصل۲-عاملهای-هوشمند.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">پانوشت‌ها:</span></a></li></ul>
+        </div>
+        
+
+        <div class="ch-card" id="ch-item-3" data-idx="3" data-file="03-فصل۳-حل-مسئله-با-جستجو.html">
+            <div class="ch-header" data-idx="3">
+                <a href="03-فصل۳-حل-مسئله-با-جستجو.html" class="ch-title-link" data-idx="3" data-file="03-فصل۳-حل-مسئله-با-جستجو.html">
+                    <span class="ch-badge">فصل 3</span>
+                    <span class="ch-title">حل مسئله با جستجو</span>
+                </a>
+                <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+            </div>
+            <ul class="ch-sections" id="sections-3"><li class="sec-item"><a href="03-فصل۳-حل-مسئله-با-جستجو.html#sec-1" data-ch-idx="3" data-file="03-فصل۳-حل-مسئله-با-جستجو.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۳.۱ عامل‌های حل‌کنندهٔ مسئله</span></a></li><li class="sec-item"><a href="03-فصل۳-حل-مسئله-با-جستجو.html#sec-2" data-ch-idx="3" data-file="03-فصل۳-حل-مسئله-با-جستجو.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۳.۲ مسائل نمونه</span></a></li><li class="sec-item"><a href="03-فصل۳-حل-مسئله-با-جستجو.html#sec-3" data-ch-idx="3" data-file="03-فصل۳-حل-مسئله-با-جستجو.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۳.۳ الگوریتم‌های جستجو</span></a></li><li class="sec-item"><a href="03-فصل۳-حل-مسئله-با-جستجو.html#sec-4" data-ch-idx="3" data-file="03-فصل۳-حل-مسئله-با-جستجو.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۳.۴ راهبردهای جستجوی نامطلع</span></a></li><li class="sec-item"><a href="03-فصل۳-حل-مسئله-با-جستجو.html#sec-5" data-ch-idx="3" data-file="03-فصل۳-حل-مسئله-با-جستجو.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۳.۵ راهبردهای جستجوی مطلع (اکتشافی)</span></a></li><li class="sec-item"><a href="03-فصل۳-حل-مسئله-با-جستجو.html#sec-6" data-ch-idx="3" data-file="03-فصل۳-حل-مسئله-با-جستجو.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۳.۶ توابع اکتشافی</span></a></li><li class="sec-item"><a href="03-فصل۳-حل-مسئله-با-جستجو.html#summary" data-ch-idx="3" data-file="03-فصل۳-حل-مسئله-با-جستجو.html" data-hash="#summary" class="sec-link"><span class="sec-dot"></span><span class="sec-text">خلاصهٔ فصل</span></a></li><li class="sec-item"><a href="03-فصل۳-حل-مسئله-با-جستجو.html#sec-7" data-ch-idx="3" data-file="03-فصل۳-حل-مسئله-با-جستجو.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">یادداشت‌های کتاب‌شناختی و تاریخی</span></a></li><li class="sec-item"><a href="03-فصل۳-حل-مسئله-با-جستجو.html#sec-8" data-ch-idx="3" data-file="03-فصل۳-حل-مسئله-با-جستجو.html" data-hash="#sec-8" class="sec-link"><span class="sec-dot"></span><span class="sec-text">پانوشت‌ها:</span></a></li></ul>
+        </div>
+        
+
+        <div class="ch-card" id="ch-item-4" data-idx="4" data-file="04-فصل۴-جستجو-در-محیطهای-پیچیده.html">
+            <div class="ch-header" data-idx="4">
+                <a href="04-فصل۴-جستجو-در-محیطهای-پیچیده.html" class="ch-title-link" data-idx="4" data-file="04-فصل۴-جستجو-در-محیطهای-پیچیده.html">
+                    <span class="ch-badge">فصل ۴</span>
+                    <span class="ch-title">جستجو در محیط‌های پیچیده</span>
+                </a>
+                <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+            </div>
+            <ul class="ch-sections" id="sections-4"><li class="sec-item"><a href="04-فصل۴-جستجو-در-محیطهای-پیچیده.html#sec-1" data-ch-idx="4" data-file="04-فصل۴-جستجو-در-محیطهای-پیچیده.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۴.۱ جستجوی محلی و مسائل بهینه‌سازی</span></a></li><li class="sec-item"><a href="04-فصل۴-جستجو-در-محیطهای-پیچیده.html#sec-2" data-ch-idx="4" data-file="04-فصل۴-جستجو-در-محیطهای-پیچیده.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۴.۲ جستجوی محلی در فضاهای پیوسته</span></a></li><li class="sec-item"><a href="04-فصل۴-جستجو-در-محیطهای-پیچیده.html#sec-3" data-ch-idx="4" data-file="04-فصل۴-جستجو-در-محیطهای-پیچیده.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۴.۳ جستجو با کنش‌های ناجبرگرایانه</span></a></li><li class="sec-item"><a href="04-فصل۴-جستجو-در-محیطهای-پیچیده.html#sec-4" data-ch-idx="4" data-file="04-فصل۴-جستجو-در-محیطهای-پیچیده.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۴.۴ جستجو در محیط‌های تا حدی قابل مشاهده</span></a></li><li class="sec-item"><a href="04-فصل۴-جستجو-در-محیطهای-پیچیده.html#sec-5" data-ch-idx="4" data-file="04-فصل۴-جستجو-در-محیطهای-پیچیده.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۴.۵ عامل‌های جستجوی آنلاین و محیط‌های ناشناخته</span></a></li><li class="sec-item"><a href="04-فصل۴-جستجو-در-محیطهای-پیچیده.html#summary" data-ch-idx="4" data-file="04-فصل۴-جستجو-در-محیطهای-پیچیده.html" data-hash="#summary" class="sec-link"><span class="sec-dot"></span><span class="sec-text">خلاصهٔ فصل</span></a></li><li class="sec-item"><a href="04-فصل۴-جستجو-در-محیطهای-پیچیده.html#sec-6" data-ch-idx="4" data-file="04-فصل۴-جستجو-در-محیطهای-پیچیده.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">یادداشت‌های کتاب‌شناختی و تاریخی</span></a></li><li class="sec-item"><a href="04-فصل۴-جستجو-در-محیطهای-پیچیده.html#sec-7" data-ch-idx="4" data-file="04-فصل۴-جستجو-در-محیطهای-پیچیده.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">پانوشت‌ها:</span></a></li></ul>
+        </div>
+        
+
+        <div class="ch-card" id="ch-item-5" data-idx="5" data-file="05-فصل۵-جستجوی-رقابتی-و-بازیها.html">
+            <div class="ch-header" data-idx="5">
+                <a href="05-فصل۵-جستجوی-رقابتی-و-بازیها.html" class="ch-title-link" data-idx="5" data-file="05-فصل۵-جستجوی-رقابتی-و-بازیها.html">
+                    <span class="ch-badge">فصل ۵</span>
+                    <span class="ch-title">جستجوی رقابتی و بازی‌ها</span>
+                </a>
+                <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+            </div>
+            <ul class="ch-sections" id="sections-5"><li class="sec-item"><a href="05-فصل۵-جستجوی-رقابتی-و-بازیها.html#sec-1" data-ch-idx="5" data-file="05-فصل۵-جستجوی-رقابتی-و-بازیها.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۵.۱ نظریهٔ بازی</span></a></li><li class="sec-item"><a href="05-فصل۵-جستجوی-رقابتی-و-بازیها.html#sec-2" data-ch-idx="5" data-file="05-فصل۵-جستجوی-رقابتی-و-بازیها.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۵.۲ تصمیم‌های بهینه در بازی‌ها</span></a></li><li class="sec-item"><a href="05-فصل۵-جستجوی-رقابتی-و-بازیها.html#sec-3" data-ch-idx="5" data-file="05-فصل۵-جستجوی-رقابتی-و-بازیها.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۵.۳ جستجوی درختی آلفا–بتا اکتشافی</span></a></li><li class="sec-item"><a href="05-فصل۵-جستجوی-رقابتی-و-بازیها.html#sec-4" data-ch-idx="5" data-file="05-فصل۵-جستجوی-رقابتی-و-بازیها.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۵.۴ جستجوی درختی مونت‌کارلو</span></a></li><li class="sec-item"><a href="05-فصل۵-جستجوی-رقابتی-و-بازیها.html#sec-5" data-ch-idx="5" data-file="05-فصل۵-جستجوی-رقابتی-و-بازیها.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۵.۵ بازی‌های تصادفی</span></a></li><li class="sec-item"><a href="05-فصل۵-جستجوی-رقابتی-و-بازیها.html#sec-6" data-ch-idx="5" data-file="05-فصل۵-جستجوی-رقابتی-و-بازیها.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۵.۶ بازی‌های تا حدی قابل مشاهده</span></a></li><li class="sec-item"><a href="05-فصل۵-جستجوی-رقابتی-و-بازیها.html#sec-7" data-ch-idx="5" data-file="05-فصل۵-جستجوی-رقابتی-و-بازیها.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۵.۷ محدودیت‌های الگوریتم‌های جستجوی بازی</span></a></li><li class="sec-item"><a href="05-فصل۵-جستجوی-رقابتی-و-بازیها.html#summary" data-ch-idx="5" data-file="05-فصل۵-جستجوی-رقابتی-و-بازیها.html" data-hash="#summary" class="sec-link"><span class="sec-dot"></span><span class="sec-text">خلاصهٔ فصل</span></a></li><li class="sec-item"><a href="05-فصل۵-جستجوی-رقابتی-و-بازیها.html#sec-8" data-ch-idx="5" data-file="05-فصل۵-جستجوی-رقابتی-و-بازیها.html" data-hash="#sec-8" class="sec-link"><span class="sec-dot"></span><span class="sec-text">یادداشت‌های کتاب‌شناختی و تاریخی</span></a></li><li class="sec-item"><a href="05-فصل۵-جستجوی-رقابتی-و-بازیها.html#sec-9" data-ch-idx="5" data-file="05-فصل۵-جستجوی-رقابتی-و-بازیها.html" data-hash="#sec-9" class="sec-link"><span class="sec-dot"></span><span class="sec-text">پانوشت‌ها</span></a></li></ul>
+        </div>
+        
+
+        <div class="ch-card" id="ch-item-6" data-idx="6" data-file="06-فصل۶-ارضای-قیود.html">
+            <div class="ch-header" data-idx="6">
+                <a href="06-فصل۶-ارضای-قیود.html" class="ch-title-link" data-idx="6" data-file="06-فصل۶-ارضای-قیود.html">
+                    <span class="ch-badge">فصل ۶</span>
+                    <span class="ch-title">مسئله‌های ارضای قیود</span>
+                </a>
+                <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+            </div>
+            <ul class="ch-sections" id="sections-6"><li class="sec-item"><a href="06-فصل۶-ارضای-قیود.html#sec-1" data-ch-idx="6" data-file="06-فصل۶-ارضای-قیود.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۶.۱ تعریف مسئله‌های ارضای قیود</span></a></li><li class="sec-item"><a href="06-فصل۶-ارضای-قیود.html#sec-5" data-ch-idx="6" data-file="06-فصل۶-ارضای-قیود.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۶.۵ ساختار مسائل</span></a></li><li class="sec-item"><a href="06-فصل۶-ارضای-قیود.html#summary" data-ch-idx="6" data-file="06-فصل۶-ارضای-قیود.html" data-hash="#summary" class="sec-link"><span class="sec-dot"></span><span class="sec-text">خلاصهٔ فصل</span></a></li><li class="sec-item"><a href="06-فصل۶-ارضای-قیود.html#sec-6" data-ch-idx="6" data-file="06-فصل۶-ارضای-قیود.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">یادداشت‌های کتاب‌شناختی و تاریخی</span></a></li><li class="sec-item"><a href="06-فصل۶-ارضای-قیود.html#sec-7" data-ch-idx="6" data-file="06-فصل۶-ارضای-قیود.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">پانوشت‌ها:</span></a></li></ul>
+        </div>
+        
+
+        <div class="ch-card" id="ch-item-7" data-idx="7" data-file="07-فصل۷-عاملهای-منطقی.html">
+            <div class="ch-header" data-idx="7">
+                <a href="07-فصل۷-عاملهای-منطقی.html" class="ch-title-link" data-idx="7" data-file="07-فصل۷-عاملهای-منطقی.html">
+                    <span class="ch-badge">فصل ۷</span>
+                    <span class="ch-title">عامل‌های منطقی</span>
+                </a>
+                <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+            </div>
+            <ul class="ch-sections" id="sections-7"><li class="sec-item"><a href="07-فصل۷-عاملهای-منطقی.html#sec-1" data-ch-idx="7" data-file="07-فصل۷-عاملهای-منطقی.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۷.۱ عامل‌های مبتنی بر دانش</span></a></li><li class="sec-item"><a href="07-فصل۷-عاملهای-منطقی.html#sec-2" data-ch-idx="7" data-file="07-فصل۷-عاملهای-منطقی.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۷.۲ جهان وومپوس</span></a></li><li class="sec-item"><a href="07-فصل۷-عاملهای-منطقی.html#sec-3" data-ch-idx="7" data-file="07-فصل۷-عاملهای-منطقی.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۷.۳ منطق</span></a></li><li class="sec-item"><a href="07-فصل۷-عاملهای-منطقی.html#sec-4" data-ch-idx="7" data-file="07-فصل۷-عاملهای-منطقی.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۷.۴ منطق گزاره‌ای: منطقی بسیار ساده</span></a></li><li class="sec-item"><a href="07-فصل۷-عاملهای-منطقی.html#sec-5" data-ch-idx="7" data-file="07-فصل۷-عاملهای-منطقی.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۷.۵ اثبات قضیهٔ گزاره‌ای</span></a></li><li class="sec-item"><a href="07-فصل۷-عاملهای-منطقی.html#sec-6" data-ch-idx="7" data-file="07-فصل۷-عاملهای-منطقی.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۷.۶ بررسی مدل گزاره‌ای مؤثر</span></a></li><li class="sec-item"><a href="07-فصل۷-عاملهای-منطقی.html#sec-7" data-ch-idx="7" data-file="07-فصل۷-عاملهای-منطقی.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۷.۷ عامل‌های مبتنی بر منطق گزاره‌ای</span></a></li><li class="sec-item"><a href="07-فصل۷-عاملهای-منطقی.html#summary" data-ch-idx="7" data-file="07-فصل۷-عاملهای-منطقی.html" data-hash="#summary" class="sec-link"><span class="sec-dot"></span><span class="sec-text">خلاصهٔ فصل</span></a></li><li class="sec-item"><a href="07-فصل۷-عاملهای-منطقی.html#sec-8" data-ch-idx="7" data-file="07-فصل۷-عاملهای-منطقی.html" data-hash="#sec-8" class="sec-link"><span class="sec-dot"></span><span class="sec-text">یادداشت‌های کتاب‌شناختی و تاریخی</span></a></li></ul>
+        </div>
+        
+
+        <div class="ch-card" id="ch-item-8" data-idx="8" data-file="08-فصل۸-منطق-مرتبه-اول.html">
+            <div class="ch-header" data-idx="8">
+                <a href="08-فصل۸-منطق-مرتبه-اول.html" class="ch-title-link" data-idx="8" data-file="08-فصل۸-منطق-مرتبه-اول.html">
+                    <span class="ch-badge">فصل ۸</span>
+                    <span class="ch-title">منطق مرتبهٔ اول</span>
+                </a>
+                <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+            </div>
+            <ul class="ch-sections" id="sections-8"><li class="sec-item"><a href="08-فصل۸-منطق-مرتبه-اول.html#sec-1" data-ch-idx="8" data-file="08-فصل۸-منطق-مرتبه-اول.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۸.۱ بازنگری بازنمایی</span></a></li><li class="sec-item"><a href="08-فصل۸-منطق-مرتبه-اول.html#sec-2" data-ch-idx="8" data-file="08-فصل۸-منطق-مرتبه-اول.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۸.۲ نحو و معناشناسی منطق مرتبهٔ اول</span></a></li><li class="sec-item"><a href="08-فصل۸-منطق-مرتبه-اول.html#sec-3" data-ch-idx="8" data-file="08-فصل۸-منطق-مرتبه-اول.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۸.۳ استفاده از منطق مرتبهٔ اول</span></a></li><li class="sec-item"><a href="08-فصل۸-منطق-مرتبه-اول.html#sec-4" data-ch-idx="8" data-file="08-فصل۸-منطق-مرتبه-اول.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۸.۴ مهندسی دانش در منطق مرتبهٔ اول</span></a></li><li class="sec-item"><a href="08-فصل۸-منطق-مرتبه-اول.html#summary" data-ch-idx="8" data-file="08-فصل۸-منطق-مرتبه-اول.html" data-hash="#summary" class="sec-link"><span class="sec-dot"></span><span class="sec-text">خلاصهٔ فصل</span></a></li><li class="sec-item"><a href="08-فصل۸-منطق-مرتبه-اول.html#sec-5" data-ch-idx="8" data-file="08-فصل۸-منطق-مرتبه-اول.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">یادداشت‌های کتاب‌شناختی و تاریخی</span></a></li><li class="sec-item"><a href="08-فصل۸-منطق-مرتبه-اول.html#sec-6" data-ch-idx="8" data-file="08-فصل۸-منطق-مرتبه-اول.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">پانوشت‌ها:</span></a></li></ul>
+        </div>
+        
+
+        <div class="ch-card" id="ch-item-9" data-idx="9" data-file="09-فصل۹-استنتاج-منطق-مرتبه-اول.html">
+            <div class="ch-header" data-idx="9">
+                <a href="09-فصل۹-استنتاج-منطق-مرتبه-اول.html" class="ch-title-link" data-idx="9" data-file="09-فصل۹-استنتاج-منطق-مرتبه-اول.html">
+                    <span class="ch-badge">فصل 9</span>
+                    <span class="ch-title">استنتاج در منطق مرتبهٔ اول</span>
+                </a>
+                <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+            </div>
+            <ul class="ch-sections" id="sections-9"><li class="sec-item"><a href="09-فصل۹-استنتاج-منطق-مرتبه-اول.html#sec-1" data-ch-idx="9" data-file="09-فصل۹-استنتاج-منطق-مرتبه-اول.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۹.۱ استنتاج گزاره‌ای در برابر مرتبهٔ اول</span></a></li><li class="sec-item"><a href="09-فصل۹-استنتاج-منطق-مرتبه-اول.html#sec-2" data-ch-idx="9" data-file="09-فصل۹-استنتاج-منطق-مرتبه-اول.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۹.۲ یکسان‌سازی و استنتاج مرتبهٔ اول</span></a></li><li class="sec-item"><a href="09-فصل۹-استنتاج-منطق-مرتبه-اول.html#sec-3" data-ch-idx="9" data-file="09-فصل۹-استنتاج-منطق-مرتبه-اول.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۹.۳ زنجیره‌سازی پیشرو</span></a></li><li class="sec-item"><a href="09-فصل۹-استنتاج-منطق-مرتبه-اول.html#sec-4" data-ch-idx="9" data-file="09-فصل۹-استنتاج-منطق-مرتبه-اول.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۹.۴ زنجیره‌سازی پسرو</span></a></li><li class="sec-item"><a href="09-فصل۹-استنتاج-منطق-مرتبه-اول.html#sec-5" data-ch-idx="9" data-file="09-فصل۹-استنتاج-منطق-مرتبه-اول.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۹.۵ حل</span></a></li><li class="sec-item"><a href="09-فصل۹-استنتاج-منطق-مرتبه-اول.html#summary" data-ch-idx="9" data-file="09-فصل۹-استنتاج-منطق-مرتبه-اول.html" data-hash="#summary" class="sec-link"><span class="sec-dot"></span><span class="sec-text">خلاصهٔ فصل</span></a></li><li class="sec-item"><a href="09-فصل۹-استنتاج-منطق-مرتبه-اول.html#sec-6" data-ch-idx="9" data-file="09-فصل۹-استنتاج-منطق-مرتبه-اول.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">یادداشت‌های کتاب‌شناختی و تاریخی</span></a></li><li class="sec-item"><a href="09-فصل۹-استنتاج-منطق-مرتبه-اول.html#sec-7" data-ch-idx="9" data-file="09-فصل۹-استنتاج-منطق-مرتبه-اول.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">پانوشت‌ها:</span></a></li></ul>
+        </div>
+        
+
+        <div class="ch-card" id="ch-item-10" data-idx="10" data-file="10-فصل۱۰-بازنمایی-دانش.html">
+            <div class="ch-header" data-idx="10">
+                <a href="10-فصل۱۰-بازنمایی-دانش.html" class="ch-title-link" data-idx="10" data-file="10-فصل۱۰-بازنمایی-دانش.html">
+                    <span class="ch-badge">فصل ۱۰</span>
+                    <span class="ch-title">بازنمایی دانش</span>
+                </a>
+                <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+            </div>
+            <ul class="ch-sections" id="sections-10"><li class="sec-item"><a href="10-فصل۱۰-بازنمایی-دانش.html#sec-1" data-ch-idx="10" data-file="10-فصل۱۰-بازنمایی-دانش.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۰.۱ مهندسی هستی‌شناسی</span></a></li><li class="sec-item"><a href="10-فصل۱۰-بازنمایی-دانش.html#sec-2" data-ch-idx="10" data-file="10-فصل۱۰-بازنمایی-دانش.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۰.۲ رده‌ها و اشیا</span></a></li><li class="sec-item"><a href="10-فصل۱۰-بازنمایی-دانش.html#sec-3" data-ch-idx="10" data-file="10-فصل۱۰-بازنمایی-دانش.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۰.۳ رویدادها</span></a></li><li class="sec-item"><a href="10-فصل۱۰-بازنمایی-دانش.html#sec-4" data-ch-idx="10" data-file="10-فصل۱۰-بازنمایی-دانش.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۰.۴ اشیای ذهنی و منطق موجهات</span></a></li><li class="sec-item"><a href="10-فصل۱۰-بازنمایی-دانش.html#sec-5" data-ch-idx="10" data-file="10-فصل۱۰-بازنمایی-دانش.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۰.۵ سامانه‌های استدلال برای رده‌ها</span></a></li><li class="sec-item"><a href="10-فصل۱۰-بازنمایی-دانش.html#sec-6" data-ch-idx="10" data-file="10-فصل۱۰-بازنمایی-دانش.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۰.۶ استدلال با اطلاعات پیش‌فرض</span></a></li><li class="sec-item"><a href="10-فصل۱۰-بازنمایی-دانش.html#summary" data-ch-idx="10" data-file="10-فصل۱۰-بازنمایی-دانش.html" data-hash="#summary" class="sec-link"><span class="sec-dot"></span><span class="sec-text">خلاصهٔ فصل</span></a></li><li class="sec-item"><a href="10-فصل۱۰-بازنمایی-دانش.html#sec-7" data-ch-idx="10" data-file="10-فصل۱۰-بازنمایی-دانش.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">یادداشت‌های کتاب‌شناختی و تاریخی</span></a></li><li class="sec-item"><a href="10-فصل۱۰-بازنمایی-دانش.html#sec-8" data-ch-idx="10" data-file="10-فصل۱۰-بازنمایی-دانش.html" data-hash="#sec-8" class="sec-link"><span class="sec-dot"></span><span class="sec-text">پانوشت‌ها:</span></a></li></ul>
+        </div>
+        
+
+        <div class="ch-card" id="ch-item-11" data-idx="11" data-file="11-فصل۱۱-برنامهریزی-خودکار.html">
+            <div class="ch-header" data-idx="11">
+                <a href="11-فصل۱۱-برنامهریزی-خودکار.html" class="ch-title-link" data-idx="11" data-file="11-فصل۱۱-برنامهریزی-خودکار.html">
+                    <span class="ch-badge">فصل 11</span>
+                    <span class="ch-title">برنامه‌ریزی خودکار</span>
+                </a>
+                <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+            </div>
+            <ul class="ch-sections" id="sections-11"><li class="sec-item"><a href="11-فصل۱۱-برنامهریزی-خودکار.html#sec-1" data-ch-idx="11" data-file="11-فصل۱۱-برنامهریزی-خودکار.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۱.۱ تعریف برنامه‌ریزی کلاسیک</span></a></li><li class="sec-item"><a href="11-فصل۱۱-برنامهریزی-خودکار.html#sec-2" data-ch-idx="11" data-file="11-فصل۱۱-برنامهریزی-خودکار.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۱.۲ الگوریتم‌های برنامه‌ریزی کلاسیک</span></a></li><li class="sec-item"><a href="11-فصل۱۱-برنامهریزی-خودکار.html#sec-3" data-ch-idx="11" data-file="11-فصل۱۱-برنامهریزی-خودکار.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۱.۳ اکتشافی‌های برنامه‌ریزی</span></a></li><li class="sec-item"><a href="11-فصل۱۱-برنامهریزی-خودکار.html#sec-4" data-ch-idx="11" data-file="11-فصل۱۱-برنامهریزی-خودکار.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۱.۴ برنامه‌ریزی سلسله‌مراتبی</span></a></li><li class="sec-item"><a href="11-فصل۱۱-برنامهریزی-خودکار.html#sec-5" data-ch-idx="11" data-file="11-فصل۱۱-برنامهریزی-خودکار.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۱.۵ برنامه‌ریزی و کنش در حوزه‌های ناجبرگرایانه</span></a></li><li class="sec-item"><a href="11-فصل۱۱-برنامهریزی-خودکار.html#sec-6" data-ch-idx="11" data-file="11-فصل۱۱-برنامهریزی-خودکار.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۱.۶ زمان، زمان‌بندی‌ها و منابع</span></a></li><li class="sec-item"><a href="11-فصل۱۱-برنامهریزی-خودکار.html#sec-7" data-ch-idx="11" data-file="11-فصل۱۱-برنامهریزی-خودکار.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۱.۷ تحلیل رویکردهای برنامه‌ریزی</span></a></li><li class="sec-item"><a href="11-فصل۱۱-برنامهریزی-خودکار.html#summary" data-ch-idx="11" data-file="11-فصل۱۱-برنامهریزی-خودکار.html" data-hash="#summary" class="sec-link"><span class="sec-dot"></span><span class="sec-text">خلاصهٔ فصل</span></a></li><li class="sec-item"><a href="11-فصل۱۱-برنامهریزی-خودکار.html#sec-8" data-ch-idx="11" data-file="11-فصل۱۱-برنامهریزی-خودکار.html" data-hash="#sec-8" class="sec-link"><span class="sec-dot"></span><span class="sec-text">یادداشت‌های کتاب‌شناختی و تاریخی</span></a></li><li class="sec-item"><a href="11-فصل۱۱-برنامهریزی-خودکار.html#sec-9" data-ch-idx="11" data-file="11-فصل۱۱-برنامهریزی-خودکار.html" data-hash="#sec-9" class="sec-link"><span class="sec-dot"></span><span class="sec-text">پانوشت‌ها:</span></a></li></ul>
+        </div>
+        
+
+        <div class="ch-card" id="ch-item-12" data-idx="12" data-file="12-فصل۱۲-کمی-کردن-عدم-قطعیت.html">
+            <div class="ch-header" data-idx="12">
+                <a href="12-فصل۱۲-کمی-کردن-عدم-قطعیت.html" class="ch-title-link" data-idx="12" data-file="12-فصل۱۲-کمی-کردن-عدم-قطعیت.html">
+                    <span class="ch-badge">فصل 12</span>
+                    <span class="ch-title">کمی کردن عدم قطعیت</span>
+                </a>
+                <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+            </div>
+            <ul class="ch-sections" id="sections-12"><li class="sec-item"><a href="12-فصل۱۲-کمی-کردن-عدم-قطعیت.html#sec-1" data-ch-idx="12" data-file="12-فصل۱۲-کمی-کردن-عدم-قطعیت.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۲.۱ عملکرد در شرایط عدم قطعیت</span></a></li><li class="sec-item"><a href="12-فصل۱۲-کمی-کردن-عدم-قطعیت.html#sec-2" data-ch-idx="12" data-file="12-فصل۱۲-کمی-کردن-عدم-قطعیت.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۲.۲ نمادِ پایهٔ احتمال</span></a></li><li class="sec-item"><a href="12-فصل۱۲-کمی-کردن-عدم-قطعیت.html#sec-3" data-ch-idx="12" data-file="12-فصل۱۲-کمی-کردن-عدم-قطعیت.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۲.۳ استنتاج با توزیع‌های مشترکِ کامل</span></a></li><li class="sec-item"><a href="12-فصل۱۲-کمی-کردن-عدم-قطعیت.html#sec-4" data-ch-idx="12" data-file="12-فصل۱۲-کمی-کردن-عدم-قطعیت.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۲.۴ استقلال</span></a></li><li class="sec-item"><a href="12-فصل۱۲-کمی-کردن-عدم-قطعیت.html#sec-5" data-ch-idx="12" data-file="12-فصل۱۲-کمی-کردن-عدم-قطعیت.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۲.۵ قاعدهٔ بیز و کاربرد آن</span></a></li><li class="sec-item"><a href="12-فصل۱۲-کمی-کردن-عدم-قطعیت.html#sec-6" data-ch-idx="12" data-file="12-فصل۱۲-کمی-کردن-عدم-قطعیت.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۲.۶ مدل‌های بیزِ ساده</span></a></li><li class="sec-item"><a href="12-فصل۱۲-کمی-کردن-عدم-قطعیت.html#sec-7" data-ch-idx="12" data-file="12-فصل۱۲-کمی-کردن-عدم-قطعیت.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۲.۷ جهانِ وومپوس، بازبینی</span></a></li><li class="sec-item"><a href="12-فصل۱۲-کمی-کردن-عدم-قطعیت.html#summary" data-ch-idx="12" data-file="12-فصل۱۲-کمی-کردن-عدم-قطعیت.html" data-hash="#summary" class="sec-link"><span class="sec-dot"></span><span class="sec-text">خلاصهٔ فصل</span></a></li><li class="sec-item"><a href="12-فصل۱۲-کمی-کردن-عدم-قطعیت.html#sec-8" data-ch-idx="12" data-file="12-فصل۱۲-کمی-کردن-عدم-قطعیت.html" data-hash="#sec-8" class="sec-link"><span class="sec-dot"></span><span class="sec-text">یادداشت‌های کتاب‌شناختی و تاریخی</span></a></li><li class="sec-item"><a href="12-فصل۱۲-کمی-کردن-عدم-قطعیت.html#sec-9" data-ch-idx="12" data-file="12-فصل۱۲-کمی-کردن-عدم-قطعیت.html" data-hash="#sec-9" class="sec-link"><span class="sec-dot"></span><span class="sec-text">پانوشت‌ها:</span></a></li></ul>
+        </div>
+        
+
+        <div class="ch-card" id="ch-item-13" data-idx="13" data-file="13-فصل۱۳-استدلال-احتمالاتی.html">
+            <div class="ch-header" data-idx="13">
+                <a href="13-فصل۱۳-استدلال-احتمالاتی.html" class="ch-title-link" data-idx="13" data-file="13-فصل۱۳-استدلال-احتمالاتی.html">
+                    <span class="ch-badge">فصل 13</span>
+                    <span class="ch-title">استدلال احتمالاتی</span>
+                </a>
+                <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+            </div>
+            <ul class="ch-sections" id="sections-13"><li class="sec-item"><a href="13-فصل۱۳-استدلال-احتمالاتی.html#sec-1" data-ch-idx="13" data-file="13-فصل۱۳-استدلال-احتمالاتی.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۳.۱ بازنمایی دانش در حوزه‌ای نامطمئن</span></a></li><li class="sec-item"><a href="13-فصل۱۳-استدلال-احتمالاتی.html#sec-2" data-ch-idx="13" data-file="13-فصل۱۳-استدلال-احتمالاتی.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۳.۲ معناشناسی شبکه‌های بیزی</span></a></li><li class="sec-item"><a href="13-فصل۱۳-استدلال-احتمالاتی.html#sec-3" data-ch-idx="13" data-file="13-فصل۱۳-استدلال-احتمالاتی.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۳.۳ استنتاجِ دقیق در شبکه‌های بیزی</span></a></li><li class="sec-item"><a href="13-فصل۱۳-استدلال-احتمالاتی.html#sec-4" data-ch-idx="13" data-file="13-فصل۱۳-استدلال-احتمالاتی.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۳.۴ استنتاجِ تقریبی برای شبکه‌های بیزی</span></a></li><li class="sec-item"><a href="13-فصل۱۳-استدلال-احتمالاتی.html#sec-5" data-ch-idx="13" data-file="13-فصل۱۳-استدلال-احتمالاتی.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۳.۵ شبکه‌های علّی</span></a></li><li class="sec-item"><a href="13-فصل۱۳-استدلال-احتمالاتی.html#summary" data-ch-idx="13" data-file="13-فصل۱۳-استدلال-احتمالاتی.html" data-hash="#summary" class="sec-link"><span class="sec-dot"></span><span class="sec-text">خلاصهٔ فصل</span></a></li><li class="sec-item"><a href="13-فصل۱۳-استدلال-احتمالاتی.html#sec-6" data-ch-idx="13" data-file="13-فصل۱۳-استدلال-احتمالاتی.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">یادداشت‌های کتاب‌شناختی و تاریخی</span></a></li><li class="sec-item"><a href="13-فصل۱۳-استدلال-احتمالاتی.html#sec-7" data-ch-idx="13" data-file="13-فصل۱۳-استدلال-احتمالاتی.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">پانوشت‌ها:</span></a></li></ul>
+        </div>
+        
+
+        <div class="ch-card" id="ch-item-14" data-idx="14" data-file="14-فصل۱۴-استدلال-احتمالاتی-در-طول-زمان.html">
+            <div class="ch-header" data-idx="14">
+                <a href="14-فصل۱۴-استدلال-احتمالاتی-در-طول-زمان.html" class="ch-title-link" data-idx="14" data-file="14-فصل۱۴-استدلال-احتمالاتی-در-طول-زمان.html">
+                    <span class="ch-badge">فصل 14</span>
+                    <span class="ch-title">استدلال احتمالاتی در طول زمان</span>
+                </a>
+                <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+            </div>
+            <ul class="ch-sections" id="sections-14"><li class="sec-item"><a href="14-فصل۱۴-استدلال-احتمالاتی-در-طول-زمان.html#sec-1" data-ch-idx="14" data-file="14-فصل۱۴-استدلال-احتمالاتی-در-طول-زمان.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۴.۱ زمان و عدم قطعیت</span></a></li><li class="sec-item"><a href="14-فصل۱۴-استدلال-احتمالاتی-در-طول-زمان.html#sec-2" data-ch-idx="14" data-file="14-فصل۱۴-استدلال-احتمالاتی-در-طول-زمان.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۴.۲ استنتاج در مدل‌های زمانی</span></a></li><li class="sec-item"><a href="14-فصل۱۴-استدلال-احتمالاتی-در-طول-زمان.html#sec-3" data-ch-idx="14" data-file="14-فصل۱۴-استدلال-احتمالاتی-در-طول-زمان.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۴.۳ مدل‌های مارکوفِ پنهان</span></a></li><li class="sec-item"><a href="14-فصل۱۴-استدلال-احتمالاتی-در-طول-زمان.html#sec-4" data-ch-idx="14" data-file="14-فصل۱۴-استدلال-احتمالاتی-در-طول-زمان.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۴.۴ فیلترهای کالمن</span></a></li><li class="sec-item"><a href="14-فصل۱۴-استدلال-احتمالاتی-در-طول-زمان.html#sec-5" data-ch-idx="14" data-file="14-فصل۱۴-استدلال-احتمالاتی-در-طول-زمان.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۴.۵ شبکه‌های بیزیِ پویا</span></a></li><li class="sec-item"><a href="14-فصل۱۴-استدلال-احتمالاتی-در-طول-زمان.html#summary" data-ch-idx="14" data-file="14-فصل۱۴-استدلال-احتمالاتی-در-طول-زمان.html" data-hash="#summary" class="sec-link"><span class="sec-dot"></span><span class="sec-text">خلاصهٔ فصل</span></a></li><li class="sec-item"><a href="14-فصل۱۴-استدلال-احتمالاتی-در-طول-زمان.html#sec-6" data-ch-idx="14" data-file="14-فصل۱۴-استدلال-احتمالاتی-در-طول-زمان.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">یادداشت‌های کتاب‌شناختی و تاریخی</span></a></li><li class="sec-item"><a href="14-فصل۱۴-استدلال-احتمالاتی-در-طول-زمان.html#sec-7" data-ch-idx="14" data-file="14-فصل۱۴-استدلال-احتمالاتی-در-طول-زمان.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">پانوشت‌ها:</span></a></li></ul>
+        </div>
+        
+
+        <div class="ch-card" id="ch-item-15" data-idx="15" data-file="15-فصل۱۵-برنامهنویسی-احتمالاتی.html">
+            <div class="ch-header" data-idx="15">
+                <a href="15-فصل۱۵-برنامهنویسی-احتمالاتی.html" class="ch-title-link" data-idx="15" data-file="15-فصل۱۵-برنامهنویسی-احتمالاتی.html">
+                    <span class="ch-badge">فصل 15</span>
+                    <span class="ch-title">برنامه‌نویسی احتمالاتی</span>
+                </a>
+                <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+            </div>
+            <ul class="ch-sections" id="sections-15"><li class="sec-item"><a href="15-فصل۱۵-برنامهنویسی-احتمالاتی.html#sec-1" data-ch-idx="15" data-file="15-فصل۱۵-برنامهنویسی-احتمالاتی.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۵.۱ مدل‌های احتمالِ رابطه‌ای</span></a></li><li class="sec-item"><a href="15-فصل۱۵-برنامهنویسی-احتمالاتی.html#sec-2" data-ch-idx="15" data-file="15-فصل۱۵-برنامهنویسی-احتمالاتی.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۵.۲ مدل‌های احتمالِ جهانِ باز</span></a></li><li class="sec-item"><a href="15-فصل۱۵-برنامهنویسی-احتمالاتی.html#sec-3" data-ch-idx="15" data-file="15-فصل۱۵-برنامهنویسی-احتمالاتی.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۵.۳ پیگیریِ جهانِ پیچیده</span></a></li><li class="sec-item"><a href="15-فصل۱۵-برنامهنویسی-احتمالاتی.html#sec-4" data-ch-idx="15" data-file="15-فصل۱۵-برنامهنویسی-احتمالاتی.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۵.۴ برنامه‌ها به‌عنوانِ مدل‌های احتمال</span></a></li><li class="sec-item"><a href="15-فصل۱۵-برنامهنویسی-احتمالاتی.html#summary" data-ch-idx="15" data-file="15-فصل۱۵-برنامهنویسی-احتمالاتی.html" data-hash="#summary" class="sec-link"><span class="sec-dot"></span><span class="sec-text">خلاصهٔ فصل</span></a></li><li class="sec-item"><a href="15-فصل۱۵-برنامهنویسی-احتمالاتی.html#sec-5" data-ch-idx="15" data-file="15-فصل۱۵-برنامهنویسی-احتمالاتی.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">یادداشت‌های کتاب‌شناختی و تاریخی</span></a></li><li class="sec-item"><a href="15-فصل۱۵-برنامهنویسی-احتمالاتی.html#sec-6" data-ch-idx="15" data-file="15-فصل۱۵-برنامهنویسی-احتمالاتی.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">پانوشت‌ها:</span></a></li></ul>
+        </div>
+        
+
+        <div class="ch-card" id="ch-item-16" data-idx="16" data-file="16-فصل۱۶-تصمیمگیری-ساده.html">
+            <div class="ch-header" data-idx="16">
+                <a href="16-فصل۱۶-تصمیمگیری-ساده.html" class="ch-title-link" data-idx="16" data-file="16-فصل۱۶-تصمیمگیری-ساده.html">
+                    <span class="ch-badge">فصل 16</span>
+                    <span class="ch-title">تصمیم‌گیری ساده</span>
+                </a>
+                <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+            </div>
+            <ul class="ch-sections" id="sections-16"><li class="sec-item"><a href="16-فصل۱۶-تصمیمگیری-ساده.html#sec-1" data-ch-idx="16" data-file="16-فصل۱۶-تصمیمگیری-ساده.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۶.۱ ترکیبِ باورها و خواسته‌ها تحتِ عدم قطعیت</span></a></li><li class="sec-item"><a href="16-فصل۱۶-تصمیمگیری-ساده.html#sec-2" data-ch-idx="16" data-file="16-فصل۱۶-تصمیمگیری-ساده.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۶.۲ مبنای نظریهٔ مطلوبیت</span></a></li><li class="sec-item"><a href="16-فصل۱۶-تصمیمگیری-ساده.html#sec-3" data-ch-idx="16" data-file="16-فصل۱۶-تصمیمگیری-ساده.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۶.۳ توابعِ مطلوبیت</span></a></li><li class="sec-item"><a href="16-فصل۱۶-تصمیمگیری-ساده.html#sec-4" data-ch-idx="16" data-file="16-فصل۱۶-تصمیمگیری-ساده.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۶.۴ توابعِ مطلوبیتِ چندویژگی</span></a></li><li class="sec-item"><a href="16-فصل۱۶-تصمیمگیری-ساده.html#sec-5" data-ch-idx="16" data-file="16-فصل۱۶-تصمیمگیری-ساده.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۶.۵ شبکه‌های تصمیم</span></a></li><li class="sec-item"><a href="16-فصل۱۶-تصمیمگیری-ساده.html#sec-6" data-ch-idx="16" data-file="16-فصل۱۶-تصمیمگیری-ساده.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۶.۶ ارزشِ اطلاعات</span></a></li><li class="sec-item"><a href="16-فصل۱۶-تصمیمگیری-ساده.html#sec-7" data-ch-idx="16" data-file="16-فصل۱۶-تصمیمگیری-ساده.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۶.۷ ترجیح‌های ناشناخته</span></a></li><li class="sec-item"><a href="16-فصل۱۶-تصمیمگیری-ساده.html#summary" data-ch-idx="16" data-file="16-فصل۱۶-تصمیمگیری-ساده.html" data-hash="#summary" class="sec-link"><span class="sec-dot"></span><span class="sec-text">خلاصهٔ فصل</span></a></li><li class="sec-item"><a href="16-فصل۱۶-تصمیمگیری-ساده.html#sec-8" data-ch-idx="16" data-file="16-فصل۱۶-تصمیمگیری-ساده.html" data-hash="#sec-8" class="sec-link"><span class="sec-dot"></span><span class="sec-text">یادداشت‌های کتاب‌شناختی و تاریخی</span></a></li><li class="sec-item"><a href="16-فصل۱۶-تصمیمگیری-ساده.html#sec-9" data-ch-idx="16" data-file="16-فصل۱۶-تصمیمگیری-ساده.html" data-hash="#sec-9" class="sec-link"><span class="sec-dot"></span><span class="sec-text">پانوشت‌ها:</span></a></li></ul>
+        </div>
+        
+
+        <div class="ch-card" id="ch-item-17" data-idx="17" data-file="17-فصل۱۷-تصمیمگیری-پیچیده.html">
+            <div class="ch-header" data-idx="17">
+                <a href="17-فصل۱۷-تصمیمگیری-پیچیده.html" class="ch-title-link" data-idx="17" data-file="17-فصل۱۷-تصمیمگیری-پیچیده.html">
+                    <span class="ch-badge">فصل 17</span>
+                    <span class="ch-title">تصمیم‌گیری پیچیده</span>
+                </a>
+                <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+            </div>
+            <ul class="ch-sections" id="sections-17"><li class="sec-item"><a href="17-فصل۱۷-تصمیمگیری-پیچیده.html#sec-1" data-ch-idx="17" data-file="17-فصل۱۷-تصمیمگیری-پیچیده.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۷.۱ مسائلِ تصمیمِ ترتیبی</span></a></li><li class="sec-item"><a href="17-فصل۱۷-تصمیمگیری-پیچیده.html#sec-3" data-ch-idx="17" data-file="17-فصل۱۷-تصمیمگیری-پیچیده.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۷.۳ مسائلِ باندیت</span></a></li><li class="sec-item"><a href="17-فصل۱۷-تصمیمگیری-پیچیده.html#summary" data-ch-idx="17" data-file="17-فصل۱۷-تصمیمگیری-پیچیده.html" data-hash="#summary" class="sec-link"><span class="sec-dot"></span><span class="sec-text">خلاصهٔ فصل</span></a></li><li class="sec-item"><a href="17-فصل۱۷-تصمیمگیری-پیچیده.html#sec-6" data-ch-idx="17" data-file="17-فصل۱۷-تصمیمگیری-پیچیده.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">یادداشت‌های کتاب‌شناختی و تاریخی</span></a></li><li class="sec-item"><a href="17-فصل۱۷-تصمیمگیری-پیچیده.html#sec-7" data-ch-idx="17" data-file="17-فصل۱۷-تصمیمگیری-پیچیده.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">پانوشت‌ها:</span></a></li></ul>
+        </div>
+        
+
+        <div class="ch-card" id="ch-item-18" data-idx="18" data-file="18-فصل۱۸-تصمیمگیری-چندعاملی.html">
+            <div class="ch-header" data-idx="18">
+                <a href="18-فصل۱۸-تصمیمگیری-چندعاملی.html" class="ch-title-link" data-idx="18" data-file="18-فصل۱۸-تصمیمگیری-چندعاملی.html">
+                    <span class="ch-badge">فصل 18</span>
+                    <span class="ch-title">تصمیم‌گیری چندعاملی</span>
+                </a>
+                <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+            </div>
+            <ul class="ch-sections" id="sections-18"><li class="sec-item"><a href="18-فصل۱۸-تصمیمگیری-چندعاملی.html#sec-1" data-ch-idx="18" data-file="18-فصل۱۸-تصمیمگیری-چندعاملی.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۸.۱ ویژگی‌های محیط‌های چندعاملی</span></a></li><li class="sec-item"><a href="18-فصل۱۸-تصمیمگیری-چندعاملی.html#sec-2" data-ch-idx="18" data-file="18-فصل۱۸-تصمیمگیری-چندعاملی.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۸.۲ نظریهٔ بازیِ غیرهمکارانه</span></a></li><li class="sec-item"><a href="18-فصل۱۸-تصمیمگیری-چندعاملی.html#sec-3" data-ch-idx="18" data-file="18-فصل۱۸-تصمیمگیری-چندعاملی.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۸.۳ نظریهٔ بازیِ همکارانه</span></a></li><li class="sec-item"><a href="18-فصل۱۸-تصمیمگیری-چندعاملی.html#sec-4" data-ch-idx="18" data-file="18-فصل۱۸-تصمیمگیری-چندعاملی.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۸.۴ تصمیم‌گیریِ جمعی</span></a></li><li class="sec-item"><a href="18-فصل۱۸-تصمیمگیری-چندعاملی.html#summary" data-ch-idx="18" data-file="18-فصل۱۸-تصمیمگیری-چندعاملی.html" data-hash="#summary" class="sec-link"><span class="sec-dot"></span><span class="sec-text">خلاصهٔ فصل</span></a></li><li class="sec-item"><a href="18-فصل۱۸-تصمیمگیری-چندعاملی.html#sec-5" data-ch-idx="18" data-file="18-فصل۱۸-تصمیمگیری-چندعاملی.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">یادداشت‌های کتاب‌شناختی و تاریخی</span></a></li><li class="sec-item"><a href="18-فصل۱۸-تصمیمگیری-چندعاملی.html#sec-6" data-ch-idx="18" data-file="18-فصل۱۸-تصمیمگیری-چندعاملی.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">پانوشت‌ها:</span></a></li></ul>
+        </div>
+        
+
+        <div class="ch-card" id="ch-item-19" data-idx="19" data-file="19-فصل۱۹-یادگیری-از-مثالها.html">
+            <div class="ch-header" data-idx="19">
+                <a href="19-فصل۱۹-یادگیری-از-مثالها.html" class="ch-title-link" data-idx="19" data-file="19-فصل۱۹-یادگیری-از-مثالها.html">
+                    <span class="ch-badge">فصل 19</span>
+                    <span class="ch-title">یادگیری از مثال‌ها</span>
+                </a>
+                <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+            </div>
+            <ul class="ch-sections" id="sections-19"><li class="sec-item"><a href="19-فصل۱۹-یادگیری-از-مثالها.html#sec-1" data-ch-idx="19" data-file="19-فصل۱۹-یادگیری-از-مثالها.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۹.۱ شکل‌های یادگیری</span></a></li><li class="sec-item"><a href="19-فصل۱۹-یادگیری-از-مثالها.html#sec-2" data-ch-idx="19" data-file="19-فصل۱۹-یادگیری-از-مثالها.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۹.۲ یادگیریِ نظارت‌شده</span></a></li><li class="sec-item"><a href="19-فصل۱۹-یادگیری-از-مثالها.html#sec-3" data-ch-idx="19" data-file="19-فصل۱۹-یادگیری-از-مثالها.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۹.۳ یادگیریِ درخت‌های تصمیم</span></a></li><li class="sec-item"><a href="19-فصل۱۹-یادگیری-از-مثالها.html#sec-4" data-ch-idx="19" data-file="19-فصل۱۹-یادگیری-از-مثالها.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۹.۴ انتخابِ مدل و بهینه‌سازی</span></a></li><li class="sec-item"><a href="19-فصل۱۹-یادگیری-از-مثالها.html#sec-5" data-ch-idx="19" data-file="19-فصل۱۹-یادگیری-از-مثالها.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۹.۵ نظریهٔ یادگیری</span></a></li><li class="sec-item"><a href="19-فصل۱۹-یادگیری-از-مثالها.html#sec-6" data-ch-idx="19" data-file="19-فصل۱۹-یادگیری-از-مثالها.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۹.۶ رگرسیون و رده‌بندیِ خطی</span></a></li><li class="sec-item"><a href="19-فصل۱۹-یادگیری-از-مثالها.html#sec-7" data-ch-idx="19" data-file="19-فصل۱۹-یادگیری-از-مثالها.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۹.۷ مدل‌های ناپارامتری</span></a></li><li class="sec-item"><a href="19-فصل۱۹-یادگیری-از-مثالها.html#sec-8" data-ch-idx="19" data-file="19-فصل۱۹-یادگیری-از-مثالها.html" data-hash="#sec-8" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۹.۸ یادگیریِ گروهی</span></a></li><li class="sec-item"><a href="19-فصل۱۹-یادگیری-از-مثالها.html#sec-9" data-ch-idx="19" data-file="19-فصل۱۹-یادگیری-از-مثالها.html" data-hash="#sec-9" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۱۹.۹ توسعهٔ سامانه‌های یادگیریِ ماشینی</span></a></li><li class="sec-item"><a href="19-فصل۱۹-یادگیری-از-مثالها.html#summary" data-ch-idx="19" data-file="19-فصل۱۹-یادگیری-از-مثالها.html" data-hash="#summary" class="sec-link"><span class="sec-dot"></span><span class="sec-text">خلاصهٔ فصل</span></a></li><li class="sec-item"><a href="19-فصل۱۹-یادگیری-از-مثالها.html#sec-10" data-ch-idx="19" data-file="19-فصل۱۹-یادگیری-از-مثالها.html" data-hash="#sec-10" class="sec-link"><span class="sec-dot"></span><span class="sec-text">یادداشت‌های کتاب‌شناختی و تاریخی</span></a></li><li class="sec-item"><a href="19-فصل۱۹-یادگیری-از-مثالها.html#sec-11" data-ch-idx="19" data-file="19-فصل۱۹-یادگیری-از-مثالها.html" data-hash="#sec-11" class="sec-link"><span class="sec-dot"></span><span class="sec-text">پانوشت‌ها:</span></a></li></ul>
+        </div>
+        
+
+        <div class="ch-card" id="ch-item-20" data-idx="20" data-file="20-فصل۲۰-یادگیری-مدلهای-احتمالاتی.html">
+            <div class="ch-header" data-idx="20">
+                <a href="20-فصل۲۰-یادگیری-مدلهای-احتمالاتی.html" class="ch-title-link" data-idx="20" data-file="20-فصل۲۰-یادگیری-مدلهای-احتمالاتی.html">
+                    <span class="ch-badge">فصل 20</span>
+                    <span class="ch-title">یادگیری مدل‌های احتمالاتی</span>
+                </a>
+                <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+            </div>
+            <ul class="ch-sections" id="sections-20"><li class="sec-item"><a href="20-فصل۲۰-یادگیری-مدلهای-احتمالاتی.html#sec-1" data-ch-idx="20" data-file="20-فصل۲۰-یادگیری-مدلهای-احتمالاتی.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۰.۱ یادگیریِ آماری</span></a></li><li class="sec-item"><a href="20-فصل۲۰-یادگیری-مدلهای-احتمالاتی.html#sec-2" data-ch-idx="20" data-file="20-فصل۲۰-یادگیری-مدلهای-احتمالاتی.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۰.۲ یادگیری با دادهٔ کامل</span></a></li><li class="sec-item"><a href="20-فصل۲۰-یادگیری-مدلهای-احتمالاتی.html#summary" data-ch-idx="20" data-file="20-فصل۲۰-یادگیری-مدلهای-احتمالاتی.html" data-hash="#summary" class="sec-link"><span class="sec-dot"></span><span class="sec-text">خلاصهٔ فصل</span></a></li><li class="sec-item"><a href="20-فصل۲۰-یادگیری-مدلهای-احتمالاتی.html#sec-4" data-ch-idx="20" data-file="20-فصل۲۰-یادگیری-مدلهای-احتمالاتی.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">یادداشت‌های کتاب‌شناختی و تاریخی</span></a></li><li class="sec-item"><a href="20-فصل۲۰-یادگیری-مدلهای-احتمالاتی.html#sec-5" data-ch-idx="20" data-file="20-فصل۲۰-یادگیری-مدلهای-احتمالاتی.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">پانوشت‌ها:</span></a></li></ul>
+        </div>
+        
+
+        <div class="ch-card" id="ch-item-21" data-idx="21" data-file="21-فصل۲۱-یادگیری-عمیق.html">
+            <div class="ch-header" data-idx="21">
+                <a href="21-فصل۲۱-یادگیری-عمیق.html" class="ch-title-link" data-idx="21" data-file="21-فصل۲۱-یادگیری-عمیق.html">
+                    <span class="ch-badge">فصل 21</span>
+                    <span class="ch-title">یادگیری عمیق (Deep Learning)</span>
+                </a>
+                <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+            </div>
+            <ul class="ch-sections" id="sections-21"><li class="sec-item"><a href="21-فصل۲۱-یادگیری-عمیق.html#sec-1" data-ch-idx="21" data-file="21-فصل۲۱-یادگیری-عمیق.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۱.۱ شبکه‌های پیشخورِ ساده</span></a></li><li class="sec-item"><a href="21-فصل۲۱-یادگیری-عمیق.html#sec-2" data-ch-idx="21" data-file="21-فصل۲۱-یادگیری-عمیق.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۱.۲ گراف‌های محاسباتی برای یادگیری عمیق</span></a></li><li class="sec-item"><a href="21-فصل۲۱-یادگیری-عمیق.html#sec-3" data-ch-idx="21" data-file="21-فصل۲۱-یادگیری-عمیق.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۱.۳ شبکه‌های پیچشی</span></a></li><li class="sec-item"><a href="21-فصل۲۱-یادگیری-عمیق.html#sec-4" data-ch-idx="21" data-file="21-فصل۲۱-یادگیری-عمیق.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۱.۴ الگوریتم‌های یادگیری</span></a></li><li class="sec-item"><a href="21-فصل۲۱-یادگیری-عمیق.html#sec-5" data-ch-idx="21" data-file="21-فصل۲۱-یادگیری-عمیق.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۱.۵ تعمیم</span></a></li><li class="sec-item"><a href="21-فصل۲۱-یادگیری-عمیق.html#sec-6" data-ch-idx="21" data-file="21-فصل۲۱-یادگیری-عمیق.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۱.۶ شبکه‌های عصبیِ بازگشتی</span></a></li><li class="sec-item"><a href="21-فصل۲۱-یادگیری-عمیق.html#sec-7" data-ch-idx="21" data-file="21-فصل۲۱-یادگیری-عمیق.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۱.۷ یادگیریِ نظارت‌نشده و یادگیریِ انتقالی</span></a></li><li class="sec-item"><a href="21-فصل۲۱-یادگیری-عمیق.html#sec-8" data-ch-idx="21" data-file="21-فصل۲۱-یادگیری-عمیق.html" data-hash="#sec-8" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۱.۸ کاربردها</span></a></li><li class="sec-item"><a href="21-فصل۲۱-یادگیری-عمیق.html#summary" data-ch-idx="21" data-file="21-فصل۲۱-یادگیری-عمیق.html" data-hash="#summary" class="sec-link"><span class="sec-dot"></span><span class="sec-text">خلاصهٔ فصل</span></a></li><li class="sec-item"><a href="21-فصل۲۱-یادگیری-عمیق.html#sec-9" data-ch-idx="21" data-file="21-فصل۲۱-یادگیری-عمیق.html" data-hash="#sec-9" class="sec-link"><span class="sec-dot"></span><span class="sec-text">یادداشت‌های کتابشناختی و تاریخی</span></a></li><li class="sec-item"><a href="21-فصل۲۱-یادگیری-عمیق.html#sec-10" data-ch-idx="21" data-file="21-فصل۲۱-یادگیری-عمیق.html" data-hash="#sec-10" class="sec-link"><span class="sec-dot"></span><span class="sec-text">پانوشت‌ها:</span></a></li></ul>
+        </div>
+        
+
+        <div class="ch-card" id="ch-item-22" data-idx="22" data-file="22-فصل۲۲-یادگیری-تقویتی.html">
+            <div class="ch-header" data-idx="22">
+                <a href="22-فصل۲۲-یادگیری-تقویتی.html" class="ch-title-link" data-idx="22" data-file="22-فصل۲۲-یادگیری-تقویتی.html">
+                    <span class="ch-badge">فصل 22</span>
+                    <span class="ch-title">یادگیری تقویتی (Reinforcement Learning)</span>
+                </a>
+                <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+            </div>
+            <ul class="ch-sections" id="sections-22"><li class="sec-item"><a href="22-فصل۲۲-یادگیری-تقویتی.html#sec-1" data-ch-idx="22" data-file="22-فصل۲۲-یادگیری-تقویتی.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۲.۱ یادگیری از پاداش‌ها</span></a></li><li class="sec-item"><a href="22-فصل۲۲-یادگیری-تقویتی.html#sec-2" data-ch-idx="22" data-file="22-فصل۲۲-یادگیری-تقویتی.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۲.۲ یادگیریِ تقویتیِ منفعل</span></a></li><li class="sec-item"><a href="22-فصل۲۲-یادگیری-تقویتی.html#sec-3" data-ch-idx="22" data-file="22-فصل۲۲-یادگیری-تقویتی.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۲.۳ یادگیریِ تقویتیِ فعال</span></a></li><li class="sec-item"><a href="22-فصل۲۲-یادگیری-تقویتی.html#sec-4" data-ch-idx="22" data-file="22-فصل۲۲-یادگیری-تقویتی.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۲.۴ تعمیم در یادگیریِ تقویتی</span></a></li><li class="sec-item"><a href="22-فصل۲۲-یادگیری-تقویتی.html#sec-5" data-ch-idx="22" data-file="22-فصل۲۲-یادگیری-تقویتی.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۲.۵ جستجوی سیاست</span></a></li><li class="sec-item"><a href="22-فصل۲۲-یادگیری-تقویتی.html#sec-6" data-ch-idx="22" data-file="22-فصل۲۲-یادگیری-تقویتی.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۲.۶ کارآموزی و یادگیریِ تقویتیِ معکوس</span></a></li><li class="sec-item"><a href="22-فصل۲۲-یادگیری-تقویتی.html#sec-7" data-ch-idx="22" data-file="22-فصل۲۲-یادگیری-تقویتی.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۲.۷ کاربردهای یادگیریِ تقویتی</span></a></li><li class="sec-item"><a href="22-فصل۲۲-یادگیری-تقویتی.html#summary" data-ch-idx="22" data-file="22-فصل۲۲-یادگیری-تقویتی.html" data-hash="#summary" class="sec-link"><span class="sec-dot"></span><span class="sec-text">خلاصهٔ فصل</span></a></li><li class="sec-item"><a href="22-فصل۲۲-یادگیری-تقویتی.html#sec-8" data-ch-idx="22" data-file="22-فصل۲۲-یادگیری-تقویتی.html" data-hash="#sec-8" class="sec-link"><span class="sec-dot"></span><span class="sec-text">یادداشت‌های کتابشناختی و تاریخی</span></a></li><li class="sec-item"><a href="22-فصل۲۲-یادگیری-تقویتی.html#sec-9" data-ch-idx="22" data-file="22-فصل۲۲-یادگیری-تقویتی.html" data-hash="#sec-9" class="sec-link"><span class="sec-dot"></span><span class="sec-text">پانوشت‌ها:</span></a></li></ul>
+        </div>
+        
+
+        <div class="ch-card" id="ch-item-23" data-idx="23" data-file="23-فصل۲۳-پردازش-زبان-طبیعی.html">
+            <div class="ch-header" data-idx="23">
+                <a href="23-فصل۲۳-پردازش-زبان-طبیعی.html" class="ch-title-link" data-idx="23" data-file="23-فصل۲۳-پردازش-زبان-طبیعی.html">
+                    <span class="ch-badge">فصل 23</span>
+                    <span class="ch-title">پردازش زبان طبیعی (Natural Language Processing)</span>
+                </a>
+                <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+            </div>
+            <ul class="ch-sections" id="sections-23"><li class="sec-item"><a href="23-فصل۲۳-پردازش-زبان-طبیعی.html#sec-1" data-ch-idx="23" data-file="23-فصل۲۳-پردازش-زبان-طبیعی.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۳.۱ مدل‌های زبان</span></a></li><li class="sec-item"><a href="23-فصل۲۳-پردازش-زبان-طبیعی.html#sec-2" data-ch-idx="23" data-file="23-فصل۲۳-پردازش-زبان-طبیعی.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۳.۲ دستورِ زبان</span></a></li><li class="sec-item"><a href="23-فصل۲۳-پردازش-زبان-طبیعی.html#sec-3" data-ch-idx="23" data-file="23-فصل۲۳-پردازش-زبان-طبیعی.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۳.۳ تجزیه</span></a></li><li class="sec-item"><a href="23-فصل۲۳-پردازش-زبان-طبیعی.html#sec-4" data-ch-idx="23" data-file="23-فصل۲۳-پردازش-زبان-طبیعی.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۳.۴ دستورهای افزوده‌شده</span></a></li><li class="sec-item"><a href="23-فصل۲۳-پردازش-زبان-طبیعی.html#sec-5" data-ch-idx="23" data-file="23-فصل۲۳-پردازش-زبان-طبیعی.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۳.۵ پیچیدگی‌های زبانِ طبیعیِ واقعی</span></a></li><li class="sec-item"><a href="23-فصل۲۳-پردازش-زبان-طبیعی.html#sec-6" data-ch-idx="23" data-file="23-فصل۲۳-پردازش-زبان-طبیعی.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۳.۶ تکلیف‌های زبانِ طبیعی</span></a></li><li class="sec-item"><a href="23-فصل۲۳-پردازش-زبان-طبیعی.html#summary" data-ch-idx="23" data-file="23-فصل۲۳-پردازش-زبان-طبیعی.html" data-hash="#summary" class="sec-link"><span class="sec-dot"></span><span class="sec-text">خلاصهٔ فصل</span></a></li><li class="sec-item"><a href="23-فصل۲۳-پردازش-زبان-طبیعی.html#sec-7" data-ch-idx="23" data-file="23-فصل۲۳-پردازش-زبان-طبیعی.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">یادداشت‌های کتابشناختی و تاریخی</span></a></li><li class="sec-item"><a href="23-فصل۲۳-پردازش-زبان-طبیعی.html#sec-8" data-ch-idx="23" data-file="23-فصل۲۳-پردازش-زبان-طبیعی.html" data-hash="#sec-8" class="sec-link"><span class="sec-dot"></span><span class="sec-text">پانوشت‌ها:</span></a></li></ul>
+        </div>
+        
+
+        <div class="ch-card" id="ch-item-24" data-idx="24" data-file="24-فصل۲۴-یادگیری-عمیق-زبان-طبیعی.html">
+            <div class="ch-header" data-idx="24">
+                <a href="24-فصل۲۴-یادگیری-عمیق-زبان-طبیعی.html" class="ch-title-link" data-idx="24" data-file="24-فصل۲۴-یادگیری-عمیق-زبان-طبیعی.html">
+                    <span class="ch-badge">فصل 24</span>
+                    <span class="ch-title">یادگیری عمیق برای زبان طبیعی (Deep Learning for Natural Language Processing)</span>
+                </a>
+                <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+            </div>
+            <ul class="ch-sections" id="sections-24"><li class="sec-item"><a href="24-فصل۲۴-یادگیری-عمیق-زبان-طبیعی.html#sec-1" data-ch-idx="24" data-file="24-فصل۲۴-یادگیری-عمیق-زبان-طبیعی.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۴.۱ جاسازیِ واژه</span></a></li><li class="sec-item"><a href="24-فصل۲۴-یادگیری-عمیق-زبان-طبیعی.html#sec-3" data-ch-idx="24" data-file="24-فصل۲۴-یادگیری-عمیق-زبان-طبیعی.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۴.۳ مدل‌های دنباله‌به‌دنباله</span></a></li><li class="sec-item"><a href="24-فصل۲۴-یادگیری-عمیق-زبان-طبیعی.html#sec-4" data-ch-idx="24" data-file="24-فصل۲۴-یادگیری-عمیق-زبان-طبیعی.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۴.۴ معماریِ ترنسفورمر</span></a></li><li class="sec-item"><a href="24-فصل۲۴-یادگیری-عمیق-زبان-طبیعی.html#sec-5" data-ch-idx="24" data-file="24-فصل۲۴-یادگیری-عمیق-زبان-طبیعی.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۴.۵ پیش‌آموزش و یادگیریِ انتقالی</span></a></li><li class="sec-item"><a href="24-فصل۲۴-یادگیری-عمیق-زبان-طبیعی.html#sec-6" data-ch-idx="24" data-file="24-فصل۲۴-یادگیری-عمیق-زبان-طبیعی.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۴.۶ پیشتازترین‌ها</span></a></li><li class="sec-item"><a href="24-فصل۲۴-یادگیری-عمیق-زبان-طبیعی.html#summary" data-ch-idx="24" data-file="24-فصل۲۴-یادگیری-عمیق-زبان-طبیعی.html" data-hash="#summary" class="sec-link"><span class="sec-dot"></span><span class="sec-text">خلاصهٔ فصل</span></a></li><li class="sec-item"><a href="24-فصل۲۴-یادگیری-عمیق-زبان-طبیعی.html#sec-7" data-ch-idx="24" data-file="24-فصل۲۴-یادگیری-عمیق-زبان-طبیعی.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">یادداشت‌های کتابشناختی و تاریخی</span></a></li><li class="sec-item"><a href="24-فصل۲۴-یادگیری-عمیق-زبان-طبیعی.html#sec-8" data-ch-idx="24" data-file="24-فصل۲۴-یادگیری-عمیق-زبان-طبیعی.html" data-hash="#sec-8" class="sec-link"><span class="sec-dot"></span><span class="sec-text">پانوشت‌ها:</span></a></li></ul>
+        </div>
+        
+
+        <div class="ch-card" id="ch-item-25" data-idx="25" data-file="25-فصل۲۵-بینایی-رایانهای.html">
+            <div class="ch-header" data-idx="25">
+                <a href="25-فصل۲۵-بینایی-رایانهای.html" class="ch-title-link" data-idx="25" data-file="25-فصل۲۵-بینایی-رایانهای.html">
+                    <span class="ch-badge">فصل 25</span>
+                    <span class="ch-title">بینایی رایانه‌ای (Computer Vision)</span>
+                </a>
+                <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+            </div>
+            <ul class="ch-sections" id="sections-25"><li class="sec-item"><a href="25-فصل۲۵-بینایی-رایانهای.html#sec-1" data-ch-idx="25" data-file="25-فصل۲۵-بینایی-رایانهای.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۵.۱ مقدمه</span></a></li><li class="sec-item"><a href="25-فصل۲۵-بینایی-رایانهای.html#sec-2" data-ch-idx="25" data-file="25-فصل۲۵-بینایی-رایانهای.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۵.۲ تشکیلِ تصویر</span></a></li><li class="sec-item"><a href="25-فصل۲۵-بینایی-رایانهای.html#sec-3" data-ch-idx="25" data-file="25-فصل۲۵-بینایی-رایانهای.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۵.۳ ویژگی‌های سادهٔ تصویر</span></a></li><li class="sec-item"><a href="25-فصل۲۵-بینایی-رایانهای.html#sec-4" data-ch-idx="25" data-file="25-فصل۲۵-بینایی-رایانهای.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۵.۴ رده‌بندیِ تصاویر</span></a></li><li class="sec-item"><a href="25-فصل۲۵-بینایی-رایانهای.html#sec-5" data-ch-idx="25" data-file="25-فصل۲۵-بینایی-رایانهای.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۵.۵ تشخیصِ اشیا</span></a></li><li class="sec-item"><a href="25-فصل۲۵-بینایی-رایانهای.html#sec-6" data-ch-idx="25" data-file="25-فصل۲۵-بینایی-رایانهای.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۵.۶ جهانِ سه‌بعدی</span></a></li><li class="sec-item"><a href="25-فصل۲۵-بینایی-رایانهای.html#sec-7" data-ch-idx="25" data-file="25-فصل۲۵-بینایی-رایانهای.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۵.۷ استفاده از بیناییِ رایانه‌ای</span></a></li><li class="sec-item"><a href="25-فصل۲۵-بینایی-رایانهای.html#summary" data-ch-idx="25" data-file="25-فصل۲۵-بینایی-رایانهای.html" data-hash="#summary" class="sec-link"><span class="sec-dot"></span><span class="sec-text">خلاصهٔ فصل</span></a></li><li class="sec-item"><a href="25-فصل۲۵-بینایی-رایانهای.html#sec-8" data-ch-idx="25" data-file="25-فصل۲۵-بینایی-رایانهای.html" data-hash="#sec-8" class="sec-link"><span class="sec-dot"></span><span class="sec-text">یادداشت‌های کتابشناختی و تاریخی</span></a></li><li class="sec-item"><a href="25-فصل۲۵-بینایی-رایانهای.html#sec-9" data-ch-idx="25" data-file="25-فصل۲۵-بینایی-رایانهای.html" data-hash="#sec-9" class="sec-link"><span class="sec-dot"></span><span class="sec-text">پانوشت‌ها:</span></a></li></ul>
+        </div>
+        
+
+        <div class="ch-card" id="ch-item-26" data-idx="26" data-file="26-فصل۲۶-رباتیک.html">
+            <div class="ch-header" data-idx="26">
+                <a href="26-فصل۲۶-رباتیک.html" class="ch-title-link" data-idx="26" data-file="26-فصل۲۶-رباتیک.html">
+                    <span class="ch-badge">فصل 26</span>
+                    <span class="ch-title">رباتیک (Robotics)</span>
+                </a>
+                <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+            </div>
+            <ul class="ch-sections" id="sections-26"><li class="sec-item"><a href="26-فصل۲۶-رباتیک.html#sec-1" data-ch-idx="26" data-file="26-فصل۲۶-رباتیک.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۶.۱ ربات‌ها</span></a></li><li class="sec-item"><a href="26-فصل۲۶-رباتیک.html#sec-2" data-ch-idx="26" data-file="26-فصل۲۶-رباتیک.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۶.۲ سخت‌افزارِ ربات</span></a></li><li class="sec-item"><a href="26-فصل۲۶-رباتیک.html#sec-3" data-ch-idx="26" data-file="26-فصل۲۶-رباتیک.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۶.۳ مسئلهٔ رباتیک چه نوع مسئله‌ای است؟</span></a></li><li class="sec-item"><a href="26-فصل۲۶-رباتیک.html#sec-4" data-ch-idx="26" data-file="26-فصل۲۶-رباتیک.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۶.۴ ادراکِ رباتیک</span></a></li><li class="sec-item"><a href="26-فصل۲۶-رباتیک.html#sec-5" data-ch-idx="26" data-file="26-فصل۲۶-رباتیک.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۶.۵ برنامه‌ریزی و کنترل</span></a></li><li class="sec-item"><a href="26-فصل۲۶-رباتیک.html#sec-6" data-ch-idx="26" data-file="26-فصل۲۶-رباتیک.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۶.۶ برنامه‌ریزیِ حرکت‌های نامطمئن</span></a></li><li class="sec-item"><a href="26-فصل۲۶-رباتیک.html#sec-7" data-ch-idx="26" data-file="26-فصل۲۶-رباتیک.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۶.۷ یادگیریِ تقویتی در رباتیک</span></a></li><li class="sec-item"><a href="26-فصل۲۶-رباتیک.html#sec-8" data-ch-idx="26" data-file="26-فصل۲۶-رباتیک.html" data-hash="#sec-8" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۶.۸ انسان‌ها و ربات‌ها</span></a></li><li class="sec-item"><a href="26-فصل۲۶-رباتیک.html#sec-9" data-ch-idx="26" data-file="26-فصل۲۶-رباتیک.html" data-hash="#sec-9" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۶.۹ چارچوب‌های رباتیکِ جایگزین</span></a></li><li class="sec-item"><a href="26-فصل۲۶-رباتیک.html#sec-10" data-ch-idx="26" data-file="26-فصل۲۶-رباتیک.html" data-hash="#sec-10" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۶.۱۰ حوزه‌های کاربردی</span></a></li><li class="sec-item"><a href="26-فصل۲۶-رباتیک.html#summary" data-ch-idx="26" data-file="26-فصل۲۶-رباتیک.html" data-hash="#summary" class="sec-link"><span class="sec-dot"></span><span class="sec-text">خلاصهٔ فصل</span></a></li><li class="sec-item"><a href="26-فصل۲۶-رباتیک.html#sec-11" data-ch-idx="26" data-file="26-فصل۲۶-رباتیک.html" data-hash="#sec-11" class="sec-link"><span class="sec-dot"></span><span class="sec-text">یادداشت‌های کتابشناختی و تاریخی</span></a></li><li class="sec-item"><a href="26-فصل۲۶-رباتیک.html#sec-12" data-ch-idx="26" data-file="26-فصل۲۶-رباتیک.html" data-hash="#sec-12" class="sec-link"><span class="sec-dot"></span><span class="sec-text">پانوشت‌ها:</span></a></li></ul>
+        </div>
+        
+
+        <div class="ch-card" id="ch-item-27" data-idx="27" data-file="27-فصل۲۷-فلسفه-اخلاق-ایمنی.html">
+            <div class="ch-header" data-idx="27">
+                <a href="27-فصل۲۷-فلسفه-اخلاق-ایمنی.html" class="ch-title-link" data-idx="27" data-file="27-فصل۲۷-فلسفه-اخلاق-ایمنی.html">
+                    <span class="ch-badge">فصل 27</span>
+                    <span class="ch-title">فلسفه، اخلاق و ایمنی هوش مصنوعی (Philosophy, Ethics, and Safety of AI)</span>
+                </a>
+                <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+            </div>
+            <ul class="ch-sections" id="sections-27"><li class="sec-item"><a href="27-فصل۲۷-فلسفه-اخلاق-ایمنی.html#sec-1" data-ch-idx="27" data-file="27-فصل۲۷-فلسفه-اخلاق-ایمنی.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۷.۱ محدودیت‌های هوش مصنوعی</span></a></li><li class="sec-item"><a href="27-فصل۲۷-فلسفه-اخلاق-ایمنی.html#sec-2" data-ch-idx="27" data-file="27-فصل۲۷-فلسفه-اخلاق-ایمنی.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۷.۲ آیا ماشین‌ها واقعاً می‌توانند فکر کنند؟</span></a></li><li class="sec-item"><a href="27-فصل۲۷-فلسفه-اخلاق-ایمنی.html#sec-3" data-ch-idx="27" data-file="27-فصل۲۷-فلسفه-اخلاق-ایمنی.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۷.۳ اخلاقِ هوش مصنوعی</span></a></li><li class="sec-item"><a href="27-فصل۲۷-فلسفه-اخلاق-ایمنی.html#summary" data-ch-idx="27" data-file="27-فصل۲۷-فلسفه-اخلاق-ایمنی.html" data-hash="#summary" class="sec-link"><span class="sec-dot"></span><span class="sec-text">خلاصهٔ فصل</span></a></li><li class="sec-item"><a href="27-فصل۲۷-فلسفه-اخلاق-ایمنی.html#sec-4" data-ch-idx="27" data-file="27-فصل۲۷-فلسفه-اخلاق-ایمنی.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">یادداشت‌های کتابشناختی و تاریخی</span></a></li><li class="sec-item"><a href="27-فصل۲۷-فلسفه-اخلاق-ایمنی.html#sec-5" data-ch-idx="27" data-file="27-فصل۲۷-فلسفه-اخلاق-ایمنی.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">پانوشت‌ها:</span></a></li></ul>
+        </div>
+        
+
+        <div class="ch-card" id="ch-item-28" data-idx="28" data-file="28-فصل۲۸-آینده-هوش-مصنوعی.html">
+            <div class="ch-header" data-idx="28">
+                <a href="28-فصل۲۸-آینده-هوش-مصنوعی.html" class="ch-title-link" data-idx="28" data-file="28-فصل۲۸-آینده-هوش-مصنوعی.html">
+                    <span class="ch-badge">فصل 28</span>
+                    <span class="ch-title">آیندهٔ هوش مصنوعی (The Future of AI)</span>
+                </a>
+                <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+            </div>
+            <ul class="ch-sections" id="sections-28"><li class="sec-item"><a href="28-فصل۲۸-آینده-هوش-مصنوعی.html#sec-1" data-ch-idx="28" data-file="28-فصل۲۸-آینده-هوش-مصنوعی.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۸.۱ مؤلفه‌های هوش مصنوعی</span></a></li><li class="sec-item"><a href="28-فصل۲۸-آینده-هوش-مصنوعی.html#sec-2" data-ch-idx="28" data-file="28-فصل۲۸-آینده-هوش-مصنوعی.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">۲۸.۲ معماری‌های هوش مصنوعی</span></a></li><li class="sec-item"><a href="28-فصل۲۸-آینده-هوش-مصنوعی.html#sec-3" data-ch-idx="28" data-file="28-فصل۲۸-آینده-هوش-مصنوعی.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">آینده</span></a></li><li class="sec-item"><a href="28-فصل۲۸-آینده-هوش-مصنوعی.html#sec-4" data-ch-idx="28" data-file="28-فصل۲۸-آینده-هوش-مصنوعی.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">پانوشت‌ها:</span></a></li></ul>
+        </div>
+        
+        </div>
+    </aside>
+
+    <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+    <!-- Main Content Reader -->
+    <main class="reader-content">
+        <div class="reader-toolbar">
+            <div class="toolbar-title" id="current-title">
+                <i class="fas fa-book-open" style="color:var(--accent);"></i>
+                <span id="title-text">پیشگفتار</span>
+            </div>
+            <div class="toolbar-nav">
+                <button class="btn-tool" id="btn-prev-ch" title="فصل قبلی">
+                    <span>فصل قبلی</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="btn-tool" id="btn-next-ch" title="فصل بعدی">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>فصل بعدی</span>
+                </button>
+                <a class="btn-tool" id="btn-open-tab" target="_blank" title="باز کردن در تب مستقل">
+                    <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+        </div>
+        <div class="frame-container">
+            <iframe id="book-frame" name="book-frame" src="00-پیشگفتار.html" title="متن فصل کتاب"></iframe>
+        </div>
+    </main>
+</div>
+
+<script>
+    const CHAPTERS = [{"filename": "00-پیشگفتار.html", "title": "پیشگفتار", "short_title": "پیشگفتار", "subtitle": "", "badge": "پیشگفتار", "sections": [{"href": "#sec-1", "title": "تازه‌های این ویرایش"}, {"href": "#sec-2", "title": "مرور کلی کتاب"}, {"href": "#sec-3", "title": "منابع آنلاین"}, {"href": "#sec-4", "title": "جلد کتاب"}, {"href": "#sec-5", "title": "سپاسگزاری‌ها"}, {"href": "#sec-6", "title": "دربارهٔ نویسندگان"}]}, {"filename": "01-فصل۱-مقدمه.html", "title": "فصل ۱ — مقدمه", "short_title": "مقدمه", "subtitle": "فصل ۱: مقدمه (Introduction)", "badge": "فصل ۱", "sections": [{"href": "#sec-1", "title": "۱.۱ هوش مصنوعی چیست؟"}, {"href": "#sec-2", "title": "۱.۲ بنیان‌های هوش مصنوعی"}, {"href": "#sec-3", "title": "۱.۳ تاریخچهٔ هوش مصنوعی"}, {"href": "#sec-4", "title": "۱.۴ وضعیت هنر"}, {"href": "#sec-5", "title": "۱.۵ ریسک‌ها و منافع هوش مصنوعی"}, {"href": "#summary", "title": "خلاصهٔ فصل"}, {"href": "#sec-6", "title": "یادداشت‌های کتاب‌شناختی و تاریخی"}, {"href": "#sec-7", "title": "پانوشت‌ها:"}]}, {"filename": "02-فصل۲-عاملهای-هوشمند.html", "title": "فصل ۲ — عامل‌های هوشمند", "short_title": "عامل‌های هوشمند", "subtitle": "فصل ۲: عامل‌های هوشمند (Intelligent Agents)", "badge": "فصل 2", "sections": [{"href": "#sec-1", "title": "۲.۱ عامل‌ها و محیط‌ها"}, {"href": "#sec-2", "title": "۲.۲ رفتار خوب: مفهوم عقلانیت"}, {"href": "#sec-3", "title": "۲.۳ سرشت محیط‌ها"}, {"href": "#sec-4", "title": "۲.۴ ساختار عامل‌ها"}, {"href": "#summary", "title": "خلاصهٔ فصل"}, {"href": "#sec-5", "title": "یادداشت‌های کتاب‌شناختی و تاریخی"}, {"href": "#sec-6", "title": "پانوشت‌ها:"}]}, {"filename": "03-فصل۳-حل-مسئله-با-جستجو.html", "title": "فصل ۳ — حل مسئله با جستجو", "short_title": "حل مسئله با جستجو", "subtitle": "فصل ۳: حل مسئله با جستجو (Solving Problems by Searching)", "badge": "فصل 3", "sections": [{"href": "#sec-1", "title": "۳.۱ عامل‌های حل‌کنندهٔ مسئله"}, {"href": "#sec-2", "title": "۳.۲ مسائل نمونه"}, {"href": "#sec-3", "title": "۳.۳ الگوریتم‌های جستجو"}, {"href": "#sec-4", "title": "۳.۴ راهبردهای جستجوی نامطلع"}, {"href": "#sec-5", "title": "۳.۵ راهبردهای جستجوی مطلع (اکتشافی)"}, {"href": "#sec-6", "title": "۳.۶ توابع اکتشافی"}, {"href": "#summary", "title": "خلاصهٔ فصل"}, {"href": "#sec-7", "title": "یادداشت‌های کتاب‌شناختی و تاریخی"}, {"href": "#sec-8", "title": "پانوشت‌ها:"}]}, {"filename": "04-فصل۴-جستجو-در-محیطهای-پیچیده.html", "title": "فصل ۴ — جستجو در محیط‌های پیچیده", "short_title": "جستجو در محیط‌های پیچیده", "subtitle": "فصل ۴: جستجو در محیط‌های پیچیده (Search in Complex Environments)", "badge": "فصل ۴", "sections": [{"href": "#sec-1", "title": "۴.۱ جستجوی محلی و مسائل بهینه‌سازی"}, {"href": "#sec-2", "title": "۴.۲ جستجوی محلی در فضاهای پیوسته"}, {"href": "#sec-3", "title": "۴.۳ جستجو با کنش‌های ناجبرگرایانه"}, {"href": "#sec-4", "title": "۴.۴ جستجو در محیط‌های تا حدی قابل مشاهده"}, {"href": "#sec-5", "title": "۴.۵ عامل‌های جستجوی آنلاین و محیط‌های ناشناخته"}, {"href": "#summary", "title": "خلاصهٔ فصل"}, {"href": "#sec-6", "title": "یادداشت‌های کتاب‌شناختی و تاریخی"}, {"href": "#sec-7", "title": "پانوشت‌ها:"}]}, {"filename": "05-فصل۵-جستجوی-رقابتی-و-بازیها.html", "title": "فصل ۵ — جستجوی رقابتی و بازی‌ها", "short_title": "جستجوی رقابتی و بازی‌ها", "subtitle": "فصل ۵: جستجوی رقابتی و بازی‌ها (Adversarial Search and Games)", "badge": "فصل ۵", "sections": [{"href": "#sec-1", "title": "۵.۱ نظریهٔ بازی"}, {"href": "#sec-2", "title": "۵.۲ تصمیم‌های بهینه در بازی‌ها"}, {"href": "#sec-3", "title": "۵.۳ جستجوی درختی آلفا–بتا اکتشافی"}, {"href": "#sec-4", "title": "۵.۴ جستجوی درختی مونت‌کارلو"}, {"href": "#sec-5", "title": "۵.۵ بازی‌های تصادفی"}, {"href": "#sec-6", "title": "۵.۶ بازی‌های تا حدی قابل مشاهده"}, {"href": "#sec-7", "title": "۵.۷ محدودیت‌های الگوریتم‌های جستجوی بازی"}, {"href": "#summary", "title": "خلاصهٔ فصل"}, {"href": "#sec-8", "title": "یادداشت‌های کتاب‌شناختی و تاریخی"}, {"href": "#sec-9", "title": "پانوشت‌ها"}]}, {"filename": "06-فصل۶-ارضای-قیود.html", "title": "فصل ۶ — مسئله‌های ارضای قیود", "short_title": "مسئله‌های ارضای قیود", "subtitle": "فصل ۶: مسئله‌های ارضای قیود (Constraint Satisfaction Problems)", "badge": "فصل ۶", "sections": [{"href": "#sec-1", "title": "۶.۱ تعریف مسئله‌های ارضای قیود"}, {"href": "#sec-5", "title": "۶.۵ ساختار مسائل"}, {"href": "#summary", "title": "خلاصهٔ فصل"}, {"href": "#sec-6", "title": "یادداشت‌های کتاب‌شناختی و تاریخی"}, {"href": "#sec-7", "title": "پانوشت‌ها:"}]}, {"filename": "07-فصل۷-عاملهای-منطقی.html", "title": "فصل ۷ — عامل‌های منطقی", "short_title": "عامل‌های منطقی", "subtitle": "فصل ۷: عامل‌های منطقی (Logical Agents)", "badge": "فصل ۷", "sections": [{"href": "#sec-1", "title": "۷.۱ عامل‌های مبتنی بر دانش"}, {"href": "#sec-2", "title": "۷.۲ جهان وومپوس"}, {"href": "#sec-3", "title": "۷.۳ منطق"}, {"href": "#sec-4", "title": "۷.۴ منطق گزاره‌ای: منطقی بسیار ساده"}, {"href": "#sec-5", "title": "۷.۵ اثبات قضیهٔ گزاره‌ای"}, {"href": "#sec-6", "title": "۷.۶ بررسی مدل گزاره‌ای مؤثر"}, {"href": "#sec-7", "title": "۷.۷ عامل‌های مبتنی بر منطق گزاره‌ای"}, {"href": "#summary", "title": "خلاصهٔ فصل"}, {"href": "#sec-8", "title": "یادداشت‌های کتاب‌شناختی و تاریخی"}]}, {"filename": "08-فصل۸-منطق-مرتبه-اول.html", "title": "فصل ۸ — منطق مرتبهٔ اول", "short_title": "منطق مرتبهٔ اول", "subtitle": "فصل ۸: منطق مرتبهٔ اول (First-Order Logic)", "badge": "فصل ۸", "sections": [{"href": "#sec-1", "title": "۸.۱ بازنگری بازنمایی"}, {"href": "#sec-2", "title": "۸.۲ نحو و معناشناسی منطق مرتبهٔ اول"}, {"href": "#sec-3", "title": "۸.۳ استفاده از منطق مرتبهٔ اول"}, {"href": "#sec-4", "title": "۸.۴ مهندسی دانش در منطق مرتبهٔ اول"}, {"href": "#summary", "title": "خلاصهٔ فصل"}, {"href": "#sec-5", "title": "یادداشت‌های کتاب‌شناختی و تاریخی"}, {"href": "#sec-6", "title": "پانوشت‌ها:"}]}, {"filename": "09-فصل۹-استنتاج-منطق-مرتبه-اول.html", "title": "فصل ۹ — استنتاج در منطق مرتبهٔ اول", "short_title": "استنتاج در منطق مرتبهٔ اول", "subtitle": "فصل ۹: استنتاج در منطق مرتبهٔ اول (Inference in First-Order Logic)", "badge": "فصل 9", "sections": [{"href": "#sec-1", "title": "۹.۱ استنتاج گزاره‌ای در برابر مرتبهٔ اول"}, {"href": "#sec-2", "title": "۹.۲ یکسان‌سازی و استنتاج مرتبهٔ اول"}, {"href": "#sec-3", "title": "۹.۳ زنجیره‌سازی پیشرو"}, {"href": "#sec-4", "title": "۹.۴ زنجیره‌سازی پسرو"}, {"href": "#sec-5", "title": "۹.۵ حل"}, {"href": "#summary", "title": "خلاصهٔ فصل"}, {"href": "#sec-6", "title": "یادداشت‌های کتاب‌شناختی و تاریخی"}, {"href": "#sec-7", "title": "پانوشت‌ها:"}]}, {"filename": "10-فصل۱۰-بازنمایی-دانش.html", "title": "فصل ۱۰ — بازنمایی دانش", "short_title": "بازنمایی دانش", "subtitle": "فصل ۱۰: بازنمایی دانش (Knowledge Representation)", "badge": "فصل ۱۰", "sections": [{"href": "#sec-1", "title": "۱۰.۱ مهندسی هستی‌شناسی"}, {"href": "#sec-2", "title": "۱۰.۲ رده‌ها و اشیا"}, {"href": "#sec-3", "title": "۱۰.۳ رویدادها"}, {"href": "#sec-4", "title": "۱۰.۴ اشیای ذهنی و منطق موجهات"}, {"href": "#sec-5", "title": "۱۰.۵ سامانه‌های استدلال برای رده‌ها"}, {"href": "#sec-6", "title": "۱۰.۶ استدلال با اطلاعات پیش‌فرض"}, {"href": "#summary", "title": "خلاصهٔ فصل"}, {"href": "#sec-7", "title": "یادداشت‌های کتاب‌شناختی و تاریخی"}, {"href": "#sec-8", "title": "پانوشت‌ها:"}]}, {"filename": "11-فصل۱۱-برنامهریزی-خودکار.html", "title": "فصل ۱۱ — برنامه‌ریزی خودکار", "short_title": "برنامه‌ریزی خودکار", "subtitle": "فصل ۱۱: برنامه‌ریزی خودکار (Automated Planning)", "badge": "فصل 11", "sections": [{"href": "#sec-1", "title": "۱۱.۱ تعریف برنامه‌ریزی کلاسیک"}, {"href": "#sec-2", "title": "۱۱.۲ الگوریتم‌های برنامه‌ریزی کلاسیک"}, {"href": "#sec-3", "title": "۱۱.۳ اکتشافی‌های برنامه‌ریزی"}, {"href": "#sec-4", "title": "۱۱.۴ برنامه‌ریزی سلسله‌مراتبی"}, {"href": "#sec-5", "title": "۱۱.۵ برنامه‌ریزی و کنش در حوزه‌های ناجبرگرایانه"}, {"href": "#sec-6", "title": "۱۱.۶ زمان، زمان‌بندی‌ها و منابع"}, {"href": "#sec-7", "title": "۱۱.۷ تحلیل رویکردهای برنامه‌ریزی"}, {"href": "#summary", "title": "خلاصهٔ فصل"}, {"href": "#sec-8", "title": "یادداشت‌های کتاب‌شناختی و تاریخی"}, {"href": "#sec-9", "title": "پانوشت‌ها:"}]}, {"filename": "12-فصل۱۲-کمی-کردن-عدم-قطعیت.html", "title": "فصل ۱۲ — کمی کردن عدم قطعیت", "short_title": "کمی کردن عدم قطعیت", "subtitle": "فصل ۱۲: کمی کردن عدم قطعیت (Quantifying Uncertainty)", "badge": "فصل 12", "sections": [{"href": "#sec-1", "title": "۱۲.۱ عملکرد در شرایط عدم قطعیت"}, {"href": "#sec-2", "title": "۱۲.۲ نمادِ پایهٔ احتمال"}, {"href": "#sec-3", "title": "۱۲.۳ استنتاج با توزیع‌های مشترکِ کامل"}, {"href": "#sec-4", "title": "۱۲.۴ استقلال"}, {"href": "#sec-5", "title": "۱۲.۵ قاعدهٔ بیز و کاربرد آن"}, {"href": "#sec-6", "title": "۱۲.۶ مدل‌های بیزِ ساده"}, {"href": "#sec-7", "title": "۱۲.۷ جهانِ وومپوس، بازبینی"}, {"href": "#summary", "title": "خلاصهٔ فصل"}, {"href": "#sec-8", "title": "یادداشت‌های کتاب‌شناختی و تاریخی"}, {"href": "#sec-9", "title": "پانوشت‌ها:"}]}, {"filename": "13-فصل۱۳-استدلال-احتمالاتی.html", "title": "فصل ۱۳ — استدلال احتمالاتی", "short_title": "استدلال احتمالاتی", "subtitle": "فصل ۱۳: استدلال احتمالاتی (Probabilistic Reasoning)", "badge": "فصل 13", "sections": [{"href": "#sec-1", "title": "۱۳.۱ بازنمایی دانش در حوزه‌ای نامطمئن"}, {"href": "#sec-2", "title": "۱۳.۲ معناشناسی شبکه‌های بیزی"}, {"href": "#sec-3", "title": "۱۳.۳ استنتاجِ دقیق در شبکه‌های بیزی"}, {"href": "#sec-4", "title": "۱۳.۴ استنتاجِ تقریبی برای شبکه‌های بیزی"}, {"href": "#sec-5", "title": "۱۳.۵ شبکه‌های علّی"}, {"href": "#summary", "title": "خلاصهٔ فصل"}, {"href": "#sec-6", "title": "یادداشت‌های کتاب‌شناختی و تاریخی"}, {"href": "#sec-7", "title": "پانوشت‌ها:"}]}, {"filename": "14-فصل۱۴-استدلال-احتمالاتی-در-طول-زمان.html", "title": "فصل ۱۴ — استدلال احتمالاتی در طول زمان", "short_title": "استدلال احتمالاتی در طول زمان", "subtitle": "فصل ۱۴: استدلال احتمالاتی در طول زمان (Probabilistic Reasoning over Time)", "badge": "فصل 14", "sections": [{"href": "#sec-1", "title": "۱۴.۱ زمان و عدم قطعیت"}, {"href": "#sec-2", "title": "۱۴.۲ استنتاج در مدل‌های زمانی"}, {"href": "#sec-3", "title": "۱۴.۳ مدل‌های مارکوفِ پنهان"}, {"href": "#sec-4", "title": "۱۴.۴ فیلترهای کالمن"}, {"href": "#sec-5", "title": "۱۴.۵ شبکه‌های بیزیِ پویا"}, {"href": "#summary", "title": "خلاصهٔ فصل"}, {"href": "#sec-6", "title": "یادداشت‌های کتاب‌شناختی و تاریخی"}, {"href": "#sec-7", "title": "پانوشت‌ها:"}]}, {"filename": "15-فصل۱۵-برنامهنویسی-احتمالاتی.html", "title": "فصل ۱۵ — برنامه‌نویسی احتمالاتی", "short_title": "برنامه‌نویسی احتمالاتی", "subtitle": "فصل ۱۵: برنامه‌نویسی احتمالاتی (Probabilistic Programming)", "badge": "فصل 15", "sections": [{"href": "#sec-1", "title": "۱۵.۱ مدل‌های احتمالِ رابطه‌ای"}, {"href": "#sec-2", "title": "۱۵.۲ مدل‌های احتمالِ جهانِ باز"}, {"href": "#sec-3", "title": "۱۵.۳ پیگیریِ جهانِ پیچیده"}, {"href": "#sec-4", "title": "۱۵.۴ برنامه‌ها به‌عنوانِ مدل‌های احتمال"}, {"href": "#summary", "title": "خلاصهٔ فصل"}, {"href": "#sec-5", "title": "یادداشت‌های کتاب‌شناختی و تاریخی"}, {"href": "#sec-6", "title": "پانوشت‌ها:"}]}, {"filename": "16-فصل۱۶-تصمیمگیری-ساده.html", "title": "فصل ۱۶ — تصمیم‌گیری ساده", "short_title": "تصمیم‌گیری ساده", "subtitle": "فصل ۱۶: تصمیم‌گیری ساده (Making Simple Decisions)", "badge": "فصل 16", "sections": [{"href": "#sec-1", "title": "۱۶.۱ ترکیبِ باورها و خواسته‌ها تحتِ عدم قطعیت"}, {"href": "#sec-2", "title": "۱۶.۲ مبنای نظریهٔ مطلوبیت"}, {"href": "#sec-3", "title": "۱۶.۳ توابعِ مطلوبیت"}, {"href": "#sec-4", "title": "۱۶.۴ توابعِ مطلوبیتِ چندویژگی"}, {"href": "#sec-5", "title": "۱۶.۵ شبکه‌های تصمیم"}, {"href": "#sec-6", "title": "۱۶.۶ ارزشِ اطلاعات"}, {"href": "#sec-7", "title": "۱۶.۷ ترجیح‌های ناشناخته"}, {"href": "#summary", "title": "خلاصهٔ فصل"}, {"href": "#sec-8", "title": "یادداشت‌های کتاب‌شناختی و تاریخی"}, {"href": "#sec-9", "title": "پانوشت‌ها:"}]}, {"filename": "17-فصل۱۷-تصمیمگیری-پیچیده.html", "title": "فصل ۱۷ — تصمیم‌گیری پیچیده", "short_title": "تصمیم‌گیری پیچیده", "subtitle": "فصل ۱۷: تصمیم‌گیری پیچیده (Making Complex Decisions)", "badge": "فصل 17", "sections": [{"href": "#sec-1", "title": "۱۷.۱ مسائلِ تصمیمِ ترتیبی"}, {"href": "#sec-3", "title": "۱۷.۳ مسائلِ باندیت"}, {"href": "#summary", "title": "خلاصهٔ فصل"}, {"href": "#sec-6", "title": "یادداشت‌های کتاب‌شناختی و تاریخی"}, {"href": "#sec-7", "title": "پانوشت‌ها:"}]}, {"filename": "18-فصل۱۸-تصمیمگیری-چندعاملی.html", "title": "فصل ۱۸ — تصمیم‌گیری چندعاملی", "short_title": "تصمیم‌گیری چندعاملی", "subtitle": "فصل ۱۸: تصمیم‌گیری چندعاملی (Multiagent Decision Making)", "badge": "فصل 18", "sections": [{"href": "#sec-1", "title": "۱۸.۱ ویژگی‌های محیط‌های چندعاملی"}, {"href": "#sec-2", "title": "۱۸.۲ نظریهٔ بازیِ غیرهمکارانه"}, {"href": "#sec-3", "title": "۱۸.۳ نظریهٔ بازیِ همکارانه"}, {"href": "#sec-4", "title": "۱۸.۴ تصمیم‌گیریِ جمعی"}, {"href": "#summary", "title": "خلاصهٔ فصل"}, {"href": "#sec-5", "title": "یادداشت‌های کتاب‌شناختی و تاریخی"}, {"href": "#sec-6", "title": "پانوشت‌ها:"}]}, {"filename": "19-فصل۱۹-یادگیری-از-مثالها.html", "title": "فصل ۱۹ — یادگیری از مثال‌ها", "short_title": "یادگیری از مثال‌ها", "subtitle": "فصل ۱۹: یادگیری از مثال‌ها (Learning from Examples)", "badge": "فصل 19", "sections": [{"href": "#sec-1", "title": "۱۹.۱ شکل‌های یادگیری"}, {"href": "#sec-2", "title": "۱۹.۲ یادگیریِ نظارت‌شده"}, {"href": "#sec-3", "title": "۱۹.۳ یادگیریِ درخت‌های تصمیم"}, {"href": "#sec-4", "title": "۱۹.۴ انتخابِ مدل و بهینه‌سازی"}, {"href": "#sec-5", "title": "۱۹.۵ نظریهٔ یادگیری"}, {"href": "#sec-6", "title": "۱۹.۶ رگرسیون و رده‌بندیِ خطی"}, {"href": "#sec-7", "title": "۱۹.۷ مدل‌های ناپارامتری"}, {"href": "#sec-8", "title": "۱۹.۸ یادگیریِ گروهی"}, {"href": "#sec-9", "title": "۱۹.۹ توسعهٔ سامانه‌های یادگیریِ ماشینی"}, {"href": "#summary", "title": "خلاصهٔ فصل"}, {"href": "#sec-10", "title": "یادداشت‌های کتاب‌شناختی و تاریخی"}, {"href": "#sec-11", "title": "پانوشت‌ها:"}]}, {"filename": "20-فصل۲۰-یادگیری-مدلهای-احتمالاتی.html", "title": "فصل ۲۰ — یادگیری مدل‌های احتمالاتی", "short_title": "یادگیری مدل‌های احتمالاتی", "subtitle": "فصل ۲۰: یادگیری مدل‌های احتمالاتی (Learning Probabilistic Models)", "badge": "فصل 20", "sections": [{"href": "#sec-1", "title": "۲۰.۱ یادگیریِ آماری"}, {"href": "#sec-2", "title": "۲۰.۲ یادگیری با دادهٔ کامل"}, {"href": "#summary", "title": "خلاصهٔ فصل"}, {"href": "#sec-4", "title": "یادداشت‌های کتاب‌شناختی و تاریخی"}, {"href": "#sec-5", "title": "پانوشت‌ها:"}]}, {"filename": "21-فصل۲۱-یادگیری-عمیق.html", "title": "فصل ۲۱ — یادگیری عمیق (Deep Learning)", "short_title": "یادگیری عمیق (Deep Learning)", "subtitle": "فصل ۲۱: یادگیری عمیق (Deep Learning)", "badge": "فصل 21", "sections": [{"href": "#sec-1", "title": "۲۱.۱ شبکه‌های پیشخورِ ساده"}, {"href": "#sec-2", "title": "۲۱.۲ گراف‌های محاسباتی برای یادگیری عمیق"}, {"href": "#sec-3", "title": "۲۱.۳ شبکه‌های پیچشی"}, {"href": "#sec-4", "title": "۲۱.۴ الگوریتم‌های یادگیری"}, {"href": "#sec-5", "title": "۲۱.۵ تعمیم"}, {"href": "#sec-6", "title": "۲۱.۶ شبکه‌های عصبیِ بازگشتی"}, {"href": "#sec-7", "title": "۲۱.۷ یادگیریِ نظارت‌نشده و یادگیریِ انتقالی"}, {"href": "#sec-8", "title": "۲۱.۸ کاربردها"}, {"href": "#summary", "title": "خلاصهٔ فصل"}, {"href": "#sec-9", "title": "یادداشت‌های کتابشناختی و تاریخی"}, {"href": "#sec-10", "title": "پانوشت‌ها:"}]}, {"filename": "22-فصل۲۲-یادگیری-تقویتی.html", "title": "فصل ۲۲ — یادگیری تقویتی (Reinforcement Learning)", "short_title": "یادگیری تقویتی (Reinforcement Learning)", "subtitle": "فصل ۲۲: یادگیری تقویتی (Reinforcement Learning)", "badge": "فصل 22", "sections": [{"href": "#sec-1", "title": "۲۲.۱ یادگیری از پاداش‌ها"}, {"href": "#sec-2", "title": "۲۲.۲ یادگیریِ تقویتیِ منفعل"}, {"href": "#sec-3", "title": "۲۲.۳ یادگیریِ تقویتیِ فعال"}, {"href": "#sec-4", "title": "۲۲.۴ تعمیم در یادگیریِ تقویتی"}, {"href": "#sec-5", "title": "۲۲.۵ جستجوی سیاست"}, {"href": "#sec-6", "title": "۲۲.۶ کارآموزی و یادگیریِ تقویتیِ معکوس"}, {"href": "#sec-7", "title": "۲۲.۷ کاربردهای یادگیریِ تقویتی"}, {"href": "#summary", "title": "خلاصهٔ فصل"}, {"href": "#sec-8", "title": "یادداشت‌های کتابشناختی و تاریخی"}, {"href": "#sec-9", "title": "پانوشت‌ها:"}]}, {"filename": "23-فصل۲۳-پردازش-زبان-طبیعی.html", "title": "فصل ۲۳ — پردازش زبان طبیعی (Natural Language Processing)", "short_title": "پردازش زبان طبیعی (Natural Language Processing)", "subtitle": "فصل ۲۳: پردازش زبان طبیعی (Natural Language Processing)", "badge": "فصل 23", "sections": [{"href": "#sec-1", "title": "۲۳.۱ مدل‌های زبان"}, {"href": "#sec-2", "title": "۲۳.۲ دستورِ زبان"}, {"href": "#sec-3", "title": "۲۳.۳ تجزیه"}, {"href": "#sec-4", "title": "۲۳.۴ دستورهای افزوده‌شده"}, {"href": "#sec-5", "title": "۲۳.۵ پیچیدگی‌های زبانِ طبیعیِ واقعی"}, {"href": "#sec-6", "title": "۲۳.۶ تکلیف‌های زبانِ طبیعی"}, {"href": "#summary", "title": "خلاصهٔ فصل"}, {"href": "#sec-7", "title": "یادداشت‌های کتابشناختی و تاریخی"}, {"href": "#sec-8", "title": "پانوشت‌ها:"}]}, {"filename": "24-فصل۲۴-یادگیری-عمیق-زبان-طبیعی.html", "title": "فصل ۲۴ — یادگیری عمیق برای زبان طبیعی (Deep Learning for Natural Language Processing)", "short_title": "یادگیری عمیق برای زبان طبیعی (Deep Learning for Natural Language Processing)", "subtitle": "فصل ۲۴: یادگیری عمیق برای زبان طبیعی (Deep Learning for NLP)", "badge": "فصل 24", "sections": [{"href": "#sec-1", "title": "۲۴.۱ جاسازیِ واژه"}, {"href": "#sec-3", "title": "۲۴.۳ مدل‌های دنباله‌به‌دنباله"}, {"href": "#sec-4", "title": "۲۴.۴ معماریِ ترنسفورمر"}, {"href": "#sec-5", "title": "۲۴.۵ پیش‌آموزش و یادگیریِ انتقالی"}, {"href": "#sec-6", "title": "۲۴.۶ پیشتازترین‌ها"}, {"href": "#summary", "title": "خلاصهٔ فصل"}, {"href": "#sec-7", "title": "یادداشت‌های کتابشناختی و تاریخی"}, {"href": "#sec-8", "title": "پانوشت‌ها:"}]}, {"filename": "25-فصل۲۵-بینایی-رایانهای.html", "title": "فصل ۲۵ — بینایی رایانه‌ای (Computer Vision)", "short_title": "بینایی رایانه‌ای (Computer Vision)", "subtitle": "فصل ۲۵: بینایی رایانه‌ای (Computer Vision)", "badge": "فصل 25", "sections": [{"href": "#sec-1", "title": "۲۵.۱ مقدمه"}, {"href": "#sec-2", "title": "۲۵.۲ تشکیلِ تصویر"}, {"href": "#sec-3", "title": "۲۵.۳ ویژگی‌های سادهٔ تصویر"}, {"href": "#sec-4", "title": "۲۵.۴ رده‌بندیِ تصاویر"}, {"href": "#sec-5", "title": "۲۵.۵ تشخیصِ اشیا"}, {"href": "#sec-6", "title": "۲۵.۶ جهانِ سه‌بعدی"}, {"href": "#sec-7", "title": "۲۵.۷ استفاده از بیناییِ رایانه‌ای"}, {"href": "#summary", "title": "خلاصهٔ فصل"}, {"href": "#sec-8", "title": "یادداشت‌های کتابشناختی و تاریخی"}, {"href": "#sec-9", "title": "پانوشت‌ها:"}]}, {"filename": "26-فصل۲۶-رباتیک.html", "title": "فصل ۲۶ — رباتیک (Robotics)", "short_title": "رباتیک (Robotics)", "subtitle": "فصل ۲۶: رباتیک (Robotics)", "badge": "فصل 26", "sections": [{"href": "#sec-1", "title": "۲۶.۱ ربات‌ها"}, {"href": "#sec-2", "title": "۲۶.۲ سخت‌افزارِ ربات"}, {"href": "#sec-3", "title": "۲۶.۳ مسئلهٔ رباتیک چه نوع مسئله‌ای است؟"}, {"href": "#sec-4", "title": "۲۶.۴ ادراکِ رباتیک"}, {"href": "#sec-5", "title": "۲۶.۵ برنامه‌ریزی و کنترل"}, {"href": "#sec-6", "title": "۲۶.۶ برنامه‌ریزیِ حرکت‌های نامطمئن"}, {"href": "#sec-7", "title": "۲۶.۷ یادگیریِ تقویتی در رباتیک"}, {"href": "#sec-8", "title": "۲۶.۸ انسان‌ها و ربات‌ها"}, {"href": "#sec-9", "title": "۲۶.۹ چارچوب‌های رباتیکِ جایگزین"}, {"href": "#sec-10", "title": "۲۶.۱۰ حوزه‌های کاربردی"}, {"href": "#summary", "title": "خلاصهٔ فصل"}, {"href": "#sec-11", "title": "یادداشت‌های کتابشناختی و تاریخی"}, {"href": "#sec-12", "title": "پانوشت‌ها:"}]}, {"filename": "27-فصل۲۷-فلسفه-اخلاق-ایمنی.html", "title": "فصل ۲۷ — فلسفه، اخلاق و ایمنی هوش مصنوعی (Philosophy, Ethics, and Safety of AI)", "short_title": "فلسفه، اخلاق و ایمنی هوش مصنوعی (Philosophy, Ethics, and Safety of AI)", "subtitle": "فصل ۲۷: فلسفه، اخلاق و ایمنی هوش مصنوعی (Philosophy, Ethics, and Safety of AI)", "badge": "فصل 27", "sections": [{"href": "#sec-1", "title": "۲۷.۱ محدودیت‌های هوش مصنوعی"}, {"href": "#sec-2", "title": "۲۷.۲ آیا ماشین‌ها واقعاً می‌توانند فکر کنند؟"}, {"href": "#sec-3", "title": "۲۷.۳ اخلاقِ هوش مصنوعی"}, {"href": "#summary", "title": "خلاصهٔ فصل"}, {"href": "#sec-4", "title": "یادداشت‌های کتابشناختی و تاریخی"}, {"href": "#sec-5", "title": "پانوشت‌ها:"}]}, {"filename": "28-فصل۲۸-آینده-هوش-مصنوعی.html", "title": "فصل ۲۸ — آیندهٔ هوش مصنوعی (The Future of AI)", "short_title": "آیندهٔ هوش مصنوعی (The Future of AI)", "subtitle": "فصل ۲۸: آیندهٔ هوش مصنوعی (The Future of AI)", "badge": "فصل 28", "sections": [{"href": "#sec-1", "title": "۲۸.۱ مؤلفه‌های هوش مصنوعی"}, {"href": "#sec-2", "title": "۲۸.۲ معماری‌های هوش مصنوعی"}, {"href": "#sec-3", "title": "آینده"}, {"href": "#sec-4", "title": "پانوشت‌ها:"}]}];
+    let currentChapterIndex = 0;
+
+    const frame = document.getElementById('book-frame');
+    const titleText = document.getElementById('title-text');
+    const btnPrev = document.getElementById('btn-prev-ch');
+    const btnNext = document.getElementById('btn-next-ch');
+    const btnOpenTab = document.getElementById('btn-open-tab');
+    const sidebar = document.getElementById('reader-sidebar');
+    const backdrop = document.getElementById('sidebar-backdrop');
+    const searchInput = document.getElementById('sidebar-search');
+
+    function syncThemeToFrame() {
+        const isDark = document.body.getAttribute('theme') === 'dark';
+        try {
+            if (frame.contentDocument) {
+                const doc = frame.contentDocument;
+                if (isDark) {
+                    doc.documentElement.setAttribute('theme', 'dark');
+                    doc.body.setAttribute('theme', 'dark');
+                    if (!doc.getElementById('aima-dark-theme-style')) {
+                        const s = doc.createElement('style');
+                        s.id = 'aima-dark-theme-style';
+                        s.textContent = `
+                            [theme=dark] {
+                                --ink: #e2e8f0 !important;
+                                --muted: #94a3b8 !important;
+                                --paper: #0b1120 !important;
+                                --card: #1e293b !important;
+                                --line: #334155 !important;
+                                --wine: #fb7185 !important;
+                                --wine-soft: #831843 !important;
+                                --teal: #38bdf8 !important;
+                                --teal-soft: #0c4a6e !important;
+                                --gold: #facc15 !important;
+                                --ok: #4ade80 !important;
+                                --ok-soft: #064e3b !important;
+                                --bad: #f87171 !important;
+                                --bad-soft: #7f1d1d !important;
+                                --navy: #f1f5f9 !important;
+                            }
+                            [theme=dark] body {
+                                background: var(--paper) !important;
+                                color: var(--ink) !important;
+                            }
+                            [theme=dark] .ex {
+                                background: #162032 !important;
+                                border-color: #334155 !important;
+                            }
+                        `;
+                        doc.head.appendChild(s);
+                    }
+                } else {
+                    doc.documentElement.removeAttribute('theme');
+                    doc.body.removeAttribute('theme');
+                    const s = doc.getElementById('aima-dark-theme-style');
+                    if (s) s.remove();
+                }
+            }
+        } catch(e) {}
+    }
+
+    frame.addEventListener('load', () => {
+        syncThemeToFrame();
+        try {
+            const doc = frame.contentDocument;
+            if (doc) {
+                // Always remove or hide #aima-top-nav inside the reader frame
+                const nav = doc.getElementById('aima-top-nav');
+                if (nav) nav.style.display = 'none';
+
+                // Intercept any links pointing to index.html to break out of iframe
+                doc.querySelectorAll('a[href*="index.html"]').forEach(a => {
+                    a.setAttribute('target', '_top');
+                });
+            }
+            const loc = frame.contentWindow.location;
+            const pathname = loc.pathname;
+            const currentFile = decodeURIComponent(pathname.substring(pathname.lastIndexOf('/') + 1));
+            const currentHash = loc.hash;
+            
+            // Breakout if index.html was accidentally loaded inside frame
+            if (currentFile === 'index.html' || currentFile === '') {
+                window.top.location = 'index.html';
+                return;
+            }
+
+            const idx = CHAPTERS.findIndex(c => c.filename === currentFile);
+            if (idx !== -1) {
+                updateActiveState(idx, currentHash);
+            }
+        } catch(e) {}
+    });
+
+    function loadChapter(idx, hash = '') {
+        if (idx < 0 || idx >= CHAPTERS.length) return;
+        currentChapterIndex = idx;
+        const ch = CHAPTERS[idx];
+        const targetUrl = ch.filename + (hash ? (hash.startsWith('#') ? hash : '#' + hash) : '');
+        
+        frame.src = targetUrl;
+        updateActiveState(idx, hash);
+
+        // Update parent location hash
+        try {
+            history.replaceState(null, '', '#' + encodeURIComponent(targetUrl));
+        } catch(e) {}
+
+        // Close sidebar on mobile
+        closeSidebar();
+    }
+
+    function updateActiveState(idx, hash = '') {
+        currentChapterIndex = idx;
+        const ch = CHAPTERS[idx];
+        
+        // Update Title & Nav
+        titleText.textContent = ch.title;
+        btnPrev.disabled = (idx <= 0);
+        btnNext.disabled = (idx >= CHAPTERS.length - 1);
+        btnOpenTab.href = ch.filename + (hash || '');
+
+        // Update Sidebar active classes
+        document.querySelectorAll('.ch-card').forEach(c => c.classList.remove('active'));
+        document.querySelectorAll('.sec-link').forEach(s => s.classList.remove('active'));
+
+        const activeCard = document.getElementById('ch-item-' + idx);
+        if (activeCard) {
+            activeCard.classList.add('active');
+            activeCard.classList.add('expanded');
+            
+            if (hash) {
+                const cleanHash = hash.startsWith('#') ? hash : '#' + hash;
+                const secLink = activeCard.querySelector(`a.sec-link[data-hash="${cleanHash}"]`);
+                if (secLink) secLink.classList.add('active');
+            }
+
+            // Scroll sidebar if not visible
+            activeCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    }
+
+    // Sidebar Accordion Click
+    document.querySelectorAll('.ch-header').forEach(header => {
+        header.addEventListener('click', (e) => {
+            const card = header.closest('.ch-card');
+            const idx = parseInt(header.dataset.idx, 10);
+            
+            // If clicking the title directly
+            if (e.target.closest('.ch-title-link')) {
+                e.preventDefault();
+                loadChapter(idx);
+            } else {
+                // Clicking chevron or empty space toggles accordion
+                card.classList.toggle('expanded');
+            }
+        });
+    });
+
+    // Section Links Click
+    document.querySelectorAll('.sec-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const idx = parseInt(link.dataset.chIdx, 10);
+            const hash = link.dataset.hash;
+            loadChapter(idx, hash);
+        });
+    });
+
+    // Prev / Next Buttons
+    btnPrev.addEventListener('click', () => {
+        if (currentChapterIndex > 0) loadChapter(currentChapterIndex - 1);
+    });
+    btnNext.addEventListener('click', () => {
+        if (currentChapterIndex < CHAPTERS.length - 1) loadChapter(currentChapterIndex + 1);
+    });
+
+    // Expand / Collapse All
+    document.getElementById('btn-expand-all').addEventListener('click', () => {
+        document.querySelectorAll('.ch-card').forEach(c => c.classList.add('expanded'));
+    });
+    document.getElementById('btn-collapse-all').addEventListener('click', () => {
+        document.querySelectorAll('.ch-card').forEach(c => c.classList.remove('expanded'));
+    });
+
+    // Realtime Search
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.trim().toLowerCase();
+        if (!query) {
+            document.querySelectorAll('.ch-card').forEach(c => {
+                c.style.display = '';
+                c.querySelectorAll('.sec-item').forEach(s => s.style.display = '');
+            });
+            return;
+        }
+
+        CHAPTERS.forEach((ch, idx) => {
+            const card = document.getElementById('ch-item-' + idx);
+            if (!card) return;
+
+            const chMatch = ch.title.toLowerCase().includes(query) || ch.short_title.toLowerCase().includes(query);
+            let hasSecMatch = false;
+
+            card.querySelectorAll('.sec-item').forEach(item => {
+                const txt = item.textContent.toLowerCase();
+                if (txt.includes(query)) {
+                    item.style.display = '';
+                    hasSecMatch = true;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            if (chMatch || hasSecMatch) {
+                card.style.display = '';
+                card.classList.add('expanded');
+                if (chMatch) {
+                    card.querySelectorAll('.sec-item').forEach(s => s.style.display = '');
+                }
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+
+    // Mobile Drawer
+    function openSidebar() {
+        sidebar.classList.add('open');
+        backdrop.classList.add('open');
+    }
+    function closeSidebar() {
+        sidebar.classList.remove('open');
+        backdrop.classList.remove('open');
+    }
+    document.getElementById('btn-toggle-sidebar').addEventListener('click', openSidebar);
+    backdrop.addEventListener('click', closeSidebar);
+
+    // Theme Switcher Button
+    document.getElementById('btn-theme-toggle').addEventListener('click', () => {
+        const current = document.body.getAttribute('theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.body.setAttribute('theme', next);
+        document.body.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        syncThemeToFrame();
+    });
+
+    // Handle deep link from Hash on initial load
+    window.addEventListener('DOMContentLoaded', () => {
+        const hash = decodeURIComponent(location.hash.replace(/^#/, ''));
+        if (hash) {
+            let targetFile = hash;
+            let targetHash = '';
+            if (hash.includes('#')) {
+                const p = hash.split('#');
+                targetFile = p[0];
+                targetHash = '#' + p[1];
+            }
+            const idx = CHAPTERS.findIndex(c => c.filename === targetFile);
+            if (idx !== -1) {
+                loadChapter(idx, targetHash);
+                return;
+            }
+        }
+        // Default: Chapter 0 (Preface)
+        loadChapter(0);
+    });
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+        if (e.target.tagName === 'INPUT') return;
+        if (e.key === 'ArrowLeft') btnNext.click();
+        if (e.key === 'ArrowRight') btnPrev.click();
+    });
+</script>
+</body>
+</html>

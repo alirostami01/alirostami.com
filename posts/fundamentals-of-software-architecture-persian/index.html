@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="index, follow" />
+        <title>مبانی معماری نرم‌افزار: رویکردی مهندسی و مدرن — ترجمهٔ فارسی - علی رستمی</title>
+        <meta name="Description" content="معرفی پروژه ترجمه و تدوین فارسی ویرایش دوم کتاب مبانی معماری نرم‌افزار اثر مارک ریچاردز و نیل فورد (۲۰۲۵)؛ شامل ۲۷ فصل، پیوست، ۲۴۱ شکل، نسخه کامل PDF (۶۵۰ صفحه) و سامانه کتابخوان آنلاین با سایدبار هوشمند.">
+        <meta property="og:title" content="مبانی معماری نرم‌افزار: رویکردی مهندسی و مدرن — ترجمهٔ فارسی" />
+        <meta property="og:description" content="ترجمه فارسی ویرایش دوم کتاب مبانی معماری نرم‌افزار اثر مارک ریچاردز و نیل فورد؛ ۲۷ فصل، پیوست، نسخه ۶۵۰ صفحه‌ای PDF و مطالعه آنلاین با سایدبار کامل." />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://alirostami.ir/posts/fundamentals-of-software-architecture-persian/" />
+        <meta property="article:section" content="posts" />
+        <meta property="article:published_time" content="2026-10-24T12:00:00+03:30" />
+        <meta property="og:site_name" content="علی رستمی" />
+        <meta property="og:image" content="https://alirostami.ir/images/projects/fundamentals-of-software-architecture-persian.png" />
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="canonical" href="https://alirostami.ir/posts/fundamentals-of-software-architecture-persian/" />
+        <link rel="stylesheet" href="/css/style.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css">
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Article",
+              "headline": "مبانی معماری نرم‌افزار: رویکردی مهندسی و مدرن — ترجمهٔ فارسی",
+              "description": "معرفی پروژه ترجمه و تدوین فارسی ویرایش دوم کتاب مبانی معماری نرم‌افزار اثر مارک ریچاردز و نیل فورد؛ مطالعه آنلاین، نسخه PDF ۶۵۰ صفحه‌ای و سورس متن‌باز.",
+              "author": {
+                "@type": "Person",
+                "name": "علی رستمی",
+                "url": "https://alirostami.ir/"
+              },
+              "datePublished": "2026-10-24T12:00:00+03:30",
+              "url": "https://alirostami.ir/posts/fundamentals-of-software-architecture-persian/",
+              "image": "https://alirostami.ir/images/projects/fundamentals-of-software-architecture-persian.png"
+            },
+            {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "خانه",
+                  "item": "https://alirostami.ir/fa/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "مقالات",
+                  "item": "https://alirostami.ir/posts/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "ترجمه فارسی کتاب مبانی معماری نرم‌افزار",
+                  "item": "https://alirostami.ir/posts/fundamentals-of-software-architecture-persian/"
+                }
+              ]
+            }
+          ]
+        }
+        </script>
+        <style>
+            #header-desktop, #header-mobile, .footer { direction: ltr; }
+            .post-page-fa { direction: rtl; text-align: right; font-family: Vazirmatn, "Segoe UI", Tahoma, sans-serif; }
+            .post-page-fa .content { line-height: 2.1; font-size: 1.05rem; }
+            .post-page-fa .post-meta { direction: rtl; text-align: right; }
+            .post-actions-panel {
+                display: flex;
+                flex-wrap: wrap;
+                gap: .75rem;
+                margin: 1.8rem 0 2.2rem;
+                padding: 1.2rem;
+                background: rgba(128,128,128,.07);
+                border: 1px solid rgba(128,128,128,.2);
+                border-radius: 12px;
+            }
+            [theme=dark] .post-actions-panel { background: rgba(255,255,255,.04); }
+            .post-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: .5rem;
+                padding: .6rem 1.2rem;
+                border-radius: 2rem;
+                font-weight: 600;
+                font-size: .92rem;
+                text-decoration: none;
+                transition: transform .2s, filter .2s;
+                border: 1px solid rgba(128,128,128,.3);
+            }
+            .post-btn:hover { transform: translateY(-2px); }
+            .post-btn.primary {
+                background: linear-gradient(135deg, #1e3a8a, #2563eb);
+                color: #fff !important;
+                border: none;
+                box-shadow: 0 4px 14px rgba(37,99,235,.3);
+            }
+            .post-btn.pdf {
+                background: linear-gradient(135deg, #dc2626, #f87171);
+                color: #fff !important;
+                border: none;
+                box-shadow: 0 4px 14px rgba(220,38,38,.3);
+            }
+            .post-btn.support {
+                background: linear-gradient(135deg, #e11d48, #fb7185);
+                color: #fff !important;
+                border: none;
+            }
+            .post-btn.github {
+                background: #24292f;
+                color: #fff !important;
+                border: none;
+            }
+            [theme=dark] .post-btn.github { background: #334155; }
+            .reading-feature-card {
+                background: linear-gradient(135deg, rgba(37,99,235,.08), rgba(56,189,248,.04));
+                border: 1px solid rgba(37,99,235,.25);
+                border-radius: 12px;
+                padding: 1.2rem 1.5rem;
+                margin: 1.5rem 0;
+            }
+        </style>
+    </head>
+    <body data-header-desktop="fixed" data-header-mobile="auto">
+        <script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+        <div id="mask"></div>
+        <div class="wrapper">
+            <header class="desktop" id="header-desktop">
+                <div class="header-wrapper">
+                    <div class="header-title"><a href="/fa/" title="علی رستمی">Ali Rostami</a></div>
+                    <div class="menu">
+                        <div class="menu-inner">
+                            <a href="/fa/" class="menu-item" title="خانه">خانه</a>
+                            <a href="/software-architecture/" class="menu-item" title="مطالعه آنلاین کتاب معماری نرم‌افزار"><i class="fas fa-cubes fa-fw"></i> کتاب معماری نرم‌افزار</a>
+                            <a href="/fundamentals-of-software-architecture-persian/" class="menu-item" title="مستندات پروژه">پروژه معماری نرم‌افزار</a>
+                            <a href="/aima-4e/" class="menu-item" title="کتاب هوش مصنوعی">کتاب هوش مصنوعی</a>
+                            <a href="/posts/" class="menu-item" title="مقالات">مقالات</a>
+                            <a href="/support/" class="menu-item" title="حمایت"><i class="fas fa-heart fa-fw" style="color:#e0245e;"></i> حمایت</a>
+                            <a href="javascript:void(0);" class="menu-item theme-switch" title="تغییر ظاهر"><i class="fas fa-adjust fa-fw"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="main">
+                <div class="container">
+                    <article class="page single post-page-fa">
+                        <h1 class="single-title animate__animated animate__flipInX">مبانی معماری نرم‌افزار: رویکردی مهندسی و مدرن — ترجمهٔ فارسی</h1>
+                        <div class="post-meta">
+                            <div class="post-meta-line">
+                                <span class="post-author"><a href="/fa/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw"></i> علی رستمی</a></span>
+                                &nbsp;|&nbsp;
+                                <i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2026-10-24">۳ آبان ۱۴۰۵ (2026-10-24)</time>
+                                &nbsp;|&nbsp;
+                                <i class="fas fa-book fa-fw"></i>&nbsp;ویرایش دوم (2nd Edition, 2025)
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons Section -->
+                        <div class="post-actions-panel">
+                            <a href="/software-architecture/" class="post-btn primary" title="مطالعه آنلاین با سایدبار و فهرست فصول">
+                                <i class="fas fa-book-reader fa-fw"></i> مطالعهٔ آنلاین کتاب (وب با سایدبار)
+                            </a>
+                            <a href="https://github.com/alirostami01/Fundamentals-of-Software-Architecture_-A-Modern-Engineering-Approach/raw/main/pdf/book.pdf" target="_blank" rel="noopener noreferrer" class="post-btn pdf" title="دانلود نسخه کامل PDF از گیت‌هاب">
+                                <i class="fas fa-file-pdf fa-fw"></i> دانلود کتاب کامل از گیت‌هاب (PDF - ۶۵۰ صفحه)
+                            </a>
+                            <a href="https://github.com/alirostami01/Fundamentals-of-Software-Architecture_-A-Modern-Engineering-Approach" target="_blank" rel="noopener noreferrer" class="post-btn github" title="مشاهده مخزن گیت‌هاب">
+                                <i class="fab fa-github fa-fw"></i> مخزن گیت‌هاب (GitHub)
+                            </a>
+                            <a href="/support/" class="post-btn support" title="حمایت از ادامه توسعه پروژه">
+                                <i class="fas fa-heart fa-fw"></i> حمایت از پروژه
+                            </a>
+                        </div>
+
+                        <div class="content" id="content">
+                            <p class="lead">
+                                کتاب <strong>Fundamentals of Software Architecture: A Modern Engineering Approach (ویرایش دوم، ۲۰۲۵)</strong> نوشتهٔ دو چهرهٔ شناخته‌شده و برجستهٔ دنیای معماری نرم‌افزار، <strong>مارک ریچاردز (Mark Richards)</strong> و <strong>نیل فورد (Neal Ford)</strong> از انتشارات O&rsquo;Reilly، کامل‌ترین راهنمای جامع برای تبدیل‌شدن به یک معمار نرم‌افزار موفق و تحلیل دقیق بده‌بستان‌های سامانه‌های مدرن است. این پروژه ترجمه و تدوین آزاد و فارسی تمام <strong>۲۷ فصل کتاب، پیوست پرسش‌های بحث و واژه‌نامهٔ تخصصی</strong> را در اختیار علاقه‌مندان قرار می‌دهد.
+                            </p>
+
+                            <div class="reading-feature-card">
+                                <h3 style="margin-top:0;display:flex;align-items:center;gap:.5rem;color:#1e3a8a;">
+                                    <i class="fas fa-laptop-code"></i> سامانهٔ مطالعهٔ آنلاین تعاملی با سایدبار هوشمند
+                                </h3>
+                                <p>
+                                    برای راحتی مطالعه بدون دانلود فایل‌های سنگین، نسخهٔ کامل وب در مسیر <a href="/software-architecture/"><strong>/software-architecture/</strong></a> آماده شده است. این سامانه شامل سایدبار دسته‌بندی‌شده بر اساس سه بخش اصلی کتاب، باز/بسته شدن آکاردئونی، فهرست زیربخش‌ها، جستجوی زنده، هایلایت خودکار بخش جاری، لینک‌های پایدار و حالت شب (Dark Mode) است.
+                                </p>
+                                <p style="margin-bottom:0;">
+                                    👉 <a href="/software-architecture/" style="font-weight:700;">ورود به سامانه مطالعه آنلاین کتاب معماری نرم‌افزار &raquo;</a>
+                                </p>
+                            </div>
+
+                            <h2>✨ ویژگی‌های برجستهٔ پروژه</h2>
+                            <ul>
+                                <li><strong>ترجمهٔ کامل و موشکافانه:</strong> تمامی ۲۷ فصل ویرایش دوم سال ۲۰۲۵ به انضمام پیوست جامع پرسش‌های بحث و تأمل فنی.</li>
+                                <li><strong>کتابخوان تعاملی مدرن:</strong> دارای سایدبار واکنش‌گرا، سازگاری کامل با تبلت و موبایل، تعویض خودکار تم و کلیدهای میانبر مطالعه.</li>
+                                <li><strong>نسخهٔ جامع PDF:</strong> فایل یکپارچه در ۶۵۰ صفحهٔ استاندارد A4 همراه با صفحهٔ عنوان، فهرست کلیک‌پذیر، شماره‌گذاری فارسی و نشانک‌های ساختاریافته (Bookmarks) برای مطالعه آفلاین.</li>
+                                <li><strong>۲۴۱ شکل و دیاگرام تخصصی:</strong> نمودارهای تحلیلی، الگوها، توپولوژی‌ها و جدول‌های مقایسه‌ای با عناوین فارسی و بالاترین رزولوشن.</li>
+                                <li><strong>واژه‌نامه و اصطلاح‌شناسی هماهنگ:</strong> تعریف معادل‌های فارسی دقیق برای اصطلاحات نوینی نظیر Quanta، Fitness Functions، Modularity، Connascence و Microservices در کنار حفظ املای لاتین آن‌ها.</li>
+                            </ul>
+
+                            <h2>🏗️ ساختار سه‌گانهٔ محتوای کتاب</h2>
+                            <ol>
+                                <li><strong>بخش اول — مبانی (Foundations):</strong> فصول ۱ تا ۸؛ آشنایی با تفکر معماری، تعریف ماژولاریتی، سنجش پیوستگی و کوپلینگ، مشخصه‌های معماری، حاکمیت و تفکر مؤلفه‌محور.</li>
+                                <li><strong>بخش دوم — سبک‌های معماری (Architecture Styles):</strong> فصول ۹ تا ۲۰؛ تحلیل سبک‌های مونولیت ماژولار، لایه‌ای، خط لوله، میکروکرنل، سرویس‌محور، رویدادمحور (EDA)، فضاپایه، میکروسرویس‌ها و روش‌شناسی انتخاب سبک معماری بهینه.</li>
+                                <li><strong>بخش سوم — تکنیک‌ها و مهارت‌های نرم (Techniques and Soft Skills):</strong> فصول ۲۱ تا ۲۷؛ چگونگی تصمیم‌گیری و ثبت ADRها، ارزیابی و ماتریس ریسک معماری، نمودارکشی اصولی، رهبری تیم و مذاکره با ذی‌نفعان.</li>
+                            </ol>
+
+                            <h2>🔗 دسترسی به منابع کتاب</h2>
+                            <p>علاقه‌مندان، معماران سیستم، توسعه‌دهندگان و دانشجویان می‌توانند از پیوندهای زیر به بخش‌های مختلف دسترسی پیدا کنند:</p>
+                            <ul>
+                                <li><a href="/software-architecture/"><strong>سامانهٔ مطالعه آنلاین کتاب (با سایدبار و فهرست تعاملی)</strong></a></li>
+                                <li><a href="/fundamentals-of-software-architecture-persian/"><strong>صفحهٔ مستندات کامل پروژه در وب‌سایت</strong></a></li>
+                                <li><a href="https://github.com/alirostami01/Fundamentals-of-Software-Architecture_-A-Modern-Engineering-Approach/raw/main/pdf/book.pdf" target="_blank" rel="noopener noreferrer"><strong>دانلود نسخه کامل کتاب از گیت‌هاب (PDF ۶۵۰ صفحه)</strong></a></li>
+                                <li><a href="https://github.com/alirostami01/Fundamentals-of-Software-Architecture_-A-Modern-Engineering-Approach" target="_blank" rel="noopener noreferrer"><strong>مخزن پروژه در گیت‌هاب (ستاره دادن، فورک و ارسال PR)</strong></a></li>
+                                <li><a href="/support/"><strong>حمایت مالی از علی رستمی و توسعه مستمر پروژه‌های آزاد</strong></a></li>
+                            </ul>
+                        </div>
+
+                        <div class="post-footer" id="post-footer">
+                            <div class="post-info">
+                                <div class="post-info-line">
+                                    <div class="post-info-mod">
+                                        <span>منتشر شده در ۳ آبان ۱۴۰۵ · پروژهٔ متن‌باز علی رستمی</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post-info-more">
+                                <section>
+                                    <span><a href="/software-architecture/">📖 ورود به مطالعه آنلاین کتاب</a></span>
+                                    &nbsp;|&nbsp;
+                                    <span><a href="/fa/">صفحه اصلی</a></span>
+                                </section>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </main>
+
+            <footer class="footer">
+                <div class="footer-container">
+                    <div class="footer-line">ایجاد شده توسط <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> | پوسته - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreferrer">LoveIt</a></div>
+                    <div class="footer-line"><i class="far fa-copyright fa-fw"></i><span>2022 - 2026</span>&nbsp;<a href="/fa/">علی رستمی</a></div>
+                </div>
+            </footer>
+        </div>
+        <div id="fixed-buttons">
+            <a href="#" id="back-to-top" class="fixed-button" title="برگشت به بالا"><i class="fas fa-arrow-up fa-fw"></i></a>
+        </div>
+        <script src="/js/theme.min.js"></script>
+    </body>
+</html>

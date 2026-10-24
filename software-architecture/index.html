@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index, follow">
+    <script>
+        if (window.self !== window.top) {
+            window.top.location = window.location.href;
+        }
+    </script>
+    <title>مبانی معماری نرم‌افزار (ویرایش دوم) — مطالعهٔ آنلاین با فهرست و سایدبار</title>
+    <meta name="Description" content="نسخهٔ وب و سامانهٔ مطالعهٔ آنلاین ترجمهٔ فارسی کتاب مبانی معماری نرم‌افزار: رویکردی مهندسی و مدرن اثر مارک ریچاردز و نیل فورد (ویرایش دوم، ۲۰۲۵) شامل ۲۷ فصل، پیوست و واژه‌نامه.">
+    <meta property="og:title" content="مبانی معماری نرم‌افزار — مطالعه آنلاین کتاب">
+    <meta property="og:description" content="مطالعه آنلاین ترجمه فارسی کتاب مبانی معماری نرم‌افزار اثر مارک ریچاردز و نیل فورد با سایدبار کامل، ۲۷ فصل، واژه‌نامه و جستجوی پیشرفته.">
+    <meta property="og:type" content="book">
+    <meta property="og:url" content="https://alirostami.ir/software-architecture/">
+    <link rel="canonical" href="https://alirostami.ir/software-architecture/">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Book",
+                "@id": "https://alirostami.ir/software-architecture/#book",
+                "name": "مبانی معماری نرم‌افزار: رویکردی مهندسی و مدرن (ویرایش دوم)",
+                "alternateName": "Fundamentals of Software Architecture: A Modern Engineering Approach 2nd Edition",
+                "author": [
+                    {"@type": "Person", "name": "Mark Richards", "alternateName": "مارک ریچاردز"},
+                    {"@type": "Person", "name": "Neal Ford", "alternateName": "نیل فورد"}
+                ],
+                "translator": {
+                    "@type": "Person",
+                    "name": "علی رستمی",
+                    "url": "https://alirostami.ir/"
+                },
+                "inLanguage": "fa",
+                "bookFormat": "https://schema.org/EBook",
+                "url": "https://alirostami.ir/software-architecture/",
+                "description": "نسخه وب و مطالعه آنلاین ترجمه کامل فارسی کتاب مبانی معماری نرم‌افزار: رویکردی مهندسی و مدرن با سایدبار هوشمند، فهرست فصول، بخش‌بندی سه‌گانه و امکان جستجو."
+            },
+            {
+                "@type": "BreadcrumbList",
+                "@id": "https://alirostami.ir/software-architecture/#breadcrumb",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "خانه",
+                        "item": "https://alirostami.ir/fa/"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "پروژه‌ها",
+                        "item": "https://alirostami.ir/fa/#projects"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": "مطالعه آنلاین کتاب معماری نرم‌افزار",
+                        "item": "https://alirostami.ir/software-architecture/"
+                    }
+                ]
+            }
+        ]
+    }
+    </script>
+    <style>
+        :root {
+            --sidebar-width: 350px;
+            --top-header-height: 56px;
+            --reader-bg: #f8fafc;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --accent: #2563eb;
+            --accent-soft: #eff6ff;
+            --brand-primary: #1e3a8a;
+            --wine: #8b2942;
+        }
+        [theme=dark] {
+            --reader-bg: #0b1120;
+            --card-bg: #1e293b;
+            --border-color: #334155;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-soft: rgba(56, 189, 248, 0.12);
+            --brand-primary: #60a5fa;
+            --wine: #fb7185;
+        }
+        * { box-sizing: border-box; }
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            font-family: Vazirmatn, "Segoe UI", Tahoma, sans-serif;
+            background-color: var(--reader-bg);
+            color: var(--text-main);
+            direction: rtl;
+        }
+
+        /* Header */
+        .reader-header {
+            height: var(--top-header-height);
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 40;
+        }
+        .header-brand-group {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+        }
+        .btn-home-return {
+            display: inline-flex;
+            align-items: center;
+            gap: .35rem;
+            padding: .35rem .65rem;
+            border-radius: 6px;
+            font-size: .82rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--accent);
+            background: var(--accent-soft);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            transition: all .2s;
+            white-space: nowrap;
+        }
+        .btn-home-return:hover {
+            background: var(--accent);
+            color: #fff;
+        }
+        .brand-divider {
+            color: var(--text-muted);
+            opacity: .4;
+            font-size: .9rem;
+            margin: 0 .15rem;
+        }
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 700;
+            font-size: 1.02rem;
+            white-space: nowrap;
+        }
+        .header-brand .book-icon {
+            color: var(--accent);
+            font-size: 1.25rem;
+        }
+        .header-brand-badge {
+            font-size: .75rem;
+            font-weight: 600;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: .15rem .45rem;
+            border-radius: 4px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            letter-spacing: .5px;
+            margin-right: .3rem;
+        }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+        }
+        .btn-header {
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem;
+            padding: .4rem .75rem;
+            border-radius: 6px;
+            font-size: .85rem;
+            text-decoration: none;
+            color: var(--text-muted);
+            background: transparent;
+            border: 1px solid transparent;
+            transition: all .2s;
+            cursor: pointer;
+        }
+        .btn-header:hover {
+            background: var(--accent-soft);
+            color: var(--accent);
+            border-color: var(--border-color);
+        }
+        .btn-header.primary {
+            background: var(--accent);
+            color: #fff;
+        }
+        .btn-header.primary:hover {
+            filter: brightness(1.1);
+        }
+        .mobile-toggle {
+            display: none;
+        }
+
+        /* App Workspace */
+        .reader-workspace {
+            display: flex;
+            height: calc(100vh - var(--top-header-height));
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Sidebar */
+        .reader-sidebar {
+            width: var(--sidebar-width);
+            min-width: var(--sidebar-width);
+            background: var(--card-bg);
+            border-left: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            transition: transform .3s ease;
+            z-index: 30;
+        }
+        .sidebar-search-box {
+            padding: .85rem;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--card-bg);
+        }
+        .search-wrapper-inner {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .search-wrapper-inner i {
+            position: absolute;
+            right: .75rem;
+            color: var(--text-muted);
+            font-size: .85rem;
+        }
+        .search-input {
+            width: 100%;
+            padding: .45rem 2.2rem .45rem .75rem;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background: var(--reader-bg);
+            color: var(--text-main);
+            font-family: inherit;
+            font-size: .85rem;
+            outline: none;
+            transition: border-color .2s;
+        }
+        .search-input:focus {
+            border-color: var(--accent);
+        }
+        .sidebar-controls {
+            padding: .4rem .85rem;
+            font-size: .75rem;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--reader-bg);
+        }
+        .sidebar-controls a {
+            color: var(--accent);
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .sidebar-controls a:hover {
+            text-decoration: underline;
+        }
+        .sidebar-scroll {
+            flex: 1;
+            overflow-y: auto;
+            padding: .5rem;
+        }
+        .sidebar-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .sidebar-scroll::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 3px;
+        }
+
+        /* Part Headers in Sidebar */
+        .part-header {
+            margin: 1rem 0 .4rem;
+            padding: .4rem .6rem;
+            background: var(--accent-soft);
+            border-radius: 6px;
+            border-right: 3px solid var(--accent);
+        }
+        .part-title-wrapper {
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+            color: var(--accent);
+            font-weight: 700;
+            font-size: .85rem;
+        }
+        .part-desc {
+            display: block;
+            font-size: .72rem;
+            color: var(--text-muted);
+            margin-top: .15rem;
+            line-height: 1.4;
+        }
+
+        /* Chapter Card */
+        .ch-card {
+            margin-bottom: .35rem;
+            border-radius: 6px;
+            transition: background .15s;
+        }
+        .ch-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: .45rem .6rem;
+            border-radius: 6px;
+            cursor: pointer;
+            user-select: none;
+            transition: all .15s;
+        }
+        .ch-header:hover {
+            background: var(--accent-soft);
+        }
+        .ch-card.active > .ch-header {
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-weight: 700;
+        }
+        .ch-title-link {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            text-decoration: none;
+            color: inherit;
+            flex: 1;
+            min-width: 0;
+        }
+        .ch-badge {
+            font-size: .7rem;
+            font-weight: 600;
+            padding: .15rem .4rem;
+            border-radius: 4px;
+            background: var(--border-color);
+            color: var(--text-muted);
+            flex-shrink: 0;
+        }
+        .ch-card.active .ch-badge {
+            background: var(--accent);
+            color: #fff;
+        }
+        .ch-title {
+            font-size: .88rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .ch-chevron {
+            font-size: .75rem;
+            color: var(--text-muted);
+            transition: transform .2s ease;
+            margin-right: .3rem;
+        }
+        .ch-card.expanded .ch-chevron {
+            transform: rotate(-90deg);
+        }
+
+        /* Section Sub-items */
+        .ch-sections {
+            list-style: none;
+            margin: 0;
+            padding: .2rem 0 .4rem 0;
+            display: none;
+            border-right: 2px solid var(--border-color);
+            margin-right: .9rem;
+        }
+        .ch-card.expanded .ch-sections {
+            display: block;
+        }
+        .sec-item {
+            margin: 0;
+        }
+        .sec-link {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .3rem .6rem;
+            font-size: .82rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all .15s;
+        }
+        .sec-link:hover {
+            color: var(--accent);
+            background: var(--accent-soft);
+        }
+        .sec-link.active {
+            color: var(--accent);
+            font-weight: 600;
+            background: var(--accent-soft);
+        }
+        .sec-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--text-muted);
+            opacity: .4;
+            flex-shrink: 0;
+        }
+        .sec-link.active .sec-dot {
+            background: var(--accent);
+            opacity: 1;
+        }
+        .sec-text {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Main Content Frame */
+        .reader-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            background: var(--reader-bg);
+            position: relative;
+            overflow: hidden;
+        }
+        .reader-toolbar {
+            height: 44px;
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1rem;
+            font-size: .85rem;
+            z-index: 10;
+        }
+        .toolbar-title {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            font-weight: 600;
+            color: var(--text-main);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .toolbar-nav {
+            display: flex;
+            align-items: center;
+            gap: .3rem;
+        }
+        .btn-tool {
+            display: inline-flex;
+            align-items: center;
+            gap: .3rem;
+            padding: .25rem .55rem;
+            border-radius: 6px;
+            font-size: .8rem;
+            text-decoration: none;
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+            background: var(--card-bg);
+            cursor: pointer;
+            transition: all .15s;
+        }
+        .btn-tool:hover:not(:disabled) {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+        .btn-tool:disabled {
+            opacity: .4;
+            cursor: not-allowed;
+        }
+
+        .frame-container {
+            flex: 1;
+            width: 100%;
+            height: calc(100% - 44px);
+            position: relative;
+            background: var(--reader-bg);
+        }
+        #book-frame {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+            background: transparent;
+        }
+
+        /* Mobile drawer overlay */
+        .sidebar-backdrop {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.5);
+            z-index: 25;
+            opacity: 0;
+            transition: opacity .3s ease;
+        }
+
+        @media (max-width: 900px) {
+            .mobile-toggle {
+                display: inline-flex !important;
+            }
+            .header-brand-badge {
+                display: none;
+            }
+            .reader-sidebar {
+                position: fixed;
+                top: var(--top-header-height);
+                bottom: 0;
+                right: 0;
+                transform: translateX(100%);
+                box-shadow: -4px 0 20px rgba(0,0,0,.15);
+            }
+            .reader-sidebar.open {
+                transform: translateX(0);
+            }
+            .sidebar-backdrop.open {
+                display: block;
+                opacity: 1;
+            }
+        }
+        @media (max-width: 600px) {
+            .header-brand .brand-title-text {
+                display: none;
+            }
+            .brand-divider {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body data-theme="light">
+<script>
+    (function() {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.body.setAttribute('theme', 'dark');
+            document.body.setAttribute('data-theme', 'dark');
+        }
+    })();
+</script>
+
+<header class="reader-header">
+    <div style="display:flex;align-items:center;gap:.6rem;">
+        <button class="btn-header mobile-toggle" id="btn-toggle-sidebar" title="فهرست و سایدبار">
+            <i class="fas fa-bars fa-fw"></i>
+            <span>فهرست فصول</span>
+        </button>
+        <div class="header-brand-group">
+            <a href="/fa/" class="btn-home-return" title="بازگشت به سایت اصلی علی رستمی">
+                <i class="fas fa-home fa-fw"></i>
+                <span>سایت اصلی</span>
+            </a>
+            <span class="brand-divider">/</span>
+            <a href="index.html" class="header-brand" title="مطالعه آنلاین کتاب مبانی معماری نرم‌افزار">
+                <i class="fas fa-cubes book-icon"></i>
+                <span class="brand-title-text">مبانی معماری نرم‌افزار</span>
+                <span class="header-brand-badge">ویرایش دوم</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="header-actions">
+        <a href="/fundamentals-of-software-architecture-persian/" class="btn-header" title="معرفی و مشخصات پروژه">
+            <i class="fas fa-info-circle fa-fw"></i>
+            <span class="d-none-sm">دربارهٔ پروژه</span>
+        </a>
+        <a href="https://github.com/alirostami01/Fundamentals-of-Software-Architecture_-A-Modern-Engineering-Approach/raw/main/pdf/book.pdf" target="_blank" rel="noopener noreferrer" class="btn-header primary" title="دانلود کل کتاب PDF از گیت‌هاب (۶۵۰ صفحه)">
+            <i class="fas fa-file-pdf fa-fw"></i>
+            <span class="d-none-sm">دانلود PDF</span>
+        </a>
+        <a href="https://github.com/alirostami01/Fundamentals-of-Software-Architecture_-A-Modern-Engineering-Approach" target="_blank" rel="noopener noreferrer" class="btn-header" title="مخزن گیت‌هاب">
+            <i class="fab fa-github fa-fw"></i>
+        </a>
+        <a href="/support/" class="btn-header" title="حمایت از پروژه">
+            <i class="fas fa-heart fa-fw" style="color:#e0245e;"></i>
+        </a>
+        <button class="btn-header" id="btn-theme-toggle" title="تغییر ظاهر تاریک/روشن">
+            <i class="fas fa-adjust fa-fw"></i>
+        </button>
+    </div>
+</header>
+
+<div class="reader-workspace">
+    <!-- Sidebar -->
+    <aside class="reader-sidebar" id="reader-sidebar">
+        <div class="sidebar-search-box">
+            <div class="search-wrapper-inner">
+                <i class="fas fa-search" aria-hidden="true"></i>
+                <input type="search" id="sidebar-search" class="search-input" placeholder="جستجو در ۲۷ فصل و بخش‌ها..." autocomplete="off">
+            </div>
+        </div>
+        <div class="sidebar-controls">
+            <span>فهرست فصول (۲۷ فصل + پیوست)</span>
+            <div style="display:flex;gap:.5rem;">
+                <a id="btn-expand-all">باز کردن همه</a>
+                <span>·</span>
+                <a id="btn-collapse-all">بستن همه</a>
+            </div>
+        </div>
+        <div class="sidebar-scroll" id="sidebar-scroll">
+            
+        <div class="part-header" id="part-1">
+            <div class="part-title-wrapper">
+                <i class="fas fa-layer-group part-icon"></i>
+                <span class="part-title">بخش اول: مبانی</span>
+            </div>
+            <span class="part-desc">فصل‌های ۱ تا ۸: مفاهیم پایه، ماژولاریتی، ویژگی‌های معماری و تفکر مؤلفه‌محور</span>
+        </div>
+        
+
+            <div class="ch-card" id="ch-item-0" data-idx="0" data-file="chapter-01.html">
+                <div class="ch-header" data-idx="0">
+                    <a href="chapter-01.html" class="ch-title-link" data-idx="0" data-file="chapter-01.html">
+                        <span class="ch-badge">فصل 1</span>
+                        <span class="ch-title">مقدمه</span>
+                    </a>
+                    <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+                </div>
+                <ul class="ch-sections" id="sections-0"><li class="sec-item"><a href="chapter-01.html#sec-1" data-ch-idx="0" data-file="chapter-01.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">تعریف معماری نرم‌افزار</span></a></li><li class="sec-item"><a href="chapter-01.html#sec-2" data-ch-idx="0" data-file="chapter-01.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">قوانین معماری نرم‌افزار</span></a></li><li class="sec-item"><a href="chapter-01.html#sec-3" data-ch-idx="0" data-file="chapter-01.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">انتظارات از یک معمار</span></a></li><li class="sec-item"><a href="chapter-01.html#sec-4" data-ch-idx="0" data-file="chapter-01.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">نقشهٔ راه کتاب</span></a></li><li class="sec-item"><a href="chapter-01.html#sec-5" data-ch-idx="0" data-file="chapter-01.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">واژه‌نامهٔ اختصاصی این فصل</span></a></li></ul>
+            </div>
+            
+
+            <div class="ch-card" id="ch-item-1" data-idx="1" data-file="chapter-02.html">
+                <div class="ch-header" data-idx="1">
+                    <a href="chapter-02.html" class="ch-title-link" data-idx="1" data-file="chapter-02.html">
+                        <span class="ch-badge">فصل 2</span>
+                        <span class="ch-title">تفکر معماری</span>
+                    </a>
+                    <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+                </div>
+                <ul class="ch-sections" id="sections-1"><li class="sec-item"><a href="chapter-02.html#sec-1" data-ch-idx="1" data-file="chapter-02.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">معماری در برابر طراحی</span></a></li><li class="sec-item"><a href="chapter-02.html#sec-2" data-ch-idx="1" data-file="chapter-02.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">تصمیمات راهبردی در برابر تاکتیکی</span></a></li><li class="sec-item"><a href="chapter-02.html#sec-3" data-ch-idx="1" data-file="chapter-02.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">سطح تلاش</span></a></li><li class="sec-item"><a href="chapter-02.html#sec-4" data-ch-idx="1" data-file="chapter-02.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">اهمیت مصالحه‌ها</span></a></li><li class="sec-item"><a href="chapter-02.html#sec-5" data-ch-idx="1" data-file="chapter-02.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">گستردگی فنی</span></a></li><li class="sec-item"><a href="chapter-02.html#sec-6" data-ch-idx="1" data-file="chapter-02.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ضدالگوی انسان غارنشین منجمد</span></a></li><li class="sec-item"><a href="chapter-02.html#sec-7" data-ch-idx="1" data-file="chapter-02.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">قانون بیست‌دقیقه‌ای</span></a></li><li class="sec-item"><a href="chapter-02.html#sec-8" data-ch-idx="1" data-file="chapter-02.html" data-hash="#sec-8" class="sec-link"><span class="sec-dot"></span><span class="sec-text">توسعهٔ رادار شخصی</span></a></li><li class="sec-item"><a href="chapter-02.html#sec-9" data-ch-idx="1" data-file="chapter-02.html" data-hash="#sec-9" class="sec-link"><span class="sec-dot"></span><span class="sec-text">تحلیل مصالحه‌ها</span></a></li><li class="sec-item"><a href="chapter-02.html#sec-10" data-ch-idx="1" data-file="chapter-02.html" data-hash="#sec-10" class="sec-link"><span class="sec-dot"></span><span class="sec-text">درک محرک‌های کسب‌وکار</span></a></li><li class="sec-item"><a href="chapter-02.html#sec-11" data-ch-idx="1" data-file="chapter-02.html" data-hash="#sec-11" class="sec-link"><span class="sec-dot"></span><span class="sec-text">توازن میان معماری و کدنویسی مستقیم</span></a></li><li class="sec-item"><a href="chapter-02.html#sec-12" data-ch-idx="1" data-file="chapter-02.html" data-hash="#sec-12" class="sec-link"><span class="sec-dot"></span><span class="sec-text">چیزهای بیشتری در تفکر معماری هست</span></a></li><li class="sec-item"><a href="chapter-02.html#sec-13" data-ch-idx="1" data-file="chapter-02.html" data-hash="#sec-13" class="sec-link"><span class="sec-dot"></span><span class="sec-text">واژه‌نامهٔ اختصاصی این فصل</span></a></li></ul>
+            </div>
+            
+
+            <div class="ch-card" id="ch-item-2" data-idx="2" data-file="chapter-03.html">
+                <div class="ch-header" data-idx="2">
+                    <a href="chapter-03.html" class="ch-title-link" data-idx="2" data-file="chapter-03.html">
+                        <span class="ch-badge">فصل 3</span>
+                        <span class="ch-title">ماژولاریتی</span>
+                    </a>
+                    <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+                </div>
+                <ul class="ch-sections" id="sections-2"><li class="sec-item"><a href="chapter-03.html#sec-1" data-ch-idx="2" data-file="chapter-03.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ماژولاریتی در برابر دانه‌بندی</span></a></li><li class="sec-item"><a href="chapter-03.html#sec-2" data-ch-idx="2" data-file="chapter-03.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">تعریف ماژولاریتی</span></a></li><li class="sec-item"><a href="chapter-03.html#sec-3" data-ch-idx="2" data-file="chapter-03.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">سنجشِ ماژولاریتی</span></a></li><li class="sec-item"><a href="chapter-03.html#sec-4" data-ch-idx="2" data-file="chapter-03.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">از ماژول‌ها تا مؤلفه‌ها</span></a></li><li class="sec-item"><a href="chapter-03.html#sec-5" data-ch-idx="2" data-file="chapter-03.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">واژه‌نامهٔ اختصاصی این فصل</span></a></li></ul>
+            </div>
+            
+
+            <div class="ch-card" id="ch-item-3" data-idx="3" data-file="chapter-04.html">
+                <div class="ch-header" data-idx="3">
+                    <a href="chapter-04.html" class="ch-title-link" data-idx="3" data-file="chapter-04.html">
+                        <span class="ch-badge">فصل 4</span>
+                        <span class="ch-title">تعریف ویژگی‌های معماری</span>
+                    </a>
+                    <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+                </div>
+                <ul class="ch-sections" id="sections-3"><li class="sec-item"><a href="chapter-04.html#sec-1" data-ch-idx="3" data-file="chapter-04.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ویژگی‌های معماری و طراحیِ سیستم</span></a></li><li class="sec-item"><a href="chapter-04.html#sec-2" data-ch-idx="3" data-file="chapter-04.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ویژگی‌های معماری (فهرستی ناقص)</span></a></li><li class="sec-item"><a href="chapter-04.html#sec-3" data-ch-idx="3" data-file="chapter-04.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">مصالحه‌ها و کم‌بدترین معماری</span></a></li><li class="sec-item"><a href="chapter-04.html#sec-4" data-ch-idx="3" data-file="chapter-04.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">واژه‌نامهٔ اختصاصی این فصل</span></a></li></ul>
+            </div>
+            
+
+            <div class="ch-card" id="ch-item-4" data-idx="4" data-file="chapter-05.html">
+                <div class="ch-header" data-idx="4">
+                    <a href="chapter-05.html" class="ch-title-link" data-idx="4" data-file="chapter-05.html">
+                        <span class="ch-badge">فصل 5</span>
+                        <span class="ch-title">شناسایی ویژگی‌های معماری</span>
+                    </a>
+                    <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+                </div>
+                <ul class="ch-sections" id="sections-4"><li class="sec-item"><a href="chapter-05.html#sec-1" data-ch-idx="4" data-file="chapter-05.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">استخراجِ ویژگی‌های معماری از دغدغه‌های حوزه</span></a></li><li class="sec-item"><a href="chapter-05.html#sec-2" data-ch-idx="4" data-file="chapter-05.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ویژگی‌های معماریِ مرکب</span></a></li><li class="sec-item"><a href="chapter-05.html#sec-3" data-ch-idx="4" data-file="chapter-05.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">استخراجِ ویژگی‌های معماری</span></a></li><li class="sec-item"><a href="chapter-05.html#sec-4" data-ch-idx="4" data-file="chapter-05.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">کاتا: Silicon Sandwiches</span></a></li><li class="sec-item"><a href="chapter-05.html#sec-5" data-ch-idx="4" data-file="chapter-05.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">کاتا: Silicon Sandwiches (ادامه)</span></a></li><li class="sec-item"><a href="chapter-05.html#sec-6" data-ch-idx="4" data-file="chapter-05.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">محدودکردن و اولویت‌بندیِ ویژگی‌های معماری</span></a></li><li class="sec-item"><a href="chapter-05.html#sec-7" data-ch-idx="4" data-file="chapter-05.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">واژه‌نامهٔ اختصاصی این فصل</span></a></li></ul>
+            </div>
+            
+
+            <div class="ch-card" id="ch-item-5" data-idx="5" data-file="chapter-06.html">
+                <div class="ch-header" data-idx="5">
+                    <a href="chapter-06.html" class="ch-title-link" data-idx="5" data-file="chapter-06.html">
+                        <span class="ch-badge">فصل 6</span>
+                        <span class="ch-title">سنجش و حاکمیت بر ویژگی‌های معماری</span>
+                    </a>
+                    <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+                </div>
+                <ul class="ch-sections" id="sections-5"><li class="sec-item"><a href="chapter-06.html#sec-1" data-ch-idx="5" data-file="chapter-06.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">سنجشِ ویژگی‌های معماری</span></a></li><li class="sec-item"><a href="chapter-06.html#sec-2" data-ch-idx="5" data-file="chapter-06.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">حاکمیت و توابع برازش</span></a></li><li class="sec-item"><a href="chapter-06.html#sec-3" data-ch-idx="5" data-file="chapter-06.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">واژه‌نامهٔ اختصاصی این فصل</span></a></li></ul>
+            </div>
+            
+
+            <div class="ch-card" id="ch-item-6" data-idx="6" data-file="chapter-07.html">
+                <div class="ch-header" data-idx="6">
+                    <a href="chapter-07.html" class="ch-title-link" data-idx="6" data-file="chapter-07.html">
+                        <span class="ch-badge">فصل 7</span>
+                        <span class="ch-title">دامنهٔ ویژگی‌های معماری</span>
+                    </a>
+                    <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+                </div>
+                <ul class="ch-sections" id="sections-6"><li class="sec-item"><a href="chapter-07.html#sec-1" data-ch-idx="6" data-file="chapter-07.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">کوانتوم‌های معماری و دانه‌بندی</span></a></li><li class="sec-item"><a href="chapter-07.html#sec-2" data-ch-idx="6" data-file="chapter-07.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ارتباط هم‌گام</span></a></li><li class="sec-item"><a href="chapter-07.html#sec-3" data-ch-idx="6" data-file="chapter-07.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">اثرِ دامنه‌گذاری (Scoping)</span></a></li><li class="sec-item"><a href="chapter-07.html#sec-4" data-ch-idx="6" data-file="chapter-07.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">دامنه‌گذاری و ابر</span></a></li><li class="sec-item"><a href="chapter-07.html#sec-5" data-ch-idx="6" data-file="chapter-07.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">واژه‌نامهٔ اختصاصی این فصل</span></a></li></ul>
+            </div>
+            
+
+            <div class="ch-card" id="ch-item-7" data-idx="7" data-file="chapter-08.html">
+                <div class="ch-header" data-idx="7">
+                    <a href="chapter-08.html" class="ch-title-link" data-idx="7" data-file="chapter-08.html">
+                        <span class="ch-badge">فصل 8</span>
+                        <span class="ch-title">تفکر مؤلفه‌محور</span>
+                    </a>
+                    <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+                </div>
+                <ul class="ch-sections" id="sections-7"><li class="sec-item"><a href="chapter-08.html#sec-1" data-ch-idx="7" data-file="chapter-08.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">تعریفِ مؤلفه‌های منطقی</span></a></li><li class="sec-item"><a href="chapter-08.html#sec-2" data-ch-idx="7" data-file="chapter-08.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">معماری منطقی در برابرِ معماری فیزیکی</span></a></li><li class="sec-item"><a href="chapter-08.html#sec-3" data-ch-idx="7" data-file="chapter-08.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ساختنِ معماری منطقی</span></a></li><li class="sec-item"><a href="chapter-08.html#sec-4" data-ch-idx="7" data-file="chapter-08.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">کوپلینگِ مؤلفه‌ها</span></a></li><li class="sec-item"><a href="chapter-08.html#sec-5" data-ch-idx="7" data-file="chapter-08.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">مطالعهٔ موردی: Going, Going, Gone — کشفِ مؤلفه‌ها</span></a></li><li class="sec-item"><a href="chapter-08.html#sec-6" data-ch-idx="7" data-file="chapter-08.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">واژه‌نامهٔ اختصاصی این فصل</span></a></li></ul>
+            </div>
+            
+
+        <div class="part-header" id="part-2">
+            <div class="part-title-wrapper">
+                <i class="fas fa-layer-group part-icon"></i>
+                <span class="part-title">بخش دوم: سبک‌های معماری</span>
+            </div>
+            <span class="part-desc">فصل‌های ۹ تا ۲۰: معماری‌های لایه‌ای، خط لوله، میکروکرنل، رویدادمحور، فضاپایه و میکروسرویس‌ها</span>
+        </div>
+        
+
+            <div class="ch-card" id="ch-item-8" data-idx="8" data-file="chapter-09.html">
+                <div class="ch-header" data-idx="8">
+                    <a href="chapter-09.html" class="ch-title-link" data-idx="8" data-file="chapter-09.html">
+                        <span class="ch-badge">فصل 9</span>
+                        <span class="ch-title">مبانی</span>
+                    </a>
+                    <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+                </div>
+                <ul class="ch-sections" id="sections-8"><li class="sec-item"><a href="chapter-09.html#sec-1" data-ch-idx="8" data-file="chapter-09.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">سبک‌ها در برابرِ الگوها</span></a></li><li class="sec-item"><a href="chapter-09.html#sec-2" data-ch-idx="8" data-file="chapter-09.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">الگوهای بنیادین</span></a></li><li class="sec-item"><a href="chapter-09.html#sec-3" data-ch-idx="8" data-file="chapter-09.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">افرازِ معماری (Architecture Partitioning)</span></a></li><li class="sec-item"><a href="chapter-09.html#sec-4" data-ch-idx="8" data-file="chapter-09.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">معماری‌های تک‌پارچه در برابرِ توزیع‌شده</span></a></li><li class="sec-item"><a href="chapter-09.html#sec-5" data-ch-idx="8" data-file="chapter-09.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">توپولوژی‌های تیم و معماری</span></a></li><li class="sec-item"><a href="chapter-09.html#sec-6" data-ch-idx="8" data-file="chapter-09.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">به سوی سبک‌های مشخص</span></a></li><li class="sec-item"><a href="chapter-09.html#sec-7" data-ch-idx="8" data-file="chapter-09.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">واژه‌نامهٔ اختصاصی این فصل</span></a></li></ul>
+            </div>
+            
+
+            <div class="ch-card" id="ch-item-9" data-idx="9" data-file="chapter-10.html">
+                <div class="ch-header" data-idx="9">
+                    <a href="chapter-10.html" class="ch-title-link" data-idx="9" data-file="chapter-10.html">
+                        <span class="ch-badge">فصل 10</span>
+                        <span class="ch-title">سبک معماری لایه‌ای</span>
+                    </a>
+                    <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+                </div>
+                <ul class="ch-sections" id="sections-9"><li class="sec-item"><a href="chapter-10.html#sec-1" data-ch-idx="9" data-file="chapter-10.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">توپولوژی</span></a></li><li class="sec-item"><a href="chapter-10.html#sec-2" data-ch-idx="9" data-file="chapter-10.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ویژگی‌های خاصِ سبک</span></a></li><li class="sec-item"><a href="chapter-10.html#sec-3" data-ch-idx="9" data-file="chapter-10.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">توپولوژی‌های داده</span></a></li><li class="sec-item"><a href="chapter-10.html#sec-4" data-ch-idx="9" data-file="chapter-10.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ملاحظات ابری</span></a></li><li class="sec-item"><a href="chapter-10.html#sec-5" data-ch-idx="9" data-file="chapter-10.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ریسک‌های رایج</span></a></li><li class="sec-item"><a href="chapter-10.html#sec-6" data-ch-idx="9" data-file="chapter-10.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">حاکمیت</span></a></li><li class="sec-item"><a href="chapter-10.html#sec-7" data-ch-idx="9" data-file="chapter-10.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ملاحظاتِ توپولوژی تیم</span></a></li><li class="sec-item"><a href="chapter-10.html#sec-8" data-ch-idx="9" data-file="chapter-10.html" data-hash="#sec-8" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ویژگی‌های سبک</span></a></li><li class="sec-item"><a href="chapter-10.html#sec-9" data-ch-idx="9" data-file="chapter-10.html" data-hash="#sec-9" class="sec-link"><span class="sec-dot"></span><span class="sec-text">نمونه‌ها و موارد کاربرد</span></a></li><li class="sec-item"><a href="chapter-10.html#sec-10" data-ch-idx="9" data-file="chapter-10.html" data-hash="#sec-10" class="sec-link"><span class="sec-dot"></span><span class="sec-text">واژه‌نامهٔ اختصاصی این فصل</span></a></li></ul>
+            </div>
+            
+
+            <div class="ch-card" id="ch-item-10" data-idx="10" data-file="chapter-11.html">
+                <div class="ch-header" data-idx="10">
+                    <a href="chapter-11.html" class="ch-title-link" data-idx="10" data-file="chapter-11.html">
+                        <span class="ch-badge">فصل 11</span>
+                        <span class="ch-title">سبک معماری تک‌پارچهٔ ماژولار</span>
+                    </a>
+                    <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+                </div>
+                <ul class="ch-sections" id="sections-10"><li class="sec-item"><a href="chapter-11.html#sec-1" data-ch-idx="10" data-file="chapter-11.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">توپولوژی</span></a></li><li class="sec-item"><a href="chapter-11.html#sec-2" data-ch-idx="10" data-file="chapter-11.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ویژگی‌های خاصِ سبک</span></a></li><li class="sec-item"><a href="chapter-11.html#sec-3" data-ch-idx="10" data-file="chapter-11.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">توپولوژی‌های داده</span></a></li><li class="sec-item"><a href="chapter-11.html#sec-4" data-ch-idx="10" data-file="chapter-11.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ملاحظات ابری</span></a></li><li class="sec-item"><a href="chapter-11.html#sec-5" data-ch-idx="10" data-file="chapter-11.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ریسک‌های رایج</span></a></li><li class="sec-item"><a href="chapter-11.html#sec-6" data-ch-idx="10" data-file="chapter-11.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">حاکمیت</span></a></li><li class="sec-item"><a href="chapter-11.html#sec-7" data-ch-idx="10" data-file="chapter-11.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ملاحظاتِ توپولوژی تیم</span></a></li><li class="sec-item"><a href="chapter-11.html#sec-8" data-ch-idx="10" data-file="chapter-11.html" data-hash="#sec-8" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ویژگی‌های سبک</span></a></li><li class="sec-item"><a href="chapter-11.html#sec-9" data-ch-idx="10" data-file="chapter-11.html" data-hash="#sec-9" class="sec-link"><span class="sec-dot"></span><span class="sec-text">نمونه‌ها و موارد کاربرد</span></a></li><li class="sec-item"><a href="chapter-11.html#sec-10" data-ch-idx="10" data-file="chapter-11.html" data-hash="#sec-10" class="sec-link"><span class="sec-dot"></span><span class="sec-text">واژه‌نامهٔ اختصاصی این فصل</span></a></li></ul>
+            </div>
+            
+
+            <div class="ch-card" id="ch-item-11" data-idx="11" data-file="chapter-12.html">
+                <div class="ch-header" data-idx="11">
+                    <a href="chapter-12.html" class="ch-title-link" data-idx="11" data-file="chapter-12.html">
+                        <span class="ch-badge">فصل 12</span>
+                        <span class="ch-title">سبک معماری خط لوله</span>
+                    </a>
+                    <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+                </div>
+                <ul class="ch-sections" id="sections-11"><li class="sec-item"><a href="chapter-12.html#sec-1" data-ch-idx="11" data-file="chapter-12.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">توپولوژی</span></a></li><li class="sec-item"><a href="chapter-12.html#sec-2" data-ch-idx="11" data-file="chapter-12.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ویژگی‌های خاصِ سبک</span></a></li><li class="sec-item"><a href="chapter-12.html#sec-3" data-ch-idx="11" data-file="chapter-12.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">توپولوژی‌های داده</span></a></li><li class="sec-item"><a href="chapter-12.html#sec-4" data-ch-idx="11" data-file="chapter-12.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ملاحظات ابری</span></a></li><li class="sec-item"><a href="chapter-12.html#sec-5" data-ch-idx="11" data-file="chapter-12.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ریسک‌های رایج</span></a></li><li class="sec-item"><a href="chapter-12.html#sec-6" data-ch-idx="11" data-file="chapter-12.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">حاکمیت</span></a></li><li class="sec-item"><a href="chapter-12.html#sec-7" data-ch-idx="11" data-file="chapter-12.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ملاحظاتِ توپولوژی تیم</span></a></li><li class="sec-item"><a href="chapter-12.html#sec-8" data-ch-idx="11" data-file="chapter-12.html" data-hash="#sec-8" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ویژگی‌های سبک</span></a></li><li class="sec-item"><a href="chapter-12.html#sec-9" data-ch-idx="11" data-file="chapter-12.html" data-hash="#sec-9" class="sec-link"><span class="sec-dot"></span><span class="sec-text">نمونه‌ها و موارد کاربرد</span></a></li><li class="sec-item"><a href="chapter-12.html#sec-10" data-ch-idx="11" data-file="chapter-12.html" data-hash="#sec-10" class="sec-link"><span class="sec-dot"></span><span class="sec-text">واژه‌نامهٔ اختصاصی این فصل</span></a></li></ul>
+            </div>
+            
+
+            <div class="ch-card" id="ch-item-12" data-idx="12" data-file="chapter-13.html">
+                <div class="ch-header" data-idx="12">
+                    <a href="chapter-13.html" class="ch-title-link" data-idx="12" data-file="chapter-13.html">
+                        <span class="ch-badge">فصل 13</span>
+                        <span class="ch-title">سبک معماری میکروکرنل</span>
+                    </a>
+                    <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+                </div>
+                <ul class="ch-sections" id="sections-12"><li class="sec-item"><a href="chapter-13.html#sec-1" data-ch-idx="12" data-file="chapter-13.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">توپولوژی</span></a></li><li class="sec-item"><a href="chapter-13.html#sec-2" data-ch-idx="12" data-file="chapter-13.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ویژگی‌های خاصِ سبک</span></a></li><li class="sec-item"><a href="chapter-13.html#sec-3" data-ch-idx="12" data-file="chapter-13.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">توپولوژی‌های داده</span></a></li><li class="sec-item"><a href="chapter-13.html#sec-4" data-ch-idx="12" data-file="chapter-13.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ملاحظات ابری</span></a></li><li class="sec-item"><a href="chapter-13.html#sec-5" data-ch-idx="12" data-file="chapter-13.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ریسک‌های رایج</span></a></li><li class="sec-item"><a href="chapter-13.html#sec-6" data-ch-idx="12" data-file="chapter-13.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">حاکمیت</span></a></li><li class="sec-item"><a href="chapter-13.html#sec-7" data-ch-idx="12" data-file="chapter-13.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ملاحظاتِ توپولوژی تیم</span></a></li><li class="sec-item"><a href="chapter-13.html#sec-8" data-ch-idx="12" data-file="chapter-13.html" data-hash="#sec-8" class="sec-link"><span class="sec-dot"></span><span class="sec-text">رتبه‌بندیِ ویژگی‌های معماری</span></a></li><li class="sec-item"><a href="chapter-13.html#sec-9" data-ch-idx="12" data-file="chapter-13.html" data-hash="#sec-9" class="sec-link"><span class="sec-dot"></span><span class="sec-text">نمونه‌ها و موارد کاربرد</span></a></li><li class="sec-item"><a href="chapter-13.html#sec-10" data-ch-idx="12" data-file="chapter-13.html" data-hash="#sec-10" class="sec-link"><span class="sec-dot"></span><span class="sec-text">واژه‌نامهٔ اختصاصی این فصل</span></a></li></ul>
+            </div>
+            
+
+            <div class="ch-card" id="ch-item-13" data-idx="13" data-file="chapter-14.html">
+                <div class="ch-header" data-idx="13">
+                    <a href="chapter-14.html" class="ch-title-link" data-idx="13" data-file="chapter-14.html">
+                        <span class="ch-badge">فصل 14</span>
+                        <span class="ch-title">سبک معماری مبتنی بر سرویس</span>
+                    </a>
+                    <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+                </div>
+                <ul class="ch-sections" id="sections-13"><li class="sec-item"><a href="chapter-14.html#sec-1" data-ch-idx="13" data-file="chapter-14.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">توپولوژی</span></a></li><li class="sec-item"><a href="chapter-14.html#sec-2" data-ch-idx="13" data-file="chapter-14.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ویژگی‌های خاصِ سبک</span></a></li><li class="sec-item"><a href="chapter-14.html#sec-3" data-ch-idx="13" data-file="chapter-14.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">توپولوژی‌های داده</span></a></li><li class="sec-item"><a href="chapter-14.html#sec-4" data-ch-idx="13" data-file="chapter-14.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ملاحظات ابری</span></a></li><li class="sec-item"><a href="chapter-14.html#sec-5" data-ch-idx="13" data-file="chapter-14.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ریسک‌های رایج</span></a></li><li class="sec-item"><a href="chapter-14.html#sec-6" data-ch-idx="13" data-file="chapter-14.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">حاکمیت</span></a></li><li class="sec-item"><a href="chapter-14.html#sec-7" data-ch-idx="13" data-file="chapter-14.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ملاحظاتِ توپولوژی تیم</span></a></li><li class="sec-item"><a href="chapter-14.html#sec-8" data-ch-idx="13" data-file="chapter-14.html" data-hash="#sec-8" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ویژگی‌های سبک</span></a></li><li class="sec-item"><a href="chapter-14.html#sec-9" data-ch-idx="13" data-file="chapter-14.html" data-hash="#sec-9" class="sec-link"><span class="sec-dot"></span><span class="sec-text">نمونه‌ها و موارد کاربرد</span></a></li><li class="sec-item"><a href="chapter-14.html#sec-10" data-ch-idx="13" data-file="chapter-14.html" data-hash="#sec-10" class="sec-link"><span class="sec-dot"></span><span class="sec-text">واژه‌نامهٔ اختصاصی این فصل</span></a></li></ul>
+            </div>
+            
+
+            <div class="ch-card" id="ch-item-14" data-idx="14" data-file="chapter-15.html">
+                <div class="ch-header" data-idx="14">
+                    <a href="chapter-15.html" class="ch-title-link" data-idx="14" data-file="chapter-15.html">
+                        <span class="ch-badge">فصل 15</span>
+                        <span class="ch-title">سبک معماری رویدادمحور</span>
+                    </a>
+                    <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+                </div>
+                <ul class="ch-sections" id="sections-14"><li class="sec-item"><a href="chapter-15.html#sec-1" data-ch-idx="14" data-file="chapter-15.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">توپولوژی</span></a></li><li class="sec-item"><a href="chapter-15.html#sec-2" data-ch-idx="14" data-file="chapter-15.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ویژگی‌های خاصِ سبک</span></a></li><li class="sec-item"><a href="chapter-15.html#sec-3" data-ch-idx="14" data-file="chapter-15.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">توپولوژی‌های داده</span></a></li><li class="sec-item"><a href="chapter-15.html#sec-4" data-ch-idx="14" data-file="chapter-15.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ملاحظات ابری</span></a></li><li class="sec-item"><a href="chapter-15.html#sec-5" data-ch-idx="14" data-file="chapter-15.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ریسک‌های رایج</span></a></li><li class="sec-item"><a href="chapter-15.html#sec-6" data-ch-idx="14" data-file="chapter-15.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">حاکمیت</span></a></li><li class="sec-item"><a href="chapter-15.html#sec-7" data-ch-idx="14" data-file="chapter-15.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ملاحظاتِ توپولوژی تیم</span></a></li><li class="sec-item"><a href="chapter-15.html#sec-8" data-ch-idx="14" data-file="chapter-15.html" data-hash="#sec-8" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ویژگی‌های سبک</span></a></li><li class="sec-item"><a href="chapter-15.html#sec-9" data-ch-idx="14" data-file="chapter-15.html" data-hash="#sec-9" class="sec-link"><span class="sec-dot"></span><span class="sec-text">نمونه‌ها و موارد کاربرد</span></a></li><li class="sec-item"><a href="chapter-15.html#sec-10" data-ch-idx="14" data-file="chapter-15.html" data-hash="#sec-10" class="sec-link"><span class="sec-dot"></span><span class="sec-text">واژه‌نامهٔ اختصاصی این فصل</span></a></li></ul>
+            </div>
+            
+
+            <div class="ch-card" id="ch-item-15" data-idx="15" data-file="chapter-16.html">
+                <div class="ch-header" data-idx="15">
+                    <a href="chapter-16.html" class="ch-title-link" data-idx="15" data-file="chapter-16.html">
+                        <span class="ch-badge">فصل 16</span>
+                        <span class="ch-title">سبک معماری مبتنی بر فضا</span>
+                    </a>
+                    <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+                </div>
+                <ul class="ch-sections" id="sections-15"><li class="sec-item"><a href="chapter-16.html#sec-1" data-ch-idx="15" data-file="chapter-16.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">توپولوژی</span></a></li><li class="sec-item"><a href="chapter-16.html#sec-2" data-ch-idx="15" data-file="chapter-16.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ویژگی‌های خاصِ سبک</span></a></li><li class="sec-item"><a href="chapter-16.html#sec-3" data-ch-idx="15" data-file="chapter-16.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">توپولوژی‌های داده</span></a></li><li class="sec-item"><a href="chapter-16.html#sec-4" data-ch-idx="15" data-file="chapter-16.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ملاحظات ابری</span></a></li><li class="sec-item"><a href="chapter-16.html#sec-5" data-ch-idx="15" data-file="chapter-16.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ریسک‌های رایج</span></a></li><li class="sec-item"><a href="chapter-16.html#sec-6" data-ch-idx="15" data-file="chapter-16.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">حاکمیت</span></a></li><li class="sec-item"><a href="chapter-16.html#sec-7" data-ch-idx="15" data-file="chapter-16.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ملاحظاتِ توپولوژی تیم</span></a></li><li class="sec-item"><a href="chapter-16.html#sec-8" data-ch-idx="15" data-file="chapter-16.html" data-hash="#sec-8" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ویژگی‌های سبک</span></a></li><li class="sec-item"><a href="chapter-16.html#sec-9" data-ch-idx="15" data-file="chapter-16.html" data-hash="#sec-9" class="sec-link"><span class="sec-dot"></span><span class="sec-text">نمونه‌ها و موارد کاربرد</span></a></li><li class="sec-item"><a href="chapter-16.html#sec-10" data-ch-idx="15" data-file="chapter-16.html" data-hash="#sec-10" class="sec-link"><span class="sec-dot"></span><span class="sec-text">واژه‌نامهٔ اختصاصی این فصل</span></a></li></ul>
+            </div>
+            
+
+            <div class="ch-card" id="ch-item-16" data-idx="16" data-file="chapter-17.html">
+                <div class="ch-header" data-idx="16">
+                    <a href="chapter-17.html" class="ch-title-link" data-idx="16" data-file="chapter-17.html">
+                        <span class="ch-badge">فصل 17</span>
+                        <span class="ch-title">معماری سرویس‌گرای ارکستراسیون‌محور</span>
+                    </a>
+                    <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+                </div>
+                <ul class="ch-sections" id="sections-16"><li class="sec-item"><a href="chapter-17.html#sec-1" data-ch-idx="16" data-file="chapter-17.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">توپولوژی</span></a></li><li class="sec-item"><a href="chapter-17.html#sec-2" data-ch-idx="16" data-file="chapter-17.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ویژگی‌های خاصِ سبک</span></a></li><li class="sec-item"><a href="chapter-17.html#sec-3" data-ch-idx="16" data-file="chapter-17.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">توپولوژی‌های داده</span></a></li><li class="sec-item"><a href="chapter-17.html#sec-4" data-ch-idx="16" data-file="chapter-17.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ملاحظات ابری</span></a></li><li class="sec-item"><a href="chapter-17.html#sec-5" data-ch-idx="16" data-file="chapter-17.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ریسک‌های رایج</span></a></li><li class="sec-item"><a href="chapter-17.html#sec-6" data-ch-idx="16" data-file="chapter-17.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">حاکمیت</span></a></li><li class="sec-item"><a href="chapter-17.html#sec-7" data-ch-idx="16" data-file="chapter-17.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ملاحظاتِ توپولوژی تیم</span></a></li><li class="sec-item"><a href="chapter-17.html#sec-8" data-ch-idx="16" data-file="chapter-17.html" data-hash="#sec-8" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ویژگی‌های سبک</span></a></li><li class="sec-item"><a href="chapter-17.html#sec-9" data-ch-idx="16" data-file="chapter-17.html" data-hash="#sec-9" class="sec-link"><span class="sec-dot"></span><span class="sec-text">نمونه‌ها و موارد کاربرد</span></a></li><li class="sec-item"><a href="chapter-17.html#sec-10" data-ch-idx="16" data-file="chapter-17.html" data-hash="#sec-10" class="sec-link"><span class="sec-dot"></span><span class="sec-text">واژه‌نامهٔ اختصاصی این فصل</span></a></li></ul>
+            </div>
+            
+
+            <div class="ch-card" id="ch-item-17" data-idx="17" data-file="chapter-18.html">
+                <div class="ch-header" data-idx="17">
+                    <a href="chapter-18.html" class="ch-title-link" data-idx="17" data-file="chapter-18.html">
+                        <span class="ch-badge">فصل 18</span>
+                        <span class="ch-title">معماری میکروسرویس‌ها</span>
+                    </a>
+                    <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+                </div>
+                <ul class="ch-sections" id="sections-17"><li class="sec-item"><a href="chapter-18.html#sec-1" data-ch-idx="17" data-file="chapter-18.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">توپولوژی</span></a></li><li class="sec-item"><a href="chapter-18.html#sec-2" data-ch-idx="17" data-file="chapter-18.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ویژگی‌های خاصِ سبک</span></a></li><li class="sec-item"><a href="chapter-18.html#sec-3" data-ch-idx="17" data-file="chapter-18.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">توپولوژی‌های داده</span></a></li><li class="sec-item"><a href="chapter-18.html#sec-4" data-ch-idx="17" data-file="chapter-18.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ملاحظات ابری</span></a></li><li class="sec-item"><a href="chapter-18.html#sec-5" data-ch-idx="17" data-file="chapter-18.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ریسک‌های رایج</span></a></li><li class="sec-item"><a href="chapter-18.html#sec-6" data-ch-idx="17" data-file="chapter-18.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">حاکمیت</span></a></li><li class="sec-item"><a href="chapter-18.html#sec-7" data-ch-idx="17" data-file="chapter-18.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ملاحظاتِ توپولوژی تیم</span></a></li><li class="sec-item"><a href="chapter-18.html#sec-8" data-ch-idx="17" data-file="chapter-18.html" data-hash="#sec-8" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ویژگی‌های سبک</span></a></li><li class="sec-item"><a href="chapter-18.html#sec-9" data-ch-idx="17" data-file="chapter-18.html" data-hash="#sec-9" class="sec-link"><span class="sec-dot"></span><span class="sec-text">نمونه‌ها و موارد کاربرد</span></a></li><li class="sec-item"><a href="chapter-18.html#sec-10" data-ch-idx="17" data-file="chapter-18.html" data-hash="#sec-10" class="sec-link"><span class="sec-dot"></span><span class="sec-text">واژه‌نامهٔ اختصاصی این فصل</span></a></li></ul>
+            </div>
+            
+
+            <div class="ch-card" id="ch-item-18" data-idx="18" data-file="chapter-19.html">
+                <div class="ch-header" data-idx="18">
+                    <a href="chapter-19.html" class="ch-title-link" data-idx="18" data-file="chapter-19.html">
+                        <span class="ch-badge">فصل 19</span>
+                        <span class="ch-title">انتخاب سبک معماری مناسب</span>
+                    </a>
+                    <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+                </div>
+                <ul class="ch-sections" id="sections-18"><li class="sec-item"><a href="chapter-19.html#sec-1" data-ch-idx="18" data-file="chapter-19.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">تغییر «مُد» در معماری</span></a></li><li class="sec-item"><a href="chapter-19.html#sec-2" data-ch-idx="18" data-file="chapter-19.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">معیارهای تصمیم‌گیری</span></a></li><li class="sec-item"><a href="chapter-19.html#sec-3" data-ch-idx="18" data-file="chapter-19.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">مطالعهٔ موردی تک‌پارچه: Silicon Sandwiches</span></a></li><li class="sec-item"><a href="chapter-19.html#sec-4" data-ch-idx="18" data-file="chapter-19.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">مطالعهٔ موردی توزیع‌شده: Going, Going, Gone</span></a></li><li class="sec-item"><a href="chapter-19.html#sec-5" data-ch-idx="18" data-file="chapter-19.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">واژه‌نامهٔ اختصاصی این فصل</span></a></li></ul>
+            </div>
+            
+
+            <div class="ch-card" id="ch-item-19" data-idx="19" data-file="chapter-20.html">
+                <div class="ch-header" data-idx="19">
+                    <a href="chapter-20.html" class="ch-title-link" data-idx="19" data-file="chapter-20.html">
+                        <span class="ch-badge">فصل 20</span>
+                        <span class="ch-title">الگوهای معماری</span>
+                    </a>
+                    <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+                </div>
+                <ul class="ch-sections" id="sections-19"><li class="sec-item"><a href="chapter-20.html#sec-1" data-ch-idx="19" data-file="chapter-20.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">بازاستفاده</span></a></li><li class="sec-item"><a href="chapter-20.html#sec-2" data-ch-idx="19" data-file="chapter-20.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ارتباطات</span></a></li><li class="sec-item"><a href="chapter-20.html#sec-3" data-ch-idx="19" data-file="chapter-20.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">CQRS</span></a></li><li class="sec-item"><a href="chapter-20.html#sec-4" data-ch-idx="19" data-file="chapter-20.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">زیرساخت</span></a></li><li class="sec-item"><a href="chapter-20.html#sec-5" data-ch-idx="19" data-file="chapter-20.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">واژه‌نامهٔ اختصاصی این فصل</span></a></li></ul>
+            </div>
+            
+
+        <div class="part-header" id="part-3">
+            <div class="part-title-wrapper">
+                <i class="fas fa-layer-group part-icon"></i>
+                <span class="part-title">بخش سوم: تکنیک‌ها و مهارت‌های نرم</span>
+            </div>
+            <span class="part-desc">فصل‌های ۲۱ تا ۲۷: تصمیم‌گیری، تحلیل ریسک، نمودارکشی، اثربخشی تیم، مذاکره و رهبری</span>
+        </div>
+        
+
+            <div class="ch-card" id="ch-item-20" data-idx="20" data-file="chapter-21.html">
+                <div class="ch-header" data-idx="20">
+                    <a href="chapter-21.html" class="ch-title-link" data-idx="20" data-file="chapter-21.html">
+                        <span class="ch-badge">فصل 21</span>
+                        <span class="ch-title">تصمیمات معماری</span>
+                    </a>
+                    <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+                </div>
+                <ul class="ch-sections" id="sections-20"><li class="sec-item"><a href="chapter-21.html#sec-1" data-ch-idx="20" data-file="chapter-21.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ضدالگوهای تصمیم‌گیری معماری</span></a></li><li class="sec-item"><a href="chapter-21.html#sec-2" data-ch-idx="20" data-file="chapter-21.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">اهمیت معماری (Architectural Significance)</span></a></li><li class="sec-item"><a href="chapter-21.html#sec-3" data-ch-idx="20" data-file="chapter-21.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">سوابق تصمیم معماری</span></a></li><li class="sec-item"><a href="chapter-21.html#sec-4" data-ch-idx="20" data-file="chapter-21.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">واژه‌نامهٔ اختصاصی این فصل</span></a></li></ul>
+            </div>
+            
+
+            <div class="ch-card" id="ch-item-21" data-idx="21" data-file="chapter-22.html">
+                <div class="ch-header" data-idx="21">
+                    <a href="chapter-22.html" class="ch-title-link" data-idx="21" data-file="chapter-22.html">
+                        <span class="ch-badge">فصل 22</span>
+                        <span class="ch-title">تحلیل ریسک معماری</span>
+                    </a>
+                    <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+                </div>
+                <ul class="ch-sections" id="sections-21"><li class="sec-item"><a href="chapter-22.html#sec-1" data-ch-idx="21" data-file="chapter-22.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ماتریس ریسک</span></a></li><li class="sec-item"><a href="chapter-22.html#sec-2" data-ch-idx="21" data-file="chapter-22.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ارزیابی‌های ریسک</span></a></li><li class="sec-item"><a href="chapter-22.html#sec-3" data-ch-idx="21" data-file="chapter-22.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">طوفان ریسک</span></a></li><li class="sec-item"><a href="chapter-22.html#sec-4" data-ch-idx="21" data-file="chapter-22.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">تحلیل ریسک داستان‌های کاربری</span></a></li><li class="sec-item"><a href="chapter-22.html#sec-5" data-ch-idx="21" data-file="chapter-22.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">نمونهٔ کاربردی طوفان ریسک</span></a></li><li class="sec-item"><a href="chapter-22.html#sec-6" data-ch-idx="21" data-file="chapter-22.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">جمع‌بندی</span></a></li><li class="sec-item"><a href="chapter-22.html#sec-7" data-ch-idx="21" data-file="chapter-22.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">واژه‌نامهٔ اختصاصی این فصل</span></a></li></ul>
+            </div>
+            
+
+            <div class="ch-card" id="ch-item-22" data-idx="22" data-file="chapter-23.html">
+                <div class="ch-header" data-idx="22">
+                    <a href="chapter-23.html" class="ch-title-link" data-idx="22" data-file="chapter-23.html">
+                        <span class="ch-badge">فصل 23</span>
+                        <span class="ch-title">نمودارکشی معماری</span>
+                    </a>
+                    <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+                </div>
+                <ul class="ch-sections" id="sections-22"><li class="sec-item"><a href="chapter-23.html#sec-1" data-ch-idx="22" data-file="chapter-23.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">نمودارکشی</span></a></li><li class="sec-item"><a href="chapter-23.html#sec-2" data-ch-idx="22" data-file="chapter-23.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">جمع‌بندی</span></a></li><li class="sec-item"><a href="chapter-23.html#sec-3" data-ch-idx="22" data-file="chapter-23.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">واژه‌نامهٔ اختصاصی این فصل</span></a></li></ul>
+            </div>
+            
+
+            <div class="ch-card" id="ch-item-23" data-idx="23" data-file="chapter-24.html">
+                <div class="ch-header" data-idx="23">
+                    <a href="chapter-24.html" class="ch-title-link" data-idx="23" data-file="chapter-24.html">
+                        <span class="ch-badge">فصل 24</span>
+                        <span class="ch-title">اثربخش کردن تیم‌ها</span>
+                    </a>
+                    <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+                </div>
+                <ul class="ch-sections" id="sections-23"><li class="sec-item"><a href="chapter-24.html#sec-1" data-ch-idx="23" data-file="chapter-24.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">همکاری</span></a></li><li class="sec-item"><a href="chapter-24.html#sec-2" data-ch-idx="23" data-file="chapter-24.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">محدودیت‌ها و مرزها</span></a></li><li class="sec-item"><a href="chapter-24.html#sec-3" data-ch-idx="23" data-file="chapter-24.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">شخصیت‌های معمار</span></a></li><li class="sec-item"><a href="chapter-24.html#sec-4" data-ch-idx="23" data-file="chapter-24.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">چه میزان مشارکت؟</span></a></li><li class="sec-item"><a href="chapter-24.html#sec-5" data-ch-idx="23" data-file="chapter-24.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">نشانه‌های هشدار در تیم</span></a></li><li class="sec-item"><a href="chapter-24.html#sec-6" data-ch-idx="23" data-file="chapter-24.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">بهره‌گیری از فهرست‌های وارسی</span></a></li><li class="sec-item"><a href="chapter-24.html#sec-7" data-ch-idx="23" data-file="chapter-24.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ارائهٔ راهنمایی</span></a></li><li class="sec-item"><a href="chapter-24.html#sec-8" data-ch-idx="23" data-file="chapter-24.html" data-hash="#sec-8" class="sec-link"><span class="sec-dot"></span><span class="sec-text">خلاصه</span></a></li><li class="sec-item"><a href="chapter-24.html#sec-9" data-ch-idx="23" data-file="chapter-24.html" data-hash="#sec-9" class="sec-link"><span class="sec-dot"></span><span class="sec-text">واژه‌نامهٔ اختصاصی این فصل</span></a></li></ul>
+            </div>
+            
+
+            <div class="ch-card" id="ch-item-24" data-idx="24" data-file="chapter-25.html">
+                <div class="ch-header" data-idx="24">
+                    <a href="chapter-25.html" class="ch-title-link" data-idx="24" data-file="chapter-25.html">
+                        <span class="ch-badge">فصل 25</span>
+                        <span class="ch-title">مهارت‌های مذاکره و رهبری</span>
+                    </a>
+                    <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+                </div>
+                <ul class="ch-sections" id="sections-24"><li class="sec-item"><a href="chapter-25.html#sec-1" data-ch-idx="24" data-file="chapter-25.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">مذاکره و تسهیل‌گری</span></a></li><li class="sec-item"><a href="chapter-25.html#sec-2" data-ch-idx="24" data-file="chapter-25.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">معمار نرم‌افزار در نقش رهبر</span></a></li><li class="sec-item"><a href="chapter-25.html#sec-3" data-ch-idx="24" data-file="chapter-25.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">ادغام با تیم توسعه</span></a></li><li class="sec-item"><a href="chapter-25.html#sec-4" data-ch-idx="24" data-file="chapter-25.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">خلاصه</span></a></li><li class="sec-item"><a href="chapter-25.html#sec-5" data-ch-idx="24" data-file="chapter-25.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">واژه‌نامهٔ اختصاصی این فصل</span></a></li></ul>
+            </div>
+            
+
+            <div class="ch-card" id="ch-item-25" data-idx="25" data-file="chapter-26.html">
+                <div class="ch-header" data-idx="25">
+                    <a href="chapter-26.html" class="ch-title-link" data-idx="25" data-file="chapter-26.html">
+                        <span class="ch-badge">فصل 26</span>
+                        <span class="ch-title">تقاطع‌های معماری</span>
+                    </a>
+                    <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+                </div>
+                <ul class="ch-sections" id="sections-25"><li class="sec-item"><a href="chapter-26.html#sec-1" data-ch-idx="25" data-file="chapter-26.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">معماری و پیاده‌سازی</span></a></li><li class="sec-item"><a href="chapter-26.html#sec-2" data-ch-idx="25" data-file="chapter-26.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">معماری و زیرساخت</span></a></li><li class="sec-item"><a href="chapter-26.html#sec-3" data-ch-idx="25" data-file="chapter-26.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">معماری و توپولوژی‌های داده</span></a></li><li class="sec-item"><a href="chapter-26.html#sec-4" data-ch-idx="25" data-file="chapter-26.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">معماری و رویه‌های مهندسی</span></a></li><li class="sec-item"><a href="chapter-26.html#sec-5" data-ch-idx="25" data-file="chapter-26.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">معماری و توپولوژی‌های تیم</span></a></li><li class="sec-item"><a href="chapter-26.html#sec-6" data-ch-idx="25" data-file="chapter-26.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">معماری و یکپارچه‌سازی سیستم‌ها</span></a></li><li class="sec-item"><a href="chapter-26.html#sec-7" data-ch-idx="25" data-file="chapter-26.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">معماری و سازمان</span></a></li><li class="sec-item"><a href="chapter-26.html#sec-8" data-ch-idx="25" data-file="chapter-26.html" data-hash="#sec-8" class="sec-link"><span class="sec-dot"></span><span class="sec-text">معماری و محیط کسب‌وکار</span></a></li><li class="sec-item"><a href="chapter-26.html#sec-9" data-ch-idx="25" data-file="chapter-26.html" data-hash="#sec-9" class="sec-link"><span class="sec-dot"></span><span class="sec-text">معماری و هوش مصنوعی مولد</span></a></li><li class="sec-item"><a href="chapter-26.html#sec-10" data-ch-idx="25" data-file="chapter-26.html" data-hash="#sec-10" class="sec-link"><span class="sec-dot"></span><span class="sec-text">خلاصه</span></a></li><li class="sec-item"><a href="chapter-26.html#sec-11" data-ch-idx="25" data-file="chapter-26.html" data-hash="#sec-11" class="sec-link"><span class="sec-dot"></span><span class="sec-text">واژه‌نامهٔ اختصاصی این فصل</span></a></li></ul>
+            </div>
+            
+
+            <div class="ch-card" id="ch-item-26" data-idx="26" data-file="chapter-27.html">
+                <div class="ch-header" data-idx="26">
+                    <a href="chapter-27.html" class="ch-title-link" data-idx="26" data-file="chapter-27.html">
+                        <span class="ch-badge">فصل 27</span>
+                        <span class="ch-title">بازنگری در قوانین معماری نرم‌افزار</span>
+                    </a>
+                    <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+                </div>
+                <ul class="ch-sections" id="sections-26"><li class="sec-item"><a href="chapter-27.html#sec-1" data-ch-idx="26" data-file="chapter-27.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">قانون اول: هرچه در معماری نرم‌افزار هست، یک مصالحه است</span></a></li><li class="sec-item"><a href="chapter-27.html#sec-2" data-ch-idx="26" data-file="chapter-27.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">قانون دوم: «چرا» مهم‌تر از «چگونه» است</span></a></li><li class="sec-item"><a href="chapter-27.html#sec-3" data-ch-idx="26" data-file="chapter-27.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">طیف میان دو سرِ افراطی</span></a></li><li class="sec-item"><a href="chapter-27.html#sec-4" data-ch-idx="26" data-file="chapter-27.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">توصیه‌های پایانی</span></a></li><li class="sec-item"><a href="chapter-27.html#sec-5" data-ch-idx="26" data-file="chapter-27.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">واژه‌نامهٔ اختصاصی این فصل</span></a></li></ul>
+            </div>
+            
+
+        <div class="part-header" id="part-appendix">
+            <div class="part-title-wrapper">
+                <i class="fas fa-layer-group part-icon"></i>
+                <span class="part-title">پیوست و منابع</span>
+            </div>
+            <span class="part-desc">پرسش‌های بحث و مرور نهایی</span>
+        </div>
+        
+
+            <div class="ch-card" id="ch-item-27" data-idx="27" data-file="appendix.html">
+                <div class="ch-header" data-idx="27">
+                    <a href="appendix.html" class="ch-title-link" data-idx="27" data-file="appendix.html">
+                        <span class="ch-badge">پیوست</span>
+                        <span class="ch-title">پرسش‌های بحث</span>
+                    </a>
+                    <i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>
+                </div>
+                <ul class="ch-sections" id="sections-27"><li class="sec-item"><a href="appendix.html#sec-1" data-ch-idx="27" data-file="appendix.html" data-hash="#sec-1" class="sec-link"><span class="sec-dot"></span><span class="sec-text">فصل ۱: مقدمه</span></a></li><li class="sec-item"><a href="appendix.html#sec-2" data-ch-idx="27" data-file="appendix.html" data-hash="#sec-2" class="sec-link"><span class="sec-dot"></span><span class="sec-text">فصل ۲: تفکر معماری</span></a></li><li class="sec-item"><a href="appendix.html#sec-3" data-ch-idx="27" data-file="appendix.html" data-hash="#sec-3" class="sec-link"><span class="sec-dot"></span><span class="sec-text">فصل ۳: ماژولاریتی</span></a></li><li class="sec-item"><a href="appendix.html#sec-4" data-ch-idx="27" data-file="appendix.html" data-hash="#sec-4" class="sec-link"><span class="sec-dot"></span><span class="sec-text">فصل ۴: تعریف ویژگی‌های معماری</span></a></li><li class="sec-item"><a href="appendix.html#sec-5" data-ch-idx="27" data-file="appendix.html" data-hash="#sec-5" class="sec-link"><span class="sec-dot"></span><span class="sec-text">فصل ۵: شناسایی ویژگی‌های معماری</span></a></li><li class="sec-item"><a href="appendix.html#sec-6" data-ch-idx="27" data-file="appendix.html" data-hash="#sec-6" class="sec-link"><span class="sec-dot"></span><span class="sec-text">فصل ۶: سنجش و حاکمیت بر ویژگی‌های معماری</span></a></li><li class="sec-item"><a href="appendix.html#sec-7" data-ch-idx="27" data-file="appendix.html" data-hash="#sec-7" class="sec-link"><span class="sec-dot"></span><span class="sec-text">فصل ۷: دامنهٔ ویژگی‌های معماری</span></a></li><li class="sec-item"><a href="appendix.html#sec-8" data-ch-idx="27" data-file="appendix.html" data-hash="#sec-8" class="sec-link"><span class="sec-dot"></span><span class="sec-text">فصل ۸: تفکر مؤلفه‌محور</span></a></li><li class="sec-item"><a href="appendix.html#sec-9" data-ch-idx="27" data-file="appendix.html" data-hash="#sec-9" class="sec-link"><span class="sec-dot"></span><span class="sec-text">فصل ۹: مبانی</span></a></li><li class="sec-item"><a href="appendix.html#sec-10" data-ch-idx="27" data-file="appendix.html" data-hash="#sec-10" class="sec-link"><span class="sec-dot"></span><span class="sec-text">فصل ۱۰: سبک معماری لایه‌ای</span></a></li><li class="sec-item"><a href="appendix.html#sec-11" data-ch-idx="27" data-file="appendix.html" data-hash="#sec-11" class="sec-link"><span class="sec-dot"></span><span class="sec-text">فصل ۱۱: سبک معماری تک‌پارچهٔ ماژولار</span></a></li><li class="sec-item"><a href="appendix.html#sec-12" data-ch-idx="27" data-file="appendix.html" data-hash="#sec-12" class="sec-link"><span class="sec-dot"></span><span class="sec-text">فصل ۱۲: سبک معماری خط لوله</span></a></li><li class="sec-item"><a href="appendix.html#sec-13" data-ch-idx="27" data-file="appendix.html" data-hash="#sec-13" class="sec-link"><span class="sec-dot"></span><span class="sec-text">فصل ۱۳: سبک معماری میکروکرنل</span></a></li><li class="sec-item"><a href="appendix.html#sec-14" data-ch-idx="27" data-file="appendix.html" data-hash="#sec-14" class="sec-link"><span class="sec-dot"></span><span class="sec-text">فصل ۱۴: سبک معماری مبتنی بر سرویس</span></a></li><li class="sec-item"><a href="appendix.html#sec-15" data-ch-idx="27" data-file="appendix.html" data-hash="#sec-15" class="sec-link"><span class="sec-dot"></span><span class="sec-text">فصل ۱۵: سبک معماری رویدادمحور</span></a></li><li class="sec-item"><a href="appendix.html#sec-16" data-ch-idx="27" data-file="appendix.html" data-hash="#sec-16" class="sec-link"><span class="sec-dot"></span><span class="sec-text">فصل ۱۶: سبک معماری مبتنی بر فضا</span></a></li><li class="sec-item"><a href="appendix.html#sec-17" data-ch-idx="27" data-file="appendix.html" data-hash="#sec-17" class="sec-link"><span class="sec-dot"></span><span class="sec-text">فصل ۱۷: معماری سرویس‌گرای ارکستراسیون‌محور</span></a></li><li class="sec-item"><a href="appendix.html#sec-18" data-ch-idx="27" data-file="appendix.html" data-hash="#sec-18" class="sec-link"><span class="sec-dot"></span><span class="sec-text">فصل ۱۸: معماری میکروسرویس‌ها</span></a></li><li class="sec-item"><a href="appendix.html#sec-19" data-ch-idx="27" data-file="appendix.html" data-hash="#sec-19" class="sec-link"><span class="sec-dot"></span><span class="sec-text">فصل ۱۹: انتخاب سبک معماری مناسب</span></a></li><li class="sec-item"><a href="appendix.html#sec-20" data-ch-idx="27" data-file="appendix.html" data-hash="#sec-20" class="sec-link"><span class="sec-dot"></span><span class="sec-text">فصل ۲۰: الگوهای معماری</span></a></li><li class="sec-item"><a href="appendix.html#sec-21" data-ch-idx="27" data-file="appendix.html" data-hash="#sec-21" class="sec-link"><span class="sec-dot"></span><span class="sec-text">فصل ۲۱: تصمیمات معماری</span></a></li><li class="sec-item"><a href="appendix.html#sec-22" data-ch-idx="27" data-file="appendix.html" data-hash="#sec-22" class="sec-link"><span class="sec-dot"></span><span class="sec-text">فصل ۲۲: تحلیل ریسک معماری</span></a></li><li class="sec-item"><a href="appendix.html#sec-23" data-ch-idx="27" data-file="appendix.html" data-hash="#sec-23" class="sec-link"><span class="sec-dot"></span><span class="sec-text">فصل ۲۳: نمودارکشی معماری</span></a></li><li class="sec-item"><a href="appendix.html#sec-24" data-ch-idx="27" data-file="appendix.html" data-hash="#sec-24" class="sec-link"><span class="sec-dot"></span><span class="sec-text">فصل ۲۴: اثربخش کردن تیم‌ها</span></a></li><li class="sec-item"><a href="appendix.html#sec-25" data-ch-idx="27" data-file="appendix.html" data-hash="#sec-25" class="sec-link"><span class="sec-dot"></span><span class="sec-text">فصل ۲۵: مهارت‌های مذاکره و رهبری</span></a></li><li class="sec-item"><a href="appendix.html#sec-26" data-ch-idx="27" data-file="appendix.html" data-hash="#sec-26" class="sec-link"><span class="sec-dot"></span><span class="sec-text">فصل ۲۶: تقاطع‌های معماری</span></a></li><li class="sec-item"><a href="appendix.html#sec-27" data-ch-idx="27" data-file="appendix.html" data-hash="#sec-27" class="sec-link"><span class="sec-dot"></span><span class="sec-text">فصل ۲۷: بازنگری در قوانین معماری نرم‌افزار</span></a></li><li class="sec-item"><a href="appendix.html#sec-28" data-ch-idx="27" data-file="appendix.html" data-hash="#sec-28" class="sec-link"><span class="sec-dot"></span><span class="sec-text">واژه‌نامهٔ اختصاصی این پیوست</span></a></li></ul>
+            </div>
+            
+        </div>
+    </aside>
+
+    <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+    <!-- Main Content Reader -->
+    <main class="reader-content">
+        <div class="reader-toolbar">
+            <div class="toolbar-title" id="current-title">
+                <i class="fas fa-book-open" style="color:var(--accent);"></i>
+                <span id="title-text">فصل ۱: مقدمه</span>
+            </div>
+            <div class="toolbar-nav">
+                <button class="btn-tool" id="btn-prev-chapter" title="فصل قبلی (کلید ←)">
+                    <i class="fas fa-chevron-right fa-fw"></i>
+                    <span>قبلی</span>
+                </button>
+                <button class="btn-tool" id="btn-next-chapter" title="فصل بعدی (کلید →)">
+                    <span>بعدی</span>
+                    <i class="fas fa-chevron-left fa-fw"></i>
+                </button>
+                <button class="btn-tool" id="btn-refresh-frame" title="بارگذاری مجدد این فصل">
+                    <i class="fas fa-redo fa-fw"></i>
+                </button>
+                <a class="btn-tool" id="btn-direct-link" target="_blank" title="باز کردن در برگهٔ جداگانه">
+                    <i class="fas fa-external-link-alt fa-fw"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="frame-container">
+            <iframe id="book-frame" name="book-frame" src="chapter-01.html" title="کتابخوان معماری نرم‌افزار"></iframe>
+        </div>
+    </main>
+</div>
+
+<script>
+    const CHAPTERS = [{"filename": "chapter-01.html", "ch_num": 1, "badge": "فصل 1", "raw_title": "فصل ۱: مقدمه", "short_title": "مقدمه", "sections": [{"id": "sec-1", "title": "تعریف معماری نرم‌افزار", "href": "#sec-1"}, {"id": "sec-2", "title": "قوانین معماری نرم‌افزار", "href": "#sec-2"}, {"id": "sec-3", "title": "انتظارات از یک معمار", "href": "#sec-3"}, {"id": "sec-4", "title": "نقشهٔ راه کتاب", "href": "#sec-4"}, {"id": "sec-5", "title": "واژه‌نامهٔ اختصاصی این فصل", "href": "#sec-5"}]}, {"filename": "chapter-02.html", "ch_num": 2, "badge": "فصل 2", "raw_title": "فصل ۲: تفکر معماری", "short_title": "تفکر معماری", "sections": [{"id": "sec-1", "title": "معماری در برابر طراحی", "href": "#sec-1"}, {"id": "sec-2", "title": "تصمیمات راهبردی در برابر تاکتیکی", "href": "#sec-2"}, {"id": "sec-3", "title": "سطح تلاش", "href": "#sec-3"}, {"id": "sec-4", "title": "اهمیت مصالحه‌ها", "href": "#sec-4"}, {"id": "sec-5", "title": "گستردگی فنی", "href": "#sec-5"}, {"id": "sec-6", "title": "ضدالگوی انسان غارنشین منجمد", "href": "#sec-6"}, {"id": "sec-7", "title": "قانون بیست‌دقیقه‌ای", "href": "#sec-7"}, {"id": "sec-8", "title": "توسعهٔ رادار شخصی", "href": "#sec-8"}, {"id": "sec-9", "title": "تحلیل مصالحه‌ها", "href": "#sec-9"}, {"id": "sec-10", "title": "درک محرک‌های کسب‌وکار", "href": "#sec-10"}, {"id": "sec-11", "title": "توازن میان معماری و کدنویسی مستقیم", "href": "#sec-11"}, {"id": "sec-12", "title": "چیزهای بیشتری در تفکر معماری هست", "href": "#sec-12"}, {"id": "sec-13", "title": "واژه‌نامهٔ اختصاصی این فصل", "href": "#sec-13"}]}, {"filename": "chapter-03.html", "ch_num": 3, "badge": "فصل 3", "raw_title": "فصل ۳: ماژولاریتی", "short_title": "ماژولاریتی", "sections": [{"id": "sec-1", "title": "ماژولاریتی در برابر دانه‌بندی", "href": "#sec-1"}, {"id": "sec-2", "title": "تعریف ماژولاریتی", "href": "#sec-2"}, {"id": "sec-3", "title": "سنجشِ ماژولاریتی", "href": "#sec-3"}, {"id": "sec-4", "title": "از ماژول‌ها تا مؤلفه‌ها", "href": "#sec-4"}, {"id": "sec-5", "title": "واژه‌نامهٔ اختصاصی این فصل", "href": "#sec-5"}]}, {"filename": "chapter-04.html", "ch_num": 4, "badge": "فصل 4", "raw_title": "فصل ۴: تعریف ویژگی‌های معماری", "short_title": "تعریف ویژگی‌های معماری", "sections": [{"id": "sec-1", "title": "ویژگی‌های معماری و طراحیِ سیستم", "href": "#sec-1"}, {"id": "sec-2", "title": "ویژگی‌های معماری (فهرستی ناقص)", "href": "#sec-2"}, {"id": "sec-3", "title": "مصالحه‌ها و کم‌بدترین معماری", "href": "#sec-3"}, {"id": "sec-4", "title": "واژه‌نامهٔ اختصاصی این فصل", "href": "#sec-4"}]}, {"filename": "chapter-05.html", "ch_num": 5, "badge": "فصل 5", "raw_title": "فصل ۵: شناسایی ویژگی‌های معماری", "short_title": "شناسایی ویژگی‌های معماری", "sections": [{"id": "sec-1", "title": "استخراجِ ویژگی‌های معماری از دغدغه‌های حوزه", "href": "#sec-1"}, {"id": "sec-2", "title": "ویژگی‌های معماریِ مرکب", "href": "#sec-2"}, {"id": "sec-3", "title": "استخراجِ ویژگی‌های معماری", "href": "#sec-3"}, {"id": "sec-4", "title": "کاتا: Silicon Sandwiches", "href": "#sec-4"}, {"id": "sec-5", "title": "کاتا: Silicon Sandwiches (ادامه)", "href": "#sec-5"}, {"id": "sec-6", "title": "محدودکردن و اولویت‌بندیِ ویژگی‌های معماری", "href": "#sec-6"}, {"id": "sec-7", "title": "واژه‌نامهٔ اختصاصی این فصل", "href": "#sec-7"}]}, {"filename": "chapter-06.html", "ch_num": 6, "badge": "فصل 6", "raw_title": "فصل ۶: سنجش و حاکمیت بر ویژگی‌های معماری", "short_title": "سنجش و حاکمیت بر ویژگی‌های معماری", "sections": [{"id": "sec-1", "title": "سنجشِ ویژگی‌های معماری", "href": "#sec-1"}, {"id": "sec-2", "title": "حاکمیت و توابع برازش", "href": "#sec-2"}, {"id": "sec-3", "title": "واژه‌نامهٔ اختصاصی این فصل", "href": "#sec-3"}]}, {"filename": "chapter-07.html", "ch_num": 7, "badge": "فصل 7", "raw_title": "فصل ۷: دامنهٔ ویژگی‌های معماری", "short_title": "دامنهٔ ویژگی‌های معماری", "sections": [{"id": "sec-1", "title": "کوانتوم‌های معماری و دانه‌بندی", "href": "#sec-1"}, {"id": "sec-2", "title": "ارتباط هم‌گام", "href": "#sec-2"}, {"id": "sec-3", "title": "اثرِ دامنه‌گذاری (Scoping)", "href": "#sec-3"}, {"id": "sec-4", "title": "دامنه‌گذاری و ابر", "href": "#sec-4"}, {"id": "sec-5", "title": "واژه‌نامهٔ اختصاصی این فصل", "href": "#sec-5"}]}, {"filename": "chapter-08.html", "ch_num": 8, "badge": "فصل 8", "raw_title": "فصل ۸: تفکر مؤلفه‌محور", "short_title": "تفکر مؤلفه‌محور", "sections": [{"id": "sec-1", "title": "تعریفِ مؤلفه‌های منطقی", "href": "#sec-1"}, {"id": "sec-2", "title": "معماری منطقی در برابرِ معماری فیزیکی", "href": "#sec-2"}, {"id": "sec-3", "title": "ساختنِ معماری منطقی", "href": "#sec-3"}, {"id": "sec-4", "title": "کوپلینگِ مؤلفه‌ها", "href": "#sec-4"}, {"id": "sec-5", "title": "مطالعهٔ موردی: Going, Going, Gone — کشفِ مؤلفه‌ها", "href": "#sec-5"}, {"id": "sec-6", "title": "واژه‌نامهٔ اختصاصی این فصل", "href": "#sec-6"}]}, {"filename": "chapter-09.html", "ch_num": 9, "badge": "فصل 9", "raw_title": "فصل ۹: مبانی", "short_title": "مبانی", "sections": [{"id": "sec-1", "title": "سبک‌ها در برابرِ الگوها", "href": "#sec-1"}, {"id": "sec-2", "title": "الگوهای بنیادین", "href": "#sec-2"}, {"id": "sec-3", "title": "افرازِ معماری (Architecture Partitioning)", "href": "#sec-3"}, {"id": "sec-4", "title": "معماری‌های تک‌پارچه در برابرِ توزیع‌شده", "href": "#sec-4"}, {"id": "sec-5", "title": "توپولوژی‌های تیم و معماری", "href": "#sec-5"}, {"id": "sec-6", "title": "به سوی سبک‌های مشخص", "href": "#sec-6"}, {"id": "sec-7", "title": "واژه‌نامهٔ اختصاصی این فصل", "href": "#sec-7"}]}, {"filename": "chapter-10.html", "ch_num": 10, "badge": "فصل 10", "raw_title": "فصل ۱۰: سبک معماری لایه‌ای", "short_title": "سبک معماری لایه‌ای", "sections": [{"id": "sec-1", "title": "توپولوژی", "href": "#sec-1"}, {"id": "sec-2", "title": "ویژگی‌های خاصِ سبک", "href": "#sec-2"}, {"id": "sec-3", "title": "توپولوژی‌های داده", "href": "#sec-3"}, {"id": "sec-4", "title": "ملاحظات ابری", "href": "#sec-4"}, {"id": "sec-5", "title": "ریسک‌های رایج", "href": "#sec-5"}, {"id": "sec-6", "title": "حاکمیت", "href": "#sec-6"}, {"id": "sec-7", "title": "ملاحظاتِ توپولوژی تیم", "href": "#sec-7"}, {"id": "sec-8", "title": "ویژگی‌های سبک", "href": "#sec-8"}, {"id": "sec-9", "title": "نمونه‌ها و موارد کاربرد", "href": "#sec-9"}, {"id": "sec-10", "title": "واژه‌نامهٔ اختصاصی این فصل", "href": "#sec-10"}]}, {"filename": "chapter-11.html", "ch_num": 11, "badge": "فصل 11", "raw_title": "فصل ۱۱: سبک معماری تک‌پارچهٔ ماژولار", "short_title": "سبک معماری تک‌پارچهٔ ماژولار", "sections": [{"id": "sec-1", "title": "توپولوژی", "href": "#sec-1"}, {"id": "sec-2", "title": "ویژگی‌های خاصِ سبک", "href": "#sec-2"}, {"id": "sec-3", "title": "توپولوژی‌های داده", "href": "#sec-3"}, {"id": "sec-4", "title": "ملاحظات ابری", "href": "#sec-4"}, {"id": "sec-5", "title": "ریسک‌های رایج", "href": "#sec-5"}, {"id": "sec-6", "title": "حاکمیت", "href": "#sec-6"}, {"id": "sec-7", "title": "ملاحظاتِ توپولوژی تیم", "href": "#sec-7"}, {"id": "sec-8", "title": "ویژگی‌های سبک", "href": "#sec-8"}, {"id": "sec-9", "title": "نمونه‌ها و موارد کاربرد", "href": "#sec-9"}, {"id": "sec-10", "title": "واژه‌نامهٔ اختصاصی این فصل", "href": "#sec-10"}]}, {"filename": "chapter-12.html", "ch_num": 12, "badge": "فصل 12", "raw_title": "فصل ۱۲: سبک معماری خط لوله", "short_title": "سبک معماری خط لوله", "sections": [{"id": "sec-1", "title": "توپولوژی", "href": "#sec-1"}, {"id": "sec-2", "title": "ویژگی‌های خاصِ سبک", "href": "#sec-2"}, {"id": "sec-3", "title": "توپولوژی‌های داده", "href": "#sec-3"}, {"id": "sec-4", "title": "ملاحظات ابری", "href": "#sec-4"}, {"id": "sec-5", "title": "ریسک‌های رایج", "href": "#sec-5"}, {"id": "sec-6", "title": "حاکمیت", "href": "#sec-6"}, {"id": "sec-7", "title": "ملاحظاتِ توپولوژی تیم", "href": "#sec-7"}, {"id": "sec-8", "title": "ویژگی‌های سبک", "href": "#sec-8"}, {"id": "sec-9", "title": "نمونه‌ها و موارد کاربرد", "href": "#sec-9"}, {"id": "sec-10", "title": "واژه‌نامهٔ اختصاصی این فصل", "href": "#sec-10"}]}, {"filename": "chapter-13.html", "ch_num": 13, "badge": "فصل 13", "raw_title": "فصل ۱۳: سبک معماری میکروکرنل", "short_title": "سبک معماری میکروکرنل", "sections": [{"id": "sec-1", "title": "توپولوژی", "href": "#sec-1"}, {"id": "sec-2", "title": "ویژگی‌های خاصِ سبک", "href": "#sec-2"}, {"id": "sec-3", "title": "توپولوژی‌های داده", "href": "#sec-3"}, {"id": "sec-4", "title": "ملاحظات ابری", "href": "#sec-4"}, {"id": "sec-5", "title": "ریسک‌های رایج", "href": "#sec-5"}, {"id": "sec-6", "title": "حاکمیت", "href": "#sec-6"}, {"id": "sec-7", "title": "ملاحظاتِ توپولوژی تیم", "href": "#sec-7"}, {"id": "sec-8", "title": "رتبه‌بندیِ ویژگی‌های معماری", "href": "#sec-8"}, {"id": "sec-9", "title": "نمونه‌ها و موارد کاربرد", "href": "#sec-9"}, {"id": "sec-10", "title": "واژه‌نامهٔ اختصاصی این فصل", "href": "#sec-10"}]}, {"filename": "chapter-14.html", "ch_num": 14, "badge": "فصل 14", "raw_title": "فصل ۱۴: سبک معماری مبتنی بر سرویس", "short_title": "سبک معماری مبتنی بر سرویس", "sections": [{"id": "sec-1", "title": "توپولوژی", "href": "#sec-1"}, {"id": "sec-2", "title": "ویژگی‌های خاصِ سبک", "href": "#sec-2"}, {"id": "sec-3", "title": "توپولوژی‌های داده", "href": "#sec-3"}, {"id": "sec-4", "title": "ملاحظات ابری", "href": "#sec-4"}, {"id": "sec-5", "title": "ریسک‌های رایج", "href": "#sec-5"}, {"id": "sec-6", "title": "حاکمیت", "href": "#sec-6"}, {"id": "sec-7", "title": "ملاحظاتِ توپولوژی تیم", "href": "#sec-7"}, {"id": "sec-8", "title": "ویژگی‌های سبک", "href": "#sec-8"}, {"id": "sec-9", "title": "نمونه‌ها و موارد کاربرد", "href": "#sec-9"}, {"id": "sec-10", "title": "واژه‌نامهٔ اختصاصی این فصل", "href": "#sec-10"}]}, {"filename": "chapter-15.html", "ch_num": 15, "badge": "فصل 15", "raw_title": "فصل ۱۵: سبک معماری رویدادمحور", "short_title": "سبک معماری رویدادمحور", "sections": [{"id": "sec-1", "title": "توپولوژی", "href": "#sec-1"}, {"id": "sec-2", "title": "ویژگی‌های خاصِ سبک", "href": "#sec-2"}, {"id": "sec-3", "title": "توپولوژی‌های داده", "href": "#sec-3"}, {"id": "sec-4", "title": "ملاحظات ابری", "href": "#sec-4"}, {"id": "sec-5", "title": "ریسک‌های رایج", "href": "#sec-5"}, {"id": "sec-6", "title": "حاکمیت", "href": "#sec-6"}, {"id": "sec-7", "title": "ملاحظاتِ توپولوژی تیم", "href": "#sec-7"}, {"id": "sec-8", "title": "ویژگی‌های سبک", "href": "#sec-8"}, {"id": "sec-9", "title": "نمونه‌ها و موارد کاربرد", "href": "#sec-9"}, {"id": "sec-10", "title": "واژه‌نامهٔ اختصاصی این فصل", "href": "#sec-10"}]}, {"filename": "chapter-16.html", "ch_num": 16, "badge": "فصل 16", "raw_title": "فصل ۱۶: سبک معماری مبتنی بر فضا", "short_title": "سبک معماری مبتنی بر فضا", "sections": [{"id": "sec-1", "title": "توپولوژی", "href": "#sec-1"}, {"id": "sec-2", "title": "ویژگی‌های خاصِ سبک", "href": "#sec-2"}, {"id": "sec-3", "title": "توپولوژی‌های داده", "href": "#sec-3"}, {"id": "sec-4", "title": "ملاحظات ابری", "href": "#sec-4"}, {"id": "sec-5", "title": "ریسک‌های رایج", "href": "#sec-5"}, {"id": "sec-6", "title": "حاکمیت", "href": "#sec-6"}, {"id": "sec-7", "title": "ملاحظاتِ توپولوژی تیم", "href": "#sec-7"}, {"id": "sec-8", "title": "ویژگی‌های سبک", "href": "#sec-8"}, {"id": "sec-9", "title": "نمونه‌ها و موارد کاربرد", "href": "#sec-9"}, {"id": "sec-10", "title": "واژه‌نامهٔ اختصاصی این فصل", "href": "#sec-10"}]}, {"filename": "chapter-17.html", "ch_num": 17, "badge": "فصل 17", "raw_title": "فصل ۱۷: معماری سرویس‌گرای ارکستراسیون‌محور", "short_title": "معماری سرویس‌گرای ارکستراسیون‌محور", "sections": [{"id": "sec-1", "title": "توپولوژی", "href": "#sec-1"}, {"id": "sec-2", "title": "ویژگی‌های خاصِ سبک", "href": "#sec-2"}, {"id": "sec-3", "title": "توپولوژی‌های داده", "href": "#sec-3"}, {"id": "sec-4", "title": "ملاحظات ابری", "href": "#sec-4"}, {"id": "sec-5", "title": "ریسک‌های رایج", "href": "#sec-5"}, {"id": "sec-6", "title": "حاکمیت", "href": "#sec-6"}, {"id": "sec-7", "title": "ملاحظاتِ توپولوژی تیم", "href": "#sec-7"}, {"id": "sec-8", "title": "ویژگی‌های سبک", "href": "#sec-8"}, {"id": "sec-9", "title": "نمونه‌ها و موارد کاربرد", "href": "#sec-9"}, {"id": "sec-10", "title": "واژه‌نامهٔ اختصاصی این فصل", "href": "#sec-10"}]}, {"filename": "chapter-18.html", "ch_num": 18, "badge": "فصل 18", "raw_title": "فصل ۱۸: معماری میکروسرویس‌ها", "short_title": "معماری میکروسرویس‌ها", "sections": [{"id": "sec-1", "title": "توپولوژی", "href": "#sec-1"}, {"id": "sec-2", "title": "ویژگی‌های خاصِ سبک", "href": "#sec-2"}, {"id": "sec-3", "title": "توپولوژی‌های داده", "href": "#sec-3"}, {"id": "sec-4", "title": "ملاحظات ابری", "href": "#sec-4"}, {"id": "sec-5", "title": "ریسک‌های رایج", "href": "#sec-5"}, {"id": "sec-6", "title": "حاکمیت", "href": "#sec-6"}, {"id": "sec-7", "title": "ملاحظاتِ توپولوژی تیم", "href": "#sec-7"}, {"id": "sec-8", "title": "ویژگی‌های سبک", "href": "#sec-8"}, {"id": "sec-9", "title": "نمونه‌ها و موارد کاربرد", "href": "#sec-9"}, {"id": "sec-10", "title": "واژه‌نامهٔ اختصاصی این فصل", "href": "#sec-10"}]}, {"filename": "chapter-19.html", "ch_num": 19, "badge": "فصل 19", "raw_title": "فصل ۱۹: انتخاب سبک معماری مناسب", "short_title": "انتخاب سبک معماری مناسب", "sections": [{"id": "sec-1", "title": "تغییر «مُد» در معماری", "href": "#sec-1"}, {"id": "sec-2", "title": "معیارهای تصمیم‌گیری", "href": "#sec-2"}, {"id": "sec-3", "title": "مطالعهٔ موردی تک‌پارچه: Silicon Sandwiches", "href": "#sec-3"}, {"id": "sec-4", "title": "مطالعهٔ موردی توزیع‌شده: Going, Going, Gone", "href": "#sec-4"}, {"id": "sec-5", "title": "واژه‌نامهٔ اختصاصی این فصل", "href": "#sec-5"}]}, {"filename": "chapter-20.html", "ch_num": 20, "badge": "فصل 20", "raw_title": "فصل ۲۰: الگوهای معماری", "short_title": "الگوهای معماری", "sections": [{"id": "sec-1", "title": "بازاستفاده", "href": "#sec-1"}, {"id": "sec-2", "title": "ارتباطات", "href": "#sec-2"}, {"id": "sec-3", "title": "CQRS", "href": "#sec-3"}, {"id": "sec-4", "title": "زیرساخت", "href": "#sec-4"}, {"id": "sec-5", "title": "واژه‌نامهٔ اختصاصی این فصل", "href": "#sec-5"}]}, {"filename": "chapter-21.html", "ch_num": 21, "badge": "فصل 21", "raw_title": "فصل ۲۱: تصمیمات معماری", "short_title": "تصمیمات معماری", "sections": [{"id": "sec-1", "title": "ضدالگوهای تصمیم‌گیری معماری", "href": "#sec-1"}, {"id": "sec-2", "title": "اهمیت معماری (Architectural Significance)", "href": "#sec-2"}, {"id": "sec-3", "title": "سوابق تصمیم معماری", "href": "#sec-3"}, {"id": "sec-4", "title": "واژه‌نامهٔ اختصاصی این فصل", "href": "#sec-4"}]}, {"filename": "chapter-22.html", "ch_num": 22, "badge": "فصل 22", "raw_title": "فصل ۲۲: تحلیل ریسک معماری", "short_title": "تحلیل ریسک معماری", "sections": [{"id": "sec-1", "title": "ماتریس ریسک", "href": "#sec-1"}, {"id": "sec-2", "title": "ارزیابی‌های ریسک", "href": "#sec-2"}, {"id": "sec-3", "title": "طوفان ریسک", "href": "#sec-3"}, {"id": "sec-4", "title": "تحلیل ریسک داستان‌های کاربری", "href": "#sec-4"}, {"id": "sec-5", "title": "نمونهٔ کاربردی طوفان ریسک", "href": "#sec-5"}, {"id": "sec-6", "title": "جمع‌بندی", "href": "#sec-6"}, {"id": "sec-7", "title": "واژه‌نامهٔ اختصاصی این فصل", "href": "#sec-7"}]}, {"filename": "chapter-23.html", "ch_num": 23, "badge": "فصل 23", "raw_title": "فصل ۲۳: نمودارکشی معماری", "short_title": "نمودارکشی معماری", "sections": [{"id": "sec-1", "title": "نمودارکشی", "href": "#sec-1"}, {"id": "sec-2", "title": "جمع‌بندی", "href": "#sec-2"}, {"id": "sec-3", "title": "واژه‌نامهٔ اختصاصی این فصل", "href": "#sec-3"}]}, {"filename": "chapter-24.html", "ch_num": 24, "badge": "فصل 24", "raw_title": "فصل ۲۴: اثربخش کردن تیم‌ها", "short_title": "اثربخش کردن تیم‌ها", "sections": [{"id": "sec-1", "title": "همکاری", "href": "#sec-1"}, {"id": "sec-2", "title": "محدودیت‌ها و مرزها", "href": "#sec-2"}, {"id": "sec-3", "title": "شخصیت‌های معمار", "href": "#sec-3"}, {"id": "sec-4", "title": "چه میزان مشارکت؟", "href": "#sec-4"}, {"id": "sec-5", "title": "نشانه‌های هشدار در تیم", "href": "#sec-5"}, {"id": "sec-6", "title": "بهره‌گیری از فهرست‌های وارسی", "href": "#sec-6"}, {"id": "sec-7", "title": "ارائهٔ راهنمایی", "href": "#sec-7"}, {"id": "sec-8", "title": "خلاصه", "href": "#sec-8"}, {"id": "sec-9", "title": "واژه‌نامهٔ اختصاصی این فصل", "href": "#sec-9"}]}, {"filename": "chapter-25.html", "ch_num": 25, "badge": "فصل 25", "raw_title": "فصل ۲۵: مهارت‌های مذاکره و رهبری", "short_title": "مهارت‌های مذاکره و رهبری", "sections": [{"id": "sec-1", "title": "مذاکره و تسهیل‌گری", "href": "#sec-1"}, {"id": "sec-2", "title": "معمار نرم‌افزار در نقش رهبر", "href": "#sec-2"}, {"id": "sec-3", "title": "ادغام با تیم توسعه", "href": "#sec-3"}, {"id": "sec-4", "title": "خلاصه", "href": "#sec-4"}, {"id": "sec-5", "title": "واژه‌نامهٔ اختصاصی این فصل", "href": "#sec-5"}]}, {"filename": "chapter-26.html", "ch_num": 26, "badge": "فصل 26", "raw_title": "فصل ۲۶: تقاطع‌های معماری", "short_title": "تقاطع‌های معماری", "sections": [{"id": "sec-1", "title": "معماری و پیاده‌سازی", "href": "#sec-1"}, {"id": "sec-2", "title": "معماری و زیرساخت", "href": "#sec-2"}, {"id": "sec-3", "title": "معماری و توپولوژی‌های داده", "href": "#sec-3"}, {"id": "sec-4", "title": "معماری و رویه‌های مهندسی", "href": "#sec-4"}, {"id": "sec-5", "title": "معماری و توپولوژی‌های تیم", "href": "#sec-5"}, {"id": "sec-6", "title": "معماری و یکپارچه‌سازی سیستم‌ها", "href": "#sec-6"}, {"id": "sec-7", "title": "معماری و سازمان", "href": "#sec-7"}, {"id": "sec-8", "title": "معماری و محیط کسب‌وکار", "href": "#sec-8"}, {"id": "sec-9", "title": "معماری و هوش مصنوعی مولد", "href": "#sec-9"}, {"id": "sec-10", "title": "خلاصه", "href": "#sec-10"}, {"id": "sec-11", "title": "واژه‌نامهٔ اختصاصی این فصل", "href": "#sec-11"}]}, {"filename": "chapter-27.html", "ch_num": 27, "badge": "فصل 27", "raw_title": "فصل ۲۷: بازنگری در قوانین معماری نرم‌افزار", "short_title": "بازنگری در قوانین معماری نرم‌افزار", "sections": [{"id": "sec-1", "title": "قانون اول: هرچه در معماری نرم‌افزار هست، یک مصالحه است", "href": "#sec-1"}, {"id": "sec-2", "title": "قانون دوم: «چرا» مهم‌تر از «چگونه» است", "href": "#sec-2"}, {"id": "sec-3", "title": "طیف میان دو سرِ افراطی", "href": "#sec-3"}, {"id": "sec-4", "title": "توصیه‌های پایانی", "href": "#sec-4"}, {"id": "sec-5", "title": "واژه‌نامهٔ اختصاصی این فصل", "href": "#sec-5"}]}, {"filename": "appendix.html", "ch_num": 999, "badge": "پیوست", "raw_title": "پیوست: پرسش‌های بحث", "short_title": "پرسش‌های بحث", "sections": [{"id": "sec-1", "title": "فصل ۱: مقدمه", "href": "#sec-1"}, {"id": "sec-2", "title": "فصل ۲: تفکر معماری", "href": "#sec-2"}, {"id": "sec-3", "title": "فصل ۳: ماژولاریتی", "href": "#sec-3"}, {"id": "sec-4", "title": "فصل ۴: تعریف ویژگی‌های معماری", "href": "#sec-4"}, {"id": "sec-5", "title": "فصل ۵: شناسایی ویژگی‌های معماری", "href": "#sec-5"}, {"id": "sec-6", "title": "فصل ۶: سنجش و حاکمیت بر ویژگی‌های معماری", "href": "#sec-6"}, {"id": "sec-7", "title": "فصل ۷: دامنهٔ ویژگی‌های معماری", "href": "#sec-7"}, {"id": "sec-8", "title": "فصل ۸: تفکر مؤلفه‌محور", "href": "#sec-8"}, {"id": "sec-9", "title": "فصل ۹: مبانی", "href": "#sec-9"}, {"id": "sec-10", "title": "فصل ۱۰: سبک معماری لایه‌ای", "href": "#sec-10"}, {"id": "sec-11", "title": "فصل ۱۱: سبک معماری تک‌پارچهٔ ماژولار", "href": "#sec-11"}, {"id": "sec-12", "title": "فصل ۱۲: سبک معماری خط لوله", "href": "#sec-12"}, {"id": "sec-13", "title": "فصل ۱۳: سبک معماری میکروکرنل", "href": "#sec-13"}, {"id": "sec-14", "title": "فصل ۱۴: سبک معماری مبتنی بر سرویس", "href": "#sec-14"}, {"id": "sec-15", "title": "فصل ۱۵: سبک معماری رویدادمحور", "href": "#sec-15"}, {"id": "sec-16", "title": "فصل ۱۶: سبک معماری مبتنی بر فضا", "href": "#sec-16"}, {"id": "sec-17", "title": "فصل ۱۷: معماری سرویس‌گرای ارکستراسیون‌محور", "href": "#sec-17"}, {"id": "sec-18", "title": "فصل ۱۸: معماری میکروسرویس‌ها", "href": "#sec-18"}, {"id": "sec-19", "title": "فصل ۱۹: انتخاب سبک معماری مناسب", "href": "#sec-19"}, {"id": "sec-20", "title": "فصل ۲۰: الگوهای معماری", "href": "#sec-20"}, {"id": "sec-21", "title": "فصل ۲۱: تصمیمات معماری", "href": "#sec-21"}, {"id": "sec-22", "title": "فصل ۲۲: تحلیل ریسک معماری", "href": "#sec-22"}, {"id": "sec-23", "title": "فصل ۲۳: نمودارکشی معماری", "href": "#sec-23"}, {"id": "sec-24", "title": "فصل ۲۴: اثربخش کردن تیم‌ها", "href": "#sec-24"}, {"id": "sec-25", "title": "فصل ۲۵: مهارت‌های مذاکره و رهبری", "href": "#sec-25"}, {"id": "sec-26", "title": "فصل ۲۶: تقاطع‌های معماری", "href": "#sec-26"}, {"id": "sec-27", "title": "فصل ۲۷: بازنگری در قوانین معماری نرم‌افزار", "href": "#sec-27"}, {"id": "sec-28", "title": "واژه‌نامهٔ اختصاصی این پیوست", "href": "#sec-28"}]}];
+
+    let currentChapterIdx = 0;
+    const iframe = document.getElementById('book-frame');
+    const titleText = document.getElementById('title-text');
+    const btnPrev = document.getElementById('btn-prev-chapter');
+    const btnNext = document.getElementById('btn-next-chapter');
+    const btnDirect = document.getElementById('btn-direct-link');
+    const btnRefresh = document.getElementById('btn-refresh-frame');
+    const sidebar = document.getElementById('reader-sidebar');
+    const backdrop = document.getElementById('sidebar-backdrop');
+    const searchInput = document.getElementById('sidebar-search');
+
+    function syncThemeToFrame() {
+        const theme = document.body.getAttribute('theme') || 'light';
+        try {
+            if (iframe.contentWindow) {
+                iframe.contentWindow.postMessage({ theme: theme }, '*');
+                const doc = iframe.contentDocument || iframe.contentWindow.document;
+                if (doc && doc.documentElement) {
+                    doc.documentElement.setAttribute('theme', theme);
+                    doc.documentElement.setAttribute('data-theme', theme);
+                }
+            }
+        } catch(e) {}
+    }
+
+    iframe.addEventListener('load', () => {
+        syncThemeToFrame();
+        try {
+            const win = iframe.contentWindow;
+            win.addEventListener('hashchange', () => {
+                updateActiveSectionLink(win.location.hash);
+            });
+        } catch(e) {}
+    });
+
+    function loadChapter(idx, hash = '') {
+        if (idx < 0 || idx >= CHAPTERS.length) return;
+        currentChapterIdx = idx;
+        const ch = CHAPTERS[idx];
+
+        titleText.textContent = `${ch.badge}: ${ch.short_title}`;
+        document.title = `${ch.badge}: ${ch.short_title} — مبانی معماری نرم‌افزار`;
+
+        btnPrev.disabled = (idx === 0);
+        btnNext.disabled = (idx === CHAPTERS.length - 1);
+        btnDirect.href = ch.filename + hash;
+
+        // Update active chapter in sidebar
+        document.querySelectorAll('.ch-card').forEach(card => card.classList.remove('active'));
+        const activeCard = document.getElementById(`ch-item-${idx}`);
+        if (activeCard) {
+            activeCard.classList.add('active');
+            activeCard.classList.add('expanded');
+            if (window.innerWidth > 900) {
+                activeCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+
+        // Update iframe source
+        const targetSrc = ch.filename + hash;
+        if (iframe.getAttribute('src') !== targetSrc) {
+            iframe.src = targetSrc;
+        } else if (hash) {
+            try {
+                iframe.contentWindow.location.hash = hash;
+            } catch(e) {
+                iframe.src = targetSrc;
+            }
+        }
+
+        // Update URL hash
+        const stateHash = '#' + ch.filename + (hash ? hash : '');
+        if (location.hash !== stateHash) {
+            history.replaceState(null, '', stateHash);
+        }
+
+        updateActiveSectionLink(hash);
+        closeSidebar();
+    }
+
+    function updateActiveSectionLink(hash) {
+        document.querySelectorAll('.sec-link').forEach(l => l.classList.remove('active'));
+        if (hash) {
+            const link = document.querySelector(`.sec-link[data-ch-idx="${currentChapterIdx}"][data-hash="${hash}"]`);
+            if (link) link.classList.add('active');
+        }
+    }
+
+    // Chapter header click accordion & load
+    document.querySelectorAll('.ch-header').forEach(header => {
+        header.addEventListener('click', (e) => {
+            const idx = parseInt(header.getAttribute('data-idx'));
+            const card = header.closest('.ch-card');
+            
+            if (e.target.closest('.ch-chevron')) {
+                card.classList.toggle('expanded');
+                return;
+            }
+            
+            e.preventDefault();
+            card.classList.toggle('expanded');
+            loadChapter(idx);
+        });
+    });
+
+    // Section sub-link click
+    document.querySelectorAll('.sec-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const idx = parseInt(link.getAttribute('data-ch-idx'));
+            const hash = link.getAttribute('data-hash') || '';
+            loadChapter(idx, hash);
+        });
+    });
+
+    // Toolbar Navigation Buttons
+    btnPrev.addEventListener('click', () => {
+        if (currentChapterIdx > 0) loadChapter(currentChapterIdx - 1);
+    });
+    btnNext.addEventListener('click', () => {
+        if (currentChapterIdx < CHAPTERS.length - 1) loadChapter(currentChapterIdx + 1);
+    });
+    btnRefresh.addEventListener('click', () => {
+        iframe.src = iframe.src;
+    });
+
+    // Expand/Collapse All
+    document.getElementById('btn-expand-all').addEventListener('click', () => {
+        document.querySelectorAll('.ch-card').forEach(c => c.classList.add('expanded'));
+    });
+    document.getElementById('btn-collapse-all').addEventListener('click', () => {
+        document.querySelectorAll('.ch-card').forEach(c => c.classList.remove('expanded'));
+    });
+
+    // Instant Sidebar Search Filter
+    searchInput.addEventListener('input', (e) => {
+        const q = e.target.value.trim().toLowerCase();
+        if (!q) {
+            document.querySelectorAll('.ch-card').forEach(card => card.style.display = '');
+            document.querySelectorAll('.sec-item').forEach(sec => sec.style.display = '');
+            document.querySelectorAll('.part-header').forEach(p => p.style.display = '');
+            return;
+        }
+        document.querySelectorAll('.part-header').forEach(p => p.style.display = 'none');
+        document.querySelectorAll('.ch-card').forEach(card => {
+            const title = card.querySelector('.ch-title').textContent.toLowerCase();
+            const badge = card.querySelector('.ch-badge').textContent.toLowerCase();
+            let matchesSec = false;
+            card.querySelectorAll('.sec-item').forEach(sec => {
+                const sText = sec.textContent.toLowerCase();
+                if (sText.includes(q)) {
+                    sec.style.display = '';
+                    matchesSec = true;
+                } else {
+                    sec.style.display = 'none';
+                }
+            });
+            if (title.includes(q) || badge.includes(q) || matchesSec) {
+                card.style.display = '';
+                card.classList.add('expanded');
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+
+    // Mobile Sidebar Drawer
+    function openSidebar() {
+        sidebar.classList.add('open');
+        backdrop.classList.add('open');
+    }
+    function closeSidebar() {
+        sidebar.classList.remove('open');
+        backdrop.classList.remove('open');
+    }
+    document.getElementById('btn-toggle-sidebar').addEventListener('click', openSidebar);
+    backdrop.addEventListener('click', closeSidebar);
+
+    // Theme Switcher Button
+    document.getElementById('btn-theme-toggle').addEventListener('click', () => {
+        const current = document.body.getAttribute('theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.body.setAttribute('theme', next);
+        document.body.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        syncThemeToFrame();
+    });
+
+    // Deep link from Hash on initial load
+    window.addEventListener('DOMContentLoaded', () => {
+        const hash = decodeURIComponent(location.hash.replace(/^#/, ''));
+        if (hash) {
+            let targetFile = hash;
+            let targetHash = '';
+            if (hash.includes('#')) {
+                const p = hash.split('#');
+                targetFile = p[0];
+                targetHash = '#' + p[1];
+            }
+            const idx = CHAPTERS.findIndex(c => c.filename === targetFile);
+            if (idx !== -1) {
+                loadChapter(idx, targetHash);
+                return;
+            }
+        }
+        loadChapter(0);
+    });
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+        if (e.target.tagName === 'INPUT') return;
+        if (e.key === 'ArrowLeft') btnNext.click();
+        if (e.key === 'ArrowRight') btnPrev.click();
+    });
+</script>
+</body>
+</html>

@@ -394,8 +394,8 @@ def build_reader_index(chapters):
     <meta property="og:title" content="مبانی معماری نرم‌افزار — مطالعه آنلاین کتاب">
     <meta property="og:description" content="مطالعه آنلاین ترجمه فارسی کتاب مبانی معماری نرم‌افزار اثر مارک ریچاردز و نیل فورد با سایدبار کامل، ۲۷ فصل، واژه‌نامه و جستجوی پیشرفته.">
     <meta property="og:type" content="book">
-    <meta property="og:url" content="https://alirostami.ir/software-architecture/">
-    <link rel="canonical" href="https://alirostami.ir/software-architecture/">
+    <meta property="og:url" content="https://alirostami.com/software-architecture/">
+    <link rel="canonical" href="https://alirostami.com/software-architecture/">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css">
@@ -405,7 +405,7 @@ def build_reader_index(chapters):
         "@graph": [
             {{
                 "@type": "Book",
-                "@id": "https://alirostami.ir/software-architecture/#book",
+                "@id": "https://alirostami.com/software-architecture/#book",
                 "name": "مبانی معماری نرم‌افزار: رویکردی مهندسی و مدرن (ویرایش دوم)",
                 "alternateName": "Fundamentals of Software Architecture: A Modern Engineering Approach 2nd Edition",
                 "author": [
@@ -415,34 +415,34 @@ def build_reader_index(chapters):
                 "translator": {{
                     "@type": "Person",
                     "name": "علی رستمی",
-                    "url": "https://alirostami.ir/"
+                    "url": "https://alirostami.com/"
                 }},
                 "inLanguage": "fa",
                 "bookFormat": "https://schema.org/EBook",
-                "url": "https://alirostami.ir/software-architecture/",
+                "url": "https://alirostami.com/software-architecture/",
                 "description": "نسخه وب و مطالعه آنلاین ترجمه کامل فارسی کتاب مبانی معماری نرم‌افزار: رویکردی مهندسی و مدرن با سایدبار هوشمند، فهرست فصول، بخش‌بندی سه‌گانه و امکان جستجو."
             }},
             {{
                 "@type": "BreadcrumbList",
-                "@id": "https://alirostami.ir/software-architecture/#breadcrumb",
+                "@id": "https://alirostami.com/software-architecture/#breadcrumb",
                 "itemListElement": [
                     {{
                         "@type": "ListItem",
                         "position": 1,
                         "name": "خانه",
-                        "item": "https://alirostami.ir/fa/"
+                        "item": "https://alirostami.com/fa/"
                     }},
                     {{
                         "@type": "ListItem",
                         "position": 2,
                         "name": "پروژه‌ها",
-                        "item": "https://alirostami.ir/fa/#projects"
+                        "item": "https://alirostami.com/fa/#projects"
                     }},
                     {{
                         "@type": "ListItem",
                         "position": 3,
                         "name": "مطالعه آنلاین کتاب معماری نرم‌افزار",
-                        "item": "https://alirostami.ir/software-architecture/"
+                        "item": "https://alirostami.com/software-architecture/"
                     }}
                 ]
             }}

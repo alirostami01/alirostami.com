@@ -128,8 +128,8 @@ def generate_index_html(chapters):
     <meta property="og:title" content="هوش مصنوعی: رویکردی نوین (AIMA 4e) — مطالعه آنلاین کتاب">
     <meta property="og:description" content="مطالعه آنلاین ترجمه فارسی کتاب هوش مصنوعی ویرایش چهارم تالیف راسل و نورویگ با سایدبار کامل، فصول ۲۸گانه و جستجوی مباحث.">
     <meta property="og:type" content="book">
-    <meta property="og:url" content="https://alirostami.ir/aima-4e/">
-    <link rel="canonical" href="https://alirostami.ir/aima-4e/">
+    <meta property="og:url" content="https://alirostami.com/aima-4e/">
+    <link rel="canonical" href="https://alirostami.com/aima-4e/">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css">
@@ -139,7 +139,7 @@ def generate_index_html(chapters):
         "@graph": [
             {{
                 "@type": "Book",
-                "@id": "https://alirostami.ir/aima-4e/#book",
+                "@id": "https://alirostami.com/aima-4e/#book",
                 "name": "هوش مصنوعی: رویکردی نوین (ویرایش چهارم)",
                 "alternateName": "Artificial Intelligence: A Modern Approach (AIMA 4th Edition)",
                 "author": [
@@ -149,34 +149,34 @@ def generate_index_html(chapters):
                 "translator": {{
                     "@type": "Person",
                     "name": "علی رستمی",
-                    "url": "https://alirostami.ir/"
+                    "url": "https://alirostami.com/"
                 }},
                 "inLanguage": "fa",
                 "bookFormat": "https://schema.org/EBook",
-                "url": "https://alirostami.ir/aima-4e/",
+                "url": "https://alirostami.com/aima-4e/",
                 "description": "نسخه وب و مطالعه آنلاین ترجمه کامل فارسی کتاب هوش مصنوعی: رویکردی نوین ویرایش چهارم تالیف راسل و نورویگ با سایدبار هوشمند، فهرست فصول و امکان جستجو."
             }},
             {{
                 "@type": "BreadcrumbList",
-                "@id": "https://alirostami.ir/aima-4e/#breadcrumb",
+                "@id": "https://alirostami.com/aima-4e/#breadcrumb",
                 "itemListElement": [
                     {{
                         "@type": "ListItem",
                         "position": 1,
                         "name": "خانه",
-                        "item": "https://alirostami.ir/fa/"
+                        "item": "https://alirostami.com/fa/"
                     }},
                     {{
                         "@type": "ListItem",
                         "position": 2,
                         "name": "پروژه‌ها",
-                        "item": "https://alirostami.ir/fa/#projects"
+                        "item": "https://alirostami.com/fa/#projects"
                     }},
                     {{
                         "@type": "ListItem",
                         "position": 3,
                         "name": "مطالعه آنلاین کتاب هوش مصنوعی",
-                        "item": "https://alirostami.ir/aima-4e/"
+                        "item": "https://alirostami.com/aima-4e/"
                     }}
                 ]
             }}

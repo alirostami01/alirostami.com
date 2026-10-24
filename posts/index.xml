@@ -3,7 +3,39 @@
         <title>All Posts - Ali Rostami Website</title>
         <link>http://alirostami.com/posts/</link>
         <description>All Posts | Ali Rostami Website</description>
-        <generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>Everything is mine</copyright><lastBuildDate>Thu, 13 Apr 2023 03:58:33 &#43;0330</lastBuildDate><atom:link href="http://alirostami.com/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>Everything is mine</copyright><lastBuildDate>Sat, 24 Oct 2026 12:00:00 &#43;0330</lastBuildDate><atom:link href="http://alirostami.com/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>مبانی معماری نرم‌افزار: رویکردی مهندسی و مدرن — ترجمهٔ فارسی</title>
+    <link>http://alirostami.com/fundamentals-of-software-architecture-persian/</link>
+    <pubDate>Sat, 24 Oct 2026 12:00:00 &#43;0330</pubDate>
+    <author>Ali Rostami</author>
+    <guid>http://alirostami.com/fundamentals-of-software-architecture-persian/</guid>
+    <description><![CDATA[ترجمه و آماده‌سازی فارسی ویرایش دوم کتاب مبانی معماری نرم‌افزار اثر مارک ریچاردز و نیل فورد (۲۰۲۵)؛ شامل ۲۷ فصل کامل، پیوست پرسش‌های بحث، ۲۴۱ شکل، نسخه یکپارچه PDF (۶۵۰ صفحه) و سامانهٔ مطالعهٔ آنلاین با سایدبار هوشمند.]]></description>
+</item>
+<item>
+    <title>هوش مصنوعی: یک رویکرد مدرن — ترجمهٔ فارسی (AIMA 4e)</title>
+    <link>http://alirostami.com/aima-4e-persian/</link>
+    <pubDate>Tue, 20 Oct 2026 12:00:00 &#43;0330</pubDate>
+    <author>Ali Rostami</author>
+    <guid>http://alirostami.com/aima-4e-persian/</guid>
+    <description><![CDATA[ترجمه و آماده‌سازی فارسی کتاب هوش مصنوعی: یک رویکرد مدرن (ویرایش چهارم) اثر استوارت راسل و پیتر نورویگ؛ شامل پیشگفتار و ۲۸ فصل، نسخهٔ کامل PDF، کتابچه‌های HTML و فایل‌های Markdown.]]></description>
+</item>
+<item>
+    <title>Persian Streams — افزونهٔ پخش فیلم و سریال ایرانی برای استرمیو</title>
+    <link>http://alirostami.com/persian-streams/</link>
+    <pubDate>Tue, 20 Oct 2026 11:00:00 &#43;0330</pubDate>
+    <author>Ali Rostami</author>
+    <guid>http://alirostami.com/persian-streams/</guid>
+    <description><![CDATA[مستندات Persian Streams: افزونهٔ غیررسمی Stremio برای پخش فیلم و سریال‌های ایرانی با زیرنویس فارسی؛ نصب، پیکربندی، استقرار روی Node.js و Cloudflare Workers و عیب‌یابی.]]></description>
+</item>
+<item>
+    <title>Persian Subtitles — افزونهٔ زیرنویس فارسی استرمیو</title>
+    <link>http://alirostami.com/persian-subtitles/</link>
+    <pubDate>Tue, 20 Oct 2026 10:00:00 &#43;0330</pubDate>
+    <author>Ali Rostami</author>
+    <guid>http://alirostami.com/persian-subtitles/</guid>
+    <description><![CDATA[مستندات Persian Subtitles: افزونهٔ غیررسمی Stremio برای زیرنویس فارسی فیلم و سریال با اتصال به API سرویس SubSource؛ نصب، پیکربندی، استقرار و عیب‌یابی.]]></description>
+</item>
+<item>
     <title>Benefits of Using Obsidian</title>
     <link>http://alirostami.com/posts/benefits-of-using-obsidian/</link>
     <pubDate>Thu, 13 Apr 2023 03:58:33 &#43;0330</pubDate>

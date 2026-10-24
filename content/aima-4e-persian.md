@@ -63,7 +63,8 @@
 
 ## 📖 فهرست فصل‌ها
 
-> 📥 **دانلود نسخهٔ کامل کتاب:** [aima-4e-persian.pdf](https://github.com/alirostami01/aima-4e-persian/raw/main/pdf/aima-4e-persian.pdf) (۱٬۱۷۶ صفحه — ۳۵ مگابایت)
+> 🌐 **مطالعهٔ آنلاین کتاب با سایدبار و فهرست تعاملی:** [ورود به سامانه مطالعه آنلاین (AIMA 4e)](/aima-4e/)  
+> 📥 **دانلود نسخهٔ کامل کتاب (PDF):** [aima-4e-persian.pdf](https://github.com/alirostami01/aima-4e-persian/raw/main/pdf/aima-4e-persian.pdf) (۱٬۱۷۶ صفحه — ۳۵ مگابایت)
 
 | # | عنوان | Markdown | HTML | PDF |
 |---|---|---|---|---|

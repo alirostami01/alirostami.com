@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="index, follow" />
+        <title>هوش مصنوعی: یک رویکرد مدرن — ترجمهٔ فارسی (AIMA 4e) - علی رستمی</title>
+        <meta name="Description" content="معرفی پروژه ترجمه فارسی کتاب هوش مصنوعی: رویکردی نوین (ویرایش چهارم) اثر استوارت راسل و پیتر نورویگ؛ شامل پیشگفتار و ۲۸ فصل، نسخه کامل PDF، مطالعه آنلاین با سایدبار و فایل‌های Markdown.">
+        <meta property="og:title" content="هوش مصنوعی: یک رویکرد مدرن — ترجمهٔ فارسی (AIMA 4e)" />
+        <meta property="og:description" content="ترجمه و آماده‌سازی فارسی کتاب هوش مصنوعی ویرایش چهارم تالیف راسل و نورویگ؛ مطالعه آنلاین با سایدبار کامل، دانلود PDF و مخزن گیت‌هاب." />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://alirostami.ir/posts/aima-4e-persian/" />
+        <meta property="article:section" content="posts" />
+        <meta property="article:published_time" content="2026-10-20T12:00:00+03:30" />
+        <meta property="og:site_name" content="علی رستمی" />
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="canonical" href="https://alirostami.ir/posts/aima-4e-persian/" />
+        <link rel="stylesheet" href="/css/style.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css">
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Article",
+              "headline": "هوش مصنوعی: یک رویکرد مدرن — ترجمهٔ فارسی (AIMA 4e)",
+              "description": "معرفی پروژه ترجمه فارسی کتاب هوش مصنوعی: رویکردی نوین ویرایش چهارم تالیف راسل و نورویگ؛ مطالعه آنلاین، دانلود PDF و سورس کامل.",
+              "author": {
+                "@type": "Person",
+                "name": "علی رستمی",
+                "url": "https://alirostami.ir/"
+              },
+              "datePublished": "2026-10-20T12:00:00+03:30",
+              "url": "https://alirostami.ir/posts/aima-4e-persian/"
+            },
+            {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "خانه",
+                  "item": "https://alirostami.ir/fa/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "مقالات",
+                  "item": "https://alirostami.ir/posts/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "ترجمه فارسی کتاب هوش مصنوعی",
+                  "item": "https://alirostami.ir/posts/aima-4e-persian/"
+                }
+              ]
+            }
+          ]
+        }
+        </script>
+        <style>
+            #header-desktop, #header-mobile, .footer { direction: ltr; }
+            .post-page-fa { direction: rtl; text-align: right; font-family: Vazirmatn, "Segoe UI", Tahoma, sans-serif; }
+            .post-page-fa .content { line-height: 2.1; font-size: 1.05rem; }
+            .post-page-fa .post-meta { direction: rtl; text-align: right; }
+            .post-actions-panel {
+                display: flex;
+                flex-wrap: wrap;
+                gap: .75rem;
+                margin: 1.8rem 0 2.2rem;
+                padding: 1.2rem;
+                background: rgba(128,128,128,.07);
+                border: 1px solid rgba(128,128,128,.2);
+                border-radius: 12px;
+            }
+            [theme=dark] .post-actions-panel { background: rgba(255,255,255,.04); }
+            .post-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: .5rem;
+                padding: .6rem 1.2rem;
+                border-radius: 2rem;
+                font-weight: 600;
+                font-size: .92rem;
+                text-decoration: none;
+                transition: transform .2s, filter .2s;
+                border: 1px solid rgba(128,128,128,.3);
+            }
+            .post-btn:hover { transform: translateY(-2px); }
+            .post-btn.primary {
+                background: linear-gradient(135deg, #2563eb, #38bdf8);
+                color: #fff !important;
+                border: none;
+                box-shadow: 0 4px 14px rgba(37,99,235,.3);
+            }
+            .post-btn.pdf {
+                background: linear-gradient(135deg, #dc2626, #f87171);
+                color: #fff !important;
+                border: none;
+                box-shadow: 0 4px 14px rgba(220,38,38,.3);
+            }
+            .post-btn.support {
+                background: linear-gradient(135deg, #e11d48, #fb7185);
+                color: #fff !important;
+                border: none;
+            }
+            .post-btn.github {
+                background: #24292f;
+                color: #fff !important;
+                border: none;
+            }
+            [theme=dark] .post-btn.github { background: #334155; }
+            .reading-feature-card {
+                background: linear-gradient(135deg, rgba(37,99,235,.08), rgba(56,189,248,.04));
+                border: 1px solid rgba(37,99,235,.25);
+                border-radius: 12px;
+                padding: 1.2rem 1.5rem;
+                margin: 1.5rem 0;
+            }
+        </style>
+    </head>
+    <body data-header-desktop="fixed" data-header-mobile="auto">
+        <script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+        <div id="mask"></div>
+        <div class="wrapper">
+            <header class="desktop" id="header-desktop">
+                <div class="header-wrapper">
+                    <div class="header-title"><a href="/fa/" title="علی رستمی">Ali Rostami</a></div>
+                    <div class="menu">
+                        <div class="menu-inner">
+                            <a href="/fa/" class="menu-item" title="خانه">خانه</a>
+                            <a href="/aima-4e-persian/" class="menu-item" title="مستندات پروژه">پروژه AIMA</a>
+                            <a href="/support/" class="menu-item" title="حمایت">حمایت</a>
+                            <a href="javascript:void(0);" class="menu-item theme-switch" title="تغییر ظاهر"><i class="fas fa-adjust fa-fw"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="main">
+                <div class="container">
+                    <article class="page single post-page-fa">
+                        <h1 class="single-title animate__animated animate__flipInX">هوش مصنوعی: یک رویکرد مدرن — ترجمهٔ فارسی (AIMA 4e)</h1>
+                        <div class="post-meta">
+                            <div class="post-meta-line">
+                                <span class="post-author"><a href="/fa/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw"></i> علی رستمی</a></span>
+                                &nbsp;|&nbsp;
+                                <i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2026-10-20">۲۰ مهر ۱۴۰۵ (2026-10-20)</time>
+                                &nbsp;|&nbsp;
+                                <i class="fas fa-book fa-fw"></i>&nbsp;ویرایش چهارم (AIMA 4th Edition)
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons Section -->
+                        <div class="post-actions-panel">
+                            <a href="/aima-4e/" class="post-btn primary" title="مطالعه آنلاین با سایدبار و فهرست فصول">
+                                <i class="fas fa-book-reader fa-fw"></i> مطالعهٔ آنلاین کتاب (وب با سایدبار)
+                            </a>
+                            <a href="https://github.com/alirostami01/aima-4e-persian/raw/main/pdf/aima-4e-persian.pdf" target="_blank" rel="noopener noreferrer" class="post-btn pdf" title="دانلود نسخه کامل PDF">
+                                <i class="fas fa-file-pdf fa-fw"></i> دانلود کتاب کامل (PDF - ۳۵ مگابایت)
+                            </a>
+                            <a href="https://github.com/alirostami01/aima-4e-persian" target="_blank" rel="noopener noreferrer" class="post-btn github" title="مشاهده مخزن گیت‌هاب">
+                                <i class="fab fa-github fa-fw"></i> مخزن گیت‌هاب (GitHub)
+                            </a>
+                            <a href="/support/" class="post-btn support" title="حمایت از ادامه توسعه پروژه">
+                                <i class="fas fa-heart fa-fw"></i> حمایت از پروژه
+                            </a>
+                        </div>
+
+                        <div class="content" id="content">
+                            <p class="lead">
+                                کتاب شناخته‌شدهٔ <strong>Artificial Intelligence: A Modern Approach (ویرایش چهارم)</strong> اثر ماندگار پروفسور استوارت راسل (Stuart Russell) و پیتر نورویگ (Peter Norvig)، مرجع بنیادین آموزش هوش مصنوعی در دانشگاه‌های برتر جهان است. پروژهٔ ترجمه و تدوین فارسی این اثر شامل پیشگفتار و تمامی <strong>۲۸ فصل کتاب</strong> به شکل آزاد و متن‌باز ارائه شده است.
+                            </p>
+
+                            <div class="reading-feature-card">
+                                <h3 style="margin-top:0;display:flex;align-items:center;gap:.5rem;color:var(--wine);">
+                                    <i class="fas fa-laptop-code"></i> سامانهٔ مطالعهٔ آنلاین با سایدبار و فهرست تعاملی
+                                </h3>
+                                <p>
+                                    برای تسهیل مطالعه بدون نیاز به دانلود فایل‌های حجیم، کل متن کتاب در قالب <strong>وب‌سایت اختصاصی کتابخوان</strong> در مسیر <a href="/aima-4e/"><strong>aima-4e/</strong></a> آماده شده است. این بخش دارای سایدبار کامل، فهرست درختی فصل‌ها، زیرفصل‌ها، قابلیت جستجوی در لحظه و سازگاری کامل با حالت تاریک (Dark Mode) و دستگاه‌های همراه است.
+                                </p>
+                                <p style="margin-bottom:0;">
+                                    👉 <a href="/aima-4e/" style="font-weight:700;">ورود به سامانه مطالعه آنلاین کتاب هوش مصنوعی &raquo;</a>
+                                </p>
+                            </div>
+
+                            <h2>✨ ویژگی‌های برجستهٔ پروژه</h2>
+                            <ul>
+                                <li><strong>ترجمه کامل و ساختاریافته:</strong> پیشگفتار مفصل نویسندگان به همراه تمامی ۲۸ فصل ویرایش چهارم (AIMA 4e).</li>
+                                <li><strong>نسخهٔ مطالعه آنلاین (HTML):</strong> مجهز به سایدبار درختی، جستجوی بلادرنگ در مباحث، ناوبری سریع بین فصول و حالت شب.</li>
+                                <li><strong>نسخهٔ PDF یکپارچه و فصلی:</strong> کتاب کامل در ۱٬۱۷۶ صفحه همراه با شماره‌گذاری فارسی، فهرست دوگذرگاهی و بوک‌مارک‌های استاندارد، تولیدشده با موتور Chromium و فونت چشم‌نواز وزیرمتن.</li>
+                                <li><strong>نسخهٔ منبع Markdown:</strong> در دسترس بودن متن خالص برای مشارکت، تصحیح، و بازتولید در پلتفرم‌های مختلف.</li>
+                                <li><strong>حفظ اصطلاحات تخصصی و کدهای انگلیسی:</strong> حفظ شبه‌کدها (Pseudocode) به زبان اصلی جهت تسهیل یادگیری فنی.</li>
+                            </ul>
+
+                            <h2>📚 ساختار و بخش‌های هفت‌گانهٔ کتاب</h2>
+                            <ol>
+                                <li><strong>بخش اول — هوش مصنوعی:</strong> شامل مقدمه، تاریخچه و مبانی عامل‌های هوشمند (فصل‌های ۱ و ۲).</li>
+                                <li><strong>بخش دوم — حل مسئله:</strong> جستجوی ناآگاهانه، جستجوی آگاهانه، جستجو در محیط‌های پیچیده، جستجوی رقابتی و بازی‌ها، و مسائل ارضای قیود (فصل‌های ۳ تا ۶).</li>
+                                <li><strong>بخش سوم — دانش، استدلال و برنامه‌ریزی:</strong> عامل‌های منطقی، منطق مرتبه اول، استنتاج در منطق، بازنمایی دانش و برنامه‌ریزی خودکار (فصل‌های ۷ تا ۱۱).</li>
+                                <li><strong>بخش چهارم — دانش و استدلال نامعین:</strong> عدم قطعیت، استدلال احتمالاتی، شبکه‌های بیزی در طول زمان، برنامه‌نویسی احتمالاتی و تصمیم‌گیری‌های ساده و پیچیده (فصل‌های ۱۲ تا ۱۸).</li>
+                                <li><strong>بخش پنجم — یادگیری ماشین:</strong> یادگیری از مثال‌ها، یادگیری مدل‌های احتمالاتی، یادگیری عمیق (Deep Learning) و یادگیری تقویتی (فصل‌های ۱۹ تا ۲۲).</li>
+                                <li><strong>بخش ششم — ارتباط، ادراک و عمل:</strong> پردازش زبان طبیعی (NLP)، یادگیری عمیق در زبان، بینایی رایانه‌ای و دانش رباتیک (فصل‌های ۲۳ تا ۲۶).</li>
+                                <li><strong>بخش هفتم — نتیجه‌گیری:</strong> فلسفه، اخلاق و ایمنی در هوش مصنوعی و آیندهٔ هوش مصنوعی (فصل‌های ۲۷ و ۲۸).</li>
+                            </ol>
+
+                            <h2>🔗 دسترسی به منابع کتاب</h2>
+                            <p>علاقه‌مندان، اساتید، دانشجویان و پژوهشگران گرامی می‌توانند از پیوندهای زیر به بخش‌های مختلف دسترسی یابند:</p>
+                            <ul>
+                                <li><a href="/aima-4e/"><strong>سامانهٔ مطالعه آنلاین کتاب (همراه با سایدبار و فهرست فصول)</strong></a></li>
+                                <li><a href="/aima-4e-persian/"><strong>صفحهٔ مستندات کامل پروژه در سایت</strong></a></li>
+                                <li><a href="https://github.com/alirostami01/aima-4e-persian/raw/main/pdf/aima-4e-persian.pdf" target="_blank" rel="noopener noreferrer"><strong>دانلود مستقیم فایل کامل PDF کتاب (۳۵ مگابایت)</strong></a></li>
+                                <li><a href="https://github.com/alirostami01/aima-4e-persian" target="_blank" rel="noopener noreferrer"><strong>مخزن پروژه در گیت‌هاب (ستاره دادن، فورک و مشارکت)</strong></a></li>
+                                <li><a href="/support/"><strong>حمایت مالی و معنوی از نگهداری و تداوم پروژه‌های متن‌باز</strong></a></li>
+                            </ul>
+                        </div>
+
+                        <div class="post-footer" id="post-footer">
+                            <div class="post-info">
+                                <div class="post-info-line">
+                                    <div class="post-info-mod">
+                                        <span>منتشر شده در ۲۰ مهر ۱۴۰۵ · پروژهٔ متن‌باز علی رستمی</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post-info-more">
+                                <section>
+                                    <span><a href="/aima-4e/">📖 ورود به مطالعه آنلاین کتاب</a></span>
+                                    &nbsp;|&nbsp;
+                                    <span><a href="/fa/">صفحه اصلی</a></span>
+                                </section>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </main>
+
+            <footer class="footer">
+                <div class="footer-container">
+                    <div class="footer-line">ایجاد شده توسط <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> | پوسته - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreferrer">LoveIt</a></div>
+                    <div class="footer-line"><i class="far fa-copyright fa-fw"></i><span>2022 - 2026</span>&nbsp;<a href="/fa/">علی رستمی</a></div>
+                </div>
+            </footer>
+        </div>
+        <div id="fixed-buttons">
+            <a href="#" id="back-to-top" class="fixed-button" title="برگشت به بالا"><i class="fas fa-arrow-up fa-fw"></i></a>
+        </div>
+        <script src="/js/theme.min.js"></script>
+    </body>
+</html>

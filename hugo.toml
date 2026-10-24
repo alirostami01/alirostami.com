@@ -37,6 +37,15 @@ paginate = 10
     email = "rostami.ali@gmail.com"
     link = "https://alirostami.com/"
 
+  [params.social]
+    GitHub = "alirostami01"
+    Linkedin = "alirostami01"
+    Twitter = "alirostami01"
+    Instagram = "alirostami01"
+    Facebook = "alirostami01"
+    Telegram = "alirostami01"
+    Email = "rostami.ali@gmail.com"
+
   [params.home]
     [params.home.profile]
       enable = true

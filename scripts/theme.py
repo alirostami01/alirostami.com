@@ -54,7 +54,7 @@ def header(active: str = "") -> str:
 
 FOOTER = """<footer class="footer">
         <div class="footer-container"><div class="footer-line">ایجاد شده توسط <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.2">Hugo</a> | پوسته - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/fa/">علی رستمی</a></span></div>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i>2022 - <span itemprop="copyrightYear">2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/fa/">علی رستمی</a></span></div>
         </div>
     </footer></div>"""
 
@@ -89,13 +89,13 @@ def page(
         <title>{title}</title><meta name="Description" content="{description}"><meta property="og:title" content="{title}" />
 <meta property="og:description" content="{description}" />
 <meta property="og:type" content="{og_type}" />
-<meta property="og:url" content="{canonical}" /><meta property="og:image" content="https://alirostami.com/images/Ali.jpg" />
+<meta property="og:url" content="{canonical}" /><meta property="og:image" content="https://www.alirostami.com/images/Ali.jpg" />
         <meta property="og:image:alt" content="Ali Rostami - Senior Software Architect" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="1200" />
 <meta property="og:site_name" content="{SITE_NAME}" />
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://alirostami.com/images/Ali.jpg"/>
+<meta name="twitter:image" content="https://www.alirostami.com/images/Ali.jpg"/>
 <meta name="twitter:title" content="{title}"/>
 <meta name="twitter:description" content="{description}"/>
 <meta name="application-name" content="Ali Rostami">

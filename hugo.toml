@@ -1,4 +1,4 @@
-baseURL = "https://alirostami.com/"
+baseURL = "https://www.alirostami.com/"
 title = "علی رستمی (Ali Rostami) | توسعه‌دهنده نرم‌افزار، هوش مصنوعی و پروژه‌های متن‌باز"
 defaultContentLanguage = "fa"
 languageCode = "fa"
@@ -35,7 +35,7 @@ paginate = 10
   [params.author]
     name = "علی رستمی"
     email = "rostami.ali@gmail.com"
-    link = "https://alirostami.com/"
+    link = "https://www.alirostami.com/"
 
   [params.social]
     GitHub = "alirostami01"

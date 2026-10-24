@@ -134,7 +134,7 @@ def generate_index_html(chapters):
     <link rel="stylesheet" href="/css/style.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css">
     <script type="application/ld+json">
-    {{
+{{
         "@context": "https://schema.org",
         "@graph": [
             {{
@@ -149,7 +149,7 @@ def generate_index_html(chapters):
                 "translator": {{
                     "@type": "Person",
                     "name": "علی رستمی",
-                    "url": "https://alirostami.com/"
+                    "url": "https://www.alirostami.com/"
                 }},
                 "inLanguage": "fa",
                 "bookFormat": "https://schema.org/EBook",
@@ -182,7 +182,7 @@ def generate_index_html(chapters):
             }}
         ]
     }}
-    </script>
+</script>
     <style>
         :root {{
             --sidebar-width: 340px;

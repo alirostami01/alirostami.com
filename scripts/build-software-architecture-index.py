@@ -401,7 +401,7 @@ def build_reader_index(chapters):
     <link rel="stylesheet" href="/css/style.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css">
     <script type="application/ld+json">
-    {{
+{{
         "@context": "https://schema.org",
         "@graph": [
             {{
@@ -416,7 +416,7 @@ def build_reader_index(chapters):
                 "translator": {{
                     "@type": "Person",
                     "name": "علی رستمی",
-                    "url": "https://alirostami.com/"
+                    "url": "https://www.alirostami.com/"
                 }},
                 "inLanguage": "fa",
                 "bookFormat": "https://schema.org/EBook",
@@ -449,7 +449,7 @@ def build_reader_index(chapters):
             }}
         ]
     }}
-    </script>
+</script>
     <style>
         :root {{
             --sidebar-width: 350px;

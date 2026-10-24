@@ -1006,6 +1006,13 @@ def inject_chapter_helpers(chapters):
         with open(fpath, "r", encoding="utf-8") as fp:
             content = fp.read()
         
+        import urllib.parse
+        quoted_name = urllib.parse.quote(ch["filename"])
+        canon_tag = f'<link rel="canonical" href="https://alirostami.com/aima-4e/{quoted_name}">'
+        if 'rel="canonical"' not in content:
+            if "<head>" in content:
+                content = content.replace("<head>", f"<head>\n    {canon_tag}")
+        
         # Remove any previous banners or injected scripts
         content = re.sub(
             r'(\s*<style id="aima-top-nav-style">.*?</style>)?\s*(<script id="aima-top-nav-script">.*?</script>)?\s*<div id="aima-top-nav".*?</div>\s*',

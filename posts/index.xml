@@ -1,55 +1,55 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>All Posts - Ali Rostami Website</title>
-        <link>http://alirostami.com/posts/</link>
-        <description>All Posts | Ali Rostami Website</description>
-        <generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>Everything is mine</copyright><lastBuildDate>Sat, 24 Oct 2026 12:00:00 &#43;0330</lastBuildDate><atom:link href="http://alirostami.com/posts/" rel="self" type="application/rss+xml" /><item>
+        <title>همه مقالات و مستندات - علی رستمی (Ali Rostami)</title>
+        <link>https://alirostami.com/posts/</link>
+        <description>همه مقالات و مستندات | علی رستمی (Ali Rostami)</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>Everything is mine</copyright><lastBuildDate>Sat, 24 Oct 2026 12:00:00 &#43;0330</lastBuildDate><atom:link href="https://alirostami.com/posts/" rel="self" type="application/rss+xml" /><item>
     <title>مبانی معماری نرم‌افزار: رویکردی مهندسی و مدرن — ترجمهٔ فارسی</title>
-    <link>http://alirostami.com/fundamentals-of-software-architecture-persian/</link>
+    <link>https://alirostami.com/fundamentals-of-software-architecture-persian/</link>
     <pubDate>Sat, 24 Oct 2026 12:00:00 &#43;0330</pubDate>
     <author>Ali Rostami</author>
-    <guid>http://alirostami.com/fundamentals-of-software-architecture-persian/</guid>
+    <guid>https://alirostami.com/fundamentals-of-software-architecture-persian/</guid>
     <description><![CDATA[ترجمه و آماده‌سازی فارسی ویرایش دوم کتاب مبانی معماری نرم‌افزار اثر مارک ریچاردز و نیل فورد (۲۰۲۵)؛ شامل ۲۷ فصل کامل، پیوست پرسش‌های بحث، ۲۴۱ شکل، نسخه یکپارچه PDF (۶۵۰ صفحه) و سامانهٔ مطالعهٔ آنلاین با سایدبار هوشمند.]]></description>
 </item>
 <item>
     <title>هوش مصنوعی: یک رویکرد مدرن — ترجمهٔ فارسی (AIMA 4e)</title>
-    <link>http://alirostami.com/aima-4e-persian/</link>
+    <link>https://alirostami.com/aima-4e-persian/</link>
     <pubDate>Tue, 20 Oct 2026 12:00:00 &#43;0330</pubDate>
     <author>Ali Rostami</author>
-    <guid>http://alirostami.com/aima-4e-persian/</guid>
+    <guid>https://alirostami.com/aima-4e-persian/</guid>
     <description><![CDATA[ترجمه و آماده‌سازی فارسی کتاب هوش مصنوعی: یک رویکرد مدرن (ویرایش چهارم) اثر استوارت راسل و پیتر نورویگ؛ شامل پیشگفتار و ۲۸ فصل، نسخهٔ کامل PDF، کتابچه‌های HTML و فایل‌های Markdown.]]></description>
 </item>
 <item>
     <title>Persian Streams — افزونهٔ پخش فیلم و سریال ایرانی برای استرمیو</title>
-    <link>http://alirostami.com/persian-streams/</link>
+    <link>https://alirostami.com/persian-streams/</link>
     <pubDate>Tue, 20 Oct 2026 11:00:00 &#43;0330</pubDate>
     <author>Ali Rostami</author>
-    <guid>http://alirostami.com/persian-streams/</guid>
+    <guid>https://alirostami.com/persian-streams/</guid>
     <description><![CDATA[مستندات Persian Streams: افزونهٔ غیررسمی Stremio برای پخش فیلم و سریال‌های ایرانی با زیرنویس فارسی؛ نصب، پیکربندی، استقرار روی Node.js و Cloudflare Workers و عیب‌یابی.]]></description>
 </item>
 <item>
     <title>Persian Subtitles — افزونهٔ زیرنویس فارسی استرمیو</title>
-    <link>http://alirostami.com/persian-subtitles/</link>
+    <link>https://alirostami.com/persian-subtitles/</link>
     <pubDate>Tue, 20 Oct 2026 10:00:00 &#43;0330</pubDate>
     <author>Ali Rostami</author>
-    <guid>http://alirostami.com/persian-subtitles/</guid>
+    <guid>https://alirostami.com/persian-subtitles/</guid>
     <description><![CDATA[مستندات Persian Subtitles: افزونهٔ غیررسمی Stremio برای زیرنویس فارسی فیلم و سریال با اتصال به API سرویس SubSource؛ نصب، پیکربندی، استقرار و عیب‌یابی.]]></description>
 </item>
 <item>
     <title>Benefits of Using Obsidian</title>
-    <link>http://alirostami.com/posts/benefits-of-using-obsidian/</link>
+    <link>https://alirostami.com/posts/benefits-of-using-obsidian/</link>
     <pubDate>Thu, 13 Apr 2023 03:58:33 &#43;0330</pubDate>
     <author>Ali Rostami</author>
-    <guid>http://alirostami.com/posts/benefits-of-using-obsidian/</guid>
+    <guid>https://alirostami.com/posts/benefits-of-using-obsidian/</guid>
     <description><![CDATA[Obsidian is a note-taking app that has been gaining popularity among knowledge workers, researchers, and writers. It is based on the idea of a zettelkasten, a note-taking system popularized by the German sociologist Niklas Luhmann. Here are some of the benefits of using Obsidian and a zettelkasten:
   Better organization: With Obsidian, you can organize your notes using links, tags, and folders. This makes it easy to find information when you need it, and it helps you avoid the chaos of having notes scattered across multiple platforms.]]></description>
 </item>
 <item>
     <title>A Recap of Last Year</title>
-    <link>http://alirostami.com/posts/a-recap-of-last-year/</link>
+    <link>https://alirostami.com/posts/a-recap-of-last-year/</link>
     <pubDate>Thu, 13 Apr 2023 03:36:49 &#43;0330</pubDate>
     <author>Ali Rostami</author>
-    <guid>http://alirostami.com/posts/a-recap-of-last-year/</guid>
+    <guid>https://alirostami.com/posts/a-recap-of-last-year/</guid>
     <description><![CDATA[Looking back at the past year, it&rsquo;s important to take stock of all the accomplishments and progress that we&rsquo;ve made. Despite the challenges that we faced, it&rsquo;s important to recognize that there were still many moments of growth and success. For me, personally, last year was a good year, and I was able to make significant strides in both my work and personal life.
 One of the highlights of the past year was the progress I made in my work.]]></description>
 </item>

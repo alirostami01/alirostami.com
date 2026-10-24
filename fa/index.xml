@@ -1,9 +1,9 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>فارسی</title>
-        <link>http://alirostami.com/fa/</link>
-        <description>This is my personal website</description>
+        <title>علی رستمی (Ali Rostami) | توسعه‌دهنده نرم‌افزار، هوش مصنوعی و پروژه‌های متن‌باز</title>
+        <link>https://alirostami.com/fa/</link>
+        <description>وبسایت شخصی و مستندات پروژه‌های متن‌باز علی رستمی؛ شامل افزونه‌های فارسی Stremio (پخش فیلم و زیرنویس)، ترجمه فارسی کتاب هوش مصنوعی AIMA و مقالات تخصصی لینوکس و برنامه‌نویسی.</description>
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>Everything is mine</copyright>
-            <atom:link href="http://alirostami.com/fa/index.xml" rel="self" type="application/rss+xml" />
+            <atom:link href="https://alirostami.com/fa/index.xml" rel="self" type="application/rss+xml" />
         </channel>
 </rss>

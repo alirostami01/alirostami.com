@@ -1,7 +1,7 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Tags - Tag - Ali Rostami Website</title>
-        <link>http://alirostami.com/tags/</link>
-        <description>Tags - Tag - Ali Rostami Website</description>
-        <generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>Everything is mine</copyright><atom:link href="http://alirostami.com/tags/" rel="self" type="application/rss+xml" /></channel>
+        <title>Tags - علی رستمی (Ali Rostami)</title>
+        <link>https://alirostami.com/tags/</link>
+        <description>Tags - علی رستمی (Ali Rostami)</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>Everything is mine</copyright><atom:link href="https://alirostami.com/tags/" rel="self" type="application/rss+xml" /></channel>
 </rss>

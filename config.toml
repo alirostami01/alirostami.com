@@ -1,0 +1,64 @@
+baseURL = "https://alirostami.com/"
+title = "علی رستمی (Ali Rostami) | توسعه‌دهنده نرم‌افزار، هوش مصنوعی و پروژه‌های متن‌باز"
+defaultContentLanguage = "fa"
+languageCode = "fa"
+theme = "LoveIt"
+hasCJKLanguage = false
+
+# Ensure canonical URLs and clean permalinks
+canonifyURLs = true
+paginate = 10
+
+[params]
+  version = "0.2.X"
+  description = "وبسایت شخصی و مستندات پروژه‌های متن‌باز علی رستمی؛ شامل افزونه‌های فارسی Stremio (پخش فیلم و زیرنویس)، ترجمه فارسی کتاب هوش مصنوعی AIMA و مقالات تخصصی لینوکس و برنامه‌نویسی."
+  keywords = [
+    "علی رستمی",
+    "Ali Rostami",
+    "توسعه‌دهنده نرم‌افزار",
+    "هوش مصنوعی",
+    "AIMA 4e",
+    "کتاب هوش مصنوعی راسل و نورویگ",
+    "مبانی معماری نرم‌افزار",
+    "مارک ریچاردز",
+    "نیل فورد",
+    "استرمیو",
+    "Stremio",
+    "Persian Streams",
+    "Persian Subtitles",
+    "پروژه‌های متن‌باز",
+    "لینوکس",
+    "برنامه‌نویسی"
+  ]
+  license = "GPL-3.0"
+
+  [params.author]
+    name = "علی رستمی"
+    email = "rostami.ali@gmail.com"
+    link = "https://alirostami.com/"
+
+  [params.home]
+    [params.home.profile]
+      enable = true
+      avatarURL = "/images/Ali.jpg"
+      title = "علی رستمی (Ali Rostami)"
+      subtitle = "توسعه‌دهنده نرم‌افزار، هوش مصنوعی و پروژه‌های متن‌باز"
+      typeit = true
+      social = true
+      disclaimer = ""
+
+[languages]
+  [languages.fa]
+    weight = 1
+    languageCode = "fa"
+    languageName = "فارسی"
+    title = "علی رستمی (Ali Rostami) | توسعه‌دهنده نرم‌افزار، هوش مصنوعی و پروژه‌های متن‌باز"
+    [languages.fa.params]
+      description = "وبسایت شخصی و مستندات پروژه‌های متن‌باز علی رستمی؛ شامل افزونه‌های فارسی Stremio (پخش فیلم و زیرنویس)، ترجمه فارسی کتاب هوش مصنوعی AIMA و مقالات تخصصی لینوکس و برنامه‌نویسی."
+  [languages.en]
+    weight = 2
+    languageCode = "en"
+    languageName = "English"
+    title = "Ali Rostami | Software Architecture, AI & Open-Source Projects"
+    [languages.en.params]
+      description = "Personal website of Ali Rostami: Persian translations of Software Architecture & AI books, Stremio addons, and tech articles."

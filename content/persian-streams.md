@@ -142,6 +142,12 @@ http://localhost:8787/streams/manifest.json
 
 Pull Requestها و Issueها برای بهبود استخراج لینک، سازگاری با ساختارهای HTML جدید، افزودن تست و بهبود مستندات پذیرفته می‌شوند.
 
+## 🔗 افزونه‌ها و پروژه‌های مرتبط
+
+- [افزونه زیرنویس فارسی برای استرمیو (Persian Subtitles)](/persian-subtitles/)
+- [کتاب مبانی معماری نرم‌افزار — ترجمه فارسی اثر مارک ریچاردز و نیل فورد](/fundamentals-of-software-architecture-persian/)
+- [کتاب هوش مصنوعی: رویکردی مدرن (AIMA 4e) — ترجمه فارسی اثر استوارت راسل و پیتر نورویگ](/aima-4e-persian/)
+
 ## 📄 مجوز
 
 فایل `LICENSE` این مخزن **Apache License 2.0** است.

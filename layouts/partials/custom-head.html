@@ -1,50 +1,59 @@
 {{- if .IsHome -}}
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "ProfilePage",
-      "@id": "{{ .Site.BaseURL }}#profilepage",
-      "url": "{{ .Site.BaseURL }}",
-      "name": "علی رستمی | Ali Rostami",
-      "mainEntity": {
-        "@id": "{{ .Site.BaseURL }}#person"
-      }
-    },
-    {
-      "@type": "Person",
-      "@id": "{{ .Site.BaseURL }}#person",
-      "name": "Ali Rostami",
-      "alternateName": [
-        "علی رستمی",
-        "Ali Rostami Abusaidi",
-        "alirostami01"
-      ],
-      "jobTitle": "Senior Software Architect & Systems Engineer",
-      "url": "{{ .Site.BaseURL }}",
-      "email": "mailto:rostami.ali@gmail.com",
-      "sameAs": [
-        "https://github.com/alirostami01",
-        "https://www.linkedin.com/in/alirostami01",
-        "https://twitter.com/alirostami01",
-        "https://x.com/alirostami01",
-        "https://www.instagram.com/alirostami01",
-        "https://www.facebook.com/alirostami01",
-        "https://t.me/alirostami01"
-      ]
-    },
-    {
-      "@type": "WebSite",
-      "@id": "{{ .Site.BaseURL }}#website",
-      "url": "{{ .Site.BaseURL }}",
-      "name": "Ali Rostami | علی رستمی",
-      "alternateName": "وبسایت شخصی علی رستمی",
-      "publisher": {
-        "@id": "{{ .Site.BaseURL }}#person"
-      }
-    }
-  ]
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "ProfilePage",
+            "@id": "{{ .Site.BaseURL }}#profilepage",
+            "url": "{{ .Site.BaseURL }}",
+            "name": "علی رستمی | Ali Rostami",
+            "mainEntity": {
+                "@id": "{{ .Site.BaseURL }}#person"
+            }
+        },
+        {
+            "@type": "Person",
+            "@id": "{{ .Site.BaseURL }}#person",
+            "name": "Ali Rostami",
+            "alternateName": [
+                "علی رستمی",
+                "Ali Rostami Abusaidi",
+                "alirostami01"
+            ],
+            "jobTitle": "Senior Software Architect & Systems Engineer",
+            "url": "{{ .Site.BaseURL }}",
+            "email": "mailto:rostami.ali@gmail.com",
+            "sameAs": [
+                "https://github.com/alirostami01",
+                "https://www.linkedin.com/in/alirostami01",
+                "https://twitter.com/alirostami01",
+                "https://x.com/alirostami01",
+                "https://www.instagram.com/alirostami01",
+                "https://www.facebook.com/alirostami01",
+                "https://t.me/alirostami01"
+            ],
+            "image": {
+                "@type": "ImageObject",
+                "@id": "https://alirostami.com/#primaryimage",
+                "url": "https://alirostami.com/images/Ali.jpg",
+                "contentUrl": "https://alirostami.com/images/Ali.jpg",
+                "width": 1200,
+                "height": 1200,
+                "caption": "Ali Rostami - Senior Software Architect"
+            }
+        },
+        {
+            "@type": "WebSite",
+            "@id": "{{ .Site.BaseURL }}#website",
+            "url": "{{ .Site.BaseURL }}",
+            "name": "Ali Rostami | علی رستمی",
+            "alternateName": "وبسایت شخصی علی رستمی",
+            "publisher": {
+                "@id": "{{ .Site.BaseURL }}#person"
+            }
+        }
+    ]
 }
 </script>
 {{- end -}}

@@ -85,13 +85,13 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
         <meta property="og:title" content="مبانی معماری نرم‌افزار: رویکردی مهندسی و مدرن — ترجمهٔ فارسی" />
         <meta property="og:description" content="ترجمه و آماده‌سازی فارسی ویرایش دوم کتاب مبانی معماری نرم‌افزار اثر مارک ریچاردز و نیل فورد؛ شامل ۲۷ فصل، پیوست، ۲۴۱ شکل، سامانه مطالعه آنلاین تعاملی و نسخه PDF ۶۵۰ صفحه‌ای." />
         <meta property="og:type" content="book" />
-        <meta property="og:url" content="https://alirostami.ir/fundamentals-of-software-architecture-persian/" />
+        <meta property="og:url" content="https://alirostami.com/fundamentals-of-software-architecture-persian/" />
         <meta property="og:site_name" content="علی رستمی" />
-        <meta property="og:image" content="https://alirostami.ir/images/projects/fundamentals-of-software-architecture-persian.png" />
+        <meta property="og:image" content="https://alirostami.com/images/projects/fundamentals-of-software-architecture-persian.png" />
         <meta name="twitter:card" content="summary_large_image"/>
         <meta name="twitter:title" content="مبانی معماری نرم‌افزار — ترجمهٔ فارسی"/>
         <meta name="twitter:description" content="ترجمه فارسی ویرایش دوم کتاب مبانی معماری نرم‌افزار اثر مارک ریچاردز و نیل فورد با ۲۷ فصل و کتابخوان آنلاین تعاملی."/>
-        <meta name="twitter:image" content="https://alirostami.ir/images/projects/fundamentals-of-software-architecture-persian.png"/>
+        <meta name="twitter:image" content="https://alirostami.com/images/projects/fundamentals-of-software-architecture-persian.png"/>
         <meta name="application-name" content="Ali Rostami">
         <meta name="apple-mobile-web-app-title" content="Ali Rostami">
         <meta name="theme-color" content="#ffffff">
@@ -101,7 +101,7 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
         <link rel="manifest" href="/site.webmanifest">
-        <link rel="canonical" href="https://alirostami.ir/fundamentals-of-software-architecture-persian/" />
+        <link rel="canonical" href="https://alirostami.com/fundamentals-of-software-architecture-persian/" />
         <link rel="stylesheet" href="/css/style.min.css">
         <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript>
@@ -114,7 +114,7 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
           "@graph": [
             {{
               "@type": "Book",
-              "@id": "https://alirostami.ir/fundamentals-of-software-architecture-persian/#book",
+              "@id": "https://alirostami.com/fundamentals-of-software-architecture-persian/#book",
               "name": "مبانی معماری نرم‌افزار: رویکردی مهندسی و مدرن (ویرایش دوم)",
               "alternateName": "Fundamentals of Software Architecture: A Modern Engineering Approach (2nd Edition)",
               "author": [
@@ -124,37 +124,37 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
               "translator": {{
                 "@type": "Person",
                 "name": "علی رستمی",
-                "url": "https://alirostami.ir/"
+                "url": "https://alirostami.com/"
               }},
               "inLanguage": "fa",
               "bookFormat": "https://schema.org/EBook",
               "numberOfPages": 650,
               "datePublished": "2025",
-              "url": "https://alirostami.ir/fundamentals-of-software-architecture-persian/",
-              "image": "https://alirostami.ir/images/projects/fundamentals-of-software-architecture-persian.png",
+              "url": "https://alirostami.com/fundamentals-of-software-architecture-persian/",
+              "image": "https://alirostami.com/images/projects/fundamentals-of-software-architecture-persian.png",
               "description": "ترجمه و آماده‌سازی فارسی ویرایش دوم کتاب مبانی معماری نرم‌افزار اثر مارک ریچاردز و نیل فورد؛ شامل ۲۷ فصل در ۳ بخش جامع، پیوست، واژه‌نامه تخصصی و نسخه PDF ۶۵۰ صفحه‌ای."
             }},
             {{
               "@type": "BreadcrumbList",
-              "@id": "https://alirostami.ir/fundamentals-of-software-architecture-persian/#breadcrumb",
+              "@id": "https://alirostami.com/fundamentals-of-software-architecture-persian/#breadcrumb",
               "itemListElement": [
                 {{
                   "@type": "ListItem",
                   "position": 1,
                   "name": "خانه",
-                  "item": "https://alirostami.ir/fa/"
+                  "item": "https://alirostami.com/fa/"
                 }},
                 {{
                   "@type": "ListItem",
                   "position": 2,
                   "name": "پروژه‌ها",
-                  "item": "https://alirostami.ir/fa/#projects"
+                  "item": "https://alirostami.com/fa/#projects"
                 }},
                 {{
                   "@type": "ListItem",
                   "position": 3,
                   "name": "مبانی معماری نرم‌افزار — ترجمهٔ فارسی",
-                  "item": "https://alirostami.ir/fundamentals-of-software-architecture-persian/"
+                  "item": "https://alirostami.com/fundamentals-of-software-architecture-persian/"
                 }}
               ]
             }}

@@ -20,55 +20,72 @@
     <link rel="stylesheet" href="/css/style.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css">
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": "Book",
-                "@id": "https://alirostami.com/software-architecture/#book",
-                "name": "مبانی معماری نرم‌افزار: رویکردی مهندسی و مدرن (ویرایش دوم)",
-                "alternateName": "Fundamentals of Software Architecture: A Modern Engineering Approach 2nd Edition",
-                "author": [
-                    {"@type": "Person", "name": "Mark Richards", "alternateName": "مارک ریچاردز"},
-                    {"@type": "Person", "name": "Neal Ford", "alternateName": "نیل فورد"}
-                ],
-                "translator": {
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Book",
+            "@id": "https://alirostami.com/software-architecture/#book",
+            "name": "مبانی معماری نرم‌افزار: رویکردی مهندسی و مدرن (ویرایش دوم)",
+            "alternateName": "Fundamentals of Software Architecture: A Modern Engineering Approach 2nd Edition",
+            "author": [
+                {
                     "@type": "Person",
-                    "name": "علی رستمی",
-                    "url": "https://alirostami.com/"
+                    "name": "Mark Richards",
+                    "alternateName": "مارک ریچاردز"
                 },
-                "inLanguage": "fa",
-                "bookFormat": "https://schema.org/EBook",
-                "url": "https://alirostami.com/software-architecture/",
-                "description": "نسخه وب و مطالعه آنلاین ترجمه کامل فارسی کتاب مبانی معماری نرم‌افزار: رویکردی مهندسی و مدرن با سایدبار هوشمند، فهرست فصول، بخش‌بندی سه‌گانه و امکان جستجو."
+                {
+                    "@type": "Person",
+                    "name": "Neal Ford",
+                    "alternateName": "نیل فورد"
+                }
+            ],
+            "translator": {
+                "@type": "Person",
+                "name": "علی رستمی",
+                "url": "https://alirostami.com/",
+                "image": {
+                    "@type": "ImageObject",
+                    "@id": "https://alirostami.com/#primaryimage",
+                    "url": "https://alirostami.com/images/Ali.jpg",
+                    "contentUrl": "https://alirostami.com/images/Ali.jpg",
+                    "width": 1200,
+                    "height": 1200,
+                    "caption": "Ali Rostami - Senior Software Architect"
+                }
             },
-            {
-                "@type": "BreadcrumbList",
-                "@id": "https://alirostami.com/software-architecture/#breadcrumb",
-                "itemListElement": [
-                    {
-                        "@type": "ListItem",
-                        "position": 1,
-                        "name": "خانه",
-                        "item": "https://alirostami.com/fa/"
-                    },
-                    {
-                        "@type": "ListItem",
-                        "position": 2,
-                        "name": "پروژه‌ها",
-                        "item": "https://alirostami.com/fa/#projects"
-                    },
-                    {
-                        "@type": "ListItem",
-                        "position": 3,
-                        "name": "مطالعه آنلاین کتاب معماری نرم‌افزار",
-                        "item": "https://alirostami.com/software-architecture/"
-                    }
-                ]
-            }
-        ]
-    }
-    </script>
+            "inLanguage": "fa",
+            "bookFormat": "https://schema.org/EBook",
+            "url": "https://alirostami.com/software-architecture/",
+            "description": "نسخه وب و مطالعه آنلاین ترجمه کامل فارسی کتاب مبانی معماری نرم‌افزار: رویکردی مهندسی و مدرن با سایدبار هوشمند، فهرست فصول، بخش‌بندی سه‌گانه و امکان جستجو."
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://alirostami.com/software-architecture/#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "خانه",
+                    "item": "https://alirostami.com/fa/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "پروژه‌ها",
+                    "item": "https://alirostami.com/fa/#projects"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "مطالعه آنلاین کتاب معماری نرم‌افزار",
+                    "item": "https://alirostami.com/software-architecture/"
+                }
+            ]
+        }
+    ]
+}
+</script>
     <style>
         :root {
             --sidebar-width: 350px;

@@ -4,5 +4,5 @@ Allow: /
 User-agent: Googlebot-Image
 Allow: /
 
-Sitemap: https://alirostami.com/sitemap.xml
-Sitemap: https://alirostami.com/fa/sitemap.xml
+Sitemap: https://www.alirostami.com/sitemap.xml
+Sitemap: https://www.alirostami.com/fa/sitemap.xml

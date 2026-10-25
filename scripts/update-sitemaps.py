@@ -9,41 +9,41 @@ ROOT = Path(__file__).resolve().parent.parent
 TODAY = "2026-10-24"
 
 MAIN_URLS = [
-    ("https://alirostami.com/", "daily", "1.0"),
-    ("https://alirostami.com/fa/", "daily", "1.0"),
-    ("https://alirostami.com/software-architecture/", "weekly", "0.95"),
-    ("https://alirostami.com/fundamentals-of-software-architecture-persian/", "weekly", "0.90"),
-    ("https://alirostami.com/aima-4e/", "weekly", "0.95"),
-    ("https://alirostami.com/aima-4e-persian/", "weekly", "0.90"),
-    ("https://alirostami.com/persian-streams/", "weekly", "0.90"),
-    ("https://alirostami.com/persian-subtitles/", "weekly", "0.90"),
-    ("https://alirostami.com/support/", "monthly", "0.85"),
-    ("https://alirostami.com/posts/", "weekly", "0.85"),
-    ("https://alirostami.com/posts/fundamentals-of-software-architecture-persian/", "monthly", "0.80"),
-    ("https://alirostami.com/posts/aima-4e-persian/", "monthly", "0.80"),
-    ("https://alirostami.com/posts/persian-streams/", "monthly", "0.80"),
-    ("https://alirostami.com/posts/persian-subtitles/", "monthly", "0.80"),
-    ("https://alirostami.com/posts/benefits-of-using-obsidian/", "monthly", "0.70"),
-    ("https://alirostami.com/posts/a-recap-of-last-year/", "monthly", "0.70"),
-    ("https://alirostami.com/en/support.html", "monthly", "0.70"),
+    ("https://www.alirostami.com/", "daily", "1.0"),
+    ("https://www.alirostami.com/fa/", "daily", "1.0"),
+    ("https://www.alirostami.com/software-architecture/", "weekly", "0.95"),
+    ("https://www.alirostami.com/fundamentals-of-software-architecture-persian/", "weekly", "0.90"),
+    ("https://www.alirostami.com/aima-4e/", "weekly", "0.95"),
+    ("https://www.alirostami.com/aima-4e-persian/", "weekly", "0.90"),
+    ("https://www.alirostami.com/persian-streams/", "weekly", "0.90"),
+    ("https://www.alirostami.com/persian-subtitles/", "weekly", "0.90"),
+    ("https://www.alirostami.com/support/", "monthly", "0.85"),
+    ("https://www.alirostami.com/posts/", "weekly", "0.85"),
+    ("https://www.alirostami.com/posts/fundamentals-of-software-architecture-persian/", "monthly", "0.80"),
+    ("https://www.alirostami.com/posts/aima-4e-persian/", "monthly", "0.80"),
+    ("https://www.alirostami.com/posts/persian-streams/", "monthly", "0.80"),
+    ("https://www.alirostami.com/posts/persian-subtitles/", "monthly", "0.80"),
+    ("https://www.alirostami.com/posts/benefits-of-using-obsidian/", "monthly", "0.70"),
+    ("https://www.alirostami.com/posts/a-recap-of-last-year/", "monthly", "0.70"),
+    ("https://www.alirostami.com/en/support.html", "monthly", "0.70"),
 ]
 
 FA_MAIN_URLS = [
-    ("https://alirostami.com/fa/", "daily", "1.0"),
-    ("https://alirostami.com/software-architecture/", "weekly", "0.95"),
-    ("https://alirostami.com/fundamentals-of-software-architecture-persian/", "weekly", "0.90"),
-    ("https://alirostami.com/aima-4e/", "weekly", "0.95"),
-    ("https://alirostami.com/aima-4e-persian/", "weekly", "0.90"),
-    ("https://alirostami.com/persian-streams/", "weekly", "0.90"),
-    ("https://alirostami.com/persian-subtitles/", "weekly", "0.90"),
-    ("https://alirostami.com/support/", "monthly", "0.85"),
-    ("https://alirostami.com/posts/", "weekly", "0.85"),
-    ("https://alirostami.com/posts/fundamentals-of-software-architecture-persian/", "monthly", "0.80"),
-    ("https://alirostami.com/posts/aima-4e-persian/", "monthly", "0.80"),
-    ("https://alirostami.com/posts/persian-streams/", "monthly", "0.80"),
-    ("https://alirostami.com/posts/persian-subtitles/", "monthly", "0.80"),
-    ("https://alirostami.com/posts/benefits-of-using-obsidian/", "monthly", "0.70"),
-    ("https://alirostami.com/posts/a-recap-of-last-year/", "monthly", "0.70"),
+    ("https://www.alirostami.com/fa/", "daily", "1.0"),
+    ("https://www.alirostami.com/software-architecture/", "weekly", "0.95"),
+    ("https://www.alirostami.com/fundamentals-of-software-architecture-persian/", "weekly", "0.90"),
+    ("https://www.alirostami.com/aima-4e/", "weekly", "0.95"),
+    ("https://www.alirostami.com/aima-4e-persian/", "weekly", "0.90"),
+    ("https://www.alirostami.com/persian-streams/", "weekly", "0.90"),
+    ("https://www.alirostami.com/persian-subtitles/", "weekly", "0.90"),
+    ("https://www.alirostami.com/support/", "monthly", "0.85"),
+    ("https://www.alirostami.com/posts/", "weekly", "0.85"),
+    ("https://www.alirostami.com/posts/fundamentals-of-software-architecture-persian/", "monthly", "0.80"),
+    ("https://www.alirostami.com/posts/aima-4e-persian/", "monthly", "0.80"),
+    ("https://www.alirostami.com/posts/persian-streams/", "monthly", "0.80"),
+    ("https://www.alirostami.com/posts/persian-subtitles/", "monthly", "0.80"),
+    ("https://www.alirostami.com/posts/benefits-of-using-obsidian/", "monthly", "0.70"),
+    ("https://www.alirostami.com/posts/a-recap-of-last-year/", "monthly", "0.70"),
 ]
 
 # Get AIMA 4e chapters
@@ -71,7 +71,7 @@ def generate_sitemap(url_list, include_sa_chapters=True, include_aima_chapters=T
     if include_sa_chapters:
         for f in sa_files:
             lines.append(f"""  <url>
-    <loc>https://alirostami.com/software-architecture/{f}</loc>
+    <loc>https://www.alirostami.com/software-architecture/{f}</loc>
     <lastmod>{TODAY}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
@@ -82,7 +82,7 @@ def generate_sitemap(url_list, include_sa_chapters=True, include_aima_chapters=T
         for f in aima_files:
             encoded_f = urllib.parse.quote(f)
             lines.append(f"""  <url>
-    <loc>https://alirostami.com/aima-4e/{encoded_f}</loc>
+    <loc>https://www.alirostami.com/aima-4e/{encoded_f}</loc>
     <lastmod>2026-10-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>

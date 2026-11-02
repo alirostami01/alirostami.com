@@ -4,19 +4,19 @@
         <meta name="generator" content="Hugo 0.92.2" />
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="robots" content="index, follow" />
+        <meta name="robots" content="index, follow, max-image-preview:large" />
         <title>Persian Streams — افزونهٔ پخش فیلم و سریال ایرانی برای استرمیو</title><meta name="Description" content="مستندات Persian Streams: افزونهٔ غیررسمی Stremio برای پخش فیلم و سریال‌های ایرانی با زیرنویس فارسی؛ نصب، پیکربندی، استقرار روی Node.js و Cloudflare Workers و عیب‌یابی."><meta property="og:title" content="Persian Streams — افزونهٔ پخش فیلم و سریال ایرانی برای استرمیو" />
 <meta property="og:description" content="مستندات Persian Streams: افزونهٔ غیررسمی Stremio برای پخش فیلم و سریال‌های ایرانی با زیرنویس فارسی؛ نصب، پیکربندی، استقرار روی Node.js و Cloudflare Workers و عیب‌یابی." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.alirostami.com/persian-streams/" /><meta property="og:image" content="https://www.alirostami.com/images/Ali.jpg" />
-        <meta property="og:image:alt" content="Ali Rostami - Senior Software Architect" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="1200" />
+<meta property="og:url" content="https://www.alirostami.com/persian-streams/" />
+
+
+
         <meta property="og:site_name" content="علی رستمی" />
-<meta name="twitter:card" content="summary_large_image"/>
+
 <meta name="twitter:title" content="Persian Streams — افزونهٔ پخش فیلم و سریال ایرانی برای استرمیو"/>
 <meta name="twitter:description" content="مستندات Persian Streams: افزونهٔ غیررسمی Stremio برای پخش فیلم و سریال‌های ایرانی با زیرنویس فارسی؛ نصب، پیکربندی، استقرار روی Node.js و Cloudflare Workers و عیب‌یابی."/>
-<meta name="twitter:image" content="https://www.alirostami.com/images/Ali.jpg"/>
+
         <meta name="application-name" content="Ali Rostami">
 <meta name="apple-mobile-web-app-title" content="Ali Rostami"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
@@ -26,60 +26,68 @@
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript>
         <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
-    "@graph": [
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "Persian Streams",
+      "alternateName": "افزونه فیلم و سریال ایرانی برای استرمیو",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Windows, macOS, Linux, Android, iOS",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "علی رستمی",
+        "url": "https://www.alirostami.com/",
+        "image": {
+          "@type": "ImageObject",
+          "@id": "https://www.alirostami.com/#primaryimage",
+          "url": "https://www.alirostami.com/images/Ali.jpg",
+          "contentUrl": "https://www.alirostami.com/images/Ali.jpg",
+          "width": 1200,
+          "height": 1200,
+          "caption": "Ali Rostami - Senior Software Architect"
+        }
+      },
+      "url": "https://www.alirostami.com/persian-streams/",
+      "description": "افزونهٔ غیررسمی و متن‌باز Stremio برای پخش آنلاین فیلم‌ها و سریال‌های ایرانی با زیرنویس فارسی.",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://www.alirostami.com/images/social/persian-streams.jpg",
+        "contentUrl": "https://www.alirostami.com/images/social/persian-streams.jpg",
+        "width": 1200,
+        "height": 630,
+        "caption": "Persian Streams؛ افزونه استرمیو برای فیلم‌ها و سریال‌های ایرانی"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
         {
-            "@type": "SoftwareApplication",
-            "name": "Persian Streams",
-            "alternateName": "افزونه فیلم و سریال ایرانی برای استرمیو",
-            "applicationCategory": "MultimediaApplication",
-            "operatingSystem": "Windows, macOS, Linux, Android, iOS",
-            "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD"
-            },
-            "author": {
-                "@type": "Person",
-                "name": "علی رستمی",
-                "url": "https://www.alirostami.com/",
-                "image": {
-                    "@type": "ImageObject",
-                    "@id": "https://www.alirostami.com/#primaryimage",
-                    "url": "https://www.alirostami.com/images/Ali.jpg",
-                    "contentUrl": "https://www.alirostami.com/images/Ali.jpg",
-                    "width": 1200,
-                    "height": 1200,
-                    "caption": "Ali Rostami - Senior Software Architect"
-                }
-            },
-            "url": "https://www.alirostami.com/persian-streams/",
-            "description": "افزونهٔ غیررسمی و متن‌باز Stremio برای پخش آنلاین فیلم‌ها و سریال‌های ایرانی با زیرنویس فارسی."
+          "@type": "ListItem",
+          "position": 1,
+          "name": "خانه",
+          "item": "https://www.alirostami.com/"
         },
         {
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-                {
-                    "@type": "ListItem",
-                    "position": 1,
-                    "name": "خانه",
-                    "item": "https://www.alirostami.com/"
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 2,
-                    "name": "پروژه‌ها",
-                    "item": "https://www.alirostami.com/#projects"
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 3,
-                    "name": "Persian Streams",
-                    "item": "https://www.alirostami.com/persian-streams/"
-                }
-            ]
+          "@type": "ListItem",
+          "position": 2,
+          "name": "پروژه‌ها",
+          "item": "https://www.alirostami.com/#projects"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Persian Streams",
+          "item": "https://www.alirostami.com/persian-streams/"
         }
-    ]
+      ]
+    }
+  ]
 }
 </script><style>
     /* keep the theme header/footer in their original LTR layout */
@@ -228,7 +236,19 @@
     .docs-page .content blockquote p { margin: .3rem 0; }
 
     .docs-page .content hr { margin: 2rem 0; }
-</style></head>
+</style>
+    <!-- image-seo:start -->
+    <meta property="og:image" content="https://www.alirostami.com/images/social/persian-streams.jpg">
+    <meta property="og:image:secure_url" content="https://www.alirostami.com/images/social/persian-streams.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Persian Streams؛ افزونه استرمیو برای فیلم‌ها و سریال‌های ایرانی">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://www.alirostami.com/images/social/persian-streams.jpg">
+    <meta name="twitter:image:alt" content="Persian Streams؛ افزونه استرمیو برای فیلم‌ها و سریال‌های ایرانی">
+    <!-- image-seo:end -->
+</head>
     <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
@@ -255,7 +275,7 @@
 </header><main class="main">
                 <div class="container"><article class="page single docs-page">
         <div class="docs-hero">
-            <img src="/images/projects/persian-streams.png" alt="لوگوی Persian Streams" width="84" height="84" decoding="async">
+            <img src="/images/projects/persian-streams.png" alt="لوگوی Persian Streams" width="84" height="84" decoding="async" loading="eager" fetchpriority="high">
             <div>
                 <h1 class="single-title animate__animated animate__flipInX">Persian Streams</h1>
                 <p class="docs-hero-sub">مستندات پروژه · افزونهٔ غیررسمی Stremio</p>

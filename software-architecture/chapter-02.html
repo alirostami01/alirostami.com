@@ -3,6 +3,7 @@
 <head>
     <link rel="canonical" href="https://www.alirostami.com/software-architecture/chapter-02">
     <meta charset="utf-8">
+    <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>فصل ۲: تفکر معماری — مبانی معماری نرم‌افزار</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css">
@@ -177,6 +178,33 @@
             });
         })();
     </script>
+    <script type="application/ld+json" id="image-seo-schema">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://www.alirostami.com/software-architecture/chapter-02#webpage",
+  "url": "https://www.alirostami.com/software-architecture/chapter-02",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://www.alirostami.com/images/social/software-architecture.jpg",
+    "contentUrl": "https://www.alirostami.com/images/social/software-architecture.jpg",
+    "width": 1200,
+    "height": 630,
+    "caption": "ترجمه فارسی مبانی معماری نرم‌افزار؛ مطالعه آنلاین ۲۷ فصل و پیوست"
+  }
+}
+</script>
+    <!-- image-seo:start -->
+    <meta property="og:image" content="https://www.alirostami.com/images/social/software-architecture.jpg">
+    <meta property="og:image:secure_url" content="https://www.alirostami.com/images/social/software-architecture.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="ترجمه فارسی مبانی معماری نرم‌افزار؛ مطالعه آنلاین ۲۷ فصل و پیوست">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://www.alirostami.com/images/social/software-architecture.jpg">
+    <meta name="twitter:image:alt" content="ترجمه فارسی مبانی معماری نرم‌افزار؛ مطالعه آنلاین ۲۷ فصل و پیوست">
+    <!-- image-seo:end -->
 </head>
 <body>
 <!-- خروجی HTML — کامپوننت کامل فصل ۲ (بدون html/head) -->
@@ -212,7 +240,7 @@
     <p style="text-align:justify;">این عوامل در شکل ۲-۱ نشان داده شده‌اند؛ طیف میان معماری و طراحی را تصویر می‌کنند تا تعیین کنیم یک تصمیم در کجای این طیف قرار می‌گیرد و مسئولیتش بر عهدهٔ کیست.</p>
 
     <figure style="margin:1rem 0;padding:.7rem 1rem;background:#f9f9f9;border-right:4px solid #2c5f8a;border-radius:4px;">
-      <img src="figures/chapter-02/figure-2-1.png" alt="شکل ۲-۱. طیف میان معماری و طراحی" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;">
+      <img src="figures/chapter-02/figure-2-1.png" alt="شکل ۲-۱. طیف میان معماری و طراحی" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;" width="751" height="330" decoding="async">
       <figcaption style="font-size:.95rem;color:#333;"><b>شکل ۲-۱.</b> طیف میان معماری و طراحی</figcaption>
     </figure>
   </section>
@@ -270,7 +298,7 @@
     <p style="text-align:justify;">برای درک بهتر این تفاوت، هرم دانش <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Knowledge Pyramid)</bdi> را در نظر بگیرید که در شکل ۲-۲ آمده است. این هرم تمام دانش فنی جهان را در خود جا می‌دهد و به سه سطح قابل تفکیک است: چیزهایی که می‌دانید، چیزهایی که می‌دانید نمی‌دانید، و چیزهایی که نمی‌دانید نمی‌دانید.</p>
 
     <figure style="margin:1rem 0;padding:.7rem 1rem;background:#f9f9f9;border-right:4px solid #2c5f8a;border-radius:4px;">
-      <img src="figures/chapter-02/figure-2-2.png" alt="شکل ۲-۲. هرمی که تمام دانش را نمایندگی می‌کند" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;">
+      <img src="figures/chapter-02/figure-2-2.png" alt="شکل ۲-۲. هرمی که تمام دانش را نمایندگی می‌کند" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;" width="751" height="568" decoding="async">
       <figcaption style="font-size:.95rem;color:#333;"><b>شکل ۲-۲.</b> هرمی که تمام دانش را نمایندگی می‌کند</figcaption>
     </figure>
 
@@ -283,21 +311,21 @@
     <p style="text-align:justify;">در آغاز کار یک توسعه‌دهنده، گسترش بخش بالایی هرم (شکل ۲-۳) یعنی کسب تخصصی ارزشمند. اما هر آنچه می‌دانید، نیازمند مراقبت و به‌روزرسانی مداوم است—در دنیای نرم‌افزار هیچ‌چیز ایستا نیست. اگر توسعه‌دهنده‌ای در <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Ruby on Rails</bdi> خبره شود، اما یک یا دو سال آن را کنار بگذارد، این تخصص پایدار نمی‌ماند. نگه‌داشتن دانش در بالای هرم نیازمند صرف وقت مداوم برای حفظ تخصص است. این بخش بالایی، ژرفای فنیِ فرد را نشان می‌دهد: چیزهایی که واقعاً به‌خوبی بر آن‌ها مسلط است.</p>
 
     <figure style="margin:1rem 0;padding:.7rem 1rem;background:#f9f9f9;border-right:4px solid #2c5f8a;border-radius:4px;">
-      <img src="figures/chapter-02/figure-2-3.png" alt="شکل ۲-۳. توسعه‌دهندگان باید تخصصشان را حفظ کنند تا از دستش ندهند" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;">
+      <img src="figures/chapter-02/figure-2-3.png" alt="شکل ۲-۳. توسعه‌دهندگان باید تخصصشان را حفظ کنند تا از دستش ندهند" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;" width="751" height="569" decoding="async">
       <figcaption style="font-size:.95rem;color:#333;"><b>شکل ۲-۳.</b> توسعه‌دهندگان باید تخصصشان را حفظ کنند تا از دستش ندهند</figcaption>
     </figure>
 
     <p style="text-align:justify;">اما ماهیت دانش هنگام گذار توسعه‌دهندگان به نقش معمار تغییر می‌کند. بخش بزرگی از ارزش یک معمار در این است که شناختی گسترده از فناوری و چگونگی به‌کارگیری آن برای حل مسائل خاص دارد. برای نمونه، برای معمار بسیار مفیدتر است بداند برای مسئله‌ای خاص پنج راه‌حل وجود دارد، تا آنکه تنها در یکی از آن‌ها تخصص داشته باشد. مهم‌ترین بخش‌های هرم برای معماران، بخش‌های بالایی و میانی‌اند؛ هر قدر بخش میانی عمیق‌تر به بخش پایینی نفوذ کند، گستردگی فنی معمار بیشتر خواهد بود، همان‌طور که در شکل ۲-۴ آمده است.</p>
 
     <figure style="margin:1rem 0;padding:.7rem 1rem;background:#f9f9f9;border-right:4px solid #2c5f8a;border-radius:4px;">
-      <img src="figures/chapter-02/figure-2-4.png" alt="شکل ۲-۴. اینکه کسی دربارهٔ موضوعی چقدر می‌داند، ژرفای فنی است؛ و اینکه چند موضوع می‌داند، گستردگی فنی" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;">
+      <img src="figures/chapter-02/figure-2-4.png" alt="شکل ۲-۴. اینکه کسی دربارهٔ موضوعی چقدر می‌داند، ژرفای فنی است؛ و اینکه چند موضوع می‌داند، گستردگی فنی" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;" width="751" height="634" decoding="async">
       <figcaption style="font-size:.95rem;color:#333;"><b>شکل ۲-۴.</b> اینکه کسی دربارهٔ موضوعی چقدر می‌داند، ژرفای فنی است؛ و اینکه چند موضوع می‌داند، گستردگی فنی</figcaption>
     </figure>
 
     <p style="text-align:justify;">برای معمار، گستردگی فنی مهم‌تر از ژرفا است. چون معماران باید تصمیماتی بگیرند که توانمندی‌ها را با قیدوبندهای فنی هماهنگ سازد، درک گسترده از طیف وسیعی از راه‌حل‌ها بسیار ارزشمند است. بنابراین، مسیر هوشمندانه برای یک معمار این است که از برخی تخصص‌های به‌سختی‌آموخته‌اش دست بکشد و آن زمان را صرف گسترش سبد دانشش کند، همان‌طور که در شکل ۲-۵ آمده است. برخی حوزه‌های تخصصی باقی می‌مانند—به‌ویژه حوزه‌های فناوری‌ای که برایش جذاب‌ترند—و برخی دیگر به‌درستی کمرنگ می‌شوند.</p>
 
     <figure style="margin:1rem 0;padding:.7rem 1rem;background:#f9f9f9;border-right:4px solid #2c5f8a;border-radius:4px;">
-      <img src="figures/chapter-02/figure-2-5.png" alt="شکل ۲-۵. گستردگی افزایش‌یافته و ژرفای رو به کاهش برای نقش معمار" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;">
+      <img src="figures/chapter-02/figure-2-5.png" alt="شکل ۲-۵. گستردگی افزایش‌یافته و ژرفای رو به کاهش برای نقش معمار" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;" width="751" height="634" decoding="async">
       <figcaption style="font-size:.95rem;color:#333;"><b>شکل ۲-۵.</b> گستردگی افزایش‌یافته و ژرفای رو به کاهش برای نقش معمار</figcaption>
     </figure>
 
@@ -326,7 +354,7 @@
     <p style="text-align:justify;">یکی از تکنیک‌هایی که ما به کار می‌بریم، قانون بیست‌دقیقه‌ای است. ایده این است که دست‌کم روزی ۲۰ دقیقه را صرف یادگیری موضوعی تازه یا بررسی دقیق یک فناوری خاص کنید. شکل ۲-۶ چند جای خوب برای گذراندن آن ۲۰ دقیقه را نشان می‌دهد، مثل <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">InfoQ</bdi>، <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">DZone Refcardz</bdi> و <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Thoughtworks Technology Radar</bdi>. می‌توانید با جست‌وجوی واژه‌های داغِ ناآشنا در اینترنت، دانش‌شان را از «چیزهایی که نمی‌دانی نمی‌دانی» به «چیزهایی که می‌دانی نمی‌دانی» ارتقا دهید. حتی می‌توانید آن وقت را صرف خواندن کتابی مثل همین کتاب کنید. هدف این است که در دل شلوغی‌های روزمره، زمانی اختصاصی برای خود خالی کنید و بر توسعهٔ گستردگی فنی—و در نتیجه آیندهٔ حرفه‌ای‌تان—متمرکز شوید.</p>
 
     <figure style="margin:1rem 0;padding:.7rem 1rem;background:#f9f9f9;border-right:4px solid #2c5f8a;border-radius:4px;">
-      <img src="figures/chapter-02/figure-2-6.png" alt="شکل ۲-۶. قانون بیست‌دقیقه‌ای" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;">
+      <img src="figures/chapter-02/figure-2-6.png" alt="شکل ۲-۶. قانون بیست‌دقیقه‌ای" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;" width="805" height="465" decoding="async">
       <figcaption style="font-size:.95rem;color:#333;"><b>شکل ۲-۶.</b> قانون بیست‌دقیقه‌ای</figcaption>
     </figure>
 
@@ -380,7 +408,7 @@
     </ul>
 
     <figure style="margin:1rem 0;padding:.7rem 1rem;background:#f9f9f9;border-right:4px solid #2c5f8a;border-radius:4px;">
-      <img src="figures/chapter-02/figure-2-7.png" alt="شکل ۲-۷. نمونه‌ای از رادار فناوری Thoughtworks" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;">
+      <img src="figures/chapter-02/figure-2-7.png" alt="شکل ۲-۷. نمونه‌ای از رادار فناوری Thoughtworks" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;" width="877" height="673" decoding="async">
       <figcaption style="font-size:.95rem;color:#333;"><b>شکل ۲-۷.</b> نمونه‌ای از رادار فناوری Thoughtworks</figcaption>
     </figure>
 
@@ -415,7 +443,7 @@
     <p style="text-align:justify;">برای نمونه، سیستم مزایدهٔ کالا (شکل ۲-۸) را در نظر بگیرید که در آن پیشنهاددهندگان آنلاین روی کالاهای مزایده‌شده قیمت پیشنهاد می‌دهند. سرویس <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Bid Producer</bdi> یک پیشنهاد <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Bid)</bdi> را از پیشنهاددهنده می‌سازد و سپس مبلغ آن را برای سرویس‌های <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Bid Capture</bdi>، <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Bid Tracking</bdi> و <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Bid Analytics</bdi> می‌فرستد.</p>
 
     <figure style="margin:1rem 0;padding:.7rem 1rem;background:#f9f9f9;border-right:4px solid #2c5f8a;border-radius:4px;">
-      <img src="figures/chapter-02/figure-2-8.png" alt="شکل ۲-۸. نمونهٔ مصالحه در سیستم مزایده—صف‌ها یا موضوع‌ها؟" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;">
+      <img src="figures/chapter-02/figure-2-8.png" alt="شکل ۲-۸. نمونهٔ مصالحه در سیستم مزایده—صف‌ها یا موضوع‌ها؟" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;" width="810" height="299" decoding="async">
       <figcaption style="font-size:.95rem;color:#333;"><b>شکل ۲-۸.</b> نمونهٔ مصالحه در سیستم مزایده—صف‌ها یا موضوع‌ها؟</figcaption>
     </figure>
 
@@ -424,11 +452,11 @@
     <p style="text-align:justify;">دو گزینهٔ پیام‌رسانی برای سیستم مزایدهٔ کالا در شکل ۲-۹ نشان داده شده‌اند که استفاده از موضوع‌ها را در مدل پیام‌رسانی انتشار-اشتراک تصویر می‌کند، و شکل ۲-۱۰ که استفاده از صف‌ها را در مدل پیام‌رسانی نقطه‌به‌نقطه نشان می‌دهد.</p>
 
     <figure style="margin:1rem 0;padding:.7rem 1rem;background:#f9f9f9;border-right:4px solid #2c5f8a;border-radius:4px;">
-      <img src="figures/chapter-02/figure-2-9.png" alt="شکل ۲-۹. استفاده از موضوع برای ارتباط میان سرویس‌ها" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;">
+      <img src="figures/chapter-02/figure-2-9.png" alt="شکل ۲-۹. استفاده از موضوع برای ارتباط میان سرویس‌ها" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;" width="816" height="299" decoding="async">
       <figcaption style="font-size:.95rem;color:#333;"><b>شکل ۲-۹.</b> استفاده از موضوع برای ارتباط میان سرویس‌ها</figcaption>
     </figure>
     <figure style="margin:1rem 0;padding:.7rem 1rem;background:#f9f9f9;border-right:4px solid #2c5f8a;border-radius:4px;">
-      <img src="figures/chapter-02/figure-2-10.png" alt="شکل ۲-۱۰. استفاده از صف‌ها برای ارتباط میان سرویس‌ها" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;">
+      <img src="figures/chapter-02/figure-2-10.png" alt="شکل ۲-۱۰. استفاده از صف‌ها برای ارتباط میان سرویس‌ها" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;" width="816" height="526" decoding="async">
       <figcaption style="font-size:.95rem;color:#333;"><b>شکل ۲-۱۰.</b> استفاده از صف‌ها برای ارتباط میان سرویس‌ها</figcaption>
     </figure>
 

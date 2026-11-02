@@ -193,6 +193,36 @@ python3 scripts/build-support-page.py
 اسکریپت پس‌زمینه سفید دور لوگوی دایره‌ای را شفاف می‌کند و تصویر را به اندازه
 ۲۵۶×۲۵۶ ذخیره می‌کند.
 
+## بهینه‌سازی و SEO تصاویر
+
+کارت‌های نمایندهٔ صفحات با ابعاد استاندارد `1200×630` در `images/social/`
+تولید می‌شوند. همان build، نسخه‌های responsive تصویر پروفایل و جلد بهینهٔ
+کتاب AIMA را نیز می‌سازد و سپس metadata تصویری و ویژگی‌های تصاویر HTML را
+به‌صورت idempotent به‌روز می‌کند:
+
+```bash
+python3 -m pip install pillow
+python3 scripts/build-social-images.py
+```
+
+فقط برای اجرای دوبارهٔ post-processor (بدون Pillow):
+
+```bash
+python3 scripts/update-image-seo.py
+```
+
+post-processor برای همهٔ صفحات indexable (از جمله همهٔ URLهای sitemap)،
+`og:image`، Twitter Card، تصویر JSON-LD و `max-image-preview:large` را تنظیم
+می‌کند. برای تمام تگ‌های `img` نیز `width`، `height`، `loading` و `decoding` ثبت می‌شود. generatorهای صفحات و
+sitemap در انتهای اجرا همین post-processor را فراخوانی می‌کنند تا خروجی build
+از metadata تصویری جدا نشود.
+
+ممیزی مستقل و بدون dependency ثالث:
+
+```bash
+python3 scripts/check-images.py
+```
+
 ## پیش‌نمایش محلی
 
 پیش‌نمایش دقیق رفتار Cloudflare Pages (شامل `_redirects` و URLهای بدون پسوند):

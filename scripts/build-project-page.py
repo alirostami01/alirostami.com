@@ -4,6 +4,7 @@
 import os
 from pathlib import Path
 
+from image_utils import apply_image_seo
 from redirects import write_redirect
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -617,6 +618,7 @@ def main():
     alias2 = ROOT / "Fundamentals-of-Software-Architecture-Persian" / "index.html"
     write_redirect(alias2, destination)
     print(f"Written redirect fallback: {alias2} -> {destination}")
+    apply_image_seo()
 
 if __name__ == "__main__":
     main()

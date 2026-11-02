@@ -3,6 +3,7 @@
 <head>
     <link rel="canonical" href="https://www.alirostami.com/software-architecture/chapter-03">
     <meta charset="utf-8">
+    <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>فصل ۳: ماژولاریتی — مبانی معماری نرم‌افزار</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css">
@@ -177,6 +178,33 @@
             });
         })();
     </script>
+    <script type="application/ld+json" id="image-seo-schema">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://www.alirostami.com/software-architecture/chapter-03#webpage",
+  "url": "https://www.alirostami.com/software-architecture/chapter-03",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://www.alirostami.com/images/social/software-architecture.jpg",
+    "contentUrl": "https://www.alirostami.com/images/social/software-architecture.jpg",
+    "width": 1200,
+    "height": 630,
+    "caption": "ترجمه فارسی مبانی معماری نرم‌افزار؛ مطالعه آنلاین ۲۷ فصل و پیوست"
+  }
+}
+</script>
+    <!-- image-seo:start -->
+    <meta property="og:image" content="https://www.alirostami.com/images/social/software-architecture.jpg">
+    <meta property="og:image:secure_url" content="https://www.alirostami.com/images/social/software-architecture.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="ترجمه فارسی مبانی معماری نرم‌افزار؛ مطالعه آنلاین ۲۷ فصل و پیوست">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://www.alirostami.com/images/social/software-architecture.jpg">
+    <meta name="twitter:image:alt" content="ترجمه فارسی مبانی معماری نرم‌افزار؛ مطالعه آنلاین ۲۷ فصل و پیوست">
+    <!-- image-seo:end -->
 </head>
 <body>
 <!-- خروجی HTML — کامپوننت کامل فصل ۳ (بدون html/head) -->
@@ -289,7 +317,7 @@
     <p style="text-align:justify;">کلاسی را در نظر بگیرید با فیلدهای خصوصی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">a</bdi> و <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">b</bdi>. بسیاری از متدها فقط به <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">a</bdi> دسترسی دارند و بسیاری دیگر فقط به <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">b</bdi>. مجموعِ مجموعه‌هایِ متدهایی که از راهِ اشتراکِ فیلدها (<bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">a</bdi> و <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">b</bdi>) با هم مشترک نشده‌اند بالاست؛ بنابراین، این کلاس امتیازِ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">LCOM</bdi> بالایی می‌گیرد که از فقدانِ چشمگیرِ انسجام در متدها خبر می‌دهد.</p>
     <p style="text-align:justify;">سه کلاسِ نشان‌داده‌شده در شکل ۳-۱ را در نظر بگیرید. در اینجا فیلدها تک‌حرف‌هایی درونِ هشت‌ضلعی‌ها و متدها بلوک‌هایی هستند. در کلاس <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">X</bdi> امتیازِ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">LCOM</bdi> پایین است که از انسجامِ ساختاریِ خوب خبر می‌دهد. اما کلاس <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Y</bdi> انسجام ندارد؛ هر یک از جفت‌هایِ فیلد/متد در کلاس <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Y</bdi> می‌تواند در کلاسی مستقل جای گیرد بی‌آنکه بر رفتارِ سیستم اثری بگذارد. کلاس <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Z</bdi> انسجامی آمیخته نشان می‌دهد؛ آخرین ترکیبِ فیلد/متد می‌تواند به کلاسی مستقل بازآرایی شود.</p>
     <figure style="margin:1.5rem 0;text-align:center;">
-      <img src="figures/chapter-03/figure-3-1.png" alt="شکل ۳-۱. معیارِ LCOM که فیلدها را با هشت‌ضلعی‌ها و متدها را با مربع‌ها نشان می‌دهد." style="max-width:100%;height:auto;border:1px solid #e0e0e0;border-radius:4px;padding:4px;background:#fafafa;">
+      <img src="figures/chapter-03/figure-3-1.png" alt="شکل ۳-۱. معیارِ LCOM که فیلدها را با هشت‌ضلعی‌ها و متدها را با مربع‌ها نشان می‌دهد." style="max-width:100%;height:auto;border:1px solid #e0e0e0;border-radius:4px;padding:4px;background:#fafafa;" width="955" height="440" loading="lazy" decoding="async">
       <figcaption style="margin-top:.5rem;font-size:.9rem;color:#555;"><b>شکل ۳-۱.</b> معیارِ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">LCOM</bdi> که فیلدها را با هشت‌ضلعی‌ها و متدها را با مربع‌ها نشان می‌دهد.</figcaption>
     </figure>
     <p style="text-align:justify;">معیارِ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">LCOM</bdi> برای معمارانی سودمند است که پایگاه‌های کد را برای بازآرایی، مهاجرت یا درکِ آن تحلیل می‌کنند. کلاس‌های ابزاریِ مشترک هنگامِ جابه‌جاییِ معماری دردسرساز می‌شوند. با بهره‌گیری از معیارِ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">LCOM</bdi>، معماران می‌توانند کلاس‌هایی را بیابند که به‌طورِ اتفاقی کوپل شده‌اند و اصلاً نباید از همان ابتدا یک کلاسِ واحد می‌بودند.</p>
@@ -319,17 +347,17 @@
     <p style="text-align:justify;">در این فرمول، <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">A</bdi> همان میزانِ انتزاع و <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">I</bdi> همان ناپایداری است.</p>
     <p style="text-align:justify;">توجه کنید که میزانِ انتزاع و ناپایداری هر دو کسرهایی هستند که حاصلشان همواره میان ۰ و ۱ قرار می‌گیرد (جز در برخی موارد حدی). از همین رو، رسمِ نمودارِ رابطهٔ آن‌ها نموداری را پدید می‌آورد که در شکل ۳-۲ می‌بینید.</p>
     <figure style="margin:1.5rem 0;text-align:center;">
-      <img src="figures/chapter-03/figure-3-2.png" alt="شکل ۳-۲. دنبالهٔ اصلی رابطهٔ آرمانی میانِ میزانِ انتزاع و ناپایداری را تعریف می‌کند." style="max-width:100%;height:auto;border:1px solid #e0e0e0;border-radius:4px;padding:4px;background:#fafafa;">
+      <img src="figures/chapter-03/figure-3-2.png" alt="شکل ۳-۲. دنبالهٔ اصلی رابطهٔ آرمانی میانِ میزانِ انتزاع و ناپایداری را تعریف می‌کند." style="max-width:100%;height:auto;border:1px solid #e0e0e0;border-radius:4px;padding:4px;background:#fafafa;" width="501" height="464" loading="lazy" decoding="async">
       <figcaption style="margin-top:.5rem;font-size:.9rem;color:#555;"><b>شکل ۳-۲.</b> دنبالهٔ اصلی رابطهٔ آرمانی میانِ میزانِ انتزاع و ناپایداری را تعریف می‌کند.</figcaption>
     </figure>
     <p style="text-align:justify;">معیارِ فاصله، رابطه‌ای آرمانی میانِ میزانِ انتزاع و ناپایداری را فرض می‌گیرد؛ کلاس‌هایی که نزدیکِ این خطِ آرمانی قرار می‌گیرند، آمیزه‌ای سالم از این دو دغدغهٔ رقیب را نشان می‌دهند. برای نمونه، رسمِ یک کلاسِ معین روی نمودار به توسعه‌دهندگان امکان می‌دهد معیارِ فاصله از دنبالهٔ اصلی را محاسبه کنند که در شکل ۳-۳ نشان داده شده است.</p>
     <figure style="margin:1.5rem 0;text-align:center;">
-      <img src="figures/chapter-03/figure-3-3.png" alt="شکل ۳-۳. فاصلهٔ نرمال‌شده از دنبالهٔ اصلی برای یک کلاسِ معین" style="max-width:100%;height:auto;border:1px solid #e0e0e0;border-radius:4px;padding:4px;background:#fafafa;">
+      <img src="figures/chapter-03/figure-3-3.png" alt="شکل ۳-۳. فاصلهٔ نرمال‌شده از دنبالهٔ اصلی برای یک کلاسِ معین" style="max-width:100%;height:auto;border:1px solid #e0e0e0;border-radius:4px;padding:4px;background:#fafafa;" width="501" height="466" loading="lazy" decoding="async">
       <figcaption style="margin-top:.5rem;font-size:.9rem;color:#555;"><b>شکل ۳-۳.</b> فاصلهٔ نرمال‌شده از دنبالهٔ اصلی برای یک کلاسِ معین</figcaption>
     </figure>
     <p style="text-align:justify;">معیارِ شکل ۳-۳ کلاسِ مورد نظر را روی نمودار می‌برد و سپس فاصله‌اش را از خطِ آرمانی می‌سنجد. هرچه به خط نزدیک‌تر باشد، کلاس متوازن‌تر است. کلاس‌هایی که بیش از اندازه به گوشهٔ بالا-راست می‌روند، وارد چیزی می‌شوند که معماران آن را منطقهٔ بی‌فایدگی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Zone of Uselessness)</bdi> می‌نامند: کدی که بیش از اندازه انتزاعی است، به‌سختی به کار می‌آید. در مقابل، کدی که به گوشهٔ پایین-چپ می‌افتد، همان‌طور که در شکل ۳-۴ آمده، وارد منطقهٔ درد <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Zone of Pain)</bdi> می‌شود: کدی با پیاده‌سازیِ بیش از اندازه و انتزاعِ ناکافی، شکننده و نگهداری‌اش دشوار می‌شود.</p>
     <figure style="margin:1.5rem 0;text-align:center;">
-      <img src="figures/chapter-03/figure-3-4.png" alt="شکل ۳-۴. منطقه‌های بی‌فایدگی و درد" style="max-width:100%;height:auto;border:1px solid #e0e0e0;border-radius:4px;padding:4px;background:#fafafa;">
+      <img src="figures/chapter-03/figure-3-4.png" alt="شکل ۳-۴. منطقه‌های بی‌فایدگی و درد" style="max-width:100%;height:auto;border:1px solid #e0e0e0;border-radius:4px;padding:4px;background:#fafafa;" width="601" height="440" loading="lazy" decoding="async">
       <figcaption style="margin-top:.5rem;font-size:.9rem;color:#555;"><b>شکل ۳-۴.</b> منطقه‌های بی‌فایدگی و درد</figcaption>
     </figure>
     <p style="text-align:justify;">بسیاری از پلتفرم‌ها ابزارهایی برای محاسبهٔ این معیارها فراهم می‌کنند که به معماران کمک می‌کنند هنگامِ تحلیلِ پایگاه‌های کد با آن‌ها آشنا شوند، برای مهاجرت آماده شوند یا بدهی فنی را ارزیابی کنند.</p>
@@ -375,7 +403,7 @@ email.setSubject("whoops");</code></pre>
     <p style="text-align:justify;"><b>قدرت <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Strength)</bdi>:</b> معماران قدرتِ هم‌بستگی یک سیستم را با این می‌سنجند که توسعه‌دهنده تا چه اندازه آسان می‌تواند کوپلینگِ آن را بازآرایی کند. همان‌طور که در شکل ۳-۵ نشان داده شده، برخی انواعِ هم‌بستگی آشکارا از بقیه مطلوب‌ترند. بازآرایی به سوی انواعِ بهترِ هم‌بستگی می‌تواند ویژگی‌های کوپلینگِ یک پایگاه کد را بهبود دهد.</p>
     <p style="text-align:justify;">معماران باید هم‌بستگی ایستا را بر پویا ترجیح دهند، چون توسعه‌دهندگان می‌توانند آن را با تحلیلِ سادهٔ کدِ منبع تشخیص دهند و ابزارهای مدرن بهبودِ هم‌بستگی ایستا را کاری پیش‌پاافتاده کرده‌اند. برای نمونه، می‌توان هم‌بستگی معنا را با بازآرایی به هم‌بستگی نام بهبود داد: یعنی ساختنِ یک ثابتِ نام‌دار به‌جای یک مقدارِ جادویی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(magic value)</bdi>.</p>
     <figure style="margin:1.5rem 0;text-align:center;">
-      <img src="figures/chapter-03/figure-3-5.png" alt="شکل ۳-۵. قدرتِ هم‌بستگی می‌تواند راهنمای خوبی برای بازآرایی باشد." style="max-width:100%;height:auto;border:1px solid #e0e0e0;border-radius:4px;padding:4px;background:#fafafa;">
+      <img src="figures/chapter-03/figure-3-5.png" alt="شکل ۳-۵. قدرتِ هم‌بستگی می‌تواند راهنمای خوبی برای بازآرایی باشد." style="max-width:100%;height:auto;border:1px solid #e0e0e0;border-radius:4px;padding:4px;background:#fafafa;" width="701" height="568" loading="lazy" decoding="async">
       <figcaption style="margin-top:.5rem;font-size:.9rem;color:#555;"><b>شکل ۳-۵.</b> قدرتِ هم‌بستگی می‌تواند راهنمای خوبی برای بازآرایی باشد.</figcaption>
     </figure>
     <p style="text-align:justify;"><b>محلی‌بودن <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Locality)</bdi>:</b> محلی‌بودنِ هم‌بستگی یک سیستم می‌سنجد که ماژول‌هایش در پایگاه کد تا چه اندازه به یکدیگر نزدیک‌اند. کدهایی که به هم نزدیک‌اند (درون یک ماژول)، معمولاً اشکال قوی‌تر و بیشتری از هم‌بستگی را تاب می‌آورند در مقایسه با کدهایی که از یکدیگر دورند (در ماژول‌ها یا پایگاه‌های کدِ جداگانه). به بیان دیگر، اشکالی از هم‌بستگی که وقتی مؤلفه‌ها از هم دورند نشانهٔ کوپلینگِ نامطلوب‌اند، وقتی مؤلفه‌ها به هم نزدیک‌ترند پذیرفتنی‌اند. برای نمونه، اگر دو کلاس در یک ماژول هم‌بستگی معنا داشته باشند، آسیبِ کمتری به پایگاه کد می‌زند تا وقتی که آن کلاس‌ها در ماژول‌های جداگانه باشند.</p>

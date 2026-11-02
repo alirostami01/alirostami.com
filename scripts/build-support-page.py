@@ -12,6 +12,7 @@ Usage:
 
 from pathlib import Path
 
+from image_utils import apply_image_seo
 from redirects import ALIASES, write_redirect
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -495,13 +496,13 @@ def build(canonical: str) -> str:
         <title>حمایت از پروژه‌های من - علی رستمی</title><meta name="Description" content="حمایت مالی و غیرمالی از پروژه‌های متن‌باز علی رستمی؛ درگاه پرداخت ریالی و کیف‌پول‌های ارز دیجیتال به همراه کد QR."><meta property="og:title" content="حمایت از پروژه‌های من" />
 <meta property="og:description" content="حمایت مالی و غیرمالی از پروژه‌های متن‌باز علی رستمی؛ درگاه پرداخت ریالی و کیف‌پول‌های ارز دیجیتال به همراه کد QR." />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="{CANONICAL}" /><meta property="og:image" content="https://www.alirostami.com/images/Ali.jpg" />
-        <meta property="og:image:alt" content="Ali Rostami - Senior Software Architect" />
+<meta property="og:url" content="{CANONICAL}" /><meta property="og:image" content="https://www.alirostami.com/images/social/support-open-source.jpg" />
+        <meta property="og:image:alt" content="حمایت از پروژه‌های متن‌باز، ترجمه کتاب‌ها و آموزش‌های علی رستمی" />
         <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="1200" />
+        <meta property="og:image:height" content="630" />
 <meta property="og:site_name" content="علی رستمی" />
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://www.alirostami.com/images/Ali.jpg"/>
+<meta name="twitter:image" content="https://www.alirostami.com/images/social/support-open-source.jpg"/>
 <meta name="twitter:title" content="حمایت از پروژه‌های من"/>
 <meta name="twitter:description" content="حمایت مالی و غیرمالی از پروژه‌های متن‌باز علی رستمی."/>
 <meta name="application-name" content="Ali Rostami">
@@ -590,6 +591,7 @@ def main() -> None:
         if destination == "/support/":
             write_redirect(ROOT / rel, destination)
             print(f"wrote redirect fallback {rel} -> {destination}")
+    apply_image_seo()
 
 
 if __name__ == "__main__":

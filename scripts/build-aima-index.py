@@ -16,6 +16,8 @@ import os
 import re
 from pathlib import Path
 
+from image_utils import apply_image_seo
+
 ROOT = Path(__file__).resolve().parent.parent
 AIMA_DIR = ROOT / "aima-4e"
 
@@ -1076,6 +1078,7 @@ def main():
     # 2. Inject chapter nav helpers
     inject_chapter_helpers(chapters)
     print("Injected nav helpers into chapter files.")
+    apply_image_seo()
 
 
 if __name__ == "__main__":

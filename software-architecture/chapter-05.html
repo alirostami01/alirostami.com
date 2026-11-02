@@ -3,6 +3,7 @@
 <head>
     <link rel="canonical" href="https://www.alirostami.com/software-architecture/chapter-05">
     <meta charset="utf-8">
+    <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>فصل ۵: شناسایی ویژگی‌های معماری — مبانی معماری نرم‌افزار</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css">
@@ -177,6 +178,33 @@
             });
         })();
     </script>
+    <script type="application/ld+json" id="image-seo-schema">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://www.alirostami.com/software-architecture/chapter-05#webpage",
+  "url": "https://www.alirostami.com/software-architecture/chapter-05",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://www.alirostami.com/images/social/software-architecture.jpg",
+    "contentUrl": "https://www.alirostami.com/images/social/software-architecture.jpg",
+    "width": 1200,
+    "height": 630,
+    "caption": "ترجمه فارسی مبانی معماری نرم‌افزار؛ مطالعه آنلاین ۲۷ فصل و پیوست"
+  }
+}
+</script>
+    <!-- image-seo:start -->
+    <meta property="og:image" content="https://www.alirostami.com/images/social/software-architecture.jpg">
+    <meta property="og:image:secure_url" content="https://www.alirostami.com/images/social/software-architecture.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="ترجمه فارسی مبانی معماری نرم‌افزار؛ مطالعه آنلاین ۲۷ فصل و پیوست">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://www.alirostami.com/images/social/software-architecture.jpg">
+    <meta name="twitter:image:alt" content="ترجمه فارسی مبانی معماری نرم‌افزار؛ مطالعه آنلاین ۲۷ فصل و پیوست">
+    <!-- image-seo:end -->
 </head>
 <body>
 <!-- خروجی HTML — کامپوننت کامل فصل ۵ (بدون html/head) -->
@@ -287,12 +315,12 @@
     <p style="text-align:justify;">یکی از نخستین جزئیاتی که باید توجه‌تان را جلب کند، شمارِ کاربران است: در حالِ حاضر هزاران نفر، و شاید روزی میلیون‌ها نفر (این ساندویچ‌فروشی بسیار جاه‌طلب است!). بنابراین مقیاس‌پذیری، یعنی توانِ پاسخ‌گویی به شمارِ زیادی کاربرِ هم‌زمان بدونِ افتِ چشمگیرِ کارایی، یکی از مهم‌ترین ویژگی‌های معماری است. توجه کنید که صورتِ مسئله به‌صراحت مقیاس‌پذیری را نخواسته، بلکه این الزام را در قالبِ شمارِ موردانتظارِ کاربران بیان کرده است. معماران اغلب باید زبانِ حوزه را رمزگشایی کنند و به معادل‌های مهندسیِ آن برسند.</p>
     <p style="text-align:justify;">احتمالاً به کشسانی هم نیاز خواهید داشت، یعنی توانِ پاسخ‌گویی به جهش‌های ناگهانیِ درخواست‌ها. این دو ویژگی اغلب یکی گرفته می‌شوند، اما محدودیت‌های متفاوتی دارند. مقیاس‌پذیری به نموداری شبیه است که در شکل ۵-۱ می‌بینید.</p>
     <figure style="margin:1rem 0;padding:.7rem 1rem;background:#f9f9f9;border-right:4px solid #2c5f8a;border-radius:4px;">
-      <img src="figures/chapter-05/figure-5-1.png" alt="شکل ۵-۱. مقیاس‌پذیری معیاری برای افزایشِ شمارِ کاربران در گذرِ زمان است." loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;">
+      <img src="figures/chapter-05/figure-5-1.png" alt="شکل ۵-۱. مقیاس‌پذیری معیاری برای افزایشِ شمارِ کاربران در گذرِ زمان است." loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;" width="746" height="551" decoding="async">
       <figcaption style="font-size:.95rem;color:#333;"><b>شکل ۵-۱.</b> مقیاس‌پذیری معیاری برای افزایشِ شمارِ کاربران در گذرِ زمان است.</figcaption>
     </figure>
     <p style="text-align:justify;">در مقابل، کشسانی جهش‌های ترافیک را می‌سنجد، همان‌طور که در شکل ۵-۲ نشان داده شده است.</p>
     <figure style="margin:1rem 0;padding:.7rem 1rem;background:#f9f9f9;border-right:4px solid #2c5f8a;border-radius:4px;">
-      <img src="figures/chapter-05/figure-5-2.png" alt="شکل ۵-۲. سیستم‌های کشسان باید در برابرِ جهش‌های ناگهانیِ کاربران تاب بیاورند." loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;">
+      <img src="figures/chapter-05/figure-5-2.png" alt="شکل ۵-۲. سیستم‌های کشسان باید در برابرِ جهش‌های ناگهانیِ کاربران تاب بیاورند." loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;" width="749" height="561" decoding="async">
       <figcaption style="font-size:.95rem;color:#333;"><b>شکل ۵-۲.</b> سیستم‌های کشسان باید در برابرِ جهش‌های ناگهانیِ کاربران تاب بیاورند.</figcaption>
     </figure>
     <p style="text-align:justify;">برخی سیستم‌ها مقیاس‌پذیرند اما کشسان نیستند. برای نمونه، شمارِ کاربرانِ یک سیستمِ رزروِ هتل، اگر فروشِ ویژه یا رویدادی در کار نباشد، احتمالاً الگویی فصلی و پیش‌بینی‌پذیر دارد. در مقابل، سیستمِ رزروِ بلیتِ کنسرت را در نظر بگیرید. با آغازِ فروشِ بلیت‌های جدید، هواداران پرشور به سایت هجوم می‌آورند و سیستم به درجهٔ بالایی از کشسانی نیاز پیدا می‌کند. سیستم‌های کشسان اغلب به مقیاس‌پذیری هم نیاز دارند: توانِ پاسخ‌گویی هم به جهش‌ها و هم به شمارِ بالای کاربرانِ هم‌زمان.</p>
@@ -360,7 +388,7 @@
     <p style="text-align:justify;">این کاربرگ برای استفاده در یک جلسهٔ تعاملی طراحی شده است که معمار آن را اداره می‌کند و در آن نظرِ ذی‌نفعان را دربارهٔ شمار و جزئیاتِ ویژگی‌های معماریِ لازم جویا می‌شود. در سمتِ چپ، هفت جای خالی برای فهرست‌کردنِ ویژگی‌های معماریِ موردنظر می‌بینید.</p>
     <p style="text-align:justify;">چرا هفت؟ چرا که نه؟ جدی‌تر بگوییم، معمار باید فهرست را به عددی معقول محدود کند؛ شش یا هشت هم جواب می‌دهد (هرچند پشتِ عددِ هفت پشتوانهٔ روان‌شناختیِ جالبی نهفته است). ستونِ دوم چند ویژگی نامشهودِ معماری را در بر دارد؛ این ویژگی‌ها در بیشترِ سیستم‌ها حضور دارند، اما گاهی معماران آن‌ها را به‌عنوانِ دغدغه‌های پیشرانِ برنامه که طراحی و توجهِ ویژه می‌طلبند در اولویت قرار می‌دهند. در چنین مواردی، معمار ویژگی‌های نامشهود را به ستونِ نخست «می‌کشد». اگر ستونِ نخست پر شود و موردِ بهتری پیدا شود که جای یکی از موارد را بگیرد، معمار موردِ کنارگذاشته را به دستهٔ «موارد بررسی‌شدهٔ دیگر» <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Others Considered)</bdi> منتقل می‌کند.</p>
     <figure style="margin:1rem 0;padding:.7rem 1rem;background:#f9f9f9;border-right:4px solid #2c5f8a;border-radius:4px;">
-      <img src="figures/chapter-05/figure-5-3.png" alt="شکل ۵-۳. کاربرگِ ویژگی‌های معماری." loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;">
+      <img src="figures/chapter-05/figure-5-3.png" alt="شکل ۵-۳. کاربرگِ ویژگی‌های معماری." loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;" width="624" height="568" decoding="async">
       <figcaption style="font-size:.95rem;color:#333;"><b>شکل ۵-۳.</b> کاربرگِ ویژگی‌های معماری.</figcaption>
     </figure>
     <p style="text-align:justify;">گامِ آخر این است که سه ویژگی معماری با بالاترین اولویت، بدونِ ترتیبِ خاصی، به‌صورتِ جمعی برگزیده شوند (کادرِ کنارِ هر یک را علامت بزنید). این تمرین به معماران امکان می‌دهد فهرستی کوتاه‌شده و اولویت‌بندی‌شده از نیروهای پیشران به دست آورند و از آن برای هدایتِ تصمیم‌های طراحی و تحلیلِ مصالحه‌ها استفاده کنند.</p>

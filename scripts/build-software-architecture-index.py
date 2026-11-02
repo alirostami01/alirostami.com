@@ -8,6 +8,8 @@ import re
 from pathlib import Path
 import json
 
+from image_utils import apply_image_seo
+
 ROOT = Path(__file__).resolve().parent.parent
 BOOK_DIR = ROOT / "software-architecture"
 
@@ -1284,4 +1286,5 @@ if __name__ == "__main__":
     print(f"Processed {len(chapters)} chapters.")
     print("Building reader index...")
     build_reader_index(chapters)
+    apply_image_seo()
     print("Done!")

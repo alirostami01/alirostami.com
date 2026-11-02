@@ -3,6 +3,7 @@
 <head>
     <link rel="canonical" href="https://www.alirostami.com/software-architecture/chapter-27">
     <meta charset="utf-8">
+    <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>فصل ۲۷: بازنگری در قوانین معماری نرم‌افزار — مبانی معماری نرم‌افزار</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css">
@@ -177,6 +178,33 @@
             });
         })();
     </script>
+    <script type="application/ld+json" id="image-seo-schema">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://www.alirostami.com/software-architecture/chapter-27#webpage",
+  "url": "https://www.alirostami.com/software-architecture/chapter-27",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://www.alirostami.com/images/social/software-architecture.jpg",
+    "contentUrl": "https://www.alirostami.com/images/social/software-architecture.jpg",
+    "width": 1200,
+    "height": 630,
+    "caption": "ترجمه فارسی مبانی معماری نرم‌افزار؛ مطالعه آنلاین ۲۷ فصل و پیوست"
+  }
+}
+</script>
+    <!-- image-seo:start -->
+    <meta property="og:image" content="https://www.alirostami.com/images/social/software-architecture.jpg">
+    <meta property="og:image:secure_url" content="https://www.alirostami.com/images/social/software-architecture.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="ترجمه فارسی مبانی معماری نرم‌افزار؛ مطالعه آنلاین ۲۷ فصل و پیوست">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://www.alirostami.com/images/social/software-architecture.jpg">
+    <meta name="twitter:image:alt" content="ترجمه فارسی مبانی معماری نرم‌افزار؛ مطالعه آنلاین ۲۷ فصل و پیوست">
+    <!-- image-seo:end -->
 </head>
 <body>
 <!-- خروجی HTML — کامپوننت کامل فصل ۲۷ (بدون html/head) -->
@@ -207,7 +235,7 @@
     <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;">کتابخانهٔ مشترک در برابر سرویس مشترک</h4>
     <p style="text-align:justify;">یکی از معماهای رایج معماران، رفتار مشترک در معماری‌های توزیع‌شده‌ای مانند میکروسرویس‌ها یا <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">EDA</bdi> است: آیا باید از کتابخانهٔ مشترک <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(shared library)</bdi> استفاده کنیم که در زمان ساخت <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(build time)</bdi> درون هر سرویس کامپایل می‌شود، یا از سرویس مشترک <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(shared service)</bdi> که دیگر سرویس‌ها در زمان اجرا <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(runtime)</bdi> فراخوانی‌اش می‌کنند؟ شکل ۲۷-۱ این دو گزینه را نشان می‌دهد.</p>
     <figure style="margin:1rem 0;padding:.7rem 1rem;background:#f9f9f9;border-right:4px solid #2c5f8a;border-radius:4px;">
-      <img src="figures/chapter-27/figure-27-1.png" alt="شکل ۲۷-۱. آیا راه‌حل باید برای کارکردهای مشترک از کتابخانهٔ مشترک استفاده کند یا از سرویس مشترک؟" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;">
+      <img src="figures/chapter-27/figure-27-1.png" alt="شکل ۲۷-۱. آیا راه‌حل باید برای کارکردهای مشترک از کتابخانهٔ مشترک استفاده کند یا از سرویس مشترک؟" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;" width="873" height="269" decoding="async">
       <figcaption style="font-size:.95rem;color:#333;"><b>شکل ۲۷-۱.</b> آیا راه‌حل باید برای کارکردهای مشترک از کتابخانهٔ مشترک استفاده کند یا از سرویس مشترک؟</figcaption>
     </figure>
     <p style="text-align:justify;">در شکل ۲۷-۱، سرویسِ سمت چپ رفتار مشترک را کپسوله می‌کند و دیگر سرویس‌ها برای دسترسی به آن، فراخوانی‌اش می‌کنند. در سمت راست، کتابخانه‌ای مشترک داریم که پیش از استقرار درون هر سرویس کامپایل می‌شود. کدام بهتر است؟</p>
@@ -244,12 +272,12 @@
     <p style="text-align:justify;">تحلیل مصالحه‌ای را در نظر بگیرید: تیم شما در حال ساخت یک معماری توزیع‌شده است تا اطلاعات معاملات را هم به سرویس <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Notification</bdi> و هم به سرویس <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Analytics</bdi> بفرستد، و می‌کوشید تصمیم بگیرید که برای پیاده‌سازی این رفتار از <b>صف</b> <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(queue)</bdi> استفاده کنید یا <b>موضوع</b> <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(topic)</bdi>.</p>
     <p style="text-align:justify;">گزینهٔ نخست صف است؛ یعنی یک پروتکل ارتباطی نقطه‌به‌نقطه <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(point-to-point)</bdi>. چنان‌که در فصل ۲ دیدید، در این حالت ناشر می‌داند چه کسی پیام را دریافت می‌کند. ناشر برای رسیدن به چند مصرف‌کننده باید برای هر مصرف‌کننده پیامی به یک صف جداگانه بفرستد. اگر سرویس <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Trading</bdi> بخواهد با صف‌ها، سرویس <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Analytics</bdi> و سرویس <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Reporting</bdi> را از معاملات باخبر کند، پیاده‌سازی به شکلی خواهد بود که در شکل ۲۷-۲ می‌بینید.</p>
     <figure style="margin:1rem 0;padding:.7rem 1rem;background:#f9f9f9;border-right:4px solid #2c5f8a;border-radius:4px;">
-      <img src="figures/chapter-27/figure-27-2.png" alt="شکل ۲۷-۲. استفاده از صف برای انتقال اطلاعات معاملات به Notification و Analytics" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;">
+      <img src="figures/chapter-27/figure-27-2.png" alt="شکل ۲۷-۲. استفاده از صف برای انتقال اطلاعات معاملات به Notification و Analytics" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;" width="544" height="246" decoding="async">
       <figcaption style="font-size:.95rem;color:#333;"><b>شکل ۲۷-۲.</b> استفاده از صف برای انتقال اطلاعات معاملات به <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Notification</bdi> و <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Analytics</bdi></figcaption>
     </figure>
     <p style="text-align:justify;">در شکل ۲۷-۲، سرویس <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Trading</bdi> از طریق یک صف برای هر مصرف‌کننده پیامی صادر می‌کند. هر مصرف‌کننده صف خودش را دارد و فرستنده در هر صف پیامی می‌گذارد.</p>
     <figure style="margin:1rem 0;padding:.7rem 1rem;background:#f9f9f9;border-right:4px solid #2c5f8a;border-radius:4px;">
-      <img src="figures/chapter-27/figure-27-3.png" alt="شکل ۲۷-۳. استفاده از موضوع برای انتقال اطلاعات معاملات به Notification و Analytics" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;">
+      <img src="figures/chapter-27/figure-27-3.png" alt="شکل ۲۷-۳. استفاده از موضوع برای انتقال اطلاعات معاملات به Notification و Analytics" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;" width="544" height="246" decoding="async">
       <figcaption style="font-size:.95rem;color:#333;"><b>شکل ۲۷-۳.</b> استفاده از موضوع برای انتقال اطلاعات معاملات به <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Notification</bdi> و <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Analytics</bdi></figcaption>
     </figure>
     <p style="text-align:justify;">توپولوژی جایگزین به‌جای صف از <b>موضوع</b> استفاده می‌کند که به‌جای ارتباط نقطه‌به‌نقطه، پخش <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(broadcast)</bdi> را پیاده می‌کند. در شکل ۲۷-۳، سرویس <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Trading</bdi> تنها یک پیام در یک موضوع منتشر می‌کند. هر مصرف‌کننده مشترک آن موضوع است و همهٔ مصرف‌کنندگان با ظاهر شدن پیام، اعلانی دریافت می‌کنند. در این حالت، ناشر پیام نمی‌داند (و اهمیتی هم نمی‌دهد) که مصرف‌کنندگان چه کسانی‌اند؛ در واقع تیم می‌تواند هر زمان مصرف‌کنندهٔ تازه‌ای بیفزاید، بی‌آنکه دیگر مصرف‌کنندگان یا تولیدکننده را تغییر دهد.</p>

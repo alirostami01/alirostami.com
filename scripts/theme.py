@@ -89,13 +89,13 @@ def page(
         <title>{title}</title><meta name="Description" content="{description}"><meta property="og:title" content="{title}" />
 <meta property="og:description" content="{description}" />
 <meta property="og:type" content="{og_type}" />
-<meta property="og:url" content="{canonical}" /><meta property="og:image" content="https://www.alirostami.com/images/Ali.jpg" />
-        <meta property="og:image:alt" content="Ali Rostami - Senior Software Architect" />
+<meta property="og:url" content="{canonical}" /><meta property="og:image" content="https://www.alirostami.com/images/social/ali-rostami.jpg" />
+        <meta property="og:image:alt" content="علی رستمی؛ معماری نرم‌افزار، هوش مصنوعی و پروژه‌های متن‌باز" />
         <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="1200" />
+        <meta property="og:image:height" content="630" />
 <meta property="og:site_name" content="{SITE_NAME}" />
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://www.alirostami.com/images/Ali.jpg"/>
+<meta name="twitter:image" content="https://www.alirostami.com/images/social/ali-rostami.jpg"/>
 <meta name="twitter:title" content="{title}"/>
 <meta name="twitter:description" content="{description}"/>
 <meta name="application-name" content="Ali Rostami">

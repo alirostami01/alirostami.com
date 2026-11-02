@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
-"""Build the Persian support page inside the site's LoveIt theme shell.
+"""Build the canonical Persian support page and its redirect fallbacks.
 
-One source of truth -> written to every URL the page must answer on:
-
-    /support/            -> support/index.html      (canonical)
-    /support.html        -> support.html            (legacy/extension URL)
-    /fa/support/         -> fa/support/index.html
-    /fa/support.html     -> fa/support.html         (legacy)
+    /support/            -> support/index.html      (canonical content)
+    /support.html        -> static noindex fallback (Cloudflare serves 301)
+    /fa/support/         -> static noindex fallback (Cloudflare serves 301)
+    /fa/support.html     -> static noindex fallback (Cloudflare serves 301)
 
 Usage:
     python3 scripts/build-support-page.py
 """
 
 from pathlib import Path
+
+from redirects import ALIASES, write_redirect
 
 ROOT = Path(__file__).resolve().parent.parent
 CANONICAL = "https://www.alirostami.com/support/"
@@ -94,7 +94,7 @@ PROJECTS = [
         "subtitle": "افزونه غیررسمی Stremio",
         "icon": "/images/projects/persian-subtitles.png",
         "url": "https://github.com/alirostami01/Persian-Subtitles",
-        "docs": "/Persian-Subtitles/",
+        "docs": "/persian-subtitles/",
         "description": (
             "Persian Subtitles یک افزونه غیررسمی برای Stremio است که با دریافت شناسه IMDb "
             "از استرمیو، فیلم یا سریال متناظر را در SubSource پیدا می‌کند و زیرنویس‌های فارسی "
@@ -107,7 +107,7 @@ PROJECTS = [
         "subtitle": "افزونه غیررسمی Stremio",
         "icon": "/images/projects/persian-streams.png",
         "url": "https://github.com/alirostami01/Persian-Streams",
-        "docs": "/Persian-Streams/",
+        "docs": "/persian-streams/",
         "description": (
             "Persian Streams یک افزونه غیررسمی برای Stremio است که با دریافت شناسه IMDb "
             "از استرمیو، صفحه محتوای متناظر را در منبع ایرانیِ تنظیم‌شده پیدا می‌کند و "
@@ -357,18 +357,18 @@ STYLE = """
 """
 
 
-def header(active_home: str = "/fa/") -> str:
+def header(active_home: str = "/") -> str:
     return f"""<div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
             <a href="{active_home}" title="فارسی">Ali Rostami</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a href="/fa/" class="menu-item" title="خانه">خانه</a><a href="/software-architecture/" class="menu-item" title="مطالعه آنلاین کتاب معماری نرم‌افزار"><i class="fas fa-cubes fa-fw" aria-hidden="true"></i> کتاب معماری نرم‌افزار</a><a href="/aima-4e/" class="menu-item" title="کتاب هوش مصنوعی">کتاب هوش مصنوعی</a><a href="/support/" class="menu-item active" title="حمایت">حمایت</a><a href="javascript:void(0);" class="menu-item theme-switch" title="تغییر ظاهر">
+            <div class="menu-inner"><a href="/" class="menu-item" title="خانه">خانه</a><a href="/software-architecture/" class="menu-item" title="مطالعه آنلاین کتاب معماری نرم‌افزار"><i class="fas fa-cubes fa-fw" aria-hidden="true"></i> کتاب معماری نرم‌افزار</a><a href="/aima-4e/" class="menu-item" title="کتاب هوش مصنوعی">کتاب هوش مصنوعی</a><a href="/support/" class="menu-item active" title="حمایت">حمایت</a><a href="javascript:void(0);" class="menu-item theme-switch" title="تغییر ظاهر">
                     <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a><a href="javascript:void(0);" class="menu-item language" title="انتخاب زبان">
                     <i class="fa fa-globe" aria-hidden="true"></i>
-                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/en/support.html">English</option><option value="/support/" selected>فارسی</option></select>
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/en/support/">English</option><option value="/support/" selected>فارسی</option></select>
                 </a></div>
         </div>
     </div>
@@ -382,11 +382,11 @@ def header(active_home: str = "/fa/") -> str:
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a href="/fa/" class="menu-item" title="خانه">خانه</a><a href="/software-architecture/" class="menu-item" title="مطالعه آنلاین کتاب معماری نرم‌افزار"><i class="fas fa-cubes fa-fw" aria-hidden="true"></i> کتاب معماری نرم‌افزار</a><a href="/aima-4e/" class="menu-item" title="کتاب هوش مصنوعی">کتاب هوش مصنوعی</a><a href="/support/" class="menu-item active" title="حمایت">حمایت</a><a href="javascript:void(0);" class="menu-item theme-switch" title="تغییر ظاهر">
+        <div class="menu" id="menu-mobile"><a href="/" class="menu-item" title="خانه">خانه</a><a href="/software-architecture/" class="menu-item" title="مطالعه آنلاین کتاب معماری نرم‌افزار"><i class="fas fa-cubes fa-fw" aria-hidden="true"></i> کتاب معماری نرم‌افزار</a><a href="/aima-4e/" class="menu-item" title="کتاب هوش مصنوعی">کتاب هوش مصنوعی</a><a href="/support/" class="menu-item active" title="حمایت">حمایت</a><a href="javascript:void(0);" class="menu-item theme-switch" title="تغییر ظاهر">
                 <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a><a href="javascript:void(0);" class="menu-item" title="انتخاب زبان">
                     <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
-                    <select class="language-select" onchange="location = this.value;"><option value="/en/support.html">English</option><option value="/support/" selected>فارسی</option></select>
+                    <select class="language-select" onchange="location = this.value;"><option value="/en/support/">English</option><option value="/support/" selected>فارسی</option></select>
                 </a></div>
     </div>
 </header>"""
@@ -394,7 +394,7 @@ def header(active_home: str = "/fa/") -> str:
 
 FOOTER = """<footer class="footer">
         <div class="footer-container"><div class="footer-line">ایجاد شده توسط <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.2">Hugo</a> | پوسته - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i>2022 - <span itemprop="copyrightYear">2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/fa/">علی رستمی</a></span></div>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i>2022 - <span itemprop="copyrightYear">2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/">علی رستمی</a></span></div>
         </div>
     </footer></div>"""
 
@@ -491,7 +491,7 @@ def build(canonical: str) -> str:
         <meta name="generator" content="Hugo 0.92.2" />
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="robots" content="noodp" />
+        <meta name="robots" content="index, follow" />
         <title>حمایت از پروژه‌های من - علی رستمی</title><meta name="Description" content="حمایت مالی و غیرمالی از پروژه‌های متن‌باز علی رستمی؛ درگاه پرداخت ریالی و کیف‌پول‌های ارز دیجیتال به همراه کد QR."><meta property="og:title" content="حمایت از پروژه‌های من" />
 <meta property="og:description" content="حمایت مالی و غیرمالی از پروژه‌های متن‌باز علی رستمی؛ درگاه پرداخت ریالی و کیف‌پول‌های ارز دیجیتال به همراه کد QR." />
 <meta property="og:type" content="website" />
@@ -508,7 +508,7 @@ def build(canonical: str) -> str:
 <meta name="apple-mobile-web-app-title" content="Ali Rostami"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="{canonical}" /><link rel="alternate" hreflang="fa" href="{CANONICAL}" /><link rel="alternate" hreflang="en" href="https://www.alirostami.com/en/support.html" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="{canonical}" /><link rel="alternate" hreflang="fa" href="{CANONICAL}" /><link rel="alternate" hreflang="en" href="https://www.alirostami.com/en/support/" /><link rel="alternate" hreflang="x-default" href="{CANONICAL}" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
 {{
@@ -574,9 +574,6 @@ def build(canonical: str) -> str:
 
 TARGETS = {
     "support/index.html": CANONICAL,
-    "support.html": CANONICAL,
-    "fa/support/index.html": CANONICAL,
-    "fa/support.html": CANONICAL,
 }
 
 
@@ -586,6 +583,13 @@ def main() -> None:
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(build(canonical), encoding="utf-8")
         print(f"wrote {rel} ({path.stat().st_size} bytes)")
+
+    # Keep legacy files as lightweight crawl-safe fallbacks. Cloudflare must
+    # perform the actual HTTP 301 redirects in production.
+    for rel, destination in ALIASES.items():
+        if destination == "/support/":
+            write_redirect(ROOT / rel, destination)
+            print(f"wrote redirect fallback {rel} -> {destination}")
 
 
 if __name__ == "__main__":

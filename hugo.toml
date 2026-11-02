@@ -1,7 +1,8 @@
 baseURL = "https://www.alirostami.com/"
 title = "علی رستمی (Ali Rostami) | توسعه‌دهنده نرم‌افزار، هوش مصنوعی و پروژه‌های متن‌باز"
 defaultContentLanguage = "fa"
-languageCode = "fa"
+defaultContentLanguageInSubdir = false
+languageCode = "fa-IR"
 theme = "LoveIt"
 hasCJKLanguage = false
 
@@ -59,7 +60,7 @@ paginate = 10
 [languages]
   [languages.fa]
     weight = 1
-    languageCode = "fa"
+    languageCode = "fa-IR"
     languageName = "فارسی"
     title = "علی رستمی (Ali Rostami) | توسعه‌دهنده نرم‌افزار، هوش مصنوعی و پروژه‌های متن‌باز"
     [languages.fa.params]

@@ -4,6 +4,8 @@
 import os
 from pathlib import Path
 
+from redirects import write_redirect
+
 ROOT = Path(__file__).resolve().parent.parent
 
 CHAPTERS_TABLE = [
@@ -143,13 +145,13 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
                   "@type": "ListItem",
                   "position": 1,
                   "name": "خانه",
-                  "item": "https://www.alirostami.com/fa/"
+                  "item": "https://www.alirostami.com/"
                 }},
                 {{
                   "@type": "ListItem",
                   "position": 2,
                   "name": "پروژه‌ها",
-                  "item": "https://www.alirostami.com/fa/#projects"
+                  "item": "https://www.alirostami.com/#projects"
                 }},
                 {{
                   "@type": "ListItem",
@@ -389,23 +391,23 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
-            <a href="/fa/" title="علی رستمی">Ali Rostami</a>
+            <a href="/" title="علی رستمی">Ali Rostami</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a href="/fa/" class="menu-item" title="خانه">خانه</a><a href="/software-architecture/" class="menu-item" title="مطالعه آنلاین کتاب معماری نرم‌افزار"><i class="fas fa-cubes fa-fw" aria-hidden="true"></i> کتاب معماری نرم‌افزار</a><a href="/aima-4e/" class="menu-item" title="کتاب هوش مصنوعی">کتاب هوش مصنوعی</a><a href="/posts/" class="menu-item" title="مقالات">مقالات</a><a href="/support/" class="menu-item" title="حمایت"><i class="fas fa-heart fa-fw" style="color:#e0245e;" aria-hidden="true"></i> حمایت</a><a href="javascript:void(0);" class="menu-item theme-switch" title="تغییر ظاهر"><i class="fas fa-adjust fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" class="menu-item language" title="انتخاب زبان"><i class="fa fa-globe" aria-hidden="true"></i><select class="language-select" onchange="location = this.value;"><option value="/">English</option><option value="/fa/" selected>فارسی</option></select></a></div>
+            <div class="menu-inner"><a href="/" class="menu-item" title="خانه">خانه</a><a href="/software-architecture/" class="menu-item" title="مطالعه آنلاین کتاب معماری نرم‌افزار"><i class="fas fa-cubes fa-fw" aria-hidden="true"></i> کتاب معماری نرم‌افزار</a><a href="/aima-4e/" class="menu-item" title="کتاب هوش مصنوعی">کتاب هوش مصنوعی</a><a href="/posts/" class="menu-item" title="مقالات">مقالات</a><a href="/support/" class="menu-item" title="حمایت"><i class="fas fa-heart fa-fw" style="color:#e0245e;" aria-hidden="true"></i> حمایت</a><a href="javascript:void(0);" class="menu-item theme-switch" title="تغییر ظاهر"><i class="fas fa-adjust fa-fw" aria-hidden="true"></i></a></div>
         </div>
     </div>
 </header><header class="mobile" id="header-mobile">
     <div class="header-container">
         <div class="header-wrapper">
             <div class="header-title">
-                <a href="/fa/" title="علی رستمی">Ali Rostami</a>
+                <a href="/" title="علی رستمی">Ali Rostami</a>
             </div>
             <div class="menu-toggle" id="menu-toggle-mobile">
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a href="/fa/" class="menu-item" title="خانه">خانه</a><a href="/software-architecture/" class="menu-item" title="مطالعه آنلاین کتاب معماری نرم‌افزار"><i class="fas fa-cubes fa-fw" aria-hidden="true"></i> کتاب معماری نرم‌افزار</a><a href="/aima-4e/" class="menu-item" title="کتاب هوش مصنوعی">کتاب هوش مصنوعی</a><a href="/posts/" class="menu-item" title="مقالات">مقالات</a><a href="/support/" class="menu-item" title="حمایت"><i class="fas fa-heart fa-fw" style="color:#e0245e;" aria-hidden="true"></i> حمایت</a><a href="javascript:void(0);" class="menu-item theme-switch" title="تغییر ظاهر"><i class="fas fa-adjust fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" class="menu-item language" title="انتخاب زبان"><i class="fa fa-globe" aria-hidden="true"></i><select class="language-select" onchange="location = this.value;"><option value="/">English</option><option value="/fa/" selected>فارسی</option></select></a></div>
+        <div class="menu" id="menu-mobile"><a href="/" class="menu-item" title="خانه">خانه</a><a href="/software-architecture/" class="menu-item" title="مطالعه آنلاین کتاب معماری نرم‌افزار"><i class="fas fa-cubes fa-fw" aria-hidden="true"></i> کتاب معماری نرم‌افزار</a><a href="/aima-4e/" class="menu-item" title="کتاب هوش مصنوعی">کتاب هوش مصنوعی</a><a href="/posts/" class="menu-item" title="مقالات">مقالات</a><a href="/support/" class="menu-item" title="حمایت"><i class="fas fa-heart fa-fw" style="color:#e0245e;" aria-hidden="true"></i> حمایت</a><a href="javascript:void(0);" class="menu-item theme-switch" title="تغییر ظاهر"><i class="fas fa-adjust fa-fw" aria-hidden="true"></i></a></div>
     </div>
 </header><main class="main">
                 <div class="container"><article class="page single docs-page">
@@ -586,7 +588,7 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
 </article></div>
             </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">ایجاد شده توسط <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.2">Hugo</a> | پوسته - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i>2022 - <span itemprop="copyrightYear">2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/fa/" target="_blank">علی رستمی</a></span></div>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i>2022 - <span itemprop="copyrightYear">2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">علی رستمی</a></span></div>
         </div>
     </footer></div>
 
@@ -600,22 +602,21 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
 def main():
     target_dir = ROOT / "fundamentals-of-software-architecture-persian"
     target_dir.mkdir(parents=True, exist_ok=True)
-    
+
     target_index = target_dir / "index.html"
     target_index.write_text(HTML_TEMPLATE, encoding="utf-8")
     print(f"Written: {target_index} ({len(HTML_TEMPLATE)} bytes)")
 
-    # Alias 1: root .html file
+    # Legacy aliases are noindex HTML fallbacks; Cloudflare serves the actual
+    # permanent redirects in production.
+    destination = "/fundamentals-of-software-architecture-persian/"
     alias1 = ROOT / "fundamentals-of-software-architecture-persian.html"
-    alias1.write_text(HTML_TEMPLATE, encoding="utf-8")
-    print(f"Written alias: {alias1}")
+    write_redirect(alias1, destination)
+    print(f"Written redirect fallback: {alias1} -> {destination}")
 
-    # Alias 2: Capitalized folder
-    cap_dir = ROOT / "Fundamentals-of-Software-Architecture-Persian"
-    cap_dir.mkdir(parents=True, exist_ok=True)
-    alias2 = cap_dir / "index.html"
-    alias2.write_text(HTML_TEMPLATE, encoding="utf-8")
-    print(f"Written alias: {alias2}")
+    alias2 = ROOT / "Fundamentals-of-Software-Architecture-Persian" / "index.html"
+    write_redirect(alias2, destination)
+    print(f"Written redirect fallback: {alias2} -> {destination}")
 
 if __name__ == "__main__":
     main()

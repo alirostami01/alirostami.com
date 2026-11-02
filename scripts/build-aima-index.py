@@ -23,21 +23,21 @@ AIMA_DIR = ROOT / "aima-4e"
 def extract_chapters():
     files = sorted(glob.glob(str(AIMA_DIR / "*.html")))
     chapters = []
-    
+
     for fpath in files:
         fname = os.path.basename(fpath)
         if fname == "index.html":
             continue
-        
+
         with open(fpath, "r", encoding="utf-8") as fp:
             html = fp.read()
-        
+
         title_m = re.search(r"<title>(.*?)</title>", html)
         title = title_m.group(1).strip() if title_m else fname
-        
+
         subtitle_m = re.search(r'<p class="subtitle">(.*?)</p>', html)
         subtitle = subtitle_m.group(1).strip() if subtitle_m else ""
-        
+
         badge_m = re.search(r'<span class="badge gold">(.*?)</span>', html)
         badge = badge_m.group(1).strip() if badge_m else ""
         if not badge:
@@ -46,7 +46,7 @@ def extract_chapters():
             else:
                 num_m = re.search(r"(\d+)", fname)
                 badge = f"فصل {int(num_m.group(1))}" if num_m else ""
-        
+
         toc_m = re.search(r'<nav class="toc">(.*?)</nav>', html, re.DOTALL)
         sections = []
         if toc_m:
@@ -55,51 +55,52 @@ def extract_chapters():
                     "href": href.strip(),
                     "title": text.strip()
                 })
-        
+
         # Clean title for sidebar
         short_title = title
         if " — " in title:
             parts = title.split(" — ")
             short_title = parts[1]
-        
+
         chapters.append({
             "filename": fname,
+            "route": Path(fname).stem,
             "title": title,
             "short_title": short_title,
             "subtitle": subtitle,
             "badge": badge,
             "sections": sections
         })
-    
+
     return chapters
 
 
 def generate_index_html(chapters):
     chapters_json = json.dumps(chapters, ensure_ascii=False)
-    
+
     # Generate sidebar items HTML
     sidebar_items_html = []
     for idx, ch in enumerate(chapters):
         ch_id = f"ch-item-{idx}"
         badge_html = f'<span class="ch-badge">{ch["badge"]}</span>' if ch["badge"] else ""
-        
+
         sections_html = []
         for sec in ch["sections"]:
-            sec_href = f"{ch['filename']}{sec['href']}"
+            sec_href = f"{ch['route']}{sec['href']}"
             sections_html.append(
                 f'<li class="sec-item">'
-                f'<a href="{sec_href}" data-ch-idx="{idx}" data-file="{ch["filename"]}" data-hash="{sec["href"]}" class="sec-link">'
+                f'<a href="{sec_href}" data-ch-idx="{idx}" data-file="{ch["route"]}" data-hash="{sec["href"]}" class="sec-link">'
                 f'<span class="sec-dot"></span><span class="sec-text">{sec["title"]}</span>'
                 f'</a></li>'
             )
-        
+
         sections_ul = f'<ul class="ch-sections" id="sections-{idx}">{"".join(sections_html)}</ul>' if sections_html else ""
         chevron = f'<i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>' if sections_html else ""
-        
+
         sidebar_items_html.append(f"""
-        <div class="ch-card" id="{ch_id}" data-idx="{idx}" data-file="{ch['filename']}">
+        <div class="ch-card" id="{ch_id}" data-idx="{idx}" data-file="{ch['route']}">
             <div class="ch-header" data-idx="{idx}">
-                <a href="{ch['filename']}" class="ch-title-link" data-idx="{idx}" data-file="{ch['filename']}">
+                <a href="{ch['route']}" class="ch-title-link" data-idx="{idx}" data-file="{ch['route']}">
                     {badge_html}
                     <span class="ch-title">{ch['short_title']}</span>
                 </a>
@@ -108,7 +109,7 @@ def generate_index_html(chapters):
             {sections_ul}
         </div>
         """)
-    
+
     sidebar_content = "\n".join(sidebar_items_html)
 
     html = f"""<!DOCTYPE html>
@@ -164,13 +165,13 @@ def generate_index_html(chapters):
                         "@type": "ListItem",
                         "position": 1,
                         "name": "خانه",
-                        "item": "https://www.alirostami.com/fa/"
+                        "item": "https://www.alirostami.com/"
                     }},
                     {{
                         "@type": "ListItem",
                         "position": 2,
                         "name": "پروژه‌ها",
-                        "item": "https://www.alirostami.com/fa/#projects"
+                        "item": "https://www.alirostami.com/#projects"
                     }},
                     {{
                         "@type": "ListItem",
@@ -632,12 +633,12 @@ def generate_index_html(chapters):
             <span>فهرست فصول</span>
         </button>
         <div class="header-brand-group">
-            <a href="/fa/" class="btn-home-return" title="بازگشت به سایت اصلی علی رستمی">
+            <a href="/" class="btn-home-return" title="بازگشت به سایت اصلی علی رستمی">
                 <i class="fas fa-home fa-fw"></i>
                 <span>سایت اصلی</span>
             </a>
             <span class="brand-divider">/</span>
-            <a href="index.html" class="header-brand" title="مطالعه آنلاین کتاب هوش مصنوعی: رویکردی نوین (AIMA 4e)">
+            <a href="/aima-4e/" class="header-brand" title="مطالعه آنلاین کتاب هوش مصنوعی: رویکردی نوین (AIMA 4e)">
                 <i class="fas fa-brain book-icon"></i>
                 <span class="brand-title-text">هوش مصنوعی: رویکردی نوین</span>
                 <span class="header-brand-badge">AIMA 4e</span>
@@ -712,7 +713,7 @@ def generate_index_html(chapters):
             </div>
         </div>
         <div class="frame-container">
-            <iframe id="book-frame" name="book-frame" src="00-پیشگفتار.html" title="متن فصل کتاب"></iframe>
+            <iframe id="book-frame" name="book-frame" src="00-پیشگفتار" title="متن فصل کتاب"></iframe>
         </div>
     </main>
 </div>
@@ -798,14 +799,14 @@ def generate_index_html(chapters):
             const pathname = loc.pathname;
             const currentFile = decodeURIComponent(pathname.substring(pathname.lastIndexOf('/') + 1));
             const currentHash = loc.hash;
-            
+
             // Breakout if index.html was accidentally loaded inside frame
             if (currentFile === 'index.html' || currentFile === '') {{
-                window.top.location = 'index.html';
+                window.top.location = '/aima-4e/';
                 return;
             }}
 
-            const idx = CHAPTERS.findIndex(c => c.filename === currentFile);
+            const idx = CHAPTERS.findIndex(c => c.route === currentFile);
             if (idx !== -1) {{
                 updateActiveState(idx, currentHash);
             }}
@@ -816,8 +817,8 @@ def generate_index_html(chapters):
         if (idx < 0 || idx >= CHAPTERS.length) return;
         currentChapterIndex = idx;
         const ch = CHAPTERS[idx];
-        const targetUrl = ch.filename + (hash ? (hash.startsWith('#') ? hash : '#' + hash) : '');
-        
+        const targetUrl = ch.route + (hash ? (hash.startsWith('#') ? hash : '#' + hash) : '');
+
         frame.src = targetUrl;
         updateActiveState(idx, hash);
 
@@ -833,12 +834,12 @@ def generate_index_html(chapters):
     function updateActiveState(idx, hash = '') {{
         currentChapterIndex = idx;
         const ch = CHAPTERS[idx];
-        
+
         // Update Title & Nav
         titleText.textContent = ch.title;
         btnPrev.disabled = (idx <= 0);
         btnNext.disabled = (idx >= CHAPTERS.length - 1);
-        btnOpenTab.href = ch.filename + (hash || '');
+        btnOpenTab.href = ch.route + (hash || '');
 
         // Update Sidebar active classes
         document.querySelectorAll('.ch-card').forEach(c => c.classList.remove('active'));
@@ -848,7 +849,7 @@ def generate_index_html(chapters):
         if (activeCard) {{
             activeCard.classList.add('active');
             activeCard.classList.add('expanded');
-            
+
             if (hash) {{
                 const cleanHash = hash.startsWith('#') ? hash : '#' + hash;
                 const secLink = activeCard.querySelector(`a.sec-link[data-hash="${{cleanHash}}"]`);
@@ -865,7 +866,7 @@ def generate_index_html(chapters):
         header.addEventListener('click', (e) => {{
             const card = header.closest('.ch-card');
             const idx = parseInt(header.dataset.idx, 10);
-            
+
             // If clicking the title directly
             if (e.target.closest('.ch-title-link')) {{
                 e.preventDefault();
@@ -976,7 +977,8 @@ def generate_index_html(chapters):
                 targetFile = p[0];
                 targetHash = '#' + p[1];
             }}
-            const idx = CHAPTERS.findIndex(c => c.filename === targetFile);
+            targetFile = targetFile.replace(/\.html$/, '');
+            const idx = CHAPTERS.findIndex(c => c.route === targetFile);
             if (idx !== -1) {{
                 loadChapter(idx, targetHash);
                 return;
@@ -1005,14 +1007,28 @@ def inject_chapter_helpers(chapters):
         fpath = AIMA_DIR / ch["filename"]
         with open(fpath, "r", encoding="utf-8") as fp:
             content = fp.read()
-        
+
+        # Chapter-to-chapter navigation must use the extensionless routes that
+        # Cloudflare Pages serves directly, not its built-in .html redirects.
+        for target in chapters:
+            for quote_char in ('"', "'"):
+                content = content.replace(
+                    f'href={quote_char}{target["filename"]}',
+                    f'href={quote_char}{target["route"]}',
+                )
+        content = content.replace('href="index.html"', 'href="/aima-4e/"')
+        content = content.replace("href='index.html'", "href='/aima-4e/'")
+
         import urllib.parse
-        quoted_name = urllib.parse.quote(ch["filename"])
-        canon_tag = f'<link rel="canonical" href="https://www.alirostami.com/aima-4e/{quoted_name}">'
-        if 'rel="canonical"' not in content:
-            if "<head>" in content:
-                content = content.replace("<head>", f"<head>\n    {canon_tag}")
-        
+        quoted_route = urllib.parse.quote(ch["route"])
+        canon_tag = f'<link rel="canonical" href="https://www.alirostami.com/aima-4e/{quoted_route}">'
+        if 'rel="canonical"' in content:
+            content = re.sub(
+                r'<link rel="canonical" href="[^"]+">', canon_tag, content, count=1
+            )
+        elif "<head>" in content:
+            content = content.replace("<head>", f"<head>\n    {canon_tag}")
+
         # Remove any previous banners or injected scripts
         content = re.sub(
             r'(\s*<style id="aima-top-nav-style">.*?</style>)?\s*(<script id="aima-top-nav-script">.*?</script>)?\s*<div id="aima-top-nav".*?</div>\s*',
@@ -1021,12 +1037,12 @@ def inject_chapter_helpers(chapters):
             flags=re.DOTALL
         )
         content = re.sub(r'<script id="aima-standalone-helper">.*?</script>\s*', '', content, flags=re.DOTALL)
-        
+
         helper_script = f"""<script id="aima-standalone-helper">
   if (window.self === window.top) {{
     window.addEventListener('DOMContentLoaded', function() {{
       var b = document.createElement('a');
-      b.href = 'index.html#{ch["filename"]}';
+      b.href = '/aima-4e/#{ch["route"]}';
       b.target = '_top';
       b.style.cssText = 'position:fixed;bottom:22px;left:22px;background:#24344d;color:#fff;padding:9px 16px;border-radius:24px;box-shadow:0 6px 18px rgba(0,0,0,.25);text-decoration:none;font-size:13px;font-family:Tahoma,sans-serif;z-index:99999;display:inline-flex;align-items:center;gap:6px;transition:transform .2s;border:1px solid rgba(255,255,255,.2);';
       b.innerHTML = '📖 باز کردن در کتابخوان با سایدبار';
@@ -1042,7 +1058,7 @@ def inject_chapter_helpers(chapters):
             updated = content.replace("</body>", helper_script + "</body>")
         else:
             updated = content + helper_script
-            
+
         with open(fpath, "w", encoding="utf-8") as fp:
             fp.write(updated)
 
@@ -1050,7 +1066,7 @@ def inject_chapter_helpers(chapters):
 def main():
     chapters = extract_chapters()
     print(f"Loaded {len(chapters)} chapters.")
-    
+
     # 1. Write aima-4e/index.html
     index_html = generate_index_html(chapters)
     out_file = AIMA_DIR / "index.html"

@@ -51,6 +51,7 @@ def process_chapters():
 
     for fpath in all_files:
         fname = fpath.name
+        route = fpath.stem
         content = fpath.read_text(encoding="utf-8")
 
         # Extract H1 title
@@ -107,14 +108,14 @@ def process_chapters():
         if "<!DOCTYPE html>" not in content:
             # Strip outer article wrapper inline styles to let CSS handle it
             content = re.sub(r'<article[^>]*>', '<article class="chapter-content">', content, count=1)
-            
+
             wrapped_html = f"""<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{raw_h1_clean} — مبانی معماری نرم‌افزار</title>
-    <link rel="canonical" href="https://www.alirostami.com/software-architecture/{fname}">
+    <link rel="canonical" href="https://www.alirostami.com/software-architecture/{route}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css">
     <style>
         :root {{
@@ -294,7 +295,7 @@ def process_chapters():
   if (window.self === window.top) {{
     window.addEventListener('DOMContentLoaded', function() {{
       var b = document.createElement('a');
-      b.href = 'index.html#{fname}';
+      b.href = '/software-architecture/#{route}';
       b.target = '_top';
       b.style.cssText = 'position:fixed;bottom:22px;left:22px;background:#1e293b;color:#fff;padding:9px 16px;border-radius:24px;box-shadow:0 6px 18px rgba(0,0,0,.25);text-decoration:none;font-size:13px;font-family:Tahoma,sans-serif;z-index:99999;display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.2);';
       b.innerHTML = '📖 باز کردن در کتابخوان با سایدبار';
@@ -306,11 +307,25 @@ def process_chapters():
 </html>"""
             fpath.write_text(wrapped_html, encoding="utf-8")
         else:
-            # File was already wrapped, update content
+            # File was already wrapped: keep metadata and standalone navigation
+            # aligned with Cloudflare Pages' extensionless HTML routes.
+            canonical = f"https://www.alirostami.com/software-architecture/{route}"
+            content = re.sub(
+                r'<link rel="canonical" href="[^"]+">',
+                f'<link rel="canonical" href="{canonical}">',
+                content,
+                count=1,
+            )
+            content = re.sub(
+                r"b\.href = 'index\.html#[^']+';",
+                f"b.href = '/software-architecture/#{route}';",
+                content,
+                count=1,
+            )
             fpath.write_text(content, encoding="utf-8")
 
         chapters_info.append({
-            "filename": fname,
+            "filename": route,
             "ch_num": ch_num,
             "badge": badge,
             "raw_title": raw_h1_clean,
@@ -431,13 +446,13 @@ def build_reader_index(chapters):
                         "@type": "ListItem",
                         "position": 1,
                         "name": "خانه",
-                        "item": "https://www.alirostami.com/fa/"
+                        "item": "https://www.alirostami.com/"
                     }},
                     {{
                         "@type": "ListItem",
                         "position": 2,
                         "name": "پروژه‌ها",
-                        "item": "https://www.alirostami.com/fa/#projects"
+                        "item": "https://www.alirostami.com/#projects"
                     }},
                     {{
                         "@type": "ListItem",
@@ -946,12 +961,12 @@ def build_reader_index(chapters):
             <span>فهرست فصول</span>
         </button>
         <div class="header-brand-group">
-            <a href="/fa/" class="btn-home-return" title="بازگشت به سایت اصلی علی رستمی">
+            <a href="/" class="btn-home-return" title="بازگشت به سایت اصلی علی رستمی">
                 <i class="fas fa-home fa-fw"></i>
                 <span>سایت اصلی</span>
             </a>
             <span class="brand-divider">/</span>
-            <a href="index.html" class="header-brand" title="مطالعه آنلاین کتاب مبانی معماری نرم‌افزار">
+            <a href="/software-architecture/" class="header-brand" title="مطالعه آنلاین کتاب مبانی معماری نرم‌افزار">
                 <i class="fas fa-cubes book-icon"></i>
                 <span class="brand-title-text">مبانی معماری نرم‌افزار</span>
                 <span class="header-brand-badge">ویرایش دوم</span>
@@ -1030,7 +1045,7 @@ def build_reader_index(chapters):
         </div>
 
         <div class="frame-container">
-            <iframe id="book-frame" name="book-frame" src="chapter-01.html" title="کتابخوان معماری نرم‌افزار"></iframe>
+            <iframe id="book-frame" name="book-frame" src="chapter-01" title="کتابخوان معماری نرم‌افزار"></iframe>
         </div>
     </main>
 </div>
@@ -1131,12 +1146,12 @@ def build_reader_index(chapters):
         header.addEventListener('click', (e) => {{
             const idx = parseInt(header.getAttribute('data-idx'));
             const card = header.closest('.ch-card');
-            
+
             if (e.target.closest('.ch-chevron')) {{
                 card.classList.toggle('expanded');
                 return;
             }}
-            
+
             e.preventDefault();
             card.classList.toggle('expanded');
             loadChapter(idx);
@@ -1237,6 +1252,7 @@ def build_reader_index(chapters):
                 targetFile = p[0];
                 targetHash = '#' + p[1];
             }}
+            targetFile = targetFile.replace(/\.html$/, '');
             const idx = CHAPTERS.findIndex(c => c.filename === targetFile);
             if (idx !== -1) {{
                 loadChapter(idx, targetHash);

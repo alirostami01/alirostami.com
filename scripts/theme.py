@@ -16,12 +16,12 @@ def header(active: str = "") -> str:
         cls = "menu-item active" if href == active else "menu-item"
         return f'<a href="{href}" class="{cls}" title="{label}">{label}</a>'
 
-    menu = item("/fa/", "خانه") + item("/support/", "حمایت")
+    menu = item("/", "خانه") + item("/support/", "حمایت")
     lang = (
         '<a href="javascript:void(0);" class="menu-item language" title="انتخاب زبان">'
         '<i class="fa fa-globe" aria-hidden="true"></i>'
         '<select class="language-select" onchange="location = this.value;">'
-        '<option value="/en/support.html">English</option>'
+        '<option value="/en/support/">English</option>'
         '<option value="/support/" selected>فارسی</option></select></a>'
     )
     theme_switch = (
@@ -31,7 +31,7 @@ def header(active: str = "") -> str:
     return f"""<div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
-            <a href="/fa/" title="{SITE_NAME}">Ali Rostami</a>
+            <a href="/" title="{SITE_NAME}">Ali Rostami</a>
         </div>
         <div class="menu">
             <div class="menu-inner">{menu}{theme_switch}{lang}</div>
@@ -41,7 +41,7 @@ def header(active: str = "") -> str:
     <div class="header-container">
         <div class="header-wrapper">
             <div class="header-title">
-                <a href="/fa/" title="{SITE_NAME}">Ali Rostami</a>
+                <a href="/" title="{SITE_NAME}">Ali Rostami</a>
             </div>
             <div class="menu-toggle" id="menu-toggle-mobile">
                 <span></span><span></span><span></span>
@@ -54,7 +54,7 @@ def header(active: str = "") -> str:
 
 FOOTER = """<footer class="footer">
         <div class="footer-container"><div class="footer-line">ایجاد شده توسط <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.2">Hugo</a> | پوسته - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i>2022 - <span itemprop="copyrightYear">2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/fa/">علی رستمی</a></span></div>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i>2022 - <span itemprop="copyrightYear">2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/">علی رستمی</a></span></div>
         </div>
     </footer></div>"""
 

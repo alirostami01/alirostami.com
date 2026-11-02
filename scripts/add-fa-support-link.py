@@ -28,7 +28,7 @@ MENU_LINK = (
 )
 
 EN_SUPPORT_ITEM = (
-    '<a href="/en/support.html" class="menu-item" title="Support">Support</a>'
+    '<a href="/en/support/" class="menu-item" title="Support">Support</a>'
 )
 
 STYLE = """
@@ -103,7 +103,7 @@ def main() -> int:
         for p in ROOT.rglob("*.html")
         if ".git" not in p.parts
         and "lib" not in p.parts
-        and (EN_SUPPORT_ITEM in p.read_text(encoding="utf-8") or p == ROOT / "en/support.html")
+        and (EN_SUPPORT_ITEM in p.read_text(encoding="utf-8") or p == ROOT / "en/support" / "index.html")
     )
     changed = []
     for page in targets:
@@ -111,7 +111,7 @@ def main() -> int:
         if MARKER in html:
             print(f"  skip (already patched)  {page.relative_to(ROOT)}")
             continue
-        html = patch_en_support(html) if page == ROOT / "en/support.html" else patch_generic(html)
+        html = patch_en_support(html) if page == ROOT / "en/support" / "index.html" else patch_generic(html)
         html = add_style(html)
         if html != original:
             page.write_text(html, encoding="utf-8")

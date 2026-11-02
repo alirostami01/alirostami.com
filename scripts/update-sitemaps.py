@@ -1,107 +1,168 @@
 #!/usr/bin/env python3
-"""Updates sitemap.xml and fa/sitemap.xml with software architecture URLs and validates XML."""
+"""Generate the single canonical sitemap for alirostami.com.
 
-import os
-from pathlib import Path
+Only 200-status canonical pages belong in the sitemap. Legacy language
+sitemaps and URL aliases are intentionally excluded and are redirected at the
+Cloudflare edge.
+"""
+
+from __future__ import annotations
+
+import subprocess
+import urllib.parse
 import xml.etree.ElementTree as ET
+from datetime import datetime
+from pathlib import Path
+from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parent.parent
-TODAY = "2026-10-24"
+BASE_URL = "https://www.alirostami.com"
+TODAY = datetime.now(ZoneInfo("Asia/Tehran")).date().isoformat()
 
-MAIN_URLS = [
-    ("https://www.alirostami.com/", "daily", "1.0"),
-    ("https://www.alirostami.com/fa/", "daily", "1.0"),
-    ("https://www.alirostami.com/software-architecture/", "weekly", "0.95"),
-    ("https://www.alirostami.com/fundamentals-of-software-architecture-persian/", "weekly", "0.90"),
-    ("https://www.alirostami.com/aima-4e/", "weekly", "0.95"),
-    ("https://www.alirostami.com/aima-4e-persian/", "weekly", "0.90"),
-    ("https://www.alirostami.com/persian-streams/", "weekly", "0.90"),
-    ("https://www.alirostami.com/persian-subtitles/", "weekly", "0.90"),
-    ("https://www.alirostami.com/support/", "monthly", "0.85"),
-    ("https://www.alirostami.com/posts/", "weekly", "0.85"),
-    ("https://www.alirostami.com/posts/fundamentals-of-software-architecture-persian/", "monthly", "0.80"),
-    ("https://www.alirostami.com/posts/aima-4e-persian/", "monthly", "0.80"),
-    ("https://www.alirostami.com/posts/persian-streams/", "monthly", "0.80"),
-    ("https://www.alirostami.com/posts/persian-subtitles/", "monthly", "0.80"),
-    ("https://www.alirostami.com/posts/benefits-of-using-obsidian/", "monthly", "0.70"),
-    ("https://www.alirostami.com/posts/a-recap-of-last-year/", "monthly", "0.70"),
-    ("https://www.alirostami.com/en/support.html", "monthly", "0.70"),
+# URL path, repository file, change frequency, priority. The latter two are
+# retained for compatibility, although Google primarily uses loc + lastmod.
+MAIN_PAGES = [
+    ("/", "index.html", "weekly", "1.0"),
+    ("/software-architecture/", "software-architecture/index.html", "weekly", "0.95"),
+    (
+        "/fundamentals-of-software-architecture-persian/",
+        "fundamentals-of-software-architecture-persian/index.html",
+        "weekly",
+        "0.90",
+    ),
+    ("/aima-4e/", "aima-4e/index.html", "weekly", "0.95"),
+    ("/aima-4e-persian/", "aima-4e-persian/index.html", "weekly", "0.90"),
+    ("/persian-streams/", "persian-streams/index.html", "weekly", "0.90"),
+    ("/persian-subtitles/", "persian-subtitles/index.html", "weekly", "0.90"),
+    ("/support/", "support/index.html", "monthly", "0.75"),
+    ("/posts/", "posts/index.html", "weekly", "0.80"),
+    (
+        "/posts/fundamentals-of-software-architecture-persian/",
+        "posts/fundamentals-of-software-architecture-persian/index.html",
+        "monthly",
+        "0.75",
+    ),
+    ("/posts/aima-4e-persian/", "posts/aima-4e-persian/index.html", "monthly", "0.75"),
+    (
+        "/posts/benefits-of-using-obsidian/",
+        "posts/benefits-of-using-obsidian/index.html",
+        "yearly",
+        "0.60",
+    ),
+    (
+        "/posts/a-recap-of-last-year/",
+        "posts/a-recap-of-last-year/index.html",
+        "yearly",
+        "0.50",
+    ),
+    ("/en/support/", "en/support/index.html", "monthly", "0.60"),
 ]
 
-FA_MAIN_URLS = [
-    ("https://www.alirostami.com/fa/", "daily", "1.0"),
-    ("https://www.alirostami.com/software-architecture/", "weekly", "0.95"),
-    ("https://www.alirostami.com/fundamentals-of-software-architecture-persian/", "weekly", "0.90"),
-    ("https://www.alirostami.com/aima-4e/", "weekly", "0.95"),
-    ("https://www.alirostami.com/aima-4e-persian/", "weekly", "0.90"),
-    ("https://www.alirostami.com/persian-streams/", "weekly", "0.90"),
-    ("https://www.alirostami.com/persian-subtitles/", "weekly", "0.90"),
-    ("https://www.alirostami.com/support/", "monthly", "0.85"),
-    ("https://www.alirostami.com/posts/", "weekly", "0.85"),
-    ("https://www.alirostami.com/posts/fundamentals-of-software-architecture-persian/", "monthly", "0.80"),
-    ("https://www.alirostami.com/posts/aima-4e-persian/", "monthly", "0.80"),
-    ("https://www.alirostami.com/posts/persian-streams/", "monthly", "0.80"),
-    ("https://www.alirostami.com/posts/persian-subtitles/", "monthly", "0.80"),
-    ("https://www.alirostami.com/posts/benefits-of-using-obsidian/", "monthly", "0.70"),
-    ("https://www.alirostami.com/posts/a-recap-of-last-year/", "monthly", "0.70"),
-]
+LEGACY_INDEX_FILES = (
+    ROOT / "fa" / "sitemap.xml",
+    ROOT / "en" / "sitemap.xml",
+    ROOT / "public" / "sitemap.xml",
+    ROOT / "public" / "fa" / "sitemap.xml",
+    ROOT / "fa" / "index.xml",
+    ROOT / "fa" / "categories" / "index.xml",
+    ROOT / "fa" / "tags" / "index.xml",
+)
 
-# Get AIMA 4e chapters
-aima_dir = ROOT / "aima-4e"
-aima_files = sorted([f.name for f in aima_dir.glob("*.html") if f.name != "index.html"])
 
-# Get Software Architecture chapters
-sa_dir = ROOT / "software-architecture"
-sa_files = [f"chapter-{i:02d}.html" for i in range(1, 28)] + ["appendix.html"]
+def git(*args: str) -> str:
+    result = subprocess.run(
+        ["git", *args],
+        cwd=ROOT,
+        check=False,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.DEVNULL,
+    )
+    return result.stdout.strip() if result.returncode == 0 else ""
 
-def generate_sitemap(url_list, include_sa_chapters=True, include_aima_chapters=True):
-    lines = [
-        '<?xml version="1.0" encoding="UTF-8"?>',
-        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">',
-    ]
 
-    for loc, freq, prio in url_list:
-        lines.append(f"""  <url>
-    <loc>{loc}</loc>
-    <lastmod>{TODAY}</lastmod>
-    <changefreq>{freq}</changefreq>
-    <priority>{prio}</priority>
-  </url>""")
+def last_modified(relative_file: str) -> str:
+    """Use today for working-tree changes, otherwise the latest Git date."""
+    if git("status", "--porcelain", "--", relative_file):
+        return TODAY
+    committed = git("log", "-1", "--format=%aI", "--", relative_file)
+    if committed:
+        timestamp = datetime.fromisoformat(committed).astimezone(ZoneInfo("Asia/Tehran"))
+        return timestamp.date().isoformat()
+    return TODAY
 
-    if include_sa_chapters:
-        for f in sa_files:
-            lines.append(f"""  <url>
-    <loc>https://www.alirostami.com/software-architecture/{f}</loc>
-    <lastmod>{TODAY}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-  </url>""")
 
-    if include_aima_chapters:
-        import urllib.parse
-        for f in aima_files:
-            encoded_f = urllib.parse.quote(f)
-            lines.append(f"""  <url>
-    <loc>https://www.alirostami.com/aima-4e/{encoded_f}</loc>
-    <lastmod>2026-10-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-  </url>""")
+def entries() -> list[tuple[str, str, str, str]]:
+    rows = list(MAIN_PAGES)
 
-    lines.append('</urlset>\n')
-    return "\n".join(lines)
+    for number in range(1, 28):
+        filename = f"chapter-{number:02d}.html"
+        rows.append(
+            (
+                f"/software-architecture/{Path(filename).stem}",
+                f"software-architecture/{filename}",
+                "monthly",
+                "0.75",
+            )
+        )
+    rows.append(
+        (
+            "/software-architecture/appendix",
+            "software-architecture/appendix.html",
+            "monthly",
+            "0.70",
+        )
+    )
 
-def main():
-    root_sitemap = generate_sitemap(MAIN_URLS, True, True)
-    fa_sitemap = generate_sitemap(FA_MAIN_URLS, True, True)
+    for file_path in sorted((ROOT / "aima-4e").glob("*.html")):
+        if file_path.name == "index.html":
+            continue
+        encoded_route = urllib.parse.quote(file_path.stem)
+        relative = file_path.relative_to(ROOT).as_posix()
+        rows.append((f"/aima-4e/{encoded_route}", relative, "monthly", "0.75"))
 
-    (ROOT / "sitemap.xml").write_text(root_sitemap, encoding="utf-8")
-    (ROOT / "fa" / "sitemap.xml").write_text(fa_sitemap, encoding="utf-8")
+    return rows
 
-    # Validate XML
-    ET.fromstring(root_sitemap)
-    ET.fromstring(fa_sitemap)
-    print("Sitemaps generated and XML validated successfully!")
+
+def generate() -> str:
+    namespace = "http://www.sitemaps.org/schemas/sitemap/0.9"
+    ET.register_namespace("", namespace)
+    root = ET.Element(f"{{{namespace}}}urlset")
+
+    seen: set[str] = set()
+    for url_path, relative_file, frequency, priority in entries():
+        absolute = f"{BASE_URL}{url_path}"
+        if absolute in seen:
+            raise ValueError(f"duplicate sitemap URL: {absolute}")
+        seen.add(absolute)
+
+        source = ROOT / relative_file
+        if not source.is_file():
+            raise FileNotFoundError(f"sitemap target does not exist: {relative_file}")
+
+        url = ET.SubElement(root, f"{{{namespace}}}url")
+        ET.SubElement(url, f"{{{namespace}}}loc").text = absolute
+        ET.SubElement(url, f"{{{namespace}}}lastmod").text = last_modified(relative_file)
+        ET.SubElement(url, f"{{{namespace}}}changefreq").text = frequency
+        ET.SubElement(url, f"{{{namespace}}}priority").text = priority
+
+    ET.indent(root, space="  ")
+    return '<?xml version="1.0" encoding="UTF-8"?>\n' + ET.tostring(root, encoding="unicode") + "\n"
+
+
+def main() -> None:
+    sitemap = generate()
+    ET.fromstring(sitemap)
+    (ROOT / "sitemap.xml").write_text(sitemap, encoding="utf-8")
+
+    for legacy in LEGACY_INDEX_FILES:
+        if legacy.exists():
+            legacy.unlink()
+            print(f"removed legacy index file: {legacy.relative_to(ROOT)}")
+
+    count = len(entries())
+    print(f"generated sitemap.xml with {count} canonical URLs")
+
 
 if __name__ == "__main__":
     main()

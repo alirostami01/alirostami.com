@@ -223,9 +223,50 @@ sitemap در انتهای اجرا همین post-processor را فراخوانی
 python3 scripts/check-images.py
 ```
 
+## Performance و Core Web Vitals
+
+dependencyهای مرورگر با نسخهٔ دقیق در `lib/` نگهداری می‌شوند و در زمان اجرا
+درخواستی به jsDelivr ارسال نمی‌شود. فهرست نسخه‌ها، مسیرهای upstream و تغییرهای
+عمدی در `lib/VENDOR.md` ثبت شده است. Font Awesome با `font-display: swap` و
+Animate.css به‌صورت subset حداقلی سرو می‌شوند؛ هر دو stylesheet غیرحیاتی با
+`preload`/`onload` و fallback داخل `noscript` بارگذاری می‌شوند.
+
+post-processor عملکرد، بر اساس DOM هر صفحه فقط dependency موردنیاز را پیش از
+`theme.min.js` و با `defer` اضافه می‌کند: search به autocomplete/Lunr، دکمه‌های
+share به Sharer و TypeIt فقط به هدف واقعی TypeIt متصل می‌شوند. ClipboardJS در
+خروجی فعلی بارگذاری نمی‌شود، lazysizes بلااستفاده حذف شده و embed خراب Disqus
+نیز حذف می‌شود. تصاویر بالای صفحه که `fetchpriority="high"` دارند به‌طور
+خودکار در `<head>` preload می‌شوند.
+
+اجرای دستی و بررسی idempotence:
+
+```bash
+python3 scripts/update-performance.py
+python3 scripts/update-performance.py --check
+python3 scripts/check-performance.py
+```
+
+تمام generatorهای مستندشده ابتدا post-processor تصاویر و سپس post-processor
+Performance را از طریق `apply_site_postprocessors()` اجرا می‌کنند. بنابراین
+پس از بازتولید هر صفحه، اجرای جداگانه لازم نیست؛ بااین‌حال audit نهایی هر دو فاز
+باید اجرا شود:
+
+```bash
+python3 scripts/check-images.py
+python3 scripts/check-seo-urls.py
+python3 scripts/check-performance.py
+```
+
+فایل `_headers` سیاست Cloudflare Pages را تعریف می‌کند: CSP و headerهای
+سخت‌سازی مرورگر روی همهٔ پاسخ‌های استاتیک اعمال می‌شوند، `comments.app` تنها
+runtime خارجی مجاز است و assetهای vendor تا ۳۰ روز و CSS/JS دست‌اول تا ۷ روز
+cache می‌شوند. چون نام فایل‌ها content hash ندارد، از `immutable` استفاده نشده
+است. بعد از تغییر عمدی یک فایل vendor، digest متناظر در
+`scripts/check-performance.py` نیز باید همراه نسخه و provenance به‌روزرسانی شود.
+
 ## پیش‌نمایش محلی
 
-پیش‌نمایش دقیق رفتار Cloudflare Pages (شامل `_redirects` و URLهای بدون پسوند):
+پیش‌نمایش دقیق رفتار Cloudflare Pages (شامل `_redirects`، `_headers` و URLهای بدون پسوند):
 
 ```bash
 npx --yes wrangler@latest pages dev . --port 8788

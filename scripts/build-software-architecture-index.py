@@ -8,7 +8,7 @@ import re
 from pathlib import Path
 import json
 
-from image_utils import apply_image_seo
+from image_utils import apply_site_postprocessors
 
 ROOT = Path(__file__).resolve().parent.parent
 BOOK_DIR = ROOT / "software-architecture"
@@ -118,7 +118,6 @@ def process_chapters():
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{raw_h1_clean} — مبانی معماری نرم‌افزار</title>
     <link rel="canonical" href="https://www.alirostami.com/software-architecture/{route}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css">
     <style>
         :root {{
             --bg: #f8fafc;
@@ -416,7 +415,11 @@ def build_reader_index(chapters):
     <link rel="canonical" href="https://www.alirostami.com/software-architecture/">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css">
+    <!-- performance-icons:start -->
+    <style>.fa,.fas,.far,.fab,.fa-solid,.fa-regular,.fa-brands{{display:inline-block;min-width:1em;text-align:center}}.fa-fw{{width:1.25em}}</style>
+    <link rel="preload" href="/lib/fontawesome/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome/all.min.css"></noscript>
+    <!-- performance-icons:end -->
     <script type="application/ld+json">
 {{
         "@context": "https://schema.org",
@@ -1286,5 +1289,5 @@ if __name__ == "__main__":
     print(f"Processed {len(chapters)} chapters.")
     print("Building reader index...")
     build_reader_index(chapters)
-    apply_image_seo()
+    apply_site_postprocessors()
     print("Done!")

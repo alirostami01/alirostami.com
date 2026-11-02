@@ -15,7 +15,7 @@ from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from image_utils import apply_image_seo
+from image_utils import apply_site_postprocessors
 
 ROOT = Path(__file__).resolve().parent.parent
 BASE_URL = "https://www.alirostami.com"
@@ -164,7 +164,7 @@ def main() -> None:
 
     count = len(entries())
     print(f"generated sitemap.xml with {count} canonical URLs")
-    apply_image_seo()
+    apply_site_postprocessors()
 
 
 if __name__ == "__main__":

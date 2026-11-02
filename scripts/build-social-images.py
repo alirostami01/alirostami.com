@@ -13,7 +13,13 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageOps
 
-from image_utils import ROOT, SOCIAL_CARDS, SOCIAL_HEIGHT, SOCIAL_WIDTH, apply_image_seo
+from image_utils import (
+    ROOT,
+    SOCIAL_CARDS,
+    SOCIAL_HEIGHT,
+    SOCIAL_WIDTH,
+    apply_site_postprocessors,
+)
 
 FONT_CANDIDATES = (
     Path("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"),
@@ -154,7 +160,7 @@ def main() -> None:
     generated.extend(build_responsive_content_images())
     for path in generated:
         print(f"generated {path.relative_to(ROOT)} ({path.stat().st_size:,} bytes)")
-    apply_image_seo()
+    apply_site_postprocessors()
 
 
 if __name__ == "__main__":

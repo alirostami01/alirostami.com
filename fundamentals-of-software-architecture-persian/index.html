@@ -29,10 +29,15 @@
         <link rel="manifest" href="/site.webmanifest">
         <link rel="canonical" href="https://www.alirostami.com/fundamentals-of-software-architecture-persian/" />
         <link rel="stylesheet" href="/css/style.min.css">
-        <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript>
-        <link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript>
+    <!-- performance-icons:start -->
+    <style>.fa,.fas,.far,.fab,.fa-solid,.fa-regular,.fa-brands{display:inline-block;min-width:1em;text-align:center}.fa-fw{width:1.25em}</style>
+    <link rel="preload" href="/lib/fontawesome/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome/all.min.css"></noscript>
+    <!-- performance-icons:end -->
+    <!-- performance-animations:start -->
+    <link rel="preload" href="/lib/animate/animate-subset.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate-subset.min.css"></noscript>
+    <!-- performance-animations:end -->
 
         <script type="application/ld+json">
 {
@@ -334,6 +339,9 @@
     <meta name="twitter:image" content="https://www.alirostami.com/images/social/software-architecture.jpg">
     <meta name="twitter:image:alt" content="ترجمه فارسی مبانی معماری نرم‌افزار؛ مطالعه آنلاین ۲۷ فصل و پیوست">
     <!-- image-seo:end -->
+    <!-- performance-image-preload:start -->
+    <link rel="preload" as="image" href="/images/projects/fundamentals-of-software-architecture-persian.png" fetchpriority="high">
+    <!-- performance-image-preload:end -->
 </head>
     <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
@@ -841,5 +849,7 @@
         <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="برگشت به بالا">
                 <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
             </a>
-        </div><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><script>window.config={"data":{}};</script>
+        <script defer src="/js/theme.min.js"></script>
+    </body>
 </html>

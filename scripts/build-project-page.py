@@ -4,7 +4,7 @@
 import os
 from pathlib import Path
 
-from image_utils import apply_image_seo
+from image_utils import apply_site_postprocessors
 from redirects import write_redirect
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -107,10 +107,15 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
         <link rel="manifest" href="/site.webmanifest">
         <link rel="canonical" href="https://www.alirostami.com/fundamentals-of-software-architecture-persian/" />
         <link rel="stylesheet" href="/css/style.min.css">
-        <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript>
-        <link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript>
+        <!-- performance-icons:start -->
+        <style>.fa,.fas,.far,.fab,.fa-solid,.fa-regular,.fa-brands{{display:inline-block;min-width:1em;text-align:center}}.fa-fw{{width:1.25em}}</style>
+        <link rel="preload" href="/lib/fontawesome/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome/all.min.css"></noscript>
+        <!-- performance-icons:end -->
+        <!-- performance-animations:start -->
+        <link rel="preload" href="/lib/animate/animate-subset.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate-subset.min.css"></noscript>
+        <!-- performance-animations:end -->
 
         <script type="application/ld+json">
 {{
@@ -596,7 +601,8 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
         <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="برگشت به بالا">
                 <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
             </a>
-        </div><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><script>window.config={{"data":{{}}}};</script>
+        <script defer src="/js/theme.min.js"></script></body>
 </html>
 """
 
@@ -618,7 +624,7 @@ def main():
     alias2 = ROOT / "Fundamentals-of-Software-Architecture-Persian" / "index.html"
     write_redirect(alias2, destination)
     print(f"Written redirect fallback: {alias2} -> {destination}")
-    apply_image_seo()
+    apply_site_postprocessors()
 
 if __name__ == "__main__":
     main()

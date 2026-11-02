@@ -16,7 +16,7 @@ import os
 import re
 from pathlib import Path
 
-from image_utils import apply_image_seo
+from image_utils import apply_site_postprocessors
 
 ROOT = Path(__file__).resolve().parent.parent
 AIMA_DIR = ROOT / "aima-4e"
@@ -135,7 +135,11 @@ def generate_index_html(chapters):
     <link rel="canonical" href="https://www.alirostami.com/aima-4e/">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css">
+    <!-- performance-icons:start -->
+    <style>.fa,.fas,.far,.fab,.fa-solid,.fa-regular,.fa-brands{{display:inline-block;min-width:1em;text-align:center}}.fa-fw{{width:1.25em}}</style>
+    <link rel="preload" href="/lib/fontawesome/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome/all.min.css"></noscript>
+    <!-- performance-icons:end -->
     <script type="application/ld+json">
 {{
         "@context": "https://schema.org",
@@ -1078,7 +1082,7 @@ def main():
     # 2. Inject chapter nav helpers
     inject_chapter_helpers(chapters)
     print("Injected nav helpers into chapter files.")
-    apply_image_seo()
+    apply_site_postprocessors()
 
 
 if __name__ == "__main__":

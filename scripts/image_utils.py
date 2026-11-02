@@ -219,11 +219,22 @@ def image_size(path: Path) -> tuple[int, int]:
     raise ValueError(f"could not read image dimensions: {path}")
 
 
-def apply_image_seo() -> None:
-    """Run the stdlib post-processor after a page or sitemap generator."""
+def run_postprocessor(filename: str) -> None:
+    """Run one stdlib site post-processor from a page or sitemap generator."""
     sys.stdout.flush()
     subprocess.run(
-        [sys.executable, str(ROOT / "scripts" / "update-image-seo.py")],
+        [sys.executable, str(ROOT / "scripts" / filename)],
         cwd=ROOT,
         check=True,
     )
+
+
+def apply_image_seo() -> None:
+    """Refresh image metadata and intrinsic image attributes."""
+    run_postprocessor("update-image-seo.py")
+
+
+def apply_site_postprocessors() -> None:
+    """Refresh image metadata first, then performance delivery markup."""
+    apply_image_seo()
+    run_postprocessor("update-performance.py")

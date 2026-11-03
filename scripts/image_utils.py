@@ -235,6 +235,7 @@ def apply_image_seo() -> None:
 
 
 def apply_site_postprocessors() -> None:
-    """Refresh image metadata first, then performance delivery markup."""
+    """Refresh image metadata, performance delivery, then accessibility."""
     apply_image_seo()
     run_postprocessor("update-performance.py")
+    run_postprocessor("update-accessibility.py")

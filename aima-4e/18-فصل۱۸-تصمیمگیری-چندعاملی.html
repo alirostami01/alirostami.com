@@ -151,17 +151,49 @@
     <meta name="twitter:image" content="https://www.alirostami.com/images/social/aima-4e-persian.jpg">
     <meta name="twitter:image:alt" content="ترجمه فارسی کتاب هوش مصنوعی؛ یک رویکرد مدرن، ویرایش چهارم">
     <!-- image-seo:end -->
+    <!-- accessibility-styles:start -->
+    <style>
+    .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+    .skip-link{position:fixed;top:.75rem;left:.75rem;z-index:100000;padding:.65rem 1rem;border-radius:.35rem;background:#fff;color:#073b70;font-weight:700;box-shadow:0 2px 12px rgba(0,0,0,.25);transform:translateY(-180%);transition:transform .15s ease}
+    .skip-link:focus{transform:translateY(0)}
+    :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:3px solid #0563c1!important;outline-offset:3px!important}
+    [theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible,[data-theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline-color:#7dd3fc!important}
+    body[data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#5f5f66!important}
+    body[theme=dark][data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#b7bbc5!important}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#1d789b!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#6bc5e6!important}
+    body[data-header-desktop] .single .content a:not(.headerlink){text-decoration:underline!important;text-underline-offset:.15em}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#a41354!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#fff!important}
+    body[data-header-desktop] .search input::placeholder{color:#5f5f66!important;opacity:1}
+    body[theme=dark][data-header-desktop] .search input::placeholder{color:#b7bbc5!important}
+    button.menu-toggle{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;min-width:2rem;min-height:2rem}
+    button.search-button,button.search-cancel,button.theme-switch,button.history-back,button.share-button,button.script-button{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;line-height:inherit;cursor:pointer}
+    button.search-button,button.theme-switch,button.share-button,button.script-button{min-width:1.5rem;min-height:1.5rem}
+    button.history-back{text-decoration:underline;text-underline-offset:.15em}
+    summary.details-summary{list-style:none}
+    summary.details-summary::-webkit-details-marker{display:none}
+    .sidebar-controls .sidebar-action,.ch-chevron{appearance:none;border:0;background:transparent;color:inherit;font:inherit;cursor:pointer;min-height:1.5rem}
+    .sidebar-controls .sidebar-action{color:var(--text-muted)}
+    .sidebar-controls .sidebar-action:hover{color:var(--accent)}
+    .ch-chevron{padding:.2rem .4rem;min-width:2rem}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    </style>
+    <!-- accessibility-styles:end -->
 </head>
 <body>
-<div class="page">
+    <!-- accessibility-skip-link -->
+    <a class="skip-link" href="#main-content">رفتن به محتوای اصلی</a>
+<main class="page" id="main-content" tabindex="-1">
 
 <div class="kicker">
   <span class="badge">📘 هوش مصنوعی: رویکردی نوین (AIMA)</span>
   <span class="badge soft">ترجمهٔ فارسی — راسل و نورویگ، ویرایش چهارم</span>
   <span class="badge gold">فصل 18</span>
 </div>
+<h1 class="chapter-title">فصل ۱۸: تصمیم‌گیری چندعاملی (Multiagent Decision Making)</h1>
 
-<nav class="toc"><h2>فهرست بخش‌های این فصل</h2>
+<nav class="toc" aria-label="فهرست مطالب"><h2>فهرست بخش‌های این فصل</h2>
 <ol>
 <li><a href="#sec-1">۱۸.۱ ویژگی‌های محیط‌های چندعاملی</a></li>
 <li><a href="#sec-2">۱۸.۲ نظریهٔ بازی غیرهمکارانه</a></li>
@@ -172,7 +204,7 @@
 <li><a href="#sec-6">پانوشت‌ها:</a></li>
 </ol></nav>
 
-<p class="subtitle">فصل ۱۸: تصمیم‌گیری چندعاملی (Multiagent Decision Making)</p>
+
 <div class="lead">در این فصل بررسی می‌کنیم وقتی بیش از یک عامل در محیط زندگی می‌کند چه باید کرد.</div>
 <h2 id="sec-1">۱۸.۱ ویژگی‌های محیط‌های چندعاملی</h2>
 <p>تاکنون، تا حد زیادی فرض کرده‌ایم فقط یک عامل حس‌کردن، برنامه‌ریزی و عمل‌کردن را انجام می‌دهد. اما این فرض ساده‌سازی عظیمی را بازنمایی می‌کند که بسیاری از محیط‌های هوش مصنوعی دنیای واقعی را در بر نمی‌گیرد. در این فصل، بنابراین، مسائل ناشی از تصمیم‌گیری عامل در محیط‌هایی که شامل چند کنشگرند را در نظر می‌گیریم. چنین محیط‌هایی «سامانه‌های چندعاملی» (Multiagent Systems) نامیده می‌شوند، و عامل‌های چنین سامانه‌ای با «مسئلهٔ برنامه‌ریزی چندعاملی» (Multiagent Planning Problem) روبه‌رویند. اما، چنان‌که خواهیم دید، ماهیت دقیق مسئلهٔ برنامه‌ریزی چندعاملی—و فنون مناسب حل آن—به روابط میان عامل‌های محیط بستگی خواهد داشت.</p>
@@ -241,7 +273,7 @@ B: [بی‌عمل(B), بی‌عمل(B)]</code></pre>
 <li>«تابع بازدهی» (Payoff Function) که مطلوبیت را به هر بازیکن برای هر ترکیب کنش توسط همهٔ بازیکنان می‌دهد. برای بازی‌های دونفره، تابع بازدهی برای بازیکنی را می‌توان با ماتریسی بازنمایی کرد که در آن برای هر کنش ممکن یک بازیکن ردیفی و برای هر انتخاب ممکن بازیکن دیگر ستونی هست: ردیف انتخاب‌شده و ستون انتخاب‌شده سلولی از ماتریس را تعریف می‌کنند، که با بازدهی بازیکن مربوط برچسب‌گذاری می‌شود. در حالت دونفره، مرسوم است دو ماتریس در «ماتریس بازدهی» (Payoff Matrix) تکی ترکیب شوند، که در آن هر سلول با بازدهی‌های هر دو بازیکن برچسب‌گذاری می‌شود.</li>
 </ul>
 <p>برای نشان‌دادن این ایده‌ها، به بازی نمونه‌ای به نام «مورای دوانگشتی» (Two-Finger Morra) نگاه کنیم. در این بازی، دو بازیکن، O و E، هم‌زمان یک یا دو انگشت نشان می‌دهند. فرض کنیم شمار کل انگشتان نشان‌داده‌شده f باشد. اگر f فرد باشد، O از E به اندازهٔ f دلار دریافت می‌کند؛ و اگر f زوج باشد، E از O به اندازهٔ f دلار دریافت می‌کند.<sup>¹</sup> ماتریس بازدهی برای مورای دوانگشتی به‌صورت زیر است:</p>
-<table><thead><tr><th></th><th><span class="en-inline">O:</span> یک</th><th><span class="en-inline">O:</span> دو</th></tr></thead><tbody>
+<table><thead><tr><th scope="col"></th><th scope="col"><span class="en-inline">O:</span> یک</th><th scope="col"><span class="en-inline">O:</span> دو</th></tr></thead><tbody>
 <tr><td><strong>E: یک</strong></td><td><span class="en-inline">E = +2</span>، O = −2</td><td>E = −3، <span class="en-inline">O = +3</span></td></tr>
 <tr><td><strong>E: دو</strong></td><td>E = −3، <span class="en-inline">O = +3</span></td><td><span class="en-inline">E = +4</span>، O = −4</td></tr>
 </tbody></table>
@@ -251,7 +283,7 @@ B: [بی‌عمل(B), بی‌عمل(B)]</code></pre>
 <p>اصطلاح «استراتژی» (Strategy) در نظریهٔ بازی برای نشان‌دادن آنچه قبلاً «سیاست» می‌نامیدیم استفاده می‌شود. «استراتژی خالص» (Pure Strategy) سیاست جبرگرایانه است؛ برای بازی تک‌حرکتی، استراتژی خالص فقط یک کنش است. چنان‌که در زیر خواهیم دید، برای بسیاری از بازی‌ها عامل می‌تواند با «استراتژی ترکیبی» (Mixed Strategy) بهتر عمل کند، که سیاست تصادفی‌شده‌ای است که کنش‌ها را طبق توزیع احتمالی انتخاب می‌کند. استراتژی ترکیبی که کنش a را با احتمال p و کنش b را در غیر این صورت انتخاب می‌کند، به‌صورت [p:a; (1−p):b] نوشته می‌شود. برای نمونه، استراتژی ترکیبی برای مورای دوانگشتی ممکن است [0.5:<span class="en-inline">one; 0.5:two]</span> باشد. «نمایهٔ استراتژی» (Strategy Profile) تخصیص استراتژی به هر بازیکن است؛ با توجه به نمایهٔ استراتژی، پیامد بازی مقدار عددی برای هر بازیکن است—اگر بازیکنان از استراتژی‌های ترکیبی استفاده کنند، باید از مطلوبیت موردانتظار استفاده کنیم.</p>
 <p>پس عامل‌ها در بازی‌هایی مانند مورا چگونه باید تصمیم بگیرند؟ نظریهٔ بازی طیفی از مفاهیم راه‌حل فراهم می‌کند که تلاش می‌کنند کنش عقلایی را نسبت به باورهای عامل دربارهٔ باورهای عامل دیگر تعریف کنند. متأسفانه، هیچ مفهوم راه‌حل کاملی نیست: تعریف اینکه «عقلایی» وقتی هر عامل فقط بخشی از نمایهٔ استراتژی تعیین‌کنندهٔ پیامد را انتخاب می‌کند به چه معناست، مسئله‌دار است.</p>
 <p>نخستین مفهوم راه‌حل‌مان را از طریق احتمالاً مشهورترین بازی در قانون نظریهٔ بازی معرفی می‌کنیم—«دوراهی زندانی» (Prisoner's Dilemma). این بازی با داستان زیر انگیزه‌مند می‌شود: دو سارق متهم، علی و بو، نزدیک صحنهٔ سرقتی دستگیر شده‌اند و جداگانه بازجویی می‌شوند. دادستانی به هر یک معامله‌ای پیشنهاد می‌کند: اگر علیه شریکت به‌عنوان رهبر باند سرقت شهادت دهی، برای همکاری‌کردن آزاد می‌شوی، در حالی که شریکت ۱۰ سال زندان خواهد کرد. با این حال، اگر هر دو علیه یکدیگر شهادت دهید، هر دو ۵ سال می‌گیرید. علی و بو همچنین می‌دانند اگر هر دو از شهادت امتناع کنند، فقط ۱ سال برای اتهام سبک‌تر داشتن اموال مسروقه می‌گیرند. حالا علی و بو با به‌اصطلاح دوراهی زندانی روبه‌رویند: باید شهادت بدهند یا امتناع کنند؟ به‌عنوان عامل‌های عقلایی، علی و بو هر یک می‌خواهند مطلوبیت موردانتظار خودشان را بیشینه کنند، یعنی شمار سال‌های زندان را کمینه کنند—هر یک نسبت به رفاه بازیکن دیگر بی‌تفاوت است. دوراهی زندانی در ماتریس بازدهی زیر در بر گرفته می‌شود:</p>
-<table><thead><tr><th></th><th>علی: شهادت</th><th>علی: امتناع</th></tr></thead><tbody>
+<table><thead><tr><th scope="col"></th><th scope="col">علی: شهادت</th><th scope="col">علی: امتناع</th></tr></thead><tbody>
 <tr><td><strong>بو: شهادت</strong></td><td>A = −5، B = −5</td><td>A = −10، <span class="en-inline">B = 0</span></td></tr>
 <tr><td><strong>بو: امتناع</strong></td><td><span class="en-inline">A = 0</span>، B = −10</td><td>A = −1، B = −1</td></tr>
 </tbody></table>
@@ -262,13 +294,13 @@ B: [بی‌عمل(B), بی‌عمل(B)]</code></pre>
 <p>مفهوم راه‌حل بعدی که در نظر می‌گیریم ضعیف‌تر از تعادل استراتژی مسلط است، اما بسیار گسترده‌تر قابل اعمال است. «تعادل نش» (Nash Equilibrium) نامیده می‌شود، به نام جان فوربس نش کوچک (۲۰۱۵–۱۹۲۸)، که آن را در پایان‌نامهٔ دکترای ۱۹۵۰ خود مطالعه کرد—کاری که برایش در ۱۹۹۴ جایزهٔ نوبل دریافت کرد.</p>
 <p>نمایهٔ استراتژی تعادل نش است اگر هیچ بازیکنی نتواند یک‌جانبه استراتژی‌اش را تغییر دهد و در نتیجه بازدهی بالاتری دریافت کند، تحت فرض اینکه بازیکنان دیگر در انتخاب‌های استراتژی‌شان ماندند. بدین‌ترتیب، در تعادل نش، هر بازیکن هم‌زمان در حال بازی بهترین پاسخ به انتخاب‌های همتایانش است. تعادل نش نقطهٔ پایداری در بازی را بازنمایی می‌کند: پایدار به این معنا که هیچ انگیزهٔ عقلایی‌ای برای هیچ بازیکنی به انحراف نیست. با این حال، تعادل‌های نش نقاط پایدار محلی‌اند: چنان‌که خواهیم دید، بازی ممکن است شامل چند تعادل نش باشد. چون استراتژی مسلط بهترین پاسخ به همهٔ استراتژی‌های همتایان است، نتیجه می‌شود هر تعادل استراتژی مسلطی باید تعادل نش نیز باشد (تمرین ۱۸.EQIB). در دوراهی زندانی، بنابراین، تعادل استراتژی مسلط یکتایی هست، که آن نیز تعادل نش یکتاست.</p>
 <p>بازی نمونهٔ زیر نشان می‌دهد، نخست، گاهی بازی‌ها هیچ استراتژی مسلطی ندارند، و دوم، برخی بازی‌ها چند تعادل نش دارند.</p>
-<table><thead><tr><th></th><th>علی: چپ (l)</th><th>علی: راست (r)</th></tr></thead><tbody>
+<table><thead><tr><th scope="col"></th><th scope="col">علی: چپ (l)</th><th scope="col">علی: راست (r)</th></tr></thead><tbody>
 <tr><td><strong>بو: بالا (t)</strong></td><td><span class="en-inline">A = 10</span>، <span class="en-inline">B = 10</span></td><td><span class="en-inline">A = 0</span>، <span class="en-inline">B = 0</span></td></tr>
 <tr><td><strong>بو: پایین (b)</strong></td><td><span class="en-inline">A = 0</span>، <span class="en-inline">B = 0</span></td><td><span class="en-inline">A = 1</span>، <span class="en-inline">B = 1</span></td></tr>
 </tbody></table>
 <p>به‌آسانی قابل بررسی است در این بازی برای هیچ بازیکنی استراتژی مسلط نیست، و از این رو تعادل استراتژی مسلطی نیست. با این حال، نمایه‌های استراتژی (t,l) و (b,r) هر دو تعادل نش‌اند. حالا، بدیهی است در راستای منافع هر دو عامل است که هدف همان تعادل نش را بگیرند—یا (t,l) یا (b,r)—اما چون در قلمرو نظریهٔ بازی غیرهمکارانه‌ایم، بازیکنان باید انتخاب‌هایشان را مستقلانه، بدون هیچ دانشی از انتخاب‌های دیگران و بدون هیچ راهی برای توافق با آن‌ها، انجام دهند. این نمونه‌ای از مسئلهٔ هماهنگی است: بازیکنان می‌خواهند کنش‌هایشان را به‌صورت سراسری هماهنگ کنند، به‌گونه‌ای که هر دو کنش‌هایی انتخاب کنند که به همان تعادل می‌انجامد، اما باید فقط با تصمیم‌گیری محلی این کار را بکنند. شماری از رویکردها برای حل مسائل هماهنگی پیشنهاد شده. یکی از ایده‌ها «نقاط کانونی» (Focal Points) است. نقطهٔ کانونی در بازی پیامدی است که به نحوی برای بازیکنان به‌عنوان پیامد «بدیهی» که انتخاب‌هایشان را روی آن هماهنگ کنند برجسته می‌شود. این البته تعریف دقیقی نیست—معنایش به بازی مورد نظر بستگی خواهد داشت. در مثال بالا، با این حال، یک نقطهٔ کانونی بدیهی هست: پیامد (t,l) به هر دو بازیکن مطلوبیت به‌طور قابل‌توجهی بالاتری از آنچه اگر روی (b,r) هماهنگ می‌شدند می‌داد. از دیدگاه نظریهٔ بازی، هر دو پیامد تعادل نش‌اند—اما واقعاً بازیکن منحرفی می‌بود که انتظار هماهنگی بر (b,r) را داشته باشد.</p>
 <p>برخی بازی‌ها در استراتژی‌های خالص هیچ تعادل نشی ندارند، چنان‌که بازی زیر به نام «پنی‌های هم‌خوان» (Matching Pennies) نشان می‌دهد. در این بازی، علی و بو هم‌زمان یک سمت سکه را انتخاب می‌کنند، رو یا پشت: اگر انتخاب‌های یکسانی بکنند، بو ۱ دلار به علی می‌دهد، در حالی که اگر انتخاب‌های متفاوتی بکنند، علی ۱ دلار به بو می‌دهد:</p>
-<table><thead><tr><th></th><th>علی: رو</th><th>علی: پشت</th></tr></thead><tbody>
+<table><thead><tr><th scope="col"></th><th scope="col">علی: رو</th><th scope="col">علی: پشت</th></tr></thead><tbody>
 <tr><td><strong>بو: رو</strong></td><td><span class="en-inline">A = 1</span>، B = −1</td><td>A = −1، <span class="en-inline">B = 1</span></td></tr>
 <tr><td><strong>بو: پشت</strong></td><td>A = −1، <span class="en-inline">B = 1</span></td><td><span class="en-inline">A = 1</span>، B = −1</td></tr>
 </tbody></table>
@@ -343,7 +375,7 @@ B: [بی‌عمل(B), بی‌عمل(B)]</code></pre>
 <p>به‌عنوان مثال ساده‌ای از بازی ترتیبی، دو عامل را در جهان 4×3 شکل ۱۷.۱ قرار دهید و آن‌ها را هم‌زمان حرکت دهید تا وقتی یکی به مربع خروجی برسد و بازدهی آن مربع را بگیرد. اگر مشخص کنیم وقتی دو عامل هم‌زمان سعی می‌کنند به همان مربع حرکت کنند هیچ حرکتی رخ نمی‌دهد (مسئله‌ای رایج در بسیاری از تقاطع‌های ترافیکی)، آن‌گاه برخی استراتژی‌های خالص می‌توانند برای همیشه گیر کنند. بدین‌ترتیب، عامل‌ها در این بازی برای عملکرد خوب به استراتژی ترکیبی نیاز دارند: تصادفی بین حرکت به جلو و ماندن انتخاب کنید. این دقیقاً همان کاری است که برای حل برخوردهای بسته در شبکه‌های اترنت انجام می‌شود.</p>
 <p>بعد، نوع بسیار ساده‌ای از پوکر را در نظر می‌گیریم. عرشه فقط چهار کارت دارد، دو آس و دو شاه. به هر بازیکن یک کارت داده می‌شود. بازیکن نخست سپس این گزینه را دارد که شرط بازی را از 1 امتیاز به 2 بالا ببرد، یا چک کند. اگر بازیکن 1 چک کند، بازی تمام است. اگر بازیکن 1 بالا ببرد، بازیکن 2 این گزینه را دارد که هم‌خوانی کند، بپذیرد که بازی 2 امتیاز ارزش دارد، یا انصراف دهد، 1 امتیاز را واگذار کند. اگر بازی با انصراف پایان نیابد، بازدهی به کارت‌ها بستگی دارد: اگر کارت‌های یکسانی داشته باشند برای هر دو بازیکن صفر است؛ در غیر این صورت بازیکن با شاه شرط را به بازیکن با آس می‌پردازد.</p>
 <p>درخت شکل گسترده برای این بازی در شکل ۱۸.۵ نشان داده شده. یک راه برای حل بازی گسترده تبدیل آن به بازی شکل نرمال است. به یاد آورید شکل نرمال ماتریسی است که هر ردیفش با استراتژی خالص بازیکن 1 و هر ستونش با استراتژی خالص بازیکن 2 برچسب‌گذاری می‌شود. در بازی گسترده، استراتژی خالص بازیکن i با کنشی برای هر مجموعهٔ اطلاعاتی شامل آن بازیکن متناظر است. پس در شکل ۱۸.۵، یکی از استراتژی‌های خالص بازیکن 1 «وقتی در <span class="en-inline">I1,1</span> هستم (یعنی آس دارم) بالا ببر، و وقتی در <span class="en-inline">I1,2</span> هستم (شاه دارم) چک کن» است. در ماتریس بازدهی زیر، این استراتژی <span class="en-inline">rk</span> نامیده می‌شود. به‌طور مشابه، استراتژی <span class="en-inline">cf</span> برای بازیکن 2 بدان معناست «وقتی آس دارم هم‌خوانی کن و وقتی شاه دارم انصراف بده». چون این بازی جمع صفر است، ماتریس زیر فقط بازدهی بازیکن 1 را می‌دهد؛ بازیکن 2 همیشه بازدهی مقابل را دارد:</p>
-<table><thead><tr><th></th><th>2:<span class="en-inline">cc</span></th><th>2:<span class="en-inline">cf</span></th><th>2:<span class="en-inline">ff</span></th><th>2:<span class="en-inline">fc</span></th></tr></thead><tbody>
+<table><thead><tr><th scope="col"></th><th scope="col">2:<span class="en-inline">cc</span></th><th scope="col">2:<span class="en-inline">cf</span></th><th scope="col">2:<span class="en-inline">ff</span></th><th scope="col">2:<span class="en-inline">fc</span></th></tr></thead><tbody>
 <tr><td><strong>1:rr</strong></td><td>0</td><td>−1/6</td><td>1</td><td>7/6</td></tr>
 <tr><td><strong>1:kr</strong></td><td>−1/3</td><td>−1/6</td><td>5/6</td><td>2/3</td></tr>
 <tr><td><strong>1:rk</strong></td><td>1/3</td><td>0</td><td>1/6</td><td>1/2</td></tr>
@@ -617,7 +649,7 @@ xi ≥ ν({i})    برای همهٔ i ∈ N</code></pre>
   <p style="color:var(--muted);font-size:13px;margin-top:8px">این صفحه از ترجمهٔ فارسی فصل‌های کتاب «هوش مصنوعی: رویکردی نوین» (استوارت راسل و پیتر نورویگ، ویرایش چهارم) تولید شده است. متن با فایل مارک‌داون همان فصل یکسان است.</p>
 </div>
 
-</div>
+</main>
 <script id="aima-standalone-helper">
   if (window.self === window.top) {
     window.addEventListener('DOMContentLoaded', function() {

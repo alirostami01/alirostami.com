@@ -57,7 +57,7 @@
             color: var(--accent);
             line-height: 1.4;
         }
-        h3 {
+        h2 {
             font-size: 1.35rem;
             color: var(--accent);
             margin: 2.4rem 0 .9rem;
@@ -66,7 +66,7 @@
             line-height: 1.4;
             scroll-margin-top: 1rem;
         }
-        h4 {
+        h3 {
             font-size: 1.15rem;
             color: var(--accent);
             margin: 1.6rem 0 .6rem;
@@ -157,7 +157,7 @@
             h1 {
                 font-size: 1.5rem;
             }
-            h3 {
+            h2 {
                 font-size: 1.2rem;
             }
         }
@@ -204,9 +204,41 @@
     <meta name="twitter:image" content="https://www.alirostami.com/images/social/software-architecture.jpg">
     <meta name="twitter:image:alt" content="ترجمه فارسی مبانی معماری نرم‌افزار؛ مطالعه آنلاین ۲۷ فصل و پیوست">
     <!-- image-seo:end -->
+    <!-- accessibility-styles:start -->
+    <style>
+    .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+    .skip-link{position:fixed;top:.75rem;left:.75rem;z-index:100000;padding:.65rem 1rem;border-radius:.35rem;background:#fff;color:#073b70;font-weight:700;box-shadow:0 2px 12px rgba(0,0,0,.25);transform:translateY(-180%);transition:transform .15s ease}
+    .skip-link:focus{transform:translateY(0)}
+    :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:3px solid #0563c1!important;outline-offset:3px!important}
+    [theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible,[data-theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline-color:#7dd3fc!important}
+    body[data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#5f5f66!important}
+    body[theme=dark][data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#b7bbc5!important}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#1d789b!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#6bc5e6!important}
+    body[data-header-desktop] .single .content a:not(.headerlink){text-decoration:underline!important;text-underline-offset:.15em}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#a41354!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#fff!important}
+    body[data-header-desktop] .search input::placeholder{color:#5f5f66!important;opacity:1}
+    body[theme=dark][data-header-desktop] .search input::placeholder{color:#b7bbc5!important}
+    button.menu-toggle{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;min-width:2rem;min-height:2rem}
+    button.search-button,button.search-cancel,button.theme-switch,button.history-back,button.share-button,button.script-button{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;line-height:inherit;cursor:pointer}
+    button.search-button,button.theme-switch,button.share-button,button.script-button{min-width:1.5rem;min-height:1.5rem}
+    button.history-back{text-decoration:underline;text-underline-offset:.15em}
+    summary.details-summary{list-style:none}
+    summary.details-summary::-webkit-details-marker{display:none}
+    .sidebar-controls .sidebar-action,.ch-chevron{appearance:none;border:0;background:transparent;color:inherit;font:inherit;cursor:pointer;min-height:1.5rem}
+    .sidebar-controls .sidebar-action{color:var(--text-muted)}
+    .sidebar-controls .sidebar-action:hover{color:var(--accent)}
+    .ch-chevron{padding:.2rem .4rem;min-width:2rem}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    </style>
+    <!-- accessibility-styles:end -->
 </head>
 <body>
+    <!-- accessibility-skip-link -->
+    <a class="skip-link" href="#main-content">رفتن به محتوای اصلی</a>
 <!-- خروجی HTML — کامپوننت کامل فصل ۴ (بدون html/head) -->
+<main class="chapter-main" id="main-content" tabindex="-1">
 <article class="chapter-content">
 
   <h1 style="font-size:1.7rem;margin:0 0 1rem;border-bottom:3px solid #2c5f8a;padding-bottom:.5rem;">فصل ۴: تعریف ویژگی‌های معماری</h1>
@@ -231,7 +263,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-1" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">ویژگی‌های معماری و طراحیِ سیستم</h3>
+    <h2 id="sec-1" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">ویژگی‌های معماری و طراحیِ سیستم</h2>
     <p style="text-align:justify;">یک الزام برای آنکه ویژگیِ معماری به شمار آید، باید سه ملاک را برآورده کند: باید یک ملاحظهٔ طراحیِ غیرحوزه‌ای <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(nondomain)</bdi> را مشخص سازد، بر جنبه‌ای ساختاری از طراحی اثر بگذارد، و برای موفقیتِ برنامه حیاتی یا مهم باشد. این اجزای درهم‌تنیدهٔ تعریفِ ما در شکل ۴-۲ نشان داده شده‌اند که از همین سه جزء و چند قیدِ تکمیلی تشکیل شده است.</p>
     <figure style="margin:1rem 0;padding:.7rem 1rem;background:#f9f9f9;border-right:4px solid #2c5f8a;border-radius:4px;">
       <img src="figures/chapter-04/figure-4-2.png" alt="شکل ۴-۲. ویژگی‌های متمایزکنندهٔ ویژگی‌های معماری" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;" width="598" height="452" decoding="async">
@@ -256,16 +288,16 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-2" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">ویژگی‌های معماری (فهرستی ناقص)</h3>
+    <h2 id="sec-2" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">ویژگی‌های معماری (فهرستی ناقص)</h2>
     <p style="text-align:justify;">ویژگی‌های معماری در طیفی گسترده از پیچیدگی قرار می‌گیرند؛ از ویژگی‌های سطحِ پایینِ کد (مانند ماژولاریتی) تا دغدغه‌های عملیاتیِ پیچیده (مانند مقیاس‌پذیری و کشسانی). هیچ استانداردِ جهان‌شمولِ واقعی‌ای وجود ندارد، هرچند کسانی کوشیده‌اند آن را مدون کنند. در عوض، هر سازمان این اصطلاحات را به شیوهٔ خود تفسیر می‌کند. افزون بر این، چون زیست‌بومِ نرم‌افزار بسیار سریع تغییر می‌کند، مفاهیم، اصطلاحات، سنجه‌ها و روش‌های راستی‌آزماییِ تازه پیوسته پدید می‌آیند و فرصت‌های تازه‌ای برای تعریفِ ویژگی‌های معماری فراهم می‌کنند.</p>
     <p style="text-align:justify;">با اینکه حجم و گسترهٔ عظیمِ ویژگی‌های معماری کمّی‌کردنِ آن‌ها را دشوار می‌کند، معماران آن‌ها را دسته‌بندی می‌کنند. بخش‌های پیش رو چند دستهٔ کلیِ این‌چنینی را توصیف می‌کنند و نمونه‌هایی به دست می‌دهند.</p>
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;">ویژگی‌های عملیاتیِ معماری</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;" data-a11y-heading="promoted-from-h4">ویژگی‌های عملیاتیِ معماری</h3>
     <p style="text-align:justify;">ویژگی‌های عملیاتیِ معماری قابلیت‌هایی مانند کارایی، مقیاس‌پذیری، کشسانی، در دسترس‌بودن و قابلیتِ اطمینان را پوشش می‌دهند. جدول ۴-۱ برخی از ویژگی‌های عملیاتیِ معماری را فهرست می‌کند.</p>
     <figure style="margin:1rem 0;padding:.7rem 1rem;background:#f9f9f9;border-right:4px solid #2c5f8a;border-radius:4px;">
       <figcaption style="font-size:.95rem;color:#333;margin-bottom:.5rem;" dir="rtl"><b>جدول ۴-۱.</b> ویژگی‌های عملیاتیِ رایجِ معماری</figcaption>
       <table dir="rtl" style="width:100%;border-collapse:collapse;font-size:.95rem;text-align:right;">
         <thead>
-          <tr style="background:#2c5f8a;color:#fff;"><th style="border:1px solid #ccc;padding:.45rem .6rem;">اصطلاح</th><th style="border:1px solid #ccc;padding:.45rem .6rem;">تعریف</th></tr>
+          <tr style="background:#2c5f8a;color:#fff;"><th style="border:1px solid #ccc;padding:.45rem .6rem;" scope="col">اصطلاح</th><th style="border:1px solid #ccc;padding:.45rem .6rem;" scope="col">تعریف</th></tr>
         </thead>
         <tbody>
           <tr><td style="border:1px solid #ccc;padding:.4rem .6rem;vertical-align:top;">در دسترس‌بودن <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Availability)</bdi></td><td style="border:1px solid #ccc;padding:.4rem .6rem;vertical-align:top;">سیستم چه مدت از زمان باید در دسترس باشد؛ اگر شبانه‌روزی و همیشگی (<bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">24/7</bdi>) باشد، باید تدابیری در کار باشد تا سیستم در صورتِ هر خرابی به‌سرعت دوباره راه بیفتد و کار کند.</td></tr>
@@ -279,13 +311,13 @@
       </table>
     </figure>
     <p style="text-align:justify;">ویژگی‌های عملیاتیِ معماری همپوشانیِ زیادی با دغدغه‌های عملیات و <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">DevOps</bdi> دارند.</p>
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;">ویژگی‌های ساختاریِ معماری</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;" data-a11y-heading="promoted-from-h4">ویژگی‌های ساختاریِ معماری</h3>
     <p style="text-align:justify;">معماران مسئولِ ساختارِ درستِ کدند. در بسیاری از موارد، معمار مسئولیتِ انحصاری یا مشترکِ کیفیتِ کد را بر عهده دارد، از جمله ماژولاریتیِ آن، خوانایی‌اش، میزانِ مهارِ کوپلینگ میانِ مؤلفه‌ها، تمیزیِ کد و انبوهی از ارزیابی‌های کیفیِ درونیِ دیگر. جدول ۴-۲ چند ویژگیِ ساختاریِ معماری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(structural architectural characteristics)</bdi> را فهرست می‌کند.</p>
     <figure style="margin:1rem 0;padding:.7rem 1rem;background:#f9f9f9;border-right:4px solid #2c5f8a;border-radius:4px;">
       <figcaption style="font-size:.95rem;color:#333;margin-bottom:.5rem;" dir="rtl"><b>جدول ۴-۲.</b> ویژگی‌های ساختاریِ معماری</figcaption>
       <table dir="rtl" style="width:100%;border-collapse:collapse;font-size:.95rem;text-align:right;">
         <thead>
-          <tr style="background:#2c5f8a;color:#fff;"><th style="border:1px solid #ccc;padding:.45rem .6rem;">اصطلاح</th><th style="border:1px solid #ccc;padding:.45rem .6rem;">تعریف</th></tr>
+          <tr style="background:#2c5f8a;color:#fff;"><th style="border:1px solid #ccc;padding:.45rem .6rem;" scope="col">اصطلاح</th><th style="border:1px solid #ccc;padding:.45rem .6rem;" scope="col">تعریف</th></tr>
         </thead>
         <tbody>
           <tr><td style="border:1px solid #ccc;padding:.4rem .6rem;vertical-align:top;">پیکربندی‌پذیری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Configurability)</bdi></td><td style="border:1px solid #ccc;padding:.4rem .6rem;vertical-align:top;">کاربرانِ نهایی تا چه اندازه آسان می‌توانند جنبه‌هایی از پیکربندیِ نرم‌افزار را از راهِ رابط‌ها تغییر دهند.</td></tr>
@@ -299,13 +331,13 @@
         </tbody>
       </table>
     </figure>
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;">ویژگی‌های ابری</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;" data-a11y-heading="promoted-from-h4">ویژگی‌های ابری</h3>
     <p style="text-align:justify;">زیست‌بومِ توسعهٔ نرم‌افزار پیوسته تغییر می‌کند و تکامل می‌یابد؛ تازه‌ترین و بارزترین نمونه‌اش ورودِ ابر است. هنگامِ انتشارِ ویراستِ نخست، رایانشِ ابری وجود داشت اما فراگیر نبود. اکنون بیشترِ سیستم‌ها دست‌کم در حدی با سیستم‌های مبتنی بر ابر تعامل دارند. چند مورد از این ملاحظات در جدول ۴-۳ آمده است.</p>
     <figure style="margin:1rem 0;padding:.7rem 1rem;background:#f9f9f9;border-right:4px solid #2c5f8a;border-radius:4px;">
       <figcaption style="font-size:.95rem;color:#333;margin-bottom:.5rem;" dir="rtl"><b>جدول ۴-۳.</b> ویژگی‌های معماریِ مرتبط با ارائه‌دهندهٔ ابر</figcaption>
       <table dir="rtl" style="width:100%;border-collapse:collapse;font-size:.95rem;text-align:right;">
         <thead>
-          <tr style="background:#2c5f8a;color:#fff;"><th style="border:1px solid #ccc;padding:.45rem .6rem;">اصطلاح</th><th style="border:1px solid #ccc;padding:.45rem .6rem;">تعریف</th></tr>
+          <tr style="background:#2c5f8a;color:#fff;"><th style="border:1px solid #ccc;padding:.45rem .6rem;" scope="col">اصطلاح</th><th style="border:1px solid #ccc;padding:.45rem .6rem;" scope="col">تعریف</th></tr>
         </thead>
         <tbody>
           <tr><td style="border:1px solid #ccc;padding:.4rem .6rem;vertical-align:top;">مقیاس‌پذیریِ بر حسبِ تقاضا <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(On-demand scalability)</bdi></td><td style="border:1px solid #ccc;padding:.4rem .6rem;vertical-align:top;">توانِ ارائه‌دهندهٔ ابر در افزایشِ پویای منابع بر پایهٔ تقاضا.</td></tr>
@@ -316,13 +348,13 @@
       </table>
     </figure>
     <p style="text-align:justify;">در ویراستِ دومِ این کتاب، به هر یک از فصل‌های سبک‌های معماری بخشی افزوده‌ایم که توصیف می‌کند آن سبک چگونه ملاحظاتِ ابری را در خود جای می‌دهد و تسهیل می‌کند.</p>
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;">ویژگی‌های میان‌بُرشیِ معماری</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;" data-a11y-heading="promoted-from-h4">ویژگی‌های میان‌بُرشیِ معماری</h3>
     <p style="text-align:justify;">با اینکه بسیاری از ویژگی‌های معماری در دسته‌هایی به‌آسانی قابلِ شناسایی جای می‌گیرند، برخی دیگر بیرون از این دسته‌ها قرار می‌گیرند یا به دسته‌بندی تن نمی‌دهند، اما همچنان قیدها و ملاحظاتِ طراحیِ مهمی پدید می‌آورند. جدول ۴-۴ چند مورد از این ویژگی‌های میان‌بُرشی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(cross-cutting)</bdi> را توصیف می‌کند.</p>
     <figure style="margin:1rem 0;padding:.7rem 1rem;background:#f9f9f9;border-right:4px solid #2c5f8a;border-radius:4px;">
       <figcaption style="font-size:.95rem;color:#333;margin-bottom:.5rem;" dir="rtl"><b>جدول ۴-۴.</b> ویژگی‌های میان‌بُرشیِ معماری</figcaption>
       <table dir="rtl" style="width:100%;border-collapse:collapse;font-size:.95rem;text-align:right;">
         <thead>
-          <tr style="background:#2c5f8a;color:#fff;"><th style="border:1px solid #ccc;padding:.45rem .6rem;">اصطلاح</th><th style="border:1px solid #ccc;padding:.45rem .6rem;">تعریف</th></tr>
+          <tr style="background:#2c5f8a;color:#fff;"><th style="border:1px solid #ccc;padding:.45rem .6rem;" scope="col">اصطلاح</th><th style="border:1px solid #ccc;padding:.45rem .6rem;" scope="col">تعریف</th></tr>
         </thead>
         <tbody>
           <tr><td style="border:1px solid #ccc;padding:.4rem .6rem;vertical-align:top;">دسترس‌پذیری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Accessibility)</bdi></td><td style="border:1px solid #ccc;padding:.4rem .6rem;vertical-align:top;">همهٔ کاربران، از جمله افرادِ دارای معلولیت‌هایی مانندِ کوررنگی یا کم‌شنوایی، تا چه اندازه آسان می‌توانند به سیستم دسترسی داشته باشند.</td></tr>
@@ -366,7 +398,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-3" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">مصالحه‌ها و کم‌بدترین معماری</h3>
+    <h2 id="sec-3" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">مصالحه‌ها و کم‌بدترین معماری</h2>
     <p style="text-align:justify;">پیش‌تر گفتیم که معماران باید فقط از آن ویژگی‌های معماری پشتیبانی کنند که برای موفقیتِ سیستم حیاتی یا مهم‌اند. سیستم‌ها به دلایلِ گوناگون تنها می‌توانند از چندتایی از ویژگی‌های معماری‌ای که برشمردیم پشتیبانی کنند. نخست، پشتیبانی از یک ویژگیِ معماری به‌ندرت بدون هزینه است. هر ویژگیِ پشتیبانی‌شده به تلاشِ طراحی از سوی معمار، تلاشِ توسعه‌دهندگان برای پیاده‌سازی و نگهداری‌اش، و شاید پشتیبانیِ ساختاری نیاز دارد.</p>
     <p style="text-align:justify;">دوم، ویژگی‌های معماری با یکدیگر و با حوزهٔ مسئله هم‌افزا <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(synergistic)</bdi> هستند. هر قدر هم که چیزِ دیگری را ترجیح دهیم، هر عنصرِ طراحی با همهٔ عناصرِ دیگر برهم‌کنش دارد. برای نمونه، برداشتنِ گام‌هایی برای بهبودِ امنیت تقریباً به‌یقین بر کارایی اثرِ منفی می‌گذارد: برنامه باید رمزگذاریِ درجا، غیرمستقیم‌سازی (<bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">indirection</bdi>، برای پنهان‌کردنِ اسرار) و فعالیت‌های دیگری انجام دهد که می‌توانند کارایی را کاهش دهند. خلبانانِ هواپیما اغلب هنگامِ یادگیریِ هدایتِ بالگرد دچار چالش می‌شوند، چرا که بالگرد برای هر دست و هر پا یک کنترلرِ جداگانه دارد. تغییرِ یک کنترل بر همهٔ کنترل‌های دیگر اثر می‌گذارد، چون آن‌ها هم‌افزا هستند. هدایتِ بالگرد تمرینی مداوم در برقراریِ توازن است و این تمثیل به‌خوبی فرایندِ مصالحه در انتخابِ ویژگی‌های معماری را توصیف می‌کند؛ این ویژگی‌ها نیز به همین شکل هم با دیگر ویژگی‌های معماری و هم با طراحیِ حوزه هم‌افزا هستند: تغییرِ یکی اغلب تغییرِ دیگری را در پی دارد. معماران نیز، درست مانندِ خلبانِ بالگرد، باید بیاموزند که این اجزای درهم‌تنیده را هم‌زمان مدیریت کنند.</p>
     <p style="text-align:justify;">سوم، همان‌طور که پیش‌تر گفتیم، نبودِ تعریف‌های استاندارد برای ویژگی‌های معماری باعث می‌شود سازمان‌ها با ابهام دست‌وپنجه نرم کنند. هرچند صنعت هرگز نخواهد توانست فهرستی تغییرناپذیر از ویژگی‌های معماری بسازد (چون ویژگی‌های تازه پیوسته پدید می‌آیند)، هر سازمان می‌تواند فهرستِ خود (یا زبانِ فراگیرِ خود) را با تعریف‌های عینی بسازد.</p>
@@ -382,12 +414,12 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
     <section>
-    <h3 id="sec-4" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">واژه‌نامهٔ اختصاصی این فصل</h3>
+    <h2 id="sec-4" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">واژه‌نامهٔ اختصاصی این فصل</h2>
     <table dir="rtl" style="width:100%;border-collapse:collapse;font-size:.95rem;">
       <thead>
         <tr style="background:#2c5f8a;color:#fff;">
-          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;">واژهٔ انگلیسی</th>
-          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;">معادل مصوب/به‌کاررفته در این فصل</th>
+          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;" scope="col">واژهٔ انگلیسی</th>
+          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;" scope="col">معادل مصوب/به‌کاررفته در این فصل</th>
         </tr>
       </thead>
       <tbody>
@@ -477,6 +509,7 @@
   </section>
 
 </article>
+</main>
 
 <script id="fosa-standalone-helper">
   if (window.self === window.top) {

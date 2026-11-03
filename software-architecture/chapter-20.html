@@ -57,7 +57,7 @@
             color: var(--accent);
             line-height: 1.4;
         }
-        h3 {
+        h2 {
             font-size: 1.35rem;
             color: var(--accent);
             margin: 2.4rem 0 .9rem;
@@ -66,7 +66,7 @@
             line-height: 1.4;
             scroll-margin-top: 1rem;
         }
-        h4 {
+        h3 {
             font-size: 1.15rem;
             color: var(--accent);
             margin: 1.6rem 0 .6rem;
@@ -157,7 +157,7 @@
             h1 {
                 font-size: 1.5rem;
             }
-            h3 {
+            h2 {
                 font-size: 1.2rem;
             }
         }
@@ -204,9 +204,41 @@
     <meta name="twitter:image" content="https://www.alirostami.com/images/social/software-architecture.jpg">
     <meta name="twitter:image:alt" content="ترجمه فارسی مبانی معماری نرم‌افزار؛ مطالعه آنلاین ۲۷ فصل و پیوست">
     <!-- image-seo:end -->
+    <!-- accessibility-styles:start -->
+    <style>
+    .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+    .skip-link{position:fixed;top:.75rem;left:.75rem;z-index:100000;padding:.65rem 1rem;border-radius:.35rem;background:#fff;color:#073b70;font-weight:700;box-shadow:0 2px 12px rgba(0,0,0,.25);transform:translateY(-180%);transition:transform .15s ease}
+    .skip-link:focus{transform:translateY(0)}
+    :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:3px solid #0563c1!important;outline-offset:3px!important}
+    [theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible,[data-theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline-color:#7dd3fc!important}
+    body[data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#5f5f66!important}
+    body[theme=dark][data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#b7bbc5!important}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#1d789b!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#6bc5e6!important}
+    body[data-header-desktop] .single .content a:not(.headerlink){text-decoration:underline!important;text-underline-offset:.15em}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#a41354!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#fff!important}
+    body[data-header-desktop] .search input::placeholder{color:#5f5f66!important;opacity:1}
+    body[theme=dark][data-header-desktop] .search input::placeholder{color:#b7bbc5!important}
+    button.menu-toggle{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;min-width:2rem;min-height:2rem}
+    button.search-button,button.search-cancel,button.theme-switch,button.history-back,button.share-button,button.script-button{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;line-height:inherit;cursor:pointer}
+    button.search-button,button.theme-switch,button.share-button,button.script-button{min-width:1.5rem;min-height:1.5rem}
+    button.history-back{text-decoration:underline;text-underline-offset:.15em}
+    summary.details-summary{list-style:none}
+    summary.details-summary::-webkit-details-marker{display:none}
+    .sidebar-controls .sidebar-action,.ch-chevron{appearance:none;border:0;background:transparent;color:inherit;font:inherit;cursor:pointer;min-height:1.5rem}
+    .sidebar-controls .sidebar-action{color:var(--text-muted)}
+    .sidebar-controls .sidebar-action:hover{color:var(--accent)}
+    .ch-chevron{padding:.2rem .4rem;min-width:2rem}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    </style>
+    <!-- accessibility-styles:end -->
 </head>
 <body>
+    <!-- accessibility-skip-link -->
+    <a class="skip-link" href="#main-content">رفتن به محتوای اصلی</a>
 <!-- خروجی HTML — کامپوننت کامل فصل ۲۰ (بدون html/head) -->
+<main class="chapter-main" id="main-content" tabindex="-1">
 <article class="chapter-content">
 
   <h1 style="font-size:1.7rem;margin:0 0 1rem;border-bottom:3px solid #2c5f8a;padding-bottom:.5rem;">فصل ۲۰: الگوهای معماری</h1>
@@ -221,14 +253,14 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-1" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">بازاستفاده</h3>
+    <h2 id="sec-1" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">بازاستفاده</h2>
     <p style="text-align:justify;">تفکیک میان کوپلینگ حوزه‌ای <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(domain coupling)</bdi> و کوپلینگ عملیاتی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(operational coupling)</bdi> یکی از دغدغه‌های رایج معماری در معماری‌های توزیع‌شده‌ای مانند میکروسرویس‌هاست.</p>
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;">جداسازی کوپلینگ حوزه‌ای و عملیاتی</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;" data-a11y-heading="promoted-from-h4">جداسازی کوپلینگ حوزه‌ای و عملیاتی</h3>
     <p style="text-align:justify;">یکی از اهداف طراحی در معماری‌های میکروسرویس، جداسازیِ حداکثری است که اغلب در این توصیه نمود می‌یابد: «دوباره‌نویسی بر کوپلینگ ترجیح دارد».</p>
     <p style="text-align:justify;">فرض کنید دو سرویس باید اطلاعات نمایه‌های مشتری را میان خود رد و بدل کنند، اما زمینهٔ محدودِ حوزه‌محورِ معماری اصرار دارد که جزئیات پیاده‌سازی باید برای هر سرویس خصوصی بماند. یک راه‌حل رایج این است که به هر سرویس بازنمایی درونیِ خودش از موجودیت‌هایی مانند <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Profile</bdi> داده شود و سپس آن اطلاعات به شیوه‌هایی با کوپلینگ سست <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(loosely coupled)</bdi>، مانند جفت‌های نام-مقدار <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(name-value pairs)</bdi> در <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">JSON</bdi>، منتقل شود. این کار به هر سرویس اجازه می‌دهد بازنمایی درونی خود، از جمله پشتهٔ فناوری، را هر طور که بخواهد تغییر دهد، بی‌آنکه یکپارچه‌سازی را بشکند. توسعه‌دهندگان معمولاً دوباره‌نویسیِ کد را ناپسند می‌دانند، زیرا می‌تواند مشکلاتی در هم‌گام‌سازی، رانش معنایی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(semantic drift)</bdi> و مانند آن پدید آورد؛ اما برخی چیزها از دوباره‌نویسی بدترند… و در میکروسرویس‌ها، کوپلینگ یکی از آن‌هاست.</p>
     <p style="text-align:justify;">معمارانی که میکروسرویس طراحی می‌کنند، معمولاً با این واقعیت کنار می‌آیند که گاهی برای حفظ جداسازی باید پیاده‌سازی‌ها را دوباره بنویسند. اما قابلیت‌هایی که از کوپلینگ بالا <b>سود می‌برند</b> چه؟ هر سرویس باید قابلیت‌های عملیاتیِ مشترکی مانند پایش، ثبت وقایع، احراز هویت و مجوزدهی، و قطع‌کننده‌های مدار داشته باشد. اما اجازه‌دادن به هر تیم برای مدیریت این وابستگی‌ها اغلب به هرج‌ومرج می‌انجامد.</p>
     <p style="text-align:justify;">برای مثال، شرکتی را در نظر بگیرید که می‌کوشد برای همهٔ سرویس‌هایش یک راه‌حل پایشِ استاندارد برگزیند تا عملیاتی‌کردنِ آن‌ها آسان‌تر شود. معمار تصمیم می‌گیرد هر تیم را مسئول پیاده‌سازیِ پایش برای سرویس خودش کند: تیم سرویس <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Payment</bdi>، تیم سرویس <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Inventory</bdi> و مانند آن. اما تیم عملیات چگونه می‌تواند مطمئن شود که هر تیم واقعاً این کار را انجام داده است؟ و مسائلی مانند ارتقاهای یکپارچه چه می‌شود؟ اگر ابزار پایشِ استاندارد نیاز به ارتقا در سراسر سازمان داشته باشد، تیم‌ها چگونه باید آن را هماهنگ کنند؟</p>
-    <h5 style="font-size:1.05rem;color:#2c5f8a;margin:1rem 0 .5rem;">معماری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Hexagonal</bdi></h5>
+    <h4 style="font-size:1.05rem;color:#2c5f8a;margin:1rem 0 .5rem;" data-a11y-heading="promoted-from-h5">معماری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Hexagonal</bdi></h4>
     <p style="text-align:justify;">در الگوی معماری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Hexagonal</bdi> (شش‌ضلعی)، که در شکل ۲۰-۱ نشان داده شده، منطق حوزه در مرکز شش‌ضلعی قرار دارد و درگاه‌ها و مبدل‌هایی که به بخش‌های دیگر اکوسیستم متصل‌اند آن را احاطه کرده‌اند (در واقع، این الگو با نام دیگرِ الگوی <b><bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Ports and Adapters</bdi></b> (درگاه‌ها و مبدل‌ها) نیز شناخته می‌شود). بازنمایی بصریِ این الگو در شکل ۲۰-۱ آمده است.</p>
     <figure style="margin:1rem 0;padding:.7rem 1rem;background:#f9f9f9;border-right:4px solid #2c5f8a;border-radius:4px;">
       <img src="figures/chapter-20/figure-20-1.png" alt="شکل ۲۰-۱. الگوی معماری Hexagonal" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;" width="746" height="503" decoding="async">
@@ -237,7 +269,7 @@
     <p style="text-align:justify;">خوانندگان تیزبین ممکن است متوجه شوند که تنها چهار ضلع از شش ضلع شش‌ضلعی به کار رفته است. پدیدآورندهٔ این الگو، Alistair Cockburn، در آغاز آن را به شکل شش‌ضلعی کشید و نامش را الگوی معماری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Hexagonal</bdi> گذاشت. او تقریباً بلافاصله پشیمان شد، چون نام <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Ports and Adapters</bdi> گویاتر است؛ اما دیگر دیر شده بود. معماران بسیاری «<bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Hexagonal</bdi>» را نامی جذاب می‌دانستند و همین نام ماندگار شد.</p>
     <p style="text-align:justify;">اشتباه گرفتنِ الگو با پیاده‌سازی خطری رایج است و این نمونهٔ خوبی از آن است. معماری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Hexagonal</bdi>، وقتی برای توصیف میکروسرویس‌ها به کار رود، نقصی بالقوه جدی دارد؛ اما تنها برای کسانی که هدف اولیهٔ این الگو را می‌شناسند. معماری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Hexagonal</bdi> پیش از میکروسرویس‌های مدرن پدید آمد، اما شباهت‌های زیادی میان آن‌ها وجود دارد. یک تفاوت مهم نیز هست: وفاداری داده <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(data fidelity)</bdi>. معماری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Hexagonal</bdi> با پایگاه‌داده صرفاً به‌عنوان مبدل دیگری رفتار می‌کند که می‌توان آن را متصل کرد. این الگو طرح‌وارهٔ داده را بخشی از منطق کسب‌وکار به شمار نمی‌آورد؛ به دلیل این برداشت نادرست (که در زمان پیدایش نام الگوی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Hexagonal</bdi> رایج بود) که پایگاه‌داده سازوکاری یکسره جداگانه است. Eric Evans با این بینش که طرح‌واره‌های پایگاه‌داده، صرف‌نظر از محل قرارگیری‌شان، باید برای بازتاب منطق کسب‌وکار سیستم تغییر کنند، این اشتباه را در کتابش <b><bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Domain-Driven Design</bdi></b> اصلاح کرد.</p>
     <p style="text-align:justify;">همین امر الگوی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Hexagonal</bdi> را به منبع دائمی سردرگمی میان معماران تبدیل می‌کند. هر بار که کسی از آن استفاده می‌کند، آیا جداسازیِ دغدغه‌های عملیاتی و حوزه‌ای را توصیف می‌کند، یا به خودِ الگو به معنای تحت‌اللفظی اشاره دارد که داده را جدا می‌کند و در نتیجه یکی از اصول بنیادین طراحی میکروسرویس‌ها را نقض می‌کند؟ استفاده از نام این الگو به‌عنوان کوته‌نوشتی برای «جداسازیِ دغدغه‌های حوزه‌ای و عملیاتی» تا زمانی که در بافتار گمراه‌کننده نباشد اشکالی ندارد. با این حال، معماران امروز نیازی به این پیاده‌سازی ندارند. اکنون سازوکار مناسب‌تری برای پیاده‌سازیِ الگوی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Hexagonal</bdi> در اختیار داریم: الگوی مش سرویس <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Service Mesh)</bdi>.</p>
-    <h5 style="font-size:1.05rem;color:#2c5f8a;margin:1rem 0 .5rem;">مش سرویس</h5>
+    <h4 style="font-size:1.05rem;color:#2c5f8a;margin:1rem 0 .5rem;" data-a11y-heading="promoted-from-h5">مش سرویس</h4>
     <p style="text-align:justify;">پیش‌تر در بخش «بازاستفادهٔ عملیاتی» در فصل ۱۸، رویکرد رایج معماری را برای جداسازیِ دغدغه‌های فنی از دغدغه‌های حوزه‌ای شرح دادیم: استفاده از الگوهای <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Sidecar</bdi> و مش سرویس.</p>
     <p style="text-align:justify;">الگوی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Sidecar</bdi> فقط راهی برای جداکردنِ قابلیت‌های عملیاتی از حوزه‌ها نیست؛ بلکه یک الگوی بازاستفادهٔ متعامد است که به نوع خاصی از کوپلینگ می‌پردازد (نگاه کنید به کادر «کوپلینگ متعامد» در ادامه). راه‌حل‌های معماری اغلب به چند نوع کوپلینگ نیاز دارند؛ مانند نمونهٔ کنونیِ ما، یعنی کوپلینگ حوزه‌ای در برابر کوپلینگ عملیاتی. یک الگوی <b>بازاستفادهٔ متعامد</b> <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Orthogonal Reuse)</bdi> راهی برای بازاستفاده از جنبه‌ای ارائه می‌کند که یک یا چند دغدغه در معماری آن را بازنمایی می‌کنند و در سازمان‌دهیِ سلسله‌مراتبیِ ترجیحی جا نمی‌گیرد. برای مثال، معماری‌های میکروسرویس حول حوزه‌ها سازمان می‌یابند، اما کوپلینگ عملیاتی مستلزم برش‌زدن از میان آن حوزه‌هاست. <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">sidecar</bdi> به معمار امکان می‌دهد این دغدغه‌ها را در لایه‌ای میان‌بُرشی اما یکدست در سراسر معماری جدا کند.</p>
     <blockquote style="margin:1.2rem 0;padding:1rem 1.2rem;background:#f7f9fb;border:1px solid #dde3e8;border-right:4px solid #2c5f8a;border-radius:4px;font-size:.98rem;text-align:justify;">
@@ -249,7 +281,7 @@
       <figcaption style="font-size:.95rem;color:#333;margin-bottom:.5rem;" dir="rtl"><b>جدول ۲۰-۱.</b> مصالحه‌های الگوهای <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Sidecar</bdi> و مش سرویس</figcaption>
       <table dir="rtl" style="width:100%;border-collapse:collapse;font-size:.95rem;text-align:right;">
         <thead>
-          <tr style="background:#2c5f8a;color:#fff;"><th style="border:1px solid #ccc;padding:.45rem .6rem;">مزایا</th><th style="border:1px solid #ccc;padding:.45rem .6rem;">معایب</th></tr>
+          <tr style="background:#2c5f8a;color:#fff;"><th style="border:1px solid #ccc;padding:.45rem .6rem;" scope="col">مزایا</th><th style="border:1px solid #ccc;padding:.45rem .6rem;" scope="col">معایب</th></tr>
         </thead>
         <tbody>
           <tr><td style="border:1px solid #ccc;padding:.4rem .6rem;vertical-align:top;">راهی یکدست برای ایجاد کوپلینگِ جداشده فراهم می‌کند</td><td style="border:1px solid #ccc;padding:.4rem .6rem;vertical-align:top;">باید برای هر پلتفرم یک <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">sidecar</bdi> پیاده‌سازی شود</td></tr>
@@ -264,9 +296,9 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-2" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">ارتباطات</h3>
+    <h2 id="sec-2" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">ارتباطات</h2>
     <p style="text-align:justify;">بسیاری از الگوهای معماری، از جمله الگوهای ارتباطی، از معماری رویدادمحور سرچشمه می‌گیرند و در هر معماری توزیع‌شده‌ای که از طریق پیام‌ها و/یا رویدادها ارتباط برقرار می‌کند، مانند آنچه در فصل‌های ۱۵ و ۱۸ بررسی شد، کاربرد دارند. در واقع، در هر دو فصل نمونه‌هایی از ارتباطات دیده‌اید؛ فقط آن‌ها را به‌عنوان الگوهایی مشخص معرفی نکرده‌ایم، زیرا معماران معمولاً الگوها را بی‌آنکه متوجه باشند پیاده‌سازی می‌کنند. هرچه باشد، الگوها راه‌حل‌هایی برای مسائل رایج‌اند.</p>
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;">ارکستراسیون در برابر کرئوگرافی</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;" data-a11y-heading="promoted-from-h4">ارکستراسیون در برابر کرئوگرافی</h3>
     <p style="text-align:justify;">دو الگوی ارتباطی را در نظر بگیرید که پیش‌تر هم در بخش «معماری رویدادمحورِ میانجی‌دار» در فصل ۱۵ و هم در بخش «کرئوگرافی و ارکستراسیون» در فصل ۱۸ دیده‌اید: کرئوگرافی و ارکستراسیون، که در شکل ۲۰-۲ خلاصه شده‌اند.</p>
     <figure style="margin:1rem 0;padding:.7rem 1rem;background:#f9f9f9;border-right:4px solid #2c5f8a;border-radius:4px;">
       <img src="figures/chapter-20/figure-20-2.png" alt="شکل ۲۰-۲. ارکستراسیون و کرئوگرافی در یک معماری میکروسرویس" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;" width="638" height="849" decoding="async">
@@ -308,7 +340,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-3" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;"><bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">CQRS</bdi></h3>
+    <h2 id="sec-3" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;"><bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">CQRS</bdi></h2>
     <p style="text-align:justify;">یکی دیگر از الگوهای ارتباطیِ رایج که در بسیاری از معماری‌های توزیع‌شده (و چند معماری تک‌پارچه) دیده می‌شود، <b>تفکیک مسئولیت فرمان و پرس‌وجو</b> (Command-Query-Responsibility-Segregation یا <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">CQRS</bdi>) است. این الگوی سادهٔ ارتباطی و داده‌ای، ارتباطی را که معمولاً به‌صورت یکپارچه با پایگاه‌داده برقرار می‌شود به دو بخش تقسیم می‌کند؛ چنان‌که در شکل ۲۰-۳ نشان داده شده است.</p>
     <figure style="margin:1rem 0;padding:.7rem 1rem;background:#f9f9f9;border-right:4px solid #2c5f8a;border-radius:4px;">
       <img src="figures/chapter-20/figure-20-3.png" alt="شکل ۲۰-۳. کلاینت/سرور در برابر CQRS" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;" width="527" height="391" decoding="async">
@@ -323,10 +355,10 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-4" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">زیرساخت</h3>
+    <h2 id="sec-4" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">زیرساخت</h2>
     <p style="text-align:justify;">معماری نرم‌افزار در هر جایی که تیم‌ها راه‌حل‌های سودمند و وابسته به زمینه‌ای برای مسائل رایج یافته‌اند الگو دارد و این الگوها اغلب با بخش‌های دیگر اکوسیستم تلاقی می‌کنند (برای بحثی کامل، فصل ۲۶ را ببینید).</p>
     <p style="text-align:justify;">معماران به کوپلینگ اهمیت می‌دهند: میان مؤلفه‌ها، عناصر داده، <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">API</bdi>‌ها… و زیرساخت؛ چنان‌که الگوی کارگزار حوزه‌ای <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Broker-Domain)</bdi> نمونه‌ای از آن است.</p>
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;">الگوی کارگزار حوزه‌ای</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;" data-a11y-heading="promoted-from-h4">الگوی کارگزار حوزه‌ای</h3>
     <p style="text-align:justify;">در این بخش، همان گردش‌کار ثبت سفارش را بررسی می‌کنیم، این بار با پیاده‌سازی در یک معماری رویدادمحور؛ چنان‌که در شکل ۲۰-۴ نشان داده شده است.</p>
     <figure style="margin:1rem 0;padding:.7rem 1rem;background:#f9f9f9;border-right:4px solid #2c5f8a;border-radius:4px;">
       <img src="figures/chapter-20/figure-20-4.png" alt="شکل ۲۰-۴. گردش‌کار ثبت سفارش که در EDA پیاده‌سازی شده است" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;" width="960" height="1183" decoding="async">
@@ -354,7 +386,7 @@
       <figcaption style="font-size:.95rem;color:#333;margin-bottom:.5rem;" dir="rtl"><b>جدول ۲۰-۲.</b> مصالحه‌های الگوی کارگزار واحد</figcaption>
       <table dir="rtl" style="width:100%;border-collapse:collapse;font-size:.95rem;text-align:right;">
         <thead>
-          <tr style="background:#2c5f8a;color:#fff;"><th style="border:1px solid #ccc;padding:.45rem .6rem;">مزایا</th><th style="border:1px solid #ccc;padding:.45rem .6rem;">معایب</th></tr>
+          <tr style="background:#2c5f8a;color:#fff;"><th style="border:1px solid #ccc;padding:.45rem .6rem;" scope="col">مزایا</th><th style="border:1px solid #ccc;padding:.45rem .6rem;" scope="col">معایب</th></tr>
         </thead>
         <tbody>
           <tr><td style="border:1px solid #ccc;padding:.4rem .6rem;vertical-align:top;">کشف متمرکز</td><td style="border:1px solid #ccc;padding:.4rem .6rem;vertical-align:top;">تحمل خطا</td></tr>
@@ -367,7 +399,7 @@
       <figcaption style="font-size:.95rem;color:#333;margin-bottom:.5rem;" dir="rtl"><b>جدول ۲۰-۳.</b> مصالحه‌های الگوی کارگزار حوزه‌ای</figcaption>
       <table dir="rtl" style="width:100%;border-collapse:collapse;font-size:.95rem;text-align:right;">
         <thead>
-          <tr style="background:#2c5f8a;color:#fff;"><th style="border:1px solid #ccc;padding:.45rem .6rem;">مزایا</th><th style="border:1px solid #ccc;padding:.45rem .6rem;">معایب</th></tr>
+          <tr style="background:#2c5f8a;color:#fff;"><th style="border:1px solid #ccc;padding:.45rem .6rem;" scope="col">مزایا</th><th style="border:1px solid #ccc;padding:.45rem .6rem;" scope="col">معایب</th></tr>
         </thead>
         <tbody>
           <tr><td style="border:1px solid #ccc;padding:.4rem .6rem;vertical-align:top;">جداسازیِ بهتر</td><td style="border:1px solid #ccc;padding:.4rem .6rem;vertical-align:top;">کشف دشوارترِ صف‌ها/موضوع‌ها</td></tr>
@@ -382,12 +414,12 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
     <section>
-    <h3 id="sec-5" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">واژه‌نامهٔ اختصاصی این فصل</h3>
+    <h2 id="sec-5" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">واژه‌نامهٔ اختصاصی این فصل</h2>
     <table dir="rtl" style="width:100%;border-collapse:collapse;font-size:.95rem;">
       <thead>
         <tr style="background:#2c5f8a;color:#fff;">
-          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;">واژهٔ انگلیسی</th>
-          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;">معادل مصوب/به‌کاررفته در این فصل</th>
+          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;" scope="col">واژهٔ انگلیسی</th>
+          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;" scope="col">معادل مصوب/به‌کاررفته در این فصل</th>
         </tr>
       </thead>
       <tbody>
@@ -439,6 +471,7 @@
   </section>
 
 </article>
+</main>
 
 <script id="fosa-standalone-helper">
   if (window.self === window.top) {

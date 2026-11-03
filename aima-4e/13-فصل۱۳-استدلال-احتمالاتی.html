@@ -151,17 +151,49 @@
     <meta name="twitter:image" content="https://www.alirostami.com/images/social/aima-4e-persian.jpg">
     <meta name="twitter:image:alt" content="ترجمه فارسی کتاب هوش مصنوعی؛ یک رویکرد مدرن، ویرایش چهارم">
     <!-- image-seo:end -->
+    <!-- accessibility-styles:start -->
+    <style>
+    .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+    .skip-link{position:fixed;top:.75rem;left:.75rem;z-index:100000;padding:.65rem 1rem;border-radius:.35rem;background:#fff;color:#073b70;font-weight:700;box-shadow:0 2px 12px rgba(0,0,0,.25);transform:translateY(-180%);transition:transform .15s ease}
+    .skip-link:focus{transform:translateY(0)}
+    :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:3px solid #0563c1!important;outline-offset:3px!important}
+    [theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible,[data-theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline-color:#7dd3fc!important}
+    body[data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#5f5f66!important}
+    body[theme=dark][data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#b7bbc5!important}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#1d789b!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#6bc5e6!important}
+    body[data-header-desktop] .single .content a:not(.headerlink){text-decoration:underline!important;text-underline-offset:.15em}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#a41354!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#fff!important}
+    body[data-header-desktop] .search input::placeholder{color:#5f5f66!important;opacity:1}
+    body[theme=dark][data-header-desktop] .search input::placeholder{color:#b7bbc5!important}
+    button.menu-toggle{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;min-width:2rem;min-height:2rem}
+    button.search-button,button.search-cancel,button.theme-switch,button.history-back,button.share-button,button.script-button{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;line-height:inherit;cursor:pointer}
+    button.search-button,button.theme-switch,button.share-button,button.script-button{min-width:1.5rem;min-height:1.5rem}
+    button.history-back{text-decoration:underline;text-underline-offset:.15em}
+    summary.details-summary{list-style:none}
+    summary.details-summary::-webkit-details-marker{display:none}
+    .sidebar-controls .sidebar-action,.ch-chevron{appearance:none;border:0;background:transparent;color:inherit;font:inherit;cursor:pointer;min-height:1.5rem}
+    .sidebar-controls .sidebar-action{color:var(--text-muted)}
+    .sidebar-controls .sidebar-action:hover{color:var(--accent)}
+    .ch-chevron{padding:.2rem .4rem;min-width:2rem}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    </style>
+    <!-- accessibility-styles:end -->
 </head>
 <body>
-<div class="page">
+    <!-- accessibility-skip-link -->
+    <a class="skip-link" href="#main-content">رفتن به محتوای اصلی</a>
+<main class="page" id="main-content" tabindex="-1">
 
 <div class="kicker">
   <span class="badge">📘 هوش مصنوعی: رویکردی نوین (AIMA)</span>
   <span class="badge soft">ترجمهٔ فارسی — راسل و نورویگ، ویرایش چهارم</span>
   <span class="badge gold">فصل 13</span>
 </div>
+<h1 class="chapter-title">فصل ۱۳: استدلال احتمالاتی (Probabilistic Reasoning)</h1>
 
-<nav class="toc"><h2>فهرست بخش‌های این فصل</h2>
+<nav class="toc" aria-label="فهرست مطالب"><h2>فهرست بخش‌های این فصل</h2>
 <ol>
 <li><a href="#sec-1">۱۳.۱ بازنمایی دانش در حوزه‌ای نامطمئن</a></li>
 <li><a href="#sec-2">۱۳.۲ معناشناسی شبکه‌های بیزی</a></li>
@@ -173,7 +205,7 @@
 <li><a href="#sec-7">پانوشت‌ها:</a></li>
 </ol></nav>
 
-<p class="subtitle">فصل ۱۳: استدلال احتمالاتی (Probabilistic Reasoning)</p>
+
 <div class="lead">در این فصل توضیح می‌دهیم چگونه مدل‌های شبکه‌ای کارآمد برای استدلال در شرایط عدم قطعیت، مطابق با قوانین نظریهٔ احتمال، بسازیم، و چگونه میان همبستگی و علّیت تمایز بگذاریم.</div>
 <p>فصل ۱۲ عناصر پایهٔ نظریهٔ احتمال را معرفی کرد و به اهمیت روابط استقلال و استقلال شرطی در ساده‌سازی بازنمایی‌های احتمالاتی جهان اشاره کرد. این فصل راهی نظام‌مند برای بازنمایی صریح چنین روابطی در قالب «شبکه‌های بیزی» (Bayesian Networks) معرفی می‌کند. نحو و معناشناسی این شبکه‌ها را تعریف می‌کنیم و نشان می‌دهیم چگونه می‌توان از آن‌ها برای ثبت دانش نامطمئن به‌شیوه‌ای طبیعی و کارآمد استفاده کرد. سپس نشان می‌دهیم استنتاج احتمالاتی، اگرچه در بدترین حالت از نظر محاسباتی ناشدنی است، در بسیاری از موقعیت‌های عملی می‌تواند کارآمد انجام شود. همچنین انواعی از الگوریتم‌های استنتاج تقریبی را توصیف می‌کنیم که اغلب وقتی استنتاج دقیق شدنی نیست قابل اعمال‌اند. فصل ۱۵ ایده‌های پایهٔ شبکه‌های بیزی را به زبان‌های صوری بیانی‌تری برای تعریف مدل‌های احتمال بسط می‌دهد.</p>
 <h2 id="sec-1">۱۳.۱ بازنمایی دانش در حوزه‌ای نامطمئن</h2>
@@ -687,7 +719,7 @@ G = fG(W, UG)</code></pre>
 <p>با توسعهٔ کاربردهای شبکه‌های بیزی، پژوهشگران دریافتند که لازم است فراتر از مدل پایهٔ متغیرهای گسسته با <span class="en-inline">CPT</span>ها حرکت کنند. برای نمونه، سامانهٔ <span class="en-inline">CPCS</span> (پرادهان و همکاران، 1994)—یک شبکهٔ بیزی برای پزشکی داخلی با ۴۴۸ گره و ۹۰۶ پیوند—استفادهٔ گسترده‌ای از عملگرهای منطقی نویزی ارائه‌شده توسط گود (1961) به عمل آورد. بوتیلیه و همکاران (1996) مزایای الگوریتمی استقلال وابسته به بافت را تحلیل کردند. گنجاندن متغیرهای تصادفی پیوسته در شبکه‌های بیزی توسط پرل (1988) و شاکتر و کنلی (1989) مورد بررسی قرار گرفت؛ این مقاله‌ها شبکه‌هایی را بررسی کردند که تنها شامل متغیرهای پیوسته با توزیع‌های خطی-گاوسی بودند.</p>
 <p>شبکه‌های ترکیبی (<span class="en-inline">Hybrid Networks</span>) با هر دو نوع متغیر گسسته و پیوسته توسط لوریتزن و ورموث (1989) بررسی شدند و در سامانهٔ <span class="en-inline">cHUGIN</span> پیاده‌سازی گشتند (اولسن، 1993). تحلیل‌های بیشتر در مورد مدل‌های خطی-گاوسی، همراه با پیوندهایی به بسیاری از مدل‌های دیگر در آمار، در مقالهٔ روویس و قهرامانی (1999) آمده است؛ لرنر (2002) بحثی بسیار جامع از کاربرد آن‌ها در شبکه‌های بیزی ترکیبی ارائه می‌دهد. توزیع پروبیت معمولاً به گادوم (1933) و بلیس (1934) نسبت داده می‌شود، اگرچه چندین بار در قرن نوزدهم نیز کشف شده بود. کار بلیس توسط فینی (1947) به‌طور قابل‌توجهی گسترش یافت. پروبیت به‌طور گسترده برای مدل‌سازی پدیده‌های انتخاب گسسته به کار رفته و می‌تواند برای مدیریت بیش از دو انتخاب تعمیم یابد (داگانزو، 1979). مدل اکسپیت (لوجیت معکوس) توسط برکسون (1944) معرفی شد؛ در ابتدا بسیار مورد تمسخر قرار گرفت، اما در نهایت از مدل پروبیت محبوب‌تر شد. بیشاپ (1995) توجیه ساده‌ای برای استفاده از آن ارائه می‌دهد.</p>
 <p>کاربردهای اولیهٔ شبکه‌های بیزی در پزشکی شامل سامانهٔ <span class="en-inline">MUNIN</span> برای تشخیص اختلالات عصبی-عضلانی (آندرسن و همکاران، 1989) و سامانهٔ <span class="en-inline">PATHFINDER</span> برای آسیب‌شناسی (هکرمن، 1991) بود. کاربردها در مهندسی شامل کار مؤسسهٔ تحقیقات انرژی الکتریکی (<span class="en-inline">EPRI</span>) روی پایش ژنراتورهای برق (مورجاریا و همکاران، 1995)، کار ناسا روی نمایش اطلاعات حساس به زمان در مرکز کنترل مأموریت در هیوستون (هوروتز و بری، 1995)، و حوزهٔ کلی «توموگرافی شبکه» است که هدف آن استنباط ویژگی‌های محلی مشاهده‌نشدهٔ گره‌ها و پیوندها در اینترنت از طریق مشاهدات عملکرد پیام سرتاسری است (کاسترو و همکاران، 2004). شاید پرکاربردترین سامانه‌های شبکهٔ بیزی، ماژول‌های تشخیص و تعمیر (مانند ویزارد چاپگر) در مایکروسافت ویندوز (بریز و هکرمن، 1996) و دستیار آفیس (<span class="en-inline">Office Assistant</span>) در مایکروسافت آفیس (هوروتز و همکاران، 1998) بوده‌اند.</p>
-<p>یکی دیگر از حوزه‌های مهم کاربردی، زیست‌شناسی است: مدل‌های ریاضی مورد استفاده برای تحلیل توارث ژنتیکی در شجره‌نامه‌ها (به‌اصطلاح «تحلیل دودمان» یا <span class="en-inline">Pedigree Analysis</span>) در واقع شکل خاصی از شبکه‌های بیزی هستند. الگوریتم‌های استنتاج دقیق برای تحلیل دودمان، شبیه به الگوریتم حذف متغیر، در اوایل سال 1971 توسط الستون و استوارت توسعه یافتند؛ کانینگز و همکاران (1978) این رویکرد را به الگوریتم‌هایی شبیه به خوشه‌بندی درختی گسترش دادند. بسته‌های نرم‌افزاری تحلیل پیوستگی ژنتیکی <span class="en-inline">LIPED</span> (اوت، 1974) و <span class="en-inline">LINKAGE</span> (لاتروپ و لالوئل، 1984) از پرکاربردترین بسته‌ها در ژنتیک بودند و برای موفقیت‌های اولیه در نقشه‌برداری مکان ژن‌ها در ژنوم انسان نقش حیاتی داشتند.
+<p>یکی دیگر از حوزه‌های مهم کاربردی، زیست‌شناسی است: مدل‌های ریاضی مورد استفاده برای تحلیل توارث ژنتیکی در شجره‌نامه‌ها (به‌اصطلاح «تحلیل دودمان» یا <span class="en-inline">Pedigree Analysis</span>) در واقع شکل خاصی از شبکه‌های بیزی هستند. الگوریتم‌های استنتاج دقیق برای تحلیل دودمان، شبیه به الگوریتم حذف متغیر، در اوایل سال 1971 توسط الستون و استوارت توسعه یافتند؛ کانینگز و همکاران (1978) این رویکرد را به الگوریتم‌هایی شبیه به خوشه‌بندی درختی گسترش دادند. بسته‌های نرم‌افزاری تحلیل پیوستگی ژنتیکی <span class="en-inline">LIPED</span> (اوت، 1974) و <span class="en-inline">LINKAGE</span> (لاتروپ و لالوئل، 1984) از پرکاربردترین بسته‌ها در ژنتیک بودند و برای موفقیت‌های اولیه در نقشه‌برداری مکان ژن‌ها در ژنوم انسان نقش حیاتی داشتند.</p>
 <p>جودیا پرل (1985)، در نخستین مقاله‌ای که از اصطلاح «شبکه‌های بیزی» استفاده کرد، به‌طور مختصر الگوریتم استنتاجی برای شبکه‌های عمومی را بر اساس ایدهٔ «شرطی‌سازی برش‌مجموعه» (Cutset Conditioning) که در فصل ۶ معرفی شد توصیف کرد. به‌طور مستقل، راس شاکتر (1986)، که در جامعهٔ نمودارهای تأثیر کار می‌کرد، الگوریتم کاملی بر اساس کاهش هدف‌گرای شبکه با استفاده از تبدیل‌های حفظ‌کنندهٔ پسین توسعه داد.</p>
 <p>پرل (1986) الگوریتم خوشه‌بندی را برای استنتاج دقیق در شبکه‌های بیزی عمومی توسعه داد، با استفاده از تبدیل به پلی‌درخت جهت‌داری از خوشه‌ها که در آن انتقال پیام برای دستیابی به سازگاری بر متغیرهای مشترک میان خوشه‌ها استفاده می‌شد. رویکرد مشابهی، که توسط آماردانان دیوید اشپیگلهالتر و استفن لوریتزن توسعه یافت (لوریتزن و اشپیگلهالتر، 1988)، بر اساس تبدیل به شکل بدون جهت مدل گرافیکی به نام «شبکهٔ مارکوف» (Markov Network) است. این رویکرد در سامانهٔ <span class="en-inline">HUGIN</span> پیاده‌سازی شده، ابزار کارآمد و پرکاربردی برای استدلال نامطمئن (آندرسن و همکاران، 1989).</p>
 <p>ایدهٔ پایهٔ حذف متغیر—که محاسبه‌های تکراری درون عبارت جمع حاصل‌ضرب کلی را می‌توان با کش‌کردن اجتناب کرد—در الگوریتم «استنتاج احتمالاتی نمادین» (<span class="en-inline">Symbolic Probabilistic Inference</span> یا SPI) ظاهر شد (شاکتر و همکاران، 1990). الگوریتم حذفی که ما توصیف می‌کنیم نزدیک‌ترین به الگوریتم توسعه‌یافته توسط ژانگ و پول (1994) است. معیارهای هرس متغیرهای نامربوط توسط گایگر و همکاران (1990b) و توسط لوریتزن و همکاران (1990) توسعه یافت؛ معیاری که ما می‌دهیم حالت خاص ساده‌ای از این‌هاست. دچتر (1999) نشان می‌دهد ایدهٔ حذف متغیر اساساً یکسان با «برنامه‌نویسی پویای غیرمتوالی» (Nonserial Dynamic Programming) (برتله و بریوشی، 1972) است. این الگوریتم‌های شبکهٔ بیزی را به روش‌های مرتبط برای حل <span class="en-inline">CSP</span>ها متصل می‌کند و اندازهٔ مستقیمی از پیچیدگی استنتاج دقیق بر حسب پهنای درختی شبکه می‌دهد. جلوگیری از رشد نمایی در اندازهٔ عامل‌ها در حذف متغیر را می‌توان با حذف متغیرها از عامل‌های بزرگ انجام داد (دچتر و ریش، 2003)؛ همچنین می‌توان خطای بدین‌وسیله واردشده را کران‌دار کرد (وکسلر و میک، 2009). از طرف دیگر، عامل‌ها را می‌توان با بازنمایی آن‌ها با «نمودارهای تصمیم جبری» (Algebraic Decision Diagrams) به‌جای جدول‌ها فشرده کرد (گوگیت و دومینگوس، 2011).</p>
@@ -728,7 +760,7 @@ G = fG(W, UG)</code></pre>
   <p style="color:var(--muted);font-size:13px;margin-top:8px">این صفحه از ترجمهٔ فارسی فصل‌های کتاب «هوش مصنوعی: رویکردی نوین» (استوارت راسل و پیتر نورویگ، ویرایش چهارم) تولید شده است. متن با فایل مارک‌داون همان فصل یکسان است.</p>
 </div>
 
-</div>
+</main>
 <script id="aima-standalone-helper">
   if (window.self === window.top) {
     window.addEventListener('DOMContentLoaded', function() {

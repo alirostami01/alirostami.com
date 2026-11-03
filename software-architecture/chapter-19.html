@@ -57,7 +57,7 @@
             color: var(--accent);
             line-height: 1.4;
         }
-        h3 {
+        h2 {
             font-size: 1.35rem;
             color: var(--accent);
             margin: 2.4rem 0 .9rem;
@@ -66,7 +66,7 @@
             line-height: 1.4;
             scroll-margin-top: 1rem;
         }
-        h4 {
+        h3 {
             font-size: 1.15rem;
             color: var(--accent);
             margin: 1.6rem 0 .6rem;
@@ -157,7 +157,7 @@
             h1 {
                 font-size: 1.5rem;
             }
-            h3 {
+            h2 {
                 font-size: 1.2rem;
             }
         }
@@ -204,9 +204,41 @@
     <meta name="twitter:image" content="https://www.alirostami.com/images/social/software-architecture.jpg">
     <meta name="twitter:image:alt" content="ترجمه فارسی مبانی معماری نرم‌افزار؛ مطالعه آنلاین ۲۷ فصل و پیوست">
     <!-- image-seo:end -->
+    <!-- accessibility-styles:start -->
+    <style>
+    .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+    .skip-link{position:fixed;top:.75rem;left:.75rem;z-index:100000;padding:.65rem 1rem;border-radius:.35rem;background:#fff;color:#073b70;font-weight:700;box-shadow:0 2px 12px rgba(0,0,0,.25);transform:translateY(-180%);transition:transform .15s ease}
+    .skip-link:focus{transform:translateY(0)}
+    :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:3px solid #0563c1!important;outline-offset:3px!important}
+    [theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible,[data-theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline-color:#7dd3fc!important}
+    body[data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#5f5f66!important}
+    body[theme=dark][data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#b7bbc5!important}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#1d789b!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#6bc5e6!important}
+    body[data-header-desktop] .single .content a:not(.headerlink){text-decoration:underline!important;text-underline-offset:.15em}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#a41354!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#fff!important}
+    body[data-header-desktop] .search input::placeholder{color:#5f5f66!important;opacity:1}
+    body[theme=dark][data-header-desktop] .search input::placeholder{color:#b7bbc5!important}
+    button.menu-toggle{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;min-width:2rem;min-height:2rem}
+    button.search-button,button.search-cancel,button.theme-switch,button.history-back,button.share-button,button.script-button{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;line-height:inherit;cursor:pointer}
+    button.search-button,button.theme-switch,button.share-button,button.script-button{min-width:1.5rem;min-height:1.5rem}
+    button.history-back{text-decoration:underline;text-underline-offset:.15em}
+    summary.details-summary{list-style:none}
+    summary.details-summary::-webkit-details-marker{display:none}
+    .sidebar-controls .sidebar-action,.ch-chevron{appearance:none;border:0;background:transparent;color:inherit;font:inherit;cursor:pointer;min-height:1.5rem}
+    .sidebar-controls .sidebar-action{color:var(--text-muted)}
+    .sidebar-controls .sidebar-action:hover{color:var(--accent)}
+    .ch-chevron{padding:.2rem .4rem;min-width:2rem}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    </style>
+    <!-- accessibility-styles:end -->
 </head>
 <body>
+    <!-- accessibility-skip-link -->
+    <a class="skip-link" href="#main-content">رفتن به محتوای اصلی</a>
 <!-- خروجی HTML — کامپوننت کامل فصل ۱۹ (بدون html/head) -->
+<main class="chapter-main" id="main-content" tabindex="-1">
 <article class="chapter-content">
 
   <h1 style="font-size:1.7rem;margin:0 0 1rem;border-bottom:3px solid #2c5f8a;padding-bottom:.5rem;">فصل ۱۹: انتخاب سبک معماری مناسب</h1>
@@ -219,7 +251,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-1" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">تغییر «مُد» در معماری</h3>
+    <h2 id="sec-1" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">تغییر «مُد» در معماری</h2>
     <p style="text-align:justify;">ترجیحات صنعت نرم‌افزار در سبک‌های معماری با گذر زمان، و تحت تأثیر عوامل گوناگون، تغییر می‌کند. این عوامل عبارت‌اند از:</p>
     <p style="text-align:justify;"><b>مشاهده‌های گذشته <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Observations from the past)</bdi>:</b> سبک‌های معماری تازه معمولاً از مشاهده‌هایی دربارهٔ تجربه‌های گذشته، به‌ویژه مشاهده‌هایی دربارهٔ نقاط درد <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(pain points)</bdi>، سر برمی‌آورند. تجربه‌های معماران در کار با سیستم‌ها (که اغلب همان چیزی است که در وهلهٔ نخست ما را به معمار شدن سوق می‌دهد) بر اندیشه‌هایمان دربارهٔ سیستم‌های آینده اثر می‌گذارد. طراحی‌های معماریِ تازه اغلب بازتاب راه‌حل‌هایی برای کاستی‌های مشخصی هستند که در سبک‌های معماریِ گذشته با آن‌ها روبه‌رو شده‌ایم. برای مثال، معماران پس از ساختنِ معماری‌هایی که بر بازاستفادهٔ کد متمرکز بودند، به مصالحه‌های منفیِ آن پی بردند و پیامدهای بازاستفادهٔ کد را به‌طور جدی از نو سنجیدند.</p>
     <p style="text-align:justify;"><b>تغییرات در اکوسیستم <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Changes in the ecosystem)</bdi>:</b> در اکوسیستم توسعهٔ نرم‌افزار، همه‌چیز همواره در حال تغییر است. این تغییر مداوم آن‌قدر آشفته است که حتی پیش‌بینیِ نوع تغییر بعدی هم ناممکن است. چندان سال‌هایی از زمانی نگذشته که هیچ‌کس نمی‌دانست <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Kubernetes</bdi> چیست، و اکنون بخشی از زندگی روزمرهٔ بسیاری از توسعه‌دهندگان است. چند سال دیگر، ممکن است ابزار دیگری که هنوز نوشته نشده جای <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Kubernetes</bdi> را بگیرد.</p>
@@ -234,7 +266,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-2" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">معیارهای تصمیم‌گیری</h3>
+    <h2 id="sec-2" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">معیارهای تصمیم‌گیری</h2>
     <p style="text-align:justify;">معماران هنگام انتخاب یک سبک معماری باید همهٔ عوامل گوناگونی را که در ساختار طراحیِ حوزه سهم دارند در نظر بگیرند. در اصل، معمار دو چیز را طراحی می‌کند: حوزه‌ای که مشخص شده است، هرچه باشد، و عناصر ساختاری‌ای که برای موفقیت سیستم لازم‌اند (و ویژگی‌های معماری آن‌ها را فراهم می‌کنند).</p>
     <p style="text-align:justify;">تنها زمانی سراغ انتخاب سبک معماری بروید که دربارهٔ عوامل زیر دانش کافی داشته باشید:</p>
     <p style="text-align:justify;"><b>حوزه <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(The domain)</bdi>:</b> تا جایی که می‌توانید جنبه‌های مهم حوزهٔ کسب‌وکار را بشناسید؛ به‌ویژه جنبه‌هایی که بر ویژگی‌های عملیاتی معماری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(operational architecture characteristics)</bdi> اثر می‌گذارند. لازم نیست معماران متخصص موضوعی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(subject matter experts)</bdi> باشند، اما دست‌کم باید درک کلیِ خوبی از جنبه‌های اصلی حوزهٔ در دست طراحی داشته باشند. متخصصان دیگری، مانند تحلیلگران کسب‌وکار <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(business analysts)</bdi>، می‌توانند به شما کمک کنند شکاف‌های دانش حوزه‌ای خود را پر کنید.</p>
@@ -274,10 +306,10 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-3" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">مطالعهٔ موردی تک‌پارچه: <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Silicon Sandwiches</bdi></h3>
+    <h2 id="sec-3" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">مطالعهٔ موردی تک‌پارچه: <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Silicon Sandwiches</bdi></h2>
     <p style="text-align:justify;">در کاتای معماری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(architecture kata)</bdi> <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Silicon Sandwiches</bdi> در فصل ۵، پس از تحلیل ویژگی‌های معماری، به این نتیجه رسیدیم که یک کوانتوم واحد برای پیاده‌سازیِ سیستم کافی است. از آنجا که با یک برنامهٔ کاربردیِ ساده و بدون بودجهٔ کلان سروکار داشتیم، سادگیِ یک معماری تک‌پارچه جذاب بود.</p>
     <p style="text-align:justify;">با این حال، برای <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Silicon Sandwiches</bdi> دو طراحیِ مؤلفه‌ایِ متفاوت ارائه کردیم: یکی با افراز حوزه‌ای و دیگری با افراز فنی؛ اگر به یادآوری نیاز دارید، شاید بخواهید به فصل ۵ برگردید. در این فصل، به آن راه‌حل‌های ساده بازمی‌گردیم تا برای هر گزینه طراحی‌ای بسازیم و مصالحه‌هایشان را بررسی کنیم. با یک معماری تک‌پارچه آغاز می‌کنیم.</p>
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;">تک‌پارچهٔ ماژولار</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;" data-a11y-heading="promoted-from-h4">تک‌پارچهٔ ماژولار</h3>
     <p style="text-align:justify;">تک‌پارچهٔ ماژولار مؤلفه‌هایی حوزه‌محور با یک پایگاه‌دادهٔ واحد می‌سازد که به شکل یک کوانتوم واحد مستقر می‌شوند؛ طراحیِ تک‌پارچهٔ ماژولار برای <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Silicon Sandwiches</bdi> در شکل ۱۹-۳ آمده است.</p>
     <p style="text-align:justify;">این یک معماری تک‌پارچه با یک پایگاه‌دادهٔ رابطه‌ایِ واحد است که برای پایین نگه‌داشتنِ هزینهٔ کلی، با یک رابط کاربریِ تحت وبِ واحد (با ملاحظات طراحیِ دقیق برای دستگاه‌های همراه) پیاده‌سازی شده است. هر یک از حوزه‌هایی که شناسایی کردیم به شکل یک مؤلفه ظاهر می‌شود. اگر زمان و منابع کافی باشد، جداسازیِ جدول‌ها و دیگر دارایی‌های پایگاه‌داده را به همان شیوهٔ مؤلفه‌های حوزه در نظر بگیرید؛ این کار مهاجرت این معماری به یک معماری توزیع‌شده را، اگر نیازمندی‌های آینده چنین ایجاب کند، بسیار آسان‌تر می‌کند.</p>
     <figure style="margin:1rem 0;padding:.7rem 1rem;background:#f9f9f9;border-right:4px solid #2c5f8a;border-radius:4px;">
@@ -285,7 +317,7 @@
       <figcaption style="font-size:.95rem;color:#333;"><b>شکل ۱۹-۳.</b> پیاده‌سازیِ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Silicon Sandwiches</bdi> با تک‌پارچهٔ ماژولار</figcaption>
     </figure>
     <p style="text-align:justify;">از آنجا که خودِ این سبک معماری به‌طور ذاتی از سفارشی‌سازی پشتیبانی نمی‌کند، این قابلیت باید بخشی از طراحی حوزه شود. در این مورد، معمار یک نقطهٔ پایانیِ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Override</bdi> طراحی می‌کند که توسعه‌دهندگان می‌توانند سفارشی‌سازی‌های جداگانه را در آن بارگذاری کنند. به همین ترتیب، معمار باید اطمینان حاصل کند که هر مؤلفهٔ حوزه برای هر ویژگیِ سفارشی‌پذیر به مؤلفهٔ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Override</bdi> ارجاع می‌دهد. (بررسیِ این موضوع کاری عالی برای یک تابع برازش معماری است.)</p>
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;">میکروکرنل</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;" data-a11y-heading="promoted-from-h4">میکروکرنل</h3>
     <p style="text-align:justify;">یکی از ویژگی‌های معماری‌ای که در <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Silicon Sandwiches</bdi> شناسایی کردیم سفارشی‌پذیری بود. شکل ۱۹-۴ با بهره‌گیری از هم‌ریختیِ حوزه و معماری نشان می‌دهد که چگونه می‌توان این ویژگی را با یک معماری میکروکرنل پیاده‌سازی کرد.</p>
     <figure style="margin:1rem 0;padding:.7rem 1rem;background:#f9f9f9;border-right:4px solid #2c5f8a;border-radius:4px;">
       <img src="figures/chapter-19/figure-19-4.png" alt="شکل ۱۹-۴. پیاده‌سازیِ Silicon Sandwiches با میکروکرنل" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;" width="722" height="908" decoding="async">
@@ -299,7 +331,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-4" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">مطالعهٔ موردی توزیع‌شده: <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Going, Going, Gone</bdi></h3>
+    <h2 id="sec-4" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">مطالعهٔ موردی توزیع‌شده: <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Going, Going, Gone</bdi></h2>
     <p style="text-align:justify;">کاتای <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Going, Going, Gone</bdi> <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(GGG)</bdi> در فصل ۸ چالش‌های معماریِ جالب‌تری پیش می‌کشد. بر پایهٔ تحلیل مؤلفه‌ها در بخش «مطالعهٔ موردی: <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Going, Going, Gone</bdi> — کشفِ مؤلفه‌ها» در فصل ۸، می‌دانیم که بخش‌های مختلف این معماری به ویژگی‌های متفاوتی نیاز دارند. برای مثال، نیاز به در دسترس‌بودن و مقیاس‌پذیری میان نقش‌هایی مانند حراج‌گردان <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(auctioneer)</bdi> و پیشنهاددهنده <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(bidder)</bdi> متفاوت خواهد بود.</p>
     <p style="text-align:justify;">نیازمندی‌های سیستم <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">GGG</bdi> همچنین به‌صراحت انتظارات بلندپروازانه‌ای را دربارهٔ مقیاس، کشسانی، کارایی و دیگر ویژگی‌های عملیاتیِ دشوارِ معماری بیان می‌کنند. الگوی معماری باید امکان سفارشی‌سازیِ گسترده را در سطحی ریزدانه فراهم کند. از میان معماری‌های توزیع‌شدهٔ نامزد، معماری رویدادمحورِ سطح پایین و میکروسرویس‌ها دو گزینه‌ای هستند که با بیشترِ ویژگی‌های معماریِ موردنیاز به بهترین شکل جور درمی‌آیند. از میان این دو، میکروسرویس‌ها در پشتیبانی از تنوع ویژگی‌های عملیاتی معماری بهتر عمل می‌کند. (معماری‌های صرفاً رویدادمحور معمولاً بخش‌ها را نه بر پایهٔ ویژگی‌های معماری‌شان، بلکه بر پایهٔ اینکه از ارتباط ارکستره‌شده استفاده می‌کنند یا کرئوگرافی‌شده از هم جدا می‌کنند.)</p>
     <p style="text-align:justify;">دستیابی به هدف کاراییِ اعلام‌شده در میکروسرویس‌ها چالش‌برانگیز خواهد بود، اما بهترین راه برای پرداختن به هر نقطهٔ ضعفِ یک معماری، طراحی‌کردن به گونه‌ای است که آن ضعف را در نظر بگیرد. برای مثال، هرچند میکروسرویس‌ها به‌طور ذاتی مقیاس‌پذیریِ بالایی فراهم می‌کند، اغلب با مشکلات کاراییِ مشخصی روبه‌رو می‌شود که از جمله ناشی از ارکستراسیونِ بیش از حد یا جداسازیِ بیش از حد تهاجمیِ داده‌هاست.</p>
@@ -334,12 +366,12 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
     <section>
-    <h3 id="sec-5" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">واژه‌نامهٔ اختصاصی این فصل</h3>
+    <h2 id="sec-5" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">واژه‌نامهٔ اختصاصی این فصل</h2>
     <table dir="rtl" style="width:100%;border-collapse:collapse;font-size:.95rem;">
       <thead>
         <tr style="background:#2c5f8a;color:#fff;">
-          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;">واژهٔ انگلیسی</th>
-          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;">معادل مصوب/به‌کاررفته در این فصل</th>
+          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;" scope="col">واژهٔ انگلیسی</th>
+          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;" scope="col">معادل مصوب/به‌کاررفته در این فصل</th>
         </tr>
       </thead>
       <tbody>
@@ -398,6 +430,7 @@
   </section>
 
 </article>
+</main>
 
 <script id="fosa-standalone-helper">
   if (window.self === window.top) {

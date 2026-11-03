@@ -151,17 +151,49 @@
     <meta name="twitter:image" content="https://www.alirostami.com/images/social/aima-4e-persian.jpg">
     <meta name="twitter:image:alt" content="ترجمه فارسی کتاب هوش مصنوعی؛ یک رویکرد مدرن، ویرایش چهارم">
     <!-- image-seo:end -->
+    <!-- accessibility-styles:start -->
+    <style>
+    .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+    .skip-link{position:fixed;top:.75rem;left:.75rem;z-index:100000;padding:.65rem 1rem;border-radius:.35rem;background:#fff;color:#073b70;font-weight:700;box-shadow:0 2px 12px rgba(0,0,0,.25);transform:translateY(-180%);transition:transform .15s ease}
+    .skip-link:focus{transform:translateY(0)}
+    :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:3px solid #0563c1!important;outline-offset:3px!important}
+    [theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible,[data-theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline-color:#7dd3fc!important}
+    body[data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#5f5f66!important}
+    body[theme=dark][data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#b7bbc5!important}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#1d789b!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#6bc5e6!important}
+    body[data-header-desktop] .single .content a:not(.headerlink){text-decoration:underline!important;text-underline-offset:.15em}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#a41354!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#fff!important}
+    body[data-header-desktop] .search input::placeholder{color:#5f5f66!important;opacity:1}
+    body[theme=dark][data-header-desktop] .search input::placeholder{color:#b7bbc5!important}
+    button.menu-toggle{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;min-width:2rem;min-height:2rem}
+    button.search-button,button.search-cancel,button.theme-switch,button.history-back,button.share-button,button.script-button{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;line-height:inherit;cursor:pointer}
+    button.search-button,button.theme-switch,button.share-button,button.script-button{min-width:1.5rem;min-height:1.5rem}
+    button.history-back{text-decoration:underline;text-underline-offset:.15em}
+    summary.details-summary{list-style:none}
+    summary.details-summary::-webkit-details-marker{display:none}
+    .sidebar-controls .sidebar-action,.ch-chevron{appearance:none;border:0;background:transparent;color:inherit;font:inherit;cursor:pointer;min-height:1.5rem}
+    .sidebar-controls .sidebar-action{color:var(--text-muted)}
+    .sidebar-controls .sidebar-action:hover{color:var(--accent)}
+    .ch-chevron{padding:.2rem .4rem;min-width:2rem}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    </style>
+    <!-- accessibility-styles:end -->
 </head>
 <body>
-<div class="page">
+    <!-- accessibility-skip-link -->
+    <a class="skip-link" href="#main-content">رفتن به محتوای اصلی</a>
+<main class="page" id="main-content" tabindex="-1">
 
 <div class="kicker">
   <span class="badge">📘 هوش مصنوعی: رویکردی نوین (AIMA)</span>
   <span class="badge soft">ترجمهٔ فارسی — راسل و نورویگ، ویرایش چهارم</span>
   <span class="badge gold">فصل ۱۰</span>
 </div>
+<h1 class="chapter-title">فصل ۱۰: بازنمایی دانش (Knowledge Representation)</h1>
 
-<nav class="toc"><h2>فهرست بخش‌های این فصل</h2>
+<nav class="toc" aria-label="فهرست مطالب"><h2>فهرست بخش‌های این فصل</h2>
 <ol>
 <li><a href="#sec-1">۱۰.۱ مهندسی هستی‌شناسی</a></li>
 <li><a href="#sec-2">۱۰.۲ رده‌ها و اشیا</a></li>
@@ -174,7 +206,7 @@
 <li><a href="#sec-8">پانوشت‌ها:</a></li>
 </ol></nav>
 
-<p class="subtitle">فصل ۱۰: بازنمایی دانش (Knowledge Representation)</p>
+
 <div class="lead">در این فصل نشان می‌دهیم چگونه واقعیت‌های گوناگون دربارهٔ جهان واقعی را در قالبی بازنمایی کنیم که بتوان از آن برای استدلال و حل مسئله استفاده کرد.</div>
 <p>فصل‌های پیشین نشان دادند عامل دارای پایگاه دانش چگونه می‌تواند استنتاج‌هایی کند که آن را قادر می‌سازد به‌طور مناسب عمل کند. در این فصل به پرسش محتوایی می‌پردازیم که چه چیزی در پایگاه دانش چنین عاملی گذاشته شود — چگونه واقعیت‌ها دربارهٔ جهان بازنمایی شوند. از منطق مرتبهٔ اول به‌عنوان زبان بازنمایی استفاده خواهیم کرد، اما فصل‌های بعدی صورت‌های بازنمایی متفاوتی معرفی خواهند کرد، مانند شبکه‌های تکلیف سلسله‌مراتبی برای استدلال دربارهٔ برنامه‌ها (فصل ۱۱)، شبکه‌های بیزی برای استدلال با عدم قطعیت (فصل ۱۳)، مدل‌های مارکوف برای استدلال در طول زمان (فصل ۱۷)، و شبکه‌های عصبی عمیق برای استدلال دربارهٔ تصاویر، صداها و دیگر داده‌ها (فصل ۲۱). اما مهم نیست از چه بازنمایی استفاده کنید، واقعیت‌های جهان همچنان باید مدیریت شوند و این فصل به شما حسی از مسائل می‌دهد.</p>
 <p>بخش ۱۰.۱ ایدهٔ هستی‌شناسی عمومی را معرفی می‌کند که همه‌چیز در جهان را در سلسله‌مراتبی از رده‌ها سازمان می‌دهد. بخش ۱۰.۲ رده‌های پایهٔ اشیا، مواد و اندازه‌ها را پوشش می‌دهد؛ بخش ۱۰.۳ رویدادها را؛ و بخش ۱۰.۴ دانش دربارهٔ باورها را بحث می‌کند. سپس به در نظر گرفتن فناوری استدلال با این محتوا بازمی‌گردیم: بخش ۱۰.۵ سامانه‌های استدلالی طراحی‌شده برای استنتاج کارآمد با رده‌ها را بحث می‌کند و بخش ۱۰.۶ استدلال با اطلاعات پیش‌فرض را.</p>
@@ -274,7 +306,7 @@ d ∈ Days ⇒ Duration(d) = Hours(24)</code></pre>
 <p>اندازه‌های کمی ساده به‌راحتی قابل بازنمایی‌اند. اندازه‌های دیگر مسئلهٔ بیشتری ایجاد می‌کنند، زیرا مقیاس توافقی مقادیر ندارند. تمرین‌ها دشواری دارند، دسرها خوشمزگی دارند و شعرها زیبایی، اما نمی‌توان اعداد را به این کیفیات تخصیص داد. ممکن است کسی، در لحظه‌ای حساب‌داری ناب، چنین ویژگی‌هایی را برای هدف استدلال منطقی بی‌کاربرد کنار بگذارد؛ یا بدتر، بکوشد مقیاس عددی بر زیبایی تحمیل کند. این اشتباه فاحشی می‌بود، زیرا غیرضروری است. مهم‌ترین جنبهٔ اندازه‌ها، مقادیر عددی خاص نیست، بلکه واقعیتِ قابل‌ترتیب‌بودنِ اندازه‌هاست.</p>
 <p>هرچند اندازه‌ها عدد نیستند، باز هم می‌توانیم آن‌ها را مقایسه کنیم، با نماد ترتیبی مانند &gt;. برای نمونه، شاید باور داشته باشیم تمرین‌های نورویگ از تمرین‌های راسل سخت‌ترند، و در تمرین‌های سخت‌تر امتیاز کمتری می‌گیریم:</p>
 <pre class="code"><code>e1 ∈ Exercises ∧ e2 ∈ Exercises ∧ Wrote(Norvig, e1) ∧ Wrote(Russell, e2) ⇒ Difficulty(e1) > Difficulty(e2)
-e1 ∈ Exercises ∧ e2 ∈ Exercises ∧ Difficulty(e1) > Difficulty(e2) ⇒ ExpectedScore(e1) < ExpectedScore(e2)</code></pre>
+e1 ∈ Exercises ∧ e2 ∈ Exercises ∧ Difficulty(e1) > Difficulty(e2) ⇒ ExpectedScore(e1) &lt; ExpectedScore(e2)</code></pre>
 <p>این برای اجازه دادن به فرد در تصمیم‌گیری اینکه کدام تمرین‌ها را انجام دهد کافی است، حتی با آنکه هرگز از مقادیر عددی برای دشواری استفاده نشد. (البته باید کشف کرد چه کسی کدام تمرین‌ها را نوشته.) این نوع روابط یکنواخت میان اندازه‌ها مبنای حوزهٔ «فیزیک کیفی» را تشکیل می‌دهد، زیرحوزه‌ای از هوش مصنوعی که بررسی می‌کند چگونه دربارهٔ سامانه‌های فیزیکی بدون شیرجه در معادلات مفصل و شبیه‌سازی‌های عددی استدلال کنیم. فیزیک کیفی در یادداشت‌های تاریخی بحث شده.</p>
 <h3>۱۰.۲.۳ اشیا: چیزها و مواد</h3>
 <p>جهان واقعی را می‌توان شامل اشیای اولیه (مثلاً ذرات اتمی) و اشیای مرکبِ ساخته‌شده از آن‌ها دید. با استدلال در سطح اشیای بزرگ مانند سیب‌ها و خودروها، می‌توانیم بر پیچیدگیِ سروکار داشتن با شمار عظیم اشیای اولیه به‌صورت فردی غلبه کنیم. اما بخش قابل توجهی از واقعیت هست که به نظر می‌رسد هر فردسازیِ بدیهی — تقسیم به اشیای متمایز — را به چالش می‌کشد. به این بخش نام عمومی «ماده» (Stuff) می‌دهیم. برای نمونه، فرض کنیم جلوی من مقداری کره و یک مورچه‌خوار هست. می‌توانم بگویم یک مورچه‌خوار هست، اما هیچ شمار بدیهی‌ای از «شیء-کره»ها نیست، زیرا هر جزء از شیء-کره نیز شیء-کره است، دست‌کم تا وقتی به اجزای واقعاً بسیار کوچک برسیم. این تمایز عمده میان ماده و چیز است. اگر مورچه‌خوار را از وسط ببریم، دو مورچه‌خوار نمی‌گیریم (متأسفانه).</p>
@@ -292,7 +324,7 @@ e1 ∈ Exercises ∧ e2 ∈ Exercises ∧ Difficulty(e1) > Difficulty(e2) ⇒ Ex
 <pre class="code"><code>E1 ∈ Flyings ∧ Flyer(E1, Shankar) ∧ Origin(E1, SF) ∧ Destination(E1, DC)</code></pre>
 <p>که <span class="en-inline">Flyings</span> ردهٔ همهٔ رویدادهای پرواز است. با شیءسازی رویدادها، افزودن هر مقدار اطلاعات دلخواه دربارهٔ آن‌ها ممکن می‌شود. برای نمونه، می‌توانیم بگوییم پرواز شانکار پرتلاطم بود با <span class="en-inline">Bumpy(E1).</span> در هستی‌شناسی‌ای که رویدادها گزاره‌های n-تایی‌اند، هیچ راهی برای افزودن اطلاعات اضافی مانند این نیست؛ رفتن به گزارهٔ <span class="en-inline">n+1</span>-تایی راه‌حل مقیاس‌پذیری نیست.</p>
 <p>برای ادعای اینکه روانی واقعاً از نقطهٔ زمانی <span class="en-inline">t1</span> شروع و تا زمان <span class="en-inline">t2</span> ادامه می‌یابد، از گزارهٔ T استفاده می‌کنیم، مانند <span class="en-inline">T(At(Shankar,Berkeley), t1, t2).</span> به همین ترتیب، از <span class="en-inline">Happens(E1, t1, t2)</span> استفاده می‌کنیم تا بگوییم رویداد <span class="en-inline">E1</span> واقعاً رخ داد، از زمان <span class="en-inline">t1</span> شروع و در زمان <span class="en-inline">t2</span> پایان یافت. مجموعهٔ کامل گزاره‌ها برای یک نسخه از حساب رویدادها<sup>⁴</sup> چنین است:</p>
-<table><thead><tr><th>گزاره</th><th>معنی</th></tr></thead><tbody>
+<table><thead><tr><th scope="col">گزاره</th><th scope="col">معنی</th></tr></thead><tbody>
 <tr><td><span class="en-inline">T(f, t1, t2)</span></td><td>روان f برای همهٔ زمان‌های بین <span class="en-inline">t1</span> و <span class="en-inline">t2</span> صادق است</td></tr>
 <tr><td><span class="en-inline">Happens(e, t1, t2)</span></td><td>رویداد e در <span class="en-inline">t1</span> شروع و در <span class="en-inline">t2</span> پایان می‌یابد</td></tr>
 <tr><td><span class="en-inline">Initiates(e, f, t)</span></td><td>رویداد e باعث صادق‌شدن روان f در زمان t می‌شود</td></tr>
@@ -324,7 +356,7 @@ Duration(AD2001) = Seconds(31536000)</code></pre>
 <pre class="code"><code>Time(Begin(AD2001)) = Date(0,0,0,1,Jan,2001)
 Date(0,20,21,24,1,1995) = Seconds(3000000000)</code></pre>
 <p>دو بازه «به هم می‌رسند» (Meet) اگر زمان پایان اولی برابر زمان آغاز دومی باشد. مجموعهٔ کامل روابط بازه‌ای (آلن، ۱۹۸۳) در زیر و در شکل ۱۰.۲ نشان داده شده:</p>
-<table><thead><tr><th>رابطه</th><th>تعریف</th></tr></thead><tbody>
+<table><thead><tr><th scope="col">رابطه</th><th scope="col">تعریف</th></tr></thead><tbody>
 <tr><td><span class="en-inline">Meet(i, j)</span></td><td>⇔ <span class="en-inline">End(i) = Begin(j)</span></td></tr>
 <tr><td><span class="en-inline">Before(i, j)</span></td><td>⇔ <span class="en-inline">End(i) &lt; Begin(j)</span></td></tr>
 <tr><td><span class="en-inline">After(j, i)</span></td><td>⇔ <span class="en-inline">Before(i, j)</span></td></tr>
@@ -520,7 +552,7 @@ Quaker(x) : Pacifist(x) / Pacifist(x)</code></pre>
   <p style="color:var(--muted);font-size:13px;margin-top:8px">این صفحه از ترجمهٔ فارسی فصل‌های کتاب «هوش مصنوعی: رویکردی نوین» (استوارت راسل و پیتر نورویگ، ویرایش چهارم) تولید شده است. متن با فایل مارک‌داونِ همان فصل یکسان است.</p>
 </div>
 
-</div>
+</main>
 <script id="aima-standalone-helper">
   if (window.self === window.top) {
     window.addEventListener('DOMContentLoaded', function() {

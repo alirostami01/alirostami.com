@@ -57,7 +57,7 @@
             color: var(--accent);
             line-height: 1.4;
         }
-        h3 {
+        h2 {
             font-size: 1.35rem;
             color: var(--accent);
             margin: 2.4rem 0 .9rem;
@@ -66,7 +66,7 @@
             line-height: 1.4;
             scroll-margin-top: 1rem;
         }
-        h4 {
+        h3 {
             font-size: 1.15rem;
             color: var(--accent);
             margin: 1.6rem 0 .6rem;
@@ -157,7 +157,7 @@
             h1 {
                 font-size: 1.5rem;
             }
-            h3 {
+            h2 {
                 font-size: 1.2rem;
             }
         }
@@ -204,9 +204,41 @@
     <meta name="twitter:image" content="https://www.alirostami.com/images/social/software-architecture.jpg">
     <meta name="twitter:image:alt" content="ترجمه فارسی مبانی معماری نرم‌افزار؛ مطالعه آنلاین ۲۷ فصل و پیوست">
     <!-- image-seo:end -->
+    <!-- accessibility-styles:start -->
+    <style>
+    .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+    .skip-link{position:fixed;top:.75rem;left:.75rem;z-index:100000;padding:.65rem 1rem;border-radius:.35rem;background:#fff;color:#073b70;font-weight:700;box-shadow:0 2px 12px rgba(0,0,0,.25);transform:translateY(-180%);transition:transform .15s ease}
+    .skip-link:focus{transform:translateY(0)}
+    :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:3px solid #0563c1!important;outline-offset:3px!important}
+    [theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible,[data-theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline-color:#7dd3fc!important}
+    body[data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#5f5f66!important}
+    body[theme=dark][data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#b7bbc5!important}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#1d789b!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#6bc5e6!important}
+    body[data-header-desktop] .single .content a:not(.headerlink){text-decoration:underline!important;text-underline-offset:.15em}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#a41354!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#fff!important}
+    body[data-header-desktop] .search input::placeholder{color:#5f5f66!important;opacity:1}
+    body[theme=dark][data-header-desktop] .search input::placeholder{color:#b7bbc5!important}
+    button.menu-toggle{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;min-width:2rem;min-height:2rem}
+    button.search-button,button.search-cancel,button.theme-switch,button.history-back,button.share-button,button.script-button{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;line-height:inherit;cursor:pointer}
+    button.search-button,button.theme-switch,button.share-button,button.script-button{min-width:1.5rem;min-height:1.5rem}
+    button.history-back{text-decoration:underline;text-underline-offset:.15em}
+    summary.details-summary{list-style:none}
+    summary.details-summary::-webkit-details-marker{display:none}
+    .sidebar-controls .sidebar-action,.ch-chevron{appearance:none;border:0;background:transparent;color:inherit;font:inherit;cursor:pointer;min-height:1.5rem}
+    .sidebar-controls .sidebar-action{color:var(--text-muted)}
+    .sidebar-controls .sidebar-action:hover{color:var(--accent)}
+    .ch-chevron{padding:.2rem .4rem;min-width:2rem}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    </style>
+    <!-- accessibility-styles:end -->
 </head>
 <body>
+    <!-- accessibility-skip-link -->
+    <a class="skip-link" href="#main-content">رفتن به محتوای اصلی</a>
 <!-- خروجی HTML — کامپوننت کامل فصل ۶ (بدون html/head) -->
+<main class="chapter-main" id="main-content" tabindex="-1">
 <article class="chapter-content">
 
   <h1 style="font-size:1.7rem;margin:0 0 1rem;border-bottom:3px solid #2c5f8a;padding-bottom:.5rem;">فصل ۶: سنجش و حاکمیت بر ویژگی‌های معماری</h1>
@@ -218,14 +250,14 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-1" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">سنجشِ ویژگی‌های معماری</h3>
+    <h2 id="sec-1" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">سنجشِ ویژگی‌های معماری</h2>
     <p style="text-align:justify;">معماران به چند دلیل در تعریفِ ویژگی‌های معماری با دشواری روبه‌رو می‌شوند:</p>
     <p style="text-align:justify;"><b>فیزیک نیستند:</b> بسیاری از ویژگی‌های معماریِ رایج معناهای مبهمی دارند. برای نمونه، معمار چگونه برای چابکی یا استقرارپذیری طراحی می‌کند؟ یا برای «کاراییِ برق‌آسا»؟ افراد در سراسرِ صنعت دیدگاه‌های بسیار متفاوتی دربارهٔ اصطلاحاتِ رایج دارند؛ این تفاوت‌ها گاهی از زمینه‌های متفاوت و موجه سرچشمه می‌گیرند و گاهی سلیقه‌ای و دل‌بخواهی‌اند.</p>
     <p style="text-align:justify;"><b>تعریف‌های بسیار گوناگون:</b> حتی درونِ یک سازمان هم ممکن است بخش‌های مختلف بر سرِ تعریفِ ویژگی‌های حیاتی‌ای مانند کارایی هم‌نظر نباشند. تا زمانی که توسعه‌دهندگان، معماران، تیمِ عملیات و دیگران بر یک تعریفِ مشترک توافق نکنند، چگونه می‌توانند گفت‌وگوی درستی داشته باشند؟</p>
     <p style="text-align:justify;"><b>بیش از حد مرکب:</b> بسیاری از ویژگی‌های معماریِ مطلوب در واقع مجموعه‌ای از ویژگی‌های دیگر در مقیاسی کوچک‌ترند؛ همان‌طور که شاید از بحثِ ما دربارهٔ ویژگی‌های معماریِ مرکب در فصل ۵ به یاد داشته باشید. برای نمونه، چابکی به ویژگی‌هایی مانند ماژولاریتی، استقرارپذیری و آزمون‌پذیری تجزیه می‌شود.</p>
     <p style="text-align:justify;">تجزیهٔ ویژگی‌های معماریِ مرکب به اجزای سازنده‌شان بخشِ مهمی از ایجادِ تعریف‌های عینی برای ویژگی‌های معماری است و هر سه مشکلِ بالا را حل می‌کند.</p>
     <p style="text-align:justify;">وقتی سازمانی توافق می‌کند که همه از تعریف‌های استاندارد و مشخص برای ویژگی‌های معماری استفاده کنند، یک زبانِ فراگیر پیرامونِ معماری پدید می‌آورد. این استانداردسازی به آن‌ها امکان می‌دهد ویژگی‌های مرکب را باز کنند و به خصیصه‌هایی برسند که به‌طورِ عینی سنجش‌پذیرند.</p>
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;">سنجه‌های عملیاتی</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;" data-a11y-heading="promoted-from-h4">سنجه‌های عملیاتی</h3>
     <p style="text-align:justify;">بسیاری از ویژگی‌های معماری، مانند کارایی یا مقیاس‌پذیری، سنجه‌های مستقیم و آشکاری دارند. با این حال، حتی همین‌ها هم بسته به اهدافِ تیم تفسیرهای ظریفِ فراوانی می‌پذیرند. برای نمونه، شاید تیمِ شما میانگینِ زمانِ پاسخ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(average response time)</bdi> را برای برخی درخواست‌ها بسنجد؛ نمونه‌ای خوب از سنجه‌ای برای یک ویژگی عملیاتیِ معماری. اما اگر تیمِ شما فقط میانگین را بسنجد، چه می‌شود اگر یک شرطِ مرزی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(boundary condition)</bdi> باعث شود ۱٪ از درخواست‌ها ۱۰ برابرِ بقیه طول بکشند؟ اگر سایت ترافیکِ کافی داشته باشد، این داده‌های پرت <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(outliers)</bdi> شاید اصلاً دیده نشوند. برای شناساییِ داده‌های پرت، شاید بخواهید بیشینهٔ زمانِ پاسخ را هم بسنجید.</p>
     <p style="text-align:justify;">تیم‌های پیشرفته فقط اعدادِ سفت‌وسختی برای کارایی تعیین نمی‌کنند؛ آن‌ها تعریف‌هایشان را بر تحلیلِ آماری بنا می‌کنند. برای نمونه، فرض کنید یک سرویسِ پخشِ ویدئو می‌خواهد مقیاس‌پذیری را پایش کند. مهندسان به‌جای تعیینِ عددی دلبخواهی به‌عنوانِ هدف، مقیاس را در گذرِ زمان می‌سنجند و مدل‌های آماری می‌سازند، سپس اگر سنجه‌های بی‌درنگ از مدل‌های پیش‌بین انحراف پیدا کنند، هشدار می‌دهند. اگر چنین شود، این ناهمخوانی می‌تواند دو معنا داشته باشد: یا مدل نادرست است (که تیم‌ها دوست دارند بدانند) یا مشکلی در کار است (که تیم‌ها این را هم دوست دارند بدانند).</p>
     <p style="text-align:justify;">انواعِ ویژگی‌هایی که تیم‌ها می‌سنجند، هم‌پای ابزارها، اهداف، دستگاه‌ها و قابلیت‌ها، به‌سرعت تحول می‌یابند. برای نمونه، اخیراً بسیاری از تیم‌ها بر بودجه‌های کارایی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(performance budgets)</bdi> برای معیارهایی مانند نخستین رنگ‌آمیزیِ محتوایی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(first contentful paint)</bdi> و نخستین بیکاریِ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">CPU</bdi> <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(first CPU idle)</bdi> تمرکز کرده‌اند؛ هر دو معیار گویای بسیاری از مشکلاتِ کارایی برای کاربرانی‌اند که با دستگاه‌های موبایل صفحه‌های وب را باز می‌کنند. با تغییرِ این موارد و متغیرهای بی‌شمارِ دیگر، تیم‌ها موضوعاتِ تازه‌ای برای سنجش و راه‌های نوینی برای سنجشِ آن‌ها خواهند یافت.</p>
@@ -234,7 +266,7 @@
     <p style="text-align:justify;margin:.55rem 0;">بسیاری از ویژگی‌های معماری که توصیف می‌کنیم چند تعریف دارند. کارایی نمونهٔ بسیار خوبی است. بسیاری از پروژه‌ها به کاراییِ کلی نگاه می‌کنند: برای نمونه، اینکه چرخه‌های درخواست و پاسخ در یک برنامهٔ وب چقدر طول می‌کشند. اما معماران و مهندسانِ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">DevOps</bdi> در بسیاری از سازمان‌ها، با کارِ بسیار زیاد، بودجه‌های کاراییِ مشخصی برای بخش‌های مشخصی از برنامه تعیین کرده‌اند. برای نمونه، بسیاری از سازمان‌ها رفتارِ کاربران را بررسی کرده و دریافته‌اند که زمانِ بهینه برای نخستین رندرِ صفحه <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(first-page render)</bdi>، یعنی نخستین نشانهٔ دیدنیِ پیشرفتِ بارگذاریِ یک صفحهٔ وب در مرورگر یا دستگاهِ موبایل، کسری از یک ثانیه است. بیشترِ برنامه‌ها در این معیار در محدودهٔ دو رقمی قرار می‌گیرند. اما برای سایت‌های مدرنی که می‌کوشند هرچه بیشتر کاربر جذب کنند، این معیار مهمی برای پیگیری است و سازمان‌های پشتِ این سایت‌ها سنجه‌های بسیار ظریفی ساخته‌اند.</p>
     <p style="text-align:justify;margin:.55rem 0;">برخی از این معیارها پیامدهای دیگری هم برای طراحیِ برنامه دارند. بسیاری از سازمان‌های آینده‌نگر برای بارگذاریِ صفحه‌ها بودجهٔ وزنِ کیلوبایتی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(K-weight budget)</bdi> تعیین می‌کنند؛ یعنی سقفِ مجازی (بر حسب بایت) برای حجمِ کتابخانه‌ها و چارچوب‌هایی که می‌توانند در یک صفحه بارگذاری شوند معین می‌کنند. منطقِ آن‌ها از محدودیت‌های فیزیکی نشئت می‌گیرد: در هر لحظه فقط شمارِ محدودی بایت می‌تواند از شبکه عبور کند، به‌ویژه برای دستگاه‌های موبایل در مناطقی با پهنای باندِ محدود.</p>
     </blockquote>
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;">سنجه‌های ساختاری</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;" data-a11y-heading="promoted-from-h4">سنجه‌های ساختاری</h3>
     <p style="text-align:justify;">برخی سنجه‌های عینی به اندازهٔ کارایی آشکار نیستند. ویژگی‌های ساختاریِ درونی، مانند ماژولاریتیِ خوش‌تعریف، چطور؟ این نمونهٔ خوبی از یک ویژگی نامشهودِ معماری است: معماران مسئولِ تعریفِ مؤلفه‌ها و تعامل‌هایشان هستند و می‌خواهند ساختاری پایدار برای کیفیتِ بالای کلی بسازند. متأسفانه هنوز هیچ معیارِ جامعی برای ارزیابیِ کیفیتِ یک معماری وجود ندارد. با این حال، معیارها و ابزارهای رایجی هست که به معماران امکان می‌دهد به برخی جنبه‌های حیاتیِ ساختارِ کد بپردازند، هرچند در ابعادی محدود.</p>
     <p style="text-align:justify;">یکی از جنبه‌های سنجش‌پذیرِ کد پیچیدگی است که معیارِ پیچیدگی چرخه‌ای آن را تعریف می‌کند.</p>
     <blockquote style="margin:1.2rem 0;padding:1rem 1.2rem;background:#f7f9fb;border:1px solid #dde3e8;border-right:4px solid #2c5f8a;border-radius:4px;font-size:.98rem;text-align:justify;">
@@ -267,7 +299,7 @@
     <p style="text-align:justify;margin:.55rem 0;">رویه‌های مهندسی‌ای مانند توسعهٔ آزمون‌محور <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(test-driven development, TDD)</bdi> این اثرِ جانبیِ سودمند را دارند که برای یک حوزهٔ مسئلهٔ معین، به‌طورِ میانگین متدهایی کوچک‌تر و با پیچیدگیِ کمتر پدید می‌آورند. توسعه‌دهندگان در <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">TDD</bdi> می‌کوشند آزمونی ساده بنویسند و سپس کمترین مقدارِ کدِ لازم برای قبولی در آن آزمون را بنویسند. این تمرکز بر رفتارِ مجزا و مرزهای خوبِ آزمون، متدهایی خوش‌تجزیه و بسیار منسجم با <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">CC</bdi> پایین را تشویق می‌کند.</p>
     </blockquote>
 
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;">سنجه‌های فرایندی</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;" data-a11y-heading="promoted-from-h4">سنجه‌های فرایندی</h3>
     <p style="text-align:justify;">برخی ویژگی‌های معماری با فرایندهای توسعهٔ نرم‌افزار هم‌پوشانی دارند. برای نمونه، چابکی اغلب به‌عنوانِ خصیصه‌ای مطلوب مطرح می‌شود. اما چابکی یک ویژگی معماریِ مرکب است که از خصیصه‌هایی مانند آزمون‌پذیری و استقرارپذیری تشکیل شده است.</p>
     <p style="text-align:justify;">آزمون‌پذیری را می‌توان با ابزارهای پوشش کد سنجید؛ ابزارهایی که تقریباً برای همهٔ سکوها وجود دارند و گزارش می‌دهند آزمون‌ها چند درصد از کد را اجرا می‌کنند. اما این ابزارها، مانندِ همهٔ بررسی‌های نرم‌افزاری، نمی‌توانند جای اندیشه و نیت را بگیرند. برای نمونه، یک پایگاه کد می‌تواند ۱۰۰٪ پوشش کد داشته باشد، اما از ادعاهای <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(assertions)</bdi> ضعیفی استفاده کند که در واقع هیچ اطمینانی به درستیِ کد نمی‌دهند.</p>
     <p style="text-align:justify;">آزمون‌پذیری ویژگی‌ای است که به‌طورِ عینی سنجش‌پذیر است و استقرارپذیری نیز همین‌طور. معیارهای استقرارپذیری شاملِ درصدِ استقرارهای موفق، مدت‌زمانِ استقرارها، و مشکلات و باگ‌هایی است که استقرارها پدید می‌آورند. هر تیم باید به مجموعهٔ خوبی از سنجه‌ها برسد که داده‌های کیفی و کمّیِ سودمند را متناسب با اولویت‌ها و اهدافِ سازمان و تیمِ خود ثبت کند.</p>
@@ -277,12 +309,12 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-2" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">حاکمیت و توابع برازش</h3>
+    <h2 id="sec-2" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">حاکمیت و توابع برازش</h2>
     <p style="text-align:justify;">وقتی معماران ویژگی‌های معماری را تعیین و اولویت‌بندی کردند، چگونه می‌توانند مطمئن شوند که توسعه‌دهندگان، صرف‌نظر از فشارِ زمان‌بندی، به این اولویت‌ها پایبند می‌مانند و طراحی‌هایشان را درست و اصولی پیاده می‌کنند؟ در بسیاری از پروژه‌های نرم‌افزاری فوریت حرفِ اول را می‌زند، اما معماران همچنان به ابزارها و تکنیک‌هایی برای اعمالِ حاکمیتِ معماری نیاز دارند. ماژولاریتی نمونهٔ بسیار خوبی از جنبه‌ای از معماری است که مهم است اما فوری نیست.</p>
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;">حاکمیت بر ویژگی‌های معماری</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;" data-a11y-heading="promoted-from-h4">حاکمیت بر ویژگی‌های معماری</h3>
     <p style="text-align:justify;">حاکمیت، که از واژهٔ یونانیِ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">kubernan</bdi> (به معنای «هدایت‌کردن») گرفته شده، یکی از مسئولیت‌های مهمِ نقشِ معمار است. همان‌طور که از نامش پیداست، دامنهٔ آن هر جنبه‌ای از فرایندِ توسعهٔ نرم‌افزار را در بر می‌گیرد که معماران می‌خواهند بر آن اثر بگذارند. برای نمونه، تضمینِ کیفیتِ نرم‌افزار در قلمروِ حاکمیتِ معماری قرار می‌گیرد، چون غفلت از آن می‌تواند به مشکلاتِ کیفیِ فاجعه‌باری بینجامد.</p>
     <p style="text-align:justify;">خوشبختانه معماران راه‌حل‌های روزبه‌روز پیشرفته‌تری برای این مسئله در اختیار دارند؛ نمونه‌ای خوب از رشدِ تدریجیِ قابلیت‌های اکوسیستمِ توسعهٔ نرم‌افزار. حرکت به سوی خودکارسازی که <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Extreme Programming</bdi> آغازگرش بود، یکپارچه‌سازی مداوم <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(continuous integration, CI)</bdi> را پدید آورد. <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">CI</bdi> به خودکارسازیِ بیشتر در عملیات انجامید که امروز آن را <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">DevOps</bdi> می‌نامیم، و این زنجیره تا حاکمیتِ معماری ادامه می‌یابد. کتابِ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Building Evolutionary Architectures</bdi> (<bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">O’Reilly</bdi>، ۲۰۲۲) نوشتهٔ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Neal Ford</bdi> و همکاران، خانواده‌ای از تکنیک‌ها به نامِ توابع برازش <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(fitness functions)</bdi> را توصیف می‌کند که برای خودکارسازیِ بسیاری از جنبه‌های حاکمیتِ معماری به کار می‌روند. بقیهٔ این فصل را به بررسیِ توابع برازش اختصاص می‌دهیم.</p>
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;">توابع برازش</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;" data-a11y-heading="promoted-from-h4">توابع برازش</h3>
     <p style="text-align:justify;">واژهٔ «<bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">evolutionary</bdi>» (تکاملی) در عنوانِ کتابِ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Building Evolutionary Architectures</bdi> بیشتر از محاسباتِ تکاملی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(evolutionary computing)</bdi> می‌آید تا از زیست‌شناسی. یکی از نویسندگانِ آن کتاب، <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Dr. Rebecca Parsons</bdi>، مدتی در حوزهٔ محاسباتِ تکاملی فعالیت کرده و با ابزارهایی مانند الگوریتم‌های ژنتیک <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(genetic algorithms)</bdi> کار کرده است. وقتی توسعه‌دهنده‌ای الگوریتمی ژنتیک طراحی می‌کند تا نتیجهٔ سودمندی به دست آورد، اغلب می‌خواهد با فراهم‌کردنِ سنجه‌ای عینی از کیفیتِ خروجیِ الگوریتم، آن را هدایت کند. این سازوکارِ هدایت تابع برازش نامیده می‌شود: تابعِ هدفی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(objective function)</bdi> که برای ارزیابیِ میزانِ نزدیکیِ خروجی به هدفش به کار می‌رود.</p>
     <p style="text-align:justify;">برای نمونه، فرض کنید باید مسئلهٔ فروشندهٔ دوره‌گرد <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(traveling salesperson problem)</bdi> را حل کنید؛ مسئله‌ای مشهور که پایهٔ یادگیری ماشین قرار گرفته است. با داشتنِ یک فروشنده، فهرستی از شهرهایی که باید به آن‌ها سر بزند و فاصله‌های میانِ این شهرها، بهینه‌ترین مسیرِ ممکن، با کمینه‌کردنِ مسافت، زمان و هزینه، کدام است؟ اگر برای حلِ این مسئله الگوریتمی ژنتیک طراحی کنید، ممکن است از یک تابع برازش برای ارزیابیِ طولِ مسیر و از تابعی دیگر برای ارزیابیِ هزینهٔ کلیِ مسیر استفاده کنید. تابعِ دیگری هم ممکن است مدت‌زمانی را که فروشندهٔ دوره‌گرد دور از خانه است ارزیابی کند.</p>
     <p style="text-align:justify;">رویه‌های معماری تکامل‌پذیر <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(evolutionary architecture)</bdi> این مفهوم را وام می‌گیرند تا تابع برازشِ معماری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(architectural fitness function)</bdi> را بسازند: هر سازوکاری که ارزیابیِ عینیِ یکپارچگیِ یک ویژگی معماری یا ترکیبی از ویژگی‌های معماری را فراهم کند.</p>
@@ -292,7 +324,7 @@
       <figcaption style="font-size:.95rem;color:#333;"><b>شکل ۶-۲.</b> سازوکارهای توابع برازش.</figcaption>
     </figure>
     <p style="text-align:justify;">بسته به ویژگی‌های معماری، ابزارهای بسیار متفاوتی می‌توانند برای پیاده‌سازیِ توابع برازش به کار روند. بیایید به چند نمونه از توابع برازش نگاهی بیندازیم که جنبه‌های گوناگونِ ماژولاریتی را می‌آزمایند.</p>
-    <h5 style="font-size:1.05rem;color:#2c5f8a;margin:1rem 0 .5rem;">وابستگی‌های چرخه‌ای</h5>
+    <h4 style="font-size:1.05rem;color:#2c5f8a;margin:1rem 0 .5rem;" data-a11y-heading="promoted-from-h5">وابستگی‌های چرخه‌ای</h4>
     <p style="text-align:justify;">ماژولاریتی یک ویژگی نامشهودِ معماری است که بیشترِ معماران به آن اهمیت می‌دهند. چون تضعیفِ ماژولاریتی به ساختارِ پایگاه کد آسیب می‌زند، معماران معمولاً اولویتِ بالایی برای حفظِ ساختارِ ماژولار قائل می‌شوند. با این حال، در بسیاری از سکوها نیروهایی در برابرِ این نیت‌های خوب عمل می‌کنند. برای نمونه، هنگامِ کدنویسی در هر محیطِ توسعهٔ محبوبِ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Java</bdi> یا <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">.NET</bdi>، به محضِ آنکه توسعه‌دهنده به کلاسی ارجاع دهد که هنوز درون‌بُرد <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(import)</bdi> نشده است، <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">IDE</bdi> با مهربانی پنجره‌ای نشان می‌دهد و می‌پرسد آیا می‌خواهد آن ارجاع به‌طورِ خودکار درون‌بُرد شود. این اتفاق آن‌قدر زیاد می‌افتد که بیشترِ برنامه‌نویسان بر حسبِ عادت (حافظهٔ حرکتی) و بدونِ فکر آن را تأیید و رد می‌کنند. اما درون‌بُردِ بی‌محابای کلاس‌ها میانِ مؤلفه‌ها می‌تواند برای ماژولاریتی فاجعه‌بار باشد. برای نمونه، شکل ۶-۳ وابستگی‌های چرخه‌ای <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Cyclic Dependencies)</bdi> را نشان می‌دهد؛ ضدالگویی به‌ویژه زیان‌بار که معماران آرزو دارند از آن دوری کنند.</p>
     <p style="text-align:justify;">در شکل ۶-۳، هر مؤلفه به چیزی در مؤلفه‌های دیگر ارجاع می‌دهد. وجودِ چنین شبکه‌ای به ماژولاریتی آسیب می‌زند، چون نمی‌توان یک مؤلفهٔ منفرد را بدونِ همراه آوردنِ بقیه دوباره به کار برد. و اگر آن مؤلفه‌های دیگر هم به مؤلفه‌های دیگری کوپل شده باشند چه؟ معماری بیش‌ازپیش به سوی ضدالگوی توپِ بزرگِ گِل <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Big Ball of Mud)</bdi> می‌رود. معماران چگونه می‌توانند بی‌آنکه پیوسته بالای سرِ توسعه‌دهندگان بایستند، بر این رفتار حاکمیت داشته باشند؟ بازبینی کد کمک می‌کند، اما در چرخهٔ توسعه بسیار دیر انجام می‌شود و نمی‌تواند به‌طورِ کامل اثربخش باشد. اگر تیمِ توسعه یک هفته تا زمانِ بازبینی کد بی‌محابا در سراسرِ پایگاه کد درون‌بُرد کند، تا آن زمان آسیبِ جدی به پایگاه کد زده است.</p>
     <figure style="margin:1rem 0;padding:.7rem 1rem;background:#f9f9f9;border-right:4px solid #2c5f8a;border-radius:4px;">
@@ -317,7 +349,7 @@
     }
 }</code></pre>
     <p style="text-align:justify;">این کد از ابزارِ معیارسنجیِ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">JDepend</bdi> برای بررسیِ وابستگی‌های میانِ بسته‌ها استفاده می‌کند. این ابزار ساختارِ بسته‌های <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Java</bdi> را می‌شناسد و اگر هر چرخه‌ای پیدا کند، آزمون را ناموفق اعلام می‌کند. معمار می‌تواند این آزمون را در ساختِ مداومِ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(continuous build)</bdi> پروژه بگنجاند و دیگر نگرانِ این نباشد که توسعه‌دهندگانِ عجول به‌طورِ تصادفی چرخه‌ای پدید آورند. این نمونهٔ بسیار خوبی از تابع برازشی است که از رویه‌های مهم، و نه فوریِ، توسعهٔ نرم‌افزار پاسداری می‌کند: دغدغه‌ای مهم برای معماران است، اما اثرِ چندانی بر کدنویسیِ روزمره ندارد.</p>
-    <h5 style="font-size:1.05rem;color:#2c5f8a;margin:1rem 0 .5rem;">تابع برازشِ فاصله از دنبالهٔ اصلی</h5>
+    <h4 style="font-size:1.05rem;color:#2c5f8a;margin:1rem 0 .5rem;" data-a11y-heading="promoted-from-h5">تابع برازشِ فاصله از دنبالهٔ اصلی</h4>
     <p style="text-align:justify;">در «کوپلینگ» در صفحهٔ ۴۴، معیارِ رازآلودترِ فاصله از دنبالهٔ اصلی را معرفی کردیم که آن را هم می‌توان با توابع برازش وارسی کرد، همان‌طور که در مثالِ ۶-۳ نشان داده شده است.</p>
     <p style="text-align:justify;"><b>مثال ۶-۳.</b> تابع برازشِ فاصله از دنبالهٔ اصلی</p>
     <pre dir="ltr" style="direction:ltr;text-align:left;unicode-bidi:isolate;margin:.8rem 0;padding:.8rem 1rem;background:#f4f6f8;border:1px solid #dde3e8;border-radius:4px;overflow-x:auto;font-family:Consolas,Monaco,monospace;font-size:.92rem;line-height:1.6;"><code class="language-java">@Test
@@ -376,12 +408,12 @@ var result = Types.InCurrentDomain()
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
     <section>
-    <h3 id="sec-3" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">واژه‌نامهٔ اختصاصی این فصل</h3>
+    <h2 id="sec-3" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">واژه‌نامهٔ اختصاصی این فصل</h2>
     <table dir="rtl" style="width:100%;border-collapse:collapse;font-size:.95rem;">
       <thead>
         <tr style="background:#2c5f8a;color:#fff;">
-          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;">واژهٔ انگلیسی</th>
-          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;">معادل مصوب/به‌کاررفته در این فصل</th>
+          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;" scope="col">واژهٔ انگلیسی</th>
+          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;" scope="col">معادل مصوب/به‌کاررفته در این فصل</th>
         </tr>
       </thead>
       <tbody>
@@ -437,6 +469,7 @@ var result = Types.InCurrentDomain()
   </section>
 
 </article>
+</main>
 
 <script id="fosa-standalone-helper">
   if (window.self === window.top) {

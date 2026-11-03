@@ -246,15 +246,16 @@ python3 scripts/update-performance.py --check
 python3 scripts/check-performance.py
 ```
 
-تمام generatorهای مستندشده ابتدا post-processor تصاویر و سپس post-processor
-Performance را از طریق `apply_site_postprocessors()` اجرا می‌کنند. بنابراین
-پس از بازتولید هر صفحه، اجرای جداگانه لازم نیست؛ بااین‌حال audit نهایی هر دو فاز
+تمام generatorهای مستندشده post-processorهای تصاویر، Performance و سپس
+Accessibility را از طریق `apply_site_postprocessors()` اجرا می‌کنند. بنابراین
+پس از بازتولید هر صفحه، اجرای جداگانه لازم نیست؛ بااین‌حال audit نهایی همهٔ فازها
 باید اجرا شود:
 
 ```bash
 python3 scripts/check-images.py
 python3 scripts/check-seo-urls.py
 python3 scripts/check-performance.py
+python3 scripts/check-accessibility.py
 ```
 
 فایل `_headers` سیاست Cloudflare Pages را تعریف می‌کند: CSP و headerهای
@@ -263,6 +264,38 @@ runtime خارجی مجاز است و assetهای vendor تا ۳۰ روز و CSS
 cache می‌شوند. چون نام فایل‌ها content hash ندارد، از `immutable` استفاده نشده
 است. بعد از تغییر عمدی یک فایل vendor، digest متناظر در
 `scripts/check-performance.py` نیز باید همراه نسخه و provenance به‌روزرسانی شود.
+
+## Accessibility و ناوبری صفحه‌کلید
+
+post-processor دسترس‌پذیری، خروجی canonical و صفحهٔ 404 را با ساختار ثابت و
+هم‌راستا با الزامات قابل‌بررسی WCAG 2.2 AA به‌روزرسانی می‌کند. هر صفحه یک
+skip link به `main#main-content`، یک عنوان اصلی، ترتیب heading بدون پرش، focus
+قابل‌دیدن، کنتراست اصلاح‌شدهٔ متن/لینک‌های پوسته و حالت
+`prefers-reduced-motion` دارد. fallbackهای فوری redirect به‌دلیل
+`noindex` و meta refresh وارد این markup نمی‌شوند.
+
+کنترل‌های search، theme، بازگشت و منوی موبایل به `button` بومی تبدیل شده‌اند؛
+انتخاب زبان accessible name دارد و toggle منوی موبایل با `aria-expanded` و
+`aria-controls` همگام است. فهرست‌های بازشوندهٔ مقالات از `details`/`summary`
+بومی استفاده می‌کنند، landmarkهای navigation نام یکتا و سرستون‌های جدول
+`scope="col"` دارند. لینک‌های آیکونی نام صریح دارند و لینک‌های
+`target="_blank"` با `noopener noreferrer` ایمن می‌شوند. کتابخوان‌های AIMA و
+معماری نرم‌افزار نیز برای باز و بسته کردن
+فصل‌ها از button بومی استفاده می‌کنند، وضعیت accordion را همگام می‌سازند، با
+Escape بسته می‌شوند و shortcut فصل‌ها روی کنترل‌های focused اجرا نمی‌شود.
+
+اجرای دستی، بررسی idempotence و ممیزی مستقلِ stdlib-only:
+
+```bash
+python3 scripts/update-accessibility.py
+python3 scripts/update-accessibility.py --check
+python3 scripts/check-accessibility.py
+```
+
+checker هر ۹۳ فایل HTML را می‌خواند و landmark، skip link، heading hierarchy،
+accessible name، مرجع‌های ARIA، ترتیب focus، کنترل‌های کتابخوان، امنیت تب جدید،
+اتصال generatorها و idempotence را بررسی می‌کند. این ممیزی استاتیک جای آزمون
+دستی با صفحه‌کلید و screen reader روی مرورگرهای هدف را نمی‌گیرد.
 
 ## پیش‌نمایش محلی
 

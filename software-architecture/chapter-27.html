@@ -57,7 +57,7 @@
             color: var(--accent);
             line-height: 1.4;
         }
-        h3 {
+        h2 {
             font-size: 1.35rem;
             color: var(--accent);
             margin: 2.4rem 0 .9rem;
@@ -66,7 +66,7 @@
             line-height: 1.4;
             scroll-margin-top: 1rem;
         }
-        h4 {
+        h3 {
             font-size: 1.15rem;
             color: var(--accent);
             margin: 1.6rem 0 .6rem;
@@ -157,7 +157,7 @@
             h1 {
                 font-size: 1.5rem;
             }
-            h3 {
+            h2 {
                 font-size: 1.2rem;
             }
         }
@@ -204,9 +204,41 @@
     <meta name="twitter:image" content="https://www.alirostami.com/images/social/software-architecture.jpg">
     <meta name="twitter:image:alt" content="ترجمه فارسی مبانی معماری نرم‌افزار؛ مطالعه آنلاین ۲۷ فصل و پیوست">
     <!-- image-seo:end -->
+    <!-- accessibility-styles:start -->
+    <style>
+    .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+    .skip-link{position:fixed;top:.75rem;left:.75rem;z-index:100000;padding:.65rem 1rem;border-radius:.35rem;background:#fff;color:#073b70;font-weight:700;box-shadow:0 2px 12px rgba(0,0,0,.25);transform:translateY(-180%);transition:transform .15s ease}
+    .skip-link:focus{transform:translateY(0)}
+    :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:3px solid #0563c1!important;outline-offset:3px!important}
+    [theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible,[data-theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline-color:#7dd3fc!important}
+    body[data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#5f5f66!important}
+    body[theme=dark][data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#b7bbc5!important}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#1d789b!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#6bc5e6!important}
+    body[data-header-desktop] .single .content a:not(.headerlink){text-decoration:underline!important;text-underline-offset:.15em}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#a41354!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#fff!important}
+    body[data-header-desktop] .search input::placeholder{color:#5f5f66!important;opacity:1}
+    body[theme=dark][data-header-desktop] .search input::placeholder{color:#b7bbc5!important}
+    button.menu-toggle{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;min-width:2rem;min-height:2rem}
+    button.search-button,button.search-cancel,button.theme-switch,button.history-back,button.share-button,button.script-button{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;line-height:inherit;cursor:pointer}
+    button.search-button,button.theme-switch,button.share-button,button.script-button{min-width:1.5rem;min-height:1.5rem}
+    button.history-back{text-decoration:underline;text-underline-offset:.15em}
+    summary.details-summary{list-style:none}
+    summary.details-summary::-webkit-details-marker{display:none}
+    .sidebar-controls .sidebar-action,.ch-chevron{appearance:none;border:0;background:transparent;color:inherit;font:inherit;cursor:pointer;min-height:1.5rem}
+    .sidebar-controls .sidebar-action{color:var(--text-muted)}
+    .sidebar-controls .sidebar-action:hover{color:var(--accent)}
+    .ch-chevron{padding:.2rem .4rem;min-width:2rem}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    </style>
+    <!-- accessibility-styles:end -->
 </head>
 <body>
+    <!-- accessibility-skip-link -->
+    <a class="skip-link" href="#main-content">رفتن به محتوای اصلی</a>
 <!-- خروجی HTML — کامپوننت کامل فصل ۲۷ (بدون html/head) -->
+<main class="chapter-main" id="main-content" tabindex="-1">
 <article class="chapter-content">
 
   <h1 style="font-size:1.7rem;margin:0 0 1rem;border-bottom:3px solid #2c5f8a;padding-bottom:.5rem;">فصل ۲۷: بازنگری در قوانین معماری نرم‌افزار</h1>
@@ -225,13 +257,13 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-1" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">قانون اول: هرچه در معماری نرم‌افزار هست، یک مصالحه است</h3>
+    <h2 id="sec-1" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">قانون اول: هرچه در معماری نرم‌افزار هست، یک مصالحه است</h2>
     <p style="text-align:justify;">قانون اول ما یکی از ویژگی‌های تعیین‌کنندهٔ معماری نرم‌افزار است: همه‌چیز مصالحه است. بسیاری گمان می‌کنند کار معمار نرم‌افزار این است که برای مسائل بغرنج، راه‌حل‌هایی از جنس گلولهٔ نقره‌ای <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(silver bullet)</bdi> بیابد و قهرمان شود، اما چنین چیزی به‌ندرت رخ می‌دهد. (معماران به‌ندرت برای تصمیم‌های خوب اعتباری می‌گیرند، اما همیشه برای تصمیم‌های بد سرزنش می‌شوند.) نه، کار واقعی معماری نرم‌افزار، تحلیل مصالحه‌هاست.</p>
     <p style="text-align:justify;">به چند دلیل باور داریم که هر معماری باید به‌جای تبلیغ برای رویکردی خاص، شهرت خود را به‌عنوان داوری بی‌طرف <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(objective arbiter)</bdi> در مصالحه‌ها صیقل دهد.</p>
     <p style="text-align:justify;">نخست اینکه مبلغ‌گری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(evangelism)</bdi> در معماری در درازمدت خطرناک است، زیرا بهترین شیوهٔ دیروز معمولاً به ضدالگوی فردا بدل می‌شود. معماران تصمیم‌های مصالحه‌ای را بر پایهٔ عوامل و شرایط کنونی و با دانشی ناقص، به بهترین شکلی که از دستشان برمی‌آید می‌گیرند. با این حال، حتی اگر تصمیمی در زمان اتخاذش درست باشد، اکوسیستم توسعهٔ نرم‌افزار همواره در حال تکامل و دگرگونی است؛ یعنی شرایط آرام‌آرام تغییر می‌کند و احتمالاً سرانجام آن تصمیم را تضعیف (یا باطل) می‌کند. اگر معمار برای تبلیغ آن راه‌حل سرمایهٔ اجتماعی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(social capital)</bdi> خرج کرده باشد، وقتی بعدها آن تصمیم باید تغییر کند، ممکن است شهرتش آسیب ببیند. همیشه در انتخاب‌های فناورانه روشن‌بین و بی‌طرف بمانید تا اعتبارتان را به تصمیمی گره نزنید که با گذر زمان خوب از آب درنیامده است.</p>
     <p style="text-align:justify;">دوم اینکه تصمیم‌گیرندگان در سازمان‌ها چندان در پی حمایت پرشور نیستند، بلکه بی‌طرفی سنجیده می‌خواهند. معماری که به‌عنوان فرد مرجعِ تحلیل بی‌طرفانهٔ مصالحه‌ها شناخته شود، به دارایی ارزشمندی برای سازمانش بدل می‌شود. وقتی تصمیمی حیاتی در میان است، تصمیم‌گیرندگان کسی را می‌خواهند که بتوانند به داوری‌اش اعتماد کنند؛ آن شخص باید شما باشید.</p>
     <p style="text-align:justify;">بیایید چند مثال از تحلیل مصالحه‌ها را برای دو تصمیم معماری نرم‌افزار بررسی کنیم و سپس به یک خلأ رایج در درک این موضوع بپردازیم.</p>
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;">کتابخانهٔ مشترک در برابر سرویس مشترک</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;" data-a11y-heading="promoted-from-h4">کتابخانهٔ مشترک در برابر سرویس مشترک</h3>
     <p style="text-align:justify;">یکی از معماهای رایج معماران، رفتار مشترک در معماری‌های توزیع‌شده‌ای مانند میکروسرویس‌ها یا <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">EDA</bdi> است: آیا باید از کتابخانهٔ مشترک <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(shared library)</bdi> استفاده کنیم که در زمان ساخت <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(build time)</bdi> درون هر سرویس کامپایل می‌شود، یا از سرویس مشترک <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(shared service)</bdi> که دیگر سرویس‌ها در زمان اجرا <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(runtime)</bdi> فراخوانی‌اش می‌کنند؟ شکل ۲۷-۱ این دو گزینه را نشان می‌دهد.</p>
     <figure style="margin:1rem 0;padding:.7rem 1rem;background:#f9f9f9;border-right:4px solid #2c5f8a;border-radius:4px;">
       <img src="figures/chapter-27/figure-27-1.png" alt="شکل ۲۷-۱. آیا راه‌حل باید برای کارکردهای مشترک از کتابخانهٔ مشترک استفاده کند یا از سرویس مشترک؟" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;" width="873" height="269" decoding="async">
@@ -252,7 +284,7 @@
       <figcaption style="font-size:.95rem;color:#333;margin-bottom:.5rem;" dir="rtl"><b>جدول ۲۷-۱.</b> مصالحه‌های میان سرویس مشترک و کتابخانهٔ مشترک</figcaption>
       <table dir="rtl" style="width:100%;border-collapse:collapse;font-size:.95rem;text-align:right;">
         <thead>
-          <tr style="background:#2c5f8a;color:#fff;"><th style="border:1px solid #ccc;padding:.45rem .6rem;">عامل</th><th style="border:1px solid #ccc;padding:.45rem .6rem;">کتابخانهٔ مشترک</th><th style="border:1px solid #ccc;padding:.45rem .6rem;">سرویس مشترک</th></tr>
+          <tr style="background:#2c5f8a;color:#fff;"><th style="border:1px solid #ccc;padding:.45rem .6rem;" scope="col">عامل</th><th style="border:1px solid #ccc;padding:.45rem .6rem;" scope="col">کتابخانهٔ مشترک</th><th style="border:1px solid #ccc;padding:.45rem .6rem;" scope="col">سرویس مشترک</th></tr>
         </thead>
         <tbody>
           <tr><td style="border:1px solid #ccc;padding:.4rem .6rem;vertical-align:top;">کد ناهمگون</td><td style="border:1px solid #ccc;padding:.4rem .6rem;vertical-align:top;">−</td><td style="border:1px solid #ccc;padding:.4rem .6rem;vertical-align:top;">+</td></tr>
@@ -267,7 +299,7 @@
     </figure>
     <p style="text-align:justify;">انباشت امتیازهای مثبت برای کتابخانهٔ مشترک، آن را برنده می‌کند… دست‌کم برای همین عوامل و در همین بافتار. این گزینه ممکن است راه‌حل مسئلهٔ پیش رو باشد یا نباشد—شاید لازم باشد وزن‌دهی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(weighting)</bdi> بیشتری اعمال کنید (برای جزئیات بیشتر، بخش «نتیجهٔ فرعی دوم: نمی‌توانید فقط یک بار انجامش دهید» (در ادامهٔ همین فصل) را ببینید)—اما اکنون شما و تیمتان تصویر خوبی از نیروهای درگیر دارید.</p>
 
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;">پیام‌رسانی هم‌گام در برابر ناهم‌گام</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;" data-a11y-heading="promoted-from-h4">پیام‌رسانی هم‌گام در برابر ناهم‌گام</h3>
     <p style="text-align:justify;">تحلیل مصالحه‌ای را در نظر بگیرید: تیم شما در حال ساخت یک معماری توزیع‌شده است تا اطلاعات معاملات را هم به سرویس <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Notification</bdi> و هم به سرویس <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Analytics</bdi> بفرستد، و می‌کوشید تصمیم بگیرید که برای پیاده‌سازی این رفتار از <b>صف</b> <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(queue)</bdi> استفاده کنید یا <b>موضوع</b> <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(topic)</bdi>.</p>
     <p style="text-align:justify;">گزینهٔ نخست صف است؛ یعنی یک پروتکل ارتباطی نقطه‌به‌نقطه <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(point-to-point)</bdi>. چنان‌که در فصل ۲ دیدید، در این حالت ناشر می‌داند چه کسی پیام را دریافت می‌کند. ناشر برای رسیدن به چند مصرف‌کننده باید برای هر مصرف‌کننده پیامی به یک صف جداگانه بفرستد. اگر سرویس <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Trading</bdi> بخواهد با صف‌ها، سرویس <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Analytics</bdi> و سرویس <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Reporting</bdi> را از معاملات باخبر کند، پیاده‌سازی به شکلی خواهد بود که در شکل ۲۷-۲ می‌بینید.</p>
     <figure style="margin:1rem 0;padding:.7rem 1rem;background:#f9f9f9;border-right:4px solid #2c5f8a;border-radius:4px;">
@@ -287,7 +319,7 @@
       <figcaption style="font-size:.95rem;color:#333;margin-bottom:.5rem;" dir="rtl"><b>جدول ۲۷-۲.</b> مصالحه‌های استفاده از صف</figcaption>
       <table dir="rtl" style="width:100%;border-collapse:collapse;font-size:.95rem;text-align:right;">
         <thead>
-          <tr style="background:#2c5f8a;color:#fff;"><th style="border:1px solid #ccc;padding:.45rem .6rem;">مزیت</th><th style="border:1px solid #ccc;padding:.45rem .6rem;">عیب</th></tr>
+          <tr style="background:#2c5f8a;color:#fff;"><th style="border:1px solid #ccc;padding:.45rem .6rem;" scope="col">مزیت</th><th style="border:1px solid #ccc;padding:.45rem .6rem;" scope="col">عیب</th></tr>
         </thead>
         <tbody>
           <tr><td style="border:1px solid #ccc;padding:.4rem .6rem;vertical-align:top;">پشتیبانی از پیام‌های ناهمگون برای مصرف‌کنندگان مختلف</td><td style="border:1px solid #ccc;padding:.4rem .6rem;vertical-align:top;">کوپلینگ بیشتر</td></tr>
@@ -303,7 +335,7 @@
       <figcaption style="font-size:.95rem;color:#333;margin-bottom:.5rem;" dir="rtl"><b>جدول ۲۷-۳.</b> مصالحه‌های استفاده از موضوع</figcaption>
       <table dir="rtl" style="width:100%;border-collapse:collapse;font-size:.95rem;text-align:right;">
         <thead>
-          <tr style="background:#2c5f8a;color:#fff;"><th style="border:1px solid #ccc;padding:.45rem .6rem;">مزیت</th><th style="border:1px solid #ccc;padding:.45rem .6rem;">عیب</th></tr>
+          <tr style="background:#2c5f8a;color:#fff;"><th style="border:1px solid #ccc;padding:.45rem .6rem;" scope="col">مزیت</th><th style="border:1px solid #ccc;padding:.45rem .6rem;" scope="col">عیب</th></tr>
         </thead>
         <tbody>
           <tr><td style="border:1px solid #ccc;padding:.4rem .6rem;vertical-align:top;">کوپلینگ کم</td><td style="border:1px solid #ccc;padding:.4rem .6rem;vertical-align:top;">پیام همگون برای همهٔ مصرف‌کنندگان</td></tr>
@@ -314,7 +346,7 @@
       </table>
     </figure>
     <p style="text-align:justify;">اکنون که تحلیل مصالحه‌ها را انجام داده‌اید، باید به اهداف سازمانی این راه‌حل بازگردید و ببینید کدام گزینه تناسب بهتری دارد. اگر امنیت مهم‌تر است، احتمالاً باید صف‌ها را برگزینید. اگر سازمان به‌سرعت در حال رشد است و سرویس‌های دیگری نیز به معاملات علاقه دارند، ممکن است گسترش‌پذیری در اولویت باشد و این شما را به استفاده از موضوع‌ها سوق می‌دهد.</p>
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;">نتیجهٔ فرعی اول: مصالحه‌های نادیده‌مانده</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;" data-a11y-heading="promoted-from-h4">نتیجهٔ فرعی اول: مصالحه‌های نادیده‌مانده</h3>
     <p style="text-align:justify;">قانون اول ما دو نتیجهٔ فرعی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(corollary)</bdi> دارد. نخستین آن‌ها این است:</p>
     <blockquote style="margin:1rem 0;padding:1rem 1.2rem;background:#eef4fa;border-right:5px solid #2c5f8a;border-radius:4px;font-size:1.05rem;font-weight:bold;text-align:center;">
       اگر فکر می‌کنید چیزی کشف کرده‌اید که مصالحه نیست، به احتمال زیاد فقط هنوز آن مصالحه را شناسایی نکرده‌اید… فعلاً.
@@ -329,7 +361,7 @@
     <p style="text-align:justify;margin:.55rem 0;">ما در مقام مشاوران حرفه‌ای، اغلب از مشتریان‌مان درخواست‌هایی از این دست می‌شنویم: «ایدهٔ میکروسرویس‌ها و معماری‌های توزیع‌شده‌ای را که درجهٔ بالایی از جداسازی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(decoupling)</bdi> دارند دوست داریم، چون چابکی بالا و استقرار سریع را ممکن می‌کنند. با این حال، درجهٔ بالایی از بازاستفادهٔ سازمانی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(institutional reuse)</bdi> هم می‌خواهیم تا تیم‌ها مدام کد را از نو ننویسند.»</p>
     <p style="text-align:justify;margin:.55rem 0;">ناچاریم در اینجا خبر بد را بدهیم: نمی‌توانید هر دوی این‌ها را داشته باشید، زیرا سیستم بازاستفاده را از طریق کوپلینگ پیاده می‌کند. هیچ سازمانی نمی‌تواند جداسازی <b>و</b> درجهٔ بالایی از بازاستفاده را با هم داشته باشد. این دو اساساً با هم ناسازگارند. این نمونهٔ بارزی از آن است که سازمان‌ها چگونه ممکن است مصالحه‌های کلیدی را درست درک نکنند.</p>
     </blockquote>
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;">نتیجهٔ فرعی دوم: نمی‌توانید فقط یک بار انجامش دهید</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;" data-a11y-heading="promoted-from-h4">نتیجهٔ فرعی دوم: نمی‌توانید فقط یک بار انجامش دهید</h3>
     <p style="text-align:justify;">چه خوب می‌شد اگر معمار می‌توانست فقط یک بار تحلیل مصالحه انجام دهد؛ یعنی فقط <b>حسابی</b> فکر کند و یک بار برای همیشه تصمیم بگیرد که برای همهٔ گردش‌کارها از کرئوگرافی استفاده کند. اما تحلیل مصالحه با دو مشکل روبه‌روست. نخست اینکه اغلب ده‌ها یا حتی صدها متغیر (فنی و غیرفنی) در تصمیم سهم دارند: پیچیدگی، تجربهٔ تیم، بودجه، توپولوژی تیم، فشار زمان‌بندی… و این فهرست پایانی ندارد. تفاوت‌های ظریف در این متغیرها می‌تواند یک تحلیل خاص را به این سو یا آن سو براند و همین، تحلیل مصالحه را به تمرینی مستمر بدل می‌کند. برای معماران خطرناک است که تصمیم‌هایی فراگیر و نیمه‌دائمی بگیرند که بر فرض‌هایی استوارند که شاید برای کاربردهای آیندهٔ این راه‌حل معتبر نباشند.</p>
     <p style="text-align:justify;">این نتیجهٔ فرعی را تضمین امنیت شغلی معماران بدانید! ناچاریم تحلیل مصالحه را بارها و بارها انجام دهیم، حتی برای موقعیت‌هایی که ظاهراً مشابه‌اند. این امر بر این ایده تأکید می‌کند که کار واقعی، تحلیل مصالحه‌هاست، نه گرفتن تصمیم‌های دائمی و بی‌نقص.</p>
   </section>
@@ -337,10 +369,10 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-2" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">قانون دوم: «چرا» مهم‌تر از «چگونه» است</h3>
+    <h2 id="sec-2" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">قانون دوم: «چرا» مهم‌تر از «چگونه» است</h2>
     <p style="text-align:justify;">قانون دوم ما بر اهمیت <b>«چرا»</b> نسبت به <b>«چگونه»</b> تأکید می‌کند. ما در مقام معمارانی باتجربه، می‌توانیم به سیستمی موجود نگاه کنیم و به دیگران بگوییم <b>چگونه</b> کار می‌کند. با این حال، تصمیم‌هایی وجود خواهند داشت که روشن نیست <b>چرا</b> معمار پیشین این گزینه را بر گزینه‌ای دیگر ترجیح داده است، زیرا او همهٔ معیارهای تصمیم را همراه با راه‌حل نهایی‌اش ثبت نکرده است.</p>
     <p style="text-align:justify;">به همین دلیل است که بر اهمیت استفاده از نمودارهای معماری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(architecture diagrams)</bdi> <b>و</b> سوابق تصمیم معماری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(ADR)</bdi> (که در فصل ۲۱ به آن‌ها پرداختیم) تأکید می‌کنیم. هر تحلیل مصالحه حجم عظیمی از بافتار پدید می‌آورد که در خود راه‌حل دیده نمی‌شود. مستند کردن آن تحلیل (همراه با مصالحه‌ها و محدودیت‌های شناخته‌شدهٔ راه‌حل) حیاتی است تا معماران آینده (که شاید خود شما باشید) ناچار نشوند فقط برای فهمیدن <b>چرایی</b> تصمیم، تحلیل را از نو انجام دهند.</p>
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;">ضدالگوی خارج از بافتار</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;" data-a11y-heading="promoted-from-h4">ضدالگوی خارج از بافتار</h3>
     <p style="text-align:justify;">یکی از ضدالگوهای رایج در تحلیل مصالحه، ضدالگوی <b>خارج از بافتار</b> <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Out of Context antipattern)</bdi> است. این ضدالگو زمانی رخ می‌دهد که معمار مصالحه‌ها را می‌فهمد، اما نمی‌داند چگونه همهٔ آن‌ها را بر پایهٔ بافتار کنونی <b>وزن‌دهی</b> کند.</p>
     <p style="text-align:justify;">تحلیل مصالحه‌ای را که در بخش «کتابخانهٔ مشترک در برابر سرویس مشترک» (پیش‌تر در همین فصل) انجام دادیم در نظر بگیرید. اگر به‌طور عینی بنگریم، کتابخانهٔ مشترک راه‌حل برتر به نظر می‌رسد، زیرا ارزیابی‌های مثبت بیشتری نسبت به ارزیابی‌های منفی به دست آورد. با این حال، این تحلیل مصالحه یک کاستی بالقوه دارد: آیا همهٔ معیارهای آن وزن یکسانی دارند؟</p>
     <p style="text-align:justify;">تیمی را تصور کنید که روی چند سکو کد دارد. این تیم نگرانی چندانی دربارهٔ کارایی یا مقیاس ندارد، اما شیوه‌ای تمیز برای مدیریت رفتار مشترک می‌خواهد. در این حالت، دو معیار نخستِ مصالحه اولویت بسیار بالاتری دارند و همین باید تیم را به انتخاب سرویس مشترک سوق دهد. افزون بر این، تیم از پیش دریافته است که باید کدام مشکلات را کاهش دهد.</p>
@@ -350,7 +382,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-3" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">طیف میان دو سرِ افراطی</h3>
+    <h2 id="sec-3" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">طیف میان دو سرِ افراطی</h2>
     <p style="text-align:justify;">در ویرایش نخست، تنها دو قانون را شناسایی کرده بودیم. با این حال، به‌تدریج دریافتیم که قانون سومی هم وجود دارد:</p>
     <blockquote style="margin:1rem 0;padding:1rem 1.2rem;background:#eef4fa;border-right:5px solid #2c5f8a;border-radius:4px;font-size:1.05rem;font-weight:bold;text-align:center;">
       بیشتر تصمیمات معماری دودویی نیستند، بلکه بر طیفی میان دو سرِ افراطی ایستاده‌اند.
@@ -370,7 +402,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-4" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">توصیه‌های پایانی</h3>
+    <h2 id="sec-4" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">توصیه‌های پایانی</h2>
     <blockquote style="margin:1rem 0;padding:1rem 1.2rem;background:#eef4fa;border-right:5px solid #2c5f8a;border-radius:4px;font-size:1.05rem;font-weight:bold;text-align:center;">
       چگونه طراحان بزرگ پرورش دهیم؟ البته که طراحان بزرگ طراحی می‌کنند.
       <footer style="display:block;margin-top:.6rem;font-size:.9rem;font-weight:normal;color:#555;">— <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;direction:ltr;">Fred Brooks</bdi></footer>
@@ -391,12 +423,12 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
     <section>
-    <h3 id="sec-5" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">واژه‌نامهٔ اختصاصی این فصل</h3>
+    <h2 id="sec-5" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">واژه‌نامهٔ اختصاصی این فصل</h2>
     <table dir="rtl" style="width:100%;border-collapse:collapse;font-size:.95rem;">
       <thead>
         <tr style="background:#2c5f8a;color:#fff;">
-          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;">واژهٔ انگلیسی</th>
-          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;">معادل مصوب/به‌کاررفته در این فصل</th>
+          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;" scope="col">واژهٔ انگلیسی</th>
+          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;" scope="col">معادل مصوب/به‌کاررفته در این فصل</th>
         </tr>
       </thead>
       <tbody>
@@ -440,6 +472,7 @@
   </section>
 
 </article>
+</main>
 
 <script id="fosa-standalone-helper">
   if (window.self === window.top) {

@@ -151,17 +151,49 @@
     <meta name="twitter:image" content="https://www.alirostami.com/images/social/aima-4e-persian.jpg">
     <meta name="twitter:image:alt" content="ترجمه فارسی کتاب هوش مصنوعی؛ یک رویکرد مدرن، ویرایش چهارم">
     <!-- image-seo:end -->
+    <!-- accessibility-styles:start -->
+    <style>
+    .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+    .skip-link{position:fixed;top:.75rem;left:.75rem;z-index:100000;padding:.65rem 1rem;border-radius:.35rem;background:#fff;color:#073b70;font-weight:700;box-shadow:0 2px 12px rgba(0,0,0,.25);transform:translateY(-180%);transition:transform .15s ease}
+    .skip-link:focus{transform:translateY(0)}
+    :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:3px solid #0563c1!important;outline-offset:3px!important}
+    [theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible,[data-theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline-color:#7dd3fc!important}
+    body[data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#5f5f66!important}
+    body[theme=dark][data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#b7bbc5!important}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#1d789b!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#6bc5e6!important}
+    body[data-header-desktop] .single .content a:not(.headerlink){text-decoration:underline!important;text-underline-offset:.15em}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#a41354!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#fff!important}
+    body[data-header-desktop] .search input::placeholder{color:#5f5f66!important;opacity:1}
+    body[theme=dark][data-header-desktop] .search input::placeholder{color:#b7bbc5!important}
+    button.menu-toggle{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;min-width:2rem;min-height:2rem}
+    button.search-button,button.search-cancel,button.theme-switch,button.history-back,button.share-button,button.script-button{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;line-height:inherit;cursor:pointer}
+    button.search-button,button.theme-switch,button.share-button,button.script-button{min-width:1.5rem;min-height:1.5rem}
+    button.history-back{text-decoration:underline;text-underline-offset:.15em}
+    summary.details-summary{list-style:none}
+    summary.details-summary::-webkit-details-marker{display:none}
+    .sidebar-controls .sidebar-action,.ch-chevron{appearance:none;border:0;background:transparent;color:inherit;font:inherit;cursor:pointer;min-height:1.5rem}
+    .sidebar-controls .sidebar-action{color:var(--text-muted)}
+    .sidebar-controls .sidebar-action:hover{color:var(--accent)}
+    .ch-chevron{padding:.2rem .4rem;min-width:2rem}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    </style>
+    <!-- accessibility-styles:end -->
 </head>
 <body>
-<div class="page">
+    <!-- accessibility-skip-link -->
+    <a class="skip-link" href="#main-content">رفتن به محتوای اصلی</a>
+<main class="page" id="main-content" tabindex="-1">
 
 <div class="kicker">
   <span class="badge">📘 هوش مصنوعی: رویکردی نوین (AIMA)</span>
   <span class="badge soft">ترجمهٔ فارسی — راسل و نورویگ، ویرایش چهارم</span>
   <span class="badge gold">فصل 12</span>
 </div>
+<h1 class="chapter-title">فصل ۱۲: کمی کردن عدم قطعیت (Quantifying Uncertainty)</h1>
 
-<nav class="toc"><h2>فهرست بخش‌های این فصل</h2>
+<nav class="toc" aria-label="فهرست مطالب"><h2>فهرست بخش‌های این فصل</h2>
 <ol>
 <li><a href="#sec-1">۱۲.۱ عملکرد در شرایط عدم قطعیت</a></li>
 <li><a href="#sec-2">۱۲.۲ نماد پایهٔ احتمال</a></li>
@@ -175,7 +207,7 @@
 <li><a href="#sec-9">پانوشت‌ها:</a></li>
 </ol></nav>
 
-<p class="subtitle">فصل ۱۲: کمی کردن عدم قطعیت (Quantifying Uncertainty)</p>
+
 <div class="lead">در این فصل می‌بینیم چگونه عدم قطعیت را با درجه‌های عددی باور رام کنیم.</div>
 <h2 id="sec-1">۱۲.۱ عملکرد در شرایط عدم قطعیت</h2>
 <p>عامل‌ها در دنیای واقعی باید عدم قطعیت (Uncertainty) را مدیریت کنند؛ خواه ناشی از مشاهده‌پذیری جزئی (Partial Observability) باشد، خواه ناجبرگرایی (Nondeterminism) یا دشمنان. عامل ممکن است هرگز به‌طور قطع نداند اکنون در چه حالتی است یا پس از توالی از کنش‌ها به کجا خواهد رسید.</p>
@@ -291,7 +323,7 @@ P(a ∨ b) = 0.8        (12.6)</code></pre>
 <p>این نوع پرسش دهه‌ها موضوع بحث شدید میان کسانی بوده که از احتمال به‌عنوان تنها شکل مشروع درجهٔ باور طرفداری می‌کنند و کسانی که رویکردهای جایگزین را پیشنهاد می‌کنند.</p>
 <p>یک استدلال برای اصل‌های احتمال، که نخستین بار در ۱۹۳۱ توسط برونو دو فینتی بیان شد (ترجمهٔ انگلیسی: de Finetti, 1993)، چنین است: اگر عاملی درجهٔ باوری به گزارهٔ a دارد، آنگاه عامل باید بتواند شانس‌هایی را بیان کند که در آن‌ها نسبت به شرط‌بندی موافق یا مخالف a بی‌تفاوت است.<sup>⁵</sup> آن را بازی‌ای میان دو عامل در نظر بگیرید: عامل ۱ می‌گوید «درجهٔ باور من به رخداد a برابر ۰.۴ است.» عامل ۲ پس از آن آزاد است انتخاب کند برای یا علیه a با سرمایه‌ای سازگار با درجهٔ باور بیان‌شده شرط ببندد. یعنی عامل ۲ می‌تواند شرط عامل ۱ را بپذیرد که a رخ خواهد داد، با پیشنهاد ۶ دلار در برابر ۴ دلار عامل ۱. یا عامل ۲ می‌تواند شرط عامل ۱ را بپذیرد که ¬a رخ خواهد داد، با پیشنهاد ۴ دلار در برابر ۶ دلار عامل ۱. سپس پیامد a را مشاهده می‌کنیم و هر که درست گفته باشد پول را جمع می‌کند. اگر درجه‌های باور فرد به‌درستی جهان را بازتاب ندهند، انتظار می‌رود در درازمدت از عاملی رقیب که باورهایش حالت جهان را دقیق‌تر بازتاب می‌دهند پول از دست بدهد.</p>
 <p>قضیهٔ دو فینتی به انتخاب مقادیر درست برای احتمال‌های فردی مربوط نیست، بلکه به انتخاب مقادیر برای احتمال‌های گزاره‌های مرتبط منطقی مربوط است: اگر عامل ۱ مجموعه‌ای از درجه‌های باور بیان کند که اصل‌های نظریهٔ احتمال را نقض کنند، آنگاه ترکیبی از شرط‌بندی‌ها توسط عامل ۲ وجود دارد که تضمین می‌کند عامل ۱ هر بار پول از دست بدهد. برای نمونه، فرض کنید عامل ۱ مجموعهٔ درجه‌های باور از معادلهٔ (12.6) را دارد. شکل ۱۲.۲ نشان می‌دهد اگر عامل ۲ انتخاب کند ۴ دلار روی a، ۳ دلار روی b و ۲ دلار روی ¬(a∨b) شرط ببندد، آنگاه عامل ۱ همیشه پول از دست می‌دهد، صرف‌نظر از پیامدهای a و <span class="en-inline">b.</span> قضیهٔ دو فینتی دلالت دارد هیچ عامل عقلایی نمی‌تواند باورهایی داشته باشد که اصل‌های احتمال را نقض کنند.</p>
-<table><thead><tr><th>گزاره</th><th>باور عامل ۱</th><th>شرط‌بندی عامل ۱</th><th>شرط‌بندی عامل ۲</th><th>سود عامل ۱ برای هر پیامد <span class="en-inline">a,b</span></th><th><span class="en-inline">a,</span>¬b</th><th>¬<span class="en-inline">a,b</span></th><th>¬<span class="en-inline">a,</span>¬b</th></tr></thead><tbody>
+<table><thead><tr><th scope="col">گزاره</th><th scope="col">باور عامل ۱</th><th scope="col">شرط‌بندی عامل ۱</th><th scope="col">شرط‌بندی عامل ۲</th><th scope="col">سود عامل ۱ برای هر پیامد <span class="en-inline">a,b</span></th><th scope="col"><span class="en-inline">a,</span>¬b</th><th scope="col">¬<span class="en-inline">a,b</span></th><th scope="col">¬<span class="en-inline">a,</span>¬b</th></tr></thead><tbody>
 <tr><td>a</td><td>0.4</td><td>۴ دلار روی a</td><td>۶ دلار روی ¬a</td><td>‎−۶</td><td>‎−۶</td><td>۴</td><td>۴</td></tr>
 <tr><td>b</td><td>0.3</td><td>۳ دلار روی b</td><td>۷ دلار روی ¬b</td><td>‎−۷</td><td>۳</td><td>‎−۷</td><td>۳</td></tr>
 <tr><td>a ∨ b</td><td>0.8</td><td>۲ دلار روی ¬(a∨b)</td><td>۸ دلار روی a∨b</td><td>۲</td><td>۲</td><td>۲</td><td>‎−۸</td></tr>
@@ -302,7 +334,7 @@ P(a ∨ b) = 0.8        (12.6)</code></pre>
 <p>با این حال، دنیا همان‌طور که هست، گاهی نمایش‌های عملی بلندتر از اثبات‌ها سخن می‌گویند. موفقیت سامانه‌های استدلال مبتنی بر نظریهٔ احتمال در جذب پیرو بسیار مؤثرتر از استدلال‌های فلسفی بوده. اکنون می‌بینیم چگونه می‌توان اصل‌ها را برای استنتاج به کار گرفت.</p>
 <h2 id="sec-3">۱۲.۳ استنتاج با توزیع‌های مشترک کامل</h2>
 <p>در این بخش روش ساده‌ای برای «استنتاج احتمالاتی» (Probabilistic Inference)—یعنی محاسبهٔ احتمال‌های پسینی برای گزاره‌های «پرس‌وجو» (Query) با توجه به شواهد مشاهده‌شده—توصیف می‌کنیم. از توزیع مشترک کامل به‌عنوان «پایگاه دانشی» استفاده می‌کنیم که پاسخ‌های همهٔ پرسش‌ها ممکن است از آن استخراج شود. در طول مسیر چند فن مفید برای دست‌کاری معادله‌های مربوط به احتمال‌ها نیز معرفی می‌کنیم. با مثال ساده‌ای شروع می‌کنیم: حوزه‌ای شامل فقط سه متغیر بولی <span class="en-inline">Toothache</span>، <span class="en-inline">Cavity</span> و <span class="en-inline">Catch</span> (پروب فلزی تیز دندان‌پزشک در دندان من گیر می‌کند). توزیع مشترک کامل جدول 2×2×2 مانند شکل ۱۲.۳ است:</p>
-<table><thead><tr><th></th><th><span class="en-inline">toothache</span></th><th></th><th>¬<span class="en-inline">toothache</span></th><th></th></tr></thead><tbody>
+<table><thead><tr><th scope="col"></th><th scope="col"><span class="en-inline">toothache</span></th><th scope="col"></th><th scope="col">¬<span class="en-inline">toothache</span></th><th scope="col"></th></tr></thead><tbody>
 <tr><td></td><td><span class="en-inline">catch</span></td><td>¬<span class="en-inline">catch</span></td><td><span class="en-inline">catch</span></td><td>¬<span class="en-inline">catch</span></td></tr>
 <tr><td><strong>cavity</strong></td><td>0.108</td><td>0.012</td><td>0.072</td><td>0.008</td></tr>
 <tr><td><strong>¬cavity</strong></td><td>0.016</td><td>0.064</td><td>0.144</td><td>0.576</td></tr>
@@ -531,7 +563,7 @@ P(m|s) = P(s|m)P(m) / P(s) = (0.7 × 1/50000) / 0.01 = 0.0014        (12.14)</co
   <p style="color:var(--muted);font-size:13px;margin-top:8px">این صفحه از ترجمهٔ فارسی فصل‌های کتاب «هوش مصنوعی: رویکردی نوین» (استوارت راسل و پیتر نورویگ، ویرایش چهارم) تولید شده است. متن با فایل مارک‌داون همان فصل یکسان است.</p>
 </div>
 
-</div>
+</main>
 <script id="aima-standalone-helper">
   if (window.self === window.top) {
     window.addEventListener('DOMContentLoaded', function() {

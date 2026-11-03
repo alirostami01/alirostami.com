@@ -57,7 +57,7 @@
             color: var(--accent);
             line-height: 1.4;
         }
-        h3 {
+        h2 {
             font-size: 1.35rem;
             color: var(--accent);
             margin: 2.4rem 0 .9rem;
@@ -66,7 +66,7 @@
             line-height: 1.4;
             scroll-margin-top: 1rem;
         }
-        h4 {
+        h3 {
             font-size: 1.15rem;
             color: var(--accent);
             margin: 1.6rem 0 .6rem;
@@ -157,7 +157,7 @@
             h1 {
                 font-size: 1.5rem;
             }
-            h3 {
+            h2 {
                 font-size: 1.2rem;
             }
         }
@@ -204,9 +204,41 @@
     <meta name="twitter:image" content="https://www.alirostami.com/images/social/software-architecture.jpg">
     <meta name="twitter:image:alt" content="ترجمه فارسی مبانی معماری نرم‌افزار؛ مطالعه آنلاین ۲۷ فصل و پیوست">
     <!-- image-seo:end -->
+    <!-- accessibility-styles:start -->
+    <style>
+    .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+    .skip-link{position:fixed;top:.75rem;left:.75rem;z-index:100000;padding:.65rem 1rem;border-radius:.35rem;background:#fff;color:#073b70;font-weight:700;box-shadow:0 2px 12px rgba(0,0,0,.25);transform:translateY(-180%);transition:transform .15s ease}
+    .skip-link:focus{transform:translateY(0)}
+    :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:3px solid #0563c1!important;outline-offset:3px!important}
+    [theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible,[data-theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline-color:#7dd3fc!important}
+    body[data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#5f5f66!important}
+    body[theme=dark][data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#b7bbc5!important}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#1d789b!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#6bc5e6!important}
+    body[data-header-desktop] .single .content a:not(.headerlink){text-decoration:underline!important;text-underline-offset:.15em}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#a41354!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#fff!important}
+    body[data-header-desktop] .search input::placeholder{color:#5f5f66!important;opacity:1}
+    body[theme=dark][data-header-desktop] .search input::placeholder{color:#b7bbc5!important}
+    button.menu-toggle{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;min-width:2rem;min-height:2rem}
+    button.search-button,button.search-cancel,button.theme-switch,button.history-back,button.share-button,button.script-button{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;line-height:inherit;cursor:pointer}
+    button.search-button,button.theme-switch,button.share-button,button.script-button{min-width:1.5rem;min-height:1.5rem}
+    button.history-back{text-decoration:underline;text-underline-offset:.15em}
+    summary.details-summary{list-style:none}
+    summary.details-summary::-webkit-details-marker{display:none}
+    .sidebar-controls .sidebar-action,.ch-chevron{appearance:none;border:0;background:transparent;color:inherit;font:inherit;cursor:pointer;min-height:1.5rem}
+    .sidebar-controls .sidebar-action{color:var(--text-muted)}
+    .sidebar-controls .sidebar-action:hover{color:var(--accent)}
+    .ch-chevron{padding:.2rem .4rem;min-width:2rem}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    </style>
+    <!-- accessibility-styles:end -->
 </head>
 <body>
+    <!-- accessibility-skip-link -->
+    <a class="skip-link" href="#main-content">رفتن به محتوای اصلی</a>
 <!-- خروجی HTML — کامپوننت کامل فصل ۱۰ (بدون html/head) -->
+<main class="chapter-main" id="main-content" tabindex="-1">
 <article class="chapter-content">
 
   <h1 style="font-size:1.7rem;margin:0 0 1rem;border-bottom:3px solid #2c5f8a;padding-bottom:.5rem;">فصل ۱۰: سبک معماری لایه‌ای</h1>
@@ -219,7 +251,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-1" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">توپولوژی</h3>
+    <h2 id="sec-1" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">توپولوژی</h2>
     <p style="text-align:justify;">مؤلفه‌ها در سبک معماری لایه‌ای در لایه‌های افقیِ منطقی سازمان‌دهی می‌شوند، چنان‌که در شکل ۱۰-۱ نشان داده شده است؛ هر لایه نقشِ مشخصی در برنامه ایفا می‌کند (مانندِ منطق ارائه یا منطقِ کسب‌وکار). هرچند هیچ محدودیتِ مشخصی از نظرِ شمار و نوعِ لایه‌هایی که باید وجود داشته باشند در کار نیست، بیشترِ معماری‌های لایه‌ای از چهار لایهٔ استاندارد تشکیل می‌شوند: <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Presentation</bdi>، <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Business</bdi>، <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Persistence</bdi> و <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Database</bdi>. برخی معماری‌ها لایه‌های <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Business</bdi> و <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Persistence</bdi> را ترکیب می‌کنند؛ به‌ویژه زمانی که منطقِ ماندگاری (مانندِ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">SQL</bdi> یا <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">HSQL</bdi>) درونِ مؤلفه‌های لایهٔ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Business</bdi> تعبیه شده باشد. برنامه‌های کوچک‌تر ممکن است فقط سه لایه داشته باشند، در حالی که برنامه‌های کسب‌وکاریِ بزرگ‌تر و پیچیده‌تر ممکن است پنج لایه یا بیشتر داشته باشند.</p>
     <figure style="margin:1rem 0;padding:.7rem 1rem;background:#f9f9f9;border-right:4px solid #2c5f8a;border-radius:4px;">
       <img src="figures/chapter-10/figure-10-1.png" alt="شکل ۱۰-۱. لایه‌های منطقیِ استاندارد در سبک معماری لایه‌ای" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;" width="501" height="279" decoding="async">
@@ -238,9 +270,9 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-2" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">ویژگی‌های خاصِ سبک</h3>
+    <h2 id="sec-2" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">ویژگی‌های خاصِ سبک</h2>
     <p style="text-align:justify;">لایه‌ها در این سبک معماری حوزه‌های مشخصی از مسئولیتِ فنی را در خود کپسوله می‌کنند، اما خودِ لایه‌ها ممکن است ویژگی‌های دیگری نیز از خود نشان دهند.</p>
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;">لایه‌های جداسازی</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;" data-a11y-heading="promoted-from-h4">لایه‌های جداسازی</h3>
     <p style="text-align:justify;">هر لایه می‌تواند بسته یا باز باشد. اگر لایه‌ای بسته <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(closed)</bdi> باشد، درخواستی که از لایهٔ بالایی به سوی لایهٔ پایینی حرکت می‌کند نمی‌تواند هیچ لایه‌ای را دور بزند؛ بلکه باید از لایهٔ بلافاصله زیرین عبور کند تا به لایهٔ بعدی برسد (شکل ۱۰-۳ را ببینید). برای نمونه، در معماری‌ای که همهٔ لایه‌هایش بسته‌اند، درخواستی که از لایهٔ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Presentation</bdi> آغاز می‌شود باید نخست از لایهٔ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Business</bdi> و سپس از لایهٔ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Persistence</bdi> بگذرد تا سرانجام به لایهٔ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Database</bdi> برسد.</p>
     <figure style="margin:1rem 0;padding:.7rem 1rem;background:#f9f9f9;border-right:4px solid #2c5f8a;border-radius:4px;">
       <img src="figures/chapter-10/figure-10-3.png" alt="شکل ۱۰-۳. لایه‌های بسته در یک معماری لایه‌ای" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;" width="501" height="315" decoding="async">
@@ -253,7 +285,7 @@
       <p style="margin:.35rem 0;">پانویس ۱ — <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Business Delegate</bdi> الگویی است که برای کاهشِ کوپلینگ میانِ سرویس‌های کسب‌وکاری و رابط کاربری طراحی شده است. <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Business Delegate</bdi>‌ها نقشِ مبدل <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(adapter)</bdi> را دارند و اشیای کسب‌وکاری را از لایهٔ ارائه فراخوانی می‌کنند.</p>
     </blockquote>
 
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;">افزودنِ لایه‌ها</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;" data-a11y-heading="promoted-from-h4">افزودنِ لایه‌ها</h3>
     <p style="text-align:justify;">هرچند لایه‌های بسته لایه‌های جداسازی را ممکن می‌کنند و از این راه به مهارِ تغییر کمک می‌کنند، گاهی منطقی است که برخی لایه‌ها باز باشند. برای نمونه، فرض کنید لایهٔ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Business</bdi> در معماری لایه‌ای شما اشیای مشترکی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(shared objects)</bdi> دارد که کارکردهای مشترکِ مؤلفه‌های کسب‌وکاری را در خود جای داده‌اند (مانندِ کلاس‌های کمکیِ تاریخ و رشته، کلاس‌های ممیزی، کلاس‌های ثبت وقایع و مانندِ آن‌ها). شما تصمیمی معماری می‌گیرید که استفادهٔ لایهٔ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Presentation</bdi> از این اشیای کسب‌وکاریِ مشترک را محدود می‌کند. این قید در شکل ۱۰-۴ با خطِ نقطه‌چین نشان داده شده است که از یک مؤلفهٔ ارائه به یک شیء کسب‌وکاریِ مشترک در لایهٔ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Business</bdi> می‌رود. حاکمیت بر این سناریو و کنترلِ آن دشوار است، زیرا از نظرِ معماری، لایهٔ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Presentation</bdi> به لایهٔ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Business</bdi> و در نتیجه به اشیای مشترکِ درونِ آن لایه دسترسی دارد.</p>
     <figure style="margin:1rem 0;padding:.7rem 1rem;background:#f9f9f9;border-right:4px solid #2c5f8a;border-radius:4px;">
       <img src="figures/chapter-10/figure-10-4.png" alt="شکل ۱۰-۴. اشیای مشترک در لایهٔ Business" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;" width="901" height="632" decoding="async">
@@ -270,28 +302,28 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-3" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">توپولوژی‌های داده</h3>
+    <h2 id="sec-3" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">توپولوژی‌های داده</h2>
     <p style="text-align:justify;">معماری‌های لایه‌ای به‌طورِ سنتی سیستمی تک‌پارچه را در کنارِ یک پایگاه‌دادهٔ واحد و تک‌پارچه شکل می‌دهند. لایهٔ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Persistence</bdi> مشترک اغلب برای نگاشتِ سلسله‌مراتبِ اشیا میانِ زبان‌های شیءگرای محبوب و قلمروِ مجموعه‌محورِ پایگاه‌داده‌های رابطه‌ای به کار می‌رود.</p>
   </section>
 
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-4" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">ملاحظات ابری</h3>
+    <h2 id="sec-4" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">ملاحظات ابری</h2>
     <p style="text-align:justify;">از آنجا که معماری‌های لایه‌ای معمولاً تک‌پارچه‌اند و به لایه‌ها افراز شده‌اند، گزینه‌های ابری به استقرارِ یک یا چند لایه از راهِ یک ارائه‌دهندهٔ ابر محدود می‌شود. افرازِ فنیِ ذاتیِ این معماری برای استقرارهای جداگانه از راهِ ابر بسیار مناسب است. اما تأخیرِ ارتباط میانِ سرورهای درون‌سازمانی و ابر ممکن است مشکل‌ساز شود، زیرا گردش‌کارها در این معماری معمولاً از بیشترِ لایه‌ها می‌گذرند.</p>
   </section>
 
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-5" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">ریسک‌های رایج</h3>
+    <h2 id="sec-5" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">ریسک‌های رایج</h2>
     <p style="text-align:justify;">معماری‌های لایه‌ای، به دلیلِ استقرارهای تک‌پارچه و نبودِ ماژولاریتیِ معماری، از تحمل خطا پشتیبانی نمی‌کنند. اگر بخشِ کوچکی از یک معماری لایه‌ای دچارِ خطای کمبودِ حافظه <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(out-of-memory)</bdi> شود، کلِ واحدِ برنامه از کار می‌افتد. در دسترس‌بودنِ کلی نیز به دلیلِ میانگین زمانِ بازیابی (mean time to recover یا <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">MTTR</bdi>) بالای بیشترِ برنامه‌های تک‌پارچه آسیب می‌بیند: زمانِ راه‌اندازی از ۲ دقیقه در برنامه‌های کوچک‌تر تا ۱۵ دقیقه و حتی بیشتر در اکثرِ برنامه‌های بزرگ متغیر است.</p>
   </section>
 
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-6" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">حاکمیت</h3>
+    <h2 id="sec-6" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">حاکمیت</h2>
     <p style="text-align:justify;">وضعیتِ حاکمیت در این سبک معماری بسیار مطلوب است: از آنجا که این سبک بسیار رایج است، معمارانی که برخی از نخستین ابزارهای آزمونِ ساختاری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(structural testing tools)</bdi> را ساختند، این معماری را در نظر داشتند. در واقع، تابع برازشِ نمونه در شکل ۶-۴ برای معماری لایه‌ای ساخته شده بود (مثال ۱۰-۱ را ببینید).</p>
     <p style="text-align:justify;"><b>مثال ۱۰-۱.</b> تابع برازشِ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">ArchUnit</bdi> برای حاکمیت بر لایه‌ها</p>
     <pre dir="ltr" style="direction:ltr;text-align:left;unicode-bidi:isolate;margin:.8rem 0;padding:.8rem 1rem;background:#f4f6f8;border:1px solid #dde3e8;border-radius:4px;overflow-x:auto;font-family:Consolas,Monaco,monospace;font-size:.92rem;line-height:1.6;"><code class="language-java">layeredArchitecture()
@@ -311,7 +343,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-7" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">ملاحظاتِ توپولوژی تیم</h3>
+    <h2 id="sec-7" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">ملاحظاتِ توپولوژی تیم</h2>
     <p style="text-align:justify;">برخلافِ برخی از سبک‌های معماریِ شرح‌داده‌شده در این کتاب، سبک معماری لایه‌ای به‌طورِ کلی مستقل از توپولوژی‌های تیم است و با هر پیکربندیِ تیمی کار می‌کند:</p>
     <p style="text-align:justify;"><b>تیم‌های هم‌راستا با جریان:</b> از آنجا که معماری لایه‌ای معمولاً کوچک و خودبسنده است و یک سفر یا جریانِ واحد را در سیستم بازنمایی می‌کند، با تیم‌های هم‌راستا با جریان به‌خوبی کار می‌کند. در این توپولوژیِ تیم، تیم‌ها معمولاً مالکِ جریان در سیستم، از آغاز تا پایان و در گذر از هر لایه، هستند و گردش‌کارها را به‌عنوانِ بخشی از راه‌حل‌هایشان می‌سازند.</p>
     <p style="text-align:justify;"><b>تیم‌های توانمندساز:</b> از آنجا که معماری لایه‌ای بسیار ماژولار است و بر پایهٔ دغدغه‌های فنی جدا شده است، به‌خوبی با توپولوژی‌های تیمِ توانمندساز جفت می‌شود. متخصصان و اعضای میان‌بُرشیِ تیم <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(cross-cutting team members)</bdi> می‌توانند با یک یا چند لایه تعامل کنند تا پیشنهادهایی بدهند و آزمایش‌هایی انجام دهند، بی‌آنکه بر بقیهٔ جریان اثر بگذارند. برای نمونه، تیم می‌تواند با افزودنِ رفتارهای جدید به لایهٔ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Presentation</bdi>، یک کتابخانهٔ رابط کاربریِ جدید را بیازماید و هم‌زمان لایه‌های دیگر را از این تغییرات دور نگه دارد.</p>
@@ -323,7 +355,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-8" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">ویژگی‌های سبک</h3>
+    <h2 id="sec-8" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">ویژگی‌های سبک</h2>
     <p style="text-align:justify;">در جدول رتبه‌بندیِ ویژگی‌ها <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(characteristics ratings)</bdi> که در شکل ۱۰-۶ آمده است، رتبهٔ یک‌ستاره یعنی آن ویژگی معماریِ مشخص در این معماری به‌خوبی پشتیبانی نمی‌شود، در حالی که رتبهٔ پنج‌ستاره یعنی آن ویژگی معماری یکی از قوی‌ترین جنبه‌های این سبک معماری است. تعریفِ هر یک از ویژگی‌هایی که در این کارنامه <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(scorecard)</bdi> آمده‌اند در فصل ۴ یافت می‌شود.</p>
     <figure style="margin:1rem 0;padding:.7rem 1rem;background:#f9f9f9;border-right:4px solid #2c5f8a;border-radius:4px;">
       <img src="figures/chapter-10/figure-10-6.png" alt="شکل ۱۰-۶. رتبه‌بندیِ ویژگی‌های معماری لایه‌ای" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;" width="701" height="757" decoding="async">
@@ -334,17 +366,17 @@
     <p style="text-align:justify;">ویژگی‌های مهندسی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(engineering characteristics)</bdi> سبک معماری لایه‌ای بازتابِ همان پویایی‌ای است که در بالا گفته شد: همه در آغاز خوب‌اند، اما با رشدِ اندازهٔ پایگاه کد افت می‌کنند.</p>
     <p style="text-align:justify;">کشسانی و مقیاس‌پذیری در معماری لایه‌ای رتبهٔ بسیار پایینی (یک‌ستاره) دارند که دلیلِ اصلی‌اش استقرارهای تک‌پارچه و نبودِ ماژولاریتیِ معماری است. هرچند می‌توان برخی کارکردهای درونِ یک تک‌پارچه را بیش از کارکردهای دیگر مقیاس‌پذیر کرد، این تلاش معمولاً به فنونِ طراحیِ بسیار پیچیده‌ای نیاز دارد که این معماری برایشان مناسب نیست؛ مانندِ چندریسمانی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(multithreading)</bdi>، پیام‌رسانیِ داخلی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(internal messaging)</bdi> و دیگر رویه‌های پردازش موازی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(parallel processing)</bdi>. با این حال، از آنجا که کوانتوم معماریِ یک سیستمِ لایه‌ای همیشه ۱ است (به دلیلِ رابط کاربری و پایگاه‌دادهٔ تک‌پارچه و پردازشِ سمتِ سرورش)، برنامه‌ها فقط تا حدِ معینی مقیاس‌پذیرند.</p>
     <p style="text-align:justify;">معماران می‌توانند با طراحیِ دقیق در معماری لایه‌ای به پاسخ‌گوییِ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(responsiveness)</bdi> بالایی دست یابند و با فنونی مانندِ کش‌گذاری و چندریسمانی آن را بیشتر هم کنند. ما در مجموع به این سبک سه ستاره می‌دهیم، زیرا از نبودِ پردازش موازیِ ذاتی، و همچنین از لایه‌بندیِ بسته و ضدالگوی چاهک معماری، آسیب می‌بیند.</p>
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;">چه زمانی استفاده کنیم</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;" data-a11y-heading="promoted-from-h4">چه زمانی استفاده کنیم</h3>
     <p style="text-align:justify;">سبک معماری لایه‌ای گزینهٔ خوبی برای برنامه‌ها یا وب‌سایت‌های کوچک و ساده است. این سبک همچنین نقطهٔ شروعِ خوبی برای شرایطی با محدودیت‌های شدیدِ بودجه و زمان است. این سبک، به دلیلِ سادگی و آشنا بودنش برای توسعه‌دهندگان و معماران، شاید یکی از کم‌هزینه‌ترین سبک‌ها باشد و توسعهٔ برنامه‌های کوچک‌تر را آسان می‌کند. سبک معماری لایه‌ای همچنین گزینهٔ خوبی است وقتی معماران هنوز در حالِ ارزیابیِ این موضوع هستند که آیا معماری‌های پیچیده‌تر مناسب‌ترند یا نه، اما باید فرایندِ توسعه را آغاز کنند.</p>
     <p style="text-align:justify;">هنگامِ به‌کارگیریِ این روش، بازاستفادهٔ کد را در کمترین حد و سلسله‌مراتبِ اشیا، یعنی عمقِ درختِ وراثت <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(inheritance tree)</bdi>، را نسبتاً کم‌عمق نگه دارید تا سطحِ خوبی از ماژولاریتی حفظ شود. این کار مهاجرت به سبک معماریِ دیگری را در آینده آسان‌تر می‌کند.</p>
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;">چه زمانی استفاده نکنیم</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;" data-a11y-heading="promoted-from-h4">چه زمانی استفاده نکنیم</h3>
     <p style="text-align:justify;">چنان‌که نشان دادیم، ویژگی‌هایی مانندِ قابلیت نگهداری، چابکی، آزمون‌پذیری و استقرارپذیری با رشدِ برنامه‌هایی که از سبک معماری لایه‌ای استفاده می‌کنند، آسیب می‌بینند. به همین دلیل، برای برنامه‌ها و سیستم‌های بزرگ شاید بهتر باشد از سبک‌های معماریِ دیگر و ماژولارتر استفاده شود.</p>
   </section>
 
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-9" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">نمونه‌ها و موارد کاربرد</h3>
+    <h2 id="sec-9" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">نمونه‌ها و موارد کاربرد</h2>
     <p style="text-align:justify;">معماری لایه‌ای یکی از رایج‌ترین سبک‌های معماری است و در زمینه‌های فراوانی پدیدار می‌شود.</p>
     <p style="text-align:justify;">طراحانِ سیستم‌عامل‌ها (مانندِ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Linux</bdi> یا <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Windows</bdi>) به همان دلیلی از لایه‌ها استفاده می‌کنند که معمارانِ برنامه‌ها: جداسازی دغدغه‌ها. لایه‌های رایج در سیستم‌عامل‌ها عبارت‌اند از:</p>
     <p style="text-align:justify;"><b>لایهٔ سخت‌افزار <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Hardware layer)</bdi>:</b> سخت‌افزارِ فیزیکی، مانندِ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">CPU</bdi>، حافظه و دستگاه‌های ورودی/خروجی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(I/O)</bdi>، را در بر می‌گیرد.</p>
@@ -364,12 +396,12 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
     <section>
-    <h3 id="sec-10" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">واژه‌نامهٔ اختصاصی این فصل</h3>
+    <h2 id="sec-10" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">واژه‌نامهٔ اختصاصی این فصل</h2>
     <table dir="rtl" style="width:100%;border-collapse:collapse;font-size:.95rem;">
       <thead>
         <tr style="background:#2c5f8a;color:#fff;">
-          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;">واژهٔ انگلیسی</th>
-          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;">معادل مصوب/به‌کاررفته در این فصل</th>
+          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;" scope="col">واژهٔ انگلیسی</th>
+          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;" scope="col">معادل مصوب/به‌کاررفته در این فصل</th>
         </tr>
       </thead>
       <tbody>
@@ -431,6 +463,7 @@
   </section>
 
 </article>
+</main>
 
 <script id="fosa-standalone-helper">
   if (window.self === window.top) {

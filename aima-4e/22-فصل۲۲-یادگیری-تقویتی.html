@@ -234,17 +234,49 @@
     <meta name="twitter:image" content="https://www.alirostami.com/images/social/aima-4e-persian.jpg">
     <meta name="twitter:image:alt" content="ترجمه فارسی کتاب هوش مصنوعی؛ یک رویکرد مدرن، ویرایش چهارم">
     <!-- image-seo:end -->
+    <!-- accessibility-styles:start -->
+    <style>
+    .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+    .skip-link{position:fixed;top:.75rem;left:.75rem;z-index:100000;padding:.65rem 1rem;border-radius:.35rem;background:#fff;color:#073b70;font-weight:700;box-shadow:0 2px 12px rgba(0,0,0,.25);transform:translateY(-180%);transition:transform .15s ease}
+    .skip-link:focus{transform:translateY(0)}
+    :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:3px solid #0563c1!important;outline-offset:3px!important}
+    [theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible,[data-theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline-color:#7dd3fc!important}
+    body[data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#5f5f66!important}
+    body[theme=dark][data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#b7bbc5!important}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#1d789b!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#6bc5e6!important}
+    body[data-header-desktop] .single .content a:not(.headerlink){text-decoration:underline!important;text-underline-offset:.15em}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#a41354!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#fff!important}
+    body[data-header-desktop] .search input::placeholder{color:#5f5f66!important;opacity:1}
+    body[theme=dark][data-header-desktop] .search input::placeholder{color:#b7bbc5!important}
+    button.menu-toggle{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;min-width:2rem;min-height:2rem}
+    button.search-button,button.search-cancel,button.theme-switch,button.history-back,button.share-button,button.script-button{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;line-height:inherit;cursor:pointer}
+    button.search-button,button.theme-switch,button.share-button,button.script-button{min-width:1.5rem;min-height:1.5rem}
+    button.history-back{text-decoration:underline;text-underline-offset:.15em}
+    summary.details-summary{list-style:none}
+    summary.details-summary::-webkit-details-marker{display:none}
+    .sidebar-controls .sidebar-action,.ch-chevron{appearance:none;border:0;background:transparent;color:inherit;font:inherit;cursor:pointer;min-height:1.5rem}
+    .sidebar-controls .sidebar-action{color:var(--text-muted)}
+    .sidebar-controls .sidebar-action:hover{color:var(--accent)}
+    .ch-chevron{padding:.2rem .4rem;min-width:2rem}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    </style>
+    <!-- accessibility-styles:end -->
 </head>
 <body>
-<div class="page">
+    <!-- accessibility-skip-link -->
+    <a class="skip-link" href="#main-content">رفتن به محتوای اصلی</a>
+<main class="page" id="main-content" tabindex="-1">
 
 <div class="kicker">
   <span class="badge">📘 هوش مصنوعی: رویکردی نوین (AIMA)</span>
   <span class="badge soft">ترجمهٔ فارسی — راسل و نورویگ، ویرایش چهارم</span>
   <span class="badge gold">فصل 22</span>
 </div>
+<h1 class="chapter-title">فصل ۲۲: یادگیری تقویتی (Reinforcement Learning)</h1>
 
-<nav class="toc"><h2>فهرست بخش‌های این فصل</h2>
+<nav class="toc" aria-label="فهرست مطالب"><h2>فهرست بخش‌های این فصل</h2>
 <ol>
 <li><a href="#sec-1">۲۲.۱ یادگیری از پاداش‌ها</a></li>
 <li><a href="#sec-2">۲۲.۲ یادگیری تقویتی منفعل</a></li>
@@ -258,7 +290,7 @@
 <li><a href="#sec-9">پانوشت‌ها:</a></li>
 </ol></nav>
 
-<p class="subtitle">فصل ۲۲: یادگیری تقویتی (Reinforcement Learning)</p>
+
 <div class="lead">در این فصل می‌بینیم چگونه تجربه‌کردن پاداش‌ها و تنبیه‌ها می‌تواند به عامل بیاموزد چگونه پاداش‌ها را در آینده بیشینه کند.</div>
 <p>در یادگیری نظارت‌شده، عامل با مشاهدهٔ منفعلانهٔ جفت‌های ورودی/خروجی نمونه‌ای که توسط یک «معلم» فراهم شده یاد می‌گیرد. در این فصل، خواهیم دید چگونه عامل‌ها می‌توانند به‌طور فعال از تجربهٔ خودشان یاد بگیرند، بدون معلم، با درنظرگرفتن موفقیت یا شکست نهایی‌شان.</p>
 <h2 id="sec-1">۲۲.۱ یادگیری از پاداش‌ها</h2>
@@ -384,7 +416,7 @@
 <p>این را می‌توان با تغییر معادلهٔ قید (۲۲.۴) پیاده‌سازی کرد تا به جفت‌های حالت-کنش نسبتاً کاوش‌نشده برآورد مطلوبیت بالاتری تخصیص دهد. این به‌معنای پیشین خوش‌بینانه‌ای بر محیط‌های ممکن است و باعث می‌شود عامل در آغاز طوری رفتار کند که گویی پاداش‌های شگفت‌انگیزی همه‌جا پراکنده‌اند. با U⁺(s) برآورد خوش‌بینانهٔ مطلوبیت (یعنی پاداش موردانتظار تا-پایان) حالت s را نشان می‌دهیم، و با <span class="en-inline">N(s,a)</span> تعداد دفعاتی را که کنش a در حالت s امتحان شده. فرض کنید در عامل یادگیری <span class="en-inline">ADP</span> از تکرار ارزش استفاده می‌کنیم؛ پس باید معادلهٔ به‌روزرسانی (معادلهٔ (17.10) در صفحهٔ ۵۷۳) را بازنویسی کنیم تا برآورد خوش‌بینانه را لحاظ کند:</p>
 <pre class="code"><code>U⁺(s) ← max_a f(∑_{s′} P(s′|s,a) [R(s,a,s′) + γU⁺(s′)], N(s,a))        (22.5)</code></pre>
 <p>در این‌جا، f «تابع کاوش» (Exploration Function) است. تابع <span class="en-inline">f(u,n)</span> تعیین می‌کند چگونه حرص (ترجیح مقادیر بالای مطلوبیت u) با کنجکاوی (ترجیح کنش‌هایی که چند بار امتحان نشده‌اند و شمارش n پایینی دارند) مبادله می‌شود. تابع باید در u صعودی و در n نزولی باشد. واضح است که توابع ممکن بسیاری این شرایط را برآورده می‌کنند. یکی از تعریف‌های به‌ویژه ساده این است:</p>
-<pre class="code"><code>f(u, n) = R⁺  اگر n < Nₑ،  در غیر این صورت u</code></pre>
+<pre class="code"><code>f(u, n) = R⁺  اگر n &lt; Nₑ،  در غیر این صورت u</code></pre>
 <p>که در آن R⁺ برآورد خوش‌بینانه از بهترین پاداش ممکن به‌دست‌آوردنی در هر حالت و Nₑ پارامتر ثابتی است. این اثر را خواهد داشت که عامل هر جفت حالت-کنش را دست‌کم Nₑ بار امتحان کند. این واقعیت که به‌جای U، U⁺ در سمت راست معادلهٔ (22.5) ظاهر می‌شود بسیار مهم است. با پیشرفت کاوش، حالت‌ها و کنش‌های نزدیک حالت شروع ممکن است تعداد زیادی بار امتحان شوند. اگر از U، برآورد بدبینانه‌تر مطلوبیت، استفاده می‌کردیم، عامل به‌زودی از کاوش فراتر مناطق دوردست دلسرد می‌شد. استفاده از U⁺ به این معناست که مزیت‌های کاوش از لبه‌های مناطق کاوش‌نشده به عقب منتشر می‌شوند، تا کنش‌هایی که به سمت مناطق کاوش‌نشده می‌روند وزن‌دارتر شوند، نه فقط کنش‌هایی که خودشان ناآشنا هستند.</p>
 <figure class="fig"><img src="../figures/ch22/fig-22-7.jpg" alt="شکل 22.7" width="908" height="366" loading="lazy" decoding="async"><figcaption><strong>شکل ۲۲.۷ — عملکرد عامل ADP کاوشگر با استفاده از R⁺ = 2 و Nₑ = 5. (الف) برآوردهای مطلوبیت برای حالت‌های انتخابی، (1,1)، (1,3)، (2,1)، (3,2) و (3,3)، در طول زمان (محور عمودی بازهٔ 0.6 تا 2.2). (ب) خطای RMS در مقادیر مطلوبیت و زیان سیاست وابسته (محور عمودی بازهٔ 0.2 تا 1.4).</strong></figcaption></figure>
 <p>اثر این سیاست کاوش را می‌توان به‌وضوح در شکل ۲۲.۷ (ب) دید، که برخلاف رویکرد حریص، همگرایی سریعی به سمت زیان سیاست صفر نشان می‌دهد. سیاست تقریباً بهینه فقط پس از ۱۸ کوشش یافت می‌شود. توجه کنید خطای <span class="en-inline">RMS</span> در برآوردهای مطلوبیت به همان سرعت همگرا نمی‌شود. این به‌دلیل آن است که عامل کاوش بخش‌های بی‌پاداش فضای حالت را به‌زودی متوقف می‌کند و پس از آن فقط «تصادفاً» از آن‌ها بازدید می‌کند. با این حال، کاملاً منطقی است که عامل به مطلوبیت دقیق حالت‌هایی که می‌داند نامطلوب‌اند و می‌توان از آن‌ها اجتناب کرد اهمیت ندهد. فایدهٔ چندانی در یادگیری بهترین ایستگاه رادیویی برای گوش‌دادن در حالی که از صخره سقوط می‌کنید نیست.</p>
@@ -615,7 +647,7 @@
   <p style="color:var(--muted);font-size:13px;margin-top:8px">این صفحه از ترجمهٔ فارسی فصل‌های کتاب «هوش مصنوعی: رویکردی نوین» (استوارت راسل و پیتر نورویگ، ویرایش چهارم) تولید شده است. متن با فایل مارک‌داون همان فصل یکسان است.</p>
 </div>
 
-</div>
+</main>
 <script id="aima-standalone-helper">
   if (window.self === window.top) {
     window.addEventListener('DOMContentLoaded', function() {

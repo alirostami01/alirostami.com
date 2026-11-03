@@ -159,55 +159,86 @@
     <link rel="preload" href="/lib/animate/animate-subset.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/lib/animate/animate-subset.min.css"></noscript>
     <!-- performance-animations:end -->
+    <!-- accessibility-styles:start -->
+    <style>
+    .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+    .skip-link{position:fixed;top:.75rem;left:.75rem;z-index:100000;padding:.65rem 1rem;border-radius:.35rem;background:#fff;color:#073b70;font-weight:700;box-shadow:0 2px 12px rgba(0,0,0,.25);transform:translateY(-180%);transition:transform .15s ease}
+    .skip-link:focus{transform:translateY(0)}
+    :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:3px solid #0563c1!important;outline-offset:3px!important}
+    [theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible,[data-theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline-color:#7dd3fc!important}
+    body[data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#5f5f66!important}
+    body[theme=dark][data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#b7bbc5!important}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#1d789b!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#6bc5e6!important}
+    body[data-header-desktop] .single .content a:not(.headerlink){text-decoration:underline!important;text-underline-offset:.15em}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#a41354!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#fff!important}
+    body[data-header-desktop] .search input::placeholder{color:#5f5f66!important;opacity:1}
+    body[theme=dark][data-header-desktop] .search input::placeholder{color:#b7bbc5!important}
+    button.menu-toggle{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;min-width:2rem;min-height:2rem}
+    button.search-button,button.search-cancel,button.theme-switch,button.history-back,button.share-button,button.script-button{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;line-height:inherit;cursor:pointer}
+    button.search-button,button.theme-switch,button.share-button,button.script-button{min-width:1.5rem;min-height:1.5rem}
+    button.history-back{text-decoration:underline;text-underline-offset:.15em}
+    summary.details-summary{list-style:none}
+    summary.details-summary::-webkit-details-marker{display:none}
+    .sidebar-controls .sidebar-action,.ch-chevron{appearance:none;border:0;background:transparent;color:inherit;font:inherit;cursor:pointer;min-height:1.5rem}
+    .sidebar-controls .sidebar-action{color:var(--text-muted)}
+    .sidebar-controls .sidebar-action:hover{color:var(--accent)}
+    .ch-chevron{padding:.2rem .4rem;min-width:2rem}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    </style>
+    <!-- accessibility-styles:end -->
 </head>
     <body data-header-desktop="fixed" data-header-mobile="auto">
+    <!-- accessibility-skip-link -->
+    <a class="skip-link" href="#main-content">رفتن به محتوای اصلی</a>
         <script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
         <div id="mask"></div>
         <div class="wrapper">
-            <header class="desktop" id="header-desktop">
+            <header class="desktop" id="header-desktop" aria-label="سربرگ دسکتاپ">
                 <div class="header-wrapper">
                     <div class="header-title"><a href="/" title="علی رستمی">Ali Rostami</a></div>
-                    <div class="menu">
+                    <nav class="menu" aria-label="پیمایش اصلی دسکتاپ">
                         <div class="menu-inner">
                             <a href="/" class="menu-item" title="خانه">خانه</a>
-                            <a href="/software-architecture/" class="menu-item" title="مطالعه آنلاین کتاب معماری نرم‌افزار"><i class="fas fa-cubes fa-fw"></i> کتاب معماری نرم‌افزار</a>
+                            <a href="/software-architecture/" class="menu-item" title="مطالعه آنلاین کتاب معماری نرم‌افزار"><i class="fas fa-cubes fa-fw" aria-hidden="true"></i> کتاب معماری نرم‌افزار</a>
                             <a href="/fundamentals-of-software-architecture-persian/" class="menu-item" title="مستندات پروژه">پروژه معماری نرم‌افزار</a>
                             <a href="/aima-4e/" class="menu-item" title="کتاب هوش مصنوعی">کتاب هوش مصنوعی</a>
                             <a href="/posts/" class="menu-item" title="مقالات">مقالات</a>
-                            <a href="/support/" class="menu-item" title="حمایت"><i class="fas fa-heart fa-fw" style="color:#e0245e;"></i> حمایت</a>
-                            <a href="javascript:void(0);" class="menu-item theme-switch" title="تغییر ظاهر"><i class="fas fa-adjust fa-fw"></i></a>
+                            <a href="/support/" class="menu-item" title="حمایت"><i class="fas fa-heart fa-fw" style="color:#e0245e;" aria-hidden="true"></i> حمایت</a>
+                            <button class="menu-item theme-switch" title="تغییر ظاهر" role="switch" aria-checked="false" aria-label="تغییر ظاهر" type="button"><i class="fas fa-adjust fa-fw" aria-hidden="true"></i></button>
                         </div>
-                    </div>
+                    </nav>
                 </div>
             </header>
 
-            <main class="main">
+            <main class="main" id="main-content" tabindex="-1">
                 <div class="container">
                     <article class="page single post-page-fa">
                         <h1 class="single-title animate__animated animate__flipInX">مبانی معماری نرم‌افزار: رویکردی مهندسی و مدرن — ترجمهٔ فارسی</h1>
                         <div class="post-meta">
                             <div class="post-meta-line">
-                                <span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw"></i> علی رستمی</a></span>
+                                <span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i> علی رستمی</a></span>
                                 &nbsp;|&nbsp;
-                                <i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2026-10-24">۳ آبان ۱۴۰۵ (2026-10-24)</time>
+                                <i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2026-10-24">۳ آبان ۱۴۰۵ (2026-10-24)</time>
                                 &nbsp;|&nbsp;
-                                <i class="fas fa-book fa-fw"></i>&nbsp;ویرایش دوم (2nd Edition, 2025)
+                                <i class="fas fa-book fa-fw" aria-hidden="true"></i>&nbsp;ویرایش دوم (2nd Edition, 2025)
                             </div>
                         </div>
 
                         <!-- Action Buttons Section -->
                         <div class="post-actions-panel">
                             <a href="/software-architecture/" class="post-btn primary" title="مطالعه آنلاین با سایدبار و فهرست فصول">
-                                <i class="fas fa-book-reader fa-fw"></i> مطالعهٔ آنلاین کتاب (وب با سایدبار)
+                                <i class="fas fa-book-reader fa-fw" aria-hidden="true"></i> مطالعهٔ آنلاین کتاب (وب با سایدبار)
                             </a>
                             <a href="https://github.com/alirostami01/Fundamentals-of-Software-Architecture_-A-Modern-Engineering-Approach/raw/main/pdf/book.pdf" target="_blank" rel="noopener noreferrer" class="post-btn pdf" title="دانلود نسخه کامل PDF از گیت‌هاب">
-                                <i class="fas fa-file-pdf fa-fw"></i> دانلود کتاب کامل از گیت‌هاب (PDF - ۶۵۰ صفحه)
+                                <i class="fas fa-file-pdf fa-fw" aria-hidden="true"></i> دانلود کتاب کامل از گیت‌هاب (PDF - ۶۵۰ صفحه)
                             </a>
                             <a href="https://github.com/alirostami01/Fundamentals-of-Software-Architecture_-A-Modern-Engineering-Approach" target="_blank" rel="noopener noreferrer" class="post-btn github" title="مشاهده مخزن گیت‌هاب">
-                                <i class="fab fa-github fa-fw"></i> مخزن گیت‌هاب (GitHub)
+                                <i class="fab fa-github fa-fw" aria-hidden="true"></i> مخزن گیت‌هاب (GitHub)
                             </a>
                             <a href="/support/" class="post-btn support" title="حمایت از ادامه توسعه پروژه">
-                                <i class="fas fa-heart fa-fw"></i> حمایت از پروژه
+                                <i class="fas fa-heart fa-fw" aria-hidden="true"></i> حمایت از پروژه
                             </a>
                         </div>
 
@@ -217,9 +248,9 @@
                             </p>
 
                             <div class="reading-feature-card">
-                                <h3 style="margin-top:0;display:flex;align-items:center;gap:.5rem;color:#1e3a8a;">
-                                    <i class="fas fa-laptop-code"></i> سامانهٔ مطالعهٔ آنلاین تعاملی با سایدبار هوشمند
-                                </h3>
+                                <h2 style="margin-top:0;display:flex;align-items:center;gap:.5rem;color:#1e3a8a;">
+                                    <i class="fas fa-laptop-code" aria-hidden="true"></i> سامانهٔ مطالعهٔ آنلاین تعاملی با سایدبار هوشمند
+                                </h2>
                                 <p>
                                     برای راحتی مطالعه بدون دانلود فایل‌های سنگین، نسخهٔ کامل وب در مسیر <a href="/software-architecture/"><strong>/software-architecture/</strong></a> آماده شده است. این سامانه شامل سایدبار دسته‌بندی‌شده بر اساس سه بخش اصلی کتاب، باز/بسته شدن آکاردئونی، فهرست زیربخش‌ها، جستجوی زنده، هایلایت خودکار بخش جاری، لینک‌های پایدار و حالت شب (Dark Mode) است.
                                 </p>
@@ -278,14 +309,51 @@
             <footer class="footer">
                 <div class="footer-container">
                     <div class="footer-line">ایجاد شده توسط <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> | پوسته - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreferrer">LoveIt</a></div>
-                    <div class="footer-line"><i class="far fa-copyright fa-fw"></i><span>2022 - 2026</span>&nbsp;<a href="/">علی رستمی</a></div>
+                    <div class="footer-line"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span>2022 - 2026</span>&nbsp;<a href="/">علی رستمی</a></div>
                 </div>
             </footer>
         </div>
         <div id="fixed-buttons">
-            <a href="#" id="back-to-top" class="fixed-button" title="برگشت به بالا"><i class="fas fa-arrow-up fa-fw"></i></a>
+            <a href="#" id="back-to-top" class="fixed-button" title="برگشت به بالا" aria-label="برگشت به بالا"><i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i></a>
         </div>
         <script>window.config={"data":{}};</script>
         <script defer src="/js/theme.min.js"></script>
-    </body>
+    <!-- accessibility-runtime:start -->
+    <script>
+    (function(){
+      'use strict';
+      if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches&&window.config&&window.config.typeit){window.config.typeit.speed=0;window.config.typeit.cursorSpeed=0;window.config.typeit.duration=0;}
+      function initAccessibility(){
+        var menuToggle=document.getElementById('menu-toggle-mobile');
+        var mobileMenu=document.getElementById('menu-mobile');
+        var mask=document.getElementById('mask');
+        var themeSwitches=document.querySelectorAll('.theme-switch');
+        var searchToggles=document.querySelectorAll('.search-toggle');
+        function later(fn){if(window.requestAnimationFrame){requestAnimationFrame(fn);}else{setTimeout(fn,0);}}
+        function syncMenu(){if(menuToggle&&mobileMenu){menuToggle.setAttribute('aria-expanded',mobileMenu.classList.contains('active')?'true':'false');}}
+        function syncTheme(){var dark=document.body.getAttribute('theme')==='dark';themeSwitches.forEach(function(item){item.setAttribute('aria-checked',dark?'true':'false');});}
+        function syncSearch(){searchToggles.forEach(function(item){var mobile=item.id.indexOf('mobile')!==-1;var header=document.getElementById(mobile?'header-mobile':'header-desktop');item.setAttribute('aria-expanded',header&&header.classList.contains('open')?'true':'false');});}
+        if(menuToggle){menuToggle.addEventListener('click',function(){later(syncMenu);});}
+        if(mask){mask.addEventListener('click',function(){later(syncMenu);later(syncSearch);});}
+        themeSwitches.forEach(function(item){item.addEventListener('click',function(){later(syncTheme);});});
+        searchToggles.forEach(function(item){item.addEventListener('click',function(){later(syncSearch);});});
+        document.querySelectorAll('.search input').forEach(function(item){item.addEventListener('focus',function(){later(syncSearch);});});
+        document.querySelectorAll('.search-cancel').forEach(function(item){item.addEventListener('click',function(){later(syncSearch);});});
+        document.addEventListener('keydown',function(event){
+          if(event.key!=='Escape')return;
+          var wasOpen=mobileMenu&&mobileMenu.classList.contains('active');
+          document.body.classList.remove('blur');
+          if(mobileMenu)mobileMenu.classList.remove('active');
+          if(menuToggle)menuToggle.classList.remove('active');
+          document.querySelectorAll('header.open').forEach(function(header){header.classList.remove('open');});
+          syncMenu();syncSearch();
+          if(wasOpen&&menuToggle)menuToggle.focus();
+        });
+        syncMenu();syncTheme();syncSearch();
+      }
+      if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',initAccessibility);}else{initAccessibility();}
+    })();
+    </script>
+    <!-- accessibility-runtime:end -->
+</body>
 </html>

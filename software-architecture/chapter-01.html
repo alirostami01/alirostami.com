@@ -57,7 +57,7 @@
             color: var(--accent);
             line-height: 1.4;
         }
-        h3 {
+        h2 {
             font-size: 1.35rem;
             color: var(--accent);
             margin: 2.4rem 0 .9rem;
@@ -66,7 +66,7 @@
             line-height: 1.4;
             scroll-margin-top: 1rem;
         }
-        h4 {
+        h3 {
             font-size: 1.15rem;
             color: var(--accent);
             margin: 1.6rem 0 .6rem;
@@ -157,7 +157,7 @@
             h1 {
                 font-size: 1.5rem;
             }
-            h3 {
+            h2 {
                 font-size: 1.2rem;
             }
         }
@@ -204,9 +204,41 @@
     <meta name="twitter:image" content="https://www.alirostami.com/images/social/software-architecture.jpg">
     <meta name="twitter:image:alt" content="ترجمه فارسی مبانی معماری نرم‌افزار؛ مطالعه آنلاین ۲۷ فصل و پیوست">
     <!-- image-seo:end -->
+    <!-- accessibility-styles:start -->
+    <style>
+    .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+    .skip-link{position:fixed;top:.75rem;left:.75rem;z-index:100000;padding:.65rem 1rem;border-radius:.35rem;background:#fff;color:#073b70;font-weight:700;box-shadow:0 2px 12px rgba(0,0,0,.25);transform:translateY(-180%);transition:transform .15s ease}
+    .skip-link:focus{transform:translateY(0)}
+    :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:3px solid #0563c1!important;outline-offset:3px!important}
+    [theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible,[data-theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline-color:#7dd3fc!important}
+    body[data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#5f5f66!important}
+    body[theme=dark][data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#b7bbc5!important}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#1d789b!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#6bc5e6!important}
+    body[data-header-desktop] .single .content a:not(.headerlink){text-decoration:underline!important;text-underline-offset:.15em}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#a41354!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#fff!important}
+    body[data-header-desktop] .search input::placeholder{color:#5f5f66!important;opacity:1}
+    body[theme=dark][data-header-desktop] .search input::placeholder{color:#b7bbc5!important}
+    button.menu-toggle{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;min-width:2rem;min-height:2rem}
+    button.search-button,button.search-cancel,button.theme-switch,button.history-back,button.share-button,button.script-button{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;line-height:inherit;cursor:pointer}
+    button.search-button,button.theme-switch,button.share-button,button.script-button{min-width:1.5rem;min-height:1.5rem}
+    button.history-back{text-decoration:underline;text-underline-offset:.15em}
+    summary.details-summary{list-style:none}
+    summary.details-summary::-webkit-details-marker{display:none}
+    .sidebar-controls .sidebar-action,.ch-chevron{appearance:none;border:0;background:transparent;color:inherit;font:inherit;cursor:pointer;min-height:1.5rem}
+    .sidebar-controls .sidebar-action{color:var(--text-muted)}
+    .sidebar-controls .sidebar-action:hover{color:var(--accent)}
+    .ch-chevron{padding:.2rem .4rem;min-width:2rem}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    </style>
+    <!-- accessibility-styles:end -->
 </head>
 <body>
+    <!-- accessibility-skip-link -->
+    <a class="skip-link" href="#main-content">رفتن به محتوای اصلی</a>
 <!-- خروجی HTML — کامپوننت کامل فصل ۱ (بدون html/head) -->
+<main class="chapter-main" id="main-content" tabindex="-1">
 <article class="chapter-content">
 
   <section id="support" class="support" aria-label="حمایت از پروژه" style="margin:0 0 1.5rem;padding:1rem 1.2rem;background:#eef4fa;border-right:5px solid #2c5f8a;border-radius:4px;">
@@ -235,7 +267,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-1" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">تعریف معماری نرم‌افزار</h3>
+    <h2 id="sec-1" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">تعریف معماری نرم‌افزار</h2>
 
     <p style="text-align:justify;">اما معماری نرم‌افزار واقعاً چیست؟ شکل ۱-۱ دیدگاه ما را از ماهیت معماری نرم‌افزار به تصویر می‌کشد. این تعریف چهار بُعد دارد: معماری نرم‌افزار یک سیستم از یک سبک معماری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Architecture Style)</bdi> به‌عنوان نقطهٔ شروع تشکیل شده است و با ویژگی‌های معماری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Architecture Characteristics)</bdi> که سیستم باید از آن‌ها پشتیبانی کند، مؤلفه‌های منطقی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Logical Components)</bdi> که رفتارش را پیاده‌سازی می‌کنند، و سرانجام تصمیمات معماری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Architecture Decisions)</bdi> که مبنای توجیه همهٔ این‌هاست، ترکیب شده است. خطوط ضخیم مشکی در تصویر، ساختار سیستم را نشان می‌دهند که ارکان معماری را در بر گرفته و استوار نگه داشته است. این ابعاد چهارگانه را به همان ترتیبی که معماران تحلیل می‌کنند، به‌سرعت مرور می‌کنیم؛ فصل‌های بعدی جزئیات بیشتری ارائه خواهند داد.</p>
 
@@ -278,7 +310,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-2" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">قوانین معماری نرم‌افزار</h3>
+    <h2 id="sec-2" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">قوانین معماری نرم‌افزار</h2>
 
     <p style="text-align:justify;">وقتی ما دو مؤلف، نوشتن ویرایش نخست این کتاب را آغاز کردیم، هدف بلندپروازانه‌ای داشتیم: امیدوار بودیم چیزهایی بیابیم که دربارهٔ معماری نرم‌افزار جهان‌شمول به نظر می‌رسند و آن‌ها را به‌صورت «قوانین» معماری نرم‌افزار <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Laws of Software Architecture)</bdi> درآوریم. هنگام نوشتن، پیوسته در پی اصولی بودیم که بتوان آن‌ها را مدون ساخت؛ امید داشتیم شاید ۱۰ یا ۱۵ قانون بیابیم. در کمال شگفتی ما، در ویرایش نخست در نهایت تنها به دو قانون رسیدیم و در حین نوشتن ویرایش دوم، قانون دیگری هم کشف کردیم. این سه قانون تا حد زیادی جهان‌شمول‌اند و بسیاری از دیدگاه‌های مهم را برای معماران فعال در صنعت روشن می‌کنند.</p>
 
@@ -325,7 +357,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-3" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">انتظارات از یک معمار</h3>
+    <h2 id="sec-3" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">انتظارات از یک معمار</h2>
 
     <p style="text-align:justify;">نقش معمار نرم‌افزار می‌تواند از یک برنامه‌نویس خبره تا تعیین‌کنندهٔ مسیر راهبردی فناوری برای کل یک سازمان متغیر باشد. همین تنوع گسترده، ارائهٔ تعریفی یکتا از این نقش را دشوار می‌سازد؛ اما آنچه با دقت می‌توان بیان کرد، انتظاراتی است که از یک معمار نرم‌افزار می‌رود. ما هشت انتظار محوری را برای هر معمار نرم‌افزار شناسایی کرده‌ایم، فارغ از اینکه نقش، عنوان شغلی یا شرح شغلشان چه باشد:</p>
 
@@ -346,7 +378,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:0 0 .6rem;">گرفتن تصمیمات معماری</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:0 0 .6rem;" data-a11y-heading="promoted-from-h4">گرفتن تصمیمات معماری</h3>
     <p style="text-align:justify;">از معمار انتظار می‌رود تصمیمات معماری و اصول طراحی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Design Principles)</bdi>‌ای را تعریف کند که برای هدایت تصمیمات فناوری در سطح تیم، واحد یا سراسر سازمان به کار می‌روند.</p>
     <p style="text-align:justify;">«هدایت» کلیدواژهٔ همین انتظار نخست است: معماران باید انتخاب‌های فناوری را هدایت کنند، نه اینکه از پیش برایشان تعیین کرده باشند. برای نمونه، تصمیم‌گیری برای به‌کارگیری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">React.js</bdi> در توسعهٔ سمت کاربر <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Frontend)</bdi> یک تصمیم فنی است، نه یک تصمیم معماری. معمار به‌جای گرفتن این تصمیم، باید از تیم‌های توسعه بخواهد که برای توسعهٔ وب از چارچوب واکنش‌گرا <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Reactive Framework)</bdi> استفاده کنند و آن‌ها را به سمت انتخاب <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Angular</bdi>، <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Elm</bdi>، <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">React.js</bdi>، <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Vue</bdi> یا هر چارچوب وب واکنش‌گرای دیگری راهنمایی کند. نکتهٔ کلیدی این پرسش است که آیا تصمیم معماری، تیم‌ها را در انتخاب‌های درستِ فنی راهنمایی می‌کند یا اینکه انتخاب را از دستشان درمی‌آورد. با این همه، گاهی معماران باید تصمیمات فناوری مشخصی بگیرند تا ویژگی معماری خاصی—مانند مقیاس‌پذیری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Scalability)</bdi>، عملکرد <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Performance)</bdi> یا دسترس‌پذیری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Availability)</bdi>—را حفظ کنند. معماران اغلب برای یافتن این تعادل دچار مشکل می‌شوند؛ به همین دلیل است که فصل ۲۱ تماماً دربارهٔ تصمیمات معماری است.</p>
   </section>
@@ -354,7 +386,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:0 0 .6rem;">تحلیل پیوستهٔ معماری</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:0 0 .6rem;" data-a11y-heading="promoted-from-h4">تحلیل پیوستهٔ معماری</h3>
     <p style="text-align:justify;">از معمار انتظار می‌رود معماری و محیط فناوری فعلی را به‌طور پیوسته تحلیل کند و راه‌حل‌هایی برای بهبود پیشنهاد دهد.</p>
     <p style="text-align:justify;">سرزندگی معماری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Architecture Vitality)</bdi> می‌سنجد که معماری‌ای که سه سال یا بیشتر پیش تعریف شده، با در نظر گرفتنِ تغییرات کسب‌وکار و فناوری، امروز تا چه حد پابرجاست. بر اساس تجربهٔ ما، معماران به اندازهٔ کافی انرژی‌شان را صرف تحلیل پیوستهٔ معماری‌های موجود نمی‌کنند. در نتیجه، بیشتر معماری‌ها دچار عناصری از فرسایش ساختاری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Structural Decay)</bdi> می‌شوند؛ حالتی که توسعه‌دهندگان تغییرات کدنویسی یا طراحی‌ای ایجاد می‌کنند که بر ویژگی‌های معماری موردنیاز—مثل عملکرد، دسترس‌پذیری و مقیاس‌پذیری—تأثیر نامطلوب بگذارد.</p>
     <p style="text-align:justify;">جنبه‌های فراموش‌شدهٔ دیگرِ این انتظار، محیط‌های آزمون و انتشار است. توانایی تغییر سریع کد نوعی چابکی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Agility)</bdi> با منافع آشکار است، اما اگر آزمون تغییرات هفته‌ها طول بکشد و انتشار ماه‌ها، کل معماری نمی‌تواند به چابکی دست یابد.</p>
@@ -364,7 +396,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:0 0 .6rem;">به‌روزماندن با آخرین روندها</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:0 0 .6rem;" data-a11y-heading="promoted-from-h4">به‌روزماندن با آخرین روندها</h3>
     <p style="text-align:justify;">از معمار انتظار می‌رود با آخرین روندهای فناوری و صنعت به‌روز بماند.</p>
     <p style="text-align:justify;">توسعه‌دهندگان باید از آخرین فناوری‌ها و نیز فناوری‌هایی که هر روز استفاده می‌کنند به‌روز بمانند تا جایگاه حرفه‌ای خود را حفظ کنند (و شغلشان را از دست ندهند!). برای معماران، به‌روزماندن با آخرین روندهای فناوری و صنعت حتی حیاتی‌تر است. تصمیمات معماران معمولاً ماندگار و دیرپا هستند و تغییر دادن آن‌ها دشوار است. شناخت روندها به معماران کمک می‌کند تصمیماتی بگیرند که در آینده هم کارآمد بمانند. برای نمونه، معماران در سال‌های اخیر ناگزیر شده‌اند دربارهٔ ذخیره‌سازی و استقرار مبتنی بر ابر <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Cloud)</bdi> بیاموزند و همین حالا که این ویرایش دوم را می‌نویسیم، هوش مصنوعی مولد تأثیری عظیم بر بخش‌های بسیاری از اکوسیستم توسعه دارد.</p>
     <p style="text-align:justify;">پیگیری روندها و به‌روزماندن با آن‌ها دشوار است، به‌ویژه برای معمار نرم‌افزار. در فصل ۲، تکنیک‌ها و منابعی را برای نحوهٔ مدیریت این کار بررسی می‌کنیم.</p>
@@ -373,12 +405,12 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:0 0 .6rem;">اطمینان از انطباق با تصمیمات</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:0 0 .6rem;" data-a11y-heading="promoted-from-h4">اطمینان از انطباق با تصمیمات</h3>
     <p style="text-align:justify;">از معمار انتظار می‌رود از انطباق تصمیمات معماری و اصول طراحی اطمینان حاصل کند.</p>
     <p style="text-align:justify;">اطمینان از انطباق یعنی پیوسته راستی‌آزمایی کنید که تیم‌های توسعه از تصمیمات و اصول طراحی‌ای پیروی می‌کنند که معمار تعریف کرده، مستند ساخته و اطلاع‌رسانی کرده است.</p>
     <p style="text-align:justify;">فرض کنید شما به‌عنوان معمار تصمیم می‌گیرید دسترسی به پایگاه‌داده در یک معماری لایه‌ای را فقط به لایه‌های <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Business</bdi> و <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Services</bdi> محدود کنید (نه لایهٔ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Presentation</bdi>). این—همان‌طور که در فصل ۱۰ خواهید دید—یعنی لایهٔ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Presentation</bdi> باید از همهٔ لایه‌های معماری عبور کند تا حتی ساده‌ترین فراخوانی پایگاه‌داده را انجام دهد. اما توسعه‌دهندهٔ رابط کاربری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(UI)</bdi> با این تصمیم مخالف است و به دلایل عملکردی و سرعت، به لایهٔ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Presentation</bdi> دسترسی مستقیم به پایگاه‌داده می‌دهد. شما آن تصمیم معماری را با دلیل مشخصی گرفته‌اید: تا تغییرات پایگاه‌داده روی لایهٔ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Presentation</bdi> اثر نگذارد. اگر از انطباق تصمیمات معماری‌تان مطمئن نشوید، چنین تخطی‌هایی رخ می‌دهد. نتیجه می‌تواند این باشد که معماری از فراهم‌کردن ویژگی‌های موردنیاز باز بماند و برنامه یا سیستم آن‌طور که انتظار می‌رود کار نکند. در فصل ۶، اندازه‌گیری انطباق را با استفاده از توابع برازش خودکار <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Automated Fitness Functions)</bdi> و ابزارهای دیگر بررسی می‌کنیم.</p>
 
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1rem 0 .6rem;">شناخت فناوری‌های گوناگون</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1rem 0 .6rem;" data-a11y-heading="promoted-from-h4">شناخت فناوری‌های گوناگون</h3>
     <p style="text-align:justify;">از معمار انتظار می‌رود با فناوری‌ها، چارچوب‌ها، پلتفرم‌ها و محیط‌های متعدد و گوناگون آشنایی داشته باشد.</p>
     <p style="text-align:justify;">از هیچ معماری انتظار نمی‌رود در همهٔ چارچوب‌ها، پلتفرم‌ها و زبان‌ها خبره باشد، اما دست‌کم باید با انواع فناوری‌ها آشنا باشد. بیشتر محیط‌های امروزی ناهمگون <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Heterogeneous)</bdi>‌اند؛ بنابراین معماران دست‌کم باید بدانند چگونه با سیستم‌ها و سرویس‌های متعدد—فارغ از زبان، پلتفرم یا فناوری‌شان—ارتباط برقرار کنند.</p>
     <p style="text-align:justify;">یکی از بهترین راه‌ها برای پاسخ‌گویی به این انتظار، پا را فراتر از حاشیهٔ امن <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Comfort Zone)</bdi> گذاشتن و جست‌وجویی جدی برای فرصت‌های کسب تجربه در زبان‌ها، پلتفرم‌ها و فناوری‌های متعدد است. معماران باید به جای ژرفای فنی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Technical Depth)</bdi>، بر گستردگی فنی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Technical Breadth)</bdi> تمرکز کنند. گستردگی فنی یعنی داشتن شناختی جامع و کلان از گسترهٔ فناوری‌ها، در کنار حوزه‌های محدودی که در آن‌ها تخصص و عمق فراوان دارید. برای نمونه، آشنا بودن با مزایا و معایب ۱۰ محصول مختلفِ کش‌گذاری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Caching)</bdi> برای معمار بسیار ارزشمندتر از خبره‌شدن در فقط یکی از آن‌هاست.</p>
@@ -387,7 +419,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:0 0 .6rem;">شناخت حوزهٔ کسب‌وکار</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:0 0 .6rem;" data-a11y-heading="promoted-from-h4">شناخت حوزهٔ کسب‌وکار</h3>
     <p style="text-align:justify;">از معمار انتظار می‌رود سطح معینی از تخصص در حوزهٔ کسب‌وکار <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Business Domain)</bdi> داشته باشد.</p>
     <p style="text-align:justify;">معماران اثربخش نرم‌افزار، مسئلهٔ کسب‌وکار، اهداف و الزاماتی را که معماری باید حل‌شان کند به‌خوبی درک می‌کنند؛ مجموع این‌ها را حوزهٔ کسب‌وکارِ فضای مسئله می‌نامند. اگر الزامات کسب‌وکار را نشناسید، طراحی معماری‌ای اثربخش دشوار است. تصور کنید معمار بانک بزرگی هستید اما اصطلاحات رایج مالی—مثل میانگین جهت‌دار <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Average Directional Index)</bdi>، قراردادهای تصادفی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Aleatory Contracts)</bdi>، جهش نرخ‌ها <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Rates Rally)</bdi> یا حتی بدهی‌های غیراولویت‌دار <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Nonpriority Debt)</bdi>— را نمی‌فهمید. در این صورت نخواهید توانست با ذی‌نفعان <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Stakeholders)</bdi> و کاربران کسب‌وکار ارتباط برقرار کنید و به‌سرعت اعتبارتان را از دست می‌دهید.</p>
     <p style="text-align:justify;">موفق‌ترین معمارانی که می‌شناسیم، دانش فنی گسترده و عملی و شناخت عمیقی از حوزه‌ای خاص دارند. آن‌ها می‌توانند با مدیران ارشد <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(C-level Executives)</bdi> و کاربران کسب‌وکار به زبانی سخن بگویند که این ذی‌نفعان می‌فهمند و درک می‌کنند؛ این‌گونه اطمینان ایجاد می‌کنند که می‌دانند چه می‌کنند و صلاحیت ساختن معماری‌ای مؤثر و درست را دارند.</p>
@@ -396,7 +428,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:0 0 .6rem;">داشتن مهارت‌های میان‌فردی</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:0 0 .6rem;" data-a11y-heading="promoted-from-h4">داشتن مهارت‌های میان‌فردی</h3>
     <p style="text-align:justify;">از معمار انتظار می‌رود مهارت‌های میان‌فردی چشمگیری داشته باشد، از جمله کار تیمی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Teamwork)</bdi>، تسهیل‌گری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Facilitation)</bdi> و رهبری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Leadership)</bdi>.</p>
     <p style="text-align:justify;">ما اهالی فناوری هستیم و توسعه‌دهندگان و معماران معمولاً حل مسائل فنی را به چالش‌های انسانی ترجیح می‌دهند؛ همین، داشتن رهبری و مهارت‌های میان‌فردی چشمگیر را به انتظاری دشوار تبدیل می‌کند. با این حال، همان‌طور که <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Gerald Weinberg</bdi> معروف می‌گفت: «هرچه به شما بگویند، همیشه یک مسئلهٔ انسانی است.» راهنمایی‌ای که معماران ارائه می‌دهند فقط فنی نیست؛ شامل رهبری تیم‌های توسعه در مسیر پیاده‌سازی معماری هم می‌شود. مهارت‌های رهبری دست‌کم نیمی از شروط لازم برای تبدیل‌شدن به یک معمار اثربخش نرم‌افزار را تشکیل می‌دهند؛ فارغ از نقش یا عنوان شغلی.</p>
     <p style="text-align:justify;">صنعت نرم‌افزار مملو از معمارانی است که همگی بر سر تعداد محدودی جایگاه کلیدی رقابت می‌کنند. کسانی که مهارت‌های رهبری و میان‌فردی قوی‌ای دارند، از میان جمعیت متمایز می‌شوند. برعکس، معماران نرم‌افزار زیادی را می‌شناسیم که فناورانی عالی‌اند اما در رهبری تیم‌ها، مربی‌گری و راهنمایی توسعه‌دهندگان، یا رساندن ایده‌ها و تصمیمات و اصول معماری به دیگران دچار مشکل‌اند. نیازی به گفتن نیست که چنین معمارانی در حفظ شغلشان دچار مشکل می‌شوند.</p>
@@ -405,7 +437,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:0 0 .6rem;">شناخت سیاست‌های سازمانی و حرکت در آن‌ها</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:0 0 .6rem;" data-a11y-heading="promoted-from-h4">شناخت سیاست‌های سازمانی و حرکت در آن‌ها</h3>
     <p style="text-align:justify;">از معمار انتظار می‌رود آب‌وهوای سیاسی سازمان را بشناسد و بتواند در میان سیاست‌های آن حرکت کند.</p>
     <p style="text-align:justify;">شاید عجیب به نظر برسد که در کتابی دربارهٔ معماری نرم‌افزار از سیاست‌های اداری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Office Politics)</bdi> حرف بزنیم، اما مهارت‌های مذاکره <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Negotiation Skills)</bdi> برای این نقش حیاتی‌اند. برای روشن‌شدن، دو سناریو را در نظر بگیرید.</p>
     <p style="text-align:justify;">در سناریوی نخست، توسعه‌دهنده‌ای تصمیم می‌گیرد از الگوی طراحی خاصی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Design Pattern)</bdi> برای کاهش پیچیدگی تکه‌کد درهم‌پیچیده‌ای بهره بگیرد. این تصمیم خوبی است و توسعه‌دهنده نیازی ندارد برایش دنبال تأیید بگردد. جنبه‌های برنامه‌نویسی—مانند ساختار کد، طراحی کلاس، انتخاب الگوی طراحی و گاهی حتی انتخاب زبان—همگی بخشی از هنر برنامه‌نویسی‌اند.</p>
@@ -416,28 +448,28 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-4" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">نقشهٔ راه کتاب</h3>
+    <h2 id="sec-4" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">نقشهٔ راه کتاب</h2>
     <p style="text-align:justify;">این کتاب از سه بخش تشکیل شده است:</p>
 
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1rem 0 .6rem;">بخش اول: مبانی</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1rem 0 .6rem;" data-a11y-heading="promoted-from-h4">بخش اول: مبانی</h3>
     <p style="text-align:justify;">بخش اول، اجزای کلیدی معماری نرم‌افزار را تعریف می‌کند و بر دو عنصر کلیدی ساختار معماری تمرکز دارد: ویژگی‌های معماری و مؤلفه‌های منطقی. تحلیل هر یک به تکنیک‌های متفاوتی نیاز دارد که آن‌ها را با جزئیات کامل پوشش می‌دهیم. خروجی این فعالیت‌ها، اطلاعات کافی را در اختیار معمار نرم‌افزار می‌گذارد تا سبک معماری مناسبی را به‌عنوان داربست و چارچوب اولیه <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Scaffolding)</bdi> برای پیاده‌سازی انتخاب کند.</p>
 
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1rem 0 .6rem;">بخش دوم: سبک‌های معماری</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1rem 0 .6rem;" data-a11y-heading="promoted-from-h4">بخش دوم: سبک‌های معماری</h3>
     <p style="text-align:justify;">بخش دوم، فهرستی از سبک‌های معماری—یعنی توپولوژی‌های نام‌دار <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Named Topologies)</bdi>ِ معماری نرم‌افزار—ارائه می‌دهد. تفاوت‌های ساختاری و ارتباطی هر سبک را نشان می‌دهیم و مبنایی برای مقایسه در طیفی گسترده فراهم می‌کنیم که توپولوژی‌های داده، تیم‌ها و معماری‌های فیزیکی را هم در بر می‌گیرد.</p>
 
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1rem 0 .6rem;">بخش سوم: تکنیک‌ها و مهارت‌های نرم</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1rem 0 .6rem;" data-a11y-heading="promoted-from-h4">بخش سوم: تکنیک‌ها و مهارت‌های نرم</h3>
     <p style="text-align:justify;">بخش‌های اول و دوم بر جنبه‌های فنی شغل تمرکز دارند، اما بخش بزرگی از نقش معمار نرم‌افزار به چیزی برمی‌گردد که به‌طور سنتی مهارت‌های نرم <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Soft Skills)</bdi> می‌نامند: مهارت‌هایی که با فناوری نه، بلکه با آدم‌ها سر و کار دارند. جالب اینکه مهارت‌های نرم غالباً دشوارترین چیزی است که معماران تازه‌کار باید به دست آورند، چون مسیرهای اصلی رسیدن به نقش معمار نرم‌افزار معمولاً بیشتر به درخشش فنی تکیه دارند تا میان‌فردی. با این حال، معماران به محض ورود به شغل درمی‌یابند که این مهارت‌ها حیاتی‌اند. بنابراین، بخش سوم کتابمان چند مهارت نرم حیاتی را پوشش می‌دهد تا در این نقش پیروز شوید.</p>
   </section>
 
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-5" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">واژه‌نامهٔ اختصاصی این فصل</h3>
+    <h2 id="sec-5" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">واژه‌نامهٔ اختصاصی این فصل</h2>
     <table dir="rtl" style="width:100%;border-collapse:collapse;font-size:.95rem;">
       <thead>
         <tr style="background:#2c5f8a;color:#fff;">
-          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;">واژهٔ انگلیسی</th>
-          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;">معادل مصوب/به‌کاررفته در این فصل</th>
+          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;" scope="col">واژهٔ انگلیسی</th>
+          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;" scope="col">معادل مصوب/به‌کاررفته در این فصل</th>
         </tr>
       </thead>
       <tbody>
@@ -518,6 +550,7 @@
   </section>
 
 </article>
+</main>
 
 <script id="fosa-standalone-helper">
   if (window.self === window.top) {

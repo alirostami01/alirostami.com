@@ -183,77 +183,110 @@
     <!-- performance-image-preload:start -->
     <link rel="preload" as="image" href="/images/Ali-256.jpg" fetchpriority="high" imagesrcset="/images/Ali-256.jpg 1x, /images/Ali-512.jpg 2x">
     <!-- performance-image-preload:end -->
+    <!-- accessibility-styles:start -->
+    <style>
+    .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+    .skip-link{position:fixed;top:.75rem;left:.75rem;z-index:100000;padding:.65rem 1rem;border-radius:.35rem;background:#fff;color:#073b70;font-weight:700;box-shadow:0 2px 12px rgba(0,0,0,.25);transform:translateY(-180%);transition:transform .15s ease}
+    .skip-link:focus{transform:translateY(0)}
+    :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:3px solid #0563c1!important;outline-offset:3px!important}
+    [theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible,[data-theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline-color:#7dd3fc!important}
+    body[data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#5f5f66!important}
+    body[theme=dark][data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#b7bbc5!important}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#1d789b!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#6bc5e6!important}
+    body[data-header-desktop] .single .content a:not(.headerlink){text-decoration:underline!important;text-underline-offset:.15em}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#a41354!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#fff!important}
+    body[data-header-desktop] .search input::placeholder{color:#5f5f66!important;opacity:1}
+    body[theme=dark][data-header-desktop] .search input::placeholder{color:#b7bbc5!important}
+    button.menu-toggle{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;min-width:2rem;min-height:2rem}
+    button.search-button,button.search-cancel,button.theme-switch,button.history-back,button.share-button,button.script-button{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;line-height:inherit;cursor:pointer}
+    button.search-button,button.theme-switch,button.share-button,button.script-button{min-width:1.5rem;min-height:1.5rem}
+    button.history-back{text-decoration:underline;text-underline-offset:.15em}
+    summary.details-summary{list-style:none}
+    summary.details-summary::-webkit-details-marker{display:none}
+    .sidebar-controls .sidebar-action,.ch-chevron{appearance:none;border:0;background:transparent;color:inherit;font:inherit;cursor:pointer;min-height:1.5rem}
+    .sidebar-controls .sidebar-action{color:var(--text-muted)}
+    .sidebar-controls .sidebar-action:hover{color:var(--accent)}
+    .ch-chevron{padding:.2rem .4rem;min-width:2rem}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    </style>
+    <!-- accessibility-styles:end -->
 </head>
-    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="fixed" data-header-mobile="auto">
+    <!-- accessibility-skip-link -->
+    <a class="skip-link" href="#main-content">رفتن به محتوای اصلی</a>
+<script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
-        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop" aria-label="سربرگ دسکتاپ">
     <div class="header-wrapper">
         <div class="header-title">
             <a href="/" title="علی رستمی">علی رستمی</a>
         </div>
-        <div class="menu">
+        <nav class="menu" aria-label="پیمایش اصلی دسکتاپ">
             <div class="menu-inner"><a href="/software-architecture/" class="menu-item" title="مطالعه آنلاین کتاب مبانی معماری نرم‌افزار"><i class="fas fa-cubes fa-fw" aria-hidden="true"></i> کتاب معماری نرم‌افزار</a><a href="/aima-4e/" class="menu-item" title="مطالعه آنلاین کتاب هوش مصنوعی AIMA 4e"><i class="fas fa-brain fa-fw" aria-hidden="true"></i> کتاب هوش مصنوعی</a><a href="/persian-streams/" class="menu-item" title="افزونه فیلم و سریال ایرانی Persian Streams برای استرمیو">افزونه استرمیو Persian Streams</a><a href="/persian-subtitles/" class="menu-item" title="افزونه زیرنویس فارسی Persian Subtitles برای استرمیو">افزونه استرمیو Persian Subtitles</a><a href="/posts/" class="menu-item" title="آرشیو مقالات و بلاگ">مقالات</a><a href="/support/" class="menu-item" title="حمایت از پروژه‌ها"><i class="fas fa-heart fa-fw" style="color:#e0245e;" aria-hidden="true"></i> حمایت</a><span class="menu-item search" id="search-desktop">
-                        <input type="text" placeholder="جستجو عنوان یا متن..." id="search-input-desktop">
-                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="جستجو">
+                        <input type="text" placeholder="جستجو عنوان یا متن..." id="search-input-desktop" aria-label="جستجو عنوان یا متن..." autocomplete="off" enterkeyhint="search">
+                        <button class="search-button search-toggle" id="search-toggle-desktop" title="جستجو" aria-controls="search-dropdown-desktop" aria-expanded="false" aria-label="جستجو" type="button">
                             <i class="fas fa-search fa-fw" aria-hidden="true"></i>
-                        </a>
-                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="پاک کردن">
+                        </button>
+                        <button class="search-button search-clear" id="search-clear-desktop" title="پاک کردن" aria-label="پاک کردن" type="button">
                             <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
-                        </a>
-                        <span class="search-button search-loading" id="search-loading-desktop">
+                        </button>
+                        <span class="search-button search-loading" id="search-loading-desktop" role="status" aria-live="polite" aria-label="در حال جستجو">
                             <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
                         </span>
-                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="تغییر ظاهر">
+                    </span><button class="menu-item theme-switch" title="تغییر ظاهر" role="switch" aria-checked="false" aria-label="تغییر ظاهر" type="button">
                     <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
-                </a></div>
-        </div>
+                </button></div>
+        </nav>
     </div>
-</header><header class="mobile" id="header-mobile">
+</header><header class="mobile" id="header-mobile" aria-label="سربرگ موبایل">
     <div class="header-container">
         <div class="header-wrapper">
             <div class="header-title">
                 <a href="/" title="علی رستمی">علی رستمی</a>
             </div>
-            <div class="menu-toggle" id="menu-toggle-mobile">
+            <button class="menu-toggle" id="menu-toggle-mobile" type="button" aria-label="باز کردن منوی اصلی" aria-controls="menu-mobile" aria-expanded="false">
                 <span></span><span></span><span></span>
-            </div>
+            </button>
         </div>
-        <div class="menu" id="menu-mobile"><a href="/software-architecture/" class="menu-item" title="مطالعه آنلاین کتاب مبانی معماری نرم‌افزار"><i class="fas fa-cubes fa-fw" aria-hidden="true"></i> کتاب معماری نرم‌افزار</a><a href="/aima-4e/" class="menu-item" title="مطالعه آنلاین کتاب هوش مصنوعی AIMA 4e"><i class="fas fa-brain fa-fw" aria-hidden="true"></i> کتاب هوش مصنوعی</a><a href="/persian-streams/" class="menu-item" title="افزونه فیلم و سریال ایرانی Persian Streams برای استرمیو">افزونه استرمیو Persian Streams</a><a href="/persian-subtitles/" class="menu-item" title="افزونه زیرنویس فارسی Persian Subtitles برای استرمیو">افزونه استرمیو Persian Subtitles</a><a href="/posts/" class="menu-item" title="آرشیو مقالات و بلاگ">مقالات</a><a href="/support/" class="menu-item" title="حمایت از پروژه‌ها"><i class="fas fa-heart fa-fw" style="color:#e0245e;" aria-hidden="true"></i> حمایت</a><div class="search-wrapper">
+        <nav class="menu" id="menu-mobile" aria-label="پیمایش اصلی موبایل"><a href="/software-architecture/" class="menu-item" title="مطالعه آنلاین کتاب مبانی معماری نرم‌افزار"><i class="fas fa-cubes fa-fw" aria-hidden="true"></i> کتاب معماری نرم‌افزار</a><a href="/aima-4e/" class="menu-item" title="مطالعه آنلاین کتاب هوش مصنوعی AIMA 4e"><i class="fas fa-brain fa-fw" aria-hidden="true"></i> کتاب هوش مصنوعی</a><a href="/persian-streams/" class="menu-item" title="افزونه فیلم و سریال ایرانی Persian Streams برای استرمیو">افزونه استرمیو Persian Streams</a><a href="/persian-subtitles/" class="menu-item" title="افزونه زیرنویس فارسی Persian Subtitles برای استرمیو">افزونه استرمیو Persian Subtitles</a><a href="/posts/" class="menu-item" title="آرشیو مقالات و بلاگ">مقالات</a><a href="/support/" class="menu-item" title="حمایت از پروژه‌ها"><i class="fas fa-heart fa-fw" style="color:#e0245e;" aria-hidden="true"></i> حمایت</a><div class="search-wrapper">
                     <div class="search mobile" id="search-mobile">
-                        <input type="text" placeholder="جستجو عنوان یا متن..." id="search-input-mobile">
-                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="جستجو">
+                        <input type="text" placeholder="جستجو عنوان یا متن..." id="search-input-mobile" aria-label="جستجو عنوان یا متن..." autocomplete="off" enterkeyhint="search">
+                        <button class="search-button search-toggle" id="search-toggle-mobile" title="جستجو" aria-controls="search-dropdown-mobile" aria-expanded="false" aria-label="جستجو" type="button">
                             <i class="fas fa-search fa-fw" aria-hidden="true"></i>
-                        </a>
-                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="پاک کردن">
+                        </button>
+                        <button class="search-button search-clear" id="search-clear-mobile" title="پاک کردن" aria-label="پاک کردن" type="button">
                             <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
-                        </a>
-                        <span class="search-button search-loading" id="search-loading-mobile">
+                        </button>
+                        <span class="search-button search-loading" id="search-loading-mobile" role="status" aria-live="polite" aria-label="در حال جستجو">
                             <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
                         </span>
                     </div>
-                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                    <button class="search-cancel" id="search-cancel-mobile" type="button">
                         لغو کردن
-                    </a>
-                </div><a href="javascript:void(0);" class="menu-item theme-switch" title="تغییر ظاهر">
+                    </button>
+                </div><button class="menu-item theme-switch" title="تغییر ظاهر" role="switch" aria-checked="false" aria-label="تغییر ظاهر" type="button">
                 <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
-            </a></div>
+            </button></nav>
     </div>
 </header><div class="search-dropdown desktop">
         <div id="search-dropdown-desktop"></div>
     </div>
     <div class="search-dropdown mobile">
         <div id="search-dropdown-mobile"></div>
-    </div><main class="main">
+    </div><main class="main" id="main-content" tabindex="-1">
+<h1 class="sr-only">علی رستمی (Ali Rostami) | توسعه‌دهنده نرم‌افزار، هوش مصنوعی و پروژه‌های متن‌باز</h1>
                 <div class="container"><div class="page home" data-home="posts"><div class="home-profile"><div class="home-avatar"><img
         src="/images/Ali-256.jpg"
         alt="علی رستمی - معمار ارشد نرم‌افزار"
-        title="علی رستمی - معمار ارشد نرم‌افزار" width="256" height="256" srcset="/images/Ali-256.jpg 1x, /images/Ali-512.jpg 2x" loading="eager" fetchpriority="high" decoding="async" /></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/alirostami01" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="https://www.linkedin.com/in/alirostami01" title="LinkedIn" target="_blank" rel="noopener noreffer me"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="https://twitter.com/alirostami01" title="Twitter" target="_blank" rel="noopener noreffer me"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="https://www.instagram.com/alirostami01" title="Instagram" target="_blank" rel="noopener noreffer me"><i class="fab fa-instagram fa-fw" aria-hidden="true"></i></a><a href="https://www.facebook.com/alirostami01" title="facebook" target="_blank" rel="noopener noreffer me"><i class="fab fa-facebook fa-fw" aria-hidden="true"></i></a><a href="https://t.me/alirostami01" title="Telegram" target="_blank" rel="noopener noreffer me"><i class="fab fa-telegram-plane fa-fw" aria-hidden="true"></i></a><a href="mailto:rostami.ali@gmail.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
+        title="علی رستمی - معمار ارشد نرم‌افزار" width="256" height="256" srcset="/images/Ali-256.jpg 1x, /images/Ali-512.jpg 2x" loading="eager" fetchpriority="high" decoding="async" /></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/alirostami01" title="GitHub" target="_blank" rel="noopener me noreferrer" aria-label="GitHub"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="https://www.linkedin.com/in/alirostami01" title="LinkedIn" target="_blank" rel="noopener me noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="https://twitter.com/alirostami01" title="Twitter" target="_blank" rel="noopener me noreferrer" aria-label="Twitter"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="https://www.instagram.com/alirostami01" title="Instagram" target="_blank" rel="noopener me noreferrer" aria-label="Instagram"><i class="fab fa-instagram fa-fw" aria-hidden="true"></i></a><a href="https://www.facebook.com/alirostami01" title="facebook" target="_blank" rel="noopener me noreferrer" aria-label="facebook"><i class="fab fa-facebook fa-fw" aria-hidden="true"></i></a><a href="https://t.me/alirostami01" title="Telegram" target="_blank" rel="noopener me noreferrer" aria-label="Telegram"><i class="fab fa-telegram-plane fa-fw" aria-hidden="true"></i></a><a href="mailto:rostami.ali@gmail.com" title="Email" rel="me" aria-label="Email"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <!-- ۱. پروژه کتاب مبانی معماری نرم‌افزار -->
 <article class="single summary summary-fa" itemscope itemtype="https://schema.org/Article" dir="rtl">
     <meta itemprop="image" content="https://opengraph.githubassets.com/1/alirostami01/fundamentals-of-software-architecture-persian">
-    <h1 class="single-title" itemprop="name headline">
+    <h2 class="single-title" itemprop="name headline">
         <a href="/fundamentals-of-software-architecture-persian/" title="کتاب مبانی معماری نرم‌افزار اثر مارک ریچاردز و نیل فورد — ترجمه فارسی">مبانی معماری نرم‌افزار: رویکردی مهندسی و مدرن — ترجمهٔ فارسی</a>
-    </h1>
+    </h2>
     <div class="post-meta">
         <span class="post-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
             <a href="https://www.alirostami.com/" itemprop="url" title="علی رستمی (Ali Rostami)" rel="author" class="author">
@@ -270,9 +303,9 @@
 <!-- ۲. پروژه کتاب هوش مصنوعی (AIMA 4e) -->
 <article class="single summary summary-fa" itemscope itemtype="https://schema.org/Article" dir="rtl">
     <meta itemprop="image" content="https://opengraph.githubassets.com/1/alirostami01/aima-4e-persian">
-    <h1 class="single-title" itemprop="name headline">
+    <h2 class="single-title" itemprop="name headline">
         <a href="/aima-4e-persian/" title="کتاب هوش مصنوعی: یک رویکرد مدرن اثر راسل و نورویگ — ترجمه فارسی">هوش مصنوعی: یک رویکرد مدرن — ترجمهٔ فارسی (AIMA 4e)</a>
-    </h1>
+    </h2>
     <div class="post-meta">
         <span class="post-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
             <a href="https://www.alirostami.com/" itemprop="url" title="علی رستمی (Ali Rostami)" rel="author" class="author">
@@ -289,9 +322,9 @@
 <!-- ۳. پروژه Persian Streams -->
 <article class="single summary summary-fa" itemscope itemtype="https://schema.org/Article" dir="rtl">
     <meta itemprop="image" content="https://opengraph.githubassets.com/1/alirostami01/Persian-Streams">
-    <h1 class="single-title" itemprop="name headline">
+    <h2 class="single-title" itemprop="name headline">
         <a href="/persian-streams/" title="افزونه پخش فیلم و سریال ایرانی برای استرمیو">Persian Streams — افزونهٔ پخش فیلم و سریال ایرانی برای استرمیو</a>
-    </h1>
+    </h2>
     <div class="post-meta">
         <span class="post-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
             <a href="https://www.alirostami.com/" itemprop="url" title="علی رستمی (Ali Rostami)" rel="author" class="author">
@@ -308,9 +341,9 @@
 <!-- ۴. پروژه Persian Subtitles -->
 <article class="single summary summary-fa" itemscope itemtype="https://schema.org/Article" dir="rtl">
     <meta itemprop="image" content="https://opengraph.githubassets.com/1/alirostami01/Persian-Subtitles">
-    <h1 class="single-title" itemprop="name headline">
+    <h2 class="single-title" itemprop="name headline">
         <a href="/persian-subtitles/" title="افزونه زیرنویس فارسی خودکار برای استرمیو">Persian Subtitles — افزونهٔ زیرنویس فارسی استرمیو</a>
-    </h1>
+    </h2>
     <div class="post-meta">
         <span class="post-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
             <a href="https://www.alirostami.com/" itemprop="url" title="علی رستمی (Ali Rostami)" rel="author" class="author">
@@ -324,14 +357,14 @@
     </div>
 </article></div></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">ایجاد شده توسط <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.2">Hugo</a> | پوسته - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i>2022 - <span itemprop="copyrightYear">2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">علی رستمی</a></span></div>
+        <div class="footer-container"><div class="footer-line">ایجاد شده توسط <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.2">Hugo</a> | پوسته - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreferrer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i>2022 - <span itemprop="copyrightYear">2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">علی رستمی</a></span></div>
         </div>
     </footer></div>
 
-        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="برگشت به بالا">
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="برگشت به بالا" aria-label="برگشت به بالا">
                 <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
-            </a><a href="#" id="view-comments" class="fixed-button" title="مشاهده نظرات">
+            </a><a href="#" id="view-comments" class="fixed-button" title="مشاهده نظرات" aria-label="مشاهده نظرات">
                 <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
         </div><script type="text/javascript">window.config={"code":{"copyTitle":"کپی به کلیپ بورد","maxShownLines":50},"data":{"id-1":"توسعه‌دهنده نرم‌افزار، هوش مصنوعی و پروژه‌های متن‌باز"},"search":{"highlightTag":"em","maxResultLength":10,"noResultsFound":"نتیجه ای پیدا نشد","snippetLength":30},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"]},"duration":-1,"speed":100}};</script>
@@ -339,5 +372,42 @@
         <script defer src="/lib/lunr/lunr.min.js"></script>
         <script defer src="/lib/typeit/index.umd.js"></script>
         <script defer src="/js/theme.min.js"></script>
-    </body>
+    <!-- accessibility-runtime:start -->
+    <script>
+    (function(){
+      'use strict';
+      if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches&&window.config&&window.config.typeit){window.config.typeit.speed=0;window.config.typeit.cursorSpeed=0;window.config.typeit.duration=0;}
+      function initAccessibility(){
+        var menuToggle=document.getElementById('menu-toggle-mobile');
+        var mobileMenu=document.getElementById('menu-mobile');
+        var mask=document.getElementById('mask');
+        var themeSwitches=document.querySelectorAll('.theme-switch');
+        var searchToggles=document.querySelectorAll('.search-toggle');
+        function later(fn){if(window.requestAnimationFrame){requestAnimationFrame(fn);}else{setTimeout(fn,0);}}
+        function syncMenu(){if(menuToggle&&mobileMenu){menuToggle.setAttribute('aria-expanded',mobileMenu.classList.contains('active')?'true':'false');}}
+        function syncTheme(){var dark=document.body.getAttribute('theme')==='dark';themeSwitches.forEach(function(item){item.setAttribute('aria-checked',dark?'true':'false');});}
+        function syncSearch(){searchToggles.forEach(function(item){var mobile=item.id.indexOf('mobile')!==-1;var header=document.getElementById(mobile?'header-mobile':'header-desktop');item.setAttribute('aria-expanded',header&&header.classList.contains('open')?'true':'false');});}
+        if(menuToggle){menuToggle.addEventListener('click',function(){later(syncMenu);});}
+        if(mask){mask.addEventListener('click',function(){later(syncMenu);later(syncSearch);});}
+        themeSwitches.forEach(function(item){item.addEventListener('click',function(){later(syncTheme);});});
+        searchToggles.forEach(function(item){item.addEventListener('click',function(){later(syncSearch);});});
+        document.querySelectorAll('.search input').forEach(function(item){item.addEventListener('focus',function(){later(syncSearch);});});
+        document.querySelectorAll('.search-cancel').forEach(function(item){item.addEventListener('click',function(){later(syncSearch);});});
+        document.addEventListener('keydown',function(event){
+          if(event.key!=='Escape')return;
+          var wasOpen=mobileMenu&&mobileMenu.classList.contains('active');
+          document.body.classList.remove('blur');
+          if(mobileMenu)mobileMenu.classList.remove('active');
+          if(menuToggle)menuToggle.classList.remove('active');
+          document.querySelectorAll('header.open').forEach(function(header){header.classList.remove('open');});
+          syncMenu();syncSearch();
+          if(wasOpen&&menuToggle)menuToggle.focus();
+        });
+        syncMenu();syncTheme();syncSearch();
+      }
+      if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',initAccessibility);}else{initAccessibility();}
+    })();
+    </script>
+    <!-- accessibility-runtime:end -->
+</body>
 </html>

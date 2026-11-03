@@ -151,17 +151,49 @@
     <meta name="twitter:image" content="https://www.alirostami.com/images/social/aima-4e-persian.jpg">
     <meta name="twitter:image:alt" content="ترجمه فارسی کتاب هوش مصنوعی؛ یک رویکرد مدرن، ویرایش چهارم">
     <!-- image-seo:end -->
+    <!-- accessibility-styles:start -->
+    <style>
+    .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+    .skip-link{position:fixed;top:.75rem;left:.75rem;z-index:100000;padding:.65rem 1rem;border-radius:.35rem;background:#fff;color:#073b70;font-weight:700;box-shadow:0 2px 12px rgba(0,0,0,.25);transform:translateY(-180%);transition:transform .15s ease}
+    .skip-link:focus{transform:translateY(0)}
+    :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:3px solid #0563c1!important;outline-offset:3px!important}
+    [theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible,[data-theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline-color:#7dd3fc!important}
+    body[data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#5f5f66!important}
+    body[theme=dark][data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#b7bbc5!important}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#1d789b!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#6bc5e6!important}
+    body[data-header-desktop] .single .content a:not(.headerlink){text-decoration:underline!important;text-underline-offset:.15em}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#a41354!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#fff!important}
+    body[data-header-desktop] .search input::placeholder{color:#5f5f66!important;opacity:1}
+    body[theme=dark][data-header-desktop] .search input::placeholder{color:#b7bbc5!important}
+    button.menu-toggle{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;min-width:2rem;min-height:2rem}
+    button.search-button,button.search-cancel,button.theme-switch,button.history-back,button.share-button,button.script-button{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;line-height:inherit;cursor:pointer}
+    button.search-button,button.theme-switch,button.share-button,button.script-button{min-width:1.5rem;min-height:1.5rem}
+    button.history-back{text-decoration:underline;text-underline-offset:.15em}
+    summary.details-summary{list-style:none}
+    summary.details-summary::-webkit-details-marker{display:none}
+    .sidebar-controls .sidebar-action,.ch-chevron{appearance:none;border:0;background:transparent;color:inherit;font:inherit;cursor:pointer;min-height:1.5rem}
+    .sidebar-controls .sidebar-action{color:var(--text-muted)}
+    .sidebar-controls .sidebar-action:hover{color:var(--accent)}
+    .ch-chevron{padding:.2rem .4rem;min-width:2rem}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    </style>
+    <!-- accessibility-styles:end -->
 </head>
 <body>
-<div class="page">
+    <!-- accessibility-skip-link -->
+    <a class="skip-link" href="#main-content">رفتن به محتوای اصلی</a>
+<main class="page" id="main-content" tabindex="-1">
 
 <div class="kicker">
   <span class="badge">📘 هوش مصنوعی: رویکردی نوین (AIMA)</span>
   <span class="badge soft">ترجمهٔ فارسی — راسل و نورویگ، ویرایش چهارم</span>
   <span class="badge gold">فصل 23</span>
 </div>
+<h1 class="chapter-title">فصل ۲۳: پردازش زبان طبیعی (Natural Language Processing)</h1>
 
-<nav class="toc"><h2>فهرست بخش‌های این فصل</h2>
+<nav class="toc" aria-label="فهرست مطالب"><h2>فهرست بخش‌های این فصل</h2>
 <ol>
 <li><a href="#sec-1">۲۳.۱ مدل‌های زبان</a></li>
 <li><a href="#sec-2">۲۳.۲ دستور زبان</a></li>
@@ -174,7 +206,7 @@
 <li><a href="#sec-8">پانوشت‌ها:</a></li>
 </ol></nav>
 
-<p class="subtitle">فصل ۲۳: پردازش زبان طبیعی (Natural Language Processing)</p>
+
 <div class="lead">در این فصل می‌بینیم چگونه رایانه می‌تواند از زبان طبیعی برای برقراری ارتباط با انسان‌ها و یادگیری از آنچه نوشته‌اند استفاده کند.</div>
 <p>حدود ۱۰۰٬۰۰۰ سال پیش، انسان‌ها یاد گرفتند چگونه صحبت کنند، و حدود ۵٬۰۰۰ سال پیش یاد گرفتند بنویسند. پیچیدگی و تنوع زبان بشری انسان هوشمند (Homo sapiens) را از همهٔ گونه‌های دیگر متمایز می‌کند. البته ویژگی‌های دیگری نیز هستند که منحصراً انسانی‌اند: هیچ گونهٔ دیگری مانند انسان‌ها لباس نمی‌پوشد، هنر نمی‌آفریند، یا روزی دو ساعت در شبکه‌های اجتماعی وقت نمی‌گذراند. اما وقتی آلن تورینگ آزمون هوش خود را پیشنهاد کرد، آن را بر زبان بنا نهاد، نه هنر یا لباس‌فروشی، شاید به‌دلیل دامنهٔ همگانی آن و به‌دلیل اینکه زبان بخش بسیار زیادی از رفتار هوشمند را درمی‌گیرد: گوینده (یا نویسنده) هدف انتقال دانشی را دارد، سپس زبانی را برنامه‌ریزی می‌کند که آن دانش را بازنمایی می‌کند، و برای رسیدن به هدف کنش می‌کند. شنونده (یا خواننده) زبان را ادراک می‌کند و معنای موردنظر را استنتاج می‌کند.</p>
 <p>این نوع ارتباط از طریق زبان به تمدن اجازه داده رشد کند؛ این وسیلهٔ اصلی ما برای انتقال دانش فرهنگی، حقوقی، علمی و فناورانه است. سه دلیل اصلی برای انجام «پردازش زبان طبیعی» (<span class="en-inline">Natural Language Processing</span> یا NLP) توسط رایانه‌ها هست:</p>
@@ -242,7 +274,7 @@ P(w₁:ₙ) = ∏_{j=1}^{N} P(wⱼ | w_{j−n+1:j−1})</code></pre>
 <p>یکی از راه‌های پایهٔ رده‌بندی واژه‌ها «نقش دستوری» (<span class="en-inline">Part of Speech</span> یا POS) است، که «ردهٔ واژگانی» یا برچسب نیز نامیده می‌شود: اسم، فعل، صفت و مانند آن. نقش‌های دستوری به مدل‌های زبان اجازه می‌دهند تعمیم‌هایی مانند «صفت‌ها در انگلیسی عموماً پیش از اسم‌ها می‌آیند» را دربرگیرند. (در زبان‌های دیگر، مانند فرانسوی، برعکس است (عموماً).)</p>
 <p>همه موافق‌اند «اسم» و «فعل» نقش‌های دستوری‌اند، اما وقتی وارد جزئیات می‌شویم هیچ فهرست قطعی واحدی نیست. شکل ۲۳.۱ ۴۵ برچسب استفاده‌شده در «درخت‌بان پن» (Penn Treebank) را نشان می‌دهد، پیکره‌ای از بیش از سه میلیون واژهٔ متن حاشیه‌نویسی‌شده با برچسب‌های نقش دستوری. چنان‌که بعداً خواهیم دید، درخت‌بان پن همچنین بسیاری از جمله‌ها را با درخت‌های تجزیهٔ نحوی حاشیه‌نویسی می‌کند، که پیکره نامش را از آن می‌گیرد. در این‌جا گزیده‌ای است که می‌گوید «<span class="en-inline">from</span>» با برچسب حرف اضافه (IN)، «<span class="en-inline">the</span>» با برچسب تعیین‌کننده (DT) و مانند آن مشخص شده:</p>
 <p><span class="en-inline">From the start , it took a person with great qualities to succeed IN  DT  NN   , PRP VBD DT NN  IN JJ  NNS    TO VB</span> (به فارسی: «از آغاز، شخصی با ویژگی‌های بزرگ لازم بود تا موفق شود» — حرف اضافه (IN)، تعیین‌کننده (DT)، اسم (NN)، ویرگول (،)، ضمیر شخصی (PRP)، فعل گذشته (VBD) و مانند آن.)</p>
-<table><thead><tr><th>برچسب</th><th>واژه</th><th>توصیف</th><th>برچسب</th><th>واژه</th><th>توصیف</th></tr></thead><tbody>
+<table><thead><tr><th scope="col">برچسب</th><th scope="col">واژه</th><th scope="col">توصیف</th><th scope="col">برچسب</th><th scope="col">واژه</th><th scope="col">توصیف</th></tr></thead><tbody>
 <tr><td><span class="en-inline">CC</span></td><td><span class="en-inline">and</span></td><td>حرف ربط هم‌پایه‌ساز</td><td><span class="en-inline">PRP</span>$</td><td><span class="en-inline">your</span></td><td>ضمیر ملکی</td></tr>
 <tr><td><span class="en-inline">CD</span></td><td><span class="en-inline">three</span></td><td>عدد اصلی</td><td><span class="en-inline">RB</span></td><td><span class="en-inline">quickly</span></td><td>قید</td></tr>
 <tr><td><span class="en-inline">DT</span></td><td><span class="en-inline">the</span></td><td>تعیین‌کننده</td><td><span class="en-inline">RBR</span></td><td><span class="en-inline">quicker</span></td><td>قید، تفضیلی</td></tr>
@@ -506,7 +538,7 @@ Verb(λy λx e ∈ Loves(x, y) ∧ After(Now, e))  → loved</code></pre>
   <p style="color:var(--muted);font-size:13px;margin-top:8px">این صفحه از ترجمهٔ فارسی فصل‌های کتاب «هوش مصنوعی: رویکردی نوین» (استوارت راسل و پیتر نورویگ، ویرایش چهارم) تولید شده است. متن با فایل مارک‌داون همان فصل یکسان است.</p>
 </div>
 
-</div>
+</main>
 <script id="aima-standalone-helper">
   if (window.self === window.top) {
     window.addEventListener('DOMContentLoaded', function() {

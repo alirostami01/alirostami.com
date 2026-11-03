@@ -151,17 +151,49 @@
     <meta name="twitter:image" content="https://www.alirostami.com/images/social/aima-4e-persian.jpg">
     <meta name="twitter:image:alt" content="ترجمه فارسی کتاب هوش مصنوعی؛ یک رویکرد مدرن، ویرایش چهارم">
     <!-- image-seo:end -->
+    <!-- accessibility-styles:start -->
+    <style>
+    .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+    .skip-link{position:fixed;top:.75rem;left:.75rem;z-index:100000;padding:.65rem 1rem;border-radius:.35rem;background:#fff;color:#073b70;font-weight:700;box-shadow:0 2px 12px rgba(0,0,0,.25);transform:translateY(-180%);transition:transform .15s ease}
+    .skip-link:focus{transform:translateY(0)}
+    :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:3px solid #0563c1!important;outline-offset:3px!important}
+    [theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible,[data-theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline-color:#7dd3fc!important}
+    body[data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#5f5f66!important}
+    body[theme=dark][data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#b7bbc5!important}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#1d789b!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#6bc5e6!important}
+    body[data-header-desktop] .single .content a:not(.headerlink){text-decoration:underline!important;text-underline-offset:.15em}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#a41354!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#fff!important}
+    body[data-header-desktop] .search input::placeholder{color:#5f5f66!important;opacity:1}
+    body[theme=dark][data-header-desktop] .search input::placeholder{color:#b7bbc5!important}
+    button.menu-toggle{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;min-width:2rem;min-height:2rem}
+    button.search-button,button.search-cancel,button.theme-switch,button.history-back,button.share-button,button.script-button{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;line-height:inherit;cursor:pointer}
+    button.search-button,button.theme-switch,button.share-button,button.script-button{min-width:1.5rem;min-height:1.5rem}
+    button.history-back{text-decoration:underline;text-underline-offset:.15em}
+    summary.details-summary{list-style:none}
+    summary.details-summary::-webkit-details-marker{display:none}
+    .sidebar-controls .sidebar-action,.ch-chevron{appearance:none;border:0;background:transparent;color:inherit;font:inherit;cursor:pointer;min-height:1.5rem}
+    .sidebar-controls .sidebar-action{color:var(--text-muted)}
+    .sidebar-controls .sidebar-action:hover{color:var(--accent)}
+    .ch-chevron{padding:.2rem .4rem;min-width:2rem}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    </style>
+    <!-- accessibility-styles:end -->
 </head>
 <body>
-<div class="page">
+    <!-- accessibility-skip-link -->
+    <a class="skip-link" href="#main-content">رفتن به محتوای اصلی</a>
+<main class="page" id="main-content" tabindex="-1">
 
 <div class="kicker">
   <span class="badge">📘 هوش مصنوعی: رویکردی نوین (AIMA)</span>
   <span class="badge soft">ترجمهٔ فارسی — راسل و نورویگ، ویرایش چهارم</span>
   <span class="badge gold">فصل 2</span>
 </div>
+<h1 class="chapter-title">فصل ۲: عامل‌های هوشمند (Intelligent Agents)</h1>
 
-<nav class="toc"><h2>فهرست بخش‌های این فصل</h2>
+<nav class="toc" aria-label="فهرست مطالب"><h2>فهرست بخش‌های این فصل</h2>
 <ol>
 <li><a href="#sec-1">۲.۱ عامل‌ها و محیط‌ها</a></li>
 <li><a href="#sec-2">۲.۲ رفتار خوب: مفهوم عقلانیت</a></li>
@@ -172,7 +204,7 @@
 <li><a href="#sec-6">پانوشت‌ها:</a></li>
 </ol></nav>
 
-<p class="subtitle">فصل ۲: عامل‌های هوشمند (Intelligent Agents)</p>
+
 <div class="lead">در این فصل دربارهٔ سرشت عامل‌ها بحث می‌کنیم؛ عامل‌های کامل یا ناقص، گوناگونی محیط‌ها، و مجموعهٔ جانورانی که از این‌ها پدید می‌آید.</div>
 <p>فصل ۱ مفهوم عامل عقلایی را به‌عنوان محور رویکرد ما به هوش مصنوعی شناساند. در این فصل این مفهوم را عینی‌تر می‌کنیم. خواهیم دید مفهوم عقلانیت را می‌توان بر گسترهٔ وسیعی از عامل‌ها اعمال کرد که در هر محیطِ قابل تصوری کار می‌کنند. برنامهٔ ما در این کتاب آن است که از این مفهوم برای تدوین مجموعه‌ای کوچک از اصول طراحی برای ساختن عامل‌های موفق استفاده کنیم — سامانه‌هایی که به‌درستی بتوان آن‌ها را هوشمند نامید.</p>
 <p>با بررسی عامل‌ها، محیط‌ها و پیوند میان آن‌ها آغاز می‌کنیم. این مشاهده که برخی عامل‌ها از برخی دیگر بهتر رفتار می‌کنند، به‌طور طبیعی به ایدهٔ عامل عقلایی می‌انجامد — عاملی که تا حد ممکن خوب رفتار می‌کند. اینکه یک عامل چقدر خوب می‌تواند رفتار کند، به سرشت محیط بستگی دارد؛ برخی محیط‌ها از برخی دیگر دشوارترند. رده‌بندی خامی از محیط‌ها ارائه می‌دهیم و نشان می‌دهیم ویژگی‌های یک محیط چگونه بر طراحی عامل‌های مناسب برای آن محیط تأثیر می‌گذارد. شماری از طراحی‌های پایهٔ «اسکلتی» عامل را توصیف می‌کنیم که در بقیهٔ کتاب آن‌ها را کامل می‌کنیم.</p>
@@ -186,7 +218,7 @@
 <p>برای نشان دادن این ایده‌ها، از مثال ساده‌ای استفاده می‌کنیم — «جهان جاروبرقی» که شامل عامل رباتیک جاروبرقی در جهانی از خانه‌هاست که هر خانه می‌تواند کثیف یا تمیز باشد. شکل ۲.۲ پیکربندی با فقط دو خانه، A و B، را نشان می‌دهد. عامل جاروبرقی ادراک می‌کند در کدام خانه است و آیا در آن خانه کثیفی هست. عامل از خانهٔ A آغاز می‌کند. کنش‌های در دسترس عبارت‌اند از: حرکت به راست، حرکت به چپ، مکیدن کثیفی، یا هیچ‌کاری نکردن.<sup>²</sup> یکی از تابع‌های عامل بسیار ساده چنین است: اگر خانهٔ کنونی کثیف است، بمک؛ وگرنه به خانهٔ دیگر برو. بخشی از جدول این تابع عامل در شکل ۲.۳ و برنامهٔ عاملی که آن را پیاده می‌کند در شکل ۲.۸ (صفحهٔ ۴۹) آمده است.</p>
 <p>با نگاه به شکل ۲.۳ می‌بینیم عامل‌های گوناگون جهان جاروبرقی را می‌توان صرفاً با پرکردن ستون راست به شیوه‌های گوناگون تعریف کرد. پس پرسشِ بدیهی این است: ◭ راهِ درستِ پر کردن جدول چیست؟ به بیان دیگر، چه چیزی عامل را خوب یا بد، هوشمند یا احمق می‌کند؟ در بخش بعد به این پرسش‌ها پاسخ می‌دهیم.</p>
 <figure class="fig"><img src="../figures/ch02/fig-2-2.jpg" alt="شکل ۲.۲" width="804" height="301" loading="lazy" decoding="async"><figcaption><strong>شکل ۲.۲ — جهانی جاروبرقی با فقط دو مکان.</strong> هر مکان می‌تواند تمیز یا کثیف باشد و عامل می‌تواند چپ یا راست حرکت کند و خانه‌ای را که در آن است تمیز کند. نسخه‌های گوناگون جهان جاروبرقی قواعد متفاوتی برای آنچه عامل می‌تواند ادراک کند، اینکه کنش‌هایش آیا همیشه موفق‌اند، و مانند آن دارند.</figcaption></figure>
-<table><thead><tr><th>توالی ادراک حسی</th><th>کنش</th></tr></thead><tbody>
+<table><thead><tr><th scope="col">توالی ادراک حسی</th><th scope="col">کنش</th></tr></thead><tbody>
 <tr><td>[<span class="en-inline">A,Clean]</span></td><td><span class="en-inline">Right</span></td></tr>
 <tr><td>[<span class="en-inline">A,Dirty]</span></td><td><span class="en-inline">Suck</span></td></tr>
 <tr><td>[<span class="en-inline">B,Clean]</span></td><td><span class="en-inline">Left</span></td></tr>
@@ -243,14 +275,14 @@
 <p>جهان جاروبرقی مثال ساده‌ای بود؛ مسئلهٔ پیچیده‌تری در نظر بگیریم: رانندهٔ تاکسی خودکار. شکل ۲.۴ توصیف <span class="en-inline">PEAS</span> را برای محیط تکلیف تاکسی خلاصه می‌کند. هر عنصر را در بندهای بعد با جزئیات بیشتری بحث می‌کنیم.</p>
 <p>نخست، معیار عملکردی که می‌خواهیم رانندهٔ خودکار ما به آن برسد چیست؟ ویژگی‌های مطلوب شامل رسیدن به مقصد درست؛ کمینه‌کردن مصرف سوخت و استهلاک؛ کمینه‌کردن زمان یا هزینهٔ سفر؛ کمینه‌کردن تخلف از قوانین راهنمایی و مزاحمت برای دیگر رانندگان؛ بیشینه‌کردن ایمنی و آسایش سرنشین؛ و بیشینه‌کردن سود است. بدیهی است برخی از این هدف‌ها با هم در تعارض‌اند، پس داد‌وستد لازم خواهد بود.</p>
 <p>بعد، محیط رانندگی‌ای که تاکسی با آن روبه‌رو خواهد شد چیست؟ هر رانندهٔ تاکسی باید با گستره‌ای از جاده‌ها کنار بیاید، از مسیرهای روستایی و کوچه‌های شهری تا بزرگراه‌های دوازده‌خطه. جاده‌ها حاوی ترافیک دیگر، عابران پیاده، جانوران سرگردان، کارهای جاده‌ای، خودروهای پلیس، چاله‌ها و دست‌اندازها هستند. تاکسی همچنین باید با مسافران بالقوه و بالفعل تعامل کند. انتخاب‌های اختیاری هم هست. تاکسی ممکن است لازم باشد در کالیفرنیای جنوبی کار کند، جایی که برف به‌ندرت مشکل‌ساز است، یا در آلاسکا، جایی که برف به‌ندرت بی‌مشکل است. ممکن است همیشه در سمت راست جاده رانندگی کند، یا شاید بخواهیم آن‌قدر منعطف باشد که در بریتانیا یا ژاپن در سمت چپ رانندگی کند. بدیهی است هرچه محیط محدودتر باشد، مسئلهٔ طراحی آسان‌تر است.</p>
-<table><thead><tr><th>نوع عامل</th><th>معیار عملکرد</th><th>محیط</th><th>عملگرها</th><th>حسگرها</th></tr></thead><tbody>
+<table><thead><tr><th scope="col">نوع عامل</th><th scope="col">معیار عملکرد</th><th scope="col">محیط</th><th scope="col">عملگرها</th><th scope="col">حسگرها</th></tr></thead><tbody>
 <tr><td>رانندهٔ تاکسی</td><td>سفر امن، سریع، قانونی، راحت؛ بیشینه‌کردن سود؛ کمینه‌کردن اثر بر دیگر کاربران جاده</td><td>جاده‌ها، ترافیک دیگر، پلیس، عابران، مشتریان، آب‌وهوا</td><td>فرمان، گاز، ترمز، راهنما، بوق، نمایشگر، گفتار</td><td>دوربین‌ها، رادار، سرعت‌سنج، <span class="en-inline">GPS</span>، حسگرهای موتور، شتاب‌سنج، میکروفون‌ها، صفحهٔ لمسی</td></tr>
 </tbody></table>
 <figure class="fig"><figcaption><strong>شکل ۲.۴ — توصیف PEAS محیط تکلیف برای رانندهٔ تاکسی خودکار:</strong></figcaption></figure>
 <p>عملگرهای تاکسی خودکار شامل آنچه رانندهٔ انسانی دارد می‌شود: کنترل موتور از طریق گاز و کنترل فرمان و ترمز. افزون بر آن، به خروجی برای صفحهٔ نمایش یا سنتزکنندهٔ صدا برای پاسخ‌دادن به مسافران نیاز دارد و شاید راهی برای ارتباط با دیگر وسایل نقلیه، مؤدبانه یا غیر آن.</p>
 <p>حسگرهای پایهٔ تاکسی شامل یک یا چند دوربین ویدئویی برای دیدن، و نیز حسگرهای لیدار و اولتراسونیک برای تشخیص فاصله تا خودروهای دیگر و موانع خواهد بود. برای اجتناب از جریمهٔ سرعت، تاکسی باید سرعت‌سنج داشته باشد و برای کنترل درست خودرو، به‌ویژه در پیچ‌ها، شتاب‌سنج. برای تعیین حالت مکانیکی خودرو، به آرایهٔ معمول حسگرهای موتور، سوخت و سامانهٔ الکتریکی نیاز دارد. مانند بسیاری رانندگان انسانی، شاید بخواهد به سیگنال‌های <span class="en-inline">GPS</span> دسترسی داشته باشد تا گم نشود. سرانجام، برای درخواست مقصد توسط مسافر به ورودی صفحهٔ لمسی یا صوتی نیاز خواهد داشت.</p>
 <p>در شکل ۲.۵ عناصر پایهٔ <span class="en-inline">PEAS</span> را برای چند عامل دیگر ترسیم کرده‌ایم.</p>
-<table><thead><tr><th>نوع عامل</th><th>معیار عملکرد</th><th>محیط</th><th>عملگرها</th><th>حسگرها</th></tr></thead><tbody>
+<table><thead><tr><th scope="col">نوع عامل</th><th scope="col">معیار عملکرد</th><th scope="col">محیط</th><th scope="col">عملگرها</th><th scope="col">حسگرها</th></tr></thead><tbody>
 <tr><td>سامانهٔ تشخیص پزشکی</td><td>بیمار سالم، هزینه‌های کمتر</td><td>بیمار، بیمارستان، کارکنان</td><td>نمایش پرسش‌ها، آزمایش‌ها، تشخیص‌ها، درمان‌ها</td><td>ورود لمسی/صوتی علائم و یافته‌ها</td></tr>
 <tr><td>سامانهٔ تحلیل تصاویر ماهواره‌ای</td><td>رده‌بندی درست اشیا، عوارض زمین</td><td>ماهوارهٔ مداری، پایگاه دادهٔ پایین‌فرست، آب‌وهوا</td><td>نمایش رده‌بندی صحنه</td><td>دوربین دیجیتال وضوح‌بالا</td></tr>
 <tr><td>ربات قطعه‌چین</td><td>درصد قطعات در سبدهای درست</td><td>نوار نقاله با قطعات؛ سبدها</td><td>بازوی مفصلی و دست</td><td>دوربین، حسگرهای لامسه‌ای و زاویهٔ مفصل</td></tr>
@@ -274,7 +306,7 @@
 <p>چنان‌که در صفحهٔ ۳۹ یادآوری شد، خودِ معیار عملکرد ممکن است ناشناخته باشد؛ یا به‌سبب آنکه طراح مطمئن نیست چگونه آن را درست بنویسد، یا به‌سبب آنکه کاربر نهایی — که ترجیحاتش اهمیت دارد — شناخته نشده. برای نمونه، رانندهٔ تاکسی معمولاً نمی‌داند آیا مسافر تازه سفر آهسته را ترجیح می‌دهد یا پرسرعت، سبک رانندگی محتاطانه را یا تهاجمی. دستیار شخصی مجازی از آغاز هیچ‌چیز دربارهٔ ترجیحات شخصیِ مالک تازه‌اش نمی‌داند. در چنین مواردی، عامل ممکن است از طریق تعامل‌های بیشتر با طراح یا کاربر دربارهٔ معیار عملکرد بیشتر بیاموزد. این به نوبهٔ خود پیشنهاد می‌کند محیط تکلیف ناگزیر باید به‌عنوان محیط چندعاملی دیده شود.</p>
 <p>دشوارترین حالت، محیطی است تا حدی قابل مشاهده، چندعاملی، ناجبرگرایانه، توالی‌دار، پویا، پیوسته و ناشناخته. رانندگی تاکسی از همهٔ این جهات دشوار است، به‌جز آنکه محیط راننده بیشتر شناخته‌شده است. رانندگی با خودروی کرایه‌ای در کشور تازه‌ای با جغرافیای ناآشنا، قوانین راهنمایی متفاوت و مسافران مضطرب بسیار هیجان‌انگیزتر است.</p>
 <p>شکل ۲.۶ ویژگی‌های چند محیط آشنا را فهرست می‌کند. توجه کنید ویژگی‌ها همیشه قطعی نیستند. برای نمونه، تکلیف تشخیص پزشکی را تک‌عاملی فهرست کرده‌ایم، زیرا فرایند بیماری در بیمار به‌شکل سودمندی به‌عنوان عامل مدل نمی‌شود؛ اما سامانهٔ تشخیص پزشکی ممکن است با بیماران نافرمان و کارکنان بدبین هم سروکار داشته باشد، پس محیط می‌تواند جنبهٔ چندعاملی داشته باشد. وانگهی، تشخیص پزشکی اگر تکلیف را انتخاب تشخیص با فهرست علائم بپنداریم تکرارشونده است؛ اگر تکلیف شامل پیشنهاد مجموعه‌ای از آزمایش‌ها، ارزیابی پیشرفت در طول درمان، رسیدگی به چند بیمار و مانند آن باشد، توالی‌دار است.</p>
-<table><thead><tr><th>محیط تکلیف</th><th>قابل مشاهده</th><th>عامل‌ها</th><th>جبرگرایی</th><th>تکرار</th><th>ایستایی</th><th>گسسته</th></tr></thead><tbody>
+<table><thead><tr><th scope="col">محیط تکلیف</th><th scope="col">قابل مشاهده</th><th scope="col">عامل‌ها</th><th scope="col">جبرگرایی</th><th scope="col">تکرار</th><th scope="col">ایستایی</th><th scope="col">گسسته</th></tr></thead><tbody>
 <tr><td>جدول کلمات متقاطع</td><td>کامل</td><td>تک‌عاملی</td><td>جبری</td><td>توالی‌دار</td><td>ایستا</td><td>گسسته</td></tr>
 <tr><td>شطرنج با ساعت</td><td>کامل</td><td>چندعاملی</td><td>جبری</td><td>توالی‌دار</td><td>نیمه‌پویا</td><td>گسسته</td></tr>
 <tr><td>پوکر</td><td>تا حدی</td><td>چندعاملی</td><td>تصادفی</td><td>توالی‌دار</td><td>ایستا</td><td>گسسته</td></tr>
@@ -438,7 +470,7 @@
   <p style="color:var(--muted);font-size:13px;margin-top:8px">این صفحه از ترجمهٔ فارسی فصل‌های کتاب «هوش مصنوعی: رویکردی نوین» (استوارت راسل و پیتر نورویگ، ویرایش چهارم) تولید شده است. متن با فایل مارک‌داونِ همان فصل یکسان است.</p>
 </div>
 
-</div>
+</main>
 <script id="aima-standalone-helper">
   if (window.self === window.top) {
     window.addEventListener('DOMContentLoaded', function() {

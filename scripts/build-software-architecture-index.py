@@ -3,10 +3,11 @@
 and prepare all chapter files with theme-awareness, section deep-linking IDs, image fixes, and standalone helpers.
 """
 
+import html
+import json
 import os
 import re
 from pathlib import Path
-import json
 
 from image_utils import apply_site_postprocessors
 
@@ -82,14 +83,19 @@ def process_chapters():
         # Fix relative image paths: ../figures/ -> figures/
         content = re.sub(r'src=["\']\.\./figures/', 'src="figures/', content)
 
-        # Inject section IDs into H3 (and H2 if any)
+        # Inject deterministic IDs into top-level chapter sections. Accessibility
+        # processing promotes source H3 headings to H2 and source H4 headings to
+        # marked H3 headings, so accepting both levels keeps regeneration stable.
         sections = []
         sec_idx = 1
 
-        def replace_h3(match):
+        def replace_section_heading(match):
             nonlocal sec_idx
-            attrs = match.group(1) or ""
-            inner = match.group(2)
+            level = match.group("level")
+            attrs = match.group("attrs") or ""
+            inner = match.group("inner")
+            if level == "3" and "data-a11y-heading" in attrs:
+                return match.group(0)
             clean_text = re.sub(r"<[^>]+>", "", inner).strip()
             sec_id = f"sec-{sec_idx}"
             sec_idx += 1
@@ -98,13 +104,15 @@ def process_chapters():
                 "title": clean_text,
                 "href": f"#{sec_id}",
             })
-            # Preserve existing styles but ensure id is set
-            if "id=" not in attrs:
-                return f'<h3 id="{sec_id}"{attrs}>{inner}</h3>'
-            return match.group(0)
+            attrs = re.sub(r"\s+id=(?:\"[^\"]*\"|'[^']*')", "", attrs, flags=re.IGNORECASE)
+            return f'<h{level} id="{sec_id}"{attrs}>{inner}</h{level}>'
 
-        # Remove existing IDs if any, then re-inject
-        content = re.sub(r'<h3([^>]*)>(.*?)</h3>', replace_h3, content, flags=re.DOTALL)
+        content = re.sub(
+            r'<h(?P<level>[23])(?P<attrs>[^>]*)>(?P<inner>.*?)</h(?P=level)>',
+            replace_section_heading,
+            content,
+            flags=re.DOTALL | re.IGNORECASE,
+        )
 
         # Build clean standalone wrapped HTML if not already wrapped
         if "<!DOCTYPE html>" not in content:
@@ -169,7 +177,7 @@ def process_chapters():
             color: var(--accent);
             line-height: 1.4;
         }}
-        h3 {{
+        h2 {{
             font-size: 1.35rem;
             color: var(--accent);
             margin: 2.4rem 0 .9rem;
@@ -178,7 +186,7 @@ def process_chapters():
             line-height: 1.4;
             scroll-margin-top: 1rem;
         }}
-        h4 {{
+        h3 {{
             font-size: 1.15rem;
             color: var(--accent);
             margin: 1.6rem 0 .6rem;
@@ -269,7 +277,7 @@ def process_chapters():
             h1 {{
                 font-size: 1.5rem;
             }}
-            h3 {{
+            h2 {{
                 font-size: 1.2rem;
             }}
         }}
@@ -377,7 +385,14 @@ def build_reader_index(chapters):
                 )
 
             sections_ul = f'<ul class="ch-sections" id="sections-{ch_idx}">{"".join(sec_html)}</ul>' if sec_html else ""
-            chevron = f'<i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>' if sec_html else ""
+            chapter_label = html.escape(c["short_title"], quote=True)
+            chevron = (
+                f'<button type="button" class="ch-chevron" aria-expanded="false" '
+                f'aria-controls="sections-{ch_idx}" aria-label="نمایش بخش‌های {chapter_label}">'
+                f'<i class="fas fa-chevron-left" aria-hidden="true"></i></button>'
+                if sec_html
+                else ""
+            )
 
             sidebar_items_html.append(f"""
             <div class="ch-card" id="{ch_id}" data-idx="{ch_idx}" data-file="{c['filename']}">
@@ -670,12 +685,17 @@ def build_reader_index(chapters):
             border-bottom: 1px solid var(--border-color);
             background: var(--reader-bg);
         }}
-        .sidebar-controls a {{
+        .sidebar-controls .sidebar-action {{
+            appearance: none;
+            border: 0;
+            padding: 0;
+            background: transparent;
             color: var(--accent);
             cursor: pointer;
+            font: inherit;
             text-decoration: none;
         }}
-        .sidebar-controls a:hover {{
+        .sidebar-controls .sidebar-action:hover {{
             text-decoration: underline;
         }}
         .sidebar-scroll {{
@@ -768,8 +788,14 @@ def build_reader_index(chapters):
             text-overflow: ellipsis;
         }}
         .ch-chevron {{
+            appearance: none;
+            border: 0;
+            padding: .2rem;
+            background: transparent;
+            font: inherit;
             font-size: .75rem;
             color: var(--text-muted);
+            cursor: pointer;
             transition: transform .2s ease;
             margin-right: .3rem;
         }}
@@ -961,8 +987,8 @@ def build_reader_index(chapters):
 
 <header class="reader-header">
     <div style="display:flex;align-items:center;gap:.6rem;">
-        <button class="btn-header mobile-toggle" id="btn-toggle-sidebar" title="فهرست و سایدبار">
-            <i class="fas fa-bars fa-fw"></i>
+        <button type="button" class="btn-header mobile-toggle" id="btn-toggle-sidebar" title="فهرست و سایدبار" aria-label="باز کردن فهرست فصول" aria-controls="reader-sidebar" aria-expanded="false">
+            <i class="fas fa-bars fa-fw" aria-hidden="true"></i>
             <span>فهرست فصول</span>
         </button>
         <div class="header-brand-group">
@@ -994,27 +1020,27 @@ def build_reader_index(chapters):
         <a href="/support/" class="btn-header" title="حمایت از پروژه">
             <i class="fas fa-heart fa-fw" style="color:#e0245e;"></i>
         </a>
-        <button class="btn-header" id="btn-theme-toggle" title="تغییر ظاهر تاریک/روشن">
-            <i class="fas fa-adjust fa-fw"></i>
+        <button type="button" class="btn-header" id="btn-theme-toggle" title="تغییر ظاهر تاریک/روشن" aria-label="تغییر ظاهر تاریک یا روشن" aria-pressed="false">
+            <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
         </button>
     </div>
 </header>
 
 <div class="reader-workspace">
     <!-- Sidebar -->
-    <aside class="reader-sidebar" id="reader-sidebar">
+    <aside class="reader-sidebar" id="reader-sidebar" aria-label="فهرست فصول و بخش‌های کتاب">
         <div class="sidebar-search-box">
             <div class="search-wrapper-inner">
                 <i class="fas fa-search" aria-hidden="true"></i>
-                <input type="search" id="sidebar-search" class="search-input" placeholder="جستجو در ۲۷ فصل و بخش‌ها..." autocomplete="off">
+                <input type="search" id="sidebar-search" class="search-input" placeholder="جستجو در ۲۷ فصل و بخش‌ها..." aria-label="جستجو در فصول و بخش‌ها" autocomplete="off" enterkeyhint="search">
             </div>
         </div>
         <div class="sidebar-controls">
             <span>فهرست فصول (۲۷ فصل + پیوست)</span>
             <div style="display:flex;gap:.5rem;">
-                <a id="btn-expand-all">باز کردن همه</a>
-                <span>·</span>
-                <a id="btn-collapse-all">بستن همه</a>
+                <button type="button" class="sidebar-action" id="btn-expand-all">باز کردن همه</button>
+                <span aria-hidden="true">·</span>
+                <button type="button" class="sidebar-action" id="btn-collapse-all">بستن همه</button>
             </div>
         </div>
         <div class="sidebar-scroll" id="sidebar-scroll">
@@ -1022,29 +1048,30 @@ def build_reader_index(chapters):
         </div>
     </aside>
 
-    <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+    <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
 
     <!-- Main Content Reader -->
-    <main class="reader-content">
+    <main class="reader-content" id="main-content" tabindex="-1">
+        <h1 class="sr-only">مطالعه آنلاین مبانی معماری نرم‌افزار، ویرایش دوم</h1>
         <div class="reader-toolbar">
-            <div class="toolbar-title" id="current-title">
+            <div class="toolbar-title" id="current-title" aria-live="polite" aria-atomic="true">
                 <i class="fas fa-book-open" style="color:var(--accent);"></i>
                 <span id="title-text">فصل ۱: مقدمه</span>
             </div>
             <div class="toolbar-nav">
-                <button class="btn-tool" id="btn-prev-chapter" title="فصل قبلی (کلید ←)">
-                    <i class="fas fa-chevron-right fa-fw"></i>
+                <button type="button" class="btn-tool" id="btn-prev-chapter" title="فصل قبلی (کلید ←)">
+                    <i class="fas fa-chevron-right fa-fw" aria-hidden="true"></i>
                     <span>قبلی</span>
                 </button>
-                <button class="btn-tool" id="btn-next-chapter" title="فصل بعدی (کلید →)">
+                <button type="button" class="btn-tool" id="btn-next-chapter" title="فصل بعدی (کلید →)">
                     <span>بعدی</span>
-                    <i class="fas fa-chevron-left fa-fw"></i>
+                    <i class="fas fa-chevron-left fa-fw" aria-hidden="true"></i>
                 </button>
-                <button class="btn-tool" id="btn-refresh-frame" title="بارگذاری مجدد این فصل">
-                    <i class="fas fa-redo fa-fw"></i>
+                <button type="button" class="btn-tool" id="btn-refresh-frame" title="بارگذاری مجدد این فصل" aria-label="بارگذاری مجدد فصل جاری">
+                    <i class="fas fa-redo fa-fw" aria-hidden="true"></i>
                 </button>
-                <a class="btn-tool" id="btn-direct-link" target="_blank" title="باز کردن در برگهٔ جداگانه">
-                    <i class="fas fa-external-link-alt fa-fw"></i>
+                <a class="btn-tool" id="btn-direct-link" href="chapter-01" target="_blank" rel="noopener noreferrer" title="باز کردن در برگهٔ جداگانه" aria-label="باز کردن فصل جاری در برگهٔ جداگانه">
+                    <i class="fas fa-external-link-alt fa-fw" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
@@ -1068,6 +1095,20 @@ def build_reader_index(chapters):
     const sidebar = document.getElementById('reader-sidebar');
     const backdrop = document.getElementById('sidebar-backdrop');
     const searchInput = document.getElementById('sidebar-search');
+    const sidebarToggle = document.getElementById('btn-toggle-sidebar');
+    const themeToggle = document.getElementById('btn-theme-toggle');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function setCardExpanded(card, expanded) {{
+        if (!card) return;
+        card.classList.toggle('expanded', expanded);
+        const toggle = card.querySelector('.ch-chevron');
+        if (toggle) toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    }}
+
+    function syncThemeButton() {{
+        themeToggle.setAttribute('aria-pressed', document.body.getAttribute('theme') === 'dark' ? 'true' : 'false');
+    }}
 
     function syncThemeToFrame() {{
         const theme = document.body.getAttribute('theme') || 'light';
@@ -1100,19 +1141,23 @@ def build_reader_index(chapters):
 
         titleText.textContent = `${{ch.badge}}: ${{ch.short_title}}`;
         document.title = `${{ch.badge}}: ${{ch.short_title}} — مبانی معماری نرم‌افزار`;
+        iframe.title = `متن ${{ch.badge}}: ${{ch.short_title}}`;
 
         btnPrev.disabled = (idx === 0);
         btnNext.disabled = (idx === CHAPTERS.length - 1);
         btnDirect.href = ch.filename + hash;
 
-        // Update active chapter in sidebar
+        // Update active chapter in sidebar.
         document.querySelectorAll('.ch-card').forEach(card => card.classList.remove('active'));
+        document.querySelectorAll('.ch-title-link, .sec-link').forEach(link => link.removeAttribute('aria-current'));
+        const activeTitleLink = document.querySelector(`.ch-title-link[data-idx="${{idx}}"]`);
+        if (activeTitleLink) activeTitleLink.setAttribute('aria-current', 'page');
         const activeCard = document.getElementById(`ch-item-${{idx}}`);
         if (activeCard) {{
             activeCard.classList.add('active');
-            activeCard.classList.add('expanded');
+            setCardExpanded(activeCard, true);
             if (window.innerWidth > 900) {{
-                activeCard.scrollIntoView({{ behavior: 'smooth', block: 'nearest' }});
+                activeCard.scrollIntoView({{ behavior: reduceMotion ? 'auto' : 'smooth', block: 'nearest' }});
             }}
         }}
 
@@ -1135,14 +1180,25 @@ def build_reader_index(chapters):
         }}
 
         updateActiveSectionLink(hash);
+        const sidebarWasOpen = sidebar.classList.contains('open');
         closeSidebar();
+        if (sidebarWasOpen) document.getElementById('main-content').focus();
     }}
 
     function updateActiveSectionLink(hash) {{
-        document.querySelectorAll('.sec-link').forEach(l => l.classList.remove('active'));
+        const titleLink = document.querySelector(`.ch-title-link[data-idx="${{currentChapterIdx}}"]`);
+        if (titleLink) titleLink.setAttribute('aria-current', 'page');
+        document.querySelectorAll('.sec-link').forEach(link => {{
+            link.classList.remove('active');
+            link.removeAttribute('aria-current');
+        }});
         if (hash) {{
             const link = document.querySelector(`.sec-link[data-ch-idx="${{currentChapterIdx}}"][data-hash="${{hash}}"]`);
-            if (link) link.classList.add('active');
+            if (link) {{
+                link.classList.add('active');
+                link.setAttribute('aria-current', 'location');
+                document.querySelector(`.ch-title-link[data-idx="${{currentChapterIdx}}"]`)?.removeAttribute('aria-current');
+            }}
         }}
     }}
 
@@ -1153,12 +1209,12 @@ def build_reader_index(chapters):
             const card = header.closest('.ch-card');
 
             if (e.target.closest('.ch-chevron')) {{
-                card.classList.toggle('expanded');
+                setCardExpanded(card, !card.classList.contains('expanded'));
                 return;
             }}
 
             e.preventDefault();
-            card.classList.toggle('expanded');
+            setCardExpanded(card, !card.classList.contains('expanded'));
             loadChapter(idx);
         }});
     }});
@@ -1186,10 +1242,10 @@ def build_reader_index(chapters):
 
     // Expand/Collapse All
     document.getElementById('btn-expand-all').addEventListener('click', () => {{
-        document.querySelectorAll('.ch-card').forEach(c => c.classList.add('expanded'));
+        document.querySelectorAll('.ch-card').forEach(c => setCardExpanded(c, true));
     }});
     document.getElementById('btn-collapse-all').addEventListener('click', () => {{
-        document.querySelectorAll('.ch-card').forEach(c => c.classList.remove('expanded'));
+        document.querySelectorAll('.ch-card').forEach(c => setCardExpanded(c, false));
     }});
 
     // Instant Sidebar Search Filter
@@ -1217,7 +1273,7 @@ def build_reader_index(chapters):
             }});
             if (title.includes(q) || badge.includes(q) || matchesSec) {{
                 card.style.display = '';
-                card.classList.add('expanded');
+                setCardExpanded(card, true);
             }} else {{
                 card.style.display = 'none';
             }}
@@ -1228,23 +1284,30 @@ def build_reader_index(chapters):
     function openSidebar() {{
         sidebar.classList.add('open');
         backdrop.classList.add('open');
+        sidebarToggle.setAttribute('aria-expanded', 'true');
+        searchInput.focus();
     }}
-    function closeSidebar() {{
+    function closeSidebar(restoreFocus = false) {{
+        const wasOpen = sidebar.classList.contains('open');
         sidebar.classList.remove('open');
         backdrop.classList.remove('open');
+        sidebarToggle.setAttribute('aria-expanded', 'false');
+        if (restoreFocus && wasOpen) sidebarToggle.focus();
     }}
-    document.getElementById('btn-toggle-sidebar').addEventListener('click', openSidebar);
-    backdrop.addEventListener('click', closeSidebar);
+    sidebarToggle.addEventListener('click', openSidebar);
+    backdrop.addEventListener('click', () => closeSidebar(true));
 
     // Theme Switcher Button
-    document.getElementById('btn-theme-toggle').addEventListener('click', () => {{
+    themeToggle.addEventListener('click', () => {{
         const current = document.body.getAttribute('theme');
         const next = current === 'dark' ? 'light' : 'dark';
         document.body.setAttribute('theme', next);
         document.body.setAttribute('data-theme', next);
         localStorage.setItem('theme', next);
+        syncThemeButton();
         syncThemeToFrame();
     }});
+    syncThemeButton();
 
     // Deep link from Hash on initial load
     window.addEventListener('DOMContentLoaded', () => {{
@@ -1267,9 +1330,14 @@ def build_reader_index(chapters):
         loadChapter(0);
     }});
 
-    // Keyboard shortcuts
+    // Keyboard shortcuts never override native controls or modified key commands.
     document.addEventListener('keydown', (e) => {{
-        if (e.target.tagName === 'INPUT') return;
+        if (e.key === 'Escape') {{
+            closeSidebar(true);
+            return;
+        }}
+        if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+        if (e.target.closest('input, textarea, select, button, a, [contenteditable="true"]')) return;
         if (e.key === 'ArrowLeft') btnNext.click();
         if (e.key === 'ArrowRight') btnPrev.click();
     }});

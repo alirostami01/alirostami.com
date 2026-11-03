@@ -57,7 +57,7 @@
             color: var(--accent);
             line-height: 1.4;
         }
-        h3 {
+        h2 {
             font-size: 1.35rem;
             color: var(--accent);
             margin: 2.4rem 0 .9rem;
@@ -66,7 +66,7 @@
             line-height: 1.4;
             scroll-margin-top: 1rem;
         }
-        h4 {
+        h3 {
             font-size: 1.15rem;
             color: var(--accent);
             margin: 1.6rem 0 .6rem;
@@ -157,7 +157,7 @@
             h1 {
                 font-size: 1.5rem;
             }
-            h3 {
+            h2 {
                 font-size: 1.2rem;
             }
         }
@@ -204,15 +204,47 @@
     <meta name="twitter:image" content="https://www.alirostami.com/images/social/software-architecture.jpg">
     <meta name="twitter:image:alt" content="ترجمه فارسی مبانی معماری نرم‌افزار؛ مطالعه آنلاین ۲۷ فصل و پیوست">
     <!-- image-seo:end -->
+    <!-- accessibility-styles:start -->
+    <style>
+    .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+    .skip-link{position:fixed;top:.75rem;left:.75rem;z-index:100000;padding:.65rem 1rem;border-radius:.35rem;background:#fff;color:#073b70;font-weight:700;box-shadow:0 2px 12px rgba(0,0,0,.25);transform:translateY(-180%);transition:transform .15s ease}
+    .skip-link:focus{transform:translateY(0)}
+    :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:3px solid #0563c1!important;outline-offset:3px!important}
+    [theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible,[data-theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline-color:#7dd3fc!important}
+    body[data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#5f5f66!important}
+    body[theme=dark][data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#b7bbc5!important}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#1d789b!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#6bc5e6!important}
+    body[data-header-desktop] .single .content a:not(.headerlink){text-decoration:underline!important;text-underline-offset:.15em}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#a41354!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#fff!important}
+    body[data-header-desktop] .search input::placeholder{color:#5f5f66!important;opacity:1}
+    body[theme=dark][data-header-desktop] .search input::placeholder{color:#b7bbc5!important}
+    button.menu-toggle{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;min-width:2rem;min-height:2rem}
+    button.search-button,button.search-cancel,button.theme-switch,button.history-back,button.share-button,button.script-button{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;line-height:inherit;cursor:pointer}
+    button.search-button,button.theme-switch,button.share-button,button.script-button{min-width:1.5rem;min-height:1.5rem}
+    button.history-back{text-decoration:underline;text-underline-offset:.15em}
+    summary.details-summary{list-style:none}
+    summary.details-summary::-webkit-details-marker{display:none}
+    .sidebar-controls .sidebar-action,.ch-chevron{appearance:none;border:0;background:transparent;color:inherit;font:inherit;cursor:pointer;min-height:1.5rem}
+    .sidebar-controls .sidebar-action{color:var(--text-muted)}
+    .sidebar-controls .sidebar-action:hover{color:var(--accent)}
+    .ch-chevron{padding:.2rem .4rem;min-width:2rem}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    </style>
+    <!-- accessibility-styles:end -->
 </head>
 <body>
+    <!-- accessibility-skip-link -->
+    <a class="skip-link" href="#main-content">رفتن به محتوای اصلی</a>
 <!-- خروجی HTML — کامپوننت کامل پیوست (بدون html/head) -->
+<main class="chapter-main" id="main-content" tabindex="-1">
 <article class="chapter-content">
 
   <h1 style="font-size:1.7rem;margin:0 0 1rem;border-bottom:3px solid #2c5f8a;padding-bottom:.5rem;">پیوست: پرسش‌های بحث</h1>
 
   <section>
-    <h3 id="sec-1" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۱: مقدمه</h3>
+    <h2 id="sec-1" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۱: مقدمه</h2>
     <ol style="margin:.6rem 1.2rem;padding:0;line-height:1.9;">
       <li>چهار بُعدی که معماری نرم‌افزار را تعریف می‌کنند کدام‌اند؟</li>
       <li>تفاوت تصمیم معماری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(architecture decision)</bdi> با اصل طراحی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(design principle)</bdi> چیست؟</li>
@@ -224,7 +256,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-2" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۲: تفکر معماری</h3>
+    <h2 id="sec-2" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۲: تفکر معماری</h2>
     <ol style="margin:.6rem 1.2rem;padding:0;line-height:1.9;">
       <li>سه معیار نام ببرید که با آن‌ها بتوان تعیین کرد یک تصمیم بیشتر به معماری مربوط است یا به طراحی.</li>
       <li>سه سطح دانش را در مثلث دانش (هرم دانش) <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(knowledge triangle)</bdi> فهرست کنید و برای هر یک مثالی بیاورید.</li>
@@ -236,7 +268,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-3" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۳: ماژولاریتی</h3>
+    <h2 id="sec-3" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۳: ماژولاریتی</h2>
     <ol style="margin:.6rem 1.2rem;padding:0;line-height:1.9;">
       <li>تفاوت ماژولاریتی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(modularity)</bdi> و دانه‌بندی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(granularity)</bdi> را شرح دهید و برای هر یک مثالی بیاورید.</li>
       <li>تفاوت کوپلینگ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(coupling)</bdi> و انسجام <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(cohesion)</bdi> چیست؟</li>
@@ -251,7 +283,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-4" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۴: تعریف ویژگی‌های معماری</h3>
+    <h2 id="sec-4" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۴: تعریف ویژگی‌های معماری</h2>
     <ol style="margin:.6rem 1.2rem;padding:0;line-height:1.9;">
       <li>یک خصیصه برای آنکه ویژگی معماری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(architecture characteristic)</bdi> به شمار آید، باید کدام سه معیار را برآورده کند؟</li>
       <li>تفاوت ویژگی نامشهود <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(implicit characteristic)</bdi> با ویژگی صریح <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(explicit characteristic)</bdi> چیست؟ برای هر یک مثالی بیاورید.</li>
@@ -265,7 +297,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-5" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۵: شناسایی ویژگی‌های معماری</h3>
+    <h2 id="sec-5" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۵: شناسایی ویژگی‌های معماری</h2>
     <ol style="margin:.6rem 1.2rem;padding:0;line-height:1.9;">
       <li>دلیلی بیاورید که چرا محدود کردن شمار ویژگی‌هایی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(«‎-ilities‎»)</bdi> که یک معماری باید از آن‌ها پشتیبانی کند، رویهٔ خوبی است.</li>
       <li>درست یا نادرست؟ بیشتر ویژگی‌های معماری از الزامات کسب‌وکار و داستان‌های کاربری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(user stories)</bdi> سرچشمه می‌گیرند.</li>
@@ -278,7 +310,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-6" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۶: سنجش و حاکمیت بر ویژگی‌های معماری</h3>
+    <h2 id="sec-6" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۶: سنجش و حاکمیت بر ویژگی‌های معماری</h2>
     <ol style="margin:.6rem 1.2rem;padding:0;line-height:1.9;">
       <li>چرا پیچیدگی چرخه‌ای <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(cyclomatic complexity)</bdi> سنجه‌ای چنین مهم برای تحلیل معماری است؟</li>
       <li>توابع برازش معماری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(architecture fitness functions)</bdi> چیستند؟ چگونه می‌توان از آن‌ها برای تحلیل یک معماری استفاده کرد؟</li>
@@ -290,7 +322,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-7" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۷: دامنهٔ ویژگی‌های معماری</h3>
+    <h2 id="sec-7" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۷: دامنهٔ ویژگی‌های معماری</h2>
     <ol style="margin:.6rem 1.2rem;padding:0;line-height:1.9;">
       <li>کوانتوم معماری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(architectural quantum)</bdi> چیست و چرا برای معماری اهمیت دارد؟</li>
       <li>سیستمی را فرض کنید که از یک رابط کاربری واحد و چهار سرویسِ مستقل‌مستقرشونده تشکیل شده و هر سرویس پایگاه‌دادهٔ جداگانهٔ خودش را دارد. این سیستم یک کوانتوم دارد یا چهار کوانتوم؟ چرا؟</li>
@@ -302,7 +334,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-8" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۸: تفکر مؤلفه‌محور</h3>
+    <h2 id="sec-8" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۸: تفکر مؤلفه‌محور</h2>
     <ol style="margin:.6rem 1.2rem;padding:0;line-height:1.9;">
       <li>ما اصطلاح <b>مؤلفه</b> <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(component)</bdi> را به‌عنوان یکی از بلوک‌های سازندهٔ برنامهٔ کاربردی تعریف می‌کنیم؛ یعنی کاری که برنامه انجام می‌دهد. یک مؤلفه معمولاً از گروهی از کلاس‌ها یا فایل‌های منبع تشکیل می‌شود. مؤلفه‌ها معمولاً در یک برنامهٔ کاربردی یا سرویس به چه شکلی نمود می‌یابند؟</li>
       <li>تفاوت افراز فنی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(technical partitioning)</bdi> و افراز حوزه‌ای <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(domain partitioning)</bdi> چیست؟ برای هر یک مثالی بیاورید.</li>
@@ -316,7 +348,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-9" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۹: مبانی</h3>
+    <h2 id="sec-9" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۹: مبانی</h2>
     <ol style="margin:.6rem 1.2rem;padding:0;line-height:1.9;">
       <li>هشت مغالطهٔ محاسبات توزیع‌شده <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(fallacies of distributed computing)</bdi> را فهرست کنید.</li>
       <li>سه چالش نام ببرید که معماری‌های توزیع‌شده دارند و معماری‌های تک‌پارچه ندارند.</li>
@@ -329,7 +361,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-10" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۱۰: سبک معماری لایه‌ای</h3>
+    <h2 id="sec-10" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۱۰: سبک معماری لایه‌ای</h2>
     <ol style="margin:.6rem 1.2rem;padding:0;line-height:1.9;">
       <li>تفاوت لایهٔ باز <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(open layer)</bdi> و لایهٔ بسته <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(closed layer)</bdi> چیست؟</li>
       <li>مفهوم <b>لایه‌های جداسازی</b> <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(layers of isolation)</bdi> و مزایای آن را شرح دهید.</li>
@@ -343,7 +375,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-11" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۱۱: سبک معماری تک‌پارچهٔ ماژولار</h3>
+    <h2 id="sec-11" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۱۱: سبک معماری تک‌پارچهٔ ماژولار</h2>
     <ol style="margin:.6rem 1.2rem;padding:0;line-height:1.9;">
       <li>تک‌پارچهٔ ماژولار <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(modular monolith)</bdi> چه تفاوتی با معماری لایه‌ای چندلایه <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(n-tiered layered architecture)</bdi> دارد؟</li>
       <li>تفاوت رویکرد همتابه‌همتا <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(peer-to-peer)</bdi> و رویکرد میانجی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(mediator)</bdi> را در ارتباط میان ماژول‌ها شرح دهید.</li>
@@ -356,7 +388,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-12" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۱۲: سبک معماری خط لوله</h3>
+    <h2 id="sec-12" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۱۲: سبک معماری خط لوله</h2>
     <ol style="margin:.6rem 1.2rem;padding:0;line-height:1.9;">
       <li>آیا لوله‌ها <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(pipes)</bdi> در معماری خط لوله <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(pipeline architecture)</bdi> می‌توانند دوسویه باشند؟</li>
       <li>چهار نوع فیلتر <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(filter)</bdi> و هدف هر یک را نام ببرید.</li>
@@ -370,7 +402,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-13" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۱۳: سبک معماری میکروکرنل</h3>
+    <h2 id="sec-13" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۱۳: سبک معماری میکروکرنل</h2>
     <ol style="margin:.6rem 1.2rem;padding:0;line-height:1.9;">
       <li>نام دیگر سبک معماری میکروکرنل <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(microkernel architecture style)</bdi> چیست؟</li>
       <li>در چه شرایطی اشکالی ندارد که مؤلفه‌های افزونه <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(plug-in components)</bdi> به مؤلفه‌های افزونهٔ دیگر وابسته باشند؟</li>
@@ -386,7 +418,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-14" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۱۴: سبک معماری مبتنی بر سرویس</h3>
+    <h2 id="sec-14" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۱۴: سبک معماری مبتنی بر سرویس</h2>
     <ol style="margin:.6rem 1.2rem;padding:0;line-height:1.9;">
       <li>چرا سرویس‌ها در معماری مبتنی بر سرویس <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(service-based architecture)</bdi>، <b>سرویس‌های حوزه‌ای</b> <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(domain services)</bdi> نامیده می‌شوند؟</li>
       <li>دو ریسک رایج مرتبط با معماری مبتنی بر سرویس را نام ببرید.</li>
@@ -402,7 +434,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-15" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۱۵: سبک معماری رویدادمحور</h3>
+    <h2 id="sec-15" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۱۵: سبک معماری رویدادمحور</h2>
     <ol style="margin:.6rem 1.2rem;padding:0;line-height:1.9;">
       <li>چهار تفاوت میان رویدادها و پیام‌ها <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(messages)</bdi> را نام ببرید.</li>
       <li>تفاوت رویداد آغازگر <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(initiating event)</bdi> با رویداد مشتق <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(derived event)</bdi> چیست؟</li>
@@ -419,7 +451,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-16" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۱۶: سبک معماری مبتنی بر فضا</h3>
+    <h2 id="sec-16" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۱۶: سبک معماری مبتنی بر فضا</h2>
     <ol style="margin:.6rem 1.2rem;padding:0;line-height:1.9;">
       <li>نام معماری مبتنی بر فضا <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(space-based architecture)</bdi> از کجا آمده است؟</li>
       <li>جنبهٔ اصلی معماری مبتنی بر فضا که آن را از دیگر سبک‌های معماری متمایز می‌کند چیست؟</li>
@@ -436,7 +468,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-17" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۱۷: معماری سرویس‌گرای ارکستراسیون‌محور</h3>
+    <h2 id="sec-17" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۱۷: معماری سرویس‌گرای ارکستراسیون‌محور</h2>
     <ol style="margin:.6rem 1.2rem;padding:0;line-height:1.9;">
       <li>نیروی محرکهٔ اصلی پشت معماری سرویس‌گرا <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(service-oriented architecture)</bdi> چه بود؟</li>
       <li>چهار نوع اصلی سرویس در معماری سرویس‌گرا کدام‌اند؟</li>
@@ -450,7 +482,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-18" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۱۸: معماری میکروسرویس‌ها</h3>
+    <h2 id="sec-18" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۱۸: معماری میکروسرویس‌ها</h2>
     <ol style="margin:.6rem 1.2rem;padding:0;line-height:1.9;">
       <li>مفهوم <b>زمینهٔ محدود</b> <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(bounded context)</bdi> را در میکروسرویس‌ها شرح دهید. چرا این مفهوم برای معماری‌های میکروسرویس چنین حیاتی است؟</li>
       <li>چرا جداسازی داده <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(data isolation)</bdi> در معماری میکروسرویس‌ها چنین اهمیتی دارد؟</li>
@@ -467,7 +499,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-19" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۱۹: انتخاب سبک معماری مناسب</h3>
+    <h2 id="sec-19" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۱۹: انتخاب سبک معماری مناسب</h2>
     <ol style="margin:.6rem 1.2rem;padding:0;line-height:1.9;">
       <li>معماری داده <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(data architecture)</bdi> یک سیستم (یعنی ساختار مدل‌های دادهٔ منطقی و فیزیکی) به چه شکلی بر انتخاب سبک معماری شما اثر می‌گذارد؟</li>
       <li>گام‌هایی را که معمار برای تعیین سبک معماری، افراز داده و سبک‌های ارتباطی یک سیستم برمی‌دارد، به تفکیک شرح دهید.</li>
@@ -479,7 +511,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-20" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۲۰: الگوهای معماری</h3>
+    <h2 id="sec-20" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۲۰: الگوهای معماری</h2>
     <ol style="margin:.6rem 1.2rem;padding:0;line-height:1.9;">
       <li>دو الگو نام ببرید که دغدغهٔ معماریِ جداسازی دغدغه‌های عملیاتی و حوزه‌ای را پیاده می‌کنند.</li>
       <li>گردش‌کار ارکستره‌شده کدام مؤلفه را دارد که در گردش‌کارهای کرئوگرافی‌شده وجود ندارد؟</li>
@@ -491,7 +523,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-21" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۲۱: تصمیمات معماری</h3>
+    <h2 id="sec-21" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۲۱: تصمیمات معماری</h2>
     <ol style="margin:.6rem 1.2rem;padding:0;line-height:1.9;">
       <li>ضدالگوی «خود را پوشش بده» <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Covering Your Assets antipattern)</bdi> چیست؟</li>
       <li>برخی از تکنیک‌های پرهیز از ضدالگوی «معماری ایمیل‌محور» <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Email-Driven Architecture antipattern)</bdi> کدام‌اند؟</li>
@@ -506,7 +538,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-22" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۲۲: تحلیل ریسک معماری</h3>
+    <h2 id="sec-22" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۲۲: تحلیل ریسک معماری</h2>
     <ol style="margin:.6rem 1.2rem;padding:0;line-height:1.9;">
       <li>دو بُعد ماتریس ارزیابی ریسک <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(risk assessment matrix)</bdi> کدام‌اند؟</li>
       <li>سه فعالیت اصلی طوفان ریسک <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(risk storming)</bdi> را شرح دهید.</li>
@@ -520,7 +552,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-23" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۲۳: نمودارکشی معماری</h3>
+    <h2 id="sec-23" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۲۳: نمودارکشی معماری</h2>
     <ol style="margin:.6rem 1.2rem;padding:0;line-height:1.9;">
       <li><b>دلبستگی نامعقول به مصنوع</b> <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(irrational artifact attachment)</bdi> چیست و چرا در مستندسازی و نمودارکشی معماری اهمیت دارد؟</li>
       <li><b>چهار C</b> <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(4 Cs)</bdi> در تکنیک مدل‌سازی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">C4</bdi> کدام‌اند؟</li>
@@ -532,7 +564,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-24" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۲۴: اثربخش کردن تیم‌ها</h3>
+    <h2 id="sec-24" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۲۴: اثربخش کردن تیم‌ها</h2>
     <ol style="margin:.6rem 1.2rem;padding:0;line-height:1.9;">
       <li>سه نوع شخصیت معمار کدام‌اند؟ هر شخصیت چه نوع مرزی پدید می‌آورد؟</li>
       <li>برای تعیین میزان مشارکت خود با تیم، کدام پنج عامل را باید در نظر بگیرید؟</li>
@@ -544,7 +576,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-25" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۲۵: مهارت‌های مذاکره و رهبری</h3>
+    <h2 id="sec-25" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۲۵: مهارت‌های مذاکره و رهبری</h2>
     <ol style="margin:.6rem 1.2rem;padding:0;line-height:1.9;">
       <li>چرا مذاکره <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(negotiation)</bdi> مهارتی چنین مهم برای معمار است؟</li>
       <li>برای سناریویی که در آن یک ذی‌نفع کسب‌وکار بر در دسترس‌بودنِ «پنج نُه» پافشاری می‌کند، اما در واقع تنها «سه نُه» لازم است، چند تکنیک مذاکره نام ببرید.</li>
@@ -560,7 +592,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-26" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۲۶: تقاطع‌های معماری</h3>
+    <h2 id="sec-26" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۲۶: تقاطع‌های معماری</h2>
     <ol style="margin:.6rem 1.2rem;padding:0;line-height:1.9;">
       <li>برای اطمینان از همسویی ساختاری با معماری در طول پیاده‌سازی، از چه تکنیک‌هایی می‌توانید استفاده کنید؟</li>
       <li>توضیح دهید چرا همسو کردن معماری و زیرساخت چنین اهمیتی دارد و مثالی از این همسویی بیاورید.</li>
@@ -574,7 +606,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-27" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۲۷: بازنگری در قوانین معماری نرم‌افزار</h3>
+    <h2 id="sec-27" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">فصل ۲۷: بازنگری در قوانین معماری نرم‌افزار</h2>
     <ol style="margin:.6rem 1.2rem;padding:0;line-height:1.9;">
       <li>سه مزیت عام کتابخانهٔ مشترک <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(shared library)</bdi> نسبت به سرویس مشترک <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(shared service)</bdi> را فهرست کنید. آیا این مزایا به این معناست که معمار هرگاه با این مصالحه روبه‌رو شد، باید <b>همیشه</b> کتابخانهٔ مشترک را برگزیند؟</li>
       <li>نتیجهٔ فرعی اول قانون اول معماری نرم‌افزار چیست؟</li>
@@ -586,12 +618,12 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
     <section>
-    <h3 id="sec-28" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">واژه‌نامهٔ اختصاصی این پیوست</h3>
+    <h2 id="sec-28" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">واژه‌نامهٔ اختصاصی این پیوست</h2>
     <table dir="rtl" style="width:100%;border-collapse:collapse;font-size:.95rem;">
       <thead>
         <tr style="background:#2c5f8a;color:#fff;">
-          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;">واژهٔ انگلیسی</th>
-          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;">معادل مصوب/به‌کاررفته در این پیوست</th>
+          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;" scope="col">واژهٔ انگلیسی</th>
+          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;" scope="col">معادل مصوب/به‌کاررفته در این پیوست</th>
         </tr>
       </thead>
       <tbody>
@@ -674,6 +706,7 @@
   </section>
 
 </article>
+</main>
 
 <script id="fosa-standalone-helper">
   if (window.self === window.top) {

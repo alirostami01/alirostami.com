@@ -11,6 +11,7 @@ Features:
 """
 
 import glob
+import html as html_lib
 import json
 import os
 import re
@@ -49,7 +50,11 @@ def extract_chapters():
                 num_m = re.search(r"(\d+)", fname)
                 badge = f"فصل {int(num_m.group(1))}" if num_m else ""
 
-        toc_m = re.search(r'<nav class="toc">(.*?)</nav>', html, re.DOTALL)
+        toc_m = re.search(
+            r'<nav\b[^>]*class=["\'][^"\']*\btoc\b[^"\']*["\'][^>]*>(.*?)</nav>',
+            html,
+            re.DOTALL | re.IGNORECASE,
+        )
         sections = []
         if toc_m:
             for href, text in re.findall(r'<a href="([^"]+)">([^<]+)</a>', toc_m.group(1)):
@@ -97,7 +102,14 @@ def generate_index_html(chapters):
             )
 
         sections_ul = f'<ul class="ch-sections" id="sections-{idx}">{"".join(sections_html)}</ul>' if sections_html else ""
-        chevron = f'<i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>' if sections_html else ""
+        chapter_label = html_lib.escape(ch["short_title"], quote=True)
+        chevron = (
+            f'<button type="button" class="ch-chevron" aria-expanded="false" '
+            f'aria-controls="sections-{idx}" aria-label="نمایش بخش‌های {chapter_label}">'
+            f'<i class="fas fa-chevron-left" aria-hidden="true"></i></button>'
+            if sections_html
+            else ""
+        )
 
         sidebar_items_html.append(f"""
         <div class="ch-card" id="{ch_id}" data-idx="{idx}" data-file="{ch['route']}">
@@ -387,12 +399,17 @@ def generate_index_html(chapters):
             border-bottom: 1px solid var(--border-color);
             background: rgba(128,128,128,.03);
         }}
-        .sidebar-controls a {{
+        .sidebar-controls .sidebar-action {{
+            appearance: none;
+            border: 0;
+            padding: 0;
+            background: transparent;
             color: var(--text-muted);
+            font: inherit;
             text-decoration: none;
             cursor: pointer;
         }}
-        .sidebar-controls a:hover {{
+        .sidebar-controls .sidebar-action:hover {{
             color: var(--accent);
         }}
         .sidebar-scroll {{
@@ -451,8 +468,13 @@ def generate_index_html(chapters):
             color: #fff;
         }}
         .ch-chevron {{
+            appearance: none;
+            border: 0;
+            background: transparent;
+            font: inherit;
             font-size: .75rem;
             color: var(--text-muted);
+            cursor: pointer;
             transition: transform .25s ease;
             padding: .2rem .4rem;
         }}
@@ -634,8 +656,8 @@ def generate_index_html(chapters):
 
 <header class="reader-header">
     <div style="display:flex;align-items:center;gap:.6rem;">
-        <button class="btn-header mobile-toggle" id="btn-toggle-sidebar" title="فهرست و سایدبار">
-            <i class="fas fa-bars fa-fw"></i>
+        <button type="button" class="btn-header mobile-toggle" id="btn-toggle-sidebar" title="فهرست و سایدبار" aria-label="باز کردن فهرست فصول" aria-controls="reader-sidebar" aria-expanded="false">
+            <i class="fas fa-bars fa-fw" aria-hidden="true"></i>
             <span>فهرست فصول</span>
         </button>
         <div class="header-brand-group">
@@ -667,27 +689,27 @@ def generate_index_html(chapters):
         <a href="/support/" class="btn-header" title="حمایت از پروژه">
             <i class="fas fa-heart fa-fw" style="color:#e0245e;"></i>
         </a>
-        <button class="btn-header" id="btn-theme-toggle" title="تغییر ظاهر تاریک/روشن">
-            <i class="fas fa-adjust fa-fw"></i>
+        <button type="button" class="btn-header" id="btn-theme-toggle" title="تغییر ظاهر تاریک/روشن" aria-label="تغییر ظاهر تاریک یا روشن" aria-pressed="false">
+            <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
         </button>
     </div>
 </header>
 
 <div class="reader-workspace">
     <!-- Sidebar -->
-    <aside class="reader-sidebar" id="reader-sidebar">
+    <aside class="reader-sidebar" id="reader-sidebar" aria-label="فهرست فصول و بخش‌های کتاب">
         <div class="sidebar-search-box">
             <div class="search-wrapper-inner">
                 <i class="fas fa-search" aria-hidden="true"></i>
-                <input type="search" id="sidebar-search" class="search-input" placeholder="جستجو در فصول و بخش‌ها..." autocomplete="off">
+                <input type="search" id="sidebar-search" class="search-input" placeholder="جستجو در فصول و بخش‌ها..." aria-label="جستجو در فصول و بخش‌ها" autocomplete="off" enterkeyhint="search">
             </div>
         </div>
         <div class="sidebar-controls">
             <span>فهرست فصول (۲۸ فصل + پیشگفتار)</span>
             <div style="display:flex;gap:.5rem;">
-                <a id="btn-expand-all">باز کردن همه</a>
-                <span>·</span>
-                <a id="btn-collapse-all">بستن همه</a>
+                <button type="button" class="sidebar-action" id="btn-expand-all">باز کردن همه</button>
+                <span aria-hidden="true">·</span>
+                <button type="button" class="sidebar-action" id="btn-collapse-all">بستن همه</button>
             </div>
         </div>
         <div class="sidebar-scroll" id="sidebar-scroll">
@@ -695,26 +717,27 @@ def generate_index_html(chapters):
         </div>
     </aside>
 
-    <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+    <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
 
     <!-- Main Content Reader -->
-    <main class="reader-content">
+    <main class="reader-content" id="main-content" tabindex="-1">
+        <h1 class="sr-only">مطالعه آنلاین هوش مصنوعی: رویکردی نوین، ویرایش چهارم</h1>
         <div class="reader-toolbar">
-            <div class="toolbar-title" id="current-title">
+            <div class="toolbar-title" id="current-title" aria-live="polite" aria-atomic="true">
                 <i class="fas fa-book-open" style="color:var(--accent);"></i>
                 <span id="title-text">پیشگفتار</span>
             </div>
             <div class="toolbar-nav">
-                <button class="btn-tool" id="btn-prev-ch" title="فصل قبلی">
+                <button type="button" class="btn-tool" id="btn-prev-ch" title="فصل قبلی">
                     <span>فصل قبلی</span>
-                    <i class="fas fa-arrow-right"></i>
+                    <i class="fas fa-arrow-right" aria-hidden="true"></i>
                 </button>
-                <button class="btn-tool" id="btn-next-ch" title="فصل بعدی">
-                    <i class="fas fa-arrow-left"></i>
+                <button type="button" class="btn-tool" id="btn-next-ch" title="فصل بعدی">
+                    <i class="fas fa-arrow-left" aria-hidden="true"></i>
                     <span>فصل بعدی</span>
                 </button>
-                <a class="btn-tool" id="btn-open-tab" target="_blank" title="باز کردن در تب مستقل">
-                    <i class="fas fa-external-link-alt"></i>
+                <a class="btn-tool" id="btn-open-tab" href="00-پیشگفتار" target="_blank" rel="noopener noreferrer" title="باز کردن در تب مستقل" aria-label="باز کردن فصل جاری در تب مستقل">
+                    <i class="fas fa-external-link-alt" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
@@ -736,6 +759,20 @@ def generate_index_html(chapters):
     const sidebar = document.getElementById('reader-sidebar');
     const backdrop = document.getElementById('sidebar-backdrop');
     const searchInput = document.getElementById('sidebar-search');
+    const sidebarToggle = document.getElementById('btn-toggle-sidebar');
+    const themeToggle = document.getElementById('btn-theme-toggle');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function setCardExpanded(card, expanded) {{
+        if (!card) return;
+        card.classList.toggle('expanded', expanded);
+        const toggle = card.querySelector('.ch-chevron');
+        if (toggle) toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    }}
+
+    function syncThemeButton() {{
+        themeToggle.setAttribute('aria-pressed', document.body.getAttribute('theme') === 'dark' ? 'true' : 'false');
+    }}
 
     function syncThemeToFrame() {{
         const isDark = document.body.getAttribute('theme') === 'dark';
@@ -833,8 +870,10 @@ def generate_index_html(chapters):
             history.replaceState(null, '', '#' + encodeURIComponent(targetUrl));
         }} catch(e) {{}}
 
-        // Close sidebar on mobile
+        // Close the mobile drawer without leaving focus on hidden content.
+        const sidebarWasOpen = sidebar.classList.contains('open');
         closeSidebar();
+        if (sidebarWasOpen) document.getElementById('main-content').focus();
     }}
 
     function updateActiveState(idx, hash = '') {{
@@ -843,27 +882,34 @@ def generate_index_html(chapters):
 
         // Update Title & Nav
         titleText.textContent = ch.title;
+        frame.title = 'متن ' + ch.title;
         btnPrev.disabled = (idx <= 0);
         btnNext.disabled = (idx >= CHAPTERS.length - 1);
         btnOpenTab.href = ch.route + (hash || '');
 
-        // Update Sidebar active classes
+        // Update Sidebar active classes and current-page announcement.
         document.querySelectorAll('.ch-card').forEach(c => c.classList.remove('active'));
-        document.querySelectorAll('.sec-link').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.ch-title-link, .sec-link').forEach(link => link.removeAttribute('aria-current'));
+        const activeTitleLink = document.querySelector(`.ch-title-link[data-idx="${{idx}}"]`);
+        if (activeTitleLink) activeTitleLink.setAttribute('aria-current', 'page');
 
         const activeCard = document.getElementById('ch-item-' + idx);
         if (activeCard) {{
             activeCard.classList.add('active');
-            activeCard.classList.add('expanded');
+            setCardExpanded(activeCard, true);
 
             if (hash) {{
                 const cleanHash = hash.startsWith('#') ? hash : '#' + hash;
                 const secLink = activeCard.querySelector(`a.sec-link[data-hash="${{cleanHash}}"]`);
-                if (secLink) secLink.classList.add('active');
+                if (secLink) {{
+                    secLink.classList.add('active');
+                    secLink.setAttribute('aria-current', 'location');
+                    activeTitleLink?.removeAttribute('aria-current');
+                }}
             }}
 
             // Scroll sidebar if not visible
-            activeCard.scrollIntoView({{ behavior: 'smooth', block: 'nearest' }});
+            activeCard.scrollIntoView({{ behavior: reduceMotion ? 'auto' : 'smooth', block: 'nearest' }});
         }}
     }}
 
@@ -878,8 +924,8 @@ def generate_index_html(chapters):
                 e.preventDefault();
                 loadChapter(idx);
             }} else {{
-                // Clicking chevron or empty space toggles accordion
-                card.classList.toggle('expanded');
+                // The native button provides keyboard activation for the accordion.
+                setCardExpanded(card, !card.classList.contains('expanded'));
             }}
         }});
     }});
@@ -904,10 +950,10 @@ def generate_index_html(chapters):
 
     // Expand / Collapse All
     document.getElementById('btn-expand-all').addEventListener('click', () => {{
-        document.querySelectorAll('.ch-card').forEach(c => c.classList.add('expanded'));
+        document.querySelectorAll('.ch-card').forEach(c => setCardExpanded(c, true));
     }});
     document.getElementById('btn-collapse-all').addEventListener('click', () => {{
-        document.querySelectorAll('.ch-card').forEach(c => c.classList.remove('expanded'));
+        document.querySelectorAll('.ch-card').forEach(c => setCardExpanded(c, false));
     }});
 
     // Realtime Search
@@ -940,7 +986,7 @@ def generate_index_html(chapters):
 
             if (chMatch || hasSecMatch) {{
                 card.style.display = '';
-                card.classList.add('expanded');
+                setCardExpanded(card, true);
                 if (chMatch) {{
                     card.querySelectorAll('.sec-item').forEach(s => s.style.display = '');
                 }}
@@ -954,23 +1000,30 @@ def generate_index_html(chapters):
     function openSidebar() {{
         sidebar.classList.add('open');
         backdrop.classList.add('open');
+        sidebarToggle.setAttribute('aria-expanded', 'true');
+        searchInput.focus();
     }}
-    function closeSidebar() {{
+    function closeSidebar(restoreFocus = false) {{
+        const wasOpen = sidebar.classList.contains('open');
         sidebar.classList.remove('open');
         backdrop.classList.remove('open');
+        sidebarToggle.setAttribute('aria-expanded', 'false');
+        if (restoreFocus && wasOpen) sidebarToggle.focus();
     }}
-    document.getElementById('btn-toggle-sidebar').addEventListener('click', openSidebar);
-    backdrop.addEventListener('click', closeSidebar);
+    sidebarToggle.addEventListener('click', openSidebar);
+    backdrop.addEventListener('click', () => closeSidebar(true));
 
     // Theme Switcher Button
-    document.getElementById('btn-theme-toggle').addEventListener('click', () => {{
+    themeToggle.addEventListener('click', () => {{
         const current = document.body.getAttribute('theme');
         const next = current === 'dark' ? 'light' : 'dark';
         document.body.setAttribute('theme', next);
         document.body.setAttribute('data-theme', next);
         localStorage.setItem('theme', next);
+        syncThemeButton();
         syncThemeToFrame();
     }});
+    syncThemeButton();
 
     // Handle deep link from Hash on initial load
     window.addEventListener('DOMContentLoaded', () => {{
@@ -994,9 +1047,14 @@ def generate_index_html(chapters):
         loadChapter(0);
     }});
 
-    // Keyboard shortcuts
+    // Keyboard shortcuts never override native controls or modified key commands.
     document.addEventListener('keydown', (e) => {{
-        if (e.target.tagName === 'INPUT') return;
+        if (e.key === 'Escape') {{
+            closeSidebar(true);
+            return;
+        }}
+        if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+        if (e.target.closest('input, textarea, select, button, a, [contenteditable="true"]')) return;
         if (e.key === 'ArrowLeft') btnNext.click();
         if (e.key === 'ArrowRight') btnPrev.click();
     }});

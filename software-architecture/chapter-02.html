@@ -57,7 +57,7 @@
             color: var(--accent);
             line-height: 1.4;
         }
-        h3 {
+        h2 {
             font-size: 1.35rem;
             color: var(--accent);
             margin: 2.4rem 0 .9rem;
@@ -66,7 +66,7 @@
             line-height: 1.4;
             scroll-margin-top: 1rem;
         }
-        h4 {
+        h3 {
             font-size: 1.15rem;
             color: var(--accent);
             margin: 1.6rem 0 .6rem;
@@ -157,7 +157,7 @@
             h1 {
                 font-size: 1.5rem;
             }
-            h3 {
+            h2 {
                 font-size: 1.2rem;
             }
         }
@@ -204,9 +204,41 @@
     <meta name="twitter:image" content="https://www.alirostami.com/images/social/software-architecture.jpg">
     <meta name="twitter:image:alt" content="ترجمه فارسی مبانی معماری نرم‌افزار؛ مطالعه آنلاین ۲۷ فصل و پیوست">
     <!-- image-seo:end -->
+    <!-- accessibility-styles:start -->
+    <style>
+    .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+    .skip-link{position:fixed;top:.75rem;left:.75rem;z-index:100000;padding:.65rem 1rem;border-radius:.35rem;background:#fff;color:#073b70;font-weight:700;box-shadow:0 2px 12px rgba(0,0,0,.25);transform:translateY(-180%);transition:transform .15s ease}
+    .skip-link:focus{transform:translateY(0)}
+    :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:3px solid #0563c1!important;outline-offset:3px!important}
+    [theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible,[data-theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline-color:#7dd3fc!important}
+    body[data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#5f5f66!important}
+    body[theme=dark][data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#b7bbc5!important}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#1d789b!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#6bc5e6!important}
+    body[data-header-desktop] .single .content a:not(.headerlink){text-decoration:underline!important;text-underline-offset:.15em}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#a41354!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#fff!important}
+    body[data-header-desktop] .search input::placeholder{color:#5f5f66!important;opacity:1}
+    body[theme=dark][data-header-desktop] .search input::placeholder{color:#b7bbc5!important}
+    button.menu-toggle{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;min-width:2rem;min-height:2rem}
+    button.search-button,button.search-cancel,button.theme-switch,button.history-back,button.share-button,button.script-button{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;line-height:inherit;cursor:pointer}
+    button.search-button,button.theme-switch,button.share-button,button.script-button{min-width:1.5rem;min-height:1.5rem}
+    button.history-back{text-decoration:underline;text-underline-offset:.15em}
+    summary.details-summary{list-style:none}
+    summary.details-summary::-webkit-details-marker{display:none}
+    .sidebar-controls .sidebar-action,.ch-chevron{appearance:none;border:0;background:transparent;color:inherit;font:inherit;cursor:pointer;min-height:1.5rem}
+    .sidebar-controls .sidebar-action{color:var(--text-muted)}
+    .sidebar-controls .sidebar-action:hover{color:var(--accent)}
+    .ch-chevron{padding:.2rem .4rem;min-width:2rem}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    </style>
+    <!-- accessibility-styles:end -->
 </head>
 <body>
+    <!-- accessibility-skip-link -->
+    <a class="skip-link" href="#main-content">رفتن به محتوای اصلی</a>
 <!-- خروجی HTML — کامپوننت کامل فصل ۲ (بدون html/head) -->
+<main class="chapter-main" id="main-content" tabindex="-1">
 <article class="chapter-content">
 
   <h1 style="font-size:1.7rem;margin:0 0 1rem;border-bottom:3px solid #2c5f8a;padding-bottom:.5rem;">فصل ۲: تفکر معماری</h1>
@@ -220,7 +252,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-1" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">معماری در برابر طراحی</h3>
+    <h2 id="sec-1" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">معماری در برابر طراحی</h2>
 
     <p style="text-align:justify;">لحظه‌ای در ذهنتان خانهٔ رویایی‌تان را تصور کنید. چند طبقه دارد؟ سقفش مسطح است یا شیب‌دار؟ خانه‌ای یک‌طبقه و پهناور است یا چندطبقه و مدرن؟ چند اتاق خواب دارد؟ همهٔ این‌ها ساختار کلی خانه را—به بیان دیگر، معماری‌اش—تعریف می‌کنند. حالا لحظه‌ای داخل خانه را تصور کنید. کف‌پوش فرش دارد یا پارکت چوبی؟ دیوارها چه رنگی‌اند؟ آباژور کنار اتاق دارد یا چراغ از سقف آویزان است؟ همهٔ این‌ها به طراحی خانه مربوط می‌شوند.</p>
 
@@ -247,7 +279,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-2" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">تصمیمات راهبردی در برابر تاکتیکی</h3>
+    <h2 id="sec-2" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">تصمیمات راهبردی در برابر تاکتیکی</h2>
 
     <p style="text-align:justify;">هر چه تصمیمی راهبردی‌تر باشد، جنبهٔ معمارانه‌تری پیدا می‌کند. برعکس، هر چه تصمیمی تاکتیکی‌تر باشد، احتمالاً بیشتر به طراحی مربوط می‌شود. تصمیمات راهبردی عموماً بلندمدت‌اند، در حالی که تصمیمات تاکتیکی عموماً کوتاه‌مدت‌اند و معمولاً مستقل از اقدامات یا تصمیمات دیگر گرفته می‌شوند.</p>
 
@@ -268,7 +300,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-3" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">سطح تلاش</h3>
+    <h2 id="sec-3" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">سطح تلاش</h2>
 
     <p style="text-align:justify;"><bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Martin Fowler</bdi> در مقالهٔ معروفش «<bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Who Needs an Architect?</bdi>» می‌نویسد که معماری «چیزهایی است که تغییردادنشان دشوار است.» هر چه چیزی دشوارتر تغییر کند، عموماً به تلاش بیشتری نیاز دارد و آن تصمیم یا فعالیت را به سمت معماریِ طیف می‌برد. برعکس، چیزی که برای پیاده‌سازی یا تغییر به حداقل تلاش نیاز دارد، در سمت طراحیِ طیف قرار می‌گیرد.</p>
 
@@ -278,7 +310,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-4" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">اهمیت مصالحه‌ها</h3>
+    <h2 id="sec-4" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">اهمیت مصالحه‌ها</h2>
 
     <p style="text-align:justify;">تحلیل موازنه‌ها و مصالحه‌های یک تصمیم خاص، در تشخیص معماری‌بودن یا طراحی‌بودن آن بسیار کمک می‌کند. هر قدر مصالحه‌ها بااهمیت‌تر باشند، تصمیم معمولاً معمارانه‌تر است. برای نمونه، انتخاب سبک معماری میکروسرویس مقیاس‌پذیری، چابکی، کشسانی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Elasticity)</bdi> و تحمل خطا <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Fault Tolerance)</bdi> بهتری فراهم می‌کند. اما این معماری بسیار پیچیده است، بسیار پرهزینه است، یکپارچگی داده‌اش چالش‌برانگیز است و به دلیل جفت‌شدگی سرویس‌ها <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Service Coupling)</bdi> عملکرد و سرعت بالایی ندارد. این‌ها موازنه‌ها و مصالحه‌هایی نسبتاً بااهمیت‌اند. می‌توانیم نتیجه بگیریم که این تصمیم بیشتر در سمت معماریِ طیف است تا طراحی.</p>
 
@@ -290,7 +322,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-5" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">گستردگی فنی</h3>
+    <h2 id="sec-5" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">گستردگی فنی</h2>
 
     <p style="text-align:justify;">برخلاف توسعه‌دهندگان که برای انجام کارشان به ژرفای فنی قابل‌توجهی نیاز دارند، معماران نرم‌افزار باید گستردگی فنی بالایی داشته باشند تا پدیده‌ها را از دیدگاه معماری ببینند. ژرفای فنی یعنی داشتن دانشی عمیق در یک زبان برنامه‌نویسی، پلتفرم، چارچوب یا محصولی خاص، در حالی که گستردگی فنی یعنی داشتن شناختی جامع از فناوری‌ها و ابزارهای متنوع.</p>
 
@@ -334,7 +366,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-6" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">ضدالگوی انسان غارنشین منجمد</h3>
+    <h2 id="sec-6" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">ضدالگوی انسان غارنشین منجمد</h2>
 
     <p style="text-align:justify;">ضدالگو <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Antipattern)</bdi> را برنامه‌نویس سرشناس <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Andrew Koenig</bdi> این‌گونه تعریف می‌کند: چیزی که هنگام شروع، ایدهٔ خوبی به نظر می‌رسد، اما سرانجام شما را به دردسر می‌اندازد. ضدالگوی رفتاریِ شایعی که در دنیای واقعی دیده می‌شود—ضدالگوی انسان غارنشین منجمد <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Frozen Caveman Antipattern)</bdi>—توصیف‌گر معمارانی است که در مواجهه با هر معماریِ جدیدی، ناخودآگاه به نگرانیِ غیرمنطقیِ همیشگی‌شان بازمی‌گردند. برای نمونه، یکی از همکاران <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Neal</bdi> روی سیستمی کار می‌کرد که معماری متمرکزی داشت. هر بار که طرح را برای معماران مشتری می‌فرستادند، این پرسش پی‌درپی مطرح می‌شد: «اما اگر ایتالیا را از دست بدهیم چه؟» چند سال قبل، مشکلی غریب در خطوط ارتباطی مانع از ارتباط دفتر مرکزی مشتری با فروشگاه‌هایش در ایتالیا شده و دردسر زیادی ایجاد کرده بود. با اینکه احتمال تکرار چنین رویدادی بسیار ناچیز بود، معماران روی این سناریوی خاص وسواس پیدا کرده بودند.</p>
 
@@ -346,7 +378,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-7" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">قانون بیست‌دقیقه‌ای</h3>
+    <h2 id="sec-7" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">قانون بیست‌دقیقه‌ای</h2>
 
     <p style="text-align:justify;">همان‌طور که در شکل ۲-۵ نشان داده شد، گستردگی فنی برای معماران مهم‌تر از ژرفای فنی است. اما چگونه می‌توان همزمان با کار تمام‌وقت، پیشرفت شغلی، وقت‌گذرانی با دوستان و رسیدگی به خانواده، با آخرین روندها و اصطلاحات روز <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Buzzwords)</bdi> به‌روز ماند؟</p>
 
@@ -365,7 +397,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-8" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">توسعهٔ رادار شخصی</h3>
+    <h2 id="sec-8" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">توسعهٔ رادار شخصی</h2>
 
     <p style="text-align:justify;">در بیشتر دههٔ ۹۰ و آغاز دههٔ ۲۰۰۰، یکی از مؤلفان ما مدیر فناوری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(CTO)</bdi> شرکت کوچکی در حوزهٔ آموزش و مشاوره بود. هنگامی که او شروع کرد، پلتفرم اصلی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Clipper</bdi> بود؛ ابزاری برای توسعهٔ سریع برنامه <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Rapid Application Development)</bdi> که برنامه‌های <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">DOS</bdi> را روی فایل‌های <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">dBASE</bdi> می‌ساخت. تا اینکه یک روز ناپدید شد. شرکت ظهور <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Windows</bdi> را دیده بود، اما بازار کسب‌وکار هنوز <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">DOS</bdi> بود… تا اینکه ناگهان دیگر بازاری نماند. یکی از همکاران زار می‌زد که نمی‌توانند انبوه دانش بی‌فایدهٔ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Clipper</bdi> خود را با چیز دیگری جایگزین کنند. آن همکار با تعجب می‌پرسید: آیا در تاریخ گروهی بوده که اعضایش در طول عمر خود—به‌عنوان توسعه‌دهندهٔ نرم‌افزار—به این اندازه دانش جزئی بیاموزند و دور بیفکنند؟ این تجربه تأثیری ماندگار بر جا گذاشت: پیشروی فناوری را نادیده بگیرید، تا به زیان خودتان تمام شود.</p>
 
@@ -373,7 +405,7 @@
 
     <p style="text-align:justify;">آنچه در حبابمان کم داریم، یک رادار فناوری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Technology Radar)</bdi> است: سندی زنده که به ما کمک می‌کند مخاطرات و پاداش‌های فناوری‌های موجود و نوظهور را بسنجیم. مفهوم رادار از <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Thoughtworks</bdi> می‌آید، جایی که <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Neal</bdi> هم عضو هیئت‌مدیره است و هم معمار نرم‌افزار. در این بخش، توصیف می‌کنیم این مفهوم چگونه شکل گرفت و سپس نشان می‌دهیم چگونه رادار شخصی بسازید.</p>
 
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1rem 0 .6rem;">رادار فناوری Thoughtworks</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1rem 0 .6rem;" data-a11y-heading="promoted-from-h4">رادار فناوری Thoughtworks</h3>
 
     <p style="text-align:justify;">هیئت مشاورهٔ فناوری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Technology Advisory Board)</bdi> یا <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">TAB</bdi>، گروهی از رهبران ارشد فناوری در <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Thoughtworks</bdi> است که به <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">CTO</bdi> در گرفتن تصمیمات دربارهٔ جهت‌گیری‌ها و راهبردهای فناوریِ شرکت و مشتریانش کمک می‌کند. برای به‌روزماندن، این گروه شروع به تولید چیزی کرد که اکنون رادار فناوریِ دوبار در سال است.</p>
 
@@ -423,7 +455,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-9" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">تحلیل مصالحه‌ها</h3>
+    <h2 id="sec-9" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">تحلیل مصالحه‌ها</h2>
 
     <p style="text-align:justify;">تفکر مثل یک معمار یعنی دیدن مصالحه‌ها در هر راه‌حلی—فنی یا غیرفنی—و تحلیل آن مصالحه‌ها برای تعیین بهترین راه‌حل. دلیل اینکه این فعالیت، یکی از فعالیت‌های کلیدی یک معمار است (و بنابراین بخشی از تفکر معماری) را می‌توان با نقل‌قول زیر از <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Mark</bdi> (یکی از مؤلفان ما) نشان داد:</p>
 
@@ -484,8 +516,8 @@
       <table dir="rtl" style="width:100%;border-collapse:collapse;font-size:.95rem;text-align:right;">
         <thead>
           <tr style="background:#2c5f8a;color:#fff;">
-            <th style="border:1px solid #ccc;padding:.4rem .6rem;">مزایای موضوع</th>
-            <th style="border:1px solid #ccc;padding:.4rem .6rem;">معایب موضوع</th>
+            <th style="border:1px solid #ccc;padding:.4rem .6rem;" scope="col">مزایای موضوع</th>
+            <th style="border:1px solid #ccc;padding:.4rem .6rem;" scope="col">معایب موضوع</th>
           </tr>
         </thead>
         <tbody>
@@ -502,7 +534,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-10" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">درک محرک‌های کسب‌وکار</h3>
+    <h2 id="sec-10" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">درک محرک‌های کسب‌وکار</h2>
 
     <p style="text-align:justify;">تفکر مثل یک معمار همچنین یعنی درک محرک‌های کسب‌وکاری که برای موفقیت سیستم لازم‌اند و ترجمهٔ آن الزامات به ویژگی‌های معماری مثل مقیاس‌پذیری، عملکرد و دسترس‌پذیری. این کاری دشوار است و نیاز دارد معمار، دانشی در حوزهٔ کسب‌وکار و روابطی سالم و مشارکتی با ذی‌نفعان کلیدی کسب‌وکار داشته باشد. ما چهار فصل از کتاب را به همین موضوع اختصاص داده‌ایم: در فصل ۴، ویژگی‌های معماری گوناگون را تعریف می‌کنیم. در فصل ۵، شیوه‌های شناسایی و کیفی‌سازی ویژگی‌های معماری را شرح می‌دهیم. در فصل ۶، توصیف می‌کنیم چگونه هر ویژگی را اندازه بگیریم تا مطمئن شویم نیازهای کسب‌وکارِ سیستم برآورده می‌شود. و سرانجام، در فصل ۷ دامنهٔ ویژگی‌های معماری و ارتباطشان با کوپلینگ را بررسی می‌کنیم.</p>
   </section>
@@ -510,7 +542,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-11" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">توازن میان معماری و کدنویسی مستقیم</h3>
+    <h2 id="sec-11" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">توازن میان معماری و کدنویسی مستقیم</h2>
 
     <p style="text-align:justify;">یکی از کارهای دشواری که یک معمار با آن روبه‌روست، یافتن توازن میان کدنویسی مستقیم <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Hands-On Coding)</bdi> و معماری نرم‌افزار است. ما با اطمینان باور داریم که هر معماری باید کدنویسی کند و باید سطح معینی از ژرفای فنی را حفظ کند (بخش «گستردگی فنی» را در صفحهٔ ۲۰ ببینید). با اینکه این کار ساده به نظر می‌رسد، انجام‌دادنش گاهی دشوار است.</p>
 
@@ -520,27 +552,27 @@
 
     <p style="text-align:justify;">حال فرض کنیم معمار نتواند با تیم توسعه کد بنویسد. چگونه می‌تواند همچنان دست‌به‌کد بماند و سطحی از ژرفای فنی را حفظ کند؟ چند توصیه و تکنیک برای معمارانی که می‌خواهند به تعمیق توانایی‌های فنی‌شان ادامه دهند:</p>
 
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1rem 0 .6rem;">اثبات‌های مفهوم مکرر</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1rem 0 .6rem;" data-a11y-heading="promoted-from-h4">اثبات‌های مفهوم مکرر</h3>
 
     <p style="text-align:justify;">انجام پیاپیِ اثبات مفهوم‌ها <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(POC)</bdi> از معمار می‌خواهد کد منبع بنویسد؛ همچنین این کار به راستی‌آزمایی یک تصمیم معماری با درنظرگرفتن جزئیات پیاده‌سازی کمک می‌کند. برای نمونه، فرض کنید معماری بر سر انتخاب میان دو راه‌حل کش‌گذاری گیر کرده است. یک راه مؤثر برای تصمیم‌گیری این است که در هر دو محصولِ کش یک نمونهٔ کارآمد پیاده‌سازی کنید و نتایج را مقایسه کنید. این کار به معمار اجازه می‌دهد جزئیات پیاده‌سازی و میزان تلاش لازم برای ساخت راه‌حل کامل را از نزدیک ببیند. همچنین می‌تواند ویژگی‌های معماریِ راه‌حل‌های مختلف کش —مثل مقیاس‌پذیری، کارایی و در کل تحمل خطا— را بهتر مقایسه کند.</p>
 
     <p style="text-align:justify;">هر جا ممکن بود، معمار باید بهترین کدِ عملیاتی‌ای را که از دستش برمی‌آید بنویسد. این تمرین را به دو دلیل توصیه می‌کنیم. نخست، کدِ اثبات مفهومِ «یک‌بارمصرف» <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Throwaway Code)</bdi> در بسیاری اوقات راهش را به مخزن کد منبع <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Source Code Repository)</bdi> باز می‌کند و به معماری مرجع <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Reference Architecture)</bdi> یا نمونه‌ای راهنما برای دیگران بدل می‌شود. هیچ معماری دوست ندارد کدِ شلختهٔ یک‌بارمصرفش را نمایندهٔ کیفیت معمول کارش بدانند. دوم، نوشتن کدِ اثبات مفهومِ باکیفیت یعنی تمرین نوشتن کدِ باکیفیت و خوش‌ساخت، به‌جای آنکه مدام با ساختن POC‌های سریع و شلخته، عادات بدِ کدنویسی را در خود پرورش دهد.</p>
 
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1rem 0 .6rem;">پرداختن به بدهی فنی</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1rem 0 .6rem;" data-a11y-heading="promoted-from-h4">پرداختن به بدهی فنی</h3>
 
     <p style="text-align:justify;">راه دیگری برای دست‌به‌کد ماندن، دست‌زدن به بخشی از بدهی فنی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Technical Debt)</bdi> است؛ با این کار تیم توسعه آزاد می‌شود تا روی داستان‌های کاربری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(User Stories)</bdi> حیاتیِ کارکردی کار کند. بدهی فنی معمولاً اولویت پایینی دارد، پس اگر معمار فرصت نکند وظیفهٔ مرتبط با بدهی فنی را در یک تکرارِ مشخص تمام کند، دنیا به آخر نمی‌رسد و این کار در کل بر موفقیت آن تکرار اثر نمی‌گذارد.</p>
 
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1rem 0 .6rem;">رفع اشکال‌ها</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1rem 0 .6rem;" data-a11y-heading="promoted-from-h4">رفع اشکال‌ها</h3>
 
     <p style="text-align:justify;">به همین ترتیب، کار روی رفع اشکال‌ها <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Bug Fixes)</bdi> درونِ یک تکرار، راه دیگری برای حفظ مهارت‌های کدنویسی مستقیم است که هم‌زمان به تیم توسعه کمک می‌کند. این تکنیک هرچند اصلاً جلوهٔ درخشانی ندارد، به معمار اجازه می‌دهد مشکلات و ضعف‌های درونِ پایگاه کد —و شاید خودِ معماری— را شناسایی کند.</p>
 
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1rem 0 .6rem;">خودکارسازی</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1rem 0 .6rem;" data-a11y-heading="promoted-from-h4">خودکارسازی</h3>
 
     <p style="text-align:justify;">بهره‌گیری از خودکارسازی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Automation)</bdi> با ساختن ابزارهای سادهٔ خط فرمان <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Command-Line Tools)</bdi> و تحلیل‌گرها برای کمک به کارهای روزمرهٔ تیم توسعه، راه عالی دیگری برای حفظ مهارت‌های کدنویسی مستقیم است که هم‌زمان تیم توسعه را کارآمدتر می‌کند. کارهای تکراری‌ای را که تیم توسعه انجام می‌دهد پیدا کنید و خودکارشان کنید؛ تیم قدردان این خودکارسازی خواهد بود. چند نمونه: اعتبارسنج‌های خودکارِ کد منبع برای بررسی استانداردهای مشخصِ کدنویسی که در آزمون‌های lint دیگر پیدا نمی‌شوند، چک‌لیست‌های خودکار، و وظایف تکراریِ بازآرایی کد <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Code Refactoring)</bdi> به‌صورت دستی.</p>
 
     <p style="text-align:justify;">خودکارسازی به شکل تحلیل معماری و توابع برازش خودکار، برای تضمین سرزندگی و انطباق معماری، راه عالی دیگری برای دست‌به‌کد ماندن است. برای نمونه، معمار می‌تواند با نوشتن کد <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Java</bdi> در <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">ArchUnit</bdi> روی پلتفرم <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Java</bdi>، انطباق معماری را خودکار کند، یا توابع برازشِ سفارشی‌ای بنویسد که هم انطباق معماری را تضمین کند و هم تجربهٔ عملی به دست آورد. دربارهٔ این تکنیک‌ها در فصل ۶ صحبت می‌کنیم.</p>
 
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1rem 0 .6rem;">بازبینی کد</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1rem 0 .6rem;" data-a11y-heading="promoted-from-h4">بازبینی کد</h3>
 
     <p style="text-align:justify;">آخرین تکنیک برای دست‌به‌کد ماندن به‌عنوان معمار، انجام پیاپی بازبینی کد <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(Code Reviews)</bdi> است. معمار هرچند عملاً کد نمی‌نویسد، دست‌کم این کار او را درگیرِ کد منبع نگه می‌دارد. فایده‌های دیگر بازبینی کد عبارت‌اند از تضمینِ انطباق با معماری و شناسایی فرصت‌های مربی‌گری و راهنمایی در تیم.</p>
   </section>
@@ -548,7 +580,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-12" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">چیزهای بیشتری در تفکر معماری هست</h3>
+    <h2 id="sec-12" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">چیزهای بیشتری در تفکر معماری هست</h2>
 
     <p style="text-align:justify;">این فصل بنیان‌های آغازِ اندیشیدن مثل یک معمار را شکل می‌دهد. با این حال، اندیشیدن مثل یک معمار بسیار فراتر از آن چیزی است که در این فصل آمد. اندیشیدن مثل یک معمار یعنی درکِ ساختار کلیِ یک سیستم (این موضوع را در فصل ۳ دنبال می‌کنیم)، درکِ دغدغه‌های کسب‌وکار و ترجمهٔ آن دغدغه‌ها به ویژگی‌های معماری (چهار فصل به همین موضوع اختصاص داده‌ایم)، و سرانجام، دیدن سیستم از راه مؤلفه‌های منطقی‌اش —بلوک‌های سازندهٔ یک سیستم— (این موضوع را در فصل ۸ بررسی می‌کنیم).</p>
   </section>
@@ -556,12 +588,12 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-13" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">واژه‌نامهٔ اختصاصی این فصل</h3>
+    <h2 id="sec-13" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">واژه‌نامهٔ اختصاصی این فصل</h2>
     <table dir="rtl" style="width:100%;border-collapse:collapse;font-size:.95rem;">
       <thead>
         <tr style="background:#2c5f8a;color:#fff;">
-          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;">واژهٔ انگلیسی</th>
-          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;">معادل مصوب/به‌کاررفته در این فصل</th>
+          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;" scope="col">واژهٔ انگلیسی</th>
+          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;" scope="col">معادل مصوب/به‌کاررفته در این فصل</th>
         </tr>
       </thead>
       <tbody>
@@ -635,6 +667,7 @@
   </section>
 
 </article>
+</main>
 
 <script id="fosa-standalone-helper">
   if (window.self === window.top) {

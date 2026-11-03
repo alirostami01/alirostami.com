@@ -57,7 +57,7 @@
             color: var(--accent);
             line-height: 1.4;
         }
-        h3 {
+        h2 {
             font-size: 1.35rem;
             color: var(--accent);
             margin: 2.4rem 0 .9rem;
@@ -66,7 +66,7 @@
             line-height: 1.4;
             scroll-margin-top: 1rem;
         }
-        h4 {
+        h3 {
             font-size: 1.15rem;
             color: var(--accent);
             margin: 1.6rem 0 .6rem;
@@ -157,7 +157,7 @@
             h1 {
                 font-size: 1.5rem;
             }
-            h3 {
+            h2 {
                 font-size: 1.2rem;
             }
         }
@@ -204,9 +204,41 @@
     <meta name="twitter:image" content="https://www.alirostami.com/images/social/software-architecture.jpg">
     <meta name="twitter:image:alt" content="ترجمه فارسی مبانی معماری نرم‌افزار؛ مطالعه آنلاین ۲۷ فصل و پیوست">
     <!-- image-seo:end -->
+    <!-- accessibility-styles:start -->
+    <style>
+    .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+    .skip-link{position:fixed;top:.75rem;left:.75rem;z-index:100000;padding:.65rem 1rem;border-radius:.35rem;background:#fff;color:#073b70;font-weight:700;box-shadow:0 2px 12px rgba(0,0,0,.25);transform:translateY(-180%);transition:transform .15s ease}
+    .skip-link:focus{transform:translateY(0)}
+    :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:3px solid #0563c1!important;outline-offset:3px!important}
+    [theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible,[data-theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline-color:#7dd3fc!important}
+    body[data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#5f5f66!important}
+    body[theme=dark][data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#b7bbc5!important}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#1d789b!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#6bc5e6!important}
+    body[data-header-desktop] .single .content a:not(.headerlink){text-decoration:underline!important;text-underline-offset:.15em}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#a41354!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#fff!important}
+    body[data-header-desktop] .search input::placeholder{color:#5f5f66!important;opacity:1}
+    body[theme=dark][data-header-desktop] .search input::placeholder{color:#b7bbc5!important}
+    button.menu-toggle{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;min-width:2rem;min-height:2rem}
+    button.search-button,button.search-cancel,button.theme-switch,button.history-back,button.share-button,button.script-button{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;line-height:inherit;cursor:pointer}
+    button.search-button,button.theme-switch,button.share-button,button.script-button{min-width:1.5rem;min-height:1.5rem}
+    button.history-back{text-decoration:underline;text-underline-offset:.15em}
+    summary.details-summary{list-style:none}
+    summary.details-summary::-webkit-details-marker{display:none}
+    .sidebar-controls .sidebar-action,.ch-chevron{appearance:none;border:0;background:transparent;color:inherit;font:inherit;cursor:pointer;min-height:1.5rem}
+    .sidebar-controls .sidebar-action{color:var(--text-muted)}
+    .sidebar-controls .sidebar-action:hover{color:var(--accent)}
+    .ch-chevron{padding:.2rem .4rem;min-width:2rem}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    </style>
+    <!-- accessibility-styles:end -->
 </head>
 <body>
+    <!-- accessibility-skip-link -->
+    <a class="skip-link" href="#main-content">رفتن به محتوای اصلی</a>
 <!-- خروجی HTML — کامپوننت کامل فصل ۲۲ (بدون html/head) -->
+<main class="chapter-main" id="main-content" tabindex="-1">
 <article class="chapter-content">
 
   <h1 style="font-size:1.7rem;margin:0 0 1rem;border-bottom:3px solid #2c5f8a;padding-bottom:.5rem;">فصل ۲۲: تحلیل ریسک معماری</h1>
@@ -218,7 +250,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-1" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">ماتریس ریسک</h3>
+    <h2 id="sec-1" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">ماتریس ریسک</h2>
     <p style="text-align:justify;">نخستین چیزی که در ارزیابی ریسک معماری باید تعیین شود، سطح آن است: اینکه ریسکِ بخش مشخصی از معماری پایین، متوسط یا بالاست. چالش اینجاست که ارزیابی ریسک می‌تواند <b>ذهنی</b> <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(subjective)</bdi> باشد. ممکن است یک معمار بر این <b>نظر</b> باشد که جنبه‌ای از معماری ریسک بالایی دارد، در حالی که <b>نظر</b> معمار دیگر این باشد که همان جنبه ریسک متوسطی دارد. در اینجا واژهٔ <b>نظر</b> را برجسته کرده‌ایم تا بر ذهنی بودنِ ارزیابی ریسک تأکید کنیم. خوشبختانه، معماران ماتریس ارزیابی ریسکِ سودمندی در اختیار دارند که به ما کمک می‌کند ریسک را سنجش‌پذیرتر کنیم.</p>
     <p style="text-align:justify;">ماتریس ارزیابی ریسک معماری <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(architecture risk-assessment matrix)</bdi> (شکل ۲۲-۱) برای سنجش ریسک از دو بُعد استفاده می‌کند: اثر کلیِ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(impact)</bdi> ریسکِ مورد نظر و احتمال وقوعِ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(likelihood)</bdi> آن ریسک. معمار هر بُعد را پایین (۱)، متوسط (۲) یا بالا (۳) رتبه‌بندی می‌کند و سپس اعداد را در هر خانهٔ تقاطع ماتریس در هم ضرب می‌کند. این کار نمایشی عددی از ریسک فراهم می‌کند و فرایند سنجش ریسک را <b>عینی‌تر</b> <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(objective)</bdi> می‌سازد. رتبه‌های ۱ و ۲ ریسک پایین (معمولاً با رنگ سبز)، اعداد ۳ و ۴ ریسک متوسط (معمولاً زرد) و اعداد ۶ تا ۹ ریسک بالا (معمولاً قرمز) به شمار می‌آیند. استفاده از سایه‌زنی برای نمایش سیاه‌وسفید و برای افرادی که قادر به تشخیص رنگ‌ها نیستند می‌تواند سودمند باشد.</p>
     <figure style="margin:1rem 0;padding:.7rem 1rem;background:#f9f9f9;border-right:4px solid #2c5f8a;border-radius:4px;">
@@ -235,7 +267,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-2" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">ارزیابی‌های ریسک</h3>
+    <h2 id="sec-2" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">ارزیابی‌های ریسک</h2>
     <p style="text-align:justify;">می‌توانید از ماتریس ریسک برای ساختن چیزی استفاده کنید که <b>ارزیابی ریسک</b> <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(risk assessment)</bdi> نامیده می‌شود: گزارشی خلاصه از ریسک کلیِ یک معماری، با معیارهای ارزیابیِ معنادار بر پایهٔ یک بافتار (سرویس‌ها، نواحی زیرحوزه یا نواحی حوزهٔ یک سیستم). ما ارزیابی‌های ریسک بسیاری انجام داده‌ایم و دریافته‌ایم که ویژگی‌های معماری معیارهای بسیار خوبی برای ارزیابی ریسک‌اند. وقتی ویژگی‌های معماریِ حیاتیِ سیستم مقیاس‌پذیری، کشسانی و یکپارچگی داده‌اند، چرا باید وقت خود را صرف تحلیل ریسک کارایی کنیم؟ شناختن ویژگی‌هایی مانند آنچه در فصل ۴ توصیف شد، نخستین گام در تحلیل ریسک معماری است.</p>
     <aside role="note" style="margin:1rem 0;padding:.8rem 1.1rem;background:#eef8f1;border:1px solid #cfe8d6;border-right:5px solid #2e8b57;border-radius:4px;font-size:1rem;text-align:justify;">
       <p style="margin:0;"><b>نکته:</b> ویژگی‌های معماری‌ای که پشتیبانی از آن‌ها برای معماری از همه حیاتی‌تر است، معیارهای بسیار خوبی برای ارزیابی ریسک‌اند.</p>
@@ -265,7 +297,7 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-3" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">طوفان ریسک</h3>
+    <h2 id="sec-3" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">طوفان ریسک</h2>
     <p style="text-align:justify;">هیچ معماری نمی‌تواند به‌تنهایی ریسک کلیِ یک سیستم را تعیین کند؛ به دو دلیل. نخست اینکه معماری که تنها کار می‌کند ممکن است یک ناحیهٔ ریسک را از قلم بیندازد یا نادیده بگیرد؛ دوم اینکه معماران بسیار اندکی از <b>همهٔ</b> بخش‌های سیستم شناخت کامل دارند. اینجاست که طوفان ریسک به کار می‌آید.</p>
     <p style="text-align:justify;"><b>طوفان ریسک</b> <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(risk storming)</bdi> تمرینی مشارکتی برای تعیین ریسک معماری در یک بُعد مشخص (بافتار یا معیار) است. هرچند بیشتر تلاش‌های طوفان ریسک چند معمار را درگیر می‌کنند، اکیداً توصیه می‌کنیم توسعه‌دهندگان ارشد <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(senior developers)</bdi> و سرپرستان فنی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(tech leads)</bdi> را نیز مشارکت دهید. آن‌ها نه‌تنها دیدگاهی پیاده‌سازی‌محور دربارهٔ ریسک معماری ارائه می‌کنند، بلکه مشارکتشان به آن‌ها کمک می‌کند معماری را بهتر بفهمند.</p>
     <p style="text-align:justify;">طوفان ریسک سه مرحله دارد: شناسایی، اجماع و کاهش. در مرحلهٔ فردی (مرحلهٔ ۱)، همهٔ شرکت‌کنندگان، هر یک به‌تنهایی، با استفاده از ماتریس ریسک به نواحی گوناگون معماری ریسک نسبت می‌دهند. این مرحلهٔ فردیِ طوفان ریسک ضروری است تا شرکت‌کنندگان بر یکدیگر اثر نگذارند یا توجه دیگران را از نواحی مشخصی از معماری منحرف نکنند. در دو مرحلهٔ مشارکتی، همهٔ شرکت‌کنندگان با هم کار می‌کنند تا دربارهٔ اینکه نواحی ریسک کدام‌اند به اجماع برسند و دربارهٔ آن‌ها گفت‌وگو کنند (مرحلهٔ ۲) و راه‌حل‌هایی برای کاهش ریسک بیابند (مرحلهٔ ۳).</p>
@@ -276,7 +308,7 @@
       <figcaption style="font-size:.95rem;color:#333;"><b>شکل ۲۲-۵.</b> نمونهٔ نمودار معماری برای جلسهٔ طوفان ریسک</figcaption>
     </figure>
     <p style="text-align:justify;">کار را با مرحلهٔ ۱ آغاز می‌کنیم.</p>
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;">مرحلهٔ ۱: شناسایی</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;" data-a11y-heading="promoted-from-h4">مرحلهٔ ۱: شناسایی</h3>
     <p style="text-align:justify;">مرحلهٔ <b>شناسایی</b> <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(identification)</bdi> در طوفان ریسک شامل این است که هر شرکت‌کننده به‌طور فردی نواحی ریسک را در معماری شناسایی کند. در این مرحله حیاتی است که هر شرکت‌کننده دیدگاه بی‌طرفانهٔ خود را دربارهٔ ریسکِ موجود ثبت کند، بی‌آنکه شرکت‌کنندگان دیگر مسیر نگاهش را تغییر دهند یا بر او اثر بگذارند. مرحلهٔ شناسایی سه گام دارد:</p>
     <ol style="margin:.6rem 1.2rem;padding:0;line-height:1.9;">
       <li>تسهیل‌گر برای همهٔ شرکت‌کنندگان دعوت‌نامه‌ای برای مراحل مشارکتی می‌فرستد. این دعوت‌نامه شامل نمودار معماری (یا محل یافتن آن)، معیارهای ریسک و بافتاری که باید تحلیل شود، و تاریخ، زمان و مکان (حضوری یا مجازی) جلسهٔ مشارکتی، همراه با هر جزئیات اجراییِ دیگر است.</li>
@@ -287,7 +319,7 @@
     <aside role="note" style="margin:1rem 0;padding:.8rem 1.1rem;background:#eef8f1;border:1px solid #cfe8d6;border-right:5px solid #2e8b57;border-radius:4px;font-size:1rem;text-align:justify;">
       <p style="margin:0;"><b>نکته:</b> تا جای ممکن، تلاش‌های طوفان ریسک را به یک معیار یا بافتار واحد محدود کنید. این کار به شرکت‌کنندگان امکان می‌دهد توجه خود را بر آن بُعد مشخص متمرکز کنند و از سردرگمی دربارهٔ اینکه ریسکِ واقعی چیست جلوگیری می‌کند.</p>
     </aside>
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;">مرحلهٔ ۲: اجماع</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;" data-a11y-heading="promoted-from-h4">مرحلهٔ ۲: اجماع</h3>
     <p style="text-align:justify;">مرحلهٔ <b>اجماع</b> <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(consensus)</bdi> در طوفان ریسک کاملاً مشارکتی است و هدفش رسیدن به اجماع میان همهٔ شرکت‌کنندگان دربارهٔ ریسک یا ریسک‌های درون معماری است. این فعالیت زمانی بیشترین اثربخشی را دارد که تسهیل‌گر یک نمودار معماریِ چاپیِ بزرگ را روی دیوار نصب کند (یا نسخهٔ الکترونیکیِ آن را روی یک صفحه‌نمایش بزرگ نشان دهد). وقتی شرکت‌کنندگان به جلسهٔ طوفان ریسک می‌رسند، تسهیل‌گر از آن‌ها می‌خواهد برگه‌های یادداشت سطح ریسک خود را روی ناحیهٔ مربوط در نمودار معماری بچسبانند (شکل ۲۲-۶ را ببینید).</p>
     <p style="text-align:justify;">پس از آنکه همهٔ برگه‌های یادداشت در جای خود قرار گرفتند، مرحلهٔ مشارکتی می‌تواند آغاز شود. هدف در اینجا تحلیل گروهیِ نواحی ریسک و رسیدن به اجماع دربارهٔ سطح ریسک آن‌هاست. در نمونهٔ شکل ۲۲-۶، تیم چند ناحیهٔ ریسک را شناسایی کرده است. (معیارهای واقعی در این مثال اهمیتی ندارند.) می‌بینیم که:</p>
     <ul style="margin:.6rem 1.2rem;padding:0;line-height:1.9;">
@@ -317,7 +349,7 @@
       <figcaption style="font-size:.95rem;color:#333;"><b>شکل ۲۲-۷.</b> اجماع بر سر نواحی ریسک</figcaption>
     </figure>
 
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;">مرحلهٔ ۳: کاهش ریسک</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;" data-a11y-heading="promoted-from-h4">مرحلهٔ ۳: کاهش ریسک</h3>
     <p style="text-align:justify;">پس از آنکه همهٔ شرکت‌کنندگان بر سر سطوح ریسک معماری به توافق رسیدند، مرحلهٔ <b>کاهش ریسک</b> <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(risk mitigation)</bdi> آغاز می‌شود. کاهش ریسک معمولاً مستلزم تغییر نواحی مشخصی از معماری است که در غیر این صورت ممکن بود همان‌گونه که بودند بی‌نقص به شمار آیند.</p>
     <p style="text-align:justify;">این مرحله، که آن نیز مشارکتی است، در پی راه‌هایی برای کاهش یا حذف ریسک‌های شناسایی‌شده در مرحلهٔ دوم است. بسته به ریسک‌های شناسایی‌شده، ممکن است معماری اولیه نیاز به تغییر کامل داشته باشد، یا تغییرات به بازآرایی معماریِ ساده‌ای در نواحی مشخص محدود شود؛ مانند افزودن یک صف برای فشار معکوس به منظور کاهش یک گلوگاه توان عملیاتی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(throughput)</bdi>.</p>
     <p style="text-align:justify;">تغییرات لازم هرچه باشد، مرحلهٔ کاهش ریسک معمولاً هزینه‌های اضافه‌ای به همراه دارد. به همین دلیل، مهم است که ذی‌نفعان کلیدیِ کسب‌وکار که اختیار تصمیم‌گیری دارند در این مرحله مشارکت کنند تا تعیین کنند آیا هزینهٔ یک راه‌حل کاهش ریسک بر خودِ ریسک می‌چربد یا نه.</p>
@@ -328,14 +360,14 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-4" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">تحلیل ریسک داستان‌های کاربری</h3>
+    <h2 id="sec-4" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">تحلیل ریسک داستان‌های کاربری</h2>
     <p style="text-align:justify;">طوفان ریسک جدا از شناسایی ریسک معماری، در بسیاری از جنبه‌های دیگرِ توسعهٔ نرم‌افزار نیز سودمند است. برای مثال، یک تیم توسعه می‌تواند در جلسهٔ پالایش داستان‌ها <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(story grooming)</bdi> از طوفان ریسک برای تعیین ریسک کلیِ مرتبط با تکمیل داستان‌های کاربری در یک تکرار <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(iteration)</bdi> مشخص (و در نتیجه، ارزیابی ریسک کلیِ آن تکرار) استفاده کند. تیم با استفاده از همان ماتریس ریسک می‌تواند ریسک هر داستان کاربری را شناسایی کند؛ به این صورت که اثر کلیِ تکمیل نشدنِ داستان در آن تکرار و احتمال تکمیل نشدنِ داستان در تکرار جاری را تعیین می‌کند. سپس می‌تواند داستان‌های پرریسک را شناسایی کند، آن‌ها را با دقت ردیابی کند و بهتر اولویت‌بندی کند.</p>
   </section>
 
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-5" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">نمونهٔ کاربردی طوفان ریسک</h3>
+    <h2 id="sec-5" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">نمونهٔ کاربردی طوفان ریسک</h2>
     <p style="text-align:justify;">برای نشان دادنِ توان طوفان ریسک و چگونگیِ بهبود معماری کلی به کمک آن، مثال یک سیستم پشتیبانی برای مرکز تماسی را در نظر بگیرید که در آن پرستاران دربارهٔ وضعیت‌های گوناگون سلامت به بیماران مشاوره می‌دهند. نیازمندی‌های سیستم عبارت‌اند از:</p>
     <ul style="margin:.6rem 1.2rem;padding:0;line-height:1.9;">
       <li>یک موتور تشخیصِ شخص ثالث پرسش‌ها را ارائه می‌کند و پرستاران و بیماران را در مسائل پزشکی‌شان راهنمایی می‌کند. این موتور می‌تواند حدود ۵۰۰ درخواست در ثانیه را پاسخ دهد.</li>
@@ -353,7 +385,7 @@
     </figure>
     <p style="text-align:justify;">چهار سرویس اصلی این سیستم عبارت‌اند از: سرویس <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Case Management</bdi>، سرویس <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Nurse Profile Management</bdi>، سرویس <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Medical Records Interface</bdi> به مرکز تبادل سوابق پزشکی، و سرویس بیرونیِ شخص ثالث <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Diagnostics Engine Interface</bdi>. همهٔ ارتباطات از <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">REST</bdi> استفاده می‌کنند، به جز پروتکل‌های اختصاصیِ مربوط به سیستم‌های بیرونی و سرویس‌های مرکز تماس. به‌طور خلاصه، نواحی‌ای که معماری باید از آن‌ها پشتیبانی کند عبارت‌اند از: در دسترس‌بودن، کشسانی و امنیت.</p>
     <p style="text-align:justify;">Logan پس از بازبینی‌های فراوان بر این باور است که معماری برای پیاده‌سازی آماده است. اما Logan، در جایگاه معماری مسئول و اثربخش، تصمیم می‌گیرد یک تمرین طوفان ریسک برگزار کند.</p>
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;">در دسترس‌بودن</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;" data-a11y-heading="promoted-from-h4">در دسترس‌بودن</h3>
     <p style="text-align:justify;">Logan در نقش تسهیل‌گر تصمیم می‌گیرد نخستین تمرین طوفان ریسک را بر در دسترس‌بودن متمرکز کند که برای موفقیت سیستم حیاتی است. پس از مراحل شناسایی و مشارکت، شرکت‌کنندگان به نواحی ریسک زیر می‌رسند (که در شکل ۲۲-۹ نشان داده شده‌اند):</p>
     <ul style="margin:.6rem 1.2rem;padding:0;line-height:1.9;">
       <li>در دسترس‌بودنِ پایگاه‌دادهٔ مرکزی: ریسک بالا (۶)، به دلیل اثر بالا (۳) و احتمال متوسط (۲) برای در دسترس نبودنِ پایگاه‌داده در هنگام نیاز.</li>
@@ -373,7 +405,7 @@
       <figcaption style="font-size:.95rem;color:#333;"><b>شکل ۲۲-۱۰.</b> نواحی ریسکِ در دسترس‌بودن را می‌توان با استفاده از پایگاه‌داده‌های جداگانه کاهش داد</figcaption>
     </figure>
 
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;">کشسانی</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;" data-a11y-heading="promoted-from-h4">کشسانی</h3>
     <p style="text-align:justify;">دومین تمرین طوفان ریسک بر کشسانی متمرکز است؛ یعنی جهش‌های <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(spikes)</bdi> بار کاربران (که مقیاس‌پذیریِ متغیر <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(variable scalability)</bdi> نیز نامیده می‌شود). هرچند تنها ۲۵۰ پرستار وجود دارد (یعنی بیش از ۲۵۰ پرستار به <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Diagnostics Engine</bdi> دسترسی نخواهند داشت)، بخش سلف‌سرویسِ سیستم نیز می‌تواند به <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Diagnostics Engine</bdi> دسترسی داشته باشد و همین امر تعداد درخواست‌ها به واسط <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Diagnostics Engine</bdi> را به‌طور چشمگیری افزایش می‌دهد. شرکت‌کنندگان طوفان ریسک نگران فصل آنفلوانزا و شیوع کووید هستند که بار پیش‌بینی‌شدهٔ سیستم را به‌طور چشمگیری افزایش خواهد داد.</p>
     <p style="text-align:justify;">شرکت‌کنندگان به اتفاق آرا واسط <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Diagnostics Engine</bdi> را ریسک بالا (۹) تشخیص می‌دهند. از آنجا که این واسط تنها می‌تواند ۵۰۰ درخواست در ثانیه را پاسخ دهد، به‌درستی محاسبه می‌کنند که ریسک بالایی وجود دارد که نتواند پا‌به‌پای توان عملیاتیِ پیش‌بینی‌شده پیش برود؛ به‌ویژه با <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">REST</bdi> به‌عنوان پروتکل واسط آن.</p>
     <p style="text-align:justify;">تیم به این نتیجه رسید که یکی از راه‌های کاهش این ریسک، استفاده از صف‌های ناهم‌گام (پیام‌رسانی) برای ارتباط میان دروازهٔ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">API</bdi> و واسط <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Diagnostics Engine</bdi> است. این کار در صورت انباشته شدنِ فراخوانی‌ها به <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Diagnostics Engine</bdi> یک نقطهٔ فشار معکوس فراهم می‌کند. هرچند این شیوهٔ خوبی است، هنوز همهٔ ریسک را کاملاً کاهش نمی‌دهد: پرستاران و بیمارانِ سلف‌سرویس همچنان مدت زیادی منتظر پاسخ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Diagnostics Engine</bdi> خواهند ماند و به احتمال زیاد مهلت زمانیِ درخواست‌هایشان منقضی خواهد شد.</p>
@@ -383,7 +415,7 @@
       <img src="figures/chapter-22/figure-22-11.png" alt="شکل ۲۲-۱۱. تغییرات معماری برای رسیدگی به ریسک کشسانی" loading="lazy" style="display:block;max-width:100%;height:auto;margin:0 auto .7rem;background:#fff;border:1px solid #e3e3e3;border-radius:3px;" width="932" height="548" decoding="async">
       <figcaption style="font-size:.95rem;color:#333;"><b>شکل ۲۲-۱۱.</b> تغییرات معماری برای رسیدگی به ریسک کشسانی</figcaption>
     </figure>
-    <h4 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;">امنیت</h4>
+    <h3 style="font-size:1.15rem;color:#2c5f8a;margin:1.2rem 0 .6rem;" data-a11y-heading="promoted-from-h4">امنیت</h3>
     <p style="text-align:justify;">معمار که از این موفقیت‌ها دلگرم شده، تصمیم می‌گیرد جلسهٔ پایانیِ طوفان ریسک را با تمرکز بر یکی دیگر از ویژگی‌های حیاتیِ این سیستم، یعنی امنیت، تسهیل کند. به دلیل الزامات قانونیِ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(regulatory requirements)</bdi> <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">HIPAA</bdi>، <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Medical Records Interface</bdi> باید تنها به پرستاران اجازهٔ دسترسی به سوابق پزشکی بیماران را بدهد. معمار بر این باور است که بررسی‌های احراز هویت <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(authentication)</bdi> و مجوزدهی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;font-size:.92em;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">(authorization)</bdi> در دروازهٔ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">API</bdi> این ریسک را خنثی می‌کند، اما کنجکاو است که آیا شرکت‌کنندگان ریسک امنیتیِ دیگری خواهند یافت یا نه.</p>
     <p style="text-align:justify;">همهٔ شرکت‌کنندگان دروازهٔ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">API</bdi> سیستم تشخیص را ریسک امنیتیِ بالا (۶) تشخیص می‌دهند. آن‌ها به اثر بالای دسترسی کارکنان اداری یا بیماران سلف‌سرویس به سوابق پزشکی (۳) اشاره می‌کنند، اما احتمال وقوع را متوسط (۲) ارزیابی می‌کنند. هرچند بررسی‌های امنیتی برای هر فراخوانی <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">API</bdi> کمک می‌کنند، همهٔ فراخوانی‌ها (سلف‌سرویس، اداری و پرستاران) همچنان از یک دروازهٔ <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">API</bdi> واحد می‌گذرند. آن‌ها سرانجام تسهیل‌گر را، که در ابتدا این ریسک را پایین (۲) ارزیابی کرده بود، قانع می‌کنند که ریسک در واقع بالاست و باید کاهش یابد.</p>
     <p style="text-align:justify;">همه توافق دارند که داشتنِ دروازه‌های <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">API</bdi> جداگانه برای هر نوع کاربر (کارکنان اداری، کاربران سلف‌سرویس و پرستاران) از رسیدنِ هرگونه فراخوانیِ غیرپرستار به <bdi dir="ltr" style="display:inline-block;unicode-bidi:isolate;font-family:Consolas,Monaco,monospace;background:#f4f6f8;border:1px solid #dde3e8;border-radius:3px;padding:0 .35em;direction:ltr;">Medical Records Interface</bdi> جلوگیری می‌کند. نسخهٔ نهایی معماریِ معمار در شکل ۲۲-۱۲ نشان داده شده است.</p>
@@ -398,19 +430,19 @@
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
   <section>
-    <h3 id="sec-6" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">جمع‌بندی</h3>
+    <h2 id="sec-6" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">جمع‌بندی</h2>
     <p style="text-align:justify;">طوفان ریسک فرایندی یک‌باره نیست. این فرایند در سراسر چرخهٔ عمر سیستم ادامه می‌یابد، زیرا تیم‌ها می‌کوشند نواحی ریسک را پیش از آنکه در محیط تولید آشکار شوند شناسایی و کاهش دهند. اینکه یک سازمان هر چند وقت یک بار باید جلسه‌های طوفان ریسک برگزار کند به عوامل بسیاری بستگی دارد، از جمله بسامد تغییرات، هرگونه تلاش برای بازآرایی معماری و توسعهٔ تدریجیِ معماری. معمول است که پس از افزودن یک قابلیت مهم یا در پایان هر تکرار، طوفان ریسک را بر ابعاد مشخصی انجام دهند تا اطمینان حاصل شود که معماری درست است و نیازهای کسب‌وکار را برآورده خواهد کرد.</p>
   </section>
 
   <hr style="border:none;border-top:1px dashed #bbb;margin:1.4rem 0;">
 
     <section>
-    <h3 id="sec-7" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">واژه‌نامهٔ اختصاصی این فصل</h3>
+    <h2 id="sec-7" style="font-size:1.35rem;color:#2c5f8a;margin:0 0 .8rem;">واژه‌نامهٔ اختصاصی این فصل</h2>
     <table dir="rtl" style="width:100%;border-collapse:collapse;font-size:.95rem;">
       <thead>
         <tr style="background:#2c5f8a;color:#fff;">
-          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;">واژهٔ انگلیسی</th>
-          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;">معادل مصوب/به‌کاررفته در این فصل</th>
+          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;" scope="col">واژهٔ انگلیسی</th>
+          <th style="border:1px solid #ccc;padding:.5rem .7rem;text-align:right;" scope="col">معادل مصوب/به‌کاررفته در این فصل</th>
         </tr>
       </thead>
       <tbody>
@@ -456,6 +488,7 @@
   </section>
 
 </article>
+</main>
 
 <script id="fosa-standalone-helper">
   if (window.self === window.top) {

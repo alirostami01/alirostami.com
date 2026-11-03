@@ -282,6 +282,26 @@
   ]
 }
     </script>
+    <!-- internal-linking-styles:start -->
+    <style>
+    .site-breadcrumb{box-sizing:border-box;width:min(100%,72rem);margin:0 auto .75rem;padding:.65rem clamp(1rem,3vw,2rem);color:var(--text-muted,var(--text-secondary,#5f6368));font-size:.875rem;line-height:1.6;flex:0 0 auto}
+    .site-breadcrumb ol{display:flex;flex-wrap:wrap;align-items:center;gap:.15rem .45rem;margin:0;padding:0;list-style:none}
+    .site-breadcrumb li{display:inline-flex;align-items:center;min-width:0;overflow-wrap:anywhere}
+    .site-breadcrumb li+li::before{content:"/";margin-inline-end:.45rem;color:var(--text-muted,var(--text-secondary,#777));opacity:.7}
+    .site-breadcrumb a{color:var(--link-color,var(--accent,#1769aa));text-decoration-thickness:.08em;text-underline-offset:.16em}
+    .site-breadcrumb [aria-current="page"]{font-weight:600;color:var(--text-color,var(--text-main,#30343b))}
+    .reader-content>.site-breadcrumb{width:100%;margin:0;padding-block:.4rem;background:var(--card-bg,var(--reader-bg,#fff));border-bottom:1px solid var(--border-color,#ddd)}
+    .related-content,.chapter-sequence{box-sizing:border-box;width:min(calc(100% - 2rem),56rem);margin:2rem auto;padding:1.25rem clamp(1rem,3vw,1.5rem);border:1px solid var(--border-color,#d9dde3);border-radius:.75rem;background:var(--card-bg,var(--content-bg,rgba(127,127,127,.04)));color:var(--text-color,var(--text-main,inherit))}
+    .related-content h2,.chapter-sequence-title{margin:0 0 .85rem;font-size:1.2rem;font-weight:700;line-height:1.5}
+    .related-content ul,.chapter-sequence ul{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr));gap:.65rem 1.25rem;margin:0;padding:0;list-style:none}
+    .related-content li,.chapter-sequence li{margin:0;padding:0}
+    .related-content a,.chapter-sequence a{display:inline-block;color:var(--link-color,var(--accent,#1769aa));font-weight:600;line-height:1.65;text-decoration-thickness:.08em;text-underline-offset:.18em;overflow-wrap:anywhere}
+    .chapter-sequence .book-index a{color:var(--text-color,var(--text-main,#30343b))}
+    .footer-nav .book-index{font-weight:700}
+    #projects{scroll-margin-top:5rem}
+    @media(max-width:600px){.site-breadcrumb{font-size:.82rem}.related-content,.chapter-sequence{width:calc(100% - 1rem);margin:1.25rem auto;padding:1rem}}
+    </style>
+    <!-- internal-linking-styles:end -->
     <!-- accessibility-styles:start -->
     <style>
     .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
@@ -339,6 +359,15 @@
         <nav class="menu" id="menu-mobile" aria-label="پیمایش اصلی موبایل"><a href="/" class="menu-item" title="خانه">خانه</a><a href="/support/" class="menu-item" title="حمایت">حمایت</a><button class="menu-item theme-switch" title="تغییر ظاهر" role="switch" aria-checked="false" aria-label="تغییر ظاهر" type="button"><i class="fas fa-adjust fa-fw" aria-hidden="true"></i></button><span class="menu-item language"><i class="fa fa-globe" aria-hidden="true"></i><select class="language-select" onchange="location = this.value;" aria-label="انتخاب زبان"><option value="/en/support/">English</option><option value="/support/" selected>فارسی</option></select></span></nav>
     </div>
 </header><main class="main" id="main-content" tabindex="-1">
+    <!-- internal-breadcrumb:start -->
+    <nav class="site-breadcrumb" aria-label="مسیر راهنما">
+      <ol>
+        <li><a href="/">خانه</a></li>
+        <li><a href="/#projects">پروژه‌ها</a></li>
+        <li aria-current="page"><span>Persian Streams</span></li>
+      </ol>
+    </nav>
+    <!-- internal-breadcrumb:end -->
                 <div class="container"><article class="page single docs-page">
         <div class="docs-hero">
             <img src="/images/projects/persian-streams.png" alt="لوگوی Persian Streams" width="84" height="84" decoding="async" loading="eager" fetchpriority="high">
@@ -374,12 +403,12 @@
 <a href="/support/">حمایت از پروژه</a></p>
 <p><code>Stremio Addon</code> · <code>Node.js</code> · <code>Cloudflare Workers</code> · <code>Apache-2.0</code></p>
 <p><a href="https://github.com/alirostami01/Persian-Streams">مشاهده مخزن در گیت‌هاب</a></p>
-<h2 id="نصب-سریع">⚡ نصب سریع<a class="headerlink" href="#نصب-سریع" title="Permanent link" aria-label="Permanent link">#</a></h2>
+<h2 id="نصب-سریع">⚡ نصب سریع<a class="headerlink" href="#نصب-سریع" title="پیوند مستقیم به بخش ⚡ نصب سریع" aria-label="پیوند مستقیم به بخش ⚡ نصب سریع"><span class="sr-only">پیوند مستقیم به بخش ⚡ نصب سریع</span><span aria-hidden="true">#</span></a></h2>
 <p>سریع‌ترین راه استفاده، نصب <strong>نسخهٔ عمومی آماده</strong> افزونه است. این نسخه روی Cloudflare Workers اجرا می‌شود و برای نصب آن نیازی به Node.js، npm، تنظیمات محلی یا راه‌اندازی سرور ندارید.</p>
-<h3 id="آدرس-نصب">🔗 آدرس نصب<a class="headerlink" href="#آدرس-نصب" title="Permanent link" aria-label="Permanent link">#</a></h3>
+<h3 id="آدرس-نصب">🔗 آدرس نصب<a class="headerlink" href="#آدرس-نصب" title="پیوند مستقیم به بخش 🔗 آدرس نصب" aria-label="پیوند مستقیم به بخش 🔗 آدرس نصب"><span class="sr-only">پیوند مستقیم به بخش 🔗 آدرس نصب</span><span aria-hidden="true">#</span></a></h3>
 <pre><code class="language-text">https://stremio.alirostami.com/streams/manifest.json
 </code></pre>
-<h3 id="نصب-در-stremio">🚀 نصب در Stremio<a class="headerlink" href="#نصب-در-stremio" title="Permanent link" aria-label="Permanent link">#</a></h3>
+<h3 id="نصب-در-stremio">🚀 نصب در Stremio<a class="headerlink" href="#نصب-در-stremio" title="پیوند مستقیم به بخش 🚀 نصب در Stremio" aria-label="پیوند مستقیم به بخش 🚀 نصب در Stremio"><span class="sr-only">پیوند مستقیم به بخش 🚀 نصب در Stremio</span><span aria-hidden="true">#</span></a></h3>
 <p><strong>روش پیشنهادی — نصب مستقیم با لینک <code>stremio://</code>:</strong></p>
 <p><a href="stremio://stremio.alirostami.com/streams/manifest.json">افزودن به Stremio</a></p>
 <p>لینک بالا را در دستگاهی که Stremio روی آن نصب است باز کنید تا Stremio برای نصب افزونه باز شود.</p>
@@ -398,7 +427,7 @@
 <p>می‌توانید از لینک نصب زیر در نسخهٔ وب Stremio نیز استفاده کنید:</p>
 <pre><code class="language-text">https://web.strem.io/addons?addon=https://stremio.alirostami.com/streams/manifest.json
 </code></pre>
-<h3 id="تست-نصب">🧪 تست نصب<a class="headerlink" href="#تست-نصب" title="Permanent link" aria-label="Permanent link">#</a></h3>
+<h3 id="تست-نصب">🧪 تست نصب<a class="headerlink" href="#تست-نصب" title="پیوند مستقیم به بخش 🧪 تست نصب" aria-label="پیوند مستقیم به بخش 🧪 تست نصب"><span class="sr-only">پیوند مستقیم به بخش 🧪 تست نصب</span><span aria-hidden="true">#</span></a></h3>
 <p>پس از نصب، یک فیلم یا سریال دارای شناسهٔ IMDb (<code>tt...</code>) را باز کنید. لینک‌های پخش فارسی باید در بخش <strong>Streams</strong> نمایش داده شوند.</p>
 <div class="table-wrapper"><table>
 <thead>
@@ -434,7 +463,7 @@
 <p>ℹ️ در نسخهٔ عمومی نیازی به نصب محلی، <code>npm install</code> یا تنظیم <code>BASE_URL</code> ندارید. فقط افزونه را با آدرس بالا در Stremio نصب کنید.</p>
 <p>⚠️ این پروژه هیچ فایل ویدیویی، زیرنویس یا محتوای رسانه‌ای را میزبانی نمی‌کند و فقط لینک‌هایی را که منبع پیکربندی‌شده در اختیار می‌گذارد پردازش می‌کند. مسئولیت رعایت قوانین کپی‌رایت و مقررات محلی بر عهدهٔ کاربر است.</p>
 </blockquote>
-<h2 id="معرفی">📖 معرفی<a class="headerlink" href="#معرفی" title="Permanent link" aria-label="Permanent link">#</a></h2>
+<h2 id="معرفی">📖 معرفی<a class="headerlink" href="#معرفی" title="پیوند مستقیم به بخش 📖 معرفی" aria-label="پیوند مستقیم به بخش 📖 معرفی"><span class="sr-only">پیوند مستقیم به بخش 📖 معرفی</span><span aria-hidden="true">#</span></a></h2>
 <p><strong>Persian Streams</strong> یک افزونهٔ غیررسمی برای Stremio است که با دریافت شناسهٔ IMDb از استرمیو، محتوای متناظر را در منبع ایرانیِ تنظیم‌شده پیدا می‌کند و لینک‌های پخش و دانلود را به Stremio برمی‌گرداند.</p>
 <p>جریان کلی کار:</p>
 <ol>
@@ -444,7 +473,7 @@
 <li>صفحهٔ محتوا با Cheerio پردازش می‌شود.</li>
 <li>لینک‌های قابل پخش استخراج و با کیفیت، انکودر و وضعیت دوبله به Stremio برگردانده می‌شوند.</li>
 </ol>
-<h2 id="قابلیتها">✨ قابلیت‌ها<a class="headerlink" href="#قابلیتها" title="Permanent link" aria-label="Permanent link">#</a></h2>
+<h2 id="قابلیتها">✨ قابلیت‌ها<a class="headerlink" href="#قابلیتها" title="پیوند مستقیم به بخش ✨ قابلیت‌ها" aria-label="پیوند مستقیم به بخش ✨ قابلیت‌ها"><span class="sr-only">پیوند مستقیم به بخش ✨ قابلیت‌ها</span><span aria-hidden="true">#</span></a></h2>
 <ul>
 <li>🎬 پشتیبانی از فیلم و سریال</li>
 <li>🔎 تطبیق دقیق محتوا با IMDb</li>
@@ -460,7 +489,7 @@
 <li>📦 پشتیبانی از Node.js/Express و Cloudflare Workers</li>
 <li>⚡ استفاده از بیلدر سبک Stremio برای runtime مربوط به Worker</li>
 </ul>
-<h2 id="مسیرهای-نسخه-عمومی">🔌 مسیرهای نسخهٔ عمومی<a class="headerlink" href="#مسیرهای-نسخه-عمومی" title="Permanent link" aria-label="Permanent link">#</a></h2>
+<h2 id="مسیرهای-نسخه-عمومی">🔌 مسیرهای نسخهٔ عمومی<a class="headerlink" href="#مسیرهای-نسخه-عمومی" title="پیوند مستقیم به بخش 🔌 مسیرهای نسخهٔ عمومی" aria-label="پیوند مستقیم به بخش 🔌 مسیرهای نسخهٔ عمومی"><span class="sr-only">پیوند مستقیم به بخش 🔌 مسیرهای نسخهٔ عمومی</span><span aria-hidden="true">#</span></a></h2>
 <div class="table-wrapper"><table>
 <thead>
 <tr>
@@ -487,7 +516,7 @@
 </tr>
 </tbody>
 </table></div>
-<h2 id="توسعه-و-اجرای-نسخه-شخصی">🛠️ توسعه و اجرای نسخهٔ شخصی<a class="headerlink" href="#توسعه-و-اجرای-نسخه-شخصی" title="Permanent link" aria-label="Permanent link">#</a></h2>
+<h2 id="توسعه-و-اجرای-نسخه-شخصی">🛠️ توسعه و اجرای نسخهٔ شخصی<a class="headerlink" href="#توسعه-و-اجرای-نسخه-شخصی" title="پیوند مستقیم به بخش 🛠️ توسعه و اجرای نسخهٔ شخصی" aria-label="پیوند مستقیم به بخش 🛠️ توسعه و اجرای نسخهٔ شخصی"><span class="sr-only">پیوند مستقیم به بخش 🛠️ توسعه و اجرای نسخهٔ شخصی</span><span aria-hidden="true">#</span></a></h2>
 <p>اگر می‌خواهید نسخهٔ اختصاصی خودتان را اجرا کنید:</p>
 <pre><code class="language-bash">git clone https://github.com/alirostami01/Persian-Streams.git
 cd Persian-Streams
@@ -503,7 +532,7 @@ npm install
 <pre><code class="language-text">http://localhost:8787/streams/manifest.json
 </code></pre>
 <p>جزئیات کامل متغیرهای محیطی، استقرار Node و Cloudflare Workers در README مخزن مستند شده است.</p>
-<h2 id="عیبیابی-سریع">🐛 عیب‌یابی سریع<a class="headerlink" href="#عیبیابی-سریع" title="Permanent link" aria-label="Permanent link">#</a></h2>
+<h2 id="عیبیابی-سریع">🐛 عیب‌یابی سریع<a class="headerlink" href="#عیبیابی-سریع" title="پیوند مستقیم به بخش 🐛 عیب‌یابی سریع" aria-label="پیوند مستقیم به بخش 🐛 عیب‌یابی سریع"><span class="sr-only">پیوند مستقیم به بخش 🐛 عیب‌یابی سریع</span><span aria-hidden="true">#</span></a></h2>
 <ul>
 <li>اگر هیچ استریمی نمایش داده نمی‌شود، ممکن است محتوا در منبع پیکربندی‌شده وجود نداشته باشد.</li>
 <li>اگر <code>quick-search</code> نتیجهٔ منطبق با IMDb ندهد، خروجی استریم خالی خواهد بود.</li>
@@ -511,21 +540,31 @@ npm install
 <li>در نسخهٔ اختصاصی Node، مقدار <code>BASE_URL</code> و پورت را بررسی کنید.</li>
 <li>در نسخهٔ Worker، مسیر <code>/streams/manifest.json</code> را بررسی کنید.</li>
 </ul>
-<h2 id="مشارکت">🤝 مشارکت<a class="headerlink" href="#مشارکت" title="Permanent link" aria-label="Permanent link">#</a></h2>
+<h2 id="مشارکت">🤝 مشارکت<a class="headerlink" href="#مشارکت" title="پیوند مستقیم به بخش 🤝 مشارکت" aria-label="پیوند مستقیم به بخش 🤝 مشارکت"><span class="sr-only">پیوند مستقیم به بخش 🤝 مشارکت</span><span aria-hidden="true">#</span></a></h2>
 <p>Pull Requestها و Issueها برای بهبود استخراج لینک، سازگاری با ساختارهای HTML جدید، افزودن تست و بهبود مستندات پذیرفته می‌شوند.</p>
-<h2 id="سایر-پروژه‌ها">🔗 سایر پروژه‌ها و مستندات<a class="headerlink" href="#سایر-پروژه‌ها" title="Permanent link" aria-label="Permanent link">#</a></h2>
+<h2 id="سایر-پروژه‌ها">🔗 سایر پروژه‌ها و مستندات<a class="headerlink" href="#سایر-پروژه‌ها" title="پیوند مستقیم به بخش 🔗 سایر پروژه‌ها و مستندات" aria-label="پیوند مستقیم به بخش 🔗 سایر پروژه‌ها و مستندات"><span class="sr-only">پیوند مستقیم به بخش 🔗 سایر پروژه‌ها و مستندات</span><span aria-hidden="true">#</span></a></h2>
 <ul>
 <li><a href="/persian-subtitles/">افزونه زیرنویس فارسی برای استرمیو (Persian Subtitles)</a></li>
-<li><a href="/fundamentals-of-software-architecture-persian/">کتاب مبانی معماری نرم‌افزار — ترجمه فارسی اثر مارک ریچاردز و نیل فورد</a> (<a href="/software-architecture/">مطالعه آنلاین</a>)</li>
-<li><a href="/aima-4e-persian/">کتاب هوش مصنوعی: رویکردی مدرن (AIMA 4e) — ترجمه فارسی اثر استوارت راسل و پیتر نورویگ</a> (<a href="/aima-4e/">مطالعه آنلاین</a>)</li>
+<li><a href="/fundamentals-of-software-architecture-persian/">کتاب مبانی معماری نرم‌افزار — ترجمه فارسی اثر مارک ریچاردز و نیل فورد</a> (<a href="/software-architecture/">مطالعه آنلاین<span class="sr-only">: کتاب مبانی معماری نرم‌افزار</span></a>)</li>
+<li><a href="/aima-4e-persian/">کتاب هوش مصنوعی: رویکردی مدرن (AIMA 4e) — ترجمه فارسی اثر استوارت راسل و پیتر نورویگ</a> (<a href="/aima-4e/">مطالعه آنلاین<span class="sr-only">: کتاب هوش مصنوعی AIMA</span></a>)</li>
 </ul>
-<h2 id="مجوز">📄 مجوز<a class="headerlink" href="#مجوز" title="Permanent link" aria-label="Permanent link">#</a></h2>
+<h2 id="مجوز">📄 مجوز<a class="headerlink" href="#مجوز" title="پیوند مستقیم به بخش 📄 مجوز" aria-label="پیوند مستقیم به بخش 📄 مجوز"><span class="sr-only">پیوند مستقیم به بخش 📄 مجوز</span><span aria-hidden="true">#</span></a></h2>
 <p>فایل <code>LICENSE</code> این مخزن <strong>Apache License 2.0</strong> است.</p>
 <hr />
 <p>ساخته شده با ❤️ برای جامعهٔ فارسی‌زبان Stremio — <a href="/support/">حمایت از ادامهٔ مسیر</a></p>
         </div>
     </article></div>
-            </main><footer class="footer">
+    <!-- internal-related:start -->
+    <section class="related-content" aria-labelledby="related-resources-title">
+      <h2 id="related-resources-title">پروژه‌ها و مسیرهای مرتبط</h2>
+      <ul>
+        <li><a href="/persian-subtitles/">افزونهٔ زیرنویس فارسی برای Stremio</a></li>
+        <li><a href="/posts/">مقاله‌ها و یادداشت‌های فنی</a></li>
+        <li><a href="/support/">حمایت از توسعهٔ افزونه‌های متن‌باز</a></li>
+      </ul>
+    </section>
+    <!-- internal-related:end -->
+    </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">ایجاد شده توسط <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.2">Hugo</a> | پوسته - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreferrer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i>2022 - <span itemprop="copyrightYear">2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/">علی رستمی</a></span></div>
         </div>

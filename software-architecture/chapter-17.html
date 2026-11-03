@@ -189,6 +189,7 @@
     <meta name="twitter:image" content="https://www.alirostami.com/images/social/software-architecture.jpg">
     <meta name="twitter:image:alt" content="ترجمه فارسی مبانی معماری نرم‌افزار؛ مطالعه آنلاین ۲۷ فصل و پیوست">
     <!-- image-seo:end -->
+
     <!-- metadata-seo:start -->
     <meta name="description" content="فصل ۱۷: معماری سرویس‌گرای ارکستراسیون‌محور؛ مطالعهٔ آنلاین ترجمهٔ فارسی ویرایش دوم کتاب مبانی معماری نرم‌افزار.">
     <meta property="og:title" content="فصل ۱۷: معماری سرویس‌گرای ارکستراسیون‌محور | مبانی معماری نرم‌افزار">
@@ -314,6 +315,26 @@
   ]
 }
     </script>
+    <!-- internal-linking-styles:start -->
+    <style>
+    .site-breadcrumb{box-sizing:border-box;width:min(100%,72rem);margin:0 auto .75rem;padding:.65rem clamp(1rem,3vw,2rem);color:var(--text-muted,var(--text-secondary,#5f6368));font-size:.875rem;line-height:1.6;flex:0 0 auto}
+    .site-breadcrumb ol{display:flex;flex-wrap:wrap;align-items:center;gap:.15rem .45rem;margin:0;padding:0;list-style:none}
+    .site-breadcrumb li{display:inline-flex;align-items:center;min-width:0;overflow-wrap:anywhere}
+    .site-breadcrumb li+li::before{content:"/";margin-inline-end:.45rem;color:var(--text-muted,var(--text-secondary,#777));opacity:.7}
+    .site-breadcrumb a{color:var(--link-color,var(--accent,#1769aa));text-decoration-thickness:.08em;text-underline-offset:.16em}
+    .site-breadcrumb [aria-current="page"]{font-weight:600;color:var(--text-color,var(--text-main,#30343b))}
+    .reader-content>.site-breadcrumb{width:100%;margin:0;padding-block:.4rem;background:var(--card-bg,var(--reader-bg,#fff));border-bottom:1px solid var(--border-color,#ddd)}
+    .related-content,.chapter-sequence{box-sizing:border-box;width:min(calc(100% - 2rem),56rem);margin:2rem auto;padding:1.25rem clamp(1rem,3vw,1.5rem);border:1px solid var(--border-color,#d9dde3);border-radius:.75rem;background:var(--card-bg,var(--content-bg,rgba(127,127,127,.04)));color:var(--text-color,var(--text-main,inherit))}
+    .related-content h2,.chapter-sequence-title{margin:0 0 .85rem;font-size:1.2rem;font-weight:700;line-height:1.5}
+    .related-content ul,.chapter-sequence ul{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr));gap:.65rem 1.25rem;margin:0;padding:0;list-style:none}
+    .related-content li,.chapter-sequence li{margin:0;padding:0}
+    .related-content a,.chapter-sequence a{display:inline-block;color:var(--link-color,var(--accent,#1769aa));font-weight:600;line-height:1.65;text-decoration-thickness:.08em;text-underline-offset:.18em;overflow-wrap:anywhere}
+    .chapter-sequence .book-index a{color:var(--text-color,var(--text-main,#30343b))}
+    .footer-nav .book-index{font-weight:700}
+    #projects{scroll-margin-top:5rem}
+    @media(max-width:600px){.site-breadcrumb{font-size:.82rem}.related-content,.chapter-sequence{width:calc(100% - 1rem);margin:1.25rem auto;padding:1rem}}
+    </style>
+    <!-- internal-linking-styles:end -->
     <!-- accessibility-styles:start -->
     <style>
     .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
@@ -349,6 +370,15 @@
     <a class="skip-link" href="#main-content">رفتن به محتوای اصلی</a>
 <!-- خروجی HTML — کامپوننت کامل فصل ۱۷ (بدون html/head) -->
 <main class="chapter-main" id="main-content" tabindex="-1">
+    <!-- internal-breadcrumb:start -->
+    <nav class="site-breadcrumb" aria-label="مسیر راهنما">
+      <ol>
+        <li><a href="/">خانه</a></li>
+        <li><a href="/software-architecture/">مبانی معماری نرم‌افزار: رویکردی مهندسی و مدرن (ویرایش دوم)</a></li>
+        <li aria-current="page"><span>فصل ۱۷: معماری سرویس‌گرای ارکستراسیون‌محور</span></li>
+      </ol>
+    </nav>
+    <!-- internal-breadcrumb:end -->
 <article class="chapter-content">
 
   <h1 style="font-size:1.7rem;margin:0 0 1rem;border-bottom:3px solid #2c5f8a;padding-bottom:.5rem;">فصل ۱۷: معماری سرویس‌گرای ارکستراسیون‌محور</h1>
@@ -581,7 +611,17 @@ FOREACH entry IN Sales-logs
   </section>
 
 </article>
-</main>
+    <!-- internal-chapter-navigation:start -->
+    <nav class="chapter-sequence" aria-labelledby="chapter-navigation-title">
+      <p class="chapter-sequence-title" id="chapter-navigation-title">ادامهٔ مطالعه</p>
+      <ul>
+        <li><a href="/software-architecture/chapter-16" rel="prev">فصل قبلی: فصل ۱۶: سبک معماری مبتنی بر فضا</a></li>
+        <li class="book-index"><a href="/software-architecture/">فهرست کامل کتاب مبانی معماری نرم‌افزار</a></li>
+        <li><a href="/software-architecture/chapter-18" rel="next">فصل بعدی: فصل ۱۸: معماری میکروسرویس‌ها</a></li>
+      </ul>
+    </nav>
+    <!-- internal-chapter-navigation:end -->
+    </main>
 
 <script id="fosa-standalone-helper">
   if (window.self === window.top) {

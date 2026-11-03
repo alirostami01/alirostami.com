@@ -137,6 +137,7 @@
     <meta name="twitter:image" content="https://www.alirostami.com/images/social/aima-4e-persian.jpg">
     <meta name="twitter:image:alt" content="ترجمه فارسی کتاب هوش مصنوعی؛ یک رویکرد مدرن، ویرایش چهارم">
     <!-- image-seo:end -->
+
     <!-- metadata-seo:start -->
     <meta name="description" content="فصل ۲۴: یادگیری عمیق برای زبان طبیعی (Deep Learning for NLP)؛ مطالعهٔ آنلاین ترجمهٔ فارسی کتاب هوش مصنوعی: رویکردی نوین، ویرایش چهارم.">
     <meta property="og:title" content="فصل ۲۴: یادگیری عمیق برای زبان طبیعی (Deep Learning for NLP) | ترجمهٔ فارسی AIMA 4e">
@@ -262,6 +263,26 @@
   ]
 }
     </script>
+    <!-- internal-linking-styles:start -->
+    <style>
+    .site-breadcrumb{box-sizing:border-box;width:min(100%,72rem);margin:0 auto .75rem;padding:.65rem clamp(1rem,3vw,2rem);color:var(--text-muted,var(--text-secondary,#5f6368));font-size:.875rem;line-height:1.6;flex:0 0 auto}
+    .site-breadcrumb ol{display:flex;flex-wrap:wrap;align-items:center;gap:.15rem .45rem;margin:0;padding:0;list-style:none}
+    .site-breadcrumb li{display:inline-flex;align-items:center;min-width:0;overflow-wrap:anywhere}
+    .site-breadcrumb li+li::before{content:"/";margin-inline-end:.45rem;color:var(--text-muted,var(--text-secondary,#777));opacity:.7}
+    .site-breadcrumb a{color:var(--link-color,var(--accent,#1769aa));text-decoration-thickness:.08em;text-underline-offset:.16em}
+    .site-breadcrumb [aria-current="page"]{font-weight:600;color:var(--text-color,var(--text-main,#30343b))}
+    .reader-content>.site-breadcrumb{width:100%;margin:0;padding-block:.4rem;background:var(--card-bg,var(--reader-bg,#fff));border-bottom:1px solid var(--border-color,#ddd)}
+    .related-content,.chapter-sequence{box-sizing:border-box;width:min(calc(100% - 2rem),56rem);margin:2rem auto;padding:1.25rem clamp(1rem,3vw,1.5rem);border:1px solid var(--border-color,#d9dde3);border-radius:.75rem;background:var(--card-bg,var(--content-bg,rgba(127,127,127,.04)));color:var(--text-color,var(--text-main,inherit))}
+    .related-content h2,.chapter-sequence-title{margin:0 0 .85rem;font-size:1.2rem;font-weight:700;line-height:1.5}
+    .related-content ul,.chapter-sequence ul{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr));gap:.65rem 1.25rem;margin:0;padding:0;list-style:none}
+    .related-content li,.chapter-sequence li{margin:0;padding:0}
+    .related-content a,.chapter-sequence a{display:inline-block;color:var(--link-color,var(--accent,#1769aa));font-weight:600;line-height:1.65;text-decoration-thickness:.08em;text-underline-offset:.18em;overflow-wrap:anywhere}
+    .chapter-sequence .book-index a{color:var(--text-color,var(--text-main,#30343b))}
+    .footer-nav .book-index{font-weight:700}
+    #projects{scroll-margin-top:5rem}
+    @media(max-width:600px){.site-breadcrumb{font-size:.82rem}.related-content,.chapter-sequence{width:calc(100% - 1rem);margin:1.25rem auto;padding:1rem}}
+    </style>
+    <!-- internal-linking-styles:end -->
     <!-- accessibility-styles:start -->
     <style>
     .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
@@ -296,6 +317,15 @@
     <!-- accessibility-skip-link -->
     <a class="skip-link" href="#main-content">رفتن به محتوای اصلی</a>
 <main class="page" id="main-content" tabindex="-1">
+    <!-- internal-breadcrumb:start -->
+    <nav class="site-breadcrumb" aria-label="مسیر راهنما">
+      <ol>
+        <li><a href="/">خانه</a></li>
+        <li><a href="/aima-4e/">هوش مصنوعی: رویکردی نوین (ویرایش چهارم)</a></li>
+        <li aria-current="page"><span>فصل ۲۴: یادگیری عمیق برای زبان طبیعی (Deep Learning for NLP)</span></li>
+      </ol>
+    </nav>
+    <!-- internal-breadcrumb:end -->
 <div class="kicker">
 <span class="badge">📘 هوش مصنوعی: رویکردی نوین (AIMA)</span>
 <span class="badge soft">ترجمهٔ فارسی — راسل و نورویگ، ویرایش چهارم</span>
@@ -535,13 +565,16 @@ cᵢ  = ∑ⱼ aᵢⱼ · vⱼ</code></pre>
 <div class="footnotes">
 <p class="fn"><sup>¹</sup> اشاره شده در برخی آزمون‌های چندگزینه‌ای، حتی بدون نگاه‌کردن به پرسش‌ها هم می‌توان امتیاز خوبی گرفت، زیرا نشانه‌های خبردهنده‌ای در پاسخ‌های نادرست هست (گورورانگان و همکاران، 2018). به نظر می‌رسد این برای پاسخ‌گویی پرسش بصری نیز صادق است (چائو و همکاران، 2018).</p>
 </div>
-<div class="footer-nav">
-<p><strong>→ فصل قبلی:</strong> <a href="23-فصل۲۳-پردازش-زبان-طبیعی">فصل ۲۳ — پردازش زبان طبیعی (Natural Language Processing)</a></p>
-<p><strong>← فصل بعدی:</strong> <a href="25-فصل۲۵-بینایی-رایانهای">فصل ۲۵ — بینایی رایانه‌ای (Computer Vision)</a></p>
+<nav class="footer-nav" aria-label="پیمایش فصل‌های کتاب هوش مصنوعی">
+<p><strong>→ فصل قبلی:</strong> <a href="23-فصل۲۳-پردازش-زبان-طبیعی" rel="prev">فصل ۲۳ — پردازش زبان طبیعی (Natural Language Processing)</a></p>
+<p><strong>← فصل بعدی:</strong> <a href="25-فصل۲۵-بینایی-رایانهای" rel="next">فصل ۲۵ — بینایی رایانه‌ای (Computer Vision)</a></p>
+  <!-- internal-aima-book-hub:start -->
+  <p class="book-index"><a href="/aima-4e/">فهرست کامل کتاب هوش مصنوعی AIMA</a></p>
+  <!-- internal-aima-book-hub:end -->
 <p><a class="top-link" href="#">↑ بازگشت به بالای صفحه</a></p>
 <p style="color:var(--muted);font-size:13px;margin-top:8px">این صفحه از ترجمهٔ فارسی فصل‌های کتاب «هوش مصنوعی: رویکردی نوین» (استوارت راسل و پیتر نورویگ، ویرایش چهارم) تولید شده است. متن با فایل مارک‌داون همان فصل یکسان است.</p>
-</div>
-</main>
+</nav>
+    </main>
 <script id="aima-standalone-helper">
   if (window.self === window.top) {
     window.addEventListener('DOMContentLoaded', function() {

@@ -94,6 +94,26 @@
   ]
 }
     </script>
+    <!-- internal-linking-styles:start -->
+    <style>
+    .site-breadcrumb{box-sizing:border-box;width:min(100%,72rem);margin:0 auto .75rem;padding:.65rem clamp(1rem,3vw,2rem);color:var(--text-muted,var(--text-secondary,#5f6368));font-size:.875rem;line-height:1.6;flex:0 0 auto}
+    .site-breadcrumb ol{display:flex;flex-wrap:wrap;align-items:center;gap:.15rem .45rem;margin:0;padding:0;list-style:none}
+    .site-breadcrumb li{display:inline-flex;align-items:center;min-width:0;overflow-wrap:anywhere}
+    .site-breadcrumb li+li::before{content:"/";margin-inline-end:.45rem;color:var(--text-muted,var(--text-secondary,#777));opacity:.7}
+    .site-breadcrumb a{color:var(--link-color,var(--accent,#1769aa));text-decoration-thickness:.08em;text-underline-offset:.16em}
+    .site-breadcrumb [aria-current="page"]{font-weight:600;color:var(--text-color,var(--text-main,#30343b))}
+    .reader-content>.site-breadcrumb{width:100%;margin:0;padding-block:.4rem;background:var(--card-bg,var(--reader-bg,#fff));border-bottom:1px solid var(--border-color,#ddd)}
+    .related-content,.chapter-sequence{box-sizing:border-box;width:min(calc(100% - 2rem),56rem);margin:2rem auto;padding:1.25rem clamp(1rem,3vw,1.5rem);border:1px solid var(--border-color,#d9dde3);border-radius:.75rem;background:var(--card-bg,var(--content-bg,rgba(127,127,127,.04)));color:var(--text-color,var(--text-main,inherit))}
+    .related-content h2,.chapter-sequence-title{margin:0 0 .85rem;font-size:1.2rem;font-weight:700;line-height:1.5}
+    .related-content ul,.chapter-sequence ul{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr));gap:.65rem 1.25rem;margin:0;padding:0;list-style:none}
+    .related-content li,.chapter-sequence li{margin:0;padding:0}
+    .related-content a,.chapter-sequence a{display:inline-block;color:var(--link-color,var(--accent,#1769aa));font-weight:600;line-height:1.65;text-decoration-thickness:.08em;text-underline-offset:.18em;overflow-wrap:anywhere}
+    .chapter-sequence .book-index a{color:var(--text-color,var(--text-main,#30343b))}
+    .footer-nav .book-index{font-weight:700}
+    #projects{scroll-margin-top:5rem}
+    @media(max-width:600px){.site-breadcrumb{font-size:.82rem}.related-content,.chapter-sequence{width:calc(100% - 1rem);margin:1.25rem auto;padding:1rem}}
+    </style>
+    <!-- internal-linking-styles:end -->
     <!-- accessibility-styles:start -->
     <style>
     .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
@@ -187,6 +207,14 @@
     <div class="search-dropdown mobile">
         <div id="search-dropdown-mobile"></div>
     </div><main class="main" id="main-content" tabindex="-1">
+    <!-- internal-breadcrumb:start -->
+    <nav class="site-breadcrumb" aria-label="Breadcrumb trail">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li aria-current="page"><span>All Posts</span></li>
+      </ol>
+    </nav>
+    <!-- internal-breadcrumb:end -->
                 <div class="container"><div class="page archive"><h1 class="single-title animate__animated animate__pulse animate__faster">All Posts</h1><h2 class="group-title">2026</h2><article class="archive-item">
                         <a href="/aima-4e-persian/" class="archive-item-link">هوش مصنوعی: یک رویکرد مدرن — ترجمهٔ فارسی (AIMA 4e)</a>
                         <span class="archive-item-date">10-20</span>
@@ -203,7 +231,18 @@
                         <a href="/posts/a-recap-of-last-year/" class="archive-item-link">A Recap of Last Year</a>
                         <span class="archive-item-date">04-13</span>
                     </article></div></div>
-            </main><footer class="footer">
+    <!-- internal-related:start -->
+    <section class="related-content" aria-labelledby="related-resources-title">
+      <h2 id="related-resources-title">More ways to explore</h2>
+      <ul>
+        <li><a href="/posts/aima-4e-persian/">Project article: Persian translation of AIMA, fourth edition</a></li>
+        <li><a href="/posts/fundamentals-of-software-architecture-persian/">Project article: Persian translation of Fundamentals of Software Architecture</a></li>
+        <li><a href="/categories/">Browse articles and projects by category</a></li>
+        <li><a href="/tags/">Explore the site’s topic tags</a></li>
+      </ul>
+    </section>
+    <!-- internal-related:end -->
+    </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.2">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreferrer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i>2022 - <span itemprop="copyrightYear">2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer" aria-label="Home"></a></span></div>
         </div>

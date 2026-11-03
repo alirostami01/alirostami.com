@@ -247,6 +247,32 @@ checker کامل بودن و یکتایی descriptionها، هم‌خوانی ca
 و hreflang متقابل، اعتبار JSON-LD، رابطهٔ Chapter→Book/WebPage، نویسنده و
 publisher مقاله و breadcrumb همهٔ صفحات به‌جز خانه را بررسی می‌کند.
 
+## لینک‌سازی داخلی و Crawl Architecture
+
+post-processor لینک‌سازی برای هر ۷۳ صفحهٔ indexable مسیرهای crawlable و
+قابل‌مشاهده می‌سازد. breadcrumb قابل‌مشاهدهٔ ۷۲ صفحه مستقیماً از
+`BreadcrumbList` همان صفحه تولید می‌شود؛ بنابراین نام و hierarchy رابط کاربری
+با JSON-LD همواره هم‌راستاست. هر ۵۷ فصل کتاب نیز لینک‌های استاتیک و توصیفی به
+فهرست کتاب و فصل قبلی/بعدی دارد؛ ناوبری بومی ۲۹ فصل AIMA تکمیل و برای ۲۸ فصل
+معماری نرم‌افزار مسیر مستقل ساخته می‌شود. ۱۴ صفحهٔ hub، پروژه، مقاله و آرشیو با
+بخش‌های مرتبط به هم متصل‌اند؛ صفحهٔ خانه نیز مسیر مستقیم به آرشیو مقاله‌ها، دسته‌بندی‌ها،
+برچسب‌ها و نسخهٔ انگلیسی Support فراهم می‌کند. CTAهای کوتاه و permalinkهای
+`#` نیز نام مقصد توصیفی دارند تا متن لینک برای crawler و فناوری کمکی مبهم نباشد.
+
+اجرای دستی، بررسی stale output و ممیزی مستقلِ stdlib-only:
+
+```bash
+python3 scripts/update-internal-links.py
+python3 scripts/update-internal-links.py --check
+python3 scripts/check-internal-links.py
+```
+
+checker تمام anchorهای داخلی و fragmentها را resolve می‌کند و لینک شکسته، لینک
+به redirect/`noindex`، مسیر غیرcanonical، anchor خالی یا عمومی و orphan page را
+رد می‌کند. graph نهایی باید از خانه کاملاً قابل‌دسترسی و حداکثر click depth آن
+۲ باشد. checker همچنین تطابق breadcrumb قابل‌مشاهده با JSON-LD، توالی فصل‌ها،
+اتصال generatorها به pipeline و idempotence updater را بررسی می‌کند.
+
 ## Performance و Core Web Vitals
 
 dependencyهای مرورگر با نسخهٔ دقیق در `lib/` نگهداری می‌شوند و در زمان اجرا
@@ -270,8 +296,8 @@ python3 scripts/update-performance.py --check
 python3 scripts/check-performance.py
 ```
 
-تمام generatorهای مستندشده post-processorهای تصاویر، Metadata، Performance و
-سپس Accessibility را از طریق `apply_site_postprocessors()` اجرا می‌کنند.
+تمام generatorهای مستندشده post-processorهای تصاویر، Metadata، لینک‌سازی داخلی،
+Performance و سپس Accessibility را از طریق `apply_site_postprocessors()` اجرا می‌کنند.
 بنابراین پس از بازتولید هر صفحه، اجرای جداگانه لازم نیست؛ بااین‌حال audit نهایی
 همهٔ فازها باید اجرا شود:
 
@@ -279,6 +305,7 @@ python3 scripts/check-performance.py
 python3 scripts/check-images.py
 python3 scripts/check-seo-urls.py
 python3 scripts/check-metadata.py
+python3 scripts/check-internal-links.py
 python3 scripts/check-performance.py
 python3 scripts/check-accessibility.py
 ```

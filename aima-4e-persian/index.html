@@ -285,6 +285,26 @@
   ]
 }
     </script>
+    <!-- internal-linking-styles:start -->
+    <style>
+    .site-breadcrumb{box-sizing:border-box;width:min(100%,72rem);margin:0 auto .75rem;padding:.65rem clamp(1rem,3vw,2rem);color:var(--text-muted,var(--text-secondary,#5f6368));font-size:.875rem;line-height:1.6;flex:0 0 auto}
+    .site-breadcrumb ol{display:flex;flex-wrap:wrap;align-items:center;gap:.15rem .45rem;margin:0;padding:0;list-style:none}
+    .site-breadcrumb li{display:inline-flex;align-items:center;min-width:0;overflow-wrap:anywhere}
+    .site-breadcrumb li+li::before{content:"/";margin-inline-end:.45rem;color:var(--text-muted,var(--text-secondary,#777));opacity:.7}
+    .site-breadcrumb a{color:var(--link-color,var(--accent,#1769aa));text-decoration-thickness:.08em;text-underline-offset:.16em}
+    .site-breadcrumb [aria-current="page"]{font-weight:600;color:var(--text-color,var(--text-main,#30343b))}
+    .reader-content>.site-breadcrumb{width:100%;margin:0;padding-block:.4rem;background:var(--card-bg,var(--reader-bg,#fff));border-bottom:1px solid var(--border-color,#ddd)}
+    .related-content,.chapter-sequence{box-sizing:border-box;width:min(calc(100% - 2rem),56rem);margin:2rem auto;padding:1.25rem clamp(1rem,3vw,1.5rem);border:1px solid var(--border-color,#d9dde3);border-radius:.75rem;background:var(--card-bg,var(--content-bg,rgba(127,127,127,.04)));color:var(--text-color,var(--text-main,inherit))}
+    .related-content h2,.chapter-sequence-title{margin:0 0 .85rem;font-size:1.2rem;font-weight:700;line-height:1.5}
+    .related-content ul,.chapter-sequence ul{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr));gap:.65rem 1.25rem;margin:0;padding:0;list-style:none}
+    .related-content li,.chapter-sequence li{margin:0;padding:0}
+    .related-content a,.chapter-sequence a{display:inline-block;color:var(--link-color,var(--accent,#1769aa));font-weight:600;line-height:1.65;text-decoration-thickness:.08em;text-underline-offset:.18em;overflow-wrap:anywhere}
+    .chapter-sequence .book-index a{color:var(--text-color,var(--text-main,#30343b))}
+    .footer-nav .book-index{font-weight:700}
+    #projects{scroll-margin-top:5rem}
+    @media(max-width:600px){.site-breadcrumb{font-size:.82rem}.related-content,.chapter-sequence{width:calc(100% - 1rem);margin:1.25rem auto;padding:1rem}}
+    </style>
+    <!-- internal-linking-styles:end -->
     <!-- accessibility-styles:start -->
     <style>
     .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
@@ -342,6 +362,15 @@
         <nav class="menu" id="menu-mobile" aria-label="پیمایش اصلی موبایل"><a href="/" class="menu-item" title="خانه">خانه</a><a href="/support/" class="menu-item" title="حمایت">حمایت</a><button class="menu-item theme-switch" title="تغییر ظاهر" role="switch" aria-checked="false" aria-label="تغییر ظاهر" type="button"><i class="fas fa-adjust fa-fw" aria-hidden="true"></i></button><span class="menu-item language"><i class="fa fa-globe" aria-hidden="true"></i><select class="language-select" onchange="location = this.value;" aria-label="انتخاب زبان"><option value="/en/support/">English</option><option value="/support/" selected>فارسی</option></select></span></nav>
     </div>
 </header><main class="main" id="main-content" tabindex="-1">
+    <!-- internal-breadcrumb:start -->
+    <nav class="site-breadcrumb" aria-label="مسیر راهنما">
+      <ol>
+        <li><a href="/">خانه</a></li>
+        <li><a href="/#projects">پروژه‌ها</a></li>
+        <li aria-current="page"><span>هوش مصنوعی: یک رویکرد مدرن</span></li>
+      </ol>
+    </nav>
+    <!-- internal-breadcrumb:end -->
                 <div class="container"><article class="page single docs-page">
         <div class="docs-hero">
             <img src="/images/projects/aima-4e-persian.png" alt="لوگوی هوش مصنوعی: یک رویکرد مدرن" width="84" height="84" decoding="async" loading="eager" fetchpriority="high">
@@ -383,13 +412,13 @@
 <a href="/support/">حمایت از پروژه</a></p>
 <p><code>Artificial Intelligence</code> · <code>Machine Learning</code> · <code>Deep Learning</code> · <code>NLP</code> · <code>Robotics</code> · <code>GPL-3.0</code></p>
 <p><a href="https://github.com/alirostami01/aima-4e-persian">مشاهده مخزن در گیت‌هاب</a></p>
-<h2 id="درباره-پروژه">📚 دربارهٔ پروژه<a class="headerlink" href="#درباره-پروژه" title="Permanent link" aria-label="Permanent link">#</a></h2>
+<h2 id="درباره-پروژه">📚 دربارهٔ پروژه<a class="headerlink" href="#درباره-پروژه" title="پیوند مستقیم به بخش 📚 دربارهٔ پروژه" aria-label="پیوند مستقیم به بخش 📚 دربارهٔ پروژه"><span class="sr-only">پیوند مستقیم به بخش 📚 دربارهٔ پروژه</span><span aria-hidden="true">#</span></a></h2>
 <p>این مخزن یک پروژهٔ متن‌باز برای <strong>ترجمه، تدوین و ارائهٔ فارسی</strong> کتاب شناخته‌شدهٔ <strong>Artificial Intelligence: A Modern Approach (AIMA), 4th Edition</strong> نوشتهٔ <strong>Stuart Russell</strong> و <strong>Peter Norvig</strong> است.</p>
 <p>هدف پروژه این است که مفاهیم گستردهٔ هوش مصنوعی را به شکلی ساختاریافته، خوانا و قابل استفاده برای فارسی‌زبانان ارائه کند؛ از مبانی عامل‌های هوشمند و جستجو گرفته تا یادگیری عمیق، پردازش زبان طبیعی، بینایی رایانه‌ای، رباتیک، اخلاق و آیندهٔ هوش مصنوعی.</p>
 <blockquote>
 <p><strong>توجه:</strong> این پروژه یک ترجمهٔ مستقل و غیررسمی است و وابستگی یا تأیید رسمی از سوی نویسندگان یا ناشر کتاب ندارد. حقوق اثر اصلی متعلق به صاحبان حقوق آن است.</p>
 </blockquote>
-<h2 id="ویژگیهای-پروژه">✨ ویژگی‌های پروژه<a class="headerlink" href="#ویژگیهای-پروژه" title="Permanent link" aria-label="Permanent link">#</a></h2>
+<h2 id="ویژگیهای-پروژه">✨ ویژگی‌های پروژه<a class="headerlink" href="#ویژگیهای-پروژه" title="پیوند مستقیم به بخش ✨ ویژگی‌های پروژه" aria-label="پیوند مستقیم به بخش ✨ ویژگی‌های پروژه"><span class="sr-only">پیوند مستقیم به بخش ✨ ویژگی‌های پروژه</span><span aria-hidden="true">#</span></a></h2>
 <ul>
 <li>🇮🇷 ترجمهٔ فارسی ساختاریافتهٔ پیشگفتار و <strong>۲۸ فصل کتاب</strong></li>
 <li>📝 نسخهٔ <strong>Markdown</strong> برای مطالعه، ویرایش، مشارکت و استفادهٔ توسعه‌دهندگان</li>
@@ -401,7 +430,7 @@
 <li>📖 مناسب برای دانشجویان، برنامه‌نویسان، پژوهشگران و علاقه‌مندان هوش مصنوعی</li>
 <li>🌱 توسعهٔ عمومی و مشارکتی در GitHub</li>
 </ul>
-<h2 id="ساختار-مخزن">🗂️ ساختار مخزن<a class="headerlink" href="#ساختار-مخزن" title="Permanent link" aria-label="Permanent link">#</a></h2>
+<h2 id="ساختار-مخزن">🗂️ ساختار مخزن<a class="headerlink" href="#ساختار-مخزن" title="پیوند مستقیم به بخش 🗂️ ساختار مخزن" aria-label="پیوند مستقیم به بخش 🗂️ ساختار مخزن"><span class="sr-only">پیوند مستقیم به بخش 🗂️ ساختار مخزن</span><span aria-hidden="true">#</span></a></h2>
 <pre><code class="language-text">.
 ├── html/                    # نسخهٔ HTML فصل‌ها برای مطالعهٔ راحت‌تر
 │   ├── 00-پیشگفتار.html
@@ -430,7 +459,7 @@
 ├── LICENSE
 └── README.md
 </code></pre>
-<h2 id="فهرست-فصلها">📖 فهرست فصل‌ها<a class="headerlink" href="#فهرست-فصلها" title="Permanent link" aria-label="Permanent link">#</a></h2>
+<h2 id="فهرست-فصلها">📖 فهرست فصل‌ها<a class="headerlink" href="#فهرست-فصلها" title="پیوند مستقیم به بخش 📖 فهرست فصل‌ها" aria-label="پیوند مستقیم به بخش 📖 فهرست فصل‌ها"><span class="sr-only">پیوند مستقیم به بخش 📖 فهرست فصل‌ها</span><span aria-hidden="true">#</span></a></h2>
 <blockquote>
 <p>🌐 <strong>مطالعهٔ آنلاین کتاب با سایدبار و فهرست تعاملی:</strong> <a href="/aima-4e/">ورود به سامانه مطالعه آنلاین (AIMA 4e)</a><br />
 📥 <strong>دانلود نسخهٔ کامل کتاب (PDF):</strong> <a href="https://github.com/alirostami01/aima-4e-persian/raw/main/pdf/aima-4e-persian.pdf">aima-4e-persian.pdf</a> (۱٬۱۷۶ صفحه — ۳۵ مگابایت)</p>
@@ -651,11 +680,11 @@
 </tr>
 </tbody>
 </table></div>
-<h2 id="نسخه-pdf-و-ساخت-آن">📕 نسخهٔ PDF و ساخت آن<a class="headerlink" href="#نسخه-pdf-و-ساخت-آن" title="Permanent link" aria-label="Permanent link">#</a></h2>
+<h2 id="نسخه-pdf-و-ساخت-آن">📕 نسخهٔ PDF و ساخت آن<a class="headerlink" href="#نسخه-pdf-و-ساخت-آن" title="پیوند مستقیم به بخش 📕 نسخهٔ PDF و ساخت آن" aria-label="پیوند مستقیم به بخش 📕 نسخهٔ PDF و ساخت آن"><span class="sr-only">پیوند مستقیم به بخش 📕 نسخهٔ PDF و ساخت آن</span><span aria-hidden="true">#</span></a></h2>
 <p>کتاب به دو شکل PDF با کیفیت بالا تولید و ارائه می‌شود:<br />
 1. <strong>کتاب کامل و یکپارچه (<a href="https://github.com/alirostami01/aima-4e-persian/raw/main/pdf/aima-4e-persian.pdf">aima-4e-persian.pdf</a>):</strong> شامل ۱٬۱۷۶ صفحه همراه با صفحهٔ عنوان (با درج خودکار نسخه و کامیت)، فهرست مطالب کاملِ دوگذرگاهی با شماره‌گذاری فارسی صفحات، تفکیک بخش‌های هفت‌گانه و درخت کامل نشانک‌های PDF (Bookmarks).<br />
 2. <strong>فصل‌های جداگانه (<a href="https://github.com/alirostami01/aima-4e-persian/tree/main/pdf/chapters/">pdf/chapters/</a>):</strong> PDF مستقل برای هر یک از فصل‌های ۲۸‌گانه به همراه پیشگفتار.</p>
-<h3 id="نحوه-ساخت-pdf-از-فایلهای-html">نحوهٔ ساخت PDF از فایل‌های HTML<a class="headerlink" href="#نحوه-ساخت-pdf-از-فایلهای-html" title="Permanent link" aria-label="Permanent link">#</a></h3>
+<h3 id="نحوه-ساخت-pdf-از-فایلهای-html">نحوهٔ ساخت PDF از فایل‌های HTML<a class="headerlink" href="#نحوه-ساخت-pdf-از-فایلهای-html" title="پیوند مستقیم به بخش نحوهٔ ساخت PDF از فایل‌های HTML" aria-label="پیوند مستقیم به بخش نحوهٔ ساخت PDF از فایل‌های HTML"><span class="sr-only">پیوند مستقیم به بخش نحوهٔ ساخت PDF از فایل‌های HTML</span><span aria-hidden="true">#</span></a></h3>
 <p>موتور ساخت PDF از <strong>Chromium</strong> (از راه Playwright) برای شکل‌دهی دقیق حروف فارسی و چیدمان راست‌به‌چپ (RTL)، و <strong>PyMuPDF</strong> برای استخراج شماره‌های صفحات فهرست و درخت نشانک‌ها استفاده می‌کند. فونت‌های پروژه (وزیرمتن و DejaVu Sans Mono) درون مخزن در پوشهٔ <code>pdf/fonts/</code> قرار دارند و نیازی به نصب فونت روی سیستم‌عامل نیست.</p>
 <pre><code class="language-bash"># نصب پیش‌نیازها
 pip install playwright pymupdf
@@ -673,7 +702,7 @@ python3 build_pdf.py --chapters-only
 # ساخت فصل‌های مشخص (مثلاً فصل‌های ۱ و ۲، عدد 0 برای پیشگفتار)
 python3 build_pdf.py --chapters 0 1 2
 </code></pre>
-<h2 id="نسخه-html">🌐 نسخهٔ HTML<a class="headerlink" href="#نسخه-html" title="Permanent link" aria-label="Permanent link">#</a></h2>
+<h2 id="نسخه-html">🌐 نسخهٔ HTML<a class="headerlink" href="#نسخه-html" title="پیوند مستقیم به بخش 🌐 نسخهٔ HTML" aria-label="پیوند مستقیم به بخش 🌐 نسخهٔ HTML"><span class="sr-only">پیوند مستقیم به بخش 🌐 نسخهٔ HTML</span><span aria-hidden="true">#</span></a></h2>
 <p>نسخهٔ HTML برای کسانی طراحی شده که می‌خواهند متن را مانند یک کتاب مطالعه کنند، بدون اینکه نیاز به ابزار Markdown داشته باشند.</p>
 <p>ویژگی‌های نسخهٔ HTML شامل موارد زیر است:</p>
 <ul>
@@ -689,7 +718,7 @@ python3 build_pdf.py --chapters 0 1 2
 <blockquote>
 <p>برای مطالعهٔ سریع‌تر، پیشنهاد می‌شود از نسخهٔ <strong>HTML</strong> استفاده کنید.</p>
 </blockquote>
-<h2 id="تصاویر-و-شکلها">🖼️ تصاویر و شکل‌ها<a class="headerlink" href="#تصاویر-و-شکلها" title="Permanent link" aria-label="Permanent link">#</a></h2>
+<h2 id="تصاویر-و-شکلها">🖼️ تصاویر و شکل‌ها<a class="headerlink" href="#تصاویر-و-شکلها" title="پیوند مستقیم به بخش 🖼️ تصاویر و شکل‌ها" aria-label="پیوند مستقیم به بخش 🖼️ تصاویر و شکل‌ها"><span class="sr-only">پیوند مستقیم به بخش 🖼️ تصاویر و شکل‌ها</span><span aria-hidden="true">#</span></a></h2>
 <p>تصاویر پروژه در پوشهٔ <code>figures/</code> و به تفکیک فصل نگهداری می‌شوند. در مجموع <strong>۴۰۷ شکل</strong> مربوط به فصل‌های ۱ تا ۲۶ در مخزن قرار گرفته است؛ فصل‌های ۲۷ و ۲۸ شکل کتابی ندارند.</p>
 <p>مسیر تصاویر به‌صورت ساختاریافته است:</p>
 <pre><code class="language-text">figures/
@@ -700,10 +729,10 @@ python3 build_pdf.py --chapters 0 1 2
 └── ch26/
 </code></pre>
 <p>نسخه‌های Markdown و HTML از فایل‌های واقعی تصویر استفاده می‌کنند و تصاویر به‌صورت Base64 داخل متن نگهداری نمی‌شوند.</p>
-<h2 id="pseudocode">🧠 Pseudocode<a class="headerlink" href="#pseudocode" title="Permanent link" aria-label="Permanent link">#</a></h2>
+<h2 id="pseudocode">🧠 Pseudocode<a class="headerlink" href="#pseudocode" title="پیوند مستقیم به بخش 🧠 Pseudocode" aria-label="پیوند مستقیم به بخش 🧠 Pseudocode"><span class="sr-only">پیوند مستقیم به بخش 🧠 Pseudocode</span><span aria-hidden="true">#</span></a></h2>
 <p>شبه‌کدهای فنی کتاب به زبان <strong>انگلیسی</strong> نگهداری شده‌اند تا ساختار، نام الگوریتم‌ها و اصطلاحات آن‌ها تا حد امکان با متن اصلی و ویرایش چهارم AIMA یکسان باقی بماند.</p>
 <p>این تصمیم برای خوانندگان فنی مزیت مهمی دارد: الگوریتم‌ها را می‌توان مستقیماً با نسخهٔ انگلیسی کتاب، منابع علمی و پیاده‌سازی‌های نرم‌افزاری مقایسه کرد.</p>
-<h2 id="مشارکت-در-پروژه">🤝 مشارکت در پروژه<a class="headerlink" href="#مشارکت-در-پروژه" title="Permanent link" aria-label="Permanent link">#</a></h2>
+<h2 id="مشارکت-در-پروژه">🤝 مشارکت در پروژه<a class="headerlink" href="#مشارکت-در-پروژه" title="پیوند مستقیم به بخش 🤝 مشارکت در پروژه" aria-label="پیوند مستقیم به بخش 🤝 مشارکت در پروژه"><span class="sr-only">پیوند مستقیم به بخش 🤝 مشارکت در پروژه</span><span aria-hidden="true">#</span></a></h2>
 <p>این پروژه یک کار در حال توسعه است و مشارکت علاقه‌مندان می‌تواند کیفیت آن را بهتر کند.</p>
 <p>اگر در متن، ترجمه، اصطلاحات، شکل‌ها، قالب‌بندی یا ساختار پروژه مشکلی پیدا کردید:</p>
 <ol>
@@ -711,23 +740,23 @@ python3 build_pdf.py --chapters 0 1 2
 <li>تغییر پیشنهادی خود را به‌صورت <strong>Pull Request</strong> ارسال کنید.</li>
 </ol>
 <p>لطفاً هنگام پیشنهاد اصلاحات، تا حد امکان به بخش یا فصل مربوطه اشاره کنید تا بررسی تغییر آسان‌تر باشد.</p>
-<h2 id="حمایت-از-پروژه">⭐ حمایت از پروژه<a class="headerlink" href="#حمایت-از-پروژه" title="Permanent link" aria-label="Permanent link">#</a></h2>
+<h2 id="حمایت-از-پروژه">⭐ حمایت از پروژه<a class="headerlink" href="#حمایت-از-پروژه" title="پیوند مستقیم به بخش ⭐ حمایت از پروژه" aria-label="پیوند مستقیم به بخش ⭐ حمایت از پروژه"><span class="sr-only">پیوند مستقیم به بخش ⭐ حمایت از پروژه</span><span aria-hidden="true">#</span></a></h2>
 <p>اگر این پروژه برای شما مفید است، یکی از بهترین راه‌های حمایت، <strong>ستاره‌دادن به مخزن GitHub</strong> و معرفی آن به دیگر علاقه‌مندان هوش مصنوعی است.</p>
 <p>اگر مایل هستید به ادامهٔ توسعه، نگهداری، ترجمه و آماده‌سازی این پروژه کمک مالی کنید، می‌توانید از صفحهٔ رسمی حمایت استفاده کنید:</p>
-<h3 id="حمایت-از-پروژههای-من">❤️ <a href="https://www.alirostami.com/support/">حمایت از پروژه‌های من</a><a class="headerlink" href="#حمایت-از-پروژههای-من" title="Permanent link" aria-label="Permanent link">#</a></h3>
+<h3 id="حمایت-از-پروژههای-من">❤️ <a href="https://www.alirostami.com/support/">حمایت از پروژه‌های من</a><a class="headerlink" href="#حمایت-از-پروژههای-من" title="پیوند مستقیم به بخش ❤️ حمایت از پروژه‌های من" aria-label="پیوند مستقیم به بخش ❤️ حمایت از پروژه‌های من"><span class="sr-only">پیوند مستقیم به بخش ❤️ حمایت از پروژه‌های من</span><span aria-hidden="true">#</span></a></h3>
 <p>هر حمایت، حتی کوچک، به ادامهٔ توسعه و نگهداری پروژه‌های متن‌باز کمک می‌کند.</p>
-<h2 id="مجوز">📜 مجوز<a class="headerlink" href="#مجوز" title="Permanent link" aria-label="Permanent link">#</a></h2>
+<h2 id="مجوز">📜 مجوز<a class="headerlink" href="#مجوز" title="پیوند مستقیم به بخش 📜 مجوز" aria-label="پیوند مستقیم به بخش 📜 مجوز"><span class="sr-only">پیوند مستقیم به بخش 📜 مجوز</span><span aria-hidden="true">#</span></a></h2>
 <p>کد و محتوای قابل‌انتشار این مخزن تحت <strong>GNU General Public License v3.0</strong> ارائه شده است. برای جزئیات دقیق، فایل <a href="https://github.com/alirostami01/aima-4e-persian/blob/main/LICENSE">LICENSE</a> را ببینید.</p>
 <blockquote>
 <p>مجوز پروژهٔ GitHub به معنی انتقال یا تغییر حقوق مالکیت معنوی اثر اصلی نیست. این پروژه یک ترجمه و ارائهٔ مستقل از اثر دارای حق نشر است.</p>
 </blockquote>
-<h2 id="سایر-پروژه‌ها">🔗 سایر پروژه‌ها و مستندات<a class="headerlink" href="#سایر-پروژه‌ها" title="Permanent link" aria-label="Permanent link">#</a></h2>
+<h2 id="سایر-پروژه‌ها">🔗 سایر پروژه‌ها و مستندات<a class="headerlink" href="#سایر-پروژه‌ها" title="پیوند مستقیم به بخش 🔗 سایر پروژه‌ها و مستندات" aria-label="پیوند مستقیم به بخش 🔗 سایر پروژه‌ها و مستندات"><span class="sr-only">پیوند مستقیم به بخش 🔗 سایر پروژه‌ها و مستندات</span><span aria-hidden="true">#</span></a></h2>
 <ul>
-<li><a href="/fundamentals-of-software-architecture-persian/">کتاب مبانی معماری نرم‌افزار (ویرایش دوم) — ترجمه فارسی اثر مارک ریچاردز و نیل فورد</a> (<a href="/software-architecture/">مطالعه آنلاین</a>)</li>
+<li><a href="/fundamentals-of-software-architecture-persian/">کتاب مبانی معماری نرم‌افزار (ویرایش دوم) — ترجمه فارسی اثر مارک ریچاردز و نیل فورد</a> (<a href="/software-architecture/">مطالعه آنلاین<span class="sr-only">: کتاب مبانی معماری نرم‌افزار</span></a>)</li>
 <li><a href="/persian-streams/">افزونه پخش فیلم و سریال ایرانی برای استرمیو (Persian Streams)</a></li>
 <li><a href="/persian-subtitles/">افزونه زیرنویس فارسی برای استرمیو (Persian Subtitles)</a></li>
 </ul>
-<h2 id="درباره-اثر-اصلی">⚖️ دربارهٔ اثر اصلی<a class="headerlink" href="#درباره-اثر-اصلی" title="Permanent link" aria-label="Permanent link">#</a></h2>
+<h2 id="درباره-اثر-اصلی">⚖️ دربارهٔ اثر اصلی<a class="headerlink" href="#درباره-اثر-اصلی" title="پیوند مستقیم به بخش ⚖️ دربارهٔ اثر اصلی" aria-label="پیوند مستقیم به بخش ⚖️ دربارهٔ اثر اصلی"><span class="sr-only">پیوند مستقیم به بخش ⚖️ دربارهٔ اثر اصلی</span><span aria-hidden="true">#</span></a></h2>
 <p><strong>Artificial Intelligence: A Modern Approach, 4th Edition</strong> اثر:</p>
 <ul>
 <li><strong>Stuart Russell</strong></li>
@@ -738,7 +767,18 @@ python3 build_pdf.py --chapters 0 1 2
 <p>ساخته شده با ❤️ برای جامعهٔ فارسی‌زبان علاقه‌مند به هوش مصنوعی — <a href="/support/">حمایت از ادامهٔ مسیر</a></p>
         </div>
     </article></div>
-            </main><footer class="footer">
+    <!-- internal-related:start -->
+    <section class="related-content" aria-labelledby="related-resources-title">
+      <h2 id="related-resources-title">مطالب مرتبط با پروژهٔ AIMA</h2>
+      <ul>
+        <li><a href="/aima-4e/">مطالعهٔ آنلاین ترجمهٔ فارسی AIMA، ویرایش چهارم</a></li>
+        <li><a href="/posts/aima-4e-persian/">معرفی و گزارش پروژهٔ ترجمهٔ فارسی AIMA</a></li>
+        <li><a href="/fundamentals-of-software-architecture-persian/">ترجمهٔ فارسی مبانی معماری نرم‌افزار</a></li>
+        <li><a href="/support/">حمایت از ادامهٔ ترجمه‌ها و پروژه‌های متن‌باز</a></li>
+      </ul>
+    </section>
+    <!-- internal-related:end -->
+    </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">ایجاد شده توسط <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.2">Hugo</a> | پوسته - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreferrer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i>2022 - <span itemprop="copyrightYear">2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/">علی رستمی</a></span></div>
         </div>

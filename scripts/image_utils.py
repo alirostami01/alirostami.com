@@ -127,6 +127,15 @@ SOCIAL_CARDS: dict[str, SocialCard] = {
 }
 
 
+ENGLISH_SOCIAL_PAGES = {
+    "categories/index.html",
+    "posts/a-recap-of-last-year/index.html",
+    "posts/benefits-of-using-obsidian/index.html",
+    "posts/index.html",
+    "tags/index.html",
+}
+
+
 def social_card_for_page(relative: str | Path) -> SocialCard:
     """Map a generated HTML file to its representative social card."""
     value = Path(relative).as_posix().lstrip("./")
@@ -149,7 +158,7 @@ def social_card_for_page(relative: str | Path) -> SocialCard:
 def social_alt_for_page(relative: str | Path) -> str:
     card = social_card_for_page(relative)
     value = Path(relative).as_posix()
-    return card.alt_en if value.startswith("en/") else card.alt_fa
+    return card.alt_en if value.startswith("en/") or value in ENGLISH_SOCIAL_PAGES else card.alt_fa
 
 
 def local_file_for_url(url: str) -> Path | None:
@@ -235,7 +244,8 @@ def apply_image_seo() -> None:
 
 
 def apply_site_postprocessors() -> None:
-    """Refresh image metadata, performance delivery, then accessibility."""
+    """Refresh image, semantic metadata, performance, then accessibility output."""
     apply_image_seo()
+    run_postprocessor("update-metadata.py")
     run_postprocessor("update-performance.py")
     run_postprocessor("update-accessibility.py")

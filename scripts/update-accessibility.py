@@ -731,6 +731,11 @@ def update_page(path: Path, raw: str) -> str:
     raw = install_style(raw)
     raw = install_skip_link(raw, language)
     raw = install_runtime(raw)
+    raw = re.sub(
+        r"(<!-- performance-[a-z-]+:end -->)[ \t]*(?=<!--)",
+        r"\1\n    ",
+        raw,
+    )
     return re.sub(r"[ \t]+$", "", raw, flags=re.MULTILINE)
 
 

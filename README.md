@@ -223,6 +223,30 @@ sitemap در انتهای اجرا همین post-processor را فراخوانی
 python3 scripts/check-images.py
 ```
 
+## Metadata و Structured Data
+
+post-processor متادیتا برای هر ۷۳ صفحهٔ indexable توضیح یکتا، Open Graph،
+Twitter Card، `og:locale` و URL canonical هماهنگ می‌سازد. دو نسخهٔ فارسی و
+انگلیسی Support نیز روی هر دو صفحه لینک‌های متقابل `hreflang` برای `fa`، `en`
+و `x-default` دارند.
+
+JSON-LD هر صفحه در یک graph معتبر تجمیع می‌شود. ۵۷ صفحهٔ فصل با موجودیت‌های
+جداگانهٔ `Chapter` و `WebPage` به `Book` والد متصل‌اند و نام، توضیح، زبان،
+نویسندگان، مترجم، شمارهٔ فصل، تصویر و breadcrumb دارند. صفحات کتاب، مقاله،
+نرم‌افزار، آرشیو و پروفایل نیز schema تخصصی خود را حفظ می‌کنند؛ نویسنده و
+publisher مقاله‌ها به موجودیت نام‌دار `Person` متصل است.
+
+اجرای دستی و ممیزی مستقلِ stdlib-only:
+
+```bash
+python3 scripts/update-metadata.py   # idempotent؛ اجرای دوم نباید فایلی را تغییر دهد
+python3 scripts/check-metadata.py
+```
+
+checker کامل بودن و یکتایی descriptionها، هم‌خوانی canonical/OG/Twitter، locale
+و hreflang متقابل، اعتبار JSON-LD، رابطهٔ Chapter→Book/WebPage، نویسنده و
+publisher مقاله و breadcrumb همهٔ صفحات به‌جز خانه را بررسی می‌کند.
+
 ## Performance و Core Web Vitals
 
 dependencyهای مرورگر با نسخهٔ دقیق در `lib/` نگهداری می‌شوند و در زمان اجرا
@@ -246,14 +270,15 @@ python3 scripts/update-performance.py --check
 python3 scripts/check-performance.py
 ```
 
-تمام generatorهای مستندشده post-processorهای تصاویر، Performance و سپس
-Accessibility را از طریق `apply_site_postprocessors()` اجرا می‌کنند. بنابراین
-پس از بازتولید هر صفحه، اجرای جداگانه لازم نیست؛ بااین‌حال audit نهایی همهٔ فازها
-باید اجرا شود:
+تمام generatorهای مستندشده post-processorهای تصاویر، Metadata، Performance و
+سپس Accessibility را از طریق `apply_site_postprocessors()` اجرا می‌کنند.
+بنابراین پس از بازتولید هر صفحه، اجرای جداگانه لازم نیست؛ بااین‌حال audit نهایی
+همهٔ فازها باید اجرا شود:
 
 ```bash
 python3 scripts/check-images.py
 python3 scripts/check-seo-urls.py
+python3 scripts/check-metadata.py
 python3 scripts/check-performance.py
 python3 scripts/check-accessibility.py
 ```

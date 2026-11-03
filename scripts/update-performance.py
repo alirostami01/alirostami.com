@@ -85,7 +85,40 @@ def html_pages() -> list[Path]:
     ]
 
 
-def insert_before_head(raw: str, snippet: str) -> str:
+def insert_before_head(raw: str, snippet: str, name: str) -> str:
+    """Insert managed delivery hints in a deterministic order within head."""
+    later_blocks = {
+        "icons": ("animations", "image-preload"),
+        "animations": ("image-preload",),
+        "image-preload": (),
+    }
+    anchors: list[int] = []
+    for later in later_blocks.get(name, ()):
+        match = re.search(
+            rf"^[ \t]*<!-- performance-{re.escape(later)}:start -->",
+            raw,
+            flags=re.IGNORECASE | re.MULTILINE,
+        )
+        if match is not None:
+            anchors.append(match.start())
+    metadata = re.search(
+        r"^[ \t]*<!-- metadata-seo:start -->",
+        raw,
+        flags=re.IGNORECASE | re.MULTILINE,
+    )
+    if metadata is not None:
+        anchors.append(metadata.start())
+    accessibility = re.search(
+        r"^[ \t]*<!-- accessibility-styles:start -->",
+        raw,
+        flags=re.IGNORECASE | re.MULTILINE,
+    )
+    if accessibility is not None:
+        anchors.append(accessibility.start())
+    if anchors:
+        insertion_start = min(anchors)
+        return f"{raw[:insertion_start]}{snippet}\n{raw[insertion_start:]}"
+
     match = re.search(r"</head\s*>", raw, flags=re.IGNORECASE)
     if match is None:
         return raw
@@ -99,36 +132,25 @@ def insert_before_head(raw: str, snippet: str) -> str:
     return f"{raw[:insertion_start]}{separator}{snippet}\n</head>{raw[match.end():]}"
 
 
-def managed_placeholder(raw: str, name: str) -> tuple[str, str, bool]:
-    placeholder = f"__PERFORMANCE_{name.upper().replace('-', '_')}_BLOCK__"
+def remove_managed_block(raw: str, name: str) -> str:
+    """Remove a managed head block so it can be placed in canonical order."""
     pattern = re.compile(
-        rf"[ \t]*<!-- performance-{re.escape(name)}:start -->.*?"
-        rf"<!-- performance-{re.escape(name)}:end -->",
-        flags=re.DOTALL,
+        rf"(?:^[ \t]*\r?\n)*^[ \t]*<!-- performance-{re.escape(name)}:start -->.*?"
+        rf"<!-- performance-{re.escape(name)}:end -->[ \t]*(?:\r?\n)?",
+        flags=re.DOTALL | re.MULTILINE,
     )
-    present = pattern.search(raw) is not None
-    if present:
-        raw = pattern.sub(placeholder, raw, count=1)
-    return raw, placeholder, present
+    return pattern.sub("", raw, count=1)
 
 
-def install_managed_block(
-    raw: str,
-    name: str,
-    block: str,
-    placeholder: str,
-    was_present: bool,
-) -> str:
+def install_managed_block(raw: str, name: str, block: str) -> str:
     if not block:
-        return raw.replace(placeholder, "") if was_present else raw
+        return raw
     wrapped = (
         f"    <!-- performance-{name}:start -->\n"
         f"{block}\n"
         f"    <!-- performance-{name}:end -->"
     )
-    if was_present:
-        return raw.replace(placeholder, wrapped)
-    return insert_before_head(raw, wrapped)
+    return insert_before_head(raw, wrapped, name)
 
 
 def is_target(value: str, fragments: tuple[str, ...]) -> bool:
@@ -160,8 +182,8 @@ def uses_font_awesome(raw: str) -> bool:
 
 
 def update_stylesheets(raw: str) -> str:
-    raw, icon_placeholder, had_icons = managed_placeholder(raw, "icons")
-    raw, animation_placeholder, had_animations = managed_placeholder(raw, "animations")
+    raw = remove_managed_block(raw, "icons")
+    raw = remove_managed_block(raw, "animations")
     raw = remove_stylesheet(raw, FONT_AWESOME_URL_PARTS)
     raw = remove_stylesheet(raw, ANIMATE_URL_PARTS)
 
@@ -170,7 +192,7 @@ def update_stylesheets(raw: str) -> str:
         icon_block = f"""    <style>.fa,.fas,.far,.fab,.fa-solid,.fa-regular,.fa-brands{{display:inline-block;min-width:1em;text-align:center}}.fa-fw{{width:1.25em}}</style>
     <link rel="preload" href="{FONT_AWESOME_LOCAL}" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="{FONT_AWESOME_LOCAL}"></noscript>"""
-    raw = install_managed_block(raw, "icons", icon_block, icon_placeholder, had_icons)
+    raw = install_managed_block(raw, "icons", icon_block)
 
     # Theme JS dynamically uses fade/flash animations even when the source HTML
     # has no static animate__ class.
@@ -178,13 +200,7 @@ def update_stylesheets(raw: str) -> str:
     if THEME_SCRIPT in raw or "animate__" in raw:
         animation_block = f"""    <link rel="preload" href="{ANIMATE_LOCAL}" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="{ANIMATE_LOCAL}"></noscript>"""
-    return install_managed_block(
-        raw,
-        "animations",
-        animation_block,
-        animation_placeholder,
-        had_animations,
-    )
+    return install_managed_block(raw, "animations", animation_block)
 
 
 def script_kind(source: str) -> str | None:
@@ -353,20 +369,19 @@ def preload_block(raw: str) -> str:
 
 
 def update_image_preload(raw: str) -> str:
-    raw, placeholder, present = managed_placeholder(raw, "image-preload")
-    return install_managed_block(
-        raw,
-        "image-preload",
-        preload_block(raw),
-        placeholder,
-        present,
-    )
+    raw = remove_managed_block(raw, "image-preload")
+    return install_managed_block(raw, "image-preload", preload_block(raw))
 
 
 def update_page(raw: str) -> str:
     raw = update_stylesheets(raw)
     raw = update_scripts(raw)
     raw = update_image_preload(raw)
+    raw = re.sub(
+        r"\r?\n(?:[ \t]*\r?\n)+(?=[ \t]*<!-- performance-)",
+        "\n",
+        raw,
+    )
     return re.sub(r"[ \t]+$", "", raw, flags=re.MULTILINE)
 
 

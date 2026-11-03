@@ -25,6 +25,7 @@ BREADCRUMB_MARKER = "internal-breadcrumb"
 RELATED_MARKER = "internal-related"
 CHAPTER_MARKER = "internal-chapter-navigation"
 AIMA_HUB_MARKER = "internal-aima-book-hub"
+POST_ARCHIVE_MARKER = "internal-post-archive-entry"
 
 RELATED_PAGES = {
     "index.html",
@@ -560,6 +561,40 @@ def main() -> None:
             require(len(anchors) >= 3, f"{relative}: related-content block has fewer than three links")
             require(len(targets) == len(anchors), f"{relative}: related-content block repeats a destination")
             require(all(anchor.href.startswith("/") for anchor in anchors), f"{relative}: related links must be root-relative canonical paths")
+
+    # Both canonical Persian book articles must be first-class archive entries,
+    # not only links in the related-content section.
+    for relative, raw in raw_by_relative.items():
+        expected = int(relative == "posts/index.html")
+        require(raw.count(f"{POST_ARCHIVE_MARKER}:start") == expected, f"{relative}: post archive start marker mismatch")
+        require(raw.count(f"{POST_ARCHIVE_MARKER}:end") == expected, f"{relative}: post archive end marker mismatch")
+    posts_raw = raw_by_relative.get("posts/index.html", "")
+    posts_body = marker_body(posts_raw, POST_ARCHIVE_MARKER)
+    posts_anchors = fragment_anchors(posts_body or "")
+    require(len(posts_anchors) == 1, "posts/index.html: managed book-article entry must contain one link")
+    if posts_anchors:
+        require(
+            posts_anchors[0].href == "/posts/fundamentals-of-software-architecture-persian/",
+            "posts/index.html: architecture article entry points to the wrong URL",
+        )
+        require(
+            "مبانی معماری نرم‌افزار" in posts_anchors[0].label,
+            "posts/index.html: architecture article entry has an unclear title",
+        )
+    require(
+        '<span class="archive-item-date">10-24</span>' in (posts_body or ""),
+        "posts/index.html: architecture article entry has the wrong publication date",
+    )
+    archive_targets = {
+        anchor.href
+        for anchor in parsed_pages[(ROOT / "posts/index.html").resolve()].anchors
+        if "archive-item-link" in anchor.attrs.get("class", "").split()
+    }
+    for article_url in (
+        "/posts/aima-4e-persian/",
+        "/posts/fundamentals-of-software-architecture-persian/",
+    ):
+        require(article_url in archive_targets, f"posts/index.html: missing canonical article listing {article_url}")
 
     groups = chapter_records(pages, documents)
     chapter_count = audit_chapter_navigation(raw_by_relative, groups)

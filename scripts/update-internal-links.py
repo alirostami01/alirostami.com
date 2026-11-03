@@ -39,7 +39,15 @@ BREADCRUMB_MARKER = "internal-breadcrumb"
 RELATED_MARKER = "internal-related"
 CHAPTER_MARKER = "internal-chapter-navigation"
 AIMA_HUB_MARKER = "internal-aima-book-hub"
-MARKERS = (STYLE_MARKER, BREADCRUMB_MARKER, RELATED_MARKER, CHAPTER_MARKER, AIMA_HUB_MARKER)
+POST_ARCHIVE_MARKER = "internal-post-archive-entry"
+MARKERS = (
+    STYLE_MARKER,
+    BREADCRUMB_MARKER,
+    RELATED_MARKER,
+    CHAPTER_MARKER,
+    AIMA_HUB_MARKER,
+    POST_ARCHIVE_MARKER,
+)
 
 # The labels are deliberately descriptive: every generated anchor is useful out
 # of context to readers, assistive technology, and search crawlers.
@@ -58,8 +66,8 @@ RELATED_CONTENT: dict[str, tuple[str, tuple[tuple[str, str], ...]]] = {
     "posts/index.html": (
         "More ways to explore",
         (
-            ("Project article: Persian translation of AIMA, fourth edition", "/posts/aima-4e-persian/"),
-            ("Project article: Persian translation of Fundamentals of Software Architecture", "/posts/fundamentals-of-software-architecture-persian/"),
+            ("Project hub: Persian translation of AIMA, fourth edition", "/aima-4e-persian/"),
+            ("Project hub: Persian translation of Fundamentals of Software Architecture", "/fundamentals-of-software-architecture-persian/"),
             ("Browse articles and projects by category", "/categories/"),
             ("Explore the site’s topic tags", "/tags/"),
         ),
@@ -396,6 +404,41 @@ def enhance_aima_footer_navigation(raw: str, relative: str) -> str:
     return f"{raw[:match.start()]}{replacement}{raw[match.end():]}"
 
 
+def update_posts_archive(raw: str) -> str:
+    """Keep both canonical Persian book articles visible in the Posts archive."""
+    aima_pattern = re.compile(
+        r'(<a\b[^>]*\bhref=["\'])/aima-4e-persian/(["\'][^>]*\bclass=["\'][^"\']*\barchive-item-link\b)',
+        re.IGNORECASE,
+    )
+    raw, aima_count = aima_pattern.subn(
+        r"\1/posts/aima-4e-persian/\2",
+        raw,
+        count=1,
+    )
+    normalized_aima = re.findall(
+        r'<a\b[^>]*\bhref=["\']/posts/aima-4e-persian/["\'][^>]*\bclass=["\'][^"\']*\barchive-item-link\b',
+        raw,
+        flags=re.IGNORECASE,
+    )
+    if aima_count not in {0, 1} or len(normalized_aima) != 1:
+        raise ValueError("posts/index.html: could not normalize the AIMA article archive link")
+
+    entry = """<!-- internal-post-archive-entry:start -->
+                    <article class="archive-item">
+                        <a href="/posts/fundamentals-of-software-architecture-persian/" class="archive-item-link">مبانی معماری نرم‌افزار: رویکردی مهندسی و مدرن — ترجمهٔ فارسی</a>
+                        <span class="archive-item-date">10-24</span>
+                    </article>
+                    <!-- internal-post-archive-entry:end -->"""
+    year_pattern = re.compile(
+        r'(<h2\b[^>]*\bclass=["\'][^"\']*\bgroup-title\b[^>]*>\s*2026\s*</h2>)',
+        re.IGNORECASE,
+    )
+    raw, year_count = year_pattern.subn(rf"\1{entry}", raw, count=1)
+    if year_count != 1:
+        raise ValueError("posts/index.html: could not find the 2026 archive group")
+    return raw
+
+
 def schema_document(raw: str, relative: str) -> dict[str, Any]:
     matches = SCHEMA_RE.findall(raw)
     if len(matches) != 1:
@@ -569,6 +612,8 @@ def update_page(
     raw = contextualize_ambiguous_anchors(raw, canonical, software_chapter_names)
     if relative.startswith("aima-4e/") and relative != "aima-4e/index.html":
         raw = enhance_aima_footer_navigation(raw, relative)
+    if relative == "posts/index.html":
+        raw = update_posts_archive(raw)
 
     # Phase-5 breadcrumbs use /#projects as the parent for project and reader
     # pages. Make that route a real, stable jump target at the first project.

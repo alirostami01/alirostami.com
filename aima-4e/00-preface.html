@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <link rel="canonical" href="https://www.alirostami.com/aima-4e/00-preface">
+<meta charset="UTF-8">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>پیشگفتار</title>
+<style>
+  :root {
+    --ink: #1c2430;
+    --muted: #5b6573;
+    --paper: #f6f0e6;
+    --card: #fffdf8;
+    --line: #e4d8c4;
+    --wine: #8b2942;
+    --wine-soft: #f6e8ec;
+    --teal: #1b5c5a;
+    --teal-soft: #e6f2f1;
+    --gold: #b8923a;
+    --ok: #1f6b45;
+    --ok-soft: #e6f5ec;
+    --bad: #9b2226;
+    --bad-soft: #fdecee;
+    --navy: #24344d;
+    --shadow: 0 10px 28px rgba(28, 36, 48, .08);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(1200px 500px at 100% -10%, #f3e4c8 0%, transparent 50%),
+      var(--paper);
+    color: var(--ink);
+    font-family: Tahoma, "Segoe UI", "DejaVu Sans", Arial, sans-serif;
+    line-height: 1.95;
+    font-size: 17.5px;
+  }
+  .page { max-width: 920px; margin: 0 auto; padding: 28px 18px 80px; }
+  .kicker { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; color: var(--muted); font-size: 13px; letter-spacing: .2px; }
+  .badge { background: var(--navy); color: #fff; border-radius: 999px; padding: 2px 10px; font-size: 12px; }
+  .badge.soft { background: var(--teal-soft); color: var(--teal); }
+  .badge.gold { background: #f4e7c4; color: #7a5a12; }
+  h1 { font-size: 34px; line-height: 1.35; margin: 10px 0 8px; color: var(--navy); }
+  .subtitle { color: var(--muted); margin: 0 0 22px; font-size: 16px; }
+  .toc { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px 22px; box-shadow: var(--shadow); margin: 22px 0 34px; }
+  .toc h2 { margin: 0 0 10px; font-size: 16px; color: var(--wine); border: 0; background: none; padding: 0; }
+  .toc ol { margin: 0; padding: 0 20px 0 0; columns: 1; }
+  .toc li { margin: 3px 0; text-align: right; }
+  .toc a { color: var(--navy); text-decoration: none; }
+  .toc a:hover { color: var(--wine); }
+  h2 {
+    margin: 48px 0 14px; padding: 10px 14px;
+    background: linear-gradient(90deg, #f3e4cf, transparent);
+    border-right: 6px solid var(--wine);
+    color: var(--navy); font-size: 24px;
+  }
+  h3 { color: var(--teal); font-size: 20px; margin: 28px 0 10px; }
+  h4 { color: var(--navy); font-size: 17px; margin: 20px 0 8px; }
+  p { margin: 0 0 12px; text-align: justify; text-justify: inter-word; }
+  .lead {
+    font-size: 18.5px; background: var(--card); border: 1px solid var(--line);
+    border-radius: 16px; padding: 16px 18px; box-shadow: var(--shadow);
+    text-align: justify; text-justify: inter-word;
+  }
+  .box, .tip, .warn, .ok, .formula, .note, .quote {
+    border-radius: 14px; padding: 14px 16px; margin: 14px 0;
+    border: 1px solid var(--line);
+    text-align: justify; text-justify: inter-word;
+  }
+  .box { background: var(--card); }
+  .tip { background: #fff8e6; border-color: #ead7a0; }
+  .warn { background: var(--wine-soft); border-color: #e3b7c2; }
+  .ok { background: var(--ok-soft); border-color: #b7dec8; }
+  .formula { background: var(--teal-soft); border-color: #b7d8d6; }
+  .note { background: #eef2f8; border-color: #c9d4e4; }
+  .quote { background: var(--card); border-right: 5px solid var(--gold); color: #3f4653; font-style: italic; box-shadow: var(--shadow); }
+  .ex { background: #fff; border: 1px dashed #d2c4aa; border-radius: 12px; padding: 10px 14px; margin: 10px 0; }
+  .ex .en { font-family: Georgia, "Times New Roman", serif; direction: ltr; text-align: left; font-size: 18px; }
+  .ex .fa { color: var(--muted); font-size: 15px; }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 720px) { .pair { grid-template-columns: 1fr; } }
+  .wrong, .right { border-radius: 12px; padding: 10px 12px; border: 1px solid; }
+  .wrong { background: var(--bad-soft); border-color: #f0b8ba; }
+  .right { background: var(--ok-soft); border-color: #b7dec8; }
+  .ltr { direction: ltr; text-align: left; font-family: Georgia, "Times New Roman", serif; }
+  table {
+    width: 100%; border-collapse: collapse; margin: 14px 0 20px;
+    background: #fff; border-radius: 12px; overflow: hidden;
+    box-shadow: var(--shadow); font-size: 15px;
+  }
+  th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; vertical-align: top; }
+  th { background: var(--navy); color: #fff; font-weight: 700; }
+  tr:nth-child(even) td { background: #fbf7f0; }
+  ul, ol { margin: 8px 0 14px; padding: 0 22px 0 0; }
+  ol { list-style-type: persian; }
+  li { margin: 4px 0; text-align: justify; text-justify: inter-word; }
+  .en-inline { direction: ltr; display: inline-block; font-family: Georgia, "Times New Roman", serif; overflow-wrap: anywhere; }
+  code { font-family: Consolas, "Courier New", monospace; direction: ltr; display: inline-block; background: #eef2f8; border: 1px solid #d7dee8; border-radius: 6px; padding: 0 5px; font-size: .88em; }
+  pre.code {
+    direction: ltr; text-align: left; overflow-x: auto;
+    background: var(--navy); color: #e8eef7; font-family: Consolas, "Courier New", monospace;
+    font-size: 14.5px; line-height: 1.7; border-radius: 14px; padding: 16px 18px; margin: 14px 0;
+    box-shadow: var(--shadow);
+  }
+  pre.code code { background: none; border: 0; padding: 0; font-size: inherit; color: inherit; display: block; }
+  hr.soft { border: 0; border-top: 2px dashed var(--line); margin: 30px 0; }
+  sup { font-size: .72em; }
+  .footnotes { background: #f3efe6; border: 1px solid var(--line); border-radius: 14px; padding: 14px 18px; margin: 10px 0 20px; }
+  .fn { font-size: 14.5px; color: #454e5c; margin: 6px 0; text-align: justify; text-justify: inter-word; }
+  .summary-box { background: #24344d; color: #f6f0e6; border-radius: 18px; padding: 22px; margin-top: 16px; }
+  .summary-box h2.sum-head { color: #f4e7c4; border: 0; background: none; padding: 0; margin-top: 0; }
+  .summary-box h3 { color: #f0d48a; }
+  .summary-box p, .summary-box li { color: #e9eef7; }
+  .summary-box strong { color: #f4e7c4; }
+  .summary-box .en-inline { color: #d8e2f2; }
+  figure.fig { margin: 24px 0 18px; text-align: center; }
+  figure.fig img { max-width: 100%; height: auto; border-radius: 10px; box-shadow: var(--shadow); border: 1px solid var(--line); background: #fff; }
+  figure.fig figcaption { font-size: 14px; color: var(--muted); margin-top: 8px; text-align: justify; text-justify: inter-word; line-height: 1.75; }
+  figure.fig figcaption strong { color: var(--wine); }
+  .footer-nav { margin-top: 36px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; }
+  .footer-nav a { color: var(--teal); font-weight: 700; text-decoration: none; }
+  .footer-nav a:hover { color: var(--wine); text-decoration: underline; }
+  .top-link { display: inline-block; margin-top: 6px; color: var(--muted); text-decoration: none; font-size: 14px; }
+</style>
+
+    <!-- image-seo:start -->
+    <meta property="og:image" content="https://www.alirostami.com/images/social/aima-4e-persian.jpg">
+    <meta property="og:image:secure_url" content="https://www.alirostami.com/images/social/aima-4e-persian.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="ترجمه فارسی کتاب هوش مصنوعی؛ یک رویکرد مدرن، ویرایش چهارم">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://www.alirostami.com/images/social/aima-4e-persian.jpg">
+    <meta name="twitter:image:alt" content="ترجمه فارسی کتاب هوش مصنوعی؛ یک رویکرد مدرن، ویرایش چهارم">
+    <!-- image-seo:end -->
+
+    <!-- metadata-seo:start -->
+    <meta name="description" content="پیشگفتار؛ مطالعهٔ آنلاین ترجمهٔ فارسی کتاب هوش مصنوعی: رویکردی نوین، ویرایش چهارم.">
+    <meta property="og:title" content="پیشگفتار | ترجمهٔ فارسی AIMA 4e">
+    <meta property="og:description" content="پیشگفتار؛ مطالعهٔ آنلاین ترجمهٔ فارسی کتاب هوش مصنوعی: رویکردی نوین، ویرایش چهارم.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.alirostami.com/aima-4e/00-preface">
+    <meta property="og:site_name" content="Ali Rostami | علی رستمی">
+    <meta property="og:locale" content="fa_IR">
+    <meta name="twitter:title" content="پیشگفتار | ترجمهٔ فارسی AIMA 4e">
+    <meta name="twitter:description" content="پیشگفتار؛ مطالعهٔ آنلاین ترجمهٔ فارسی کتاب هوش مصنوعی: رویکردی نوین، ویرایش چهارم.">
+    <meta name="twitter:creator" content="@alirostami01">
+    <meta name="twitter:site" content="@alirostami01">
+    <meta property="article:author" content="https://www.alirostami.com/">
+    <meta property="article:section" content="Artificial Intelligence">
+    <!-- metadata-seo:end -->
+    <script type="application/ld+json" id="site-metadata-schema">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Chapter",
+      "@id": "https://www.alirostami.com/aima-4e/00-preface#chapter",
+      "url": "https://www.alirostami.com/aima-4e/00-preface",
+      "name": "پیشگفتار",
+      "description": "پیشگفتار؛ مطالعهٔ آنلاین ترجمهٔ فارسی کتاب هوش مصنوعی: رویکردی نوین، ویرایش چهارم.",
+      "inLanguage": "fa-IR",
+      "position": 0,
+      "isPartOf": {
+        "@type": "Book",
+        "@id": "https://www.alirostami.com/aima-4e/#book",
+        "url": "https://www.alirostami.com/aima-4e/",
+        "name": "هوش مصنوعی: رویکردی نوین (ویرایش چهارم)",
+        "alternateName": "Artificial Intelligence: A Modern Approach (4th Edition)",
+        "author": [
+          {
+            "@type": "Person",
+            "name": "Stuart Russell"
+          },
+          {
+            "@type": "Person",
+            "name": "Peter Norvig"
+          }
+        ]
+      },
+      "author": [
+        {
+          "@type": "Person",
+          "name": "Stuart Russell"
+        },
+        {
+          "@type": "Person",
+          "name": "Peter Norvig"
+        }
+      ],
+      "translator": {
+        "@type": "Person",
+        "@id": "https://www.alirostami.com/#person",
+        "name": "علی رستمی",
+        "alternateName": "Ali Rostami",
+        "url": "https://www.alirostami.com/"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://www.alirostami.com/aima-4e/00-preface#webpage"
+      },
+      "image": {
+        "@id": "https://www.alirostami.com/aima-4e/00-preface#primaryimage"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.alirostami.com/aima-4e/00-preface#webpage",
+      "url": "https://www.alirostami.com/aima-4e/00-preface",
+      "name": "پیشگفتار",
+      "description": "پیشگفتار؛ مطالعهٔ آنلاین ترجمهٔ فارسی کتاب هوش مصنوعی: رویکردی نوین، ویرایش چهارم.",
+      "inLanguage": "fa-IR",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://www.alirostami.com/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://www.alirostami.com/aima-4e/00-preface#breadcrumb"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "@id": "https://www.alirostami.com/aima-4e/00-preface#primaryimage",
+        "url": "https://www.alirostami.com/images/social/aima-4e-persian.jpg",
+        "contentUrl": "https://www.alirostami.com/images/social/aima-4e-persian.jpg",
+        "width": 1200,
+        "height": 630,
+        "caption": "ترجمه فارسی کتاب هوش مصنوعی؛ یک رویکرد مدرن، ویرایش چهارم"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://www.alirostami.com/aima-4e/00-preface#primaryimage"
+      },
+      "mainEntity": {
+        "@id": "https://www.alirostami.com/aima-4e/00-preface#chapter"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.alirostami.com/aima-4e/00-preface#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "خانه",
+          "item": "https://www.alirostami.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "هوش مصنوعی: رویکردی نوین (ویرایش چهارم)",
+          "item": "https://www.alirostami.com/aima-4e/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "پیشگفتار",
+          "item": "https://www.alirostami.com/aima-4e/00-preface"
+        }
+      ]
+    }
+  ]
+}
+    </script>
+    <!-- internal-linking-styles:start -->
+    <style>
+    .site-breadcrumb{box-sizing:border-box;width:min(100%,72rem);margin:0 auto .75rem;padding:.65rem clamp(1rem,3vw,2rem);color:var(--text-muted,var(--text-secondary,#5f6368));font-size:.875rem;line-height:1.6;flex:0 0 auto}
+    .site-breadcrumb ol{display:flex;flex-wrap:wrap;align-items:center;gap:.15rem .45rem;margin:0;padding:0;list-style:none}
+    .site-breadcrumb li{display:inline-flex;align-items:center;min-width:0;overflow-wrap:anywhere}
+    .site-breadcrumb li+li::before{content:"/";margin-inline-end:.45rem;color:var(--text-muted,var(--text-secondary,#777));opacity:.7}
+    .site-breadcrumb a{color:var(--link-color,var(--accent,#1769aa));text-decoration-thickness:.08em;text-underline-offset:.16em}
+    .site-breadcrumb [aria-current="page"]{font-weight:600;color:var(--text-color,var(--text-main,#30343b))}
+    .reader-content>.site-breadcrumb{width:100%;margin:0;padding-block:.4rem;background:var(--card-bg,var(--reader-bg,#fff));border-bottom:1px solid var(--border-color,#ddd)}
+    .related-content,.chapter-sequence{box-sizing:border-box;width:min(calc(100% - 2rem),56rem);margin:2rem auto;padding:1.25rem clamp(1rem,3vw,1.5rem);border:1px solid var(--border-color,#d9dde3);border-radius:.75rem;background:var(--card-bg,var(--content-bg,rgba(127,127,127,.04)));color:var(--text-color,var(--text-main,inherit))}
+    .related-content h2,.chapter-sequence-title{margin:0 0 .85rem;font-size:1.2rem;font-weight:700;line-height:1.5}
+    .related-content ul,.chapter-sequence ul{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr));gap:.65rem 1.25rem;margin:0;padding:0;list-style:none}
+    .related-content li,.chapter-sequence li{margin:0;padding:0}
+    .related-content a,.chapter-sequence a{display:inline-block;color:var(--link-color,var(--accent,#1769aa));font-weight:600;line-height:1.65;text-decoration-thickness:.08em;text-underline-offset:.18em;overflow-wrap:anywhere}
+    .chapter-sequence .book-index a{color:var(--text-color,var(--text-main,#30343b))}
+    .footer-nav .book-index{font-weight:700}
+    #projects{scroll-margin-top:5rem}
+    @media(max-width:600px){.site-breadcrumb{font-size:.82rem}.related-content,.chapter-sequence{width:calc(100% - 1rem);margin:1.25rem auto;padding:1rem}}
+    </style>
+    <!-- internal-linking-styles:end -->
+    <!-- accessibility-styles:start -->
+    <style>
+    .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+    .skip-link{position:fixed;top:.75rem;left:.75rem;z-index:100000;padding:.65rem 1rem;border-radius:.35rem;background:#fff;color:#073b70;font-weight:700;box-shadow:0 2px 12px rgba(0,0,0,.25);transform:translateY(-180%);transition:transform .15s ease}
+    .skip-link:focus{transform:translateY(0)}
+    :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:3px solid #0563c1!important;outline-offset:3px!important}
+    [theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible,[data-theme=dark] :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline-color:#7dd3fc!important}
+    body[data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#5f5f66!important}
+    body[theme=dark][data-header-desktop] :where(.single .post-meta,.single .post-meta a,.single .content ruby rt,.single .content .footnotes,.post-info-mod,.post-info-license,.archive .archive-item-date,.archive .tag-cloud-tags a sup,.home-disclaimer,.summary .content,.details-icon,.toc ruby rt,.fixed-button,.search .search-button,.suggestion-date,.suggestion-context,.search-footer){color:#b7bbc5!important}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#1d789b!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a){color:#6bc5e6!important}
+    body[data-header-desktop] .single .content a:not(.headerlink){text-decoration:underline!important;text-underline-offset:.15em}
+    body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#a41354!important}
+    body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#fff!important}
+    body[data-header-desktop] .search input::placeholder{color:#5f5f66!important;opacity:1}
+    body[theme=dark][data-header-desktop] .search input::placeholder{color:#b7bbc5!important}
+    button.menu-toggle{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;min-width:2rem;min-height:2rem}
+    button.search-button,button.search-cancel,button.theme-switch,button.history-back,button.share-button,button.script-button{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;line-height:inherit;cursor:pointer}
+    button.search-button,button.theme-switch,button.share-button,button.script-button{min-width:1.5rem;min-height:1.5rem}
+    button.history-back{text-decoration:underline;text-underline-offset:.15em}
+    summary.details-summary{list-style:none}
+    summary.details-summary::-webkit-details-marker{display:none}
+    .sidebar-controls .sidebar-action,.ch-chevron{appearance:none;border:0;background:transparent;color:inherit;font:inherit;cursor:pointer;min-height:1.5rem}
+    .sidebar-controls .sidebar-action{color:var(--text-muted)}
+    .sidebar-controls .sidebar-action:hover{color:var(--accent)}
+    .ch-chevron{padding:.2rem .4rem;min-width:2rem}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    </style>
+    <!-- accessibility-styles:end -->
+</head>
+<body>
+    <!-- accessibility-skip-link -->
+    <a class="skip-link" href="#main-content">رفتن به محتوای اصلی</a>
+<main class="page" id="main-content" tabindex="-1">
+    <!-- internal-breadcrumb:start -->
+    <nav class="site-breadcrumb" aria-label="مسیر راهنما">
+      <ol>
+        <li><a href="/">خانه</a></li>
+        <li><a href="/aima-4e/">هوش مصنوعی: رویکردی نوین (ویرایش چهارم)</a></li>
+        <li aria-current="page"><span>پیشگفتار</span></li>
+      </ol>
+    </nav>
+    <!-- internal-breadcrumb:end -->
+<div class="kicker">
+  <span class="badge">📘 هوش مصنوعی: رویکردی نوین (AIMA)</span>
+  <span class="badge soft">ترجمهٔ فارسی — راسل و نورویگ، ویرایش چهارم</span>
+  <span class="badge gold">پیشگفتار</span>
+</div>
+<h1 class="chapter-title">پیشگفتار</h1>
+
+<nav class="toc" aria-label="فهرست مطالب"><h2>فهرست بخش‌های این فصل</h2>
+<ol>
+<li><a href="#sec-1">تازه‌های این ویرایش</a></li>
+<li><a href="#sec-2">مرور کلی کتاب</a></li>
+<li><a href="#sec-3">منابع آنلاین</a></li>
+<li><a href="#sec-4">جلد کتاب</a></li>
+<li><a href="#sec-5">سپاسگزاری‌ها</a></li>
+<li><a href="#sec-6">دربارهٔ نویسندگان</a></li>
+</ol></nav>
+
+
+<section class="support-project" id="support-project">
+<h2 id="support-project-title">حمایت از پروژه</h2>
+<p>اگر این پروژه برای یادگیری هوش مصنوعی برای شما مفید بوده است، می‌توانید با حمایت از آن به ادامهٔ ترجمه، تکمیل، به‌روزرسانی و نگهداری این مجموعه کمک کنید. حمایت شما، چه مالی و چه با معرفی پروژه به دیگران، باعث می‌شود بتوانم زمان بیشتری برای توسعه و بهبود این کار اختصاص دهم.</p>
+
+<p><strong>حمایت از پروژه:</strong><br>
+<a href="https://www.alirostami.com/support/">https://www.alirostami.com/support/</a></p>
+
+<p><strong>مخزن پروژه در GitHub:</strong><br>
+<a href="https://github.com/alirostami01/aima-4e-persian">https://github.com/alirostami01/aima-4e-persian</a></p>
+
+<hr class="soft">
+</section>
+
+<hr class="soft">
+<p><em>برای لوی، گوردون، لوسی، جورج و آیزاک — اس. جی. آر.</em></p>
+<p><em>(S.J.R.)</em></p>
+<p><em>برای کریس، ایزابلا و جولیت — پی. ان.</em></p>
+<p><em>(P.N.)</em></p>
+<hr class="soft">
+<p>هوش مصنوعی (Artificial Intelligence) رشته‌ای بزرگ است و این هم کتابی بزرگ. ما کوشیده‌ایم تمام پهنهٔ این رشته را بکاویم: از منطق، احتمال و ریاضیات پیوسته گرفته تا ادراک، استدلال، یادگیری و کنش؛ از انصاف، اعتماد، خیر اجتماعی و ایمنی؛ و از کاربردهایی که از ریزدستگاه‌های الکترونیکی تا ربات‌های کاوشگر سیاره‌ای و خدمات آنلاین با میلیاردها کاربر را در بر می‌گیرد.</p>
+<p>عنوان فرعی این کتاب «رویکردی نوین» است؛ یعنی ما تصمیم گرفته‌ایم داستان را از چشم‌انداز امروز روایت کنیم. آنچه امروز شناخته شده است را در چارچوبی واحد تلفیق می‌کنیم و کارهای اولیه را با کمک ایده‌ها و اصطلاحاتی که امروز رایج‌اند بازآفرینی می‌کنیم. از کسانی که به‌سبب همین رویکرد، زیرشاخه‌شان کمتر قابل‌شناسایی باقی مانده، پوزش می‌خواهیم.</p>
+<h2 id="sec-1">تازه‌های این ویرایش</h2>
+<p>این ویرایش، تغییرات هوش مصنوعی را از زمان آخرین ویرایش (۲۰۱۰) بازتاب می‌دهد:</p>
+<ul>
+<li>به‌دلیل در دسترس بودن بیشتر داده‌ها، منابع محاسباتی و الگوریتم‌های تازه، تمرکز ما بیشتر بر یادگیری ماشین (Machine Learning) است تا مهندسی دانش دست‌ساخته.</li>
+<li>یادگیری عمیق (Deep Learning)، برنامه‌نویسی احتمالاتی (Probabilistic Programming) و سامانه‌های چندعاملی (Multiagent Systems) پوشش گسترده‌تری یافته‌اند و هر کدام فصل مستقل خود را دارند.</li>
+<li>پوشش فهم زبان طبیعی، رباتیک و بینایی رایانه‌ای بازبینی شده تا تأثیر یادگیری عمیق را بازتاب دهد.</li>
+<li>فصل رباتیک اکنون شامل ربات‌هایی است که با انسان تعامل می‌کنند و نیز کاربرد یادگیری تقویتی در رباتیک.</li>
+<li>پیش‌تر هدف هوش مصنوعی را چنین تعریف کرده بودیم: ساخت سامانه‌هایی که می‌کوشند مطلوبیتِ مورد انتظار (Expected Utility) را بیشینه کنند، جایی که اطلاعات مطلوبیتِ مشخص — یعنی هدف — را طراحان انسانیِ سامانه تعیین می‌کنند. اکنون دیگر فرض نمی‌کنیم که هدف ثابت است و سامانهٔ هوش مصنوعی آن را می‌داند؛ بلکه سامانه ممکن است دربارهٔ اهداف واقعیِ انسان‌هایی که به نمایندگی از آن‌ها کار می‌کند نااطمینان داشته باشد. سامانه باید یاد بگیرد چه چیزی را بیشینه کند و حتی در حالی که دربارهٔ هدف نامطمئن است، به‌درستی عمل کند.</li>
+<li>پوشش تأثیر هوش مصنوعی بر جامعه را افزایش داده‌ایم، از جمله مسائل حیاتی اخلاق، انصاف، اعتماد و ایمنی.</li>
+<li>تمرین‌ها را از پایان هر فصل به یک پایگاه اینترنتی منتقل کرده‌ایم. این کار به ما امکان می‌دهد پیوسته تمرین‌ها را گسترش دهیم، به‌روز کنیم و بهبود بخشیم تا نیازهای مدرسان را برآورده و پیشرفت‌های رشته و ابزارهای نرم‌افزاری مرتبط با هوش مصنوعی را بازتاب دهیم.</li>
+<li>در مجموع، حدود ۲۵٪ از مطالب کتاب کاملاً تازه است و ۷۵٪ باقی‌مانده تا حد زیادی بازنویسی شده تا تصویری یکپارچه‌تر از رشته ارائه دهد. ۲۲٪ از ارجاع‌های این ویرایش به آثاری است که پس از ۲۰۱۰ منتشر شده‌اند.</li>
+</ul>
+<h2 id="sec-2">مرور کلی کتاب</h2>
+<p>مضمون اصلیِ یکپارچه‌کننده، ایدهٔ عامل هوشمند (Intelligent Agent) است. ما هوش مصنوعی را مطالعهٔ عواملی تعریف می‌کنیم که از محیط، ادراک حسی (Percept) دریافت می‌کنند و کنش انجام می‌دهند. هر عامل تابعی را پیاده‌سازی می‌کند که توالی‌های ادراک حسی را به کنش‌ها نگاشت می‌کند و ما شیوه‌های گوناگون بازنمایی این توابع را پوشش می‌دهیم: عامل‌های واکنشی، برنامه‌ریزهای بی‌درنگ، سامانه‌های تصمیم‌گیری و سامانه‌های یادگیری عمیق. ما بر یادگیری تأکید می‌کنیم؛ هم به‌مثابه روشی برای ساخت سامانه‌های شایسته و هم به‌عنوان راهی برای گسترش دسترسی طراح به محیط‌های ناشناخته. رباتیک و بینایی را نه مسئله‌هایی مستقل، بلکه خدمت‌گزار دستیابی به هدف‌ها می‌دانیم. بر اهمیت محیطِ تکلیف در تعیین طراحی مناسب عامل تأکید داریم.</p>
+<p>هدف نخستین ما انتقال ایده‌هایی است که در هفتاد سال گذشتهٔ پژوهش هوش مصنوعی و دو هزارهٔ کارهای مرتبط پیش از آن پدید آمده‌اند. کوشیده‌ایم در ارائهٔ این ایده‌ها از صورت‌گرایی بیش از حد بپرهیزیم و در عین حال دقت را حفظ کنیم. فرمول‌های ریاضی و الگوریتم‌های شبه‌کد را گنجانده‌ایم تا ایده‌های کلیدی عینی شوند؛ مفاهیم و نمادهای ریاضی در پیوست الف و شبه‌کدهای ما در پیوست ب شرح داده شده‌اند. این کتاب در درجهٔ نخست برای درس‌های کارشناسی یا یک رشته‌درس توالی‌دار طراحی شده است.</p>
+<p>کتاب ۲۸ فصل دارد و هر فصل تقریباً به اندازهٔ یک هفته تدریس است؛ بنابراین گذر از کل کتاب به یک دورهٔ دوترم نیاز دارد. در یک دورهٔ یک‌ترمه، مدرس می‌تواند با توجه به علاقهٔ خود و دانشجویان فصل‌هایی را برگزیند. کتاب در درس‌های تحصیلات تکمیلی نیز (احتمالاً با افزودن برخی منابع اصلی پیشنهادی در یادداشت‌های کتاب‌شناختی) یا برای خودآموزی و به‌عنوان مرجع قابل استفاده است.</p>
+<p>در سراسر کتاب، نکته‌های مهم با آیکون مثلثی در حاشیه مشخص شده‌اند.</p>
+<p>◮ هر جا اصطلاح تازه‌ای تعریف می‌شود، در حاشیه هم ثبت شده است. کاربردهای مهم بعدی اصطلاح با حروف ضخیم آمده، اما در حاشیه تکرار نشده است. ما فهرست راهنمای جامع و کتاب‌نامهٔ مفصلی گنجانده‌ایم. تنها پیش‌نیاز، آشنایی با مفاهیم پایهٔ علوم رایانه (الگوریتم، ساختمان داده، پیچیدگی) در سطح سال دوم کارشناسی است. حساب دیفرانسیل و جبر خطی سال اول نیز برای برخی موضوعات مفید است.</p>
+<h2 id="sec-3">منابع آنلاین</h2>
+<p>منابع آنلاین از طریق <span class="en-inline">pearsonhighered.com/cs-resources</span> یا در پایگاه وب کتاب به نشانی <span class="en-inline">aima.cs.berkeley.edu</span> در دسترس‌اند. در آنجا خواهید یافت:</p>
+<ul>
+<li>تمرین‌ها، پروژه‌های برنامه‌نویسی و پروژه‌های پژوهشی. این‌ها دیگر در پایان هر فصل نیستند و فقط آنلاین‌اند. در متن کتاب به یک تمرین آنلاین با نامی مانند «تمرین 6.<span class="en-inline">NARY</span>» اشاره می‌کنیم. دستورالعمل‌های پایگاه وب به شما امکان می‌دهد تمرین‌ها را بر اساس نام یا موضوع پیدا کنید.</li>
+<li>پیاده‌سازی الگوریتم‌های کتاب به زبان‌های پایتون، جاوا و زبان‌های برنامه‌نویسی دیگر (اکنون در <span class="en-inline">github.com/aimacode</span> میزبانی می‌شود).</li>
+<li>فهرستی از بیش از ۱۴۰۰ مرکز آموزشی که از کتاب استفاده کرده‌اند، بسیاری با پیوند به مواد درسی و برنامهٔ درسی آنلاین.</li>
+<li>مواد تکمیلی و پیوندهایی برای دانشجویان و مدرسان.</li>
+<li>دستورالعمل گزارش خطاهای کتاب — چون به احتمال زیاد برخی خطاها وجود دارند.</li>
+</ul>
+<h2 id="sec-4">جلد کتاب</h2>
+<figure style="text-align: center; margin: 20px 0 24px;">
+  <img src="../figures/aima-4e-persian.webp" alt="جلد کتاب: هوش مصنوعی، رویکردی نوین" style="max-width: 480px; width: 100%; height: auto; border-radius: 12px; box-shadow: var(--shadow);" loading="lazy" decoding="async" width="960" height="1286">
+</figure>
+<p>جلد، وضعیت پایانی بازی ششمِ دیدار شطرنج ۱۹۹۷ را نشان می‌دهد؛ همان بازی سرنوشت‌ساز که در آن برنامهٔ دیپ‌بلو (Deep Blue) گری کاسپاروف (که سیاه بازی می‌کرد) را شکست داد و این نخستین باری بود که رایانه‌ای قهرمان جهان را در یک مسابقهٔ شطرنج می‌باخت. کاسپاروف در بالای تصویر دیده می‌شود. سمت راست او، وضعیتی کلیدی از بازی دومِ دیدار تاریخی گو (Go) میان قهرمان سابق جهان، لی سدول، و برنامهٔ آلفاگو (AlphaGo) از دیپ‌مایند (DeepMind) است. حرکت ۳۷ آلفاگو، قرن‌ها سنت شکننده در گو را زیر پا گذاشت و کارشناسان انسانی بلافاصله آن را اشتباهی شرم‌آور دانستند؛ اما معلوم شد حرکتی برنده است. در گوشهٔ بالا-چپ، ربات انسان‌نمای اطلس (Atlas) ساختهٔ بوستون داینامیکس (Boston Dynamics) دیده می‌شود. تصویری از یک خودروی خودران که محیطش را حس می‌کند، میان آدا لاولیس — نخستین برنامه‌نویس رایانهٔ جهان — و آلن تورینگ قرار دارد؛ همان که کار بنیادینش هوش مصنوعی را تعریف کرد. در پایین صفحهٔ شطرنج، یک ربات مریخ‌نورد اکتشافی و مجسمه‌ای از ارسطو دیده می‌شود؛ ارسطو پیش‌گام مطالعهٔ منطق بود و الگوریتم برنامه‌ریزی او از کتاب «در جنبش جانوران» (De Motu Animalium) پشت نام نویسندگان نقش بسته است.</p>
+<p>پشت صفحهٔ شطرنج، یک مدل برنامه‌نویسی احتمالاتی قرار دارد که سازمان معاهدهٔ منع جامع آزمون‌های هسته‌ای سازمان ملل متحد از آن برای شناسایی انفجارهای هسته‌ای از روی سیگنال‌های لرزه‌ای استفاده می‌کند.</p>
+<h2 id="sec-5">سپاسگزاری‌ها</h2>
+<p>ساخت یک کتاب، روستای جهانی می‌طلبد. بیش از ۶۰۰ نفر بخش‌هایی از کتاب را خواندند و پیشنهادهای بهبود ارائه کردند. فهرست کامل در <span class="en-inline">aima.cs.berkeley.edu/ack.html</span> است؛ از همهٔ آنان سپاسگزاریم. در این‌جا جا برای یادکرد تنها چند همکار به‌ویژه مهم است. نخست نویسندگانِ همکار:</p>
+<ul>
+<li>جودیا پرل (بخش 13.5، شبکه‌های علّی)؛</li>
+<li>ویکاش مانسینگکا (بخش 15.3، برنامه‌ها به‌مثابه مدل‌های احتمالاتی)؛</li>
+<li>مایکل وولدریج (فصل ۱۸، تصمیم‌گیری چندعاملی)؛</li>
+<li>یان گودفلو (فصل ۲۱، یادگیری عمیق)؛</li>
+<li>جیکوب دولین و مِی-وینگ چانگ (فصل ۲۴، یادگیری عمیق برای زبان طبیعی)؛</li>
+<li>جی‌تیندرا مالیک و دیوید فورسایت (فصل ۲۵، بینایی رایانه‌ای)؛</li>
+<li>آنکا دراگان (فصل ۲۶، رباتیک).</li>
+</ul>
+<p>و سپس برخی نقش‌های کلیدی:</p>
+<ul>
+<li>سینتیا یونگ و مالیکا کانتور (مدیریت پروژه)؛</li>
+<li>جولی ساسمن و تام گالوی (ویراستاری و پیشنهادهای نگارشی)؛</li>
+<li>عماری استیونز (تصویرسازی)؛</li>
+<li>تریسی جانسون (ویراستار)؛</li>
+<li>ارین آلت و رز کرنان (جلد و تبدیل رنگ)؛</li>
+<li>نالین چیبر، سم گوتو، ریموند دِ لازاک، راوی موهان، کیاران اوریلی، آمیت پاتل، دراگومیر رادیو و سماگرا شارما (توسعهٔ کد آنلاین و راهنمایی)؛</li>
+<li>دانشجویان گوگل سامر آو کد (توسعهٔ کد آنلاین).</li>
+</ul>
+<p>استیوارت می‌خواهد از همسرش، لوی شفلوت، برای شکیبایی بی‌پایان و خرد بی‌کرانش سپاسگزاری کند. او امیدوار است گوردون، لوسی، جورج و آیزاک به‌زودی و پس از آنکه او را به‌خاطر این همه سال کار بر کتاب بخشیدند، آن را بخوانند. «راگز» (<span class="en-inline">RUGS</span>، گروه غیرمعمولِ دانشجویی راسل) مثل همیشه غیرمعمولانه یاری‌رسان بوده‌اند.</p>
+<p>پیتر می‌خواهد از پدر و مادرش (تورستن و گردا) برای آغاز راه، و از همسرش (کریس)، فرزندانش (بلا و جولیت)، همکاران، رئیس و دوستانش برای تشویق و تحمل او در ساعات طولانی نوشتن و بازنویسی سپاسگزاری کند.</p>
+<h2 id="sec-6">دربارهٔ نویسندگان</h2>
+<p><strong>استیوارت راسل</strong> در ۱۹۶۲ در پورتسموث انگلستان زاده شد. مدرک کارشناسی با درجهٔ ممتاز در فیزیک را در ۱۹۸۲ از دانشگاه آکسفورد و دکترای علوم رایانه را در ۱۹۸۶ از استنفورد گرفت. سپس به هیئت علمی دانشگاه کالیفرنیا در برکلی پیوست؛ جایی که استاد و رئیس سابق گروه علوم رایانه، مدیر مرکز هوش مصنوعی سازگار با انسان (Center for Human-Compatible AI) و دارندهٔ کرسی مهندسی اسمیت–زاده است. در ۱۹۹۰ جایزهٔ پژوهشگر جوانِ رئیس‌جمهوری از بنیاد ملی علوم و در ۱۹۹۵ به‌طور مشترک جایزهٔ رایانه و اندیشه (Computers and Thought Award) را دریافت کرد. او عضو انجمن هوش مصنوعی آمریکا (AAAI)، انجمن ماشین‌های محاسباتی (ACM) و انجمن آمریکایی پیشبرد علوم (AAAS)، عضو افتخاری کالج وادهام آکسفورد و عضو اندرو کارنگی است. از ۲۰۱۲ تا ۲۰۱۴ کرسی بلز پاسکال را در پاریس در اختیار داشت و بیش از ۳۰۰ مقاله در گسترهٔ وسیعی از موضوعات هوش مصنوعی منتشر کرده است. دیگر کتاب‌های او عبارت‌اند از: «کاربرد دانش در قیاس و استقرا»، «کار درست را بکن: مطالعاتی در عقلانیت محدود» (با اریک وفالد) و «انسان‌سازگار: هوش مصنوعی و مسئلهٔ کنترل».</p>
+<p><strong>پیتر نورویگ</strong> اکنون مدیر پژوهش در گوگل است و پیش‌تر مدیر بخش الگوریتم‌های جستجوی وب بود. او یک دورهٔ کلاس آنلاین هوش مصنوعی را با ۱۶۰٬۰۰۰ دانشجو تدریس کرد و به راه‌اندازی موج کنونی دوره‌های آزاد انبوه آنلاین (MOOC) کمک کرد. او رئیس بخش علوم محاسباتی در مرکز پژوهشی ایمزِ ناسا بود و بر پژوهش و توسعه در هوش مصنوعی و رباتیک نظارت داشت. کارشناسی ریاضیات کاربردی از دانشگاه براون و دکترای علوم رایانه از برکلی دارد. در دانشگاه کالیفرنیای جنوبی استاد و در برکلی و استنفورد عضو هیئت علمی بوده است. او عضو انجمن هوش مصنوعی آمریکا، انجمن ماشین‌های محاسباتی، فرهنگستان هنر و علوم آمریکا و فرهنگستان علوم کالیفرنیا است. دیگر کتاب‌های او عبارت‌اند از: «الگوهای برنامه‌نویسی هوش مصنوعی: مطالعه‌های موردی در لیست مشترک (Common Lisp)»، «وربوموبیل: یک سامانهٔ ترجمه برای گفتگوی رودررو» و «سامانه‌های کمک هوشمند برای یونیکس».</p>
+<p>این دو نویسنده در ۲۰۱۶ نخستین دورهٔ جایزهٔ معلم برجستهٔ <span class="en-inline">AAAI/EAAI</span> را به‌طور مشترک دریافت کردند.</p>
+
+<nav class="footer-nav" aria-label="پیمایش فصل‌های کتاب هوش مصنوعی">
+
+<p><strong>← فصل بعدی:</strong> <a href="01-introduction" rel="next">فصل ۱ — مقدمه</a></p>
+  <!-- internal-aima-book-hub:start -->
+  <p class="book-index"><a href="/aima-4e/">فهرست کامل کتاب هوش مصنوعی AIMA</a></p>
+  <!-- internal-aima-book-hub:end -->
+  <p><a class="top-link" href="#">↑ بازگشت به بالای صفحه</a></p>
+  <p style="color:var(--muted);font-size:13px;margin-top:8px">این صفحه از ترجمهٔ فارسی فصل‌های کتاب «هوش مصنوعی: رویکردی نوین» (استوارت راسل و پیتر نورویگ، ویرایش چهارم) تولید شده است. متن با فایل مارک‌داونِ همان فصل یکسان است.</p>
+</nav>
+    </main>
+<script id="aima-standalone-helper">
+  if (window.self === window.top) {
+    window.addEventListener('DOMContentLoaded', function() {
+      var b = document.createElement('a');
+      b.href = '/aima-4e/#00-preface';
+      b.target = '_top';
+      b.style.cssText = 'position:fixed;bottom:22px;left:22px;background:#24344d;color:#fff;padding:9px 16px;border-radius:24px;box-shadow:0 6px 18px rgba(0,0,0,.25);text-decoration:none;font-size:13px;font-family:Tahoma,sans-serif;z-index:99999;display:inline-flex;align-items:center;gap:6px;transition:transform .2s;border:1px solid rgba(255,255,255,.2);';
+      b.innerHTML = '📖 باز کردن در کتابخوان با سایدبار';
+      b.onmouseover = function() { b.style.transform = 'translateY(-2px)'; };
+      b.onmouseout = function() { b.style.transform = 'none'; };
+      document.body.appendChild(b);
+    });
+  }
+</script>
+</body>
+</html>

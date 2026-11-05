@@ -4,6 +4,11 @@
 import os
 from pathlib import Path
 
+from image_utils import apply_site_postprocessors
+from redirects import write_all
+from site_navigation import render_site_navigation
+from software_architecture_routes import SOFTWARE_ARCHITECTURE_CANONICAL_STEMS
+
 ROOT = Path(__file__).resolve().parent.parent
 
 CHAPTERS_TABLE = [
@@ -56,7 +61,7 @@ def build_table_rows():
     </td>
 </tr>""")
         else:
-            online_link = f"/software-architecture/#ch-item-{ch_idx}"
+            online_link = f"/software-architecture/#{SOFTWARE_ARCHITECTURE_CANONICAL_STEMS[ch_idx]}"
             gh_md = f"{GITHUB_REPO}/blob/main/markdown/{'chapter-' + num if num != 'پیوست' else 'appendix'}.md"
             gh_html = f"{GITHUB_REPO}/blob/main/html/{filename}"
             gh_pdf = f"{GITHUB_REPO}/raw/main/pdf/chapters/{'chapter-' + num if num != 'پیوست' else 'appendix'}.pdf"
@@ -104,10 +109,15 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
         <link rel="manifest" href="/site.webmanifest">
         <link rel="canonical" href="https://www.alirostami.com/fundamentals-of-software-architecture-persian/" />
         <link rel="stylesheet" href="/css/style.min.css">
-        <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript>
-        <link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript>
+        <!-- performance-icons:start -->
+        <style>.fa,.fas,.far,.fab,.fa-solid,.fa-regular,.fa-brands{{display:inline-block;min-width:1em;text-align:center}}.fa-fw{{width:1.25em}}</style>
+        <link rel="preload" href="/lib/fontawesome/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome/all.min.css"></noscript>
+        <!-- performance-icons:end -->
+        <!-- performance-animations:start -->
+        <link rel="preload" href="/lib/animate/animate-subset.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate-subset.min.css"></noscript>
+        <!-- performance-animations:end -->
 
         <script type="application/ld+json">
 {{
@@ -143,13 +153,13 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
                   "@type": "ListItem",
                   "position": 1,
                   "name": "خانه",
-                  "item": "https://www.alirostami.com/fa/"
+                  "item": "https://www.alirostami.com/"
                 }},
                 {{
                   "@type": "ListItem",
                   "position": 2,
                   "name": "پروژه‌ها",
-                  "item": "https://www.alirostami.com/fa/#projects"
+                  "item": "https://www.alirostami.com/#projects"
                 }},
                 {{
                   "@type": "ListItem",
@@ -386,28 +396,8 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
 </head>
     <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
-        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
-    <div class="header-wrapper">
-        <div class="header-title">
-            <a href="/fa/" title="علی رستمی">Ali Rostami</a>
-        </div>
-        <div class="menu">
-            <div class="menu-inner"><a href="/fa/" class="menu-item" title="خانه">خانه</a><a href="/software-architecture/" class="menu-item" title="مطالعه آنلاین کتاب معماری نرم‌افزار"><i class="fas fa-cubes fa-fw" aria-hidden="true"></i> کتاب معماری نرم‌افزار</a><a href="/aima-4e/" class="menu-item" title="کتاب هوش مصنوعی">کتاب هوش مصنوعی</a><a href="/posts/" class="menu-item" title="مقالات">مقالات</a><a href="/support/" class="menu-item" title="حمایت"><i class="fas fa-heart fa-fw" style="color:#e0245e;" aria-hidden="true"></i> حمایت</a><a href="javascript:void(0);" class="menu-item theme-switch" title="تغییر ظاهر"><i class="fas fa-adjust fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" class="menu-item language" title="انتخاب زبان"><i class="fa fa-globe" aria-hidden="true"></i><select class="language-select" onchange="location = this.value;"><option value="/">English</option><option value="/fa/" selected>فارسی</option></select></a></div>
-        </div>
-    </div>
-</header><header class="mobile" id="header-mobile">
-    <div class="header-container">
-        <div class="header-wrapper">
-            <div class="header-title">
-                <a href="/fa/" title="علی رستمی">Ali Rostami</a>
-            </div>
-            <div class="menu-toggle" id="menu-toggle-mobile">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
-        <div class="menu" id="menu-mobile"><a href="/fa/" class="menu-item" title="خانه">خانه</a><a href="/software-architecture/" class="menu-item" title="مطالعه آنلاین کتاب معماری نرم‌افزار"><i class="fas fa-cubes fa-fw" aria-hidden="true"></i> کتاب معماری نرم‌افزار</a><a href="/aima-4e/" class="menu-item" title="کتاب هوش مصنوعی">کتاب هوش مصنوعی</a><a href="/posts/" class="menu-item" title="مقالات">مقالات</a><a href="/support/" class="menu-item" title="حمایت"><i class="fas fa-heart fa-fw" style="color:#e0245e;" aria-hidden="true"></i> حمایت</a><a href="javascript:void(0);" class="menu-item theme-switch" title="تغییر ظاهر"><i class="fas fa-adjust fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" class="menu-item language" title="انتخاب زبان"><i class="fa fa-globe" aria-hidden="true"></i><select class="language-select" onchange="location = this.value;"><option value="/">English</option><option value="/fa/" selected>فارسی</option></select></a></div>
-    </div>
-</header><main class="main">
+        <div id="mask"></div><div class="wrapper">{render_site_navigation("fundamentals-of-software-architecture-persian/index.html")}
+<main class="main">
                 <div class="container"><article class="page single docs-page">
         <div class="docs-hero">
             <img src="/images/projects/fundamentals-of-software-architecture-persian.png" alt="لوگوی مبانی معماری نرم‌افزار" width="90" height="90" decoding="async">
@@ -586,36 +576,28 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
 </article></div>
             </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">ایجاد شده توسط <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.2">Hugo</a> | پوسته - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i>2022 - <span itemprop="copyrightYear">2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/fa/" target="_blank">علی رستمی</a></span></div>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i>2022 - <span itemprop="copyrightYear">2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">علی رستمی</a></span></div>
         </div>
     </footer></div>
 
         <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="برگشت به بالا">
                 <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
             </a>
-        </div><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><script>window.config={{"data":{{}}}};</script>
+        <script defer src="/js/theme.min.js"></script></body>
 </html>
 """
 
 def main():
     target_dir = ROOT / "fundamentals-of-software-architecture-persian"
     target_dir.mkdir(parents=True, exist_ok=True)
-    
+
     target_index = target_dir / "index.html"
     target_index.write_text(HTML_TEMPLATE, encoding="utf-8")
     print(f"Written: {target_index} ({len(HTML_TEMPLATE)} bytes)")
 
-    # Alias 1: root .html file
-    alias1 = ROOT / "fundamentals-of-software-architecture-persian.html"
-    alias1.write_text(HTML_TEMPLATE, encoding="utf-8")
-    print(f"Written alias: {alias1}")
-
-    # Alias 2: Capitalized folder
-    cap_dir = ROOT / "Fundamentals-of-Software-Architecture-Persian"
-    cap_dir.mkdir(parents=True, exist_ok=True)
-    alias2 = cap_dir / "index.html"
-    alias2.write_text(HTML_TEMPLATE, encoding="utf-8")
-    print(f"Written alias: {alias2}")
+    write_all()
+    apply_site_postprocessors()
 
 if __name__ == "__main__":
     main()

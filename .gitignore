@@ -1,0 +1,4 @@
+__pycache__/
+*.py[cod]
+.hugo_build.lock
+.wrangler/

@@ -6,55 +6,19 @@ that reuses the theme's own stylesheet (/css/style.min.css) and script
 (/js/theme.min.js) to stay visually identical to the rest of alirostami.com.
 """
 
+from site_navigation import render_site_navigation
+
 SITE_NAME = "علی رستمی"
 
 
 def header(active: str = "") -> str:
-    """Desktop + mobile header. `active` is the href of the current menu item."""
-
-    def item(href: str, label: str) -> str:
-        cls = "menu-item active" if href == active else "menu-item"
-        return f'<a href="{href}" class="{cls}" title="{label}">{label}</a>'
-
-    menu = item("/fa/", "خانه") + item("/support/", "حمایت")
-    lang = (
-        '<a href="javascript:void(0);" class="menu-item language" title="انتخاب زبان">'
-        '<i class="fa fa-globe" aria-hidden="true"></i>'
-        '<select class="language-select" onchange="location = this.value;">'
-        '<option value="/en/support.html">English</option>'
-        '<option value="/support/" selected>فارسی</option></select></a>'
-    )
-    theme_switch = (
-        '<a href="javascript:void(0);" class="menu-item theme-switch" title="تغییر ظاهر">'
-        '<i class="fas fa-adjust fa-fw" aria-hidden="true"></i></a>'
-    )
-    return f"""<div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
-    <div class="header-wrapper">
-        <div class="header-title">
-            <a href="/fa/" title="{SITE_NAME}">Ali Rostami</a>
-        </div>
-        <div class="menu">
-            <div class="menu-inner">{menu}{theme_switch}{lang}</div>
-        </div>
-    </div>
-</header><header class="mobile" id="header-mobile">
-    <div class="header-container">
-        <div class="header-wrapper">
-            <div class="header-title">
-                <a href="/fa/" title="{SITE_NAME}">Ali Rostami</a>
-            </div>
-            <div class="menu-toggle" id="menu-toggle-mobile">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
-        <div class="menu" id="menu-mobile">{menu}{theme_switch}{lang}</div>
-    </div>
-</header>"""
+    """Return the shared desktop/mobile shell used by every non-reader page."""
+    return f'<div id="mask"></div><div class="wrapper">{render_site_navigation(active_href=active)}'
 
 
 FOOTER = """<footer class="footer">
         <div class="footer-container"><div class="footer-line">ایجاد شده توسط <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.2">Hugo</a> | پوسته - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i>2022 - <span itemprop="copyrightYear">2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/fa/">علی رستمی</a></span></div>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i>2022 - <span itemprop="copyrightYear">2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/">علی رستمی</a></span></div>
         </div>
     </footer></div>"""
 
@@ -62,7 +26,10 @@ FOOTER = """<footer class="footer">
 SCRIPTS = """<div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="برگشت به بالا">
                 <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
             </a>
-        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"کپی به کلیپ بورد","maxShownLines":50}};</script><script type="text/javascript" src="/js/theme.min.js"></script>"""
+        </div><script type="text/javascript">window.config={"code":{"copyTitle":"کپی به کلیپ بورد","maxShownLines":50},"search":{"highlightTag":"em","maxResultLength":10,"noResultsFound":"نتیجه‌ای پیدا نشد","snippetLength":30}};</script>
+        <script defer src="/lib/autocomplete/autocomplete.min.js"></script>
+        <script defer src="/lib/lunr/lunr.min.js"></script>
+        <script defer src="/js/theme.min.js"></script>"""
 
 
 def page(
@@ -89,22 +56,29 @@ def page(
         <title>{title}</title><meta name="Description" content="{description}"><meta property="og:title" content="{title}" />
 <meta property="og:description" content="{description}" />
 <meta property="og:type" content="{og_type}" />
-<meta property="og:url" content="{canonical}" /><meta property="og:image" content="https://www.alirostami.com/images/Ali.jpg" />
-        <meta property="og:image:alt" content="Ali Rostami - Senior Software Architect" />
+<meta property="og:url" content="{canonical}" /><meta property="og:image" content="https://www.alirostami.com/images/social/ali-rostami.jpg" />
+        <meta property="og:image:alt" content="علی رستمی؛ معماری نرم‌افزار، هوش مصنوعی و پروژه‌های متن‌باز" />
         <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="1200" />
+        <meta property="og:image:height" content="630" />
 <meta property="og:site_name" content="{SITE_NAME}" />
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://www.alirostami.com/images/Ali.jpg"/>
+<meta name="twitter:image" content="https://www.alirostami.com/images/social/ali-rostami.jpg"/>
 <meta name="twitter:title" content="{title}"/>
 <meta name="twitter:description" content="{description}"/>
 <meta name="application-name" content="Ali Rostami">
 <meta name="apple-mobile-web-app-title" content="Ali Rostami"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="{canonical}" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript>{extra_head}{style_block}</head>
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="{canonical}" /><link rel="stylesheet" href="/css/style.min.css">
+        <!-- performance-icons:start -->
+        <style>.fa,.fas,.far,.fab,.fa-solid,.fa-regular,.fa-brands{{display:inline-block;min-width:1em;text-align:center}}.fa-fw{{width:1.25em}}</style>
+        <link rel="preload" href="/lib/fontawesome/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome/all.min.css"></noscript>
+        <!-- performance-icons:end -->
+        <!-- performance-animations:start -->
+        <link rel="preload" href="/lib/animate/animate-subset.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate-subset.min.css"></noscript>
+        <!-- performance-animations:end -->{extra_head}{style_block}</head>
     <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         {header(active_menu)}<main class="main">

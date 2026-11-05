@@ -10,44 +10,101 @@ Features:
 - Top navigation pill injected into chapter files so direct visits can return to sidebar.
 """
 
-import glob
+import html as html_lib
 import json
-import os
 import re
+import runpy
+import urllib.parse
 from pathlib import Path
+
+from aima_routes import (
+    AIMA_CANONICAL_STEMS,
+    AIMA_CHAPTER_ROUTE_MAP,
+    AIMA_LEGACY_TO_CANONICAL,
+    malformed_legacy_stem,
+)
+from image_utils import apply_site_postprocessors
+from redirects import write_bulk_manifest, write_edge_manifest
 
 ROOT = Path(__file__).resolve().parent.parent
 AIMA_DIR = ROOT / "aima-4e"
 
 
+def write_canonical_sitemap():
+    """Call the hyphenated sitemap script's reusable writer."""
+    namespace = runpy.run_path(str(ROOT / "scripts" / "update-sitemaps.py"))
+    namespace["write_sitemap"]()
+
+
+def normalize_chapter_filenames():
+    """Migrate known historical filenames and reject unexpected chapter routes."""
+    renamed = []
+    for chapter_number, (legacy_stem, canonical_stem) in enumerate(AIMA_CHAPTER_ROUTE_MAP):
+        canonical_path = AIMA_DIR / f"{canonical_stem}.html"
+        legacy_candidates = (
+            AIMA_DIR / f"{legacy_stem}.html",
+            AIMA_DIR / f"{malformed_legacy_stem(chapter_number)}.html",
+        )
+        existing_legacy = [path for path in legacy_candidates if path.exists()]
+        if canonical_path.exists() and existing_legacy:
+            names = ", ".join(path.name for path in existing_legacy)
+            raise RuntimeError(
+                f"duplicate AIMA chapter {chapter_number:02d}: "
+                f"{canonical_path.name} and {names}"
+            )
+        if len(existing_legacy) > 1:
+            names = ", ".join(path.name for path in existing_legacy)
+            raise RuntimeError(f"ambiguous AIMA chapter {chapter_number:02d}: {names}")
+        if existing_legacy:
+            existing_legacy[0].rename(canonical_path)
+            renamed.append((existing_legacy[0].name, canonical_path.name))
+
+    expected = {f"{stem}.html" for stem in AIMA_CANONICAL_STEMS}
+    actual = {path.name for path in AIMA_DIR.glob("*.html") if path.name != "index.html"}
+    missing = sorted(expected - actual)
+    unexpected = sorted(actual - expected)
+    if missing or unexpected:
+        details = []
+        if missing:
+            details.append(f"missing: {', '.join(missing)}")
+        if unexpected:
+            details.append(f"unexpected: {', '.join(unexpected)}")
+        raise RuntimeError("invalid AIMA chapter filenames (" + "; ".join(details) + ")")
+
+    for source, destination in renamed:
+        print(f"Renamed AIMA chapter: {source} -> {destination}")
+
+
 def extract_chapters():
-    files = sorted(glob.glob(str(AIMA_DIR / "*.html")))
     chapters = []
-    
-    for fpath in files:
-        fname = os.path.basename(fpath)
-        if fname == "index.html":
-            continue
-        
-        with open(fpath, "r", encoding="utf-8") as fp:
+
+    for canonical_stem in AIMA_CANONICAL_STEMS:
+        file_path = AIMA_DIR / f"{canonical_stem}.html"
+        fname = file_path.name
+
+        with file_path.open("r", encoding="utf-8") as fp:
             html = fp.read()
-        
+
         title_m = re.search(r"<title>(.*?)</title>", html)
         title = title_m.group(1).strip() if title_m else fname
-        
+
         subtitle_m = re.search(r'<p class="subtitle">(.*?)</p>', html)
         subtitle = subtitle_m.group(1).strip() if subtitle_m else ""
-        
+
         badge_m = re.search(r'<span class="badge gold">(.*?)</span>', html)
         badge = badge_m.group(1).strip() if badge_m else ""
         if not badge:
-            if "00-" in fname:
+            if canonical_stem.startswith("00-"):
                 badge = "پیشگفتار"
             else:
-                num_m = re.search(r"(\d+)", fname)
-                badge = f"فصل {int(num_m.group(1))}" if num_m else ""
-        
-        toc_m = re.search(r'<nav class="toc">(.*?)</nav>', html, re.DOTALL)
+                chapter_number = int(canonical_stem.split("-", 1)[0])
+                badge = f"فصل {chapter_number}"
+
+        toc_m = re.search(
+            r'<nav\b[^>]*class=["\'][^"\']*\btoc\b[^"\']*["\'][^>]*>(.*?)</nav>',
+            html,
+            re.DOTALL | re.IGNORECASE,
+        )
         sections = []
         if toc_m:
             for href, text in re.findall(r'<a href="([^"]+)">([^<]+)</a>', toc_m.group(1)):
@@ -55,51 +112,60 @@ def extract_chapters():
                     "href": href.strip(),
                     "title": text.strip()
                 })
-        
+
         # Clean title for sidebar
         short_title = title
         if " — " in title:
             parts = title.split(" — ")
             short_title = parts[1]
-        
+
         chapters.append({
             "filename": fname,
+            "route": canonical_stem,
             "title": title,
             "short_title": short_title,
             "subtitle": subtitle,
             "badge": badge,
             "sections": sections
         })
-    
+
     return chapters
 
 
 def generate_index_html(chapters):
     chapters_json = json.dumps(chapters, ensure_ascii=False)
-    
+    legacy_routes_json = json.dumps(AIMA_LEGACY_TO_CANONICAL, ensure_ascii=False)
+
     # Generate sidebar items HTML
     sidebar_items_html = []
     for idx, ch in enumerate(chapters):
         ch_id = f"ch-item-{idx}"
         badge_html = f'<span class="ch-badge">{ch["badge"]}</span>' if ch["badge"] else ""
-        
+
         sections_html = []
         for sec in ch["sections"]:
-            sec_href = f"{ch['filename']}{sec['href']}"
+            sec_href = f"{ch['route']}{sec['href']}"
             sections_html.append(
                 f'<li class="sec-item">'
-                f'<a href="{sec_href}" data-ch-idx="{idx}" data-file="{ch["filename"]}" data-hash="{sec["href"]}" class="sec-link">'
+                f'<a href="{sec_href}" data-ch-idx="{idx}" data-file="{ch["route"]}" data-hash="{sec["href"]}" class="sec-link">'
                 f'<span class="sec-dot"></span><span class="sec-text">{sec["title"]}</span>'
                 f'</a></li>'
             )
-        
+
         sections_ul = f'<ul class="ch-sections" id="sections-{idx}">{"".join(sections_html)}</ul>' if sections_html else ""
-        chevron = f'<i class="fas fa-chevron-left ch-chevron" aria-hidden="true"></i>' if sections_html else ""
-        
+        chapter_label = html_lib.escape(ch["short_title"], quote=True)
+        chevron = (
+            f'<button type="button" class="ch-chevron" aria-expanded="false" '
+            f'aria-controls="sections-{idx}" aria-label="نمایش بخش‌های {chapter_label}">'
+            f'<i class="fas fa-chevron-left" aria-hidden="true"></i></button>'
+            if sections_html
+            else ""
+        )
+
         sidebar_items_html.append(f"""
-        <div class="ch-card" id="{ch_id}" data-idx="{idx}" data-file="{ch['filename']}">
+        <div class="ch-card" id="{ch_id}" data-idx="{idx}" data-file="{ch['route']}">
             <div class="ch-header" data-idx="{idx}">
-                <a href="{ch['filename']}" class="ch-title-link" data-idx="{idx}" data-file="{ch['filename']}">
+                <a href="{ch['route']}" class="ch-title-link" data-idx="{idx}" data-file="{ch['route']}">
                     {badge_html}
                     <span class="ch-title">{ch['short_title']}</span>
                 </a>
@@ -108,7 +174,7 @@ def generate_index_html(chapters):
             {sections_ul}
         </div>
         """)
-    
+
     sidebar_content = "\n".join(sidebar_items_html)
 
     html = f"""<!DOCTYPE html>
@@ -132,7 +198,11 @@ def generate_index_html(chapters):
     <link rel="canonical" href="https://www.alirostami.com/aima-4e/">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css">
+    <!-- performance-icons:start -->
+    <style>.fa,.fas,.far,.fab,.fa-solid,.fa-regular,.fa-brands{{display:inline-block;min-width:1em;text-align:center}}.fa-fw{{width:1.25em}}</style>
+    <link rel="preload" href="/lib/fontawesome/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome/all.min.css"></noscript>
+    <!-- performance-icons:end -->
     <script type="application/ld+json">
 {{
         "@context": "https://schema.org",
@@ -164,13 +234,13 @@ def generate_index_html(chapters):
                         "@type": "ListItem",
                         "position": 1,
                         "name": "خانه",
-                        "item": "https://www.alirostami.com/fa/"
+                        "item": "https://www.alirostami.com/"
                     }},
                     {{
                         "@type": "ListItem",
                         "position": 2,
                         "name": "پروژه‌ها",
-                        "item": "https://www.alirostami.com/fa/#projects"
+                        "item": "https://www.alirostami.com/#projects"
                     }},
                     {{
                         "@type": "ListItem",
@@ -380,12 +450,17 @@ def generate_index_html(chapters):
             border-bottom: 1px solid var(--border-color);
             background: rgba(128,128,128,.03);
         }}
-        .sidebar-controls a {{
+        .sidebar-controls .sidebar-action {{
+            appearance: none;
+            border: 0;
+            padding: 0;
+            background: transparent;
             color: var(--text-muted);
+            font: inherit;
             text-decoration: none;
             cursor: pointer;
         }}
-        .sidebar-controls a:hover {{
+        .sidebar-controls .sidebar-action:hover {{
             color: var(--accent);
         }}
         .sidebar-scroll {{
@@ -444,8 +519,13 @@ def generate_index_html(chapters):
             color: #fff;
         }}
         .ch-chevron {{
+            appearance: none;
+            border: 0;
+            background: transparent;
+            font: inherit;
             font-size: .75rem;
             color: var(--text-muted);
+            cursor: pointer;
             transition: transform .25s ease;
             padding: .2rem .4rem;
         }}
@@ -627,17 +707,17 @@ def generate_index_html(chapters):
 
 <header class="reader-header">
     <div style="display:flex;align-items:center;gap:.6rem;">
-        <button class="btn-header mobile-toggle" id="btn-toggle-sidebar" title="فهرست و سایدبار">
-            <i class="fas fa-bars fa-fw"></i>
+        <button type="button" class="btn-header mobile-toggle" id="btn-toggle-sidebar" title="فهرست و سایدبار" aria-label="باز کردن فهرست فصول" aria-controls="reader-sidebar" aria-expanded="false">
+            <i class="fas fa-bars fa-fw" aria-hidden="true"></i>
             <span>فهرست فصول</span>
         </button>
         <div class="header-brand-group">
-            <a href="/fa/" class="btn-home-return" title="بازگشت به سایت اصلی علی رستمی">
+            <a href="/" class="btn-home-return" title="بازگشت به سایت اصلی علی رستمی">
                 <i class="fas fa-home fa-fw"></i>
                 <span>سایت اصلی</span>
             </a>
             <span class="brand-divider">/</span>
-            <a href="index.html" class="header-brand" title="مطالعه آنلاین کتاب هوش مصنوعی: رویکردی نوین (AIMA 4e)">
+            <a href="/aima-4e/" class="header-brand" title="مطالعه آنلاین کتاب هوش مصنوعی: رویکردی نوین (AIMA 4e)">
                 <i class="fas fa-brain book-icon"></i>
                 <span class="brand-title-text">هوش مصنوعی: رویکردی نوین</span>
                 <span class="header-brand-badge">AIMA 4e</span>
@@ -660,27 +740,27 @@ def generate_index_html(chapters):
         <a href="/support/" class="btn-header" title="حمایت از پروژه">
             <i class="fas fa-heart fa-fw" style="color:#e0245e;"></i>
         </a>
-        <button class="btn-header" id="btn-theme-toggle" title="تغییر ظاهر تاریک/روشن">
-            <i class="fas fa-adjust fa-fw"></i>
+        <button type="button" class="btn-header" id="btn-theme-toggle" title="تغییر ظاهر تاریک/روشن" aria-label="تغییر ظاهر تاریک یا روشن" aria-pressed="false">
+            <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
         </button>
     </div>
 </header>
 
 <div class="reader-workspace">
     <!-- Sidebar -->
-    <aside class="reader-sidebar" id="reader-sidebar">
+    <aside class="reader-sidebar" id="reader-sidebar" aria-label="فهرست فصول و بخش‌های کتاب">
         <div class="sidebar-search-box">
             <div class="search-wrapper-inner">
                 <i class="fas fa-search" aria-hidden="true"></i>
-                <input type="search" id="sidebar-search" class="search-input" placeholder="جستجو در فصول و بخش‌ها..." autocomplete="off">
+                <input type="search" id="sidebar-search" class="search-input" placeholder="جستجو در فصول و بخش‌ها..." aria-label="جستجو در فصول و بخش‌ها" autocomplete="off" enterkeyhint="search">
             </div>
         </div>
         <div class="sidebar-controls">
             <span>فهرست فصول (۲۸ فصل + پیشگفتار)</span>
             <div style="display:flex;gap:.5rem;">
-                <a id="btn-expand-all">باز کردن همه</a>
-                <span>·</span>
-                <a id="btn-collapse-all">بستن همه</a>
+                <button type="button" class="sidebar-action" id="btn-expand-all">باز کردن همه</button>
+                <span aria-hidden="true">·</span>
+                <button type="button" class="sidebar-action" id="btn-collapse-all">بستن همه</button>
             </div>
         </div>
         <div class="sidebar-scroll" id="sidebar-scroll">
@@ -688,37 +768,39 @@ def generate_index_html(chapters):
         </div>
     </aside>
 
-    <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+    <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
 
     <!-- Main Content Reader -->
-    <main class="reader-content">
+    <main class="reader-content" id="main-content" tabindex="-1">
+        <h1 class="sr-only">مطالعه آنلاین هوش مصنوعی: رویکردی نوین، ویرایش چهارم</h1>
         <div class="reader-toolbar">
-            <div class="toolbar-title" id="current-title">
+            <div class="toolbar-title" id="current-title" aria-live="polite" aria-atomic="true">
                 <i class="fas fa-book-open" style="color:var(--accent);"></i>
                 <span id="title-text">پیشگفتار</span>
             </div>
             <div class="toolbar-nav">
-                <button class="btn-tool" id="btn-prev-ch" title="فصل قبلی">
+                <button type="button" class="btn-tool" id="btn-prev-ch" title="فصل قبلی">
                     <span>فصل قبلی</span>
-                    <i class="fas fa-arrow-right"></i>
+                    <i class="fas fa-arrow-right" aria-hidden="true"></i>
                 </button>
-                <button class="btn-tool" id="btn-next-ch" title="فصل بعدی">
-                    <i class="fas fa-arrow-left"></i>
+                <button type="button" class="btn-tool" id="btn-next-ch" title="فصل بعدی">
+                    <i class="fas fa-arrow-left" aria-hidden="true"></i>
                     <span>فصل بعدی</span>
                 </button>
-                <a class="btn-tool" id="btn-open-tab" target="_blank" title="باز کردن در تب مستقل">
-                    <i class="fas fa-external-link-alt"></i>
+                <a class="btn-tool" id="btn-open-tab" href="{chapters[0]['route']}" target="_blank" rel="noopener noreferrer" title="باز کردن در تب مستقل" aria-label="باز کردن فصل جاری در تب مستقل">
+                    <i class="fas fa-external-link-alt" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
         <div class="frame-container">
-            <iframe id="book-frame" name="book-frame" src="00-پیشگفتار.html" title="متن فصل کتاب"></iframe>
+            <iframe id="book-frame" name="book-frame" src="{chapters[0]['route']}" title="متن فصل کتاب"></iframe>
         </div>
     </main>
 </div>
 
 <script>
     const CHAPTERS = {chapters_json};
+    const LEGACY_ROUTES = {legacy_routes_json};
     let currentChapterIndex = 0;
 
     const frame = document.getElementById('book-frame');
@@ -729,6 +811,20 @@ def generate_index_html(chapters):
     const sidebar = document.getElementById('reader-sidebar');
     const backdrop = document.getElementById('sidebar-backdrop');
     const searchInput = document.getElementById('sidebar-search');
+    const sidebarToggle = document.getElementById('btn-toggle-sidebar');
+    const themeToggle = document.getElementById('btn-theme-toggle');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function setCardExpanded(card, expanded) {{
+        if (!card) return;
+        card.classList.toggle('expanded', expanded);
+        const toggle = card.querySelector('.ch-chevron');
+        if (toggle) toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    }}
+
+    function syncThemeButton() {{
+        themeToggle.setAttribute('aria-pressed', document.body.getAttribute('theme') === 'dark' ? 'true' : 'false');
+    }}
 
     function syncThemeToFrame() {{
         const isDark = document.body.getAttribute('theme') === 'dark';
@@ -798,14 +894,14 @@ def generate_index_html(chapters):
             const pathname = loc.pathname;
             const currentFile = decodeURIComponent(pathname.substring(pathname.lastIndexOf('/') + 1));
             const currentHash = loc.hash;
-            
+
             // Breakout if index.html was accidentally loaded inside frame
             if (currentFile === 'index.html' || currentFile === '') {{
-                window.top.location = 'index.html';
+                window.top.location = '/aima-4e/';
                 return;
             }}
 
-            const idx = CHAPTERS.findIndex(c => c.filename === currentFile);
+            const idx = CHAPTERS.findIndex(c => c.route === currentFile);
             if (idx !== -1) {{
                 updateActiveState(idx, currentHash);
             }}
@@ -816,8 +912,8 @@ def generate_index_html(chapters):
         if (idx < 0 || idx >= CHAPTERS.length) return;
         currentChapterIndex = idx;
         const ch = CHAPTERS[idx];
-        const targetUrl = ch.filename + (hash ? (hash.startsWith('#') ? hash : '#' + hash) : '');
-        
+        const targetUrl = ch.route + (hash ? (hash.startsWith('#') ? hash : '#' + hash) : '');
+
         frame.src = targetUrl;
         updateActiveState(idx, hash);
 
@@ -826,37 +922,46 @@ def generate_index_html(chapters):
             history.replaceState(null, '', '#' + encodeURIComponent(targetUrl));
         }} catch(e) {{}}
 
-        // Close sidebar on mobile
+        // Close the mobile drawer without leaving focus on hidden content.
+        const sidebarWasOpen = sidebar.classList.contains('open');
         closeSidebar();
+        if (sidebarWasOpen) document.getElementById('main-content').focus();
     }}
 
     function updateActiveState(idx, hash = '') {{
         currentChapterIndex = idx;
         const ch = CHAPTERS[idx];
-        
+
         // Update Title & Nav
         titleText.textContent = ch.title;
+        frame.title = 'متن ' + ch.title;
         btnPrev.disabled = (idx <= 0);
         btnNext.disabled = (idx >= CHAPTERS.length - 1);
-        btnOpenTab.href = ch.filename + (hash || '');
+        btnOpenTab.href = ch.route + (hash || '');
 
-        // Update Sidebar active classes
+        // Update Sidebar active classes and current-page announcement.
         document.querySelectorAll('.ch-card').forEach(c => c.classList.remove('active'));
-        document.querySelectorAll('.sec-link').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.ch-title-link, .sec-link').forEach(link => link.removeAttribute('aria-current'));
+        const activeTitleLink = document.querySelector(`.ch-title-link[data-idx="${{idx}}"]`);
+        if (activeTitleLink) activeTitleLink.setAttribute('aria-current', 'page');
 
         const activeCard = document.getElementById('ch-item-' + idx);
         if (activeCard) {{
             activeCard.classList.add('active');
-            activeCard.classList.add('expanded');
-            
+            setCardExpanded(activeCard, true);
+
             if (hash) {{
                 const cleanHash = hash.startsWith('#') ? hash : '#' + hash;
                 const secLink = activeCard.querySelector(`a.sec-link[data-hash="${{cleanHash}}"]`);
-                if (secLink) secLink.classList.add('active');
+                if (secLink) {{
+                    secLink.classList.add('active');
+                    secLink.setAttribute('aria-current', 'location');
+                    activeTitleLink?.removeAttribute('aria-current');
+                }}
             }}
 
             // Scroll sidebar if not visible
-            activeCard.scrollIntoView({{ behavior: 'smooth', block: 'nearest' }});
+            activeCard.scrollIntoView({{ behavior: reduceMotion ? 'auto' : 'smooth', block: 'nearest' }});
         }}
     }}
 
@@ -865,14 +970,14 @@ def generate_index_html(chapters):
         header.addEventListener('click', (e) => {{
             const card = header.closest('.ch-card');
             const idx = parseInt(header.dataset.idx, 10);
-            
+
             // If clicking the title directly
             if (e.target.closest('.ch-title-link')) {{
                 e.preventDefault();
                 loadChapter(idx);
             }} else {{
-                // Clicking chevron or empty space toggles accordion
-                card.classList.toggle('expanded');
+                // The native button provides keyboard activation for the accordion.
+                setCardExpanded(card, !card.classList.contains('expanded'));
             }}
         }});
     }});
@@ -897,10 +1002,10 @@ def generate_index_html(chapters):
 
     // Expand / Collapse All
     document.getElementById('btn-expand-all').addEventListener('click', () => {{
-        document.querySelectorAll('.ch-card').forEach(c => c.classList.add('expanded'));
+        document.querySelectorAll('.ch-card').forEach(c => setCardExpanded(c, true));
     }});
     document.getElementById('btn-collapse-all').addEventListener('click', () => {{
-        document.querySelectorAll('.ch-card').forEach(c => c.classList.remove('expanded'));
+        document.querySelectorAll('.ch-card').forEach(c => setCardExpanded(c, false));
     }});
 
     // Realtime Search
@@ -933,7 +1038,7 @@ def generate_index_html(chapters):
 
             if (chMatch || hasSecMatch) {{
                 card.style.display = '';
-                card.classList.add('expanded');
+                setCardExpanded(card, true);
                 if (chMatch) {{
                     card.querySelectorAll('.sec-item').forEach(s => s.style.display = '');
                 }}
@@ -947,23 +1052,30 @@ def generate_index_html(chapters):
     function openSidebar() {{
         sidebar.classList.add('open');
         backdrop.classList.add('open');
+        sidebarToggle.setAttribute('aria-expanded', 'true');
+        searchInput.focus();
     }}
-    function closeSidebar() {{
+    function closeSidebar(restoreFocus = false) {{
+        const wasOpen = sidebar.classList.contains('open');
         sidebar.classList.remove('open');
         backdrop.classList.remove('open');
+        sidebarToggle.setAttribute('aria-expanded', 'false');
+        if (restoreFocus && wasOpen) sidebarToggle.focus();
     }}
-    document.getElementById('btn-toggle-sidebar').addEventListener('click', openSidebar);
-    backdrop.addEventListener('click', closeSidebar);
+    sidebarToggle.addEventListener('click', openSidebar);
+    backdrop.addEventListener('click', () => closeSidebar(true));
 
     // Theme Switcher Button
-    document.getElementById('btn-theme-toggle').addEventListener('click', () => {{
+    themeToggle.addEventListener('click', () => {{
         const current = document.body.getAttribute('theme');
         const next = current === 'dark' ? 'light' : 'dark';
         document.body.setAttribute('theme', next);
         document.body.setAttribute('data-theme', next);
         localStorage.setItem('theme', next);
+        syncThemeButton();
         syncThemeToFrame();
     }});
+    syncThemeButton();
 
     // Handle deep link from Hash on initial load
     window.addEventListener('DOMContentLoaded', () => {{
@@ -976,7 +1088,9 @@ def generate_index_html(chapters):
                 targetFile = p[0];
                 targetHash = '#' + p[1];
             }}
-            const idx = CHAPTERS.findIndex(c => c.filename === targetFile);
+            targetFile = targetFile.replace(/\.html$/, '');
+            targetFile = LEGACY_ROUTES[targetFile] || targetFile;
+            const idx = CHAPTERS.findIndex(c => c.route === targetFile);
             if (idx !== -1) {{
                 loadChapter(idx, targetHash);
                 return;
@@ -986,9 +1100,14 @@ def generate_index_html(chapters):
         loadChapter(0);
     }});
 
-    // Keyboard shortcuts
+    // Keyboard shortcuts never override native controls or modified key commands.
     document.addEventListener('keydown', (e) => {{
-        if (e.target.tagName === 'INPUT') return;
+        if (e.key === 'Escape') {{
+            closeSidebar(true);
+            return;
+        }}
+        if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+        if (e.target.closest('input, textarea, select, button, a, [contenteditable="true"]')) return;
         if (e.key === 'ArrowLeft') btnNext.click();
         if (e.key === 'ArrowRight') btnPrev.click();
     }});
@@ -1005,14 +1124,36 @@ def inject_chapter_helpers(chapters):
         fpath = AIMA_DIR / ch["filename"]
         with open(fpath, "r", encoding="utf-8") as fp:
             content = fp.read()
-        
-        import urllib.parse
-        quoted_name = urllib.parse.quote(ch["filename"])
-        canon_tag = f'<link rel="canonical" href="https://www.alirostami.com/aima-4e/{quoted_name}">'
-        if 'rel="canonical"' not in content:
-            if "<head>" in content:
-                content = content.replace("<head>", f"<head>\n    {canon_tag}")
-        
+
+        # Keep every published chapter link on the canonical ASCII routes.  The
+        # old spellings remain only in redirects and the reader's hash resolver.
+        for legacy_stem, canonical_stem in AIMA_CHAPTER_ROUTE_MAP:
+            content = content.replace(legacy_stem, canonical_stem)
+            content = content.replace(
+                urllib.parse.quote(legacy_stem),
+                canonical_stem,
+            )
+
+        # Chapter-to-chapter navigation must use the extensionless routes that
+        # Cloudflare Pages serves directly, not its built-in .html redirects.
+        for target in chapters:
+            for quote_char in ('"', "'"):
+                content = content.replace(
+                    f'href={quote_char}{target["filename"]}',
+                    f'href={quote_char}{target["route"]}',
+                )
+        content = content.replace('href="index.html"', 'href="/aima-4e/"')
+        content = content.replace("href='index.html'", "href='/aima-4e/'")
+
+        quoted_route = urllib.parse.quote(ch["route"])
+        canon_tag = f'<link rel="canonical" href="https://www.alirostami.com/aima-4e/{quoted_route}">'
+        if 'rel="canonical"' in content:
+            content = re.sub(
+                r'<link rel="canonical" href="[^"]+">', canon_tag, content, count=1
+            )
+        elif "<head>" in content:
+            content = content.replace("<head>", f"<head>\n    {canon_tag}")
+
         # Remove any previous banners or injected scripts
         content = re.sub(
             r'(\s*<style id="aima-top-nav-style">.*?</style>)?\s*(<script id="aima-top-nav-script">.*?</script>)?\s*<div id="aima-top-nav".*?</div>\s*',
@@ -1021,12 +1162,12 @@ def inject_chapter_helpers(chapters):
             flags=re.DOTALL
         )
         content = re.sub(r'<script id="aima-standalone-helper">.*?</script>\s*', '', content, flags=re.DOTALL)
-        
+
         helper_script = f"""<script id="aima-standalone-helper">
   if (window.self === window.top) {{
     window.addEventListener('DOMContentLoaded', function() {{
       var b = document.createElement('a');
-      b.href = 'index.html#{ch["filename"]}';
+      b.href = '/aima-4e/#{ch["route"]}';
       b.target = '_top';
       b.style.cssText = 'position:fixed;bottom:22px;left:22px;background:#24344d;color:#fff;padding:9px 16px;border-radius:24px;box-shadow:0 6px 18px rgba(0,0,0,.25);text-decoration:none;font-size:13px;font-family:Tahoma,sans-serif;z-index:99999;display:inline-flex;align-items:center;gap:6px;transition:transform .2s;border:1px solid rgba(255,255,255,.2);';
       b.innerHTML = '📖 باز کردن در کتابخوان با سایدبار';
@@ -1042,24 +1183,29 @@ def inject_chapter_helpers(chapters):
             updated = content.replace("</body>", helper_script + "</body>")
         else:
             updated = content + helper_script
-            
+
         with open(fpath, "w", encoding="utf-8") as fp:
             fp.write(updated)
 
 
 def main():
+    normalize_chapter_filenames()
     chapters = extract_chapters()
     print(f"Loaded {len(chapters)} chapters.")
-    
+
     # 1. Write aima-4e/index.html
     index_html = generate_index_html(chapters)
     out_file = AIMA_DIR / "index.html"
     out_file.write_text(index_html, encoding="utf-8")
     print(f"Generated {out_file} ({len(index_html)} bytes)")
 
-    # 2. Inject chapter nav helpers
+    # 2. Inject chapter nav helpers and refresh every route-dependent artifact.
     inject_chapter_helpers(chapters)
     print("Injected nav helpers into chapter files.")
+    write_edge_manifest()
+    write_bulk_manifest()
+    write_canonical_sitemap()
+    apply_site_postprocessors()
 
 
 if __name__ == "__main__":

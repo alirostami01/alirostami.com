@@ -6,6 +6,7 @@ from pathlib import Path
 
 from image_utils import apply_site_postprocessors
 from redirects import write_all
+from site_navigation import render_site_navigation
 from software_architecture_routes import SOFTWARE_ARCHITECTURE_CANONICAL_STEMS
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -395,28 +396,8 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
 </head>
     <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
-        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
-    <div class="header-wrapper">
-        <div class="header-title">
-            <a href="/" title="علی رستمی">Ali Rostami</a>
-        </div>
-        <div class="menu">
-            <div class="menu-inner"><a href="/" class="menu-item" title="خانه">خانه</a><a href="/software-architecture/" class="menu-item" title="مطالعه آنلاین کتاب معماری نرم‌افزار"><i class="fas fa-cubes fa-fw" aria-hidden="true"></i> کتاب معماری نرم‌افزار</a><a href="/aima-4e/" class="menu-item" title="کتاب هوش مصنوعی">کتاب هوش مصنوعی</a><a href="/posts/" class="menu-item" title="مقالات">مقالات</a><a href="/support/" class="menu-item" title="حمایت"><i class="fas fa-heart fa-fw" style="color:#e0245e;" aria-hidden="true"></i> حمایت</a><a href="javascript:void(0);" class="menu-item theme-switch" title="تغییر ظاهر"><i class="fas fa-adjust fa-fw" aria-hidden="true"></i></a></div>
-        </div>
-    </div>
-</header><header class="mobile" id="header-mobile">
-    <div class="header-container">
-        <div class="header-wrapper">
-            <div class="header-title">
-                <a href="/" title="علی رستمی">Ali Rostami</a>
-            </div>
-            <div class="menu-toggle" id="menu-toggle-mobile">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
-        <div class="menu" id="menu-mobile"><a href="/" class="menu-item" title="خانه">خانه</a><a href="/software-architecture/" class="menu-item" title="مطالعه آنلاین کتاب معماری نرم‌افزار"><i class="fas fa-cubes fa-fw" aria-hidden="true"></i> کتاب معماری نرم‌افزار</a><a href="/aima-4e/" class="menu-item" title="کتاب هوش مصنوعی">کتاب هوش مصنوعی</a><a href="/posts/" class="menu-item" title="مقالات">مقالات</a><a href="/support/" class="menu-item" title="حمایت"><i class="fas fa-heart fa-fw" style="color:#e0245e;" aria-hidden="true"></i> حمایت</a><a href="javascript:void(0);" class="menu-item theme-switch" title="تغییر ظاهر"><i class="fas fa-adjust fa-fw" aria-hidden="true"></i></a></div>
-    </div>
-</header><main class="main">
+        <div id="mask"></div><div class="wrapper">{render_site_navigation("fundamentals-of-software-architecture-persian/index.html")}
+<main class="main">
                 <div class="container"><article class="page single docs-page">
         <div class="docs-hero">
             <img src="/images/projects/fundamentals-of-software-architecture-persian.png" alt="لوگوی مبانی معماری نرم‌افزار" width="90" height="90" decoding="async">

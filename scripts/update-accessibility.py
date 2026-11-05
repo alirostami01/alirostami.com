@@ -581,6 +581,8 @@ def update_control_markup(raw: str, language: str) -> str:
         tokens = class_tokens(tag)
         tag = remove_attribute(tag, "role")
         if "menu" in tokens:
+            if data.get("aria-label"):
+                return tag
             label = mobile_navigation if data.get("id") == "menu-mobile" else desktop_navigation
             return set_attribute(tag, "aria-label", label)
         if data.get("aria-label") or data.get("aria-labelledby"):
@@ -596,6 +598,9 @@ def update_control_markup(raw: str, language: str) -> str:
     raw = update_tags(raw, "nav", update_nav)
 
     def update_header(tag: str) -> str:
+        data = attributes(tag)
+        if data.get("aria-label"):
+            return tag
         tokens = class_tokens(tag)
         if "desktop" in tokens:
             return set_attribute(tag, "aria-label", desktop_header)
@@ -609,7 +614,8 @@ def update_control_markup(raw: str, language: str) -> str:
         if "search-loading" in class_tokens(tag):
             tag = set_attribute(tag, "role", "status")
             tag = set_attribute(tag, "aria-live", "polite")
-            tag = set_attribute(tag, "aria-label", "در حال جستجو" if language.startswith("fa") else "Searching")
+            if not attributes(tag).get("aria-label"):
+                tag = set_attribute(tag, "aria-label", "در حال جستجو" if language.startswith("fa") else "Searching")
         return tag
 
     raw = update_tags(raw, "span", update_span)

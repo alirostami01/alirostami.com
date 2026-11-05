@@ -242,9 +242,10 @@ def apply_image_seo() -> None:
 
 
 def apply_site_postprocessors() -> None:
-    """Refresh image, metadata, internal navigation, performance, and accessibility."""
+    """Refresh SEO, internal links, site navigation, delivery, and accessibility."""
     apply_image_seo()
     run_postprocessor("update-metadata.py")
     run_postprocessor("update-internal-links.py")
+    run_postprocessor("update-site-navigation.py")
     run_postprocessor("update-performance.py")
     run_postprocessor("update-accessibility.py")

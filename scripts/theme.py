@@ -6,43 +6,14 @@ that reuses the theme's own stylesheet (/css/style.min.css) and script
 (/js/theme.min.js) to stay visually identical to the rest of alirostami.com.
 """
 
+from site_navigation import render_site_navigation
+
 SITE_NAME = "علی رستمی"
 
 
 def header(active: str = "") -> str:
-    """Desktop + mobile header. `active` is the href of the current menu item."""
-
-    def item(href: str, label: str) -> str:
-        cls = "menu-item active" if href == active else "menu-item"
-        return f'<a href="{href}" class="{cls}" title="{label}">{label}</a>'
-
-    menu = item("/", "خانه") + item("/support/", "حمایت")
-    theme_switch = (
-        '<a href="javascript:void(0);" class="menu-item theme-switch" title="تغییر ظاهر">'
-        '<i class="fas fa-adjust fa-fw" aria-hidden="true"></i></a>'
-    )
-    return f"""<div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
-    <div class="header-wrapper">
-        <div class="header-title">
-            <a href="/" title="{SITE_NAME}">Ali Rostami</a>
-        </div>
-        <div class="menu">
-            <div class="menu-inner">{menu}{theme_switch}</div>
-        </div>
-    </div>
-</header><header class="mobile" id="header-mobile">
-    <div class="header-container">
-        <div class="header-wrapper">
-            <div class="header-title">
-                <a href="/" title="{SITE_NAME}">Ali Rostami</a>
-            </div>
-            <div class="menu-toggle" id="menu-toggle-mobile">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
-        <div class="menu" id="menu-mobile">{menu}{theme_switch}</div>
-    </div>
-</header>"""
+    """Return the shared desktop/mobile shell used by every non-reader page."""
+    return f'<div id="mask"></div><div class="wrapper">{render_site_navigation(active_href=active)}'
 
 
 FOOTER = """<footer class="footer">
@@ -55,7 +26,9 @@ FOOTER = """<footer class="footer">
 SCRIPTS = """<div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="برگشت به بالا">
                 <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
             </a>
-        </div><script type="text/javascript">window.config={"code":{"copyTitle":"کپی به کلیپ بورد","maxShownLines":50}};</script>
+        </div><script type="text/javascript">window.config={"code":{"copyTitle":"کپی به کلیپ بورد","maxShownLines":50},"search":{"highlightTag":"em","maxResultLength":10,"noResultsFound":"نتیجه‌ای پیدا نشد","snippetLength":30}};</script>
+        <script defer src="/lib/autocomplete/autocomplete.min.js"></script>
+        <script defer src="/lib/lunr/lunr.min.js"></script>
         <script defer src="/js/theme.min.js"></script>"""
 
 

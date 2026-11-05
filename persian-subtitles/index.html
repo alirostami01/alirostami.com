@@ -337,28 +337,65 @@
     <a class="skip-link" href="#main-content">رفتن به محتوای اصلی</a>
 <script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
-        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop" aria-label="سربرگ دسکتاپ">
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop" dir="rtl" aria-label="سربرگ دسکتاپ" data-site-navigation="unified">
     <div class="header-wrapper">
         <div class="header-title">
-            <a href="/" title="علی رستمی">Ali Rostami</a>
+            <a href="/" title="علی رستمی">علی رستمی</a>
         </div>
-        <nav class="menu" aria-label="پیمایش اصلی دسکتاپ">
-            <div class="menu-inner"><a href="/" class="menu-item" title="خانه">خانه</a><a href="/support/" class="menu-item" title="حمایت">حمایت</a><button class="menu-item theme-switch" title="تغییر ظاهر" role="switch" aria-checked="false" aria-label="تغییر ظاهر" type="button"><i class="fas fa-adjust fa-fw" aria-hidden="true"></i></button></div>
+        <nav class="menu" dir="rtl" aria-label="پیمایش اصلی دسکتاپ" data-site-navigation="unified">
+            <div class="menu-inner"><a href="/software-architecture/" class="menu-item" title="مطالعه آنلاین کتاب مبانی معماری نرم‌افزار"><i class="fas fa-cubes fa-fw" aria-hidden="true"></i> کتاب معماری نرم‌افزار</a><a href="/aima-4e/" class="menu-item" title="مطالعه آنلاین کتاب هوش مصنوعی AIMA 4e"><i class="fas fa-brain fa-fw" aria-hidden="true"></i> کتاب هوش مصنوعی</a><a href="/persian-streams/" class="menu-item" title="افزونه فیلم و سریال ایرانی Persian Streams برای استرمیو">افزونه استرمیو Persian Streams</a><a href="/persian-subtitles/" class="menu-item active" title="افزونه زیرنویس فارسی Persian Subtitles برای استرمیو" aria-current="page">افزونه استرمیو Persian Subtitles</a><a href="/posts/" class="menu-item" title="آرشیو مقالات و بلاگ">مقالات</a><a href="/support/" class="menu-item" title="حمایت از پروژه‌ها"><i class="fas fa-heart fa-fw" style="color:#e0245e;" aria-hidden="true"></i> حمایت</a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="جستجو عنوان یا متن..." id="search-input-desktop" aria-label="جستجو عنوان یا متن..." autocomplete="off" enterkeyhint="search">
+                        <button class="search-button search-toggle" id="search-toggle-desktop" title="جستجو" aria-controls="search-dropdown-desktop" aria-expanded="false" aria-label="جستجو" type="button">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </button>
+                        <button class="search-button search-clear" id="search-clear-desktop" title="پاک کردن" aria-label="پاک کردن" type="button">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </button>
+                        <span class="search-button search-loading" id="search-loading-desktop" role="status" aria-live="polite" aria-label="در حال جستجو">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><button class="menu-item theme-switch" title="تغییر ظاهر" role="switch" aria-checked="false" aria-label="تغییر ظاهر" type="button">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </button></div>
         </nav>
     </div>
-</header><header class="mobile" id="header-mobile" aria-label="سربرگ موبایل">
+</header><header class="mobile" id="header-mobile" dir="rtl" aria-label="سربرگ موبایل" data-site-navigation="unified">
     <div class="header-container">
         <div class="header-wrapper">
             <div class="header-title">
-                <a href="/" title="علی رستمی">Ali Rostami</a>
+                <a href="/" title="علی رستمی">علی رستمی</a>
             </div>
             <button class="menu-toggle" id="menu-toggle-mobile" type="button" aria-label="باز کردن منوی اصلی" aria-controls="menu-mobile" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>
         </div>
-        <nav class="menu" id="menu-mobile" aria-label="پیمایش اصلی موبایل"><a href="/" class="menu-item" title="خانه">خانه</a><a href="/support/" class="menu-item" title="حمایت">حمایت</a><button class="menu-item theme-switch" title="تغییر ظاهر" role="switch" aria-checked="false" aria-label="تغییر ظاهر" type="button"><i class="fas fa-adjust fa-fw" aria-hidden="true"></i></button></nav>
+        <nav class="menu" id="menu-mobile" dir="rtl" aria-label="پیمایش اصلی موبایل" data-site-navigation="unified"><a href="/software-architecture/" class="menu-item" title="مطالعه آنلاین کتاب مبانی معماری نرم‌افزار"><i class="fas fa-cubes fa-fw" aria-hidden="true"></i> کتاب معماری نرم‌افزار</a><a href="/aima-4e/" class="menu-item" title="مطالعه آنلاین کتاب هوش مصنوعی AIMA 4e"><i class="fas fa-brain fa-fw" aria-hidden="true"></i> کتاب هوش مصنوعی</a><a href="/persian-streams/" class="menu-item" title="افزونه فیلم و سریال ایرانی Persian Streams برای استرمیو">افزونه استرمیو Persian Streams</a><a href="/persian-subtitles/" class="menu-item active" title="افزونه زیرنویس فارسی Persian Subtitles برای استرمیو" aria-current="page">افزونه استرمیو Persian Subtitles</a><a href="/posts/" class="menu-item" title="آرشیو مقالات و بلاگ">مقالات</a><a href="/support/" class="menu-item" title="حمایت از پروژه‌ها"><i class="fas fa-heart fa-fw" style="color:#e0245e;" aria-hidden="true"></i> حمایت</a><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="جستجو عنوان یا متن..." id="search-input-mobile" aria-label="جستجو عنوان یا متن..." autocomplete="off" enterkeyhint="search">
+                        <button class="search-button search-toggle" id="search-toggle-mobile" title="جستجو" aria-controls="search-dropdown-mobile" aria-expanded="false" aria-label="جستجو" type="button">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </button>
+                        <button class="search-button search-clear" id="search-clear-mobile" title="پاک کردن" aria-label="پاک کردن" type="button">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </button>
+                        <span class="search-button search-loading" id="search-loading-mobile" role="status" aria-live="polite" aria-label="در حال جستجو">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <button class="search-cancel" id="search-cancel-mobile" type="button" aria-label="لغو جستجو">
+                        لغو کردن
+                    </button>
+                </div><button class="menu-item theme-switch" title="تغییر ظاهر" role="switch" aria-checked="false" aria-label="تغییر ظاهر" type="button">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </button></nav>
     </div>
-</header><main class="main" id="main-content" tabindex="-1">
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div>
+<main class="main" id="main-content" tabindex="-1">
     <!-- internal-breadcrumb:start -->
     <nav class="site-breadcrumb" aria-label="مسیر راهنما">
       <ol>
@@ -576,7 +613,9 @@ npm run dev
         <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="برگشت به بالا" aria-label="برگشت به بالا">
                 <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
             </a>
-        </div><script type="text/javascript">window.config={"code":{"copyTitle":"کپی به کلیپ بورد","maxShownLines":50}};</script>
+        </div><script type="text/javascript">window.config={"code":{"copyTitle":"کپی به کلیپ بورد","maxShownLines":50},"search":{"highlightTag":"em","maxResultLength":10,"noResultsFound":"نتیجه‌ای پیدا نشد","snippetLength":30}};</script>
+        <script defer src="/lib/autocomplete/autocomplete.min.js"></script>
+        <script defer src="/lib/lunr/lunr.min.js"></script>
         <script defer src="/js/theme.min.js"></script>
     <!-- accessibility-runtime:start -->
     <script>

@@ -205,7 +205,8 @@ python3 scripts/build-project-page.py
 python3 scripts/redirects.py
 ```
 
-پوستهٔ مشترک صفحات دست‌ساز در `scripts/theme.py` است.
+پوستهٔ مشترک صفحات دست‌ساز در `scripts/theme.py` و منبع واحد منوی آن‌ها در
+`scripts/site_navigation.py` است.
 
 ### آیکون پروژه‌ها
 
@@ -309,6 +310,25 @@ checker تمام anchorهای داخلی و fragmentها را resolve می‌ک�
 ۲ باشد. checker همچنین تطابق breadcrumb قابل‌مشاهده با JSON-LD، توالی فصل‌ها،
 اتصال generatorها به pipeline و idempotence updater را بررسی می‌کند.
 
+## منوی یکپارچهٔ سایت
+
+تمام صفحه‌های استاندارد سایت—خانه، پروژه‌ها، مقاله‌ها، آرشیو، Support و 404—یک
+منوی مشترک با ترتیب ثابت دارند: دو کتابخوان، دو افزونهٔ Stremio، مقاله‌ها و
+Support. عنوان سایت، جستجو، تغییر پوسته، نسخهٔ موبایل و وضعیت active نیز از همان
+منبع تولید می‌شوند. فقط ۵۹ صفحهٔ کتابخوان آنلاین AIMA و معماری نرم‌افزار، به‌دلیل
+ناوبری تخصصی فصل‌ها، منوی مستقل خود را حفظ می‌کنند.
+
+```bash
+python3 scripts/update-site-navigation.py
+python3 scripts/update-site-navigation.py --check
+python3 scripts/check-site-navigation.py
+```
+
+post-processor منو پیش از مرحلهٔ Performance اجرا می‌شود تا dependencyهای جستجو
+بر اساس DOM نهایی اضافه شوند. checker ترتیب و برابری هر شش route در منوی دسکتاپ
+و موبایل، active state، تنظیمات جستجو، اتصال generatorها و دست‌نخوردن کتابخوان‌ها
+را بررسی می‌کند.
+
 ## Performance و Core Web Vitals
 
 dependencyهای مرورگر با نسخهٔ دقیق در `lib/` نگهداری می‌شوند و در زمان اجرا
@@ -333,7 +353,8 @@ python3 scripts/check-performance.py
 ```
 
 تمام generatorهای مستندشده post-processorهای تصاویر، Metadata، لینک‌سازی داخلی،
-Performance و سپس Accessibility را از طریق `apply_site_postprocessors()` اجرا می‌کنند.
+منوی مشترک، Performance و سپس Accessibility را از طریق `apply_site_postprocessors()`
+اجرا می‌کنند.
 بنابراین پس از بازتولید هر صفحه، اجرای جداگانه لازم نیست؛ بااین‌حال audit نهایی
 همهٔ فازها باید اجرا شود:
 
@@ -344,6 +365,7 @@ python3 scripts/check-aima-routes.py
 python3 scripts/check-software-architecture-routes.py
 python3 scripts/check-metadata.py
 python3 scripts/check-internal-links.py
+python3 scripts/check-site-navigation.py
 python3 scripts/check-performance.py
 python3 scripts/check-accessibility.py
 ```

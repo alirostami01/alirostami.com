@@ -132,8 +132,10 @@ def main() -> int:
         "layouts/summary.html",
         "scripts/build-support-page.py",
         "scripts/image_utils.py",
+        "scripts/site_navigation.py",
         "scripts/theme.py",
         "scripts/update-internal-links.py",
+        "scripts/update-site-navigation.py",
         "scripts/update-metadata.py",
         "scripts/update-sitemaps.py",
     )

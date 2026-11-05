@@ -400,11 +400,11 @@ def normalize_chapter_structure(path: Path, raw: str) -> str:
 
 def fix_known_html_issues(path: Path, raw: str) -> str:
     relative = path.relative_to(ROOT).as_posix()
-    if relative == "aima-4e/10-فصل۱۰-بازنمایی-دانش.html":
+    if relative == "aima-4e/10-knowledge-representation.html":
         raw = raw.replace(") < ExpectedScore(e2)", ") &lt; ExpectedScore(e2)")
-    elif relative == "aima-4e/22-فصل۲۲-یادگیری-تقویتی.html":
+    elif relative == "aima-4e/22-reinforcement-learning.html":
         raw = raw.replace("اگر n < Nₑ", "اگر n &lt; Nₑ")
-    elif relative == "aima-4e/13-فصل۱۳-استدلال-احتمالاتی.html":
+    elif relative == "aima-4e/13-probabilistic-reasoning.html":
         raw = raw.replace(
             "در نقشه‌برداری مکان ژن‌ها در ژنوم انسان نقش حیاتی داشتند.\n<p>جودیا پرل",
             "در نقشه‌برداری مکان ژن‌ها در ژنوم انسان نقش حیاتی داشتند.</p>\n<p>جودیا پرل",

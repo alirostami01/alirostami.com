@@ -13,6 +13,8 @@ from html import escape
 from pathlib import Path
 from urllib.parse import quote
 
+from aima_routes import AIMA_CHAPTER_ROUTE_MAP, malformed_legacy_stem
+
 ROOT = Path(__file__).resolve().parent.parent
 BASE_URL = "https://www.alirostami.com"
 
@@ -131,6 +133,16 @@ def edge_aliases() -> dict[str, str]:
             continue
         source = f"/aima-4e/{quote(path.name)}"
         routes[source] = f"/aima-4e/{quote(path.stem)}"
+
+    # Preserve every pre-migration AIMA URL in one hop.  Both the actual
+    # Persian slugs and the previously reported blank-title spellings are edge
+    # aliases only; no duplicate HTML documents are kept indexable.
+    for chapter_number, (legacy_stem, canonical_stem) in enumerate(AIMA_CHAPTER_ROUTE_MAP):
+        destination = f"/aima-4e/{canonical_stem}"
+        for old_stem in (legacy_stem, malformed_legacy_stem(chapter_number)):
+            encoded_stem = quote(old_stem)
+            routes[f"/aima-4e/{encoded_stem}"] = destination
+            routes[f"/aima-4e/{encoded_stem}.html"] = destination
 
     for relative_path, destination in ALIASES.items():
         explicit = f"/{relative_path}"

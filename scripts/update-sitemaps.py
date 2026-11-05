@@ -152,7 +152,8 @@ def generate() -> str:
     return '<?xml version="1.0" encoding="UTF-8"?>\n' + ET.tostring(root, encoding="unicode") + "\n"
 
 
-def main() -> None:
+def write_sitemap() -> None:
+    """Write the canonical sitemap without running the shared post-processors."""
     sitemap = generate()
     ET.fromstring(sitemap)
     (ROOT / "sitemap.xml").write_text(sitemap, encoding="utf-8")
@@ -164,6 +165,10 @@ def main() -> None:
 
     count = len(entries())
     print(f"generated sitemap.xml with {count} canonical URLs")
+
+
+def main() -> None:
+    write_sitemap()
     apply_site_postprocessors()
 
 

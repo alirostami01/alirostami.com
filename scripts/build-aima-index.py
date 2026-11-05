@@ -10,29 +10,79 @@ Features:
 - Top navigation pill injected into chapter files so direct visits can return to sidebar.
 """
 
-import glob
 import html as html_lib
 import json
-import os
 import re
+import runpy
+import urllib.parse
 from pathlib import Path
 
+from aima_routes import (
+    AIMA_CANONICAL_STEMS,
+    AIMA_CHAPTER_ROUTE_MAP,
+    AIMA_LEGACY_TO_CANONICAL,
+    malformed_legacy_stem,
+)
 from image_utils import apply_site_postprocessors
+from redirects import write_bulk_manifest, write_edge_manifest
 
 ROOT = Path(__file__).resolve().parent.parent
 AIMA_DIR = ROOT / "aima-4e"
 
 
+def write_canonical_sitemap():
+    """Call the hyphenated sitemap script's reusable writer."""
+    namespace = runpy.run_path(str(ROOT / "scripts" / "update-sitemaps.py"))
+    namespace["write_sitemap"]()
+
+
+def normalize_chapter_filenames():
+    """Migrate known historical filenames and reject unexpected chapter routes."""
+    renamed = []
+    for chapter_number, (legacy_stem, canonical_stem) in enumerate(AIMA_CHAPTER_ROUTE_MAP):
+        canonical_path = AIMA_DIR / f"{canonical_stem}.html"
+        legacy_candidates = (
+            AIMA_DIR / f"{legacy_stem}.html",
+            AIMA_DIR / f"{malformed_legacy_stem(chapter_number)}.html",
+        )
+        existing_legacy = [path for path in legacy_candidates if path.exists()]
+        if canonical_path.exists() and existing_legacy:
+            names = ", ".join(path.name for path in existing_legacy)
+            raise RuntimeError(
+                f"duplicate AIMA chapter {chapter_number:02d}: "
+                f"{canonical_path.name} and {names}"
+            )
+        if len(existing_legacy) > 1:
+            names = ", ".join(path.name for path in existing_legacy)
+            raise RuntimeError(f"ambiguous AIMA chapter {chapter_number:02d}: {names}")
+        if existing_legacy:
+            existing_legacy[0].rename(canonical_path)
+            renamed.append((existing_legacy[0].name, canonical_path.name))
+
+    expected = {f"{stem}.html" for stem in AIMA_CANONICAL_STEMS}
+    actual = {path.name for path in AIMA_DIR.glob("*.html") if path.name != "index.html"}
+    missing = sorted(expected - actual)
+    unexpected = sorted(actual - expected)
+    if missing or unexpected:
+        details = []
+        if missing:
+            details.append(f"missing: {', '.join(missing)}")
+        if unexpected:
+            details.append(f"unexpected: {', '.join(unexpected)}")
+        raise RuntimeError("invalid AIMA chapter filenames (" + "; ".join(details) + ")")
+
+    for source, destination in renamed:
+        print(f"Renamed AIMA chapter: {source} -> {destination}")
+
+
 def extract_chapters():
-    files = sorted(glob.glob(str(AIMA_DIR / "*.html")))
     chapters = []
 
-    for fpath in files:
-        fname = os.path.basename(fpath)
-        if fname == "index.html":
-            continue
+    for canonical_stem in AIMA_CANONICAL_STEMS:
+        file_path = AIMA_DIR / f"{canonical_stem}.html"
+        fname = file_path.name
 
-        with open(fpath, "r", encoding="utf-8") as fp:
+        with file_path.open("r", encoding="utf-8") as fp:
             html = fp.read()
 
         title_m = re.search(r"<title>(.*?)</title>", html)
@@ -44,11 +94,11 @@ def extract_chapters():
         badge_m = re.search(r'<span class="badge gold">(.*?)</span>', html)
         badge = badge_m.group(1).strip() if badge_m else ""
         if not badge:
-            if "00-" in fname:
+            if canonical_stem.startswith("00-"):
                 badge = "پیشگفتار"
             else:
-                num_m = re.search(r"(\d+)", fname)
-                badge = f"فصل {int(num_m.group(1))}" if num_m else ""
+                chapter_number = int(canonical_stem.split("-", 1)[0])
+                badge = f"فصل {chapter_number}"
 
         toc_m = re.search(
             r'<nav\b[^>]*class=["\'][^"\']*\btoc\b[^"\']*["\'][^>]*>(.*?)</nav>',
@@ -71,7 +121,7 @@ def extract_chapters():
 
         chapters.append({
             "filename": fname,
-            "route": Path(fname).stem,
+            "route": canonical_stem,
             "title": title,
             "short_title": short_title,
             "subtitle": subtitle,
@@ -84,6 +134,7 @@ def extract_chapters():
 
 def generate_index_html(chapters):
     chapters_json = json.dumps(chapters, ensure_ascii=False)
+    legacy_routes_json = json.dumps(AIMA_LEGACY_TO_CANONICAL, ensure_ascii=False)
 
     # Generate sidebar items HTML
     sidebar_items_html = []
@@ -736,19 +787,20 @@ def generate_index_html(chapters):
                     <i class="fas fa-arrow-left" aria-hidden="true"></i>
                     <span>فصل بعدی</span>
                 </button>
-                <a class="btn-tool" id="btn-open-tab" href="00-پیشگفتار" target="_blank" rel="noopener noreferrer" title="باز کردن در تب مستقل" aria-label="باز کردن فصل جاری در تب مستقل">
+                <a class="btn-tool" id="btn-open-tab" href="{chapters[0]['route']}" target="_blank" rel="noopener noreferrer" title="باز کردن در تب مستقل" aria-label="باز کردن فصل جاری در تب مستقل">
                     <i class="fas fa-external-link-alt" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
         <div class="frame-container">
-            <iframe id="book-frame" name="book-frame" src="00-پیشگفتار" title="متن فصل کتاب"></iframe>
+            <iframe id="book-frame" name="book-frame" src="{chapters[0]['route']}" title="متن فصل کتاب"></iframe>
         </div>
     </main>
 </div>
 
 <script>
     const CHAPTERS = {chapters_json};
+    const LEGACY_ROUTES = {legacy_routes_json};
     let currentChapterIndex = 0;
 
     const frame = document.getElementById('book-frame');
@@ -1037,6 +1089,7 @@ def generate_index_html(chapters):
                 targetHash = '#' + p[1];
             }}
             targetFile = targetFile.replace(/\.html$/, '');
+            targetFile = LEGACY_ROUTES[targetFile] || targetFile;
             const idx = CHAPTERS.findIndex(c => c.route === targetFile);
             if (idx !== -1) {{
                 loadChapter(idx, targetHash);
@@ -1072,6 +1125,15 @@ def inject_chapter_helpers(chapters):
         with open(fpath, "r", encoding="utf-8") as fp:
             content = fp.read()
 
+        # Keep every published chapter link on the canonical ASCII routes.  The
+        # old spellings remain only in redirects and the reader's hash resolver.
+        for legacy_stem, canonical_stem in AIMA_CHAPTER_ROUTE_MAP:
+            content = content.replace(legacy_stem, canonical_stem)
+            content = content.replace(
+                urllib.parse.quote(legacy_stem),
+                canonical_stem,
+            )
+
         # Chapter-to-chapter navigation must use the extensionless routes that
         # Cloudflare Pages serves directly, not its built-in .html redirects.
         for target in chapters:
@@ -1083,7 +1145,6 @@ def inject_chapter_helpers(chapters):
         content = content.replace('href="index.html"', 'href="/aima-4e/"')
         content = content.replace("href='index.html'", "href='/aima-4e/'")
 
-        import urllib.parse
         quoted_route = urllib.parse.quote(ch["route"])
         canon_tag = f'<link rel="canonical" href="https://www.alirostami.com/aima-4e/{quoted_route}">'
         if 'rel="canonical"' in content:
@@ -1128,6 +1189,7 @@ def inject_chapter_helpers(chapters):
 
 
 def main():
+    normalize_chapter_filenames()
     chapters = extract_chapters()
     print(f"Loaded {len(chapters)} chapters.")
 
@@ -1137,9 +1199,12 @@ def main():
     out_file.write_text(index_html, encoding="utf-8")
     print(f"Generated {out_file} ({len(index_html)} bytes)")
 
-    # 2. Inject chapter nav helpers
+    # 2. Inject chapter nav helpers and refresh every route-dependent artifact.
     inject_chapter_helpers(chapters)
     print("Injected nav helpers into chapter files.")
+    write_edge_manifest()
+    write_bulk_manifest()
+    write_canonical_sitemap()
     apply_site_postprocessors()
 
 

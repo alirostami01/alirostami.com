@@ -13,8 +13,19 @@ https://www.alirostami.com/
 صفحهٔ اصلی فارسی است (`fa-IR`) و `/fa/` یک alias قدیمی محسوب می‌شود. URLهای
 canonical با حروف کوچک و، برای صفحات پوشه‌ای، با اسلش انتهایی نوشته می‌شوند.
 صفحات فصل‌ها مطابق رفتار Cloudflare Pages بدون پسوند `.html` canonical هستند؛
-نسخهٔ دارای پسوند با 301 به همان URL بدون پسوند می‌رود. تمام aliasها باید در
-Cloudflare با پاسخ **301** به URL نهایی برسند. فایل‌های
+نسخهٔ دارای پسوند با 301 به همان URL بدون پسوند می‌رود. هر ۲۹ فصل AIMA فایل و
+URL انگلیسی lowercase و ASCII دارد (برای نمونه `aima-4e/01-introduction.html`
+با canonical برابر `/aima-4e/01-introduction`). جدول ثابت migration در
+`scripts/aima_routes.py` منبع حقیقت generator و redirectها است. URLهای فارسی
+قبلی و شکل‌های قدیمی دارای `%20`، با و بدون `.html`، مستقیماً با 301 به URL
+انگلیسی نهایی می‌روند و فایل محتوای تکراری ندارند. این قرارداد با دستور زیر
+مستقل بررسی می‌شود:
+
+```bash
+python3 scripts/check-aima-routes.py
+```
+
+تمام aliasها باید در Cloudflare با پاسخ **301** به URL نهایی برسند. فایل‌های
 HTML مربوط به aliasها فقط fallbackهای کوچک `noindex` هستند تا در محیط‌های
 بدون Rule لبه، محتوای تکراری کامل سرو نشود:
 
@@ -304,6 +315,7 @@ Performance و سپس Accessibility را از طریق `apply_site_postprocessor
 ```bash
 python3 scripts/check-images.py
 python3 scripts/check-seo-urls.py
+python3 scripts/check-aima-routes.py
 python3 scripts/check-metadata.py
 python3 scripts/check-internal-links.py
 python3 scripts/check-performance.py

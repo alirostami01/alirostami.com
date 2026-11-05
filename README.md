@@ -37,18 +37,18 @@ migration در `scripts/software_architecture_routes.py` نگهداری می‌�
 python3 scripts/check-software-architecture-routes.py
 ```
 
-تمام aliasها باید در Cloudflare با پاسخ **301** به URL نهایی برسند. فایل‌های
-HTML مربوط به aliasها فقط fallbackهای کوچک `noindex` هستند تا در محیط‌های
-بدون Rule لبه، محتوای تکراری کامل سرو نشود:
+تمام aliasها باید در Cloudflare با پاسخ **301** به URL نهایی برسند و هیچ فایل
+HTML ثابتی برای آن‌ها در مخزن وجود نداشته باشد. پوشه‌های uppercase، مسیرهای
+pagination قدیمی و شکل‌های موازی `page.html` فقط در manifestهای لبه ثبت می‌شوند:
 
 ```bash
 python3 scripts/redirects.py
 ```
 
 فهرست aliasها در `scripts/redirects.py` منبع واحد redirectهای URL است. این
-اسکریپت علاوه بر fallbackهای HTML، فایل `_redirects` را نیز می‌سازد. Cloudflare
-Pages این manifest را هنگام deploy می‌خواند و برای تمام aliasهای ثبت‌شده پاسخ
-301 می‌دهد.
+اسکریپت هر فایل alias باقی‌مانده را حذف می‌کند و `_redirects` و
+`cloudflare-bulk-redirects.csv` را بازتولید می‌کند. Cloudflare Pages manifest
+اول را هنگام deploy می‌خواند و برای تمام aliasهای ثبت‌شده پاسخ 301 می‌دهد.
 
 ### Ruleهای موردنیاز Cloudflare
 
@@ -127,10 +127,10 @@ python3 scripts/check-production-redirects.py
 |---|---|---|
 | `/support/` | canonical فارسی | `support/index.html` |
 | `/en/support/` | canonical انگلیسی | `en/support/index.html` |
-| `/support.html` | alias → `/support/` | `support.html` |
-| `/fa/support/` | alias → `/support/` | `fa/support/index.html` |
-| `/fa/support.html` | alias → `/support/` | `fa/support.html` |
-| `/en/support.html` | alias → `/en/support/` | `en/support.html` |
+| `/support.html` | alias → `/support/` | فقط `_redirects`؛ بدون فایل HTML |
+| `/fa/support/` | alias → `/support/` | فقط `_redirects`؛ بدون فایل HTML |
+| `/fa/support.html` | alias → `/support/` | فقط `_redirects`؛ بدون فایل HTML |
+| `/en/support.html` | alias → `/en/support/` | فقط `_redirects`؛ بدون فایل HTML |
 
 ### بازتولید صفحه
 
@@ -139,7 +139,7 @@ python3 scripts/build-support-page.py
 ```
 
 محتوای فارسی صفحه (متن‌ها، کیف‌پول‌ها، پروژه‌ها و CSS) داخل همان اسکریپت است.
-اسکریپت، صفحه canonical فارسی و fallbackهای redirect آن را می‌سازد.
+اسکریپت فقط صفحه canonical فارسی و manifestهای redirect لبه را می‌سازد.
 
 ### کدهای QR کیف‌پول‌ها
 
@@ -348,8 +348,8 @@ post-processor دسترس‌پذیری، خروجی canonical و صفحهٔ 404 
 هم‌راستا با الزامات قابل‌بررسی WCAG 2.2 AA به‌روزرسانی می‌کند. هر صفحه یک
 skip link به `main#main-content`، یک عنوان اصلی، ترتیب heading بدون پرش، focus
 قابل‌دیدن، کنتراست اصلاح‌شدهٔ متن/لینک‌های پوسته و حالت
-`prefers-reduced-motion` دارد. fallbackهای فوری redirect به‌دلیل
-`noindex` و meta refresh وارد این markup نمی‌شوند.
+`prefers-reduced-motion` دارد. aliasهای redirect فقط در لبه تعریف شده‌اند و
+بنابراین هیچ سند HTML تکراری وارد این markup یا ممیزی نمی‌شود.
 
 کنترل‌های search، theme، بازگشت و منوی موبایل به `button` بومی تبدیل شده‌اند؛
 انتخاب زبان accessible name دارد و toggle منوی موبایل با `aria-expanded` و
@@ -369,7 +369,7 @@ python3 scripts/update-accessibility.py --check
 python3 scripts/check-accessibility.py
 ```
 
-checker هر ۹۳ فایل HTML را می‌خواند و landmark، skip link، heading hierarchy،
+checker هر ۷۴ فایل HTML را می‌خواند و landmark، skip link، heading hierarchy،
 accessible name، مرجع‌های ARIA، ترتیب focus، کنترل‌های کتابخوان، امنیت تب جدید،
 اتصال generatorها و idempotence را بررسی می‌کند. این ممیزی استاتیک جای آزمون
 دستی با صفحه‌کلید و screen reader روی مرورگرهای هدف را نمی‌گیرد.

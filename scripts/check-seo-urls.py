@@ -12,7 +12,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 
 from redirects import (
-    ALIASES,
+    LEGACY_PAGE_ALIASES,
     BASE_URL,
     ROOT,
     absolute_url,
@@ -138,26 +138,70 @@ def main() -> int:
     if actual_bulk_rows != bulk_redirect_rows():
         errors.append("cloudflare-bulk-redirects.csv is out of sync")
 
-    # Redirect fallbacks must be noindex and canonicalize to their destination.
+    # Legacy aliases must exist only at the edge; static copies can create
+    # case-sensitive or page.html/page/index.html duplicate documents.
     alias_routes = set(edge_aliases())
     alias_routes.update(urllib.parse.unquote(route) for route in tuple(alias_routes))
-    for relative, destination in ALIASES.items():
+    for relative, destination in LEGACY_PAGE_ALIASES.items():
         path = ROOT / relative
         route = route_for_file(relative)
         alias_routes.add(route)
         if route.endswith("/") and route != "/":
             alias_routes.add(route.rstrip("/"))
-        if not path.is_file():
-            errors.append(f"missing redirect fallback: {relative}")
-            continue
-        parsed = parse_html(path)
-        expected = f"{BASE_URL}{destination}"
-        if parsed.canonicals != [expected]:
-            errors.append(f"redirect canonical mismatch: {relative} -> {parsed.canonicals!r}")
-        if not any("noindex" in directive.lower() for directive in parsed.robots):
-            errors.append(f"redirect fallback is indexable: {relative}")
-        if path.stat().st_size > 4096:
-            errors.append(f"redirect fallback contains too much duplicate content: {relative}")
+        if path.exists():
+            errors.append(
+                f"legacy alias must be edge-only, not a static document: "
+                f"{relative} -> {destination}"
+            )
+
+    deployable_html = sorted(
+        path
+        for path in ROOT.rglob("*.html")
+        if ".git" not in path.parts and "layouts" not in path.parts
+    )
+    casefolded: dict[str, list[str]] = {}
+    for path in deployable_html:
+        relative = path.relative_to(ROOT).as_posix()
+        casefolded.setdefault(relative.casefold(), []).append(relative)
+        if relative != relative.lower():
+            errors.append(f"uppercase deployable HTML path: {relative}")
+
+        page = parse_html(path)
+        noindex = any("noindex" in directive.lower() for directive in page.robots)
+        if not noindex and len(page.canonicals) != 1:
+            errors.append(
+                f"indexable page must have exactly one canonical: "
+                f"{relative} -> {page.canonicals!r}"
+            )
+        for canonical in page.canonicals:
+            parsed_canonical = urllib.parse.urlparse(canonical)
+            if (
+                parsed_canonical.scheme != "https"
+                or parsed_canonical.netloc != "www.alirostami.com"
+                or parsed_canonical.query
+                or parsed_canonical.fragment
+            ):
+                errors.append(f"non-preferred canonical URL in {relative}: {canonical}")
+            if parsed_canonical.path != parsed_canonical.path.lower():
+                errors.append(f"uppercase canonical path in {relative}: {canonical}")
+            if path.name == "index.html" and not noindex:
+                expected_path = route_for_file(relative)
+                if parsed_canonical.path != expected_path:
+                    errors.append(
+                        f"directory page canonical is not lowercase/trailing-slash: "
+                        f"{relative} -> {canonical}; expected {expected_path}"
+                    )
+
+        if path.name != "index.html":
+            parallel = path.with_suffix("") / "index.html"
+            if parallel.is_file():
+                errors.append(
+                    f"parallel page.html and page/index.html documents: "
+                    f"{relative} and {parallel.relative_to(ROOT).as_posix()}"
+                )
+    for paths in casefolded.values():
+        if len(paths) > 1:
+            errors.append(f"case-insensitive HTML path collision: {', '.join(paths)}")
 
     # Validate the one canonical sitemap and every page it contains.
     sitemap_path = ROOT / "sitemap.xml"
@@ -176,12 +220,16 @@ def main() -> int:
         if parsed_url.scheme != "https" or parsed_url.netloc != "www.alirostami.com":
             errors.append(f"non-preferred host in sitemap: {location}")
             continue
+        if parsed_url.path != parsed_url.path.lower():
+            errors.append(f"uppercase canonical path in sitemap: {location}")
         if parsed_url.path in alias_routes or parsed_url.path.startswith("/fa/"):
             errors.append(f"alias URL in sitemap: {location}")
         target = file_for_url(location)
         if target is None:
             errors.append(f"missing sitemap target: {location}")
             continue
+        if target.name == "index.html" and parsed_url.path != "/" and not parsed_url.path.endswith("/"):
+            errors.append(f"directory canonical lacks trailing slash: {location}")
         page = parse_html(target)
         if page.canonicals != [location]:
             errors.append(
@@ -196,8 +244,6 @@ def main() -> int:
         if ".git" in path.parts or "layouts" in path.parts:
             continue
         relative = path.relative_to(ROOT).as_posix()
-        if relative in ALIASES:
-            continue
         raw = path.read_text(encoding="utf-8", errors="replace")
         if "https://alirostami.com" in raw or "http://alirostami.com" in raw:
             errors.append(f"bare-domain absolute URL in {relative}")
@@ -228,7 +274,8 @@ def main() -> int:
     print(
         "Phase-1 SEO URL audit passed: "
         f"{len(locations)} canonical sitemap URLs, "
-        f"{len(ALIASES)} noindex redirect fallbacks, one preferred host."
+        f"{len(LEGACY_PAGE_ALIASES)} edge-only legacy page aliases, "
+        "zero static alias documents, one preferred host."
     )
     return 0
 

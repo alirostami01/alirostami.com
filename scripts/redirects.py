@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
-"""Generate static fallback pages for legacy URL aliases.
+"""Generate edge-only redirects and remove static legacy alias documents.
 
-Permanent redirects are enforced at the CDN/edge (Cloudflare). These tiny
-`noindex` pages are a safe fallback for environments where the edge rules are
-not active, and keep duplicate full-content documents out of the repository.
+Canonical content exists at exactly one lowercase repository path. Historical
+case variants, parallel ``page.html`` spellings, pagination, and retired routes
+are represented only in the Cloudflare redirect manifests.
 """
 
 from __future__ import annotations
 
 import csv
-from html import escape
 from pathlib import Path
 from urllib.parse import quote
 
@@ -19,9 +18,9 @@ from software_architecture_routes import SOFTWARE_ARCHITECTURE_ROUTE_MAP
 ROOT = Path(__file__).resolve().parent.parent
 BASE_URL = "https://www.alirostami.com"
 
-# Repository path -> canonical URL path. Keep this list in sync with the
-# Cloudflare redirects documented in README.md.
-ALIASES: dict[str, str] = {
+# Former repository path -> canonical URL path. These paths must not exist as
+# static documents; they are retained here solely to generate edge redirects.
+LEGACY_PAGE_ALIASES: dict[str, str] = {
     # Home/language and generated pagination aliases
     "fa/index.html": "/",
     "en/index.html": "/",
@@ -85,32 +84,27 @@ def absolute_url(destination: str) -> str:
     return f"{BASE_URL}{destination}"
 
 
-def render_redirect(destination: str) -> str:
-    """Return a crawl-safe HTML fallback for an edge-managed redirect."""
-    url = absolute_url(destination)
-    escaped_url = escape(url, quote=True)
-    escaped_path = escape(destination)
-    return f"""<!doctype html>
-<html lang="fa" dir="rtl">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>انتقال دائمی به {escaped_path}</title>
-  <meta name="robots" content="noindex, follow">
-  <link rel="canonical" href="{escaped_url}">
-  <meta http-equiv="refresh" content="0; url={escaped_url}">
-  <script>window.location.replace({url!r} + window.location.search + window.location.hash);</script>
-</head>
-<body>
-  <p>این نشانی منتقل شده است. <a href="{escaped_url}">رفتن به نشانی اصلی</a></p>
-</body>
-</html>
-"""
+def remove_static_aliases(root: Path = ROOT) -> list[str]:
+    """Delete legacy alias documents and now-empty alias-only directories."""
+    removed: list[str] = []
+    for relative_path in LEGACY_PAGE_ALIASES:
+        path = root / relative_path
+        if not path.is_file():
+            continue
+        path.unlink()
+        removed.append(relative_path)
 
+        parent = path.parent
+        while parent != root:
+            try:
+                parent.rmdir()
+            except OSError:
+                break
+            parent = parent.parent
 
-def write_redirect(path: Path, destination: str) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(render_redirect(destination), encoding="utf-8")
+    for relative_path in removed:
+        print(f"removed static alias: /{relative_path}")
+    return removed
 
 
 def edge_aliases() -> dict[str, str]:
@@ -153,7 +147,7 @@ def edge_aliases() -> dict[str, str]:
             routes[f"/aima-4e/{encoded_stem}"] = destination
             routes[f"/aima-4e/{encoded_stem}.html"] = destination
 
-    for relative_path, destination in ALIASES.items():
+    for relative_path, destination in LEGACY_PAGE_ALIASES.items():
         explicit = f"/{relative_path}"
         routes[explicit] = destination
         if explicit.endswith("/index.html"):
@@ -164,6 +158,7 @@ def edge_aliases() -> dict[str, str]:
 
 
 def write_edge_manifest(root: Path = ROOT) -> None:
+    remove_static_aliases(root)
     lines = [
         f"{source} {absolute_url(destination)} 301"
         for source, destination in edge_aliases().items()
@@ -219,9 +214,6 @@ def write_bulk_manifest(root: Path = ROOT) -> None:
 
 
 def write_all(root: Path = ROOT) -> None:
-    for relative_path, destination in ALIASES.items():
-        write_redirect(root / relative_path, destination)
-        print(f"redirect fallback: /{relative_path} -> {destination}")
     write_edge_manifest(root)
     write_bulk_manifest(root)
 

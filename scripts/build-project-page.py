@@ -5,7 +5,7 @@ import os
 from pathlib import Path
 
 from image_utils import apply_site_postprocessors
-from redirects import write_redirect
+from redirects import write_all
 from software_architecture_routes import SOFTWARE_ARCHITECTURE_CANONICAL_STEMS
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -615,16 +615,7 @@ def main():
     target_index.write_text(HTML_TEMPLATE, encoding="utf-8")
     print(f"Written: {target_index} ({len(HTML_TEMPLATE)} bytes)")
 
-    # Legacy aliases are noindex HTML fallbacks; Cloudflare serves the actual
-    # permanent redirects in production.
-    destination = "/fundamentals-of-software-architecture-persian/"
-    alias1 = ROOT / "fundamentals-of-software-architecture-persian.html"
-    write_redirect(alias1, destination)
-    print(f"Written redirect fallback: {alias1} -> {destination}")
-
-    alias2 = ROOT / "Fundamentals-of-Software-Architecture-Persian" / "index.html"
-    write_redirect(alias2, destination)
-    print(f"Written redirect fallback: {alias2} -> {destination}")
+    write_all()
     apply_site_postprocessors()
 
 if __name__ == "__main__":

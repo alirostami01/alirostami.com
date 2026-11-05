@@ -14,6 +14,7 @@ from pathlib import Path
 from urllib.parse import quote
 
 from aima_routes import AIMA_CHAPTER_ROUTE_MAP, malformed_legacy_stem
+from software_architecture_routes import SOFTWARE_ARCHITECTURE_ROUTE_MAP
 
 ROOT = Path(__file__).resolve().parent.parent
 BASE_URL = "https://www.alirostami.com"
@@ -128,6 +129,14 @@ def edge_aliases() -> dict[str, str]:
             continue
         source = f"/software-architecture/{path.name}"
         routes[source] = source.removesuffix(".html")
+
+    # Generic chapter-NN and appendix routes were the original public URLs.
+    # Keep both their extensionless and .html spellings as direct aliases.
+    for legacy_stem, canonical_stem in SOFTWARE_ARCHITECTURE_ROUTE_MAP:
+        destination = f"/software-architecture/{canonical_stem}"
+        routes[f"/software-architecture/{legacy_stem}"] = destination
+        routes[f"/software-architecture/{legacy_stem}.html"] = destination
+
     for path in sorted((ROOT / "aima-4e").glob("*.html")):
         if path.name == "index.html":
             continue

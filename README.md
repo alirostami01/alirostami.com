@@ -25,6 +25,18 @@ URL انگلیسی lowercase و ASCII دارد (برای نمونه `aima-4e/01-
 python3 scripts/check-aima-routes.py
 ```
 
+همین قرارداد برای ۲۷ فصل و پیوست کتاب معماری نرم‌افزار نیز برقرار است؛ برای
+نمونه فایل `software-architecture/01-introduction.html` canonical برابر
+`/software-architecture/01-introduction` دارد و پیوست در مسیر
+`/software-architecture/appendix-discussion-questions` منتشر می‌شود. جدول ثابت
+migration در `scripts/software_architecture_routes.py` نگهداری می‌شود و
+`chapter-NN`ها و `appendix` قدیمی، با و بدون `.html`، مستقیماً به مقصد نهایی
+می‌روند. بررسی مستقل این قرارداد:
+
+```bash
+python3 scripts/check-software-architecture-routes.py
+```
+
 تمام aliasها باید در Cloudflare با پاسخ **301** به URL نهایی برسند. فایل‌های
 HTML مربوط به aliasها فقط fallbackهای کوچک `noindex` هستند تا در محیط‌های
 بدون Rule لبه، محتوای تکراری کامل سرو نشود:
@@ -316,6 +328,7 @@ Performance و سپس Accessibility را از طریق `apply_site_postprocessor
 python3 scripts/check-images.py
 python3 scripts/check-seo-urls.py
 python3 scripts/check-aima-routes.py
+python3 scripts/check-software-architecture-routes.py
 python3 scripts/check-metadata.py
 python3 scripts/check-internal-links.py
 python3 scripts/check-performance.py

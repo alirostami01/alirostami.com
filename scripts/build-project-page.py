@@ -6,6 +6,7 @@ from pathlib import Path
 
 from image_utils import apply_site_postprocessors
 from redirects import write_redirect
+from software_architecture_routes import SOFTWARE_ARCHITECTURE_CANONICAL_STEMS
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -59,7 +60,7 @@ def build_table_rows():
     </td>
 </tr>""")
         else:
-            online_link = f"/software-architecture/#ch-item-{ch_idx}"
+            online_link = f"/software-architecture/#{SOFTWARE_ARCHITECTURE_CANONICAL_STEMS[ch_idx]}"
             gh_md = f"{GITHUB_REPO}/blob/main/markdown/{'chapter-' + num if num != 'پیوست' else 'appendix'}.md"
             gh_html = f"{GITHUB_REPO}/blob/main/html/{filename}"
             gh_pdf = f"{GITHUB_REPO}/raw/main/pdf/chapters/{'chapter-' + num if num != 'پیوست' else 'appendix'}.pdf"

@@ -24,6 +24,7 @@ from image_utils import (
     social_alt_for_page,
     social_card_for_page,
 )
+from software_architecture_routes import SOFTWARE_ARCHITECTURE_POSITIONS
 
 HEAD_RE = re.compile(r"(<head\b[^>]*>)(.*?)(</head\s*>)", re.IGNORECASE | re.DOTALL)
 META_RE = re.compile(r"<meta\b[^>]*>", re.IGNORECASE | re.DOTALL)
@@ -504,11 +505,11 @@ def chapter_position(relative: str) -> int:
         match = re.match(r"(\d+)-", filename)
         if match:
             return int(match.group(1))
-    if filename == "appendix.html":
-        return 28
-    match = re.match(r"chapter-(\d+)\.html", filename)
-    if match:
-        return int(match.group(1))
+    if relative.startswith("software-architecture/"):
+        try:
+            return SOFTWARE_ARCHITECTURE_POSITIONS[Path(filename).stem]
+        except KeyError as error:
+            raise ValueError(f"cannot determine chapter position: {relative}") from error
     raise ValueError(f"cannot determine chapter position: {relative}")
 
 

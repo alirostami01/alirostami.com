@@ -19,6 +19,8 @@ from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any
 
+from software_architecture_routes import SOFTWARE_ARCHITECTURE_CANONICAL_STEMS
+
 ROOT = Path(__file__).resolve().parent.parent
 CANONICAL_HOST = "www.alirostami.com"
 
@@ -350,12 +352,20 @@ def contextualize_ambiguous_anchors(raw: str, canonical: str, chapter_names: lis
         destination = urllib.parse.urlparse(
             urllib.parse.urljoin(canonical, html.unescape(href_match.group(2)).strip())
         )
-        target_label = TARGET_LABELS.get(urllib.parse.unquote(destination.path))
-        chapter_match = re.fullmatch(r"ch-item-(\d+)", urllib.parse.unquote(destination.fragment))
-        if chapter_match and urllib.parse.unquote(destination.path) == "/software-architecture/":
-            index = int(chapter_match.group(1))
-            if index < len(chapter_names):
-                target_label = f"{chapter_names[index]} از کتاب مبانی معماری نرم‌افزار"
+        decoded_path = urllib.parse.unquote(destination.path)
+        decoded_fragment = urllib.parse.unquote(destination.fragment)
+        target_label = TARGET_LABELS.get(decoded_path)
+        chapter_index: int | None = None
+        chapter_match = re.fullmatch(r"ch-item-(\d+)", decoded_fragment)
+        if chapter_match:
+            chapter_index = int(chapter_match.group(1))
+        elif decoded_fragment in SOFTWARE_ARCHITECTURE_CANONICAL_STEMS:
+            chapter_index = SOFTWARE_ARCHITECTURE_CANONICAL_STEMS.index(decoded_fragment)
+        if decoded_path == "/software-architecture/" and chapter_index is not None:
+            if chapter_index < len(chapter_names):
+                target_label = (
+                    f"{chapter_names[chapter_index]} از کتاب مبانی معماری نرم‌افزار"
+                )
         if not target_label:
             return anchor.group(0)
         suffix = f'<span class="sr-only">: {html.escape(target_label)}</span>'

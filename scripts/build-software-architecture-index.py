@@ -5,14 +5,85 @@ and prepare all chapter files with theme-awareness, section deep-linking IDs, im
 
 import html
 import json
-import os
 import re
+import runpy
 from pathlib import Path
 
 from image_utils import apply_site_postprocessors
+from redirects import write_bulk_manifest, write_edge_manifest
+from software_architecture_routes import (
+    SOFTWARE_ARCHITECTURE_CANONICAL_STEMS,
+    SOFTWARE_ARCHITECTURE_READER_ALIASES,
+    SOFTWARE_ARCHITECTURE_ROUTE_MAP,
+)
 
 ROOT = Path(__file__).resolve().parent.parent
 BOOK_DIR = ROOT / "software-architecture"
+
+
+def write_canonical_sitemap():
+    """Call the hyphenated sitemap script's reusable writer."""
+    namespace = runpy.run_path(str(ROOT / "scripts" / "update-sitemaps.py"))
+    namespace["write_sitemap"]()
+
+
+def normalize_chapter_filenames():
+    """Migrate generic historical filenames and reject unexpected routes."""
+    renamed = []
+    for legacy_stem, canonical_stem in SOFTWARE_ARCHITECTURE_ROUTE_MAP:
+        legacy_path = BOOK_DIR / f"{legacy_stem}.html"
+        canonical_path = BOOK_DIR / f"{canonical_stem}.html"
+        if canonical_path.exists() and legacy_path.exists():
+            raise RuntimeError(
+                f"duplicate software-architecture chapter: "
+                f"{canonical_path.name} and {legacy_path.name}"
+            )
+        if legacy_path.exists():
+            legacy_path.rename(canonical_path)
+            renamed.append((legacy_path.name, canonical_path.name))
+
+    expected = {f"{stem}.html" for stem in SOFTWARE_ARCHITECTURE_CANONICAL_STEMS}
+    actual = {path.name for path in BOOK_DIR.glob("*.html") if path.name != "index.html"}
+    missing = sorted(expected - actual)
+    unexpected = sorted(actual - expected)
+    if missing or unexpected:
+        details = []
+        if missing:
+            details.append(f"missing: {', '.join(missing)}")
+        if unexpected:
+            details.append(f"unexpected: {', '.join(unexpected)}")
+        raise RuntimeError(
+            "invalid software-architecture chapter filenames ("
+            + "; ".join(details)
+            + ")"
+        )
+
+    for source, destination in renamed:
+        print(f"Renamed software-architecture chapter: {source} -> {destination}")
+
+
+def rewrite_legacy_reader_routes(content: str) -> str:
+    """Replace historical site routes without touching upstream source links."""
+    route_end = r"(?=[#?\"'\s<]|$)"
+    for legacy_stem, canonical_stem in SOFTWARE_ARCHITECTURE_ROUTE_MAP:
+        escaped = re.escape(legacy_stem)
+        content = re.sub(
+            rf"(/software-architecture/)({escaped})(?:\.html)?{route_end}",
+            rf"\g<1>{canonical_stem}",
+            content,
+        )
+        content = re.sub(
+            rf"(/software-architecture/#)({escaped})(?:\.html)?{route_end}",
+            rf"\g<1>{canonical_stem}",
+            content,
+        )
+        content = re.sub(
+            rf"((?:href|src)=[\"'])({escaped})(?:\.html)?{route_end}",
+            rf"\g<1>{canonical_stem}",
+            content,
+        )
+    return content
+
 
 PARTS = [
     {
@@ -44,27 +115,21 @@ PARTS = [
 
 def process_chapters():
     """Reads raw chapter HTML, fixes image paths, injects section IDs, wraps in full HTML."""
-    chapter_files = sorted([f for f in BOOK_DIR.glob("chapter-*.html")])
-    appendix_file = BOOK_DIR / "appendix.html"
-    all_files = list(chapter_files)
-    if appendix_file.exists():
-        all_files.append(appendix_file)
-
     chapters_info = []
 
-    for fpath in all_files:
+    for position, route in enumerate(SOFTWARE_ARCHITECTURE_CANONICAL_STEMS, start=1):
+        fpath = BOOK_DIR / f"{route}.html"
         fname = fpath.name
-        route = fpath.stem
-        content = fpath.read_text(encoding="utf-8")
+        content = rewrite_legacy_reader_routes(fpath.read_text(encoding="utf-8"))
 
         # Extract H1 title
         h1_m = re.search(r"<h1[^>]*>(.*?)</h1>", content)
         raw_h1 = h1_m.group(1).strip() if h1_m else fname
         raw_h1_clean = re.sub(r"<[^>]+>", "", raw_h1).strip()
 
-        # Determine badge and clean short title
-        if fname.startswith("chapter-"):
-            ch_num = int(re.search(r"chapter-(\d+)", fname).group(1))
+        # Determine badge and clean short title from the reviewed route order.
+        if position <= 27:
+            ch_num = position
             badge = f"فصل {ch_num}"
             if " — " in raw_h1_clean:
                 short_title = raw_h1_clean.split(" — ", 1)[1]
@@ -396,7 +461,7 @@ def build_reader_index(chapters):
 
             sidebar_items_html.append(f"""
             <div class="ch-card" id="{ch_id}" data-idx="{ch_idx}" data-file="{c['filename']}">
-                <div class="ch-header" data-idx="{ch_idx}">
+                <div class="ch-header" id="{c['filename']}" data-idx="{ch_idx}">
                     <a href="{c['filename']}" class="ch-title-link" data-idx="{ch_idx}" data-file="{c['filename']}">
                         {badge_html}
                         <span class="ch-title">{c['short_title']}</span>
@@ -409,6 +474,7 @@ def build_reader_index(chapters):
 
     sidebar_content = "\n".join(sidebar_items_html)
     chapters_json = json.dumps(chapters, ensure_ascii=False)
+    legacy_routes_json = json.dumps(SOFTWARE_ARCHITECTURE_READER_ALIASES, ensure_ascii=False)
 
     reader_html = f"""<!DOCTYPE html>
 <html lang="fa" dir="rtl">
@@ -1070,20 +1136,21 @@ def build_reader_index(chapters):
                 <button type="button" class="btn-tool" id="btn-refresh-frame" title="بارگذاری مجدد این فصل" aria-label="بارگذاری مجدد فصل جاری">
                     <i class="fas fa-redo fa-fw" aria-hidden="true"></i>
                 </button>
-                <a class="btn-tool" id="btn-direct-link" href="chapter-01" target="_blank" rel="noopener noreferrer" title="باز کردن در برگهٔ جداگانه" aria-label="باز کردن فصل جاری در برگهٔ جداگانه">
+                <a class="btn-tool" id="btn-direct-link" href="{chapters[0]['filename']}" target="_blank" rel="noopener noreferrer" title="باز کردن در برگهٔ جداگانه" aria-label="باز کردن فصل جاری در برگهٔ جداگانه">
                     <i class="fas fa-external-link-alt fa-fw" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
 
         <div class="frame-container">
-            <iframe id="book-frame" name="book-frame" src="chapter-01" title="کتابخوان معماری نرم‌افزار"></iframe>
+            <iframe id="book-frame" name="book-frame" src="{chapters[0]['filename']}" title="کتابخوان معماری نرم‌افزار"></iframe>
         </div>
     </main>
 </div>
 
 <script>
     const CHAPTERS = {chapters_json};
+    const LEGACY_ROUTES = {legacy_routes_json};
 
     let currentChapterIdx = 0;
     const iframe = document.getElementById('book-frame');
@@ -1321,6 +1388,7 @@ def build_reader_index(chapters):
                 targetHash = '#' + p[1];
             }}
             targetFile = targetFile.replace(/\.html$/, '');
+            targetFile = LEGACY_ROUTES[targetFile] || targetFile;
             const idx = CHAPTERS.findIndex(c => c.filename === targetFile);
             if (idx !== -1) {{
                 loadChapter(idx, targetHash);
@@ -1352,10 +1420,14 @@ def build_reader_index(chapters):
 
 
 if __name__ == "__main__":
+    normalize_chapter_filenames()
     print("Processing chapters...")
     chapters = process_chapters()
     print(f"Processed {len(chapters)} chapters.")
     print("Building reader index...")
     build_reader_index(chapters)
+    write_edge_manifest()
+    write_bulk_manifest()
+    write_canonical_sitemap()
     apply_site_postprocessors()
     print("Done!")

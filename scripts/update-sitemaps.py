@@ -16,6 +16,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from image_utils import apply_site_postprocessors
+from software_architecture_routes import SOFTWARE_ARCHITECTURE_CANONICAL_STEMS
 
 ROOT = Path(__file__).resolve().parent.parent
 BASE_URL = "https://www.alirostami.com"
@@ -97,24 +98,15 @@ def last_modified(relative_file: str) -> str:
 def entries() -> list[tuple[str, str, str, str]]:
     rows = list(MAIN_PAGES)
 
-    for number in range(1, 28):
-        filename = f"chapter-{number:02d}.html"
+    for position, stem in enumerate(SOFTWARE_ARCHITECTURE_CANONICAL_STEMS, start=1):
         rows.append(
             (
-                f"/software-architecture/{Path(filename).stem}",
-                f"software-architecture/{filename}",
+                f"/software-architecture/{stem}",
+                f"software-architecture/{stem}.html",
                 "monthly",
-                "0.75",
+                "0.70" if position == 28 else "0.75",
             )
         )
-    rows.append(
-        (
-            "/software-architecture/appendix",
-            "software-architecture/appendix.html",
-            "monthly",
-            "0.70",
-        )
-    )
 
     for file_path in sorted((ROOT / "aima-4e").glob("*.html")):
         if file_path.name == "index.html":

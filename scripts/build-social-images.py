@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build deterministic 1200×630 social cards and right-sized content images.
+"""Build deterministic 1200×630 social cards and responsive profile images.
 
 Requires Pillow:
 
@@ -145,13 +145,6 @@ def build_responsive_content_images() -> list[Path]:
         resized.save(output, "JPEG", quality=86, optimize=True, progressive=True, subsampling="4:2:0")
         outputs.append(output)
 
-    cover = Image.open(ROOT / "figures" / "aima-4e-persian.jpeg").convert("RGB")
-    width = 960
-    height = round(cover.height * width / cover.width)
-    cover = cover.resize((width, height), Image.Resampling.LANCZOS)
-    cover_output = ROOT / "figures" / "aima-4e-persian-960.jpg"
-    cover.save(cover_output, "JPEG", quality=85, optimize=True, progressive=True, subsampling="4:2:0")
-    outputs.append(cover_output)
     return outputs
 
 

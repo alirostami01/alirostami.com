@@ -27,5 +27,8 @@
 /figures/*
   Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
 
+/software-architecture/figures/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+
 /svg/*
   Cache-Control: public, max-age=2592000, stale-while-revalidate=86400

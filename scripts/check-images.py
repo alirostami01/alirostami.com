@@ -36,6 +36,12 @@ PRIORITY_IMAGE_PAGES = {
     "persian-streams/index.html",
     "persian-subtitles/index.html",
 }
+CHAPTER_ASSET_ROOTS = (
+    ROOT / "figures",
+    ROOT / "software-architecture" / "figures",
+)
+LEGACY_CHAPTER_RASTER_EXTENSIONS = {".jpg", ".jpeg", ".png"}
+MAX_CHAPTER_ASSET_BYTES = 600_000
 JSON_LD_RE = re.compile(
     r'<script\b[^>]*type=["\']application/ld\+json["\'][^>]*>(.*?)</script\s*>',
     flags=re.IGNORECASE | re.DOTALL,
@@ -218,6 +224,54 @@ def local_image(source: str, page: Path) -> Path | None:
     return (page.parent / decoded).resolve()
 
 
+def check_production_asset_hygiene(errors: list[str]) -> tuple[int, int]:
+    """Reject temporary, duplicate, legacy-format, and orphan chapter assets."""
+    if (ROOT / "backup-index.html").exists():
+        errors.append("backup-index.html must not be present in the production tree")
+
+    raster_extensions = LEGACY_CHAPTER_RASTER_EXTENSIONS | {".webp", ".gif"}
+    for path in sorted(ROOT.rglob("remove*")):
+        if (
+            path.is_file()
+            and path.suffix.lower() in raster_extensions
+            and ".git" not in path.parts
+            and ".wrangler" not in path.parts
+        ):
+            errors.append(f"temporary production asset: {path.relative_to(ROOT)}")
+
+    referenced: set[Path] = set()
+    for page in sorted(ROOT.rglob("*.html")):
+        if ".git" in page.parts or ".wrangler" in page.parts or "layouts" in page.parts:
+            continue
+        _raw, parsed = parse_page(page)
+        for image in parsed.images:
+            source = image.get("src") or image.get("data-src") or ""
+            target = local_image(source, page)
+            if target is not None:
+                referenced.add(target.resolve())
+
+    assets: list[Path] = []
+    for asset_root in CHAPTER_ASSET_ROOTS:
+        for path in sorted(asset_root.rglob("*")):
+            if not path.is_file():
+                continue
+            relative = path.relative_to(ROOT)
+            if path.suffix.lower() in LEGACY_CHAPTER_RASTER_EXTENSIONS:
+                errors.append(f"legacy chapter raster must be WebP: {relative}")
+            if path.suffix.lower() != ".webp":
+                continue
+            assets.append(path)
+            if path.resolve() not in referenced:
+                errors.append(f"orphan chapter image: {relative}")
+            if path.stat().st_size > MAX_CHAPTER_ASSET_BYTES:
+                errors.append(
+                    f"oversized chapter image: {relative} "
+                    f"({path.stat().st_size:,} > {MAX_CHAPTER_ASSET_BYTES:,} bytes)"
+                )
+
+    return len(assets), sum(path.stat().st_size for path in assets)
+
+
 def positive_int(value: str) -> int | None:
     try:
         number = int(value)
@@ -259,7 +313,14 @@ def check_content_images(errors: list[str]) -> int:
                 errors.append(f"{label}: above-fold image must use fetchpriority=high")
             if not priority and image.get("fetchpriority", "").lower() == "high":
                 errors.append(f"{label}: non-priority image must not use fetchpriority=high")
-            if source.endswith("/images/Ali.jpg") or source.endswith("../figures/aima-4e-persian.jpeg"):
+            if source.endswith("/images/Ali.jpg") or source.endswith(
+                (
+                    "/figures/aima-4e-persian.jpeg",
+                    "../figures/aima-4e-persian.jpeg",
+                    "/figures/aima-4e-persian-960.jpg",
+                    "../figures/aima-4e-persian-960.jpg",
+                )
+            ):
                 errors.append(f"{label}: unoptimized full-size source is used")
 
             target = local_image(source, page)
@@ -303,7 +364,7 @@ def check_generated_assets(errors: list[str]) -> None:
     responsive = {
         ROOT / "images" / "Ali-256.jpg": ((256, 256), 60_000),
         ROOT / "images" / "Ali-512.jpg": ((512, 512), 130_000),
-        ROOT / "figures" / "aima-4e-persian-960.jpg": ((960, 1286), 250_000),
+        ROOT / "figures" / "aima-4e-persian.webp": ((960, 1286), 180_000),
     }
     for path, (expected_dimensions, maximum_size) in responsive.items():
         if not path.is_file():
@@ -325,6 +386,7 @@ def main() -> int:
     sitemap = sitemap_pages(errors)
     pages = indexable_pages(sitemap)
     check_generated_assets(errors)
+    chapter_asset_count, chapter_asset_bytes = check_production_asset_hygiene(errors)
     check_indexable_metadata(pages, errors)
     image_count = check_content_images(errors)
 
@@ -340,7 +402,14 @@ def main() -> int:
         f"{image_count} img elements, {len(SOCIAL_CARDS)} social cards "
         f"({total_card_bytes / 1024:.1f} KiB)"
     )
-    print("all social/schema images are 1200×630; all content images have alt, dimensions, loading, and decoding")
+    print(
+        "all social/schema images are 1200×630; all content images have alt, "
+        "dimensions, loading, and decoding"
+    )
+    print(
+        f"production image hygiene: {chapter_asset_count} referenced WebP chapter assets "
+        f"({chapter_asset_bytes / 1024 / 1024:.2f} MiB), zero temporary/orphan/legacy rasters"
+    )
     return 0
 
 

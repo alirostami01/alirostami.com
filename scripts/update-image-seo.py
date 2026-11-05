@@ -370,8 +370,15 @@ def optimize_content_source(tag: str, relative: Path) -> str:
         tag = set_attribute(tag, "height", "256")
     data = attributes(tag)
     source = data.get("src", "")
-    if source.endswith("/figures/aima-4e-persian.jpeg") or source.endswith("../figures/aima-4e-persian.jpeg"):
-        tag = set_attribute(tag, "src", source.rsplit("/", 1)[0] + "/aima-4e-persian-960.jpg")
+    if source.endswith(
+        (
+            "/figures/aima-4e-persian.jpeg",
+            "../figures/aima-4e-persian.jpeg",
+            "/figures/aima-4e-persian-960.jpg",
+            "../figures/aima-4e-persian-960.jpg",
+        )
+    ):
+        tag = set_attribute(tag, "src", source.rsplit("/", 1)[0] + "/aima-4e-persian.webp")
     return tag
 
 

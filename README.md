@@ -219,9 +219,10 @@ python3 scripts/build-support-page.py
 ## بهینه‌سازی و SEO تصاویر
 
 کارت‌های نمایندهٔ صفحات با ابعاد استاندارد `1200×630` در `images/social/`
-تولید می‌شوند. همان build، نسخه‌های responsive تصویر پروفایل و جلد بهینهٔ
-کتاب AIMA را نیز می‌سازد و سپس metadata تصویری و ویژگی‌های تصاویر HTML را
-به‌صورت idempotent به‌روز می‌کند:
+تولید می‌شوند. همان build نسخه‌های responsive تصویر پروفایل را نیز می‌سازد و
+سپس metadata تصویری و ویژگی‌های تصاویر HTML را به‌صورت idempotent به‌روز
+می‌کند. جلد canonical کتاب AIMA به‌صورت WebP با ابعاد `960×1286` و بدون نسخهٔ
+full-size تکراری در `figures/aima-4e-persian.webp` نگهداری می‌شود:
 
 ```bash
 python3 -m pip install pillow
@@ -239,6 +240,14 @@ post-processor برای همهٔ صفحات indexable (از جمله همهٔ UR
 می‌کند. برای تمام تگ‌های `img` نیز `width`، `height`، `loading` و `decoding` ثبت می‌شود. generatorهای صفحات و
 sitemap در انتهای اجرا همین post-processor را فراخوانی می‌کنند تا خروجی build
 از metadata تصویری جدا نشود.
+
+هر ۵۸۴ تصویر فصل و جلد اکنون فقط با فرمت WebP منتشر می‌شود: نمودارهای PNG
+معماری نرم‌افزار به‌صورت lossless و تصاویر JPEG فصل‌های AIMA با کیفیت بالا و
+metadata حذف‌شده تبدیل شده‌اند. فایل‌های `remove*`، تصویرهای orphan، نسخه‌های
+PNG/JPEG موازی و منبع full-size جلد در tree قابل‌انتشار نگهداری نمی‌شوند.
+`_headers` نیز برای هر دو شاخهٔ تصاویر فصل cache سی‌روزه تعریف می‌کند. ممیزی
+مستقل بازگشت هر فایل موقت، فرمت قدیمی، تصویر orphan یا asset بزرگ‌تر از ۶۰۰ KB
+را خطا می‌داند.
 
 ممیزی مستقل و بدون dependency ثالث:
 

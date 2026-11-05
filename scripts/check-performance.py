@@ -347,7 +347,15 @@ def main() -> int:
         ):
             require(directive in csp, f"_headers: CSP is missing {directive}")
         require(len(csp) < 2_000, "_headers: CSP exceeds Cloudflare's per-line limit")
-        for pattern in ("/lib/*", "/css/*", "/js/*", "/images/*", "/figures/*", "/svg/*"):
+        for pattern in (
+            "/lib/*",
+            "/css/*",
+            "/js/*",
+            "/images/*",
+            "/figures/*",
+            "/software-architecture/figures/*",
+            "/svg/*",
+        ):
             values = rules.get(pattern, {}).get("cache-control", [])
             require(len(values) == 1 and "public" in values[0] and "max-age=" in values[0], f"_headers: invalid cache policy for {pattern}")
             require(not any("immutable" in value for value in values), f"_headers: unhashed assets must not be immutable: {pattern}")

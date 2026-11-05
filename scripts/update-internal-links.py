@@ -35,6 +35,10 @@ TAG_RE = re.compile(r"<[^>]+>", re.DOTALL)
 ANCHOR_RE = re.compile(r"(<a\b[^>]*>)(.*?)(</a\s*>)", re.IGNORECASE | re.DOTALL)
 HEADING_RE = re.compile(r"(<h([1-6])\b[^>]*>)(.*?)(</h\2\s*>)", re.IGNORECASE | re.DOTALL)
 HREF_RE = re.compile(r"\bhref\s*=\s*([\"'])(.*?)\1", re.IGNORECASE | re.DOTALL)
+RETIRED_TAXONOMY_UI_RE = re.compile(
+    r'[ \t]*<(?P<tag>section|div|span)\b(?=[^>]*\bclass=["\'][^"\']*\bpost-(?:tags|category)\b)[^>]*>.*?</(?P=tag)\s*>[ \t]*(?:\r?\n)?',
+    re.IGNORECASE | re.DOTALL,
+)
 
 STYLE_MARKER = "internal-linking-styles"
 BREADCRUMB_MARKER = "internal-breadcrumb"
@@ -55,14 +59,16 @@ MARKERS = (
 # of context to readers, assistive technology, and search crawlers.
 RELATED_CONTENT: dict[str, tuple[str, tuple[tuple[str, str], ...]]] = {
     "index.html": (
-        "مسیرهای اصلی سایت",
+        "همهٔ مسیرهای اصلی سایت",
         (
             ("مقالات و یادداشت‌های فنی علی رستمی", "/posts/"),
-            ("دسته‌بندی موضوعی مقاله‌ها و پروژه‌ها", "/categories/"),
-            ("برچسب‌های موضوعی محتوا", "/tags/"),
-            ("ترجمهٔ فارسی کتاب هوش مصنوعی AIMA، ویرایش چهارم", "/aima-4e-persian/"),
-            ("ترجمهٔ فارسی مبانی معماری نرم‌افزار، ویرایش دوم", "/fundamentals-of-software-architecture-persian/"),
-            ("Support open-source projects in English", "/en/support/"),
+            ("مطالعهٔ آنلاین ترجمهٔ فارسی کتاب هوش مصنوعی AIMA", "/aima-4e/"),
+            ("پروژهٔ ترجمهٔ فارسی کتاب هوش مصنوعی AIMA", "/aima-4e-persian/"),
+            ("مطالعهٔ آنلاین ترجمهٔ فارسی مبانی معماری نرم‌افزار", "/software-architecture/"),
+            ("پروژهٔ ترجمهٔ فارسی مبانی معماری نرم‌افزار", "/fundamentals-of-software-architecture-persian/"),
+            ("افزونهٔ Persian Streams برای Stremio", "/persian-streams/"),
+            ("افزونهٔ Persian Subtitles برای Stremio", "/persian-subtitles/"),
+            ("حمایت از پروژه‌های متن‌باز", "/support/"),
         ),
     ),
     "posts/index.html": (
@@ -70,30 +76,8 @@ RELATED_CONTENT: dict[str, tuple[str, tuple[tuple[str, str], ...]]] = {
         (
             ("Project hub: Persian translation of AIMA, fourth edition", "/aima-4e-persian/"),
             ("Project hub: Persian translation of Fundamentals of Software Architecture", "/fundamentals-of-software-architecture-persian/"),
-            ("Browse articles and projects by category", "/categories/"),
-            ("Explore the site’s topic tags", "/tags/"),
-        ),
-    ),
-    "categories/index.html": (
-        "Browse topic categories",
-        (
-            ("Artificial intelligence and the Persian AIMA translation", "/aima-4e-persian/"),
-            ("Read the Persian AIMA book online", "/aima-4e/"),
-            ("Software architecture and the Persian book translation", "/fundamentals-of-software-architecture-persian/"),
-            ("Read Fundamentals of Software Architecture online", "/software-architecture/"),
-            ("Open-source Stremio add-ons", "/persian-streams/"),
-            ("Productivity and knowledge-management articles", "/posts/benefits-of-using-obsidian/"),
-        ),
-    ),
-    "tags/index.html": (
-        "Explore popular topics",
-        (
-            ("AIMA and artificial intelligence resources", "/aima-4e-persian/"),
-            ("Software architecture resources", "/fundamentals-of-software-architecture-persian/"),
-            ("Stremio streaming tools", "/persian-streams/"),
-            ("Persian subtitle tools for Stremio", "/persian-subtitles/"),
-            ("Obsidian and connected note-taking", "/posts/benefits-of-using-obsidian/"),
-            ("All articles and project notes", "/posts/"),
+            ("Benefits of Using Obsidian", "/posts/benefits-of-using-obsidian/"),
+            ("A Recap of Last Year", "/posts/a-recap-of-last-year/"),
         ),
     ),
     "posts/a-recap-of-last-year/index.html": (
@@ -101,8 +85,8 @@ RELATED_CONTENT: dict[str, tuple[str, tuple[tuple[str, str], ...]]] = {
         (
             ("Benefits of Using Obsidian", "/posts/benefits-of-using-obsidian/"),
             ("Browse all articles and project notes", "/posts/"),
-            ("Browse content by category", "/categories/"),
-            ("Explore topic tags", "/tags/"),
+            ("Persian Streams open-source Stremio add-on", "/persian-streams/"),
+            ("Support the site’s open-source projects", "/support/"),
         ),
     ),
     "posts/benefits-of-using-obsidian/index.html": (
@@ -110,8 +94,8 @@ RELATED_CONTENT: dict[str, tuple[str, tuple[tuple[str, str], ...]]] = {
         (
             ("A Recap of Last Year", "/posts/a-recap-of-last-year/"),
             ("Browse all articles and project notes", "/posts/"),
-            ("Browse content by category", "/categories/"),
-            ("Explore topic tags", "/tags/"),
+            ("Persian translation of AIMA, fourth edition", "/aima-4e-persian/"),
+            ("Support the site’s open-source projects", "/support/"),
         ),
     ),
     "posts/aima-4e-persian/index.html": (
@@ -173,16 +157,6 @@ RELATED_CONTENT: dict[str, tuple[str, tuple[tuple[str, str], ...]]] = {
             ("ترجمهٔ فارسی کتاب هوش مصنوعی AIMA", "/aima-4e-persian/"),
             ("افزونهٔ Persian Streams برای Stremio", "/persian-streams/"),
             ("افزونهٔ Persian Subtitles برای Stremio", "/persian-subtitles/"),
-            ("Read the support page in English", "/en/support/"),
-        ),
-    ),
-    "en/support/index.html": (
-        "Projects your support sustains",
-        (
-            ("Persian translation of Fundamentals of Software Architecture", "/fundamentals-of-software-architecture-persian/"),
-            ("Persian translation of Artificial Intelligence: A Modern Approach", "/aima-4e-persian/"),
-            ("Persian Streams open-source Stremio add-on", "/persian-streams/"),
-            ("Read the support page in Persian", "/support/"),
         ),
     ),
 }
@@ -190,7 +164,6 @@ RELATED_CONTENT: dict[str, tuple[str, tuple[tuple[str, str], ...]]] = {
 TARGET_LABELS = {
     "/aima-4e/": "کتاب هوش مصنوعی AIMA",
     "/aima-4e-persian/": "پروژهٔ ترجمهٔ فارسی AIMA",
-    "/en/support/": "English support page",
     "/fundamentals-of-software-architecture-persian/": "پروژهٔ ترجمهٔ مبانی معماری نرم‌افزار",
     "/persian-streams/": "افزونهٔ Persian Streams",
     "/persian-subtitles/": "افزونهٔ Persian Subtitles",
@@ -615,6 +588,7 @@ def update_page(
 ) -> str:
     for marker in MARKERS:
         raw = remove_marker(raw, marker)
+    raw = RETIRED_TAXONOMY_UI_RE.sub("", raw)
 
     language_match = re.search(r"<html\b[^>]*\blang=[\"']([^\"']+)", raw, re.IGNORECASE)
     english = bool(language_match and language_match.group(1).lower().startswith("en"))

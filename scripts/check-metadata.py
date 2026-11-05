@@ -46,13 +46,7 @@ ARTICLE_PAGES = {
     "posts/benefits-of-using-obsidian/index.html",
     "posts/fundamentals-of-software-architecture-persian/index.html",
 }
-ARCHIVE_PAGES = {"categories/index.html", "tags/index.html", "posts/index.html"}
-SUPPORT_PAGES = {"support/index.html", "en/support/index.html"}
-SUPPORT_ALTERNATES = {
-    "fa": f"{BASE_URL}/support/",
-    "en": f"{BASE_URL}/en/support/",
-    "x-default": f"{BASE_URL}/support/",
-}
+ARCHIVE_PAGES = {"posts/index.html"}
 GENERATOR_SCRIPTS = (
     "scripts/build-aima-index.py",
     "scripts/build-project-page.py",
@@ -621,17 +615,10 @@ def main() -> int:
             errors.append(f"{relative}: og:type {values['og:type']!r}, expected {expected_type!r}")
 
         alternate_locales = parsed.metas.get("og:locale:alternate", [])
-        if relative in SUPPORT_PAGES:
-            expected_alternate = "fa_IR" if expected_locale == "en_US" else "en_US"
-            if alternate_locales != [expected_alternate]:
-                errors.append(f"{relative}: incorrect og:locale:alternate {alternate_locales!r}")
-            if len(parsed.alternates) != 3 or dict(parsed.alternates) != SUPPORT_ALTERNATES:
-                errors.append(f"{relative}: hreflang set is incomplete or incorrect: {parsed.alternates!r}")
-        else:
-            if alternate_locales:
-                errors.append(f"{relative}: unexpected og:locale:alternate")
-            if parsed.alternates:
-                errors.append(f"{relative}: unexpected hreflang links: {parsed.alternates!r}")
+        if alternate_locales:
+            errors.append(f"{relative}: unexpected og:locale:alternate")
+        if parsed.alternates:
+            errors.append(f"{relative}: unexpected hreflang links: {parsed.alternates!r}")
 
         if expected_type == "article":
             author = one_meta(parsed, "article:author", relative, errors)
@@ -670,14 +657,16 @@ def main() -> int:
         if actual != expected:
             errors.append(f"{root}: chapter positions are incomplete: {actual!r}")
 
-    if len(pages) != 73:
-        errors.append(f"expected 73 indexable pages, found {len(pages)}")
+    if len(pages) != 70:
+        errors.append(f"expected 70 indexable pages, found {len(pages)}")
     if article_count != 61:
         errors.append(f"expected 61 article social previews, found {article_count}")
+    if locale_counts != Counter({"fa_IR": 67, "en_US": 3}):
+        errors.append(f"unexpected locale distribution: {dict(locale_counts)!r}")
     if type_counts["Chapter"] != 57:
         errors.append(f"expected 57 Chapter nodes, found {type_counts['Chapter']}")
-    if type_counts["BreadcrumbList"] != 72:
-        errors.append(f"expected 72 BreadcrumbList nodes, found {type_counts['BreadcrumbList']}")
+    if type_counts["BreadcrumbList"] != 69:
+        errors.append(f"expected 69 BreadcrumbList nodes, found {type_counts['BreadcrumbList']}")
 
     if errors:
         print(f"metadata audit failed ({len(errors)} issue(s)):", file=sys.stderr)
@@ -696,7 +685,7 @@ def main() -> int:
         f"Article/BlogPosting={type_counts['Article'] + type_counts['BlogPosting']}, "
         f"BreadcrumbList={type_counts['BreadcrumbList']}"
     )
-    print("  reciprocal support hreflang: fa, en, x-default")
+    print("  single-site metadata: no language alternates or retired section canonicals")
     return 0
 
 

@@ -430,7 +430,7 @@ def normalize_headings(path: Path, raw: str) -> str:
             raw,
             flags=re.IGNORECASE | re.DOTALL,
         )
-    if relative in {"categories/index.html", "tags/index.html", "posts/index.html"}:
+    if relative == "posts/index.html":
         raw = re.sub(
             r'<h2(\b[^>]*class=["\'][^"\']*\bsingle-title\b[^"\']*["\'][^>]*)>(.*?)</h2\s*>',
             r"<h1\1>\2</h1>",

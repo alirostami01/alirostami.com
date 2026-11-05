@@ -30,8 +30,6 @@ POST_ARCHIVE_MARKER = "internal-post-archive-entry"
 RELATED_PAGES = {
     "index.html",
     "aima-4e-persian/index.html",
-    "categories/index.html",
-    "en/support/index.html",
     "fundamentals-of-software-architecture-persian/index.html",
     "persian-streams/index.html",
     "persian-subtitles/index.html",
@@ -41,7 +39,6 @@ RELATED_PAGES = {
     "posts/fundamentals-of-software-architecture-persian/index.html",
     "posts/index.html",
     "support/index.html",
-    "tags/index.html",
 }
 
 GENERATOR_SCRIPTS = (
@@ -448,7 +445,7 @@ def audit_chapter_navigation(
 def main() -> None:
     parsed_pages = all_html_pages()
     pages = discover_indexable(parsed_pages)
-    require(len(pages) == 73, f"expected 73 canonical indexable pages, found {len(pages)}")
+    require(len(pages) == 70, f"expected 70 canonical indexable pages, found {len(pages)}")
     require(file_for_url(HOME_URL) in pages, "canonical home page is not indexable")
 
     file_to_canonical = {path: canonical for path, canonical in pages.items()}
@@ -526,6 +523,22 @@ def main() -> None:
             elif label in GENERIC_ANCHORS:
                 generic_count += 1
                 require(False, f"{relative}: generic internal anchor text {anchor.label!r} for {anchor.href!r}")
+
+    required_home_routes = {
+        f"{BASE_URL}/posts/",
+        f"{BASE_URL}/aima-4e/",
+        f"{BASE_URL}/aima-4e-persian/",
+        f"{BASE_URL}/software-architecture/",
+        f"{BASE_URL}/fundamentals-of-software-architecture-persian/",
+        f"{BASE_URL}/persian-streams/",
+        f"{BASE_URL}/persian-subtitles/",
+        f"{BASE_URL}/support/",
+    }
+    missing_home_routes = sorted(required_home_routes - graph[HOME_URL])
+    require(
+        not missing_home_routes,
+        f"index.html is missing primary site routes: {', '.join(missing_home_routes)}",
+    )
 
     depth: dict[str, int] = {HOME_URL: 0}
     queue: deque[str] = deque((HOME_URL,))

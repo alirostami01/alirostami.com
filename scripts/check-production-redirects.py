@@ -116,6 +116,8 @@ def main() -> int:
             "/fa/",
             "/AIMA-4E-Persian/",
             "/en/support.html",
+            "/categories/",
+            "/tags/",
             "/software-architecture/chapter-01.html",
             "/fa/index.xml",
         )
@@ -149,7 +151,6 @@ def main() -> int:
         wanted = {
             f"{BASE_URL}/",
             f"{BASE_URL}/support/",
-            f"{BASE_URL}/en/support/",
             f"{BASE_URL}/aima-4e/",
             f"{BASE_URL}/software-architecture/",
         }

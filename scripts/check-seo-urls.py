@@ -6,6 +6,7 @@ from __future__ import annotations
 import csv
 import re
 import sys
+import tomllib
 import urllib.parse
 import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
@@ -19,6 +20,9 @@ from redirects import (
     bulk_redirect_rows,
     edge_aliases,
 )
+
+RETIRED_ROUTE_TREES = ("en", "fa", "categories", "tags")
+RETIRED_ROUTE_PREFIXES = ("/en/", "/fa/", "/categories", "/tags")
 
 
 class HeadParser(HTMLParser):
@@ -105,6 +109,41 @@ def main() -> int:
     ):
         if (ROOT / legacy).exists():
             errors.append(f"legacy index file still exists: {legacy}")
+    for tree in RETIRED_ROUTE_TREES:
+        if (ROOT / tree).exists():
+            errors.append(f"retired route tree still exists: {tree}/")
+
+    # Both Hugo entry points must describe the same single-site build and must
+    # prevent taxonomy and term pages from being regenerated.
+    config_bytes: list[bytes] = []
+    for config_name in ("config.toml", "hugo.toml"):
+        config_path = ROOT / config_name
+        config_bytes.append(config_path.read_bytes())
+        config = tomllib.loads(config_bytes[-1].decode("utf-8"))
+        if "languages" in config:
+            errors.append(f"{config_name}: multilingual [languages] table is retired")
+        disabled_kinds = set(config.get("disableKinds", []))
+        if not {"taxonomy", "term"}.issubset(disabled_kinds):
+            errors.append(f"{config_name}: taxonomy and term output must be disabled")
+    if config_bytes[0] != config_bytes[1]:
+        errors.append("config.toml and hugo.toml are out of sync")
+
+    generated_sources = (
+        "layouts/summary.html",
+        "scripts/build-support-page.py",
+        "scripts/image_utils.py",
+        "scripts/theme.py",
+        "scripts/update-internal-links.py",
+        "scripts/update-metadata.py",
+        "scripts/update-sitemaps.py",
+    )
+    for relative in generated_sources:
+        source = (ROOT / relative).read_text(encoding="utf-8")
+        for marker in ("/en/support/", '"/categories/"', '"/tags/"'):
+            if marker in source:
+                errors.append(f"{relative}: retired generated route marker {marker!r}")
+        if relative in {"scripts/build-support-page.py", "scripts/theme.py"} and "language-select" in source:
+            errors.append(f"{relative}: retired language selector generator remains")
 
     # Cloudflare Pages consumes this deploy-time redirect manifest. Host-wide
     # non-www/HTTP normalization still requires a zone-level Redirect Rule.
@@ -166,6 +205,14 @@ def main() -> int:
         if relative != relative.lower():
             errors.append(f"uppercase deployable HTML path: {relative}")
 
+        raw = path.read_text(encoding="utf-8", errors="replace")
+        if "language-select" in raw:
+            errors.append(f"retired language selector in {relative}")
+        if re.search(r'\bclass=["\'][^"\']*\bpost-(?:tags|category)\b', raw, flags=re.IGNORECASE):
+            errors.append(f"retired taxonomy UI in {relative}")
+        if re.search(r"<link\b[^>]*\bhreflang\s*=", raw, flags=re.IGNORECASE):
+            errors.append(f"retired hreflang alternate in {relative}")
+
         page = parse_html(path)
         noindex = any("noindex" in directive.lower() for directive in page.robots)
         if not noindex and len(page.canonicals) != 1:
@@ -184,6 +231,8 @@ def main() -> int:
                 errors.append(f"non-preferred canonical URL in {relative}: {canonical}")
             if parsed_canonical.path != parsed_canonical.path.lower():
                 errors.append(f"uppercase canonical path in {relative}: {canonical}")
+            if parsed_canonical.path.startswith(RETIRED_ROUTE_PREFIXES):
+                errors.append(f"retired section canonical in {relative}: {canonical}")
             if path.name == "index.html" and not noindex:
                 expected_path = route_for_file(relative)
                 if parsed_canonical.path != expected_path:
@@ -222,8 +271,8 @@ def main() -> int:
             continue
         if parsed_url.path != parsed_url.path.lower():
             errors.append(f"uppercase canonical path in sitemap: {location}")
-        if parsed_url.path in alias_routes or parsed_url.path.startswith("/fa/"):
-            errors.append(f"alias URL in sitemap: {location}")
+        if parsed_url.path in alias_routes or parsed_url.path.startswith(RETIRED_ROUTE_PREFIXES):
+            errors.append(f"alias or retired URL in sitemap: {location}")
         target = file_for_url(location)
         if target is None:
             errors.append(f"missing sitemap target: {location}")

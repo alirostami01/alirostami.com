@@ -128,11 +128,9 @@ SOCIAL_CARDS: dict[str, SocialCard] = {
 
 
 ENGLISH_SOCIAL_PAGES = {
-    "categories/index.html",
     "posts/a-recap-of-last-year/index.html",
     "posts/benefits-of-using-obsidian/index.html",
     "posts/index.html",
-    "tags/index.html",
 }
 
 
@@ -158,7 +156,7 @@ def social_card_for_page(relative: str | Path) -> SocialCard:
 def social_alt_for_page(relative: str | Path) -> str:
     card = social_card_for_page(relative)
     value = Path(relative).as_posix()
-    return card.alt_en if value.startswith("en/") or value in ENGLISH_SOCIAL_PAGES else card.alt_fa
+    return card.alt_en if value in ENGLISH_SOCIAL_PAGES else card.alt_fa
 
 
 def local_file_for_url(url: str) -> Path | None:

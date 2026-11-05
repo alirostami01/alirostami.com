@@ -58,7 +58,6 @@ MAIN_PAGES = [
         "yearly",
         "0.50",
     ),
-    ("/en/support/", "en/support/index.html", "monthly", "0.60"),
 ]
 
 LEGACY_INDEX_FILES = (

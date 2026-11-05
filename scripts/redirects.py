@@ -24,13 +24,18 @@ LEGACY_PAGE_ALIASES: dict[str, str] = {
     # Home/language and generated pagination aliases
     "fa/index.html": "/",
     "en/index.html": "/",
-    "fa/categories/index.html": "/categories/",
-    "fa/tags/index.html": "/tags/",
+    "fa/categories/index.html": "/posts/",
+    "fa/tags/index.html": "/posts/",
     "page/1/index.html": "/",
     "backup-index.html": "/",
     "posts/page/1/index.html": "/posts/",
-    # Clean English support URL
-    "en/support.html": "/en/support/",
+    # Retired language, taxonomy, and term sections
+    "en/support/index.html": "/support/",
+    "en/support.html": "/support/",
+    "categories/index.html": "/posts/",
+    "categories/index.xml": "/index.xml",
+    "tags/index.html": "/posts/",
+    "tags/index.xml": "/index.xml",
     # Persian support aliases
     "support.html": "/support/",
     "fa/support/index.html": "/support/",
@@ -52,10 +57,7 @@ LEGACY_PAGE_ALIASES: dict[str, str] = {
 EDGE_ONLY_ALIASES: dict[str, str] = {
     # Explicit index filenames for canonical directory pages
     "/index.html": "/",
-    "/categories/index.html": "/categories/",
-    "/tags/index.html": "/tags/",
     "/support/index.html": "/support/",
-    "/en/support/index.html": "/en/support/",
     "/software-architecture/index.html": "/software-architecture/",
     "/aima-4e/index.html": "/aima-4e/",
     "/fundamentals-of-software-architecture-persian/index.html": "/fundamentals-of-software-architecture-persian/",
@@ -73,8 +75,8 @@ EDGE_ONLY_ALIASES: dict[str, str] = {
     "/public/sitemap.xml": "/sitemap.xml",
     "/public/fa/sitemap.xml": "/sitemap.xml",
     "/fa/index.xml": "/index.xml",
-    "/fa/categories/index.xml": "/categories/index.xml",
-    "/fa/tags/index.xml": "/tags/index.xml",
+    "/fa/categories/index.xml": "/index.xml",
+    "/fa/tags/index.xml": "/index.xml",
 }
 
 

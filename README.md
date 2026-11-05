@@ -10,8 +10,11 @@
 https://www.alirostami.com/
 ```
 
-صفحهٔ اصلی فارسی است (`fa-IR`) و `/fa/` یک alias قدیمی محسوب می‌شود. URLهای
-canonical با حروف کوچک و، برای صفحات پوشه‌ای، با اسلش انتهایی نوشته می‌شوند.
+سایت یک خروجی واحد با صفحهٔ اصلی فارسی (`fa-IR`) دارد و هیچ tree استاتیکی برای
+`/fa/`، `/en/`، `/categories/` یا `/tags/` منتشر نمی‌شود. مسیرهای زبانی قدیمی
+به نزدیک‌ترین صفحهٔ اصلی و مسیرهای taxonomy/term به `/posts/` یک‌مرحله‌ای 301
+می‌شوند. URLهای canonical با حروف کوچک و، برای صفحات پوشه‌ای، با اسلش انتهایی
+نوشته می‌شوند.
 صفحات فصل‌ها مطابق رفتار Cloudflare Pages بدون پسوند `.html` canonical هستند؛
 نسخهٔ دارای پسوند با 301 به همان URL بدون پسوند می‌رود. هر ۲۹ فصل AIMA فایل و
 URL انگلیسی lowercase و ASCII دارد (برای نمونه `aima-4e/01-introduction.html`
@@ -89,16 +92,25 @@ http://www.alirostami.com/*   → https://www.alirostami.com/*  (301)
 ```
 
 این حالت fallback ممکن است برای alias روی host غیرترجیحی دو hop ایجاد کند؛ CSV
-روش ترجیحی برای redirect تک‌مرحله‌ای است. Query String باید حفظ شود. مسیرهای قدیمی Feed و Sitemap نیز redirect می‌شوند:
+روش ترجیحی برای redirect تک‌مرحله‌ای است. Query String باید حفظ شود. بخش‌های
+قدیمی زبان و taxonomy و مسیرهای Feed/Sitemap نیز مستقیماً redirect می‌شوند:
 
 ```text
+/en/                         → /
+/en/support/                 → /support/
+/fa/                         → /
+/fa/support/                 → /support/
+/categories/                 → /posts/
+/tags/                       → /posts/
+/categories/index.xml        → /index.xml
+/tags/index.xml              → /index.xml
 /fa/sitemap.xml              → /sitemap.xml
 /en/sitemap.xml              → /sitemap.xml
 /public/sitemap.xml          → /sitemap.xml
 /public/fa/sitemap.xml       → /sitemap.xml
 /fa/index.xml                → /index.xml
-/fa/categories/index.xml     → /categories/index.xml
-/fa/tags/index.xml           → /tags/index.xml
+/fa/categories/index.xml     → /index.xml
+/fa/tags/index.xml           → /index.xml
 ```
 
 Sitemap واحد سایت فقط URLهای canonical را دارد:
@@ -125,12 +137,12 @@ python3 scripts/check-production-redirects.py
 
 | آدرس | نقش | فایل |
 |---|---|---|
-| `/support/` | canonical فارسی | `support/index.html` |
-| `/en/support/` | canonical انگلیسی | `en/support/index.html` |
+| `/support/` | تنها canonical | `support/index.html` |
 | `/support.html` | alias → `/support/` | فقط `_redirects`؛ بدون فایل HTML |
 | `/fa/support/` | alias → `/support/` | فقط `_redirects`؛ بدون فایل HTML |
 | `/fa/support.html` | alias → `/support/` | فقط `_redirects`؛ بدون فایل HTML |
-| `/en/support.html` | alias → `/en/support/` | فقط `_redirects`؛ بدون فایل HTML |
+| `/en/support/` | alias → `/support/` | فقط `_redirects`؛ بدون فایل HTML |
+| `/en/support.html` | alias → `/support/` | فقط `_redirects`؛ بدون فایل HTML |
 
 ### بازتولید صفحه
 
@@ -138,8 +150,8 @@ python3 scripts/check-production-redirects.py
 python3 scripts/build-support-page.py
 ```
 
-محتوای فارسی صفحه (متن‌ها، کیف‌پول‌ها، پروژه‌ها و CSS) داخل همان اسکریپت است.
-اسکریپت فقط صفحه canonical فارسی و manifestهای redirect لبه را می‌سازد.
+محتوای صفحه (متن‌ها، کیف‌پول‌ها، پروژه‌ها و CSS) داخل همان اسکریپت است.
+اسکریپت فقط canonical اصلی و manifestهای redirect لبه را می‌سازد.
 
 ### کدهای QR کیف‌پول‌ها
 
@@ -171,14 +183,6 @@ python3 scripts/generate-wallet-qr.py
 python3 scripts/build-support-page.py
 python3 scripts/stamp-qr-cache.py
 python3 scripts/verify-wallet-qr.py
-```
-
-### لینک فارسی روی صفحات انگلیسی
-
-لینک «کمک شما» در صفحهٔ انگلیسی Support به `/support/` می‌رود:
-
-```bash
-python3 scripts/add-fa-support-link.py    # idempotent
 ```
 
 ## صفحات مستندات پروژه‌ها
@@ -257,10 +261,9 @@ python3 scripts/check-images.py
 
 ## Metadata و Structured Data
 
-post-processor متادیتا برای هر ۷۳ صفحهٔ indexable توضیح یکتا، Open Graph،
-Twitter Card، `og:locale` و URL canonical هماهنگ می‌سازد. دو نسخهٔ فارسی و
-انگلیسی Support نیز روی هر دو صفحه لینک‌های متقابل `hreflang` برای `fa`، `en`
-و `x-default` دارند.
+post-processor متادیتا برای هر ۷۰ صفحهٔ indexable توضیح یکتا، Open Graph،
+Twitter Card، `og:locale` و URL canonical هماهنگ می‌سازد. چون سایت یک ساختار
+canonical واحد دارد، هیچ `hreflang` یا `og:locale:alternate` زبانی تولید نمی‌شود.
 
 JSON-LD هر صفحه در یک graph معتبر تجمیع می‌شود. ۵۷ صفحهٔ فصل با موجودیت‌های
 جداگانهٔ `Chapter` و `WebPage` به `Book` والد متصل‌اند و نام، توضیح، زبان،
@@ -275,21 +278,22 @@ python3 scripts/update-metadata.py   # idempotent؛ اجرای دوم نباید
 python3 scripts/check-metadata.py
 ```
 
-checker کامل بودن و یکتایی descriptionها، هم‌خوانی canonical/OG/Twitter، locale
-و hreflang متقابل، اعتبار JSON-LD، رابطهٔ Chapter→Book/WebPage، نویسنده و
-publisher مقاله و breadcrumb همهٔ صفحات به‌جز خانه را بررسی می‌کند.
+checker کامل بودن و یکتایی descriptionها، هم‌خوانی canonical/OG/Twitter، locale،
+نبود alternate زبانی، اعتبار JSON-LD، رابطهٔ Chapter→Book/WebPage، نویسنده و
+publisher مقاله و breadcrumb ۶۹ صفحهٔ غیرخانه را بررسی می‌کند.
 
 ## لینک‌سازی داخلی و Crawl Architecture
 
-post-processor لینک‌سازی برای هر ۷۳ صفحهٔ indexable مسیرهای crawlable و
-قابل‌مشاهده می‌سازد. breadcrumb قابل‌مشاهدهٔ ۷۲ صفحه مستقیماً از
+post-processor لینک‌سازی برای هر ۷۰ صفحهٔ indexable مسیرهای crawlable و
+قابل‌مشاهده می‌سازد. breadcrumb قابل‌مشاهدهٔ ۶۹ صفحه مستقیماً از
 `BreadcrumbList` همان صفحه تولید می‌شود؛ بنابراین نام و hierarchy رابط کاربری
 با JSON-LD همواره هم‌راستاست. هر ۵۷ فصل کتاب نیز لینک‌های استاتیک و توصیفی به
 فهرست کتاب و فصل قبلی/بعدی دارد؛ ناوبری بومی ۲۹ فصل AIMA تکمیل و برای ۲۸ فصل
-معماری نرم‌افزار مسیر مستقل ساخته می‌شود. ۱۴ صفحهٔ hub، پروژه، مقاله و آرشیو با
-بخش‌های مرتبط به هم متصل‌اند؛ صفحهٔ خانه نیز مسیر مستقیم به آرشیو مقاله‌ها، دسته‌بندی‌ها،
-برچسب‌ها و نسخهٔ انگلیسی Support فراهم می‌کند. CTAهای کوتاه و permalinkهای
-`#` نیز نام مقصد توصیفی دارند تا متن لینک برای crawler و فناوری کمکی مبهم نباشد.
+معماری نرم‌افزار مسیر مستقل ساخته می‌شود. ۱۱ صفحهٔ hub، پروژه، مقاله و آرشیو با
+بخش‌های مرتبط به هم متصل‌اند؛ صفحهٔ خانه نیز به همهٔ مسیرهای اصلی `/posts/`،
+کتابخوان‌ها، پروژه‌های ترجمه، افزونه‌های Stremio و `/support/` لینک مستقیم دارد.
+CTAهای کوتاه و permalinkهای `#` نیز نام مقصد توصیفی دارند تا متن لینک برای
+crawler و فناوری کمکی مبهم نباشد.
 
 اجرای دستی، بررسی stale output و ممیزی مستقلِ stdlib-only:
 
@@ -360,9 +364,9 @@ skip link به `main#main-content`، یک عنوان اصلی، ترتیب headi
 `prefers-reduced-motion` دارد. aliasهای redirect فقط در لبه تعریف شده‌اند و
 بنابراین هیچ سند HTML تکراری وارد این markup یا ممیزی نمی‌شود.
 
-کنترل‌های search، theme، بازگشت و منوی موبایل به `button` بومی تبدیل شده‌اند؛
-انتخاب زبان accessible name دارد و toggle منوی موبایل با `aria-expanded` و
-`aria-controls` همگام است. فهرست‌های بازشوندهٔ مقالات از `details`/`summary`
+کنترل‌های search، theme، بازگشت و منوی موبایل به `button` بومی تبدیل شده‌اند و
+toggle منوی موبایل با `aria-expanded` و `aria-controls` همگام است. فهرست‌های
+بازشوندهٔ مقالات از `details`/`summary`
 بومی استفاده می‌کنند، landmarkهای navigation نام یکتا و سرستون‌های جدول
 `scope="col"` دارند. لینک‌های آیکونی نام صریح دارند و لینک‌های
 `target="_blank"` با `noopener noreferrer` ایمن می‌شوند. کتابخوان‌های AIMA و
@@ -378,7 +382,7 @@ python3 scripts/update-accessibility.py --check
 python3 scripts/check-accessibility.py
 ```
 
-checker هر ۷۴ فایل HTML را می‌خواند و landmark، skip link، heading hierarchy،
+checker هر ۷۱ فایل HTML را می‌خواند و landmark، skip link، heading hierarchy،
 accessible name، مرجع‌های ARIA، ترتیب focus، کنترل‌های کتابخوان، امنیت تب جدید،
 اتصال generatorها و idempotence را بررسی می‌کند. این ممیزی استاتیک جای آزمون
 دستی با صفحه‌کلید و screen reader روی مرورگرهای هدف را نمی‌گیرد.

@@ -366,9 +366,6 @@ def header(active_home: str = "/") -> str:
         <div class="menu">
             <div class="menu-inner"><a href="/" class="menu-item" title="خانه">خانه</a><a href="/software-architecture/" class="menu-item" title="مطالعه آنلاین کتاب معماری نرم‌افزار"><i class="fas fa-cubes fa-fw" aria-hidden="true"></i> کتاب معماری نرم‌افزار</a><a href="/aima-4e/" class="menu-item" title="کتاب هوش مصنوعی">کتاب هوش مصنوعی</a><a href="/support/" class="menu-item active" title="حمایت">حمایت</a><a href="javascript:void(0);" class="menu-item theme-switch" title="تغییر ظاهر">
                     <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
-                </a><a href="javascript:void(0);" class="menu-item language" title="انتخاب زبان">
-                    <i class="fa fa-globe" aria-hidden="true"></i>
-                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/en/support/">English</option><option value="/support/" selected>فارسی</option></select>
                 </a></div>
         </div>
     </div>
@@ -384,10 +381,7 @@ def header(active_home: str = "/") -> str:
         </div>
         <div class="menu" id="menu-mobile"><a href="/" class="menu-item" title="خانه">خانه</a><a href="/software-architecture/" class="menu-item" title="مطالعه آنلاین کتاب معماری نرم‌افزار"><i class="fas fa-cubes fa-fw" aria-hidden="true"></i> کتاب معماری نرم‌افزار</a><a href="/aima-4e/" class="menu-item" title="کتاب هوش مصنوعی">کتاب هوش مصنوعی</a><a href="/support/" class="menu-item active" title="حمایت">حمایت</a><a href="javascript:void(0);" class="menu-item theme-switch" title="تغییر ظاهر">
                 <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
-            </a><a href="javascript:void(0);" class="menu-item" title="انتخاب زبان">
-                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
-                    <select class="language-select" onchange="location = this.value;"><option value="/en/support/">English</option><option value="/support/" selected>فارسی</option></select>
-                </a></div>
+            </a></div>
     </div>
 </header>"""
 
@@ -509,7 +503,7 @@ def build(canonical: str) -> str:
 <meta name="apple-mobile-web-app-title" content="Ali Rostami"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="{canonical}" /><link rel="alternate" hreflang="fa" href="{CANONICAL}" /><link rel="alternate" hreflang="en" href="https://www.alirostami.com/en/support/" /><link rel="alternate" hreflang="x-default" href="{CANONICAL}" /><link rel="stylesheet" href="/css/style.min.css">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="{canonical}" /><link rel="stylesheet" href="/css/style.min.css">
         <!-- performance-icons:start -->
         <style>.fa,.fas,.far,.fab,.fa-solid,.fa-regular,.fa-brands{{display:inline-block;min-width:1em;text-align:center}}.fa-fw{{width:1.25em}}</style>
         <link rel="preload" href="/lib/fontawesome/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">

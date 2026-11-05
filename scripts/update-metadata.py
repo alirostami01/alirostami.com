@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Normalize page descriptions, social metadata, hreflang, and JSON-LD.
+"""Normalize page descriptions, social metadata, and JSON-LD.
 
 This Phase-5 post-processor is stdlib-only and safe to run repeatedly. It runs
 after image SEO so the schema graph can reference the selected social image.
@@ -97,21 +97,9 @@ DESCRIPTIONS = {
         "با حمایت مالی یا غیرمالی از پروژه‌های متن‌باز، ترجمهٔ کتاب‌ها و منابع "
         "آموزشی علی رستمی، به توسعه و نگهداری پایدار آن‌ها کمک کنید."
     ),
-    "en/support/index.html": (
-        "Support Ali Rostami’s open-source software, Persian book translations, "
-        "educational resources, and the infrastructure that keeps them available."
-    ),
     "posts/index.html": (
         "Browse Ali Rostami’s articles and notes on software architecture, artificial "
         "intelligence, Linux, productivity, and open-source projects."
-    ),
-    "categories/index.html": (
-        "Browse categories for Ali Rostami’s articles on software engineering, "
-        "artificial intelligence, Linux, developer tools, and open-source projects."
-    ),
-    "tags/index.html": (
-        "Explore tags from Ali Rostami’s technical articles and quickly find writing "
-        "about software, AI, Linux, productivity, and open-source tools."
     ),
     "posts/a-recap-of-last-year/index.html": (
         "A personal recap of Ali Rostami’s work and learning over the previous year, "
@@ -133,28 +121,19 @@ DESCRIPTIONS = {
 
 SOCIAL_TITLES = {
     "index.html": "علی رستمی | معماری نرم‌افزار، هوش مصنوعی و متن‌باز",
-    "categories/index.html": "Article Categories | Ali Rostami",
-    "tags/index.html": "Article Tags | Ali Rostami",
     "posts/index.html": "Articles & Notes | Ali Rostami",
     "posts/a-recap-of-last-year/index.html": "A Recap of Last Year | Ali Rostami",
     "posts/benefits-of-using-obsidian/index.html": "Benefits of Using Obsidian | Ali Rostami",
-    "en/support/index.html": "Support Ali Rostami’s Open-Source Work",
     "support/index.html": "حمایت از پروژه‌های متن‌باز علی رستمی",
 }
 
-ARCHIVE_PAGES = {"categories/index.html", "tags/index.html", "posts/index.html"}
+ARCHIVE_PAGES = {"posts/index.html"}
 ARTICLE_PAGES = {
     "posts/a-recap-of-last-year/index.html",
     "posts/benefits-of-using-obsidian/index.html",
     "posts/aima-4e-persian/index.html",
     "posts/fundamentals-of-software-architecture-persian/index.html",
 }
-SUPPORT_ALTERNATES = {
-    "fa": f"{BASE_URL}/support/",
-    "en": f"{BASE_URL}/en/support/",
-    "x-default": f"{BASE_URL}/support/",
-}
-
 BOOKS = {
     "aima-4e": {
         "url": f"{BASE_URL}/aima-4e/",
@@ -374,9 +353,6 @@ def render_metadata(
         f'    <meta property="og:site_name" content="{html.escape(SITE_NAME, quote=True)}">',
         f'    <meta property="og:locale" content="{locale}">',
     ]
-    if relative in {"support/index.html", "en/support/index.html"}:
-        alternate_locale = "fa_IR" if locale == "en_US" else "en_US"
-        lines.append(f'    <meta property="og:locale:alternate" content="{alternate_locale}">')
     lines.extend(
         [
             f'    <meta name="twitter:title" content="{html.escape(title, quote=True)}">',
@@ -395,11 +371,6 @@ def render_metadata(
                 f'    <meta property="article:section" content="{section}">',
             ]
         )
-    if relative in {"support/index.html", "en/support/index.html"}:
-        for code, url in SUPPORT_ALTERNATES.items():
-            lines.append(
-                f'    <link rel="alternate" hreflang="{code}" href="{html.escape(url, quote=True)}">'
-            )
     lines.append("    <!-- metadata-seo:end -->")
     return "\n".join(lines)
 
@@ -481,7 +452,7 @@ def breadcrumb(
         items.append((book["name"], book["url"]))
     elif relative.startswith("posts/") and relative != "posts/index.html":
         items.append(("Articles" if language == "en-US" else "مقالات", f"{BASE_URL}/posts/"))
-    elif relative not in ARCHIVE_PAGES and relative not in {"support/index.html", "en/support/index.html"}:
+    elif relative not in ARCHIVE_PAGES and relative != "support/index.html":
         items.append(("Projects" if language == "en-US" else "پروژه‌ها", f"{BASE_URL}/#projects"))
     items.append((page_name, canonical))
     return {
@@ -648,7 +619,7 @@ def generic_schema(
     primary = primary_node(nodes)
     if relative in ARCHIVE_PAGES:
         primary["@type"] = "CollectionPage"
-    elif relative in {"support/index.html", "en/support/index.html"}:
+    elif relative == "support/index.html":
         primary["@type"] = "WebPage"
     primary.pop("@context", None)
     primary.pop("license", None)
@@ -752,7 +723,7 @@ def clean_head(head: str, relative: str) -> str:
     )
     head = SCRIPT_RE.sub("", head)
     head = META_RE.sub(lambda match: "" if meta_key(match.group(0)) in MANAGED_META else match.group(0), head)
-    if relative in {"support/index.html", "en/support/index.html"}:
+    if relative == "support/index.html":
         head = LINK_RE.sub(
             lambda match: ""
             if "alternate" in attributes(match.group(0)).get("rel", "").lower().split()

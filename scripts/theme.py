@@ -17,13 +17,6 @@ def header(active: str = "") -> str:
         return f'<a href="{href}" class="{cls}" title="{label}">{label}</a>'
 
     menu = item("/", "خانه") + item("/support/", "حمایت")
-    lang = (
-        '<a href="javascript:void(0);" class="menu-item language" title="انتخاب زبان">'
-        '<i class="fa fa-globe" aria-hidden="true"></i>'
-        '<select class="language-select" onchange="location = this.value;">'
-        '<option value="/en/support/">English</option>'
-        '<option value="/support/" selected>فارسی</option></select></a>'
-    )
     theme_switch = (
         '<a href="javascript:void(0);" class="menu-item theme-switch" title="تغییر ظاهر">'
         '<i class="fas fa-adjust fa-fw" aria-hidden="true"></i></a>'
@@ -34,7 +27,7 @@ def header(active: str = "") -> str:
             <a href="/" title="{SITE_NAME}">Ali Rostami</a>
         </div>
         <div class="menu">
-            <div class="menu-inner">{menu}{theme_switch}{lang}</div>
+            <div class="menu-inner">{menu}{theme_switch}</div>
         </div>
     </div>
 </header><header class="mobile" id="header-mobile">
@@ -47,7 +40,7 @@ def header(active: str = "") -> str:
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile">{menu}{theme_switch}{lang}</div>
+        <div class="menu" id="menu-mobile">{menu}{theme_switch}</div>
     </div>
 </header>"""
 

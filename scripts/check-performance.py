@@ -22,6 +22,7 @@ MANAGED_SCRIPTS = {
     "typeit": "/lib/typeit/index.umd.js",
 }
 THEME_SCRIPT = "/js/theme.min.js"
+GOOGLE_TAG_SCRIPT = "https://www.googletagmanager.com/gtm.js?id=GTM-M3LP25QD"
 FONT_AWESOME = "/lib/fontawesome/all.min.css"
 ANIMATE = "/lib/animate/animate-subset.min.css"
 
@@ -194,15 +195,23 @@ def main() -> int:
         if has_theme:
             stats["theme_pages"] += 1
         require(script_counts[THEME_SCRIPT] <= 1, f"{relative}: duplicate theme runtime")
+        require(
+            script_counts[GOOGLE_TAG_SCRIPT] == 1,
+            f"{relative}: expected one async Google tag loader",
+        )
 
         for tag, data, _position in script_tags:
             source = data.get("src", "")
             if not source:
                 continue
             parsed = urlparse(source)
-            if parsed.netloc:
+            if source == GOOGLE_TAG_SCRIPT:
+                require("async" in data, f"{relative}: Google tag loader is not async")
+                require("defer" not in data, f"{relative}: Google tag loader must preserve async loading")
+                stats["google_tag_scripts"] += 1
+            elif parsed.netloc:
                 require(parsed.netloc == "comments.app", f"{relative}: unexpected remote script {source}")
-                require("defer" in data, f"{relative}: remote script is not deferred: {source}")
+                require("defer" in data, f"{relative}: remote widget is not deferred: {source}")
                 stats["remote_scripts"] += 1
             if source == THEME_SCRIPT or source in MANAGED_SCRIPTS.values():
                 require("defer" in data, f"{relative}: managed script is not deferred: {source}")
@@ -315,6 +324,10 @@ def main() -> int:
             stats["priority_images"] += 1
 
     require(stats["priority_images"] == 5, f"expected five LCP image preloads, found {stats['priority_images']}")
+    require(
+        stats["google_tag_scripts"] == stats["html"],
+        f"expected one Google tag loader on every page, found {stats['google_tag_scripts']}",
+    )
     require(stats["remote_scripts"] == 2, f"expected only two deferred comments.app widgets, found {stats['remote_scripts']}")
     require(stats["clipboard"] == 0, "ClipboardJS is requested despite no current copy-code DOM")
 
@@ -341,8 +354,9 @@ def main() -> int:
             "default-src 'self'",
             "object-src 'none'",
             "frame-ancestors 'self'",
-            "script-src 'self' 'unsafe-inline' https://comments.app",
+            "script-src 'self' 'unsafe-inline' https://comments.app https://www.googletagmanager.com",
             "style-src 'self' 'unsafe-inline'",
+            "connect-src 'self' https://comments.app https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com",
             "frame-src 'self' https://comments.app",
         ):
             require(directive in csp, f"_headers: CSP is missing {directive}")
@@ -406,8 +420,8 @@ def main() -> int:
         "Performance audit passed: "
         f"{stats['html']} HTML files; {stats['icon_pages']} icon pages; "
         f"{stats['animation_pages']} animation pages; {stats['theme_pages']} deferred theme pages; "
-        f"{stats['priority_images']} LCP preloads; {stats['remote_scripts']} allowed remote widgets; "
-        f"{managed_bytes:,} pinned CSS/JS bytes."
+        f"{stats['priority_images']} LCP preloads; {stats['google_tag_scripts']} async Google tags; "
+        f"{stats['remote_scripts']} allowed remote widgets; {managed_bytes:,} pinned CSS/JS bytes."
     )
     print(
         "Conditional JS pages: "

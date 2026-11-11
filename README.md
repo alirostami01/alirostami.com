@@ -329,6 +329,24 @@ post-processor منو پیش از مرحلهٔ Performance اجرا می‌شو�
 و موبایل، active state، تنظیمات جستجو، اتصال generatorها و دست‌نخوردن کتابخوان‌ها
 را بررسی می‌کند.
 
+## Google Tag Manager
+
+شناسهٔ container برابر `GTM-M3LP25QD` است. loader غیرمسدودکنندهٔ Google Tag
+Manager و مقداردهی `dataLayer` دقیقاً یک‌بار داخل `<head>` تمام ۷۱ فایل HTML،
+شامل صفحهٔ 404 و کتابخوان‌ها، قرار می‌گیرند. partial هوگو، پوستهٔ صفحات دست‌ساز
+و pipeline مشترک generatorها همگی به همین خروجی متصل‌اند تا بازتولید سایت تگ را
+حذف یا تکراری نکند.
+
+```bash
+python3 scripts/update-google-tag.py
+python3 scripts/update-google-tag.py --check
+python3 scripts/check-google-tag.py
+```
+
+checker شناسه، ترتیب snippet، بارگذاری `async`، CSP، اتصال sourceها و idempotence
+را بررسی می‌کند. `_headers` فقط دامنه‌های لازم Google Tag Manager و endpointهای
+Google Analytics را برای script و درخواست‌های اندازه‌گیری مجاز می‌کند.
+
 ## Performance و Core Web Vitals
 
 dependencyهای مرورگر با نسخهٔ دقیق در `lib/` نگهداری می‌شوند و در زمان اجرا
@@ -352,9 +370,9 @@ python3 scripts/update-performance.py --check
 python3 scripts/check-performance.py
 ```
 
-تمام generatorهای مستندشده post-processorهای تصاویر، Metadata، لینک‌سازی داخلی،
-منوی مشترک، Performance و سپس Accessibility را از طریق `apply_site_postprocessors()`
-اجرا می‌کنند.
+تمام generatorهای مستندشده post-processorهای تصاویر، Metadata، Google Tag،
+لینک‌سازی داخلی، منوی مشترک، Performance و سپس Accessibility را از طریق
+`apply_site_postprocessors()` اجرا می‌کنند.
 بنابراین پس از بازتولید هر صفحه، اجرای جداگانه لازم نیست؛ بااین‌حال audit نهایی
 همهٔ فازها باید اجرا شود:
 
@@ -364,6 +382,7 @@ python3 scripts/check-seo-urls.py
 python3 scripts/check-aima-routes.py
 python3 scripts/check-software-architecture-routes.py
 python3 scripts/check-metadata.py
+python3 scripts/check-google-tag.py
 python3 scripts/check-internal-links.py
 python3 scripts/check-site-navigation.py
 python3 scripts/check-performance.py
@@ -371,9 +390,10 @@ python3 scripts/check-accessibility.py
 ```
 
 فایل `_headers` سیاست Cloudflare Pages را تعریف می‌کند: CSP و headerهای
-سخت‌سازی مرورگر روی همهٔ پاسخ‌های استاتیک اعمال می‌شوند، `comments.app` تنها
-runtime خارجی مجاز است و assetهای vendor تا ۳۰ روز و CSS/JS دست‌اول تا ۷ روز
-cache می‌شوند. چون نام فایل‌ها content hash ندارد، از `immutable` استفاده نشده
+سخت‌سازی مرورگر روی همهٔ پاسخ‌های استاتیک اعمال می‌شوند، فقط widgetهای
+`comments.app` و Google Tag Manager به‌عنوان runtime خارجی مجازند و assetهای
+vendor تا ۳۰ روز و CSS/JS دست‌اول تا ۷ روز cache می‌شوند. چون نام فایل‌ها
+content hash ندارد، از `immutable` استفاده نشده
 است. بعد از تغییر عمدی یک فایل vendor، digest متناظر در
 `scripts/check-performance.py` نیز باید همراه نسخه و provenance به‌روزرسانی شود.
 

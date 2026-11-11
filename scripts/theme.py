@@ -6,9 +6,11 @@ that reuses the theme's own stylesheet (/css/style.min.css) and script
 (/js/theme.min.js) to stay visually identical to the rest of alirostami.com.
 """
 
+from google_tag import render_google_tag
 from site_navigation import render_site_navigation
 
 SITE_NAME = "علی رستمی"
+GOOGLE_TAG_HEAD = render_google_tag("    ")
 
 
 def header(active: str = "") -> str:
@@ -49,6 +51,7 @@ def page(
     return f"""<!DOCTYPE html>
 <html lang="fa" dir="rtl">
     <head>
+{GOOGLE_TAG_HEAD}
         <meta name="generator" content="Hugo 0.92.2" />
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">

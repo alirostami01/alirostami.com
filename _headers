@@ -1,6 +1,6 @@
 # Cloudflare Pages response policy for static documents and assets.
 /*
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; script-src 'self' 'unsafe-inline' https://comments.app; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://comments.app; frame-src 'self' https://comments.app; manifest-src 'self'; media-src 'self'; worker-src 'self' blob:
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; script-src 'self' 'unsafe-inline' https://comments.app https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://comments.app https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com; frame-src 'self' https://comments.app; manifest-src 'self'; media-src 'self'; worker-src 'self' blob:
   Cross-Origin-Opener-Policy: same-origin-allow-popups
   Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()
   Referrer-Policy: strict-origin-when-cross-origin

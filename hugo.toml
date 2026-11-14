@@ -45,7 +45,7 @@ disableKinds = ["taxonomy", "term"]
     Twitter = "alirostami01"
     Instagram = "alirostami01"
     Facebook = "alirostami01"
-    Telegram = "alirostami01"
+    Telegram = "alirostami_com"
     Email = "rostami.ali@gmail.com"
 
   [params.home]

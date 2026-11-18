@@ -22,9 +22,6 @@
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.alirostami.com/support/" /><link rel="stylesheet" href="/css/style.min.css">
         <style>
     /* ---------- Persian support page (theme-aware, scoped) ---------- */
-    /* keep the theme header/footer in their original LTR layout */
-    #header-desktop, #header-mobile, .footer { direction: ltr; }
-
     .support-page { direction: rtl; text-align: right; }
     .support-page .single-title { text-align: center; }
     .support-page .content { line-height: 2; }
@@ -348,8 +345,18 @@
     body[data-header-desktop] .single .content a:not(.headerlink){text-decoration:underline!important;text-underline-offset:.15em}
     body[data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#a41354!important}
     body[theme=dark][data-header-desktop] :where(.single .content a:not(.headerlink),.summary .content a,.single .post-meta a,.post-info-mod a,.post-info-license a,.search-footer a):hover{color:#fff!important}
-    body[data-header-desktop] .search input::placeholder{color:#5f5f66!important;opacity:1}
-    body[theme=dark][data-header-desktop] .search input::placeholder{color:#b7bbc5!important}
+    /* Collapsed desktop search is a 40px icon target; keep its placeholder invisible so
+       the text does not paint behind the magnifier. Once expanded (or in the mobile
+       drawer) the field is readable, so restore a contrast-safe placeholder color. */
+    body[data-header-desktop] #header-desktop:not(.open) .search input::placeholder{color:transparent!important;opacity:1}
+    body[data-header-desktop] #header-desktop.open .search input::placeholder,body[data-header-desktop] #header-mobile .search input::placeholder{color:#5f5f66!important;opacity:1}
+    body[theme=dark][data-header-desktop] #header-desktop.open .search input::placeholder,[theme=dark] #header-mobile .search input::placeholder{color:#b7bbc5!important;opacity:1}
+    /* The expanded desktop field is wider than the collapsed slot, so the sibling
+       menu links are hidden while searching (the theme already does this on mobile);
+       otherwise the field overflows off the inline-start edge of the header. */
+    #header-desktop.open .header-wrapper .menu.menu-inner>a.menu-item,#header-desktop.open .header-wrapper .menu .menu-inner>a.menu-item{display:none}
+    #header-desktop.open .header-wrapper .menu .menu-item.search{margin:0}
+    #header-desktop.open .header-wrapper .menu .menu-item.search input{width:min(24rem,calc(100vw - 8rem))}
     button.menu-toggle{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;min-width:2rem;min-height:2rem}
     button.search-button,button.search-cancel,button.theme-switch,button.history-back,button.share-button,button.script-button{appearance:none;border:0;padding:0;background:transparent;color:inherit;font:inherit;line-height:inherit;cursor:pointer}
     button.search-button,button.theme-switch,button.share-button,button.script-button{min-width:1.5rem;min-height:1.5rem}

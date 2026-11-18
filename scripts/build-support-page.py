@@ -146,9 +146,6 @@ SOCIAL = [
 
 STYLE = """
     /* ---------- Persian support page (theme-aware, scoped) ---------- */
-    /* keep the theme header/footer in their original LTR layout */
-    #header-desktop, #header-mobile, .footer { direction: ltr; }
-
     .support-page { direction: rtl; text-align: right; }
     .support-page .single-title { text-align: center; }
     .support-page .content { line-height: 2; }

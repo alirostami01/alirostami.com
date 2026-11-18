@@ -173,9 +173,6 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
         }}
 </script>
         <style>
-    /* keep the theme header/footer in their original LTR layout */
-    #header-desktop, #header-mobile, .footer {{ direction: ltr; }}
-
     .docs-page {{ direction: rtl; text-align: right; }}
     .docs-page .content {{ line-height: 2.1; }}
 

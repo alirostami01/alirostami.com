@@ -17,6 +17,11 @@ WINDOW_CONFIG_RE = re.compile(
     r'<script\b[^>]*>\s*window\.config\s*=\s*(\{.*?\});\s*</script\s*>',
     re.IGNORECASE | re.DOTALL,
 )
+# Any page-level `direction` override that targets the shared header wrappers.
+HEADER_DIRECTION_OVERRIDE_RE = re.compile(
+    r'#header-(?:desktop|mobile)\b[^{}]*(?:,|\{)[^{}]*\bdirection\s*:',
+    re.IGNORECASE,
+)
 
 
 class NavigationParser(HTMLParser):
@@ -106,6 +111,13 @@ def main() -> int:
         standard_count += 1
         parser = NavigationParser()
         parser.feed(raw)
+        # The shared header is RTL everywhere. A page-level direction override on
+        # the header wrappers flips the menu back to LTR and visibly diverges from
+        # the rest of the site, so it must never be reintroduced.
+        require(
+            not HEADER_DIRECTION_OVERRIDE_RE.search(raw),
+            f"{relative}: header direction override makes the menu differ from the site",
+        )
         require(set(parser.headers) == {"desktop", "mobile"}, f"{relative}: missing unified header pair")
         expected_active = active_menu_href(relative)
         for kind in ("desktop", "mobile"):

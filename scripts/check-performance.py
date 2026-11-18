@@ -323,7 +323,7 @@ def main() -> int:
                 require(target is not None and target.is_file(), f"{relative}: preloaded image does not exist")
             stats["priority_images"] += 1
 
-    require(stats["priority_images"] == 5, f"expected five LCP image preloads, found {stats['priority_images']}")
+    require(stats["priority_images"] == 6, f"expected six LCP image preloads, found {stats['priority_images']}")
     require(
         stats["google_tag_scripts"] == stats["html"],
         f"expected one Google tag loader on every page, found {stats['google_tag_scripts']}",

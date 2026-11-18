@@ -62,6 +62,7 @@ RELATED_CONTENT: dict[str, tuple[str, tuple[tuple[str, str], ...]]] = {
         "همهٔ مسیرهای اصلی سایت",
         (
             ("مقالات و یادداشت‌های فنی علی رستمی", "/posts/"),
+            ("مقالهٔ جنسن هوانگ و انویدیا: از هوش مصنوعی تا بحران مدیریتی", "/posts/jensen-huang-nvidia/"),
             ("مطالعهٔ آنلاین ترجمهٔ فارسی کتاب هوش مصنوعی AIMA", "/aima-4e/"),
             ("پروژهٔ ترجمهٔ فارسی کتاب هوش مصنوعی AIMA", "/aima-4e-persian/"),
             ("مطالعهٔ آنلاین ترجمهٔ فارسی مبانی معماری نرم‌افزار", "/software-architecture/"),
@@ -114,6 +115,15 @@ RELATED_CONTENT: dict[str, tuple[str, tuple[tuple[str, str], ...]]] = {
             ("مطالعهٔ آنلاین مبانی معماری نرم‌افزار", "/software-architecture/"),
             ("معرفی ترجمهٔ فارسی کتاب هوش مصنوعی AIMA", "/posts/aima-4e-persian/"),
             ("همهٔ مقاله‌ها و یادداشت‌های پروژه", "/posts/"),
+        ),
+    ),
+    "posts/jensen-huang-nvidia/index.html": (
+        "مطالعهٔ بیشتر دربارهٔ فناوری و هوش مصنوعی",
+        (
+            ("ترجمهٔ فارسی کتاب هوش مصنوعی AIMA", "/posts/aima-4e-persian/"),
+            ("مقاله‌های دیگر و یادداشت‌های سایت", "/posts/"),
+            ("پروژهٔ ترجمهٔ مبانی معماری نرم‌افزار", "/posts/fundamentals-of-software-architecture-persian/"),
+            ("صفحهٔ اصلی سایت", "/"),
         ),
     ),
     "aima-4e-persian/index.html": (
@@ -406,7 +416,18 @@ def update_posts_archive(raw: str) -> str:
     if aima_count not in {0, 1} or len(normalized_aima) != 1:
         raise ValueError("posts/index.html: could not normalize the AIMA article archive link")
 
-    entry = """<!-- internal-post-archive-entry:start -->
+    raw = re.sub(
+        r'<article\b[^>]*>\s*<a\b[^>]*\bhref=["\']/posts/jensen-huang-nvidia/["\'][^>]*>.*?</article>\s*',
+        "",
+        raw,
+        count=1,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    entry = """<article class="archive-item">
+                        <a href="/posts/jensen-huang-nvidia/" class="archive-item-link">جنسن هوانگ و انویدیا؛ از انقلاب هوش مصنوعی تا بحران مدیریتی</a>
+                        <span class="archive-item-date">11-18</span>
+                    </article>
+                    <!-- internal-post-archive-entry:start -->
                     <article class="archive-item">
                         <a href="/posts/fundamentals-of-software-architecture-persian/" class="archive-item-link">مبانی معماری نرم‌افزار: رویکردی مهندسی و مدرن — ترجمهٔ فارسی</a>
                         <span class="archive-item-date">10-24</span>

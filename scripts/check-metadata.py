@@ -45,10 +45,12 @@ ARTICLE_PAGES = {
     "posts/aima-4e-persian/index.html",
     "posts/benefits-of-using-obsidian/index.html",
     "posts/fundamentals-of-software-architecture-persian/index.html",
+    "posts/jensen-huang-nvidia/index.html",
 }
 ARCHIVE_PAGES = {"posts/index.html"}
 GENERATOR_SCRIPTS = (
     "scripts/build-aima-index.py",
+    "scripts/build-jensen-huang-post.py",
     "scripts/build-project-page.py",
     "scripts/build-social-images.py",
     "scripts/build-software-architecture-index.py",
@@ -657,16 +659,16 @@ def main() -> int:
         if actual != expected:
             errors.append(f"{root}: chapter positions are incomplete: {actual!r}")
 
-    if len(pages) != 70:
-        errors.append(f"expected 70 indexable pages, found {len(pages)}")
-    if article_count != 61:
-        errors.append(f"expected 61 article social previews, found {article_count}")
-    if locale_counts != Counter({"fa_IR": 67, "en_US": 3}):
+    if len(pages) != 71:
+        errors.append(f"expected 71 indexable pages, found {len(pages)}")
+    if article_count != 62:
+        errors.append(f"expected 62 article social previews, found {article_count}")
+    if locale_counts != Counter({"fa_IR": 68, "en_US": 3}):
         errors.append(f"unexpected locale distribution: {dict(locale_counts)!r}")
     if type_counts["Chapter"] != 57:
         errors.append(f"expected 57 Chapter nodes, found {type_counts['Chapter']}")
-    if type_counts["BreadcrumbList"] != 69:
-        errors.append(f"expected 69 BreadcrumbList nodes, found {type_counts['BreadcrumbList']}")
+    if type_counts["BreadcrumbList"] != 70:
+        errors.append(f"expected 70 BreadcrumbList nodes, found {type_counts['BreadcrumbList']}")
 
     if errors:
         print(f"metadata audit failed ({len(errors)} issue(s)):", file=sys.stderr)

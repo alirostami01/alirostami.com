@@ -33,6 +33,7 @@ from image_utils import (
 PRIORITY_IMAGE_PAGES = {
     "aima-4e-persian/index.html",
     "fundamentals-of-software-architecture-persian/index.html",
+    "posts/jensen-huang-nvidia/index.html",
     "persian-streams/index.html",
     "persian-subtitles/index.html",
 }
@@ -303,7 +304,13 @@ def check_content_images(errors: list[str]) -> int:
                 (relative == Path("index.html") and source.endswith("/images/Ali-256.jpg"))
                 or (
                     relative.as_posix() in PRIORITY_IMAGE_PAGES
-                    and source.startswith("/images/projects/")
+                    and (
+                        source.startswith("/images/projects/")
+                        or (
+                            relative.as_posix() == "posts/jensen-huang-nvidia/index.html"
+                            and source == "/images/posts/jensen-huang.jpeg"
+                        )
+                    )
                 )
             )
             expected_loading = "eager" if priority else "lazy"

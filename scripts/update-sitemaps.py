@@ -40,6 +40,12 @@ MAIN_PAGES = [
     ("/support/", "support/index.html", "monthly", "0.75"),
     ("/posts/", "posts/index.html", "weekly", "0.80"),
     (
+        "/posts/jensen-huang-nvidia/",
+        "posts/jensen-huang-nvidia/index.html",
+        "monthly",
+        "0.75",
+    ),
+    (
         "/posts/fundamentals-of-software-architecture-persian/",
         "posts/fundamentals-of-software-architecture-persian/index.html",
         "monthly",

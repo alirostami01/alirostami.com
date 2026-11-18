@@ -124,6 +124,18 @@ SOCIAL_CARDS: dict[str, SocialCard] = {
         alt_en="Ali Rostami's articles and notes on software, AI, and productivity",
         presentation="portrait",
     ),
+    "jensen-huang": SocialCard(
+        key="jensen-huang",
+        filename="jensen-huang-nvidia.jpg",
+        title=("JENSEN HUANG", "NVIDIA & THE AI ERA"),
+        subtitle="FROM GPU PIONEER TO A LEADERSHIP CRISIS",
+        badge="TECHNOLOGY  ·  GOVERNANCE",
+        source_images=("images/posts/jensen-huang.jpeg",),
+        colors=("#090d15", "#283442", "#76b900"),
+        alt_fa="جنسن هوانگ؛ بنیان‌گذار انویدیا و چهرهٔ اثرگذار صنعت هوش مصنوعی",
+        alt_en="Jensen Huang, Nvidia co-founder and influential figure in artificial intelligence",
+        presentation="portrait",
+    ),
 }
 
 
@@ -140,6 +152,8 @@ def social_card_for_page(relative: str | Path) -> SocialCard:
     lowered = value.lower()
     if value == "index.html":
         return SOCIAL_CARDS["home"]
+    if "jensen-huang" in lowered:
+        return SOCIAL_CARDS["jensen-huang"]
     if "support" in lowered:
         return SOCIAL_CARDS["support"]
     if lowered.startswith("software-architecture/") or "fundamentals-of-software-architecture" in lowered:

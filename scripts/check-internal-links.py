@@ -37,12 +37,14 @@ RELATED_PAGES = {
     "posts/aima-4e-persian/index.html",
     "posts/benefits-of-using-obsidian/index.html",
     "posts/fundamentals-of-software-architecture-persian/index.html",
+    "posts/jensen-huang-nvidia/index.html",
     "posts/index.html",
     "support/index.html",
 }
 
 GENERATOR_SCRIPTS = (
     "scripts/build-aima-index.py",
+    "scripts/build-jensen-huang-post.py",
     "scripts/build-project-page.py",
     "scripts/build-social-images.py",
     "scripts/build-software-architecture-index.py",
@@ -445,7 +447,7 @@ def audit_chapter_navigation(
 def main() -> None:
     parsed_pages = all_html_pages()
     pages = discover_indexable(parsed_pages)
-    require(len(pages) == 70, f"expected 70 canonical indexable pages, found {len(pages)}")
+    require(len(pages) == 71, f"expected 71 canonical indexable pages, found {len(pages)}")
     require(file_for_url(HOME_URL) in pages, "canonical home page is not indexable")
 
     file_to_canonical = {path: canonical for path, canonical in pages.items()}
@@ -575,8 +577,8 @@ def main() -> None:
             require(len(targets) == len(anchors), f"{relative}: related-content block repeats a destination")
             require(all(anchor.href.startswith("/") for anchor in anchors), f"{relative}: related links must be root-relative canonical paths")
 
-    # Both canonical Persian book articles must be first-class archive entries,
-    # not only links in the related-content section.
+    # Canonical articles must be first-class archive entries, not only links in
+    # the related-content section.
     for relative, raw in raw_by_relative.items():
         expected = int(relative == "posts/index.html")
         require(raw.count(f"{POST_ARCHIVE_MARKER}:start") == expected, f"{relative}: post archive start marker mismatch")
@@ -604,6 +606,7 @@ def main() -> None:
         if "archive-item-link" in anchor.attrs.get("class", "").split()
     }
     for article_url in (
+        "/posts/jensen-huang-nvidia/",
         "/posts/aima-4e-persian/",
         "/posts/fundamentals-of-software-architecture-persian/",
     ):

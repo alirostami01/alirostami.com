@@ -145,7 +145,7 @@ def main() -> int:
             else:
                 require(config.get("search") == SEARCH_CONFIG, f"{relative}: shared search config differs")
 
-    require(standard_count == 12, f"expected 12 standard pages, found {standard_count}")
+    require(standard_count == 13, f"expected 13 standard pages, found {standard_count}")
     require(reader_count == 59, f"expected 59 preserved reader pages, found {reader_count}")
 
     helper = (ROOT / "scripts/image_utils.py").read_text(encoding="utf-8")

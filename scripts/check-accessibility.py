@@ -483,9 +483,9 @@ def main() -> int:
         ratio = contrast_ratio(foreground, background)
         require(ratio >= minimum, f"{label} contrast is {ratio:.2f}:1, expected at least {minimum}:1", errors)
 
-    require(stats["html"] == 71, f"expected 71 generated HTML files, found {stats['html']}", errors)
-    require(stats["enhanced"] == 71, f"expected 71 enhanced pages, found {stats['enhanced']}", errors)
-    require(stats["indexable"] == 70, f"expected 70 indexable pages, found {stats['indexable']}", errors)
+    require(stats["html"] == 72, f"expected 72 generated HTML files, found {stats['html']}", errors)
+    require(stats["enhanced"] == 72, f"expected 72 enhanced pages, found {stats['enhanced']}", errors)
+    require(stats["indexable"] == 71, f"expected 71 indexable pages, found {stats['indexable']}", errors)
     require(stats["skip_links"] == stats["enhanced"], "not every enhanced page has one skip link", errors)
 
     if errors:

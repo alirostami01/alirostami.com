@@ -117,6 +117,10 @@ DESCRIPTIONS = {
         "معرفی ترجمهٔ فارسی ویرایش دوم کتاب مبانی معماری نرم‌افزار اثر مارک ریچاردز "
         "و نیل فورد؛ همراه مطالعهٔ آنلاین، PDF و سورس متن‌باز."
     ),
+    "posts/jensen-huang-nvidia/index.html": (
+        "روایت زندگی حرفه‌ای جنسن هوانگ و نقش او در رشد انویدیا و هوش مصنوعی؛ "
+        "همراه با مرور مستندِ گزارش‌های نوامبر ۲۰۲۶ و تفکیک واقعیت از ادعا."
+    ),
 }
 
 SOCIAL_TITLES = {
@@ -124,6 +128,7 @@ SOCIAL_TITLES = {
     "posts/index.html": "Articles & Notes | Ali Rostami",
     "posts/a-recap-of-last-year/index.html": "A Recap of Last Year | Ali Rostami",
     "posts/benefits-of-using-obsidian/index.html": "Benefits of Using Obsidian | Ali Rostami",
+    "posts/jensen-huang-nvidia/index.html": "جنسن هوانگ و انویدیا | روایت یک تحول و بحران مدیریتی",
     "support/index.html": "حمایت از پروژه‌های متن‌باز علی رستمی",
 }
 
@@ -133,6 +138,7 @@ ARTICLE_PAGES = {
     "posts/benefits-of-using-obsidian/index.html",
     "posts/aima-4e-persian/index.html",
     "posts/fundamentals-of-software-architecture-persian/index.html",
+    "posts/jensen-huang-nvidia/index.html",
 }
 BOOKS = {
     "aima-4e": {

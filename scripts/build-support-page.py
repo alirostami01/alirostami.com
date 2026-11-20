@@ -138,7 +138,7 @@ NON_FINANCIAL = [
 SOCIAL = [
     ("https://github.com/alirostami01", "fa-brands fa-github", "GitHub"),
     ("https://twitter.com/alirostami01", "fa-brands fa-twitter", "Twitter"),
-    ("https://www.instagram.com/alirostami01", "fa-brands fa-instagram", "Instagram"),
+    ("https://www.instagram.com/alirostami_com", "fa-brands fa-instagram", "Instagram"),
     ("https://t.me/alirostami_com", "fa-brands fa-telegram-plane", "Telegram"),
     ("https://linkedin.com/in/alirostami01", "fa-brands fa-linkedin", "LinkedIn"),
     ("mailto:rostami.ali@gmail.com", "fa-regular fa-envelope", "Email"),
